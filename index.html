@@ -7196,7 +7196,13 @@ var DX_ALL = (function () {
       });
     });
   });
-  out.forEach(function (o, i) { o.id = "io" + i; o.tel = "—"; o.stir = "—"; });
+  out.forEach(function (o, i) {
+    o.id = "io" + i;
+    var h = 0; for (var k = 0; k < o.name.length; k++) h = (h * 31 + o.name.charCodeAt(k)) >>> 0;
+    var d = function (n, m) { return String((Math.floor(h / m) % Math.pow(10, n)) + Math.pow(10, n)).slice(1); };
+    o.tel = "+998 " + (70 + h % 9) + " " + d(3, 7) + " " + d(2, 13) + " " + d(2, 17);
+    o.stir = (200 + h % 99) + " " + d(3, 3) + " " + d(3, 11);
+  });
   var adl = seen["O'zbekiston Respublikasi Adliya vazirligi"];
   if (adl) Object.assign(adl, { manzil: "Toshkent shahri, Sayilgoh ko'chasi, 5-uy", tel: "+998 71 123 45 67", stir: "201 234 567" });
   return out;
@@ -9359,9 +9365,9 @@ class Component extends DCLogic {
       if (dx.idTab === "nom") {
         if (dx.idSearched) {
           hits = DX_ALL.filter(function (o) { return dx.idHits.indexOf(o.id) >= 0; });
-          noResText = "«" + dx.idQLast + "» bo'yicha idora topilmadi. Nomini qisqaroq yozib ko'ring yoki hudud bo'yicha qidiring.";
+          noResText = "«" + dx.idQLast + "» bo'yicha idora topilmadi. Idora nomi, turi, viloyat/tuman, STIR yoki telefon bo'yicha qidirish mumkin — masalan «Termiz soliq». Yoki «Hudud bo'yicha» bo'limidan tanlang.";
           resHead = "Qidiruv natijasi · " + hits.length + " ta";
-        } else hint = "Idora nomi, STIR raqami yoki manzilining bir qismini yozib, «Izlash» tugmasini bosing.";
+        } else hint = "Idora nomi, turi, hududi (viloyat/tuman), STIR yoki telefon raqamining bir qismini yozing. Masalan: «Surxondaryo prokuratura», «Termiz soliq», «Adliya» yoki STIR raqami.";
       } else {
         if (!cat) hint = "Avval kategoriyani tanlang — so'ng respublika, viloyat va tuman bo'yicha toraytiring.";
         else if (!dx.idResp) hint = "Respublikani tanlang.";
@@ -9387,10 +9393,16 @@ class Component extends DCLogic {
           pick: function () { setDx({ idPick: o.id }); self.flash(o.name + " manfaatdor idora sifatida tanlandi"); } };
       });
       var runSearch = function () {
-        var d = self.state.dx, q = d.idQ.trim().toLowerCase();
+        var d = self.state.dx, nz = function (x) { return String(x || "").toLowerCase().replace(/[‘’ʻʼ`´]/g, "'"); }, q = nz(d.idQ.trim());
         if (!q) { self.flash("Qidirish uchun idora nomi yoki STIR kiriting"); return; }
         var qd = q.replace(/\s/g, "");
-        var res = DX_ALL.filter(function (o) { var hay = (o.name + " " + o.manzil + " " + o.turi).toLowerCase(); return hay.indexOf(q) >= 0 || (qd.length >= 3 && o.stir.replace(/\s/g, "").indexOf(qd) >= 0); });
+        var catL = function (o) { return DX_CATS.filter(function (c) { return o.cats && o.cats.indexOf(c.id) >= 0; }).map(function (c) { return c.label; }).join(" "); };
+        var words = q.split(/\s+/).filter(Boolean);
+        var res = DX_ALL.filter(function (o) {
+          var hay = nz([o.name, o.manzil, o.turi, o.resp, o.vil, o.tum, catL(o)].join(" "));
+          if (words.every(function (w) { return hay.indexOf(w) >= 0; })) return true;
+          return /^\d{3,}$/.test(qd) && (o.stir.replace(/\s/g, "").indexOf(qd) >= 0 || o.tel.replace(/\D/g, "").indexOf(qd) >= 0);
+        });
         setDx({ idSearched: true, idHits: res.map(function (o) { return o.id; }), idQLast: d.idQ.trim() });
       };
 
@@ -9459,7 +9471,7 @@ class Component extends DCLogic {
         dxIdMore: hits.length > LIM, dxIdMoreText: "Yana " + (hits.length - LIM) + " ta natija bor — qidiruvni aniqlashtiring",
         dxIdHas: !!picked, dxIdNone: !picked, dxIdPaneCls: picked ? "dx-pane" : "dx-pane dashed",
         dxIdEmptyText: dx.idTab === "nom" ? "Chap tarafda idora nomi yoki STIR bo'yicha qidirib, natijadan tanlang" : "Chap tarafdagi filtrlar orqali kategoriyani, hududni tanlang",
-        dxIdora: picked ? (function (o) { var hsh = 0; for (var k = 0; k < o.name.length; k++) hsh = (hsh * 31 + o.name.charCodeAt(k)) >>> 0; var d = function (n, m) { return String((Math.floor(hsh / m) % Math.pow(10, n)) + Math.pow(10, n)).slice(1); }; var cat = DX_CATS.filter(function (c) { return o.cats && o.cats.indexOf(c.id) >= 0; })[0]; return Object.assign({}, o, { lvl: o.level === "r" ? "Respublika darajasi" : o.level === "v" ? "Viloyat darajasi" : "Tuman darajasi", catName: cat ? cat.label : "", hudud: o.tum || o.vil || o.resp, hududSub: o.tum ? (o.vil || o.resp) : (o.vil ? o.resp : (o.manzil || "")), tel: o.tel && o.tel !== "—" ? o.tel : "+998 " + (70 + hsh % 9) + " " + d(3, 7) + " " + d(2, 13) + " " + d(2, 17), stir: o.stir && o.stir !== "—" ? o.stir : (200 + hsh % 99) + " " + d(3, 3) + " " + d(3, 11) }); })(picked) : { name: "", turi: "", manzil: "", tel: "", stir: "" },
+        dxIdora: picked ? (function (o) { var cat = DX_CATS.filter(function (c) { return o.cats && o.cats.indexOf(c.id) >= 0; })[0]; return Object.assign({}, o, { lvl: o.level === "r" ? "Respublika darajasi" : o.level === "v" ? "Viloyat darajasi" : "Tuman darajasi", catName: cat ? cat.label : "", hudud: o.tum || o.vil || o.resp, hududSub: o.tum ? (o.vil || o.resp) : (o.vil ? o.resp : (o.manzil || "")) }); })(picked) : { name: "", turi: "", manzil: "", tel: "", stir: "" },
         dxIdRemove: function () { var n = picked ? picked.name : ""; setDx({ idPick: "" }); if (n) self.flash(n + " olib tashlandi"); },
         dxDv: tmMap("dxDv"), dxJv: tmMap("dxJv"), dxDvEmpty: s.dxDv.length === 0, dxJvEmpty: s.dxJv.length === 0,
         dxDvHas: s.dxDv.length > 0, dxJvHas: s.dxJv.length > 0, dxDvCount: s.dxDv.length + " ta", dxJvCount: s.dxJv.length + " ta",
