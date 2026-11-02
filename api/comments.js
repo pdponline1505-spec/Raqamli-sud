@@ -72,6 +72,7 @@ module.exports = async function handler(req, res) {
         text,
         screen: clean(b.screen, 300),
         screenLabel: clean(b.screenLabel, 200),
+        where: clean(b.where, 160),
         nav: b.nav && typeof b.nav === 'object' ? JSON.parse(clean(JSON.stringify(b.nav), 1500)) : null,
         sel: clean(b.sel, 1500),
         rx: Number(b.rx) || 0, ry: Number(b.ry) || 0,

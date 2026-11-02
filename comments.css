@@ -9,8 +9,11 @@
 .rsc-fab svg{width:18px;height:18px}
 .rsc-fab b{min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:rgba(255,255,255,.2);font-size:12px;display:inline-grid;place-items:center}
 .rsc-fab:focus-visible,.rsc-btn:focus-visible,.rsc-pin:focus-visible,.rsc-li:focus-visible{outline:2px solid #93b4fd;outline-offset:2px}
-.rsc-listbtn{position:fixed;right:20px;bottom:74px;z-index:2147483100;width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:var(--rsc-ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 22px rgba(15,23,42,.18)}
-.rsc-listbtn svg{width:18px;height:18px}
+.rsc-listbtn{position:fixed;right:20px;bottom:74px;z-index:2147483100;display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px 0 12px;border:0;border-radius:999px;background:#fff;color:var(--rsc-ink);font:inherit;font-size:13.5px;font-weight:600;cursor:pointer;box-shadow:0 8px 22px rgba(15,23,42,.18);transition:transform 160ms var(--rsc-e)}
+.rsc-listbtn:hover{transform:translateY(-2px)}
+.rsc-listbtn.on{background:#eef3ff;color:var(--rsc-blue)}
+.rsc-listbtn svg{width:17px;height:17px}
+.rsc-listbtn b{min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#eef2f7;font-size:12px;display:inline-grid;place-items:center}
 .rsc-hint{position:fixed;left:50%;top:14px;transform:translateX(-50%);z-index:2147483100;padding:8px 14px;border-radius:999px;background:#1e2a4a;color:#fff;font-size:13px;box-shadow:0 8px 22px rgba(15,23,42,.25);pointer-events:none;animation:rscIn 220ms var(--rsc-e)}
 .rsc-pin{position:absolute;pointer-events:auto;width:30px;height:30px;margin:-30px 0 0 0;border:2px solid #fff;border-radius:50% 50% 50% 4px;background:var(--rsc-blue);color:#fff;font:inherit;font-size:12px;font-weight:700;display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 12px rgba(37,99,235,.4);transition:transform 160ms var(--rsc-e);animation:rscPop 260ms var(--rsc-e)}
 .rsc-pin:hover,.rsc-pin.act{transform:scale(1.12)}
@@ -54,6 +57,23 @@
 .rsc-scr{display:block;margin-top:4px;font-size:11.5px;color:var(--rsc-mut)}
 .rsc-empty{padding:40px 16px;text-align:center;color:var(--rsc-mut);font-size:13px}
 .rsc-banner{margin:8px 16px;padding:10px 12px;border-radius:10px;background:#fff7e6;color:#92400e;font-size:12.5px;line-height:1.45}
+.rsc-where{padding:8px 12px;border-bottom:1px solid #eef1f5;background:#f8fafc;font-size:12px;color:#475569;line-height:1.4}
+.rsc-tools{display:flex;gap:8px;padding:0 16px 10px}
+.rsc-search{flex:1;min-width:0;height:34px;padding:0 10px;border:1px solid #d5dbe4;border-radius:9px;font:inherit;font-size:13px}
+.rsc-search:focus,.rsc-scrsel:focus{outline:2px solid #bfd3fb;border-color:var(--rsc-blue)}
+.rsc-scrsel{height:34px;padding:0 8px;border:1px solid #d5dbe4;border-radius:9px;font:inherit;font-size:12.5px;background:#fff;color:var(--rsc-ink)}
+.rsc-gh{display:flex;align-items:center;gap:8px;padding:12px 10px 4px;font-size:11.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#64748b}
+.rsc-gh span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rsc-gh em{flex:none;white-space:nowrap;font-style:normal;text-transform:none;letter-spacing:0;font-weight:600;color:var(--rsc-blue);background:#eef3ff;padding:1px 7px;border-radius:999px}
+.rsc-gh small{margin-left:auto;font-weight:600}
+.rsc-num{width:26px;height:26px;flex:none;border-radius:50% 50% 50% 4px;background:var(--rsc-blue);color:#fff;font-size:11.5px;font-weight:700;display:grid;place-items:center}
+.rsc-li.res .rsc-num{background:#94a3b8}
+.rsc-li.act{background:#eef3ff}
+.rsc-li .rsc-mb{display:flex;flex-direction:column;gap:2px}
+.rsc-ok{color:#15803d !important}
+.rsc-flash{position:absolute;border:2px solid var(--rsc-blue);border-radius:10px;box-shadow:0 0 0 6px rgba(37,99,235,.18);pointer-events:none;animation:rscPulse 1.2s ease-in-out 2}
+@keyframes rscPulse{0%,100%{box-shadow:0 0 0 4px rgba(37,99,235,.15)}50%{box-shadow:0 0 0 12px rgba(37,99,235,.08)}}
+a.rsc-ib{text-decoration:none}
 @keyframes rscIn{from{opacity:0;transform:translateY(6px)}}
 @keyframes rscPop{from{opacity:0;transform:scale(.4)}}
 @keyframes rscSlide{from{transform:translateX(100%)}}

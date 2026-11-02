@@ -14,6 +14,7 @@ Bu statik sayt — build bosqichi yo'q, Node.js kerak emas.
 | `assets/` | Logo va suratlar |
 | `vercel.json` | Vercel sozlamalari (kesh sarlavhalari) |
 | `comments.js`, `comments.css` | Izohlar qatlami (sahifaga izoh qadash) |
+| `izohlar.html` | Barcha izohlar jadvali (/izohlar) |
 | `api/comments.js` | Izohlar API (Vercel serverless funksiyasi) |
 
 ## Lokal ko'rish
@@ -44,7 +45,8 @@ Saytning o'ng pastki burchagida **Izoh** tugmasi bor (yoki klaviaturada `C`):
 1. **Izoh** ni bosing va sahifaning kerakli joyini tanlang.
 2. Ismingiz va izohni yozib **Yuborish** ni bosing (`Ctrl+Enter`).
 3. Raqamli belgini bosib javob yozish, **✓** bilan hal qilindi deb belgilash yoki o'chirish mumkin.
-4. Ro'yxat tugmasi barcha izohlarni ko'rsatadi; boshqa ekrandagi izohni bossangiz, sayt o'sha ekranga o'tadi.
+4. **Ro'yxat** tugmasi (yoki `L`) barcha izohlarni ekranlar bo'yicha guruhlab ko'rsatadi: har birida qaysi ekran va qaysi element ustiga yozilgani (📍) bor. Qidiruv, "faqat shu ekran" filtri va Ochiq / Hal qilingan / Barchasi tablari mavjud. Izohni bossangiz, sayt o'sha ekranga o'tadi va element yorug' ramka bilan belgilanadi.
+5. **/izohlar** sahifasi — barcha izohlar jadvali: statistika, qidiruv, ekran/muallif/holat filtrlari, CSV yuklab olish va har bir izohni saytda ochish havolasi.
 
 Izohlar Vercel login talab qilmaydi — havolani ochgan har kim izoh qoldira oladi.
 

@@ -4,7 +4,7 @@
   'use strict';
   var API = '/api/comments';
   var LS_NAME = 'rs.cname', LS_OPEN = 'rs.openAfter';
-  var S = { list: [], mode: false, draft: null, open: null, panel: false, tab: 'open', configured: true, loaded: false, err: '' };
+  var S = { list: [], mode: false, draft: null, open: null, panel: false, tab: 'open', q: '', scr: 'all', configured: true, loaded: false, err: '', flash: null };
 
   // ---------- yordamchilar ----------
   function h(tag, attrs, kids) {
@@ -27,6 +27,7 @@
     x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>',
     check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>',
     undo: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-2"/></svg>',
+    table: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/></svg>',
     trash: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>'
   };
   function lsGet(k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } }
@@ -66,6 +67,17 @@
     if (parts.length && parts[0].charAt(0) !== '#') parts.unshift('body');
     return parts.join(' > ');
   }
+  function txt(el) { return ((el && (el.innerText || el.textContent)) || '').replace(/\s+/g, ' ').trim(); }
+  function describe(el) {
+    var t = ((el.getAttribute && (el.getAttribute('aria-label') || el.getAttribute('title'))) || '').trim(), cur = el, g = 0;
+    while (!t && cur && g++ < 6) { var x = txt(cur); if (x && x.length <= 70) { t = x; break; } cur = cur.parentElement; }
+    if (!t) { var y = txt(el); t = y.slice(0, 60) + (y.length > 60 ? '…' : ''); }
+    var sec = el.closest && el.closest('section,.d2-k,.d2-card,.db-card,.iv-card,.l-row,.sec,.card,aside,[role="dialog"]');
+    var hd = sec && sec.querySelector('h1,h2,h3,[role="heading"],.d2-ch b,.d3-ht b,.d2-kt b,b');
+    var ht = hd ? txt(hd).slice(0, 50) : '';
+    var out = (ht && ht !== t && t.indexOf(ht) !== 0 ? ht + ' › ' : '') + (t || el.tagName.toLowerCase());
+    return out.slice(0, 140);
+  }
   function anchorPos(c) {
     if (!c.sel) return null;
     var el; try { el = document.querySelector(c.sel); } catch (e) { return null; }
@@ -91,7 +103,7 @@
   var root = h('div', { class: 'rsc-root' });
   var layer = h('div', { class: 'rsc-layer', 'aria-live': 'polite' });
   var fab = h('button', { type: 'button', class: 'rsc-fab', 'aria-pressed': 'false', title: 'Izoh qoldirish (C)', onclick: function () { setMode(!S.mode); } });
-  var listBtn = h('button', { type: 'button', class: 'rsc-listbtn', title: 'Barcha izohlar', 'aria-label': 'Barcha izohlar', html: IC.list, onclick: function () { S.panel = !S.panel; build(); } });
+  var listBtn = h('button', { type: 'button', class: 'rsc-listbtn', title: 'Izohlar ro\'yxati (L)', 'aria-label': 'Izohlar ro\'yxati', onclick: function () { S.panel = !S.panel; build(); } });
   var hint = null, panel = null;
   root.appendChild(layer); root.appendChild(listBtn); root.appendChild(fab);
 
@@ -110,6 +122,7 @@
     fab.innerHTML = IC.chat; fab.appendChild(document.createTextNode(S.mode ? 'Joyni tanlang' : 'Izoh'));
     if (open) fab.appendChild(h('b', { text: String(open) }));
     fab.classList.toggle('on', S.mode); fab.setAttribute('aria-pressed', S.mode ? 'true' : 'false');
+    listBtn.innerHTML = IC.list; listBtn.appendChild(document.createTextNode('Ro\'yxat')); var tot = roots().length; if (tot) listBtn.appendChild(h('b', { text: String(tot) })); listBtn.classList.toggle('on', S.panel);
     if (hint) { hint.remove(); hint = null; }
     if (S.mode) { hint = h('div', { class: 'rsc-hint', text: 'Izoh qoldirmoqchi bo\'lgan joyni bosing · Esc — bekor qilish' }); root.appendChild(hint); }
     layer.innerHTML = '';
@@ -157,6 +170,7 @@
     var d = S.draft;
     return h('div', { class: 'rsc-pop', 'data-for': '__draft' }, [
       h('div', { class: 'rsc-ph' }, [h('span', {}, [h('b', { text: 'Yangi izoh' }), document.createTextNode(' · ' + d.screenLabel)])]),
+      d.where ? h('div', { class: 'rsc-where', text: '📍 ' + d.where }) : null,
       form({ ph: 'Izohingizni yozing…  (Ctrl+Enter — yuborish)', btn: 'Yuborish', cancel: function () { S.draft = null; build(); },
         submit: function (nm, t) { return api('POST', Object.assign({}, d, { author: nm, text: t })).then(function (j) { S.list.push(j.comment); S.draft = null; S.open = j.comment.id; build(); }); } })
     ]);
@@ -173,25 +187,56 @@
     var th = h('div', { class: 'rsc-thread' }, [msgEl(c)].concat(rs.map(msgEl)));
     return h('div', { class: 'rsc-pop', 'data-for': c.id, role: 'dialog', 'aria-label': 'Izoh ' + numOf(c) }, [
       h('div', { class: 'rsc-ph' }, [h('span', {}, [h('b', { text: '#' + numOf(c) }), document.createTextNode(' · ' + (c.resolved ? 'Hal qilingan' : c.screenLabel))]), acts]),
+      c.where ? h('div', { class: 'rsc-where', text: '📍 ' + c.where }) : null,
       th,
       form({ ph: 'Javob yozing…', btn: 'Javob berish', submit: function (nm, t) { return api('POST', { parent: c.id, author: nm, text: t, screen: c.screen }).then(function (j) { S.list.push(j.comment); build(); }); } })
     ]);
   }
   function buildPanel() {
-    var items = roots().filter(function (c) { return S.tab === 'open' ? !c.resolved : c.resolved; }).slice().reverse();
-    var list = h('div', { class: 'rsc-list' }, items.length ? items.map(function (c) {
-      var n = replies(c.id).length;
-      return h('button', { type: 'button', class: 'rsc-li', onclick: function () { goTo(c); } }, [
-        h('span', { class: 'rsc-av', style: 'background:' + colorOf(c.author), text: ini(c.author) }),
-        h('span', { class: 'rsc-mb' }, [h('span', { class: 'rsc-mh' }, [h('b', { text: '#' + numOf(c) + ' ' + c.author }), h('small', { text: ago(c.at) })]), h('span', { class: 'rsc-mt', text: c.text }), h('span', { class: 'rsc-scr', text: c.screenLabel + (n ? ' · ' + n + ' ta javob' : '') })])
-      ]);
-    }) : [h('div', { class: 'rsc-empty', text: S.tab === 'open' ? 'Ochiq izohlar yo\'q' : 'Hal qilingan izohlar yo\'q' })]);
+    var all = roots(), curKey = screen().key;
+    var counts = { open: all.filter(function (c) { return !c.resolved; }).length, res: all.filter(function (c) { return c.resolved; }).length, all: all.length };
+    var q = S.q.toLowerCase();
+    var items = all.filter(function (c) {
+      if (S.tab === 'open' && c.resolved) return false; if (S.tab === 'res' && !c.resolved) return false;
+      if (S.scr === 'here' && c.screen !== curKey) return false;
+      if (q && (c.text + ' ' + c.author + ' ' + (c.where || '') + ' ' + c.screenLabel + ' ' + replies(c.id).map(function (x) { return x.text; }).join(' ')).toLowerCase().indexOf(q) < 0) return false;
+      return true;
+    });
+    // ekran bo'yicha guruhlash (joriy ekran birinchi)
+    var groups = {}, order = [];
+    items.slice().reverse().forEach(function (c) { if (!groups[c.screen]) { groups[c.screen] = { label: c.screenLabel || c.screen, list: [] }; order.push(c.screen); } groups[c.screen].list.push(c); });
+    order.sort(function (a, b) { return (b === curKey) - (a === curKey); });
+    var body = [];
+    order.forEach(function (k) {
+      var g = groups[k];
+      body.push(h('div', { class: 'rsc-gh' }, [h('span', { text: g.label }), k === curKey ? h('em', { text: 'shu ekran' }) : null, h('small', { text: String(g.list.length) })]));
+      g.list.forEach(function (c) {
+        var n = replies(c.id).length;
+        body.push(h('button', { type: 'button', class: 'rsc-li' + (c.resolved ? ' res' : '') + (S.open === c.id ? ' act' : ''), onclick: function () { goTo(c); } }, [
+          h('span', { class: 'rsc-num', text: String(numOf(c)) }),
+          h('span', { class: 'rsc-mb' }, [
+            h('span', { class: 'rsc-mh' }, [h('b', { text: c.author }), h('small', { text: ago(c.at) }), c.resolved ? h('small', { class: 'rsc-ok', text: '✓ hal qilingan' }) : null]),
+            h('span', { class: 'rsc-mt', text: c.text }),
+            c.where ? h('span', { class: 'rsc-scr', text: '📍 ' + c.where }) : null,
+            n ? h('span', { class: 'rsc-scr', text: '💬 ' + n + ' ta javob' }) : null
+          ])
+        ]));
+      });
+    });
+    if (!body.length) body.push(h('div', { class: 'rsc-empty', text: all.length ? 'Filtrga mos izoh topilmadi' : 'Hali izoh yo\'q. «Izoh» tugmasini bosib, sahifaning istalgan joyiga izoh qoldiring.' }));
     var tab = function (k, l) { return h('button', { type: 'button', class: 'rsc-tab' + (S.tab === k ? ' on' : ''), text: l, onclick: function () { S.tab = k; build(); } }); };
-    return h('aside', { class: 'rsc-panel', 'aria-label': 'Izohlar' }, [
-      h('div', { class: 'rsc-pnh' }, [h('b', { text: 'Izohlar' }), h('button', { type: 'button', class: 'rsc-ib', 'aria-label': 'Yopish', html: IC.x, onclick: function () { S.panel = false; build(); } })]),
+    var search = h('input', { type: 'search', class: 'rsc-search', placeholder: 'Izohlardan qidirish…', value: S.q, 'aria-label': 'Izohlardan qidirish' });
+    search.addEventListener('input', function () { S.q = search.value; var pos = search.selectionStart; build(); var ns = panel && panel.querySelector('.rsc-search'); if (ns) { ns.focus(); try { ns.setSelectionRange(pos, pos); } catch (e) {} } });
+    var scrSel = h('select', { class: 'rsc-scrsel', 'aria-label': 'Ekran bo\'yicha' }, [h('option', { value: 'all', text: 'Barcha ekranlar' }), h('option', { value: 'here', text: 'Faqat shu ekran' })]);
+    scrSel.value = S.scr; scrSel.addEventListener('change', function () { S.scr = scrSel.value; build(); });
+    return h('aside', { class: 'rsc-panel', 'aria-label': 'Izohlar ro\'yxati' }, [
+      h('div', { class: 'rsc-pnh' }, [h('b', { text: 'Izohlar' }), h('span', { class: 'rsc-acts' }, [
+        h('a', { class: 'rsc-ib', href: 'izohlar.html', target: '_blank', rel: 'noopener', title: 'Jadval ko\'rinishida ochish', 'aria-label': 'Jadval ko\'rinishida ochish', html: IC.table }),
+        h('button', { type: 'button', class: 'rsc-ib', 'aria-label': 'Yopish', html: IC.x, onclick: function () { S.panel = false; build(); } })])]),
       !S.configured ? h('div', { class: 'rsc-banner', text: 'Izohlar xizmati hali sozlanmagan: Vercel loyihasiga Upstash Redis ulanishi kerak (README.md ga qarang).' }) : null,
-      h('div', { class: 'rsc-tabs' }, [tab('open', 'Ochiq · ' + roots().filter(function (c) { return !c.resolved; }).length), tab('res', 'Hal qilingan · ' + roots().filter(function (c) { return c.resolved; }).length)]),
-      list
+      h('div', { class: 'rsc-tools' }, [search, scrSel]),
+      h('div', { class: 'rsc-tabs' }, [tab('open', 'Ochiq · ' + counts.open), tab('res', 'Hal qilingan · ' + counts.res), tab('all', 'Barchasi · ' + counts.all)]),
+      h('div', { class: 'rsc-list' }, body)
     ]);
   }
 
@@ -200,8 +245,12 @@
     if (c.screen === screen().key) { S.open = c.id; S.panel = window.innerWidth > 1100 ? S.panel : false; build(); reveal(c); return; }
     if (c.nav) { var cur = nav(); lsSet('adolat.nav', JSON.stringify(Object.assign({}, cur, c.nav))); lsSet('adolat.navScroll', null); lsSet(LS_OPEN, c.id); window.location.reload(); }
   }
-  function reveal(c) { try { var el = document.querySelector(c.sel); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {} }
+  function reveal(c) {
+    try { var el = document.querySelector(c.sel); if (!el) return; el.scrollIntoView({ behavior: 'smooth', block: 'center' }); S.flash = { sel: c.sel, until: Date.now() + 2600 }; } catch (e) {}
+  }
   function afterLoad() {
+    var qs = (location.search.match(/[?&]c=([\w-]+)/) || [])[1];
+    if (qs) { history.replaceState(null, '', location.pathname); var qc = S.list.filter(function (x) { return x.id === qs; })[0]; if (qc) { if (qc.screen !== screen().key) { goTo(qc); return; } lsSet(LS_OPEN, qc.id); } }
     var id = lsGet(LS_OPEN); if (!id) return; lsSet(LS_OPEN, null);
     var c = S.list.filter(function (x) { return x.id === id; })[0]; if (!c) return;
     var tries = 0; (function wait() { if (anchorPos(c) || tries++ > 25) { S.open = c.id; build(); reveal(c); return; } setTimeout(wait, 200); })();
@@ -231,6 +280,12 @@
         pop.style.left = x + 'px'; pop.style.top = y + 'px';
       }
     }
+    var fl = layer.querySelector('.rsc-flash');
+    if (S.flash && Date.now() < S.flash.until) {
+      var fe; try { fe = document.querySelector(S.flash.sel); } catch (e) {}
+      var fr = fe && fe.getBoundingClientRect();
+      if (fr && fr.width) { if (!fl) { fl = h('div', { class: 'rsc-flash' }); layer.insertBefore(fl, layer.firstChild); } fl.style.left = (fr.left - 4) + 'px'; fl.style.top = (fr.top - 4) + 'px'; fl.style.width = (fr.width + 8) + 'px'; fl.style.height = (fr.height + 8) + 'px'; }
+    } else if (fl) { fl.remove(); S.flash = null; }
     if (scr.key !== lastKey) { lastKey = scr.key; if (!S.draft) build(); }
   }
   var lastKey = '';
@@ -245,7 +300,7 @@
     e.preventDefault(); e.stopPropagation();
     var el = e.target; if (!el || el === document.documentElement || el === document.body) return;
     var r = el.getBoundingClientRect(), scr = screen();
-    S.draft = { sel: selOf(el), rx: r.width ? (e.clientX - r.left) / r.width : 0, ry: r.height ? (e.clientY - r.top) / r.height : 0, px: e.pageX, py: e.pageY, screen: scr.key, screenLabel: scr.label, nav: scr.nav };
+    S.draft = { where: describe(el), sel: selOf(el), rx: r.width ? (e.clientX - r.left) / r.width : 0, ry: r.height ? (e.clientY - r.top) / r.height : 0, px: e.pageX, py: e.pageY, screen: scr.key, screenLabel: scr.label, nav: scr.nav };
     S.mode = false; document.documentElement.classList.remove('rsc-mode');
     build();
   }, true);
@@ -253,6 +308,7 @@
     var t = e.target, typing = t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable);
     if (e.key === 'Escape') { if (S.mode) { setMode(false); e.stopPropagation(); } else if (S.draft || S.open) { S.draft = null; S.open = null; build(); e.stopPropagation(); } else if (S.panel) { S.panel = false; build(); } return; }
     if (!typing && !e.ctrlKey && !e.metaKey && !e.altKey && (e.key === 'c' || e.key === 'C') && !S.draft) { setMode(!S.mode); }
+    if (!typing && !e.ctrlKey && !e.metaKey && !e.altKey && (e.key === 'l' || e.key === 'L')) { S.panel = !S.panel; build(); }
   }, true);
 
   // ---------- ishga tushirish ----------

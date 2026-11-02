@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Izohlar — Raqamli sud</title>
+<style>
+  :root{--ink:#0f172a;--mut:#64748b;--line:#e8ecf2;--blue:#2563eb;--bg:#f4f5f7}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"SF Pro Text",-apple-system,BlinkMacSystemFont,Inter,system-ui,"Segoe UI",sans-serif;font-size:14px}
+  .wrap{max-width:1280px;margin:0 auto;padding:28px 24px 48px}
+  header{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+  h1{margin:0;font-size:26px;letter-spacing:-.02em}
+  .sub{margin:4px 0 0;color:var(--mut);font-size:13.5px}
+  .btns{display:flex;gap:8px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);font:inherit;font-size:13.5px;font-weight:500;text-decoration:none;cursor:pointer}
+  .btn:hover{border-color:#cfd6e2}
+  .btn.pri{background:var(--blue);border-color:var(--blue);color:#fff}
+  .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px}
+  .st{background:#fff;border-radius:16px;padding:14px 16px;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+  .st small{color:var(--mut);font-size:12.5px}.st b{display:block;font-size:26px;margin-top:4px}
+  .bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:#fff;border-radius:16px;padding:12px;margin-bottom:12px;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+  .bar input,.bar select{height:38px;padding:0 12px;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:13.5px;background:#fff;color:var(--ink)}
+  .bar input{flex:1;min-width:200px}
+  .card{background:#fff;border-radius:16px;box-shadow:0 1px 2px rgba(15,23,42,.04);overflow:hidden}
+  table{width:100%;border-collapse:collapse}
+  th{position:sticky;top:0;background:#f8fafc;text-align:left;font-size:12px;font-weight:600;color:var(--mut);padding:10px 14px;border-bottom:1px solid var(--line)}
+  td{padding:12px 14px;border-bottom:1px solid #f1f4f8;vertical-align:top;font-size:13.5px}
+  tr:last-child td{border-bottom:0}
+  tr.res td{color:#94a3b8}
+  .num{width:28px;height:28px;border-radius:50% 50% 50% 4px;background:var(--blue);color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center}
+  tr.res .num{background:#94a3b8}
+  .txt{white-space:pre-wrap;word-break:break-word;max-width:420px}
+  .rep{margin-top:6px;padding:6px 10px;border-left:2px solid #dbe3ef;color:#475569;font-size:12.5px;white-space:pre-wrap}
+  .rep b{color:var(--ink)}
+  .where{color:#475569;font-size:12.5px}
+  .scr{display:inline-block;margin-bottom:3px;padding:2px 8px;border-radius:999px;background:#eef3ff;color:#1d4ed8;font-size:12px;font-weight:500}
+  .stt{display:inline-flex;height:24px;align-items:center;padding:0 10px;border-radius:999px;font-size:12px;font-weight:600;background:#fff7e6;color:#b45309;white-space:nowrap}
+  .stt.ok{background:#ecfdf3;color:#15803d}
+  .go{color:var(--blue);font-weight:600;text-decoration:none;white-space:nowrap}
+  .go:hover{text-decoration:underline}
+  .muted{color:var(--mut)}
+  .empty{padding:48px 16px;text-align:center;color:var(--mut)}
+  .err{padding:14px 16px;border-radius:12px;background:#fef2f2;color:#b91c1c;margin-bottom:12px;display:none}
+  @media (max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.hide-m{display:none}td,th{padding:10px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div><h1>Izohlar</h1><p class="sub">Raqamli sud prototipiga qoldirilgan barcha izohlar va ular qayerda yozilgani</p></div>
+    <div class="btns"><a class="btn" href="/">← Saytga qaytish</a><button type="button" class="btn" id="csv">CSV yuklab olish</button><button type="button" class="btn pri" id="reload">Yangilash</button></div>
+  </header>
+  <div class="err" id="err"></div>
+  <div class="stats">
+    <div class="st"><small>Jami izohlar</small><b id="s-all">—</b></div>
+    <div class="st"><small>Ochiq</small><b id="s-open">—</b></div>
+    <div class="st"><small>Hal qilingan</small><b id="s-res">—</b></div>
+    <div class="st"><small>Javoblar</small><b id="s-rep">—</b></div>
+  </div>
+  <div class="bar">
+    <input type="search" id="q" placeholder="Matn, muallif yoki joy bo'yicha qidirish…" aria-label="Qidirish">
+    <select id="f-st" aria-label="Holat"><option value="all">Barcha holatlar</option><option value="open">Ochiq</option><option value="res">Hal qilingan</option></select>
+    <select id="f-scr" aria-label="Ekran"><option value="all">Barcha ekranlar</option></select>
+    <select id="f-au" aria-label="Muallif"><option value="all">Barcha mualliflar</option></select>
+  </div>
+  <div class="card">
+    <table>
+      <thead><tr><th style="width:44px">#</th><th>Izoh</th><th>Qayerda</th><th class="hide-m">Muallif</th><th class="hide-m">Vaqt</th><th>Holat</th><th></th></tr></thead>
+      <tbody id="tb"><tr><td colspan="7" class="empty">Yuklanmoqda…</td></tr></tbody>
+    </table>
+  </div>
+</div>
+<script>
+(function () {
+  var ALL = [], $ = function (id) { return document.getElementById(id); };
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function fmt(t) { var d = new Date(t), p = function (n) { return (n < 10 ? '0' : '') + n; }; return p(d.getDate()) + '.' + p(d.getMonth() + 1) + '.' + d.getFullYear() + ' ' + p(d.getHours()) + ':' + p(d.getMinutes()); }
+  function roots() { return ALL.filter(function (c) { return !c.parent; }); }
+  function reps(id) { return ALL.filter(function (c) { return c.parent === id; }); }
+  function fillSelect(sel, vals) { var cur = sel.value; while (sel.options.length > 1) sel.remove(1); vals.forEach(function (v) { var o = el('option', null, v[1]); o.value = v[0]; sel.appendChild(o); }); sel.value = cur; if (sel.selectedIndex < 0) sel.value = 'all'; }
+  function render() {
+    var rs = roots(), q = $('q').value.trim().toLowerCase(), fs = $('f-st').value, fsc = $('f-scr').value, fa = $('f-au').value;
+    $('s-all').textContent = rs.length; $('s-open').textContent = rs.filter(function (c) { return !c.resolved; }).length;
+    $('s-res').textContent = rs.filter(function (c) { return c.resolved; }).length; $('s-rep').textContent = ALL.length - rs.length;
+    var scrs = {}, aus = {}; rs.forEach(function (c) { scrs[c.screen] = c.screenLabel || c.screen; aus[c.author] = 1; });
+    fillSelect($('f-scr'), Object.keys(scrs).map(function (k) { return [k, scrs[k]]; }));
+    fillSelect($('f-au'), Object.keys(aus).sort().map(function (a) { return [a, a]; }));
+    var list = rs.map(function (c, i) { return { c: c, n: i + 1 }; }).filter(function (x) {
+      var c = x.c;
+      if (fs === 'open' && c.resolved) return false; if (fs === 'res' && !c.resolved) return false;
+      if (fsc !== 'all' && c.screen !== fsc) return false; if (fa !== 'all' && c.author !== fa) return false;
+      if (q && (c.text + ' ' + c.author + ' ' + (c.where || '') + ' ' + (c.screenLabel || '') + ' ' + reps(c.id).map(function (r) { return r.text; }).join(' ')).toLowerCase().indexOf(q) < 0) return false;
+      return true;
+    }).reverse();
+    var tb = $('tb'); tb.innerHTML = '';
+    if (!list.length) { var tr0 = el('tr'), td0 = el('td', 'empty', rs.length ? 'Filtrga mos izoh topilmadi' : 'Hali izoh yo\'q'); td0.colSpan = 7; tr0.appendChild(td0); tb.appendChild(tr0); return; }
+    list.forEach(function (x) {
+      var c = x.c, tr = el('tr', c.resolved ? 'res' : '');
+      var t1 = el('td'); t1.appendChild(el('span', 'num', String(x.n))); tr.appendChild(t1);
+      var t2 = el('td'); t2.appendChild(el('div', 'txt', c.text));
+      reps(c.id).forEach(function (r) { var d = el('div', 'rep'); d.appendChild(el('b', null, r.author + ': ')); d.appendChild(document.createTextNode(r.text)); t2.appendChild(d); });
+      tr.appendChild(t2);
+      var t3 = el('td'); t3.appendChild(el('span', 'scr', c.screenLabel || c.screen || '—')); if (c.where) { t3.appendChild(el('br')); t3.appendChild(el('span', 'where', c.where)); } tr.appendChild(t3);
+      tr.appendChild(el('td', 'hide-m', c.author));
+      tr.appendChild(el('td', 'hide-m muted', fmt(c.at)));
+      var t6 = el('td'); t6.appendChild(el('span', 'stt' + (c.resolved ? ' ok' : ''), c.resolved ? 'Hal qilingan' : 'Ochiq')); tr.appendChild(t6);
+      var t7 = el('td'), a = el('a', 'go', 'Saytda ko\'rish →'); a.href = '/?c=' + encodeURIComponent(c.id); t7.appendChild(a); tr.appendChild(t7);
+      tb.appendChild(tr);
+    });
+  }
+  function load() {
+    $('err').style.display = 'none';
+    fetch('/api/comments').then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.message || ('HTTP ' + r.status)); return j; }); })
+      .then(function (j) { ALL = j.comments || []; render(); })
+      .catch(function (e) { $('err').textContent = 'Izohlarni yuklab bo\'lmadi: ' + e.message; $('err').style.display = 'block'; ALL = []; render(); });
+  }
+  function csv() {
+    var esc = function (v) { v = String(v == null ? '' : v); return /[",\n;]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; };
+    var rows = [['#', 'Ekran', 'Joy', 'Muallif', 'Vaqt', 'Holat', 'Izoh', 'Javoblar']];
+    roots().forEach(function (c, i) { rows.push([i + 1, c.screenLabel, c.where, c.author, fmt(c.at), c.resolved ? 'Hal qilingan' : 'Ochiq', c.text, reps(c.id).map(function (r) { return r.author + ': ' + r.text; }).join(' | ')]); });
+    var blob = new Blob(['﻿' + rows.map(function (r) { return r.map(esc).join(','); }).join('\n')], { type: 'text/csv;charset=utf-8' });
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'izohlar.csv'; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+  }
+  ['q', 'f-st', 'f-scr', 'f-au'].forEach(function (id) { $(id).addEventListener(id === 'q' ? 'input' : 'change', render); });
+  $('reload').addEventListener('click', load); $('csv').addEventListener('click', csv);
+  load(); setInterval(function () { if (!document.hidden) load(); }, 20000);
+})();
+</script>
+</body>
+</html>
