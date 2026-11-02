@@ -3816,6 +3816,29 @@ html[data-theme="dark"] :is(.d2-promo,.d2-gball,.d2-st,.d2-pill.dark,.d2-svg,.d2
 /* Modal ochilganda sahifa scroll qulfi faqat html da — body scroll-konteynerga aylanmasin (sticky header/sidebar joyida qoladi) */
 html{scrollbar-gutter:stable}
 body{overflow:visible}
+
+/* Manfaatdor idora kartochkasi */
+.ido{display:flex;flex-direction:column;gap:16px;padding:20px;height:100%;box-sizing:border-box}
+.ido-h{display:flex;align-items:flex-start;gap:14px;padding-bottom:16px;border-bottom:1px solid #eef1f5}
+.ido-t{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
+.ido-n{font-size:16px;font-weight:600;color:#0f172a;line-height:1.35}
+.ido-chips{display:flex;gap:6px;flex-wrap:wrap}
+.ido-lvl{display:inline-flex;align-items:center;height:24px;padding:0 9px;border-radius:999px;background:#f1f5f9;color:#475569;font-size:12px;font-weight:500}
+.ido-del{color:#dc2626;flex:none}
+.ido-del:hover{background:#fef2f2;border-color:#fecaca}
+.ido-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ido-c{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid #eef1f5;border-radius:12px;background:#fff;min-width:0}
+.ido-ic{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;flex:none;background:#eef2ff;color:#4f46e5}
+.ido-c .kv{min-width:0;gap:2px}
+.ido-c small{font-size:12px;color:#64748b}
+.ido-c b{font-size:14px;font-weight:600;color:#0f172a;overflow-wrap:anywhere}
+.ido-c b.mono{font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.ido-c em,.ido-c em *{font-style:normal;font-size:12px !important;font-weight:400 !important;color:#94a3b8 !important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ido-c em{display:block}
+.ido-note{margin-top:auto;display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:#f5f7ff;color:#475569;font-size:12.5px;line-height:1.5}
+.ido-note svg{color:#4f46e5;flex:none;margin-top:1px}
+.ido-note b{color:#1e293b;font-weight:600}
+@media (max-width:700px){.ido-g{grid-template-columns:1fr}}
 </style>
 </helmet>
 
@@ -4222,17 +4245,22 @@ body{overflow:visible}
 
             <div class="{{dxIdPaneCls}}" style="border-color: {{dxB.idora}}">
               <sc-if value="{{dxIdHas}}" hint-placeholder-val="{{ true }}">
-              <div style="padding: 18px 20px; display: flex; flex-direction: column; gap: 16px">
-                <div class="between" style="align-items: flex-start; padding-bottom: 16px; border-bottom: 1px solid #eef1f5">
-                  <div class="row" style="gap: 12px; min-width: 0; align-items: center"><span class="dx-orgic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg></span><div class="row" style="gap: 8px 10px; flex-wrap: wrap; min-width: 0"><b style="font-size: 16px; font-weight: 600; color: #0f172a">{{dxIdora.name}}</b><span class="chip">Manfaatdor idora</span></div></div>
-                  <button class="btn sm" style="color: #dc2626; flex: none" onClick="{{dxIdRemove}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"></path></svg>O'chirish</button>
+              <div class="ido">
+                <div class="ido-h">
+                  <span class="dx-orgic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg></span>
+                  <div class="ido-t">
+                    <b class="ido-n">{{dxIdora.name}}</b>
+                    <div class="ido-chips"><span class="chip">Manfaatdor idora</span><span class="ido-lvl">{{dxIdora.lvl}}</span></div>
+                  </div>
+                  <button class="btn sm ido-del" onClick="{{dxIdRemove}}" title="Tanlovni bekor qilish" aria-label="Manfaatdor idorani o'chirish"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"></path></svg>O'chirish</button>
                 </div>
-                <div class="dx-g2" style="gap: 14px 20px">
-                  <div class="dx-kvi"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V4h8v3M3 12h18"></path></svg><div class="kv"><small>Idora turi</small><b>{{dxIdora.turi}}</b></div></div>
-                  <div class="dx-kvi"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="kv"><small>Manzil</small><b>{{dxIdora.manzil}}</b></div></div>
-                  <div class="dx-kvi"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"></path></svg><div class="kv"><small>Telefon</small><b>{{dxIdora.tel}}</b></div></div>
-                  <div class="dx-kvi"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9h14M5 15h14M10 3L8 21M16 3l-2 18"></path></svg><div class="kv"><small>STIR</small><b>{{dxIdora.stir}}</b></div></div>
+                <div class="ido-g">
+                  <div class="ido-c"><span class="ido-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></span><div class="kv"><small>Idora turi</small><b>{{dxIdora.turi}}</b><em>{{dxIdora.catName}}</em></div></div>
+                  <div class="ido-c"><span class="ido-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg></span><div class="kv"><small>Hudud</small><b>{{dxIdora.hudud}}</b><em>{{dxIdora.hududSub}}</em></div></div>
+                  <div class="ido-c"><span class="ido-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></span><div class="kv"><small>Telefon</small><b>{{dxIdora.tel}}</b><em>Ishonch telefoni</em></div></div>
+                  <div class="ido-c"><span class="ido-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h16M4 15h16M10 3L8 21M16 3l-2 18"></path></svg></span><div class="kv"><small>STIR</small><b class="mono">{{dxIdora.stir}}</b><em>Soliq to'lovchi raqami</em></div></div>
                 </div>
+                <div class="ido-note"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path></svg><span>Da'vo shu idora manfaatida qo'zg'atilgan — u ishda <b>manfaatdor idora</b> sifatida ko'rsatiladi va ish bo'yicha xabarnomalar unga ham yuboriladi.</span></div>
               </div>
               </sc-if>
               <sc-if value="{{dxIdNone}}" hint-placeholder-val="{{ false }}">
@@ -9431,7 +9459,7 @@ class Component extends DCLogic {
         dxIdMore: hits.length > LIM, dxIdMoreText: "Yana " + (hits.length - LIM) + " ta natija bor — qidiruvni aniqlashtiring",
         dxIdHas: !!picked, dxIdNone: !picked, dxIdPaneCls: picked ? "dx-pane" : "dx-pane dashed",
         dxIdEmptyText: dx.idTab === "nom" ? "Chap tarafda idora nomi yoki STIR bo'yicha qidirib, natijadan tanlang" : "Chap tarafdagi filtrlar orqali kategoriyani, hududni tanlang",
-        dxIdora: picked || { name: "", turi: "", manzil: "", tel: "", stir: "" },
+        dxIdora: picked ? (function (o) { var hsh = 0; for (var k = 0; k < o.name.length; k++) hsh = (hsh * 31 + o.name.charCodeAt(k)) >>> 0; var d = function (n, m) { return String((Math.floor(hsh / m) % Math.pow(10, n)) + Math.pow(10, n)).slice(1); }; var cat = DX_CATS.filter(function (c) { return o.cats && o.cats.indexOf(c.id) >= 0; })[0]; return Object.assign({}, o, { lvl: o.level === "r" ? "Respublika darajasi" : o.level === "v" ? "Viloyat darajasi" : "Tuman darajasi", catName: cat ? cat.label : "", hudud: o.tum || o.vil || o.resp, hududSub: o.tum ? (o.vil || o.resp) : (o.vil ? o.resp : (o.manzil || "")), tel: o.tel && o.tel !== "—" ? o.tel : "+998 " + (70 + hsh % 9) + " " + d(3, 7) + " " + d(2, 13) + " " + d(2, 17), stir: o.stir && o.stir !== "—" ? o.stir : (200 + hsh % 99) + " " + d(3, 3) + " " + d(3, 11) }); })(picked) : { name: "", turi: "", manzil: "", tel: "", stir: "" },
         dxIdRemove: function () { var n = picked ? picked.name : ""; setDx({ idPick: "" }); if (n) self.flash(n + " olib tashlandi"); },
         dxDv: tmMap("dxDv"), dxJv: tmMap("dxJv"), dxDvEmpty: s.dxDv.length === 0, dxJvEmpty: s.dxJv.length === 0,
         dxDvHas: s.dxDv.length > 0, dxJvHas: s.dxJv.length > 0, dxDvCount: s.dxDv.length + " ta", dxJvCount: s.dxJv.length + " ta",
