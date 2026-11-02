@@ -2956,6 +2956,8 @@ html{transition:filter 200ms ease}
 .dx-pane{border:1px solid #e8edf5;border-radius:14px;background:#fbfcfe;overflow:hidden;min-width:0;display:flex;flex-direction:column}
 .dx-pane .l-tabs{background:#fff}
 .dx-list{border:1px solid #e8edf5;border-radius:12px;background:#fff;overflow:hidden}
+.dx-list{max-height:226px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#cbd5e1 transparent}
+.dx-list::-webkit-scrollbar{width:6px}.dx-list::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:6px}
 .dx-li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;border-top:1px solid #eef1f5}
 .dx-li:first-child{border-top:0}
 .dx-orgic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;flex:none;background:var(--g-soft);color:#4f46e5}
@@ -9385,7 +9387,7 @@ class Component extends DCLogic {
           if (hits.length && !cat.respOnly && lvl !== "t") hint = noVil || dx.idVil ? "Tuman (shahar) idorasi kerak bo'lsa, tumanni tanlang." : "Viloyat (shahar) idorasi kerak bo'lsa, viloyatni tanlang.";
         }
       }
-      var LIM = 8, shown = hits.slice(0, LIM);
+      var LIM = 60, shown = hits.slice(0, LIM);
       var dxIdRes = shown.map(function (o) {
         var on = o.id === dx.idPick;
         return { name: o.name, meta: [o.turi, o.manzil].filter(Boolean).join(" · "), on: on, onStr: on ? "true" : "false",
