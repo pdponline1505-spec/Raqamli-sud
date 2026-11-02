@@ -78,10 +78,57 @@
     var out = (ht && ht !== t && t.indexOf(ht) !== 0 ? ht + ' › ' : '') + (t || el.tagName.toLowerCase());
     return out.slice(0, 140);
   }
+  function tc(el) { return ((el && el.textContent) || '').replace(/\s+/g, ' ').trim().slice(0, 120); }
+  // element qaysi oyna / menyu / bo'lim ichida ekanini yozib qo'yamiz
+  function ctxOf(el) {
+    var out = [], cur = el && el.parentElement, g = 0;
+    while (cur && cur !== document.body && g++ < 60) {
+      var role = cur.getAttribute('role'), lab = cur.getAttribute('aria-label'), t = '';
+      if (lab && /^(dialog|listbox|menu|alertdialog)$/.test(role || '')) t = lab;
+      else {
+        for (var k = 0; k < cur.children.length && !t; k++) {
+          var ch = cur.children[k], hd = /^H[1-3]$/.test(ch.tagName) ? ch : (ch.children.length <= 3 && ch.firstElementChild && /^H[1-3]$/.test(ch.firstElementChild.tagName) ? ch.firstElementChild : null);
+          if (hd && !hd.contains(el)) t = txt(hd.querySelector('.dx-ht') || hd).slice(0, 60);
+        }
+      }
+      if (!t) { var cs = getComputedStyle(cur); if ((cs.position === 'absolute' || cs.position === 'fixed') && cs.boxShadow !== 'none' && cur.firstElementChild && !cur.firstElementChild.contains(el)) { var ft = txt(cur.firstElementChild.firstElementChild || cur.firstElementChild); if (ft && ft.length <= 40) t = ft; } }
+      if (t && out.indexOf(t) < 0) out.unshift(t);
+      cur = cur.parentElement;
+    }
+    return out.slice(-4).join(' › ');
+  }
+  // izoh elementini topish: avval manzil (selector), u o'zgargan bo'lsa — matni bo'yicha
+  var EC = {};
+  function vis(el) { return el && el.isConnected && el.getClientRects().length > 0; }
+  function byText(c) {
+    if (!c.fp || !c.tag) return null;
+    var list = document.querySelectorAll(c.tag), hit = null;
+    for (var i = 0; i < list.length; i++) { if (!root.contains(list[i]) && tc(list[i]) === c.fp && vis(list[i])) hit = list[i]; }
+    return hit;
+  }
+  // selector topgan element haqiqatan o'sha joymi (yopiq menyu o'rnida boshqa element bo'lib qolmasin)
+  function same(c, el) {
+    if (c.fp) return tc(el).slice(0, 30) === c.fp.slice(0, 30);
+    var seg = (c.where || '').split(' › ').pop().replace(/…$/, '').trim(); if (!seg) return true;
+    for (var e = el, g = 0; e && g < 7; e = e.parentElement, g++) {
+      if ((e.getAttribute('aria-label') || e.getAttribute('title') || '').indexOf(seg) >= 0 || tc(e).indexOf(seg.slice(0, 40)) >= 0) return true;
+    }
+    return false;
+  }
+  function findEl(c) {
+    if (!c || !c.sel) return null;
+    var key = c === S.draft ? '__d' : c.id, e = EC[key], now = Date.now();
+    if (e && now - e.t < 500 && (e.el ? vis(e.el) : true)) return e.el;
+    var el = null; try { el = document.querySelector(c.sel); } catch (x) {}
+    if (el && (!vis(el) || !same(c, el))) el = null;
+    if (!el) el = byText(c);
+    EC[key] = { el: el, t: now };
+    return el;
+  }
   function rangeOf(c) {
     if (c === S.draft && SEL && SEL.range) return SEL.range;
     if (!c.quote || !c.sel) return null;
-    var el; try { el = document.querySelector(c.sel); } catch (e) { return null; } if (!el) return null;
+    var el = findEl(c); if (!el) return null;
     var nodes = [], full = '', w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), n;
     while ((n = w.nextNode())) { nodes.push([n, full.length]); full += n.nodeValue; }
     var i = full.indexOf(c.quote); if (i < 0) return null;
@@ -99,8 +146,7 @@
     } catch (e) {}
   }
   function anchorPos(c) {
-    if (!c.sel) return null;
-    var el; try { el = document.querySelector(c.sel); } catch (e) { return null; }
+    var el = findEl(c);
     if (!el) return null;
     var r = el.getBoundingClientRect();
     if (!r.width && !r.height) return null;
@@ -134,6 +180,19 @@
   root.appendChild(hl); root.appendChild(layer); root.appendChild(listBtn); root.appendChild(fab); root.appendChild(selBtn);
   var HOV = { base: null, up: 0, el: null, label: '' }, SEL = null;
   function climb(el, n) { while (n-- > 0 && el && el.parentElement && el.parentElement !== document.body) el = el.parentElement; return el; }
+  // menyu ortidagi shaffof "yopish" qatlamlarini o'tkazib yuboramiz
+  function backdrop(el) {
+    var r = el.getBoundingClientRect();
+    if (r.width < window.innerWidth * .9 || r.height < window.innerHeight * .9) return false;
+    if (tc(el)) return false;
+    var bg = getComputedStyle(el).backgroundColor;
+    return !bg || bg === 'transparent' || /rgba\(.*,\s*0(\.0+)?\)$/.test(bg) || /yopish|close/i.test(el.getAttribute('aria-label') || '');
+  }
+  function pick(x, y) {
+    var list = document.elementsFromPoint ? document.elementsFromPoint(x, y) : [];
+    for (var i = 0; i < list.length; i++) { var el = list[i]; if (inUi(el) || el === document.documentElement || el === document.body) continue; if (backdrop(el)) continue; return el; }
+    return null;
+  }
   // sichqoncha ostidagi eng yaqin "komponent" (karta, tugma, qator, rasm...) gacha ko'tariladi
   function boxy(el) {
     if (/^(BUTTON|A|INPUT|SELECT|TEXTAREA|IMG|SVG|TR|TD|TH|LI|LABEL|svg)$/.test(el.tagName)) return true;
@@ -212,7 +271,7 @@
     var d = S.draft;
     return h('div', { class: 'rsc-pop', 'data-for': '__draft' }, [
       h('div', { class: 'rsc-ph' }, [h('span', {}, [h('b', { text: 'Yangi izoh' }), document.createTextNode(' · ' + d.screenLabel)])]),
-      d.where ? h('div', { class: 'rsc-where', text: '📍 ' + d.where }) : null,
+      d.where ? h('div', { class: 'rsc-where' }, [document.createTextNode('📍 ' + d.where), d.ctx ? h('small', { text: '🗂 ' + d.ctx }) : null]) : null,
       d.quote ? h('div', { class: 'rsc-quote', text: '“' + d.quote + '”' }) : null,
       form({ ph: 'Izohingizni yozing…  (Ctrl+Enter — yuborish)', btn: 'Yuborish', cancel: function () { S.draft = null; build(); },
         submit: function (nm, t) { return api('POST', Object.assign({}, d, { author: nm, text: t })).then(function (j) { S.list.push(j.comment); S.draft = null; S.open = j.comment.id; build(); }); } })
@@ -230,7 +289,8 @@
     var th = h('div', { class: 'rsc-thread' }, [msgEl(c)].concat(rs.map(msgEl)));
     return h('div', { class: 'rsc-pop', 'data-for': c.id, role: 'dialog', 'aria-label': 'Izoh ' + numOf(c) }, [
       h('div', { class: 'rsc-ph' }, [h('span', {}, [h('b', { text: '#' + numOf(c) }), document.createTextNode(' · ' + (c.resolved ? 'Hal qilingan' : c.screenLabel))]), acts]),
-      c.where ? h('div', { class: 'rsc-where', text: '📍 ' + c.where }) : null,
+      h('div', { class: 'rsc-miss' }, [h('b', { text: 'Bu joy hozir ekranda ko\'rinmayapti' }), document.createTextNode('Izoh ochilib-yopiladigan menyu, oyna yoki forma ichida yozilgan' + (c.ctx || c.where ? ': ' : '.')), (c.ctx || c.where) ? h('em', { text: c.ctx || c.where }) : null, document.createTextNode(' O\'sha joyni oching — izoh belgisi avtomatik o\'sha yerda paydo bo\'ladi.')]),
+      c.where ? h('div', { class: 'rsc-where' }, [document.createTextNode('📍 ' + c.where), c.ctx ? h('small', { text: '🗂 ' + c.ctx }) : null]) : null,
       c.quote ? h('div', { class: 'rsc-quote', text: '“' + c.quote + '”' }) : null,
       th,
       form({ ph: 'Javob yozing…', btn: 'Javob berish', submit: function (nm, t) { return api('POST', { parent: c.id, author: nm, text: t, screen: c.screen }).then(function (j) { S.list.push(j.comment); build(); }); } })
@@ -243,7 +303,7 @@
     var items = all.filter(function (c) {
       if (S.tab === 'open' && c.resolved) return false; if (S.tab === 'res' && !c.resolved) return false;
       if (S.scr === 'here' && c.screen !== curKey) return false;
-      if (q && (c.text + ' ' + c.author + ' ' + (c.where || '') + ' ' + c.screenLabel + ' ' + replies(c.id).map(function (x) { return x.text; }).join(' ')).toLowerCase().indexOf(q) < 0) return false;
+      if (q && (c.text + ' ' + c.author + ' ' + (c.where || '') + ' ' + (c.ctx || '') + ' ' + (c.quote || '') + ' ' + c.screenLabel + ' ' + replies(c.id).map(function (x) { return x.text; }).join(' ')).toLowerCase().indexOf(q) < 0) return false;
       return true;
     });
     // ekran bo'yicha guruhlash (joriy ekran birinchi)
@@ -263,6 +323,8 @@
             h('span', { class: 'rsc-mt', text: c.text }),
             c.quote ? h('span', { class: 'rsc-q', text: '“' + c.quote + '”' }) : null,
             c.where ? h('span', { class: 'rsc-scr', text: '📍 ' + c.where }) : null,
+            c.ctx ? h('span', { class: 'rsc-scr', text: '🗂 ' + c.ctx }) : null,
+            c.screen === curKey && !findEl(c) ? h('span', { class: 'rsc-hid', text: 'Yopiq menyu/oyna ichida' }) : null,
             n ? h('span', { class: 'rsc-scr', text: '💬 ' + n + ' ta javob' }) : null
           ])
         ]));
@@ -291,7 +353,7 @@
     if (c.nav) { var cur = nav(); lsSet('adolat.nav', JSON.stringify(Object.assign({}, cur, c.nav))); lsSet('adolat.navScroll', null); lsSet(LS_OPEN, c.id); window.location.reload(); }
   }
   function reveal(c) {
-    try { var el = document.querySelector(c.sel); if (!el) return; el.scrollIntoView({ behavior: 'smooth', block: 'center' }); S.flash = { sel: c.sel, until: Date.now() + 2600 }; } catch (e) {}
+    try { var el = findEl(c); if (!el) return; el.scrollIntoView({ behavior: 'smooth', block: 'center' }); S.flash = { el: el, until: Date.now() + 2600 }; } catch (e) {}
   }
   function afterLoad() {
     var qs = (location.search.match(/[?&]c=([\w-]+)/) || [])[1];
@@ -314,8 +376,12 @@
     if (pop) {
       var fid = pop.getAttribute('data-for'), fc = fid === '__draft' ? S.draft : S.list.filter(function (x) { return x.id === fid; })[0];
       var q = fc && anchorPos(fc);
-      if (!q) { pop.style.display = 'none'; } else {
-        pop.style.display = '';
+      if (!q || q.off && fid === '__draft') {
+        if (fid === '__draft') { pop.style.display = 'none'; }
+        else { pop.style.display = ''; pop.classList.add('miss'); var pw = pop.offsetWidth || 320, ph2 = pop.offsetHeight || 200;
+          pop.style.left = Math.max(12, window.innerWidth - pw - (S.panel && window.innerWidth > 760 ? 380 : 20)) + 'px'; pop.style.top = Math.max(12, window.innerHeight - ph2 - 130) + 'px'; }
+      } else {
+        pop.style.display = ''; pop.classList.remove('miss');
         var w = pop.offsetWidth || 320, hh = pop.offsetHeight || 200;
         var x = q.x + 20, y = q.y - 30;
         if (x + w > window.innerWidth - 12) x = q.x - w - 20;
@@ -333,7 +399,7 @@
     } else hbox.style.display = 'none';
     // ochiq izohning elementi
     var ac = S.draft || (S.open && S.list.filter(function (x) { return x.id === S.open; })[0]), ae = null;
-    if (ac && ac.sel) { try { ae = document.querySelector(ac.sel); } catch (e) {} }
+    if (ac) ae = findEl(ac);
     var ar = ae && ae.getBoundingClientRect();
     if (ar && ar.width) { abox.style.display = 'block'; abox.style.left = (ar.left - 3) + 'px'; abox.style.top = (ar.top - 3) + 'px'; abox.style.width = (ar.width + 6) + 'px'; abox.style.height = (ar.height + 6) + 'px'; }
     else abox.style.display = 'none';
@@ -345,7 +411,7 @@
     } else selBtn.style.display = 'none';
     var fl = layer.querySelector('.rsc-flash');
     if (S.flash && Date.now() < S.flash.until) {
-      var fe; try { fe = document.querySelector(S.flash.sel); } catch (e) {}
+      var fe = S.flash.el && S.flash.el.isConnected ? S.flash.el : null;
       var fr = fe && fe.getBoundingClientRect();
       if (fr && fr.width) { if (!fl) { fl = h('div', { class: 'rsc-flash' }); layer.insertBefore(fl, layer.firstChild); } fl.style.left = (fr.left - 4) + 'px'; fl.style.top = (fr.top - 4) + 'px'; fl.style.width = (fr.width + 8) + 'px'; fl.style.height = (fr.height + 8) + 'px'; }
     } else if (fl) { fl.remove(); S.flash = null; }
@@ -361,15 +427,16 @@
   document.addEventListener('click', function (e) {
     if (!S.mode || inUi(e.target)) return;
     e.preventDefault(); e.stopPropagation();
-    var el = HOV.el && HOV.el.contains(e.target) ? HOV.el : (HOV.el || e.target); if (!el || el === document.documentElement || el === document.body) return;
+    var el = HOV.el || pick(e.clientX, e.clientY) || e.target; if (!el || el === document.documentElement || el === document.body) return;
     var r = el.getBoundingClientRect(), scr = screen(), cl = function (v) { return Math.max(0, Math.min(1, v)); };
-    S.draft = { kind: 'element', where: describe(el), sel: selOf(el), rx: r.width ? cl((e.clientX - r.left) / r.width) : 0, ry: r.height ? cl((e.clientY - r.top) / r.height) : 0, px: e.pageX, py: e.pageY, screen: scr.key, screenLabel: scr.label, nav: scr.nav };
+    S.draft = { kind: 'element', where: describe(el), ctx: ctxOf(el), fp: tc(el), tag: el.tagName.toLowerCase(), sel: selOf(el), rx: r.width ? cl((e.clientX - r.left) / r.width) : 0, ry: r.height ? cl((e.clientY - r.top) / r.height) : 0, px: e.pageX, py: e.pageY, screen: scr.key, screenLabel: scr.label, nav: scr.nav };
     S.mode = false; document.documentElement.classList.remove('rsc-mode');
     build();
   }, true);
   document.addEventListener('mousemove', function (e) {
     if (!S.mode || inUi(e.target)) return;
-    if (e.target !== HOV.base) setHover(e.target, autoUp(e.target));
+    var t = pick(e.clientX, e.clientY) || e.target;
+    if (t !== HOV.base) setHover(t, autoUp(t));
   }, true);
   // matnni belgilab izoh qoldirish
   selBtn.innerHTML = IC.chat; selBtn.appendChild(document.createTextNode('Izoh'));
@@ -379,7 +446,7 @@
     var node = SEL.range.commonAncestorContainer, el = node.nodeType === 1 ? node : node.parentElement;
     var rr = SEL.range.getClientRects(), last = rr.length ? rr[rr.length - 1] : SEL.range.getBoundingClientRect(), r = el.getBoundingClientRect(), scr = screen();
     var cl = function (v) { return Math.max(0, Math.min(1, v)); };
-    S.draft = { kind: 'text', quote: SEL.text.slice(0, 500), where: describe(el), sel: selOf(el), rx: r.width ? cl((last.right - r.left) / r.width) : 0, ry: r.height ? cl((last.top - r.top) / r.height) : 0, px: 0, py: 0, screen: scr.key, screenLabel: scr.label, nav: scr.nav };
+    S.draft = { kind: 'text', quote: SEL.text.slice(0, 500), where: describe(el), ctx: ctxOf(el), fp: tc(el), tag: el.tagName.toLowerCase(), sel: selOf(el), rx: r.width ? cl((last.right - r.left) / r.width) : 0, ry: r.height ? cl((last.top - r.top) / r.height) : 0, px: 0, py: 0, screen: scr.key, screenLabel: scr.label, nav: scr.nav };
     S.open = null; build();
   });
   function checkSel() {
