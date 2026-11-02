@@ -78,6 +78,26 @@
     var out = (ht && ht !== t && t.indexOf(ht) !== 0 ? ht + ' › ' : '') + (t || el.tagName.toLowerCase());
     return out.slice(0, 140);
   }
+  function rangeOf(c) {
+    if (c === S.draft && SEL && SEL.range) return SEL.range;
+    if (!c.quote || !c.sel) return null;
+    var el; try { el = document.querySelector(c.sel); } catch (e) { return null; } if (!el) return null;
+    var nodes = [], full = '', w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), n;
+    while ((n = w.nextNode())) { nodes.push([n, full.length]); full += n.nodeValue; }
+    var i = full.indexOf(c.quote); if (i < 0) return null;
+    var j = i + c.quote.length, rg = document.createRange(), set0 = false;
+    for (var k = 0; k < nodes.length; k++) { var nd = nodes[k][0], st = nodes[k][1], en = st + nd.nodeValue.length;
+      if (!set0 && i >= st && i <= en) { rg.setStart(nd, i - st); set0 = true; }
+      if (set0 && j >= st && j <= en) { rg.setEnd(nd, j - st); return rg; } }
+    return null;
+  }
+  function markQuote() {
+    try { if (!window.CSS || !CSS.highlights || typeof Highlight === 'undefined') return;
+      var c = S.draft || (S.open && S.list.filter(function (x) { return x.id === S.open; })[0]);
+      var rg = c && rangeOf(c);
+      if (rg) CSS.highlights.set('rsc-quote', new Highlight(rg)); else CSS.highlights.delete('rsc-quote');
+    } catch (e) {}
+  }
   function anchorPos(c) {
     if (!c.sel) return null;
     var el; try { el = document.querySelector(c.sel); } catch (e) { return null; }
@@ -105,7 +125,28 @@
   var fab = h('button', { type: 'button', class: 'rsc-fab', 'aria-pressed': 'false', title: 'Izoh qoldirish (C)', onclick: function () { setMode(!S.mode); } });
   var listBtn = h('button', { type: 'button', class: 'rsc-listbtn', title: 'Izohlar ro\'yxati (L)', 'aria-label': 'Izohlar ro\'yxati', onclick: function () { S.panel = !S.panel; build(); } });
   var hint = null, panel = null;
-  root.appendChild(layer); root.appendChild(listBtn); root.appendChild(fab);
+  // hover (komponent tanlash) va matn belgilash uchun qatlam
+  var hl = h('div', { class: 'rsc-layer rsc-hl' });
+  var hbox = h('div', { class: 'rsc-hbox' }), hlabel = h('span', { class: 'rsc-hlabel' }); hbox.appendChild(hlabel);
+  var abox = h('div', { class: 'rsc-abox' });
+  hl.appendChild(abox); hl.appendChild(hbox);
+  var selBtn = h('button', { type: 'button', class: 'rsc-selbtn', 'aria-label': 'Belgilangan matnga izoh qoldirish' });
+  root.appendChild(hl); root.appendChild(layer); root.appendChild(listBtn); root.appendChild(fab); root.appendChild(selBtn);
+  var HOV = { base: null, up: 0, el: null, label: '' }, SEL = null;
+  function climb(el, n) { while (n-- > 0 && el && el.parentElement && el.parentElement !== document.body) el = el.parentElement; return el; }
+  // sichqoncha ostidagi eng yaqin "komponent" (karta, tugma, qator, rasm...) gacha ko'tariladi
+  function boxy(el) {
+    if (/^(BUTTON|A|INPUT|SELECT|TEXTAREA|IMG|SVG|TR|TD|TH|LI|LABEL|svg)$/.test(el.tagName)) return true;
+    var cs = getComputedStyle(el), r = el.getBoundingClientRect();
+    if (r.width < 24 || r.height < 18) return false;
+    var bg = cs.backgroundColor, hasBg = bg && bg !== 'transparent' && !/rgba\(.*,\s*0\)$/.test(bg);
+    return hasBg || cs.boxShadow !== 'none' || parseFloat(cs.borderTopWidth) > 0 || parseFloat(cs.borderBottomWidth) > 0 || cs.backgroundImage !== 'none';
+  }
+  function autoUp(el) { var n = 0, e = el; while (e && e !== document.body && n < 6) { if (boxy(e)) return n; e = e.parentElement; n++; } return 0; }
+  function setHover(base, up) {
+    HOV.base = base; HOV.up = Math.max(0, up || 0); var el = climb(base, HOV.up);
+    if (el !== HOV.el) { HOV.el = el; HOV.label = el ? describe(el) : ''; hlabel.textContent = HOV.label; }
+  }
 
   function roots() { return S.list.filter(function (c) { return !c.parent; }); }
   function replies(id) { return S.list.filter(function (c) { return c.parent === id; }); }
@@ -124,7 +165,7 @@
     fab.classList.toggle('on', S.mode); fab.setAttribute('aria-pressed', S.mode ? 'true' : 'false');
     listBtn.innerHTML = IC.list; listBtn.appendChild(document.createTextNode('Ro\'yxat')); var tot = roots().length; if (tot) listBtn.appendChild(h('b', { text: String(tot) })); listBtn.classList.toggle('on', S.panel);
     if (hint) { hint.remove(); hint = null; }
-    if (S.mode) { hint = h('div', { class: 'rsc-hint', text: 'Izoh qoldirmoqchi bo\'lgan joyni bosing · Esc — bekor qilish' }); root.appendChild(hint); }
+    if (S.mode) { hint = h('div', { class: 'rsc-hint', text: 'Komponent ustiga olib boring va bosing · ↑ / ↓ — kattaroq / kichikroq blok · Esc — bekor qilish' }); root.appendChild(hint); }
     layer.innerHTML = '';
     var scr = screen();
     roots().forEach(function (c) {
@@ -137,6 +178,7 @@
     else if (S.open) { var oc = S.list.filter(function (c) { return c.id === S.open; })[0]; if (oc && oc.screen === scr.key) layer.appendChild(threadPop(oc)); }
     if (panel) { panel.remove(); panel = null; }
     if (S.panel) { panel = buildPanel(); root.appendChild(panel); }
+    markQuote();
     position();
   }
 
@@ -171,6 +213,7 @@
     return h('div', { class: 'rsc-pop', 'data-for': '__draft' }, [
       h('div', { class: 'rsc-ph' }, [h('span', {}, [h('b', { text: 'Yangi izoh' }), document.createTextNode(' · ' + d.screenLabel)])]),
       d.where ? h('div', { class: 'rsc-where', text: '📍 ' + d.where }) : null,
+      d.quote ? h('div', { class: 'rsc-quote', text: '“' + d.quote + '”' }) : null,
       form({ ph: 'Izohingizni yozing…  (Ctrl+Enter — yuborish)', btn: 'Yuborish', cancel: function () { S.draft = null; build(); },
         submit: function (nm, t) { return api('POST', Object.assign({}, d, { author: nm, text: t })).then(function (j) { S.list.push(j.comment); S.draft = null; S.open = j.comment.id; build(); }); } })
     ]);
@@ -188,6 +231,7 @@
     return h('div', { class: 'rsc-pop', 'data-for': c.id, role: 'dialog', 'aria-label': 'Izoh ' + numOf(c) }, [
       h('div', { class: 'rsc-ph' }, [h('span', {}, [h('b', { text: '#' + numOf(c) }), document.createTextNode(' · ' + (c.resolved ? 'Hal qilingan' : c.screenLabel))]), acts]),
       c.where ? h('div', { class: 'rsc-where', text: '📍 ' + c.where }) : null,
+      c.quote ? h('div', { class: 'rsc-quote', text: '“' + c.quote + '”' }) : null,
       th,
       form({ ph: 'Javob yozing…', btn: 'Javob berish', submit: function (nm, t) { return api('POST', { parent: c.id, author: nm, text: t, screen: c.screen }).then(function (j) { S.list.push(j.comment); build(); }); } })
     ]);
@@ -217,6 +261,7 @@
           h('span', { class: 'rsc-mb' }, [
             h('span', { class: 'rsc-mh' }, [h('b', { text: c.author }), h('small', { text: ago(c.at) }), c.resolved ? h('small', { class: 'rsc-ok', text: '✓ hal qilingan' }) : null]),
             h('span', { class: 'rsc-mt', text: c.text }),
+            c.quote ? h('span', { class: 'rsc-q', text: '“' + c.quote + '”' }) : null,
             c.where ? h('span', { class: 'rsc-scr', text: '📍 ' + c.where }) : null,
             n ? h('span', { class: 'rsc-scr', text: '💬 ' + n + ' ta javob' }) : null
           ])
@@ -280,6 +325,24 @@
         pop.style.left = x + 'px'; pop.style.top = y + 'px';
       }
     }
+    // komponent tanlash ramkasi
+    if (S.mode && HOV.el && HOV.el.isConnected) {
+      var hr = HOV.el.getBoundingClientRect(); hbox.style.display = 'block';
+      hbox.style.left = hr.left + 'px'; hbox.style.top = hr.top + 'px'; hbox.style.width = hr.width + 'px'; hbox.style.height = hr.height + 'px';
+      hbox.classList.toggle('below', hr.top < 28);
+    } else hbox.style.display = 'none';
+    // ochiq izohning elementi
+    var ac = S.draft || (S.open && S.list.filter(function (x) { return x.id === S.open; })[0]), ae = null;
+    if (ac && ac.sel) { try { ae = document.querySelector(ac.sel); } catch (e) {} }
+    var ar = ae && ae.getBoundingClientRect();
+    if (ar && ar.width) { abox.style.display = 'block'; abox.style.left = (ar.left - 3) + 'px'; abox.style.top = (ar.top - 3) + 'px'; abox.style.width = (ar.width + 6) + 'px'; abox.style.height = (ar.height + 6) + 'px'; }
+    else abox.style.display = 'none';
+    // matn belgilash tugmasi
+    if (SEL && !S.draft && !S.mode) {
+      var rr = SEL.range.getClientRects(), last = rr.length ? rr[rr.length - 1] : SEL.range.getBoundingClientRect();
+      if (last && (last.width || last.height)) { selBtn.style.display = 'inline-flex'; selBtn.style.left = Math.min(window.innerWidth - 150, last.right + 6) + 'px'; selBtn.style.top = Math.min(window.innerHeight - 44, last.bottom + 6) + 'px'; }
+      else selBtn.style.display = 'none';
+    } else selBtn.style.display = 'none';
     var fl = layer.querySelector('.rsc-flash');
     if (S.flash && Date.now() < S.flash.until) {
       var fe; try { fe = document.querySelector(S.flash.sel); } catch (e) {}
@@ -298,13 +361,42 @@
   document.addEventListener('click', function (e) {
     if (!S.mode || inUi(e.target)) return;
     e.preventDefault(); e.stopPropagation();
-    var el = e.target; if (!el || el === document.documentElement || el === document.body) return;
-    var r = el.getBoundingClientRect(), scr = screen();
-    S.draft = { where: describe(el), sel: selOf(el), rx: r.width ? (e.clientX - r.left) / r.width : 0, ry: r.height ? (e.clientY - r.top) / r.height : 0, px: e.pageX, py: e.pageY, screen: scr.key, screenLabel: scr.label, nav: scr.nav };
+    var el = HOV.el && HOV.el.contains(e.target) ? HOV.el : (HOV.el || e.target); if (!el || el === document.documentElement || el === document.body) return;
+    var r = el.getBoundingClientRect(), scr = screen(), cl = function (v) { return Math.max(0, Math.min(1, v)); };
+    S.draft = { kind: 'element', where: describe(el), sel: selOf(el), rx: r.width ? cl((e.clientX - r.left) / r.width) : 0, ry: r.height ? cl((e.clientY - r.top) / r.height) : 0, px: e.pageX, py: e.pageY, screen: scr.key, screenLabel: scr.label, nav: scr.nav };
     S.mode = false; document.documentElement.classList.remove('rsc-mode');
     build();
   }, true);
+  document.addEventListener('mousemove', function (e) {
+    if (!S.mode || inUi(e.target)) return;
+    if (e.target !== HOV.base) setHover(e.target, autoUp(e.target));
+  }, true);
+  // matnni belgilab izoh qoldirish
+  selBtn.innerHTML = IC.chat; selBtn.appendChild(document.createTextNode('Izoh'));
+  selBtn.addEventListener('mousedown', function (e) { e.preventDefault(); e.stopPropagation(); });
+  selBtn.addEventListener('click', function (e) {
+    e.preventDefault(); e.stopPropagation(); if (!SEL) return;
+    var node = SEL.range.commonAncestorContainer, el = node.nodeType === 1 ? node : node.parentElement;
+    var rr = SEL.range.getClientRects(), last = rr.length ? rr[rr.length - 1] : SEL.range.getBoundingClientRect(), r = el.getBoundingClientRect(), scr = screen();
+    var cl = function (v) { return Math.max(0, Math.min(1, v)); };
+    S.draft = { kind: 'text', quote: SEL.text.slice(0, 500), where: describe(el), sel: selOf(el), rx: r.width ? cl((last.right - r.left) / r.width) : 0, ry: r.height ? cl((last.top - r.top) / r.height) : 0, px: 0, py: 0, screen: scr.key, screenLabel: scr.label, nav: scr.nav };
+    S.open = null; build();
+  });
+  function checkSel() {
+    if (S.mode || S.draft) return;
+    var sel = window.getSelection && window.getSelection();
+    if (!sel || sel.isCollapsed || !sel.rangeCount) { SEL = null; return; }
+    var rg = sel.getRangeAt(0), anc = rg.commonAncestorContainer, ancEl = anc.nodeType === 1 ? anc : anc.parentElement;
+    if (!ancEl || inUi(ancEl) || ancEl.closest('input,textarea,[contenteditable="true"]')) { SEL = null; return; }
+    var t = sel.toString().replace(/\s+/g, ' ').trim();
+    if (!t || t.length > 1000) { SEL = null; return; }
+    SEL = { range: rg.cloneRange(), text: sel.toString().trim() };
+  }
+  document.addEventListener('mouseup', function (e) { if (!inUi(e.target)) setTimeout(checkSel, 10); });
+  document.addEventListener('keyup', function (e) { if (e.shiftKey || e.key === 'Shift') setTimeout(checkSel, 10); });
+  document.addEventListener('selectionchange', function () { var sel = window.getSelection(); if (SEL && (!sel || sel.isCollapsed)) { SEL = null; if (S.draft && S.draft.kind === 'text') markQuote(); } });
   document.addEventListener('keydown', function (e) {
+    if (S.mode && HOV.base && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) { e.preventDefault(); e.stopPropagation(); setHover(HOV.base, HOV.up + (e.key === 'ArrowUp' ? 1 : -1)); return; }
     var t = e.target, typing = t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable);
     if (e.key === 'Escape') { if (S.mode) { setMode(false); e.stopPropagation(); } else if (S.draft || S.open) { S.draft = null; S.open = null; build(); e.stopPropagation(); } else if (S.panel) { S.panel = false; build(); } return; }
     if (!typing && !e.ctrlKey && !e.metaKey && !e.altKey && (e.key === 'c' || e.key === 'C') && !S.draft) { setMode(!S.mode); }

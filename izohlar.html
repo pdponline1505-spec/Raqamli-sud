@@ -39,6 +39,8 @@
   .stt.ok{background:#ecfdf3;color:#15803d}
   .go{color:var(--blue);font-weight:600;text-decoration:none;white-space:nowrap}
   .go:hover{text-decoration:underline}
+  .quote{display:block;margin-top:6px;padding:4px 8px;border-left:3px solid #f59e0b;background:#fffbeb;color:#78350f;font-size:12.5px;white-space:pre-wrap;word-break:break-word;max-width:360px}
+  .kind{display:inline-block;margin-left:4px;padding:1px 6px;border-radius:6px;background:#f1f5f9;color:#475569;font-size:11px}
   .muted{color:var(--mut)}
   .empty{padding:48px 16px;text-align:center;color:var(--mut)}
   .err{padding:14px 16px;border-radius:12px;background:#fef2f2;color:#b91c1c;margin-bottom:12px;display:none}
@@ -90,7 +92,7 @@
       var c = x.c;
       if (fs === 'open' && c.resolved) return false; if (fs === 'res' && !c.resolved) return false;
       if (fsc !== 'all' && c.screen !== fsc) return false; if (fa !== 'all' && c.author !== fa) return false;
-      if (q && (c.text + ' ' + c.author + ' ' + (c.where || '') + ' ' + (c.screenLabel || '') + ' ' + reps(c.id).map(function (r) { return r.text; }).join(' ')).toLowerCase().indexOf(q) < 0) return false;
+      if (q && (c.text + ' ' + c.author + ' ' + (c.where || '') + ' ' + (c.quote || '') + ' ' + (c.screenLabel || '') + ' ' + reps(c.id).map(function (r) { return r.text; }).join(' ')).toLowerCase().indexOf(q) < 0) return false;
       return true;
     }).reverse();
     var tb = $('tb'); tb.innerHTML = '';
@@ -101,7 +103,7 @@
       var t2 = el('td'); t2.appendChild(el('div', 'txt', c.text));
       reps(c.id).forEach(function (r) { var d = el('div', 'rep'); d.appendChild(el('b', null, r.author + ': ')); d.appendChild(document.createTextNode(r.text)); t2.appendChild(d); });
       tr.appendChild(t2);
-      var t3 = el('td'); t3.appendChild(el('span', 'scr', c.screenLabel || c.screen || '—')); if (c.where) { t3.appendChild(el('br')); t3.appendChild(el('span', 'where', c.where)); } tr.appendChild(t3);
+      var t3 = el('td'); t3.appendChild(el('span', 'scr', c.screenLabel || c.screen || '—')); if (c.kind === 'text' || c.kind === 'element') t3.appendChild(el('span', 'kind', c.kind === 'text' ? 'Matn' : 'Komponent')); if (c.where) { t3.appendChild(el('br')); t3.appendChild(el('span', 'where', c.where)); } if (c.quote) t3.appendChild(el('span', 'quote', '“' + c.quote + '”')); tr.appendChild(t3);
       tr.appendChild(el('td', 'hide-m', c.author));
       tr.appendChild(el('td', 'hide-m muted', fmt(c.at)));
       var t6 = el('td'); t6.appendChild(el('span', 'stt' + (c.resolved ? ' ok' : ''), c.resolved ? 'Hal qilingan' : 'Ochiq')); tr.appendChild(t6);
@@ -117,8 +119,8 @@
   }
   function csv() {
     var esc = function (v) { v = String(v == null ? '' : v); return /[",\n;]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; };
-    var rows = [['#', 'Ekran', 'Joy', 'Muallif', 'Vaqt', 'Holat', 'Izoh', 'Javoblar']];
-    roots().forEach(function (c, i) { rows.push([i + 1, c.screenLabel, c.where, c.author, fmt(c.at), c.resolved ? 'Hal qilingan' : 'Ochiq', c.text, reps(c.id).map(function (r) { return r.author + ': ' + r.text; }).join(' | ')]); });
+    var rows = [['#', 'Ekran', 'Joy', 'Belgilangan matn', 'Muallif', 'Vaqt', 'Holat', 'Izoh', 'Javoblar']];
+    roots().forEach(function (c, i) { rows.push([i + 1, c.screenLabel, c.where, c.quote || '', c.author, fmt(c.at), c.resolved ? 'Hal qilingan' : 'Ochiq', c.text, reps(c.id).map(function (r) { return r.author + ': ' + r.text; }).join(' | ')]); });
     var blob = new Blob(['﻿' + rows.map(function (r) { return r.map(esc).join(','); }).join('\n')], { type: 'text/csv;charset=utf-8' });
     var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'izohlar.csv'; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500);
   }

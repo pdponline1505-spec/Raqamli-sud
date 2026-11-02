@@ -75,6 +75,8 @@ module.exports = async function handler(req, res) {
         where: clean(b.where, 160),
         nav: b.nav && typeof b.nav === 'object' ? JSON.parse(clean(JSON.stringify(b.nav), 1500)) : null,
         sel: clean(b.sel, 1500),
+        kind: b.kind === 'text' ? 'text' : (b.kind === 'element' ? 'element' : 'point'),
+        quote: clean(b.quote, 500).trim() || null,
         rx: Number(b.rx) || 0, ry: Number(b.ry) || 0,
         px: Number(b.px) || 0, py: Number(b.py) || 0,
         resolved: false,
