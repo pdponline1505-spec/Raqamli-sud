@@ -19,6 +19,8 @@ async function tcpClient() {
 const KEY = process.env.COMMENTS_KEY || 'rs:comments';
 const MAX_TEXT = 2000;
 const SHOTS = KEY + ':shots';
+const DRAFTS = KEY + ':drafts';
+const MAX_DRAFT = 120000;
 const MAX_SHOT = 900000;
 
 async function redis(cmd) {
@@ -49,7 +51,7 @@ function readBody(req) {
   if (typeof req.body === 'string') { try { return Promise.resolve(JSON.parse(req.body)); } catch (e) { return Promise.resolve({}); } }
   return new Promise((resolve) => {
     let d = '';
-    req.on('data', (c) => { d += c; if (d.length > 1.5e6) req.destroy(); });
+    req.on('data', (c) => { d += c; if (d.length > 2e6) req.destroy(); });
     req.on('end', () => { try { resolve(JSON.parse(d || '{}')); } catch (e) { resolve({}); } });
   });
 }
@@ -69,6 +71,13 @@ module.exports = async function handler(req, res) {
       if (!m) { res.status(404).json({ error: 'bad_image' }); return; }
       res.setHeader('Content-Type', m[1]); res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
       res.status(200).end(Buffer.from(m[2], 'base64'));
+      return;
+    }
+    if (req.method === 'GET' && req.query && req.query.draft) {
+      const d = await redis(['HGET', DRAFTS, clean(req.query.draft, 40)]);
+      if (!d) { res.status(404).json({ error: 'not_found' }); return; }
+      res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+      res.status(200).end(d);
       return;
     }
     if (req.method === 'GET') {
@@ -115,6 +124,8 @@ module.exports = async function handler(req, res) {
         resolved: false,
         at: Date.now(),
       };
+      const dxDraft = typeof b.dxDraft === 'string' && b.dxDraft.length <= MAX_DRAFT ? b.dxDraft : '';
+      if (dxDraft) { try { JSON.parse(dxDraft); c.hasDraft = true; await redis(['HSET', DRAFTS, c.id, dxDraft]); } catch (e) {} }
       await redis(['HSET', KEY, c.id, JSON.stringify(c)]);
       res.status(201).json({ comment: c });
       return;
@@ -138,6 +149,7 @@ module.exports = async function handler(req, res) {
       for (let i = 0; i < flat.length; i += 2) { try { const c = JSON.parse(flat[i + 1]); if (c.parent === id) ids.push(c.id); } catch (e) {} }
       await redis(['HDEL', KEY].concat(ids));
       await redis(['HDEL', SHOTS].concat(ids));
+      await redis(['HDEL', DRAFTS].concat(ids));
       res.status(200).json({ deleted: ids.length });
       return;
     }

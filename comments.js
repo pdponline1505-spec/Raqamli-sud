@@ -307,18 +307,19 @@
     var th = h('div', { class: 'rsc-thread' }, [msgEl(c)].concat(rs.map(msgEl)));
     return h('div', { class: 'rsc-pop', 'data-for': c.id, role: 'dialog', 'aria-label': 'Izoh ' + numOf(c) }, [
       h('div', { class: 'rsc-ph' }, [h('span', {}, [h('b', { text: '#' + numOf(c) }), document.createTextNode(' · ' + (c.resolved ? 'Hal qilingan' : c.screenLabel))]), acts]),
-      h('div', { class: 'rsc-miss' }, [h('b', { text: 'Bu joy hozir ekranda ko\'rinmayapti' }), document.createTextNode('Izoh ochilib-yopiladigan menyu, oyna yoki forma ichida yozilgan' + (c.ctx || c.where ? ': ' : '.')), (c.ctx || c.where) ? h('em', { text: c.ctx || c.where }) : null, document.createTextNode(c.steps && c.steps.length ? ' «Joyni ochish» tugmasi uni avtomatik ochib beradi (ro\'yxatdan bosganda ham o\'zi ochiladi).' : (c.shot ? ' Skrinshotda qayerda yozilganini ko\'rasiz; o\'sha joyni ochsangiz belgi paydo bo\'ladi.' : ' O\'sha joyni oching — izoh belgisi avtomatik o\'sha yerda paydo bo\'ladi.'))]),
+      h('div', { class: 'rsc-miss' }, [h('b', { text: 'Bu joy hozir ekranda ko\'rinmayapti' }), document.createTextNode('Izoh ochilib-yopiladigan menyu, oyna yoki forma ichida yozilgan' + (c.ctx || c.where ? ': ' : '.')), (c.ctx || c.where) ? h('em', { text: c.ctx || c.where }) : null, document.createTextNode((c.steps && c.steps.length) || c.hasDraft ? ' «Joyni ochish» tugmasi uni avtomatik ochib beradi (ro\'yxatdan bosganda ham o\'zi ochiladi).' : (c.shot ? ' Skrinshotda qayerda yozilganini ko\'rasiz; o\'sha joyni ochsangiz belgi paydo bo\'ladi.' : ' O\'sha joyni oching — izoh belgisi avtomatik o\'sha yerda paydo bo\'ladi.'))]),
       c.where ? h('div', { class: 'rsc-where' }, [document.createTextNode('📍 ' + c.where), c.ctx ? h('small', { text: '🗂 ' + c.ctx }) : null]) : null,
       c.quote ? h('div', { class: 'rsc-quote', text: '“' + c.quote + '”' }) : null,
-      (c.shot || SHOT[c.id] || (c.steps && c.steps.length)) ? h('div', { class: 'rsc-ctx' }, [
+      (c.shot || SHOT[c.id] || (c.steps && c.steps.length) || c.hasDraft) ? h('div', { class: 'rsc-ctx' }, [
         c.shot ? h('button', { type: 'button', class: 'rsc-thumb', title: 'Izoh yozilgan paytdagi ekran', 'aria-label': 'Skrinshotni kattalashtirish', onclick: function () { lightbox(c); } }, [h('img', { src: shotUrl(c), alt: '', loading: 'lazy' }), h('span', { html: IC.cam + 'Skrinshot' })])
           : SHOT[c.id] ? h('span', { class: 'rsc-thumb wait', text: 'Skrinshot saqlanmoqda…' }) : null,
-        (c.steps && c.steps.length) ? h('div', { class: 'rsc-cbox' }, [
+        ((c.steps && c.steps.length) || c.hasDraft) ? h('div', { class: 'rsc-cbox' }, [
           h('button', { type: 'button', class: 'rsc-btn pri rsc-play', html: IC.play + 'Joyni ochish', title: 'Sahifani qayta yuklab, izoh yozilgan menyu/oynani avtomatik ochadi', onclick: function () { startReplay(c); } }),
-          h('details', { class: 'rsc-steps' }, [h('summary', { text: c.steps.length + ' ta qadam' }), h('ol', {}, c.steps.map(function (st) { return h('li', { text: st.label || st.fp || st.tag }); }))])
+          c.hasDraft ? h('small', { class: 'rsc-steps', text: '📝 Forma holati saqlangan' }) : null,
+          (c.steps && c.steps.length) ? h('details', { class: 'rsc-steps' }, [h('summary', { text: c.steps.length + ' ta qadam' }), h('ol', {}, c.steps.map(function (st) { return h('li', { text: st.label || st.fp || st.tag }); }))]) : null
         ]) : null
       ]) : null,
-      S.rpFail && S.rpFail.id === c.id ? h('div', { class: 'rsc-err rsc-rpf', text: 'Joyni avtomatik ochib bo\'lmadi (' + (S.rpFail.at + 1) + '-qadamda element topilmadi). Skrinshot va qadamlar bo\'yicha qo\'lda oching.' }) : null,
+      S.rpFail && S.rpFail.id === c.id ? h('div', { class: 'rsc-err rsc-rpf', text: 'Joyni avtomatik ochib bo\'lmadi' + (S.rpFail.skipped && S.rpFail.skipped.length ? ' (' + S.rpFail.skipped.join(', ') + '-qadam(lar) topilmadi)' : '') + '. Skrinshot va qadamlar bo\'yicha qo\'lda oching.' }) : null,
       th,
       form({ ph: 'Javob yozing…', btn: 'Javob berish', submit: function (nm, t) { return api('POST', { parent: c.id, author: nm, text: t, screen: c.screen }).then(function (j) { S.list.push(j.comment); build(); }); } })
     ]);
@@ -440,11 +441,14 @@
 
   // ---------- qadamlar: ekranda qilingan bosishlarni eslab qolamiz (yopiq menyuni qayta ochish uchun) ----------
   var ACT = [], actKey = '';
-  function actPush(o) { var k = screen().key; if (k !== actKey) { ACT = []; actKey = k; } ACT.push(o); if (ACT.length > 30) ACT.shift(); }
+  try { var sv = JSON.parse(sessionStorage.getItem('rs.act') || 'null'); if (sv && Array.isArray(sv.a)) { ACT = sv.a; actKey = sv.k || ''; } } catch (e) {}
+  function actSave() { try { sessionStorage.setItem('rs.act', JSON.stringify({ k: actKey, a: ACT })); } catch (e) {} }
+  function actPush(o) { var k = screen().key; if (k !== actKey) { ACT = []; actKey = k; } o.t = Date.now(); ACT.push(o); if (ACT.length > 40) ACT.shift(); actSave(); }
   document.addEventListener('click', function (e) {
     if (S.mode || !e.isTrusted || inUi(e.target) || replaying) return;
     var t = e.target.closest && e.target.closest('button,a,[role=option],[role=tab],[role=menuitem],[role=checkbox],[role=radio],[role=switch],label,summary,[tabindex]') || e.target;
     if (!t || t === document.body || t.matches('input:not([type=checkbox]):not([type=radio]),textarea,select')) return;
+    if (backdrop(t)) return;
     actPush({ sel: selOf(t), fp: tc(t), tag: t.tagName.toLowerCase(), label: describe(t) });
   }, true);
   document.addEventListener('change', function (e) {
@@ -455,10 +459,19 @@
     var t = e.target; if (!t || !e.isTrusted || inUi(t) || replaying) return;
     if (!(t.tagName === 'TEXTAREA' || (t.tagName === 'INPUT' && /^(text|search|number|tel|email|)$/.test(t.type || '')))) return;
     var sel = selOf(t), last = ACT[ACT.length - 1], v = String(t.value || '').slice(0, 200);
-    if (last && last.kind === 'input' && last.sel === sel && screen().key === actKey) { last.value = v; last.label = (t.getAttribute('aria-label') || t.placeholder || 'Matn') + ' = ' + v; return; }
+    if (last && last.kind === 'input' && last.sel === sel && screen().key === actKey) { last.t = Date.now(); actSave(); last.value = v; last.label = (t.getAttribute('aria-label') || t.placeholder || 'Matn') + ' = ' + v; return; }
     actPush({ kind: 'input', sel: sel, fp: '', tag: t.tagName.toLowerCase(), value: v, label: (t.getAttribute('aria-label') || t.placeholder || 'Matn') + ' = ' + v });
   }, true);
   function stepsNow() { return screen().key === actKey ? ACT.slice() : []; }
+  // Devonxona formasi: qoralama nusxasini izohga biriktiramiz — qayta ochilganda forma aynan shu holatdan boshlanadi
+  function withState(d) {
+    var st = stepsNow();
+    if (d.screen === 'devon') {
+      var raw = lsGet('adolat.dx.draft.v3'), at = 0;
+      if (raw && raw.length < 120000) { try { at = JSON.parse(raw).at || 0; } catch (e) {} d.dxDraft = raw; st = st.filter(function (x) { return (x.t || 0) > at; }); }
+    }
+    d.steps = st.map(function (x) { var y = Object.assign({}, x); delete y.t; return y; });
+  }
 
   var replaying = false, rpMsg = null;
   function rpShow(t) { if (!rpMsg) { rpMsg = h('div', { class: 'rsc-hint rsc-rp' }); root.appendChild(rpMsg); } rpMsg.textContent = t; }
@@ -473,12 +486,12 @@
   function replay(c) {
     var steps = (c.steps || []).map(function (st, i) { return Object.assign({ _k: 'rp' + i + c.id }, st); });
     replaying = true; S.open = null; build();
-    var i = 0;
+    var i = 0, skipped = [];
     (function next() {
       if (i >= steps.length) return finish(true);
       rpShow('Izoh joyi ochilmoqda… ' + (i + 1) + ' / ' + steps.length + ' — ' + (steps[i].label || ''));
-      settle().then(function () { return waitEl(steps[i], 3000); }).then(function (el) {
-        if (!el) return finish(false, i);
+      settle().then(function () { return waitEl(steps[i], 1500); }).then(function (el) {
+        if (!el) { skipped.push(i + 1); i++; return setTimeout(next, 50); }
         try {
           el.scrollIntoView({ block: 'center' });
           if (steps[i].kind === 'input') { var proto = el.tagName === 'TEXTAREA' ? HTMLTextAreaElement.prototype : HTMLInputElement.prototype; Object.getOwnPropertyDescriptor(proto, 'value').set.call(el, steps[i].value || ''); el.dispatchEvent(new Event('input', { bubbles: true })); el.dispatchEvent(new Event('change', { bubbles: true })); }
@@ -491,22 +504,29 @@
     function finish(ok, at) {
       setTimeout(function () {
         replaying = false; rpHide();
-        S.open = c.id; S.rpFail = ok || anchorPos(c) ? null : { id: c.id, at: at };
+        S.open = c.id; S.rpFail = anchorPos(c) ? null : { id: c.id, skipped: skipped };
         build(); reveal(c);
       }, 350);
     }
   }
   function startReplay(c) {
-    lsSet(LS_REPLAY, c.id);
-    // Devonxona qoralamasi bo'lsa, qadamlar toza formadan boshlanishi uchun vaqtincha zaxiraga olamiz
-    var dr = lsGet('adolat.dx.draft.v3'); if (dr && c.screen === 'devon') { lsSet('adolat.dx.draft.backup', dr); lsSet('adolat.dx.draft.v3', null); }
-    var cur = nav(); if (c.nav) lsSet('adolat.nav', JSON.stringify(Object.assign({}, cur, c.nav)));
-    lsSet('adolat.navScroll', null); window.location.reload();
+    var go = function (snap) {
+      lsSet(LS_REPLAY, c.id);
+      if (c.screen === 'devon') {
+        // foydalanuvchining o'z qoralamasini zaxiraga olib, izoh yozilgan paytdagi forma holatini qo'yamiz
+        var dr = lsGet('adolat.dx.draft.v3'); if (dr && !lsGet('adolat.dx.draft.backup')) lsSet('adolat.dx.draft.backup', dr);
+        lsSet('adolat.dx.draft.v3', snap || null);
+      }
+      var cur = nav(); if (c.nav) lsSet('adolat.nav', JSON.stringify(Object.assign({}, cur, c.nav)));
+      lsSet('adolat.navScroll', null); window.location.reload();
+    };
+    if (c.hasDraft) { rpShow('Izoh joyi tayyorlanmoqda…'); fetch(API + '?draft=' + encodeURIComponent(c.id)).then(function (r) { return r.ok ? r.text() : ''; }).then(function (t) { go(t || null); }, function () { go(null); }); }
+    else go(null);
   }
 
   // izohga o'tish: boshqa ekranda bo'lsa — ilova holatini yozib, sahifani qayta yuklaymiz (ilova o'sha joyni tiklaydi)
   function goTo(c) {
-    var hasSteps = c.steps && c.steps.length;
+    var hasSteps = (c.steps && c.steps.length) || c.hasDraft;
     if (c.screen === screen().key && (findEl(c) || !hasSteps)) { S.open = c.id; S.panel = window.innerWidth > 1100 ? S.panel : false; build(); reveal(c); return; }
     if (hasSteps) { startReplay(c); return; }
     if (c.nav) { var cur = nav(); lsSet('adolat.nav', JSON.stringify(Object.assign({}, cur, c.nav))); lsSet('adolat.navScroll', null); lsSet(LS_OPEN, c.id); window.location.reload(); }
@@ -517,7 +537,7 @@
   function afterLoad() {
     var qs = (location.search.match(/[?&]c=([\w-]+)/) || [])[1];
     var play = /[?&]play=1/.test(location.search);
-    if (qs) { history.replaceState(null, '', location.pathname); var qc = S.list.filter(function (x) { return x.id === qs; })[0]; if (qc && qc.steps && qc.steps.length && (play || qc.screen !== screen().key)) { startReplay(qc); return; } if (qc) { if (qc.screen !== screen().key) { goTo(qc); return; } lsSet(LS_OPEN, qc.id); } }
+    if (qs) { history.replaceState(null, '', location.pathname); var qc = S.list.filter(function (x) { return x.id === qs; })[0]; if (qc && ((qc.steps && qc.steps.length) || qc.hasDraft) && (play || qc.screen !== screen().key)) { startReplay(qc); return; } if (qc) { if (qc.screen !== screen().key) { goTo(qc); return; } lsSet(LS_OPEN, qc.id); } }
     var rp = lsGet(LS_REPLAY); if (rp) { lsSet(LS_REPLAY, null); lsSet(LS_OPEN, null); var rc = S.list.filter(function (x) { return x.id === rp; })[0]; if (rc) { setTimeout(function () { replay(rc); }, 900); return; } }
     var id = lsGet(LS_OPEN); if (!id) return; lsSet(LS_OPEN, null);
     var c = S.list.filter(function (x) { return x.id === id; })[0]; if (!c) return;
@@ -591,7 +611,7 @@
     var el = HOV.el || pick(e.clientX, e.clientY) || e.target; if (!el || el === document.documentElement || el === document.body) return;
     var r = el.getBoundingClientRect(), scr = screen(), cl = function (v) { return Math.max(0, Math.min(1, v)); };
     S.draft = { kind: 'element', where: describe(el), ctx: ctxOf(el), fp: tc(el), tag: el.tagName.toLowerCase(), sel: selOf(el), rx: r.width ? cl((e.clientX - r.left) / r.width) : 0, ry: r.height ? cl((e.clientY - r.top) / r.height) : 0, px: e.pageX, py: e.pageY, screen: scr.key, screenLabel: scr.label, nav: scr.nav };
-    S.draft.steps = stepsNow(); startShot(S.draft, el, e.clientX, e.clientY);
+    withState(S.draft); startShot(S.draft, el, e.clientX, e.clientY);
     S.mode = false; document.documentElement.classList.remove('rsc-mode');
     build();
   }, true);
@@ -609,7 +629,7 @@
     var rr = SEL.range.getClientRects(), last = rr.length ? rr[rr.length - 1] : SEL.range.getBoundingClientRect(), r = el.getBoundingClientRect(), scr = screen();
     var cl = function (v) { return Math.max(0, Math.min(1, v)); };
     S.draft = { kind: 'text', quote: SEL.text.slice(0, 500), where: describe(el), ctx: ctxOf(el), fp: tc(el), tag: el.tagName.toLowerCase(), sel: selOf(el), rx: r.width ? cl((last.right - r.left) / r.width) : 0, ry: r.height ? cl((last.top - r.top) / r.height) : 0, px: 0, py: 0, screen: scr.key, screenLabel: scr.label, nav: scr.nav };
-    S.draft.steps = stepsNow(); var srect = SEL.range.getBoundingClientRect(); S.draft._shot = capture({ rect: { l: srect.left, t: srect.top, w: srect.width, h: srect.height }, x: last.right, y: last.top }).catch(function () { return null; });
+    withState(S.draft); var srect = SEL.range.getBoundingClientRect(); S.draft._shot = capture({ rect: { l: srect.left, t: srect.top, w: srect.width, h: srect.height }, x: last.right, y: last.top }).catch(function () { return null; });
     S.open = null; build();
   });
   function checkSel() {
