@@ -3787,6 +3787,28 @@ html[data-theme="dark"] .d2-k.hl,html[data-theme="dark"] .d2-btn.pri{filter:inve
 .d2-k:hover .d2-ksp stop{stop-color:#fff}
 .d2-ksl,.d2-ksp stop{transition:stroke 260ms var(--d2e),stop-color 260ms var(--d2e)}
 @media (hover:none){.d2-k:active::before{opacity:1}}
+/* KPI kartochkalari: to'q ko'k o'rniga yumshoq, och fon (matn to'q qoladi) */
+.d2-k::before{background:linear-gradient(140deg,#f5f8ff 0%,#eaf1ff 100%)}
+.d2-k:hover,.d2-k:focus-visible{box-shadow:0 0 0 1px #cfe0ff,0 12px 26px rgba(37,99,235,.10)}
+.d2-k:hover .d2-kt b,.d2-k:focus-visible .d2-kt b{color:#0f172a}
+.d2-k:hover .d2-kn,.d2-k:focus-visible .d2-kn{color:#2563eb}
+.d2-k:hover .d2-kf,.d2-k:focus-visible .d2-kf{color:#475569}
+.d2-k:hover .d2-kc.bad,.d2-k:focus-visible .d2-kc.bad{background:#fee2e2;color:#dc2626}
+.d2-k:hover .d2-kc.warn,.d2-k:focus-visible .d2-kc.warn{background:#ffedd5;color:#b45309}
+.d2-k:hover .d2-kc.vio,.d2-k:focus-visible .d2-kc.vio{background:#ede9fe;color:#6d28d9}
+.d2-k:hover .d2-kc.ok,.d2-k:focus-visible .d2-kc.ok{background:#dcfce7;color:#15803d}
+.d2-k:hover .d2-ka,.d2-k:focus-visible .d2-ka{background:#2563eb;border-color:#2563eb;color:#fff}
+.d2-k:hover .d2-ksl{stroke:#2563eb}
+.d2-k:hover .d2-ksp stop{stop-color:#2563eb}
+.d2-k.hl{background:linear-gradient(140deg,#f5f8ff 0%,#eaf1ff 100%);color:#0f172a;box-shadow:0 0 0 1px #d9e6ff,0 6px 18px rgba(37,99,235,.08)}
+.d2-k.hl .d2-kt b{color:#0f172a}
+.d2-k.hl .d2-kn{color:#2563eb}
+.d2-k.hl .d2-kf{color:#475569}
+.d2-k.hl .d2-kc.warn{background:#ffedd5;color:#b45309}
+.d2-k.hl .d2-kc.bad{background:#fee2e2;color:#dc2626}
+.d2-k.hl .d2-ka,.d2-k.hl:hover .d2-ka{background:#2563eb;border-color:#2563eb;color:#fff}
+.d2-k.hl::after{display:none}
+
 @media (prefers-reduced-motion:reduce){.d2 *,.d2>*{animation:none !important;transition:none !important}}
 html[data-theme="dark"] .d2-ph,html[data-theme="dark"] .d2-party img{filter:invert(1) hue-rotate(180deg)}
 html[data-theme="dark"] :is(.d2-promo,.d2-gball,.d2-st,.d2-pill.dark,.d2-svg,.d2-gsvg,.d2-dot,.d2-tip,.d2-gst.cur,.d2-leg .lb){filter:invert(1) hue-rotate(180deg)}
