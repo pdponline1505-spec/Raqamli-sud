@@ -7660,16 +7660,9 @@ class Component extends DCLogic {
           self.setState({ dxDraftAt: hhmm(new Date()) });
         } catch (x) {}
       }, 1500);
-      document.addEventListener("click", function (e) {
-        if (window.__navAllow) return;
-        var t = e.target && e.target.closest && e.target.closest(".l-rail button,.l-sub button,.l-rail a,.l-sub a"); if (!t || !dxDirty()) return;
-        if (/Ro'yxatga olish/.test(t.textContent || "") && !/Da'vo tartibida/.test(t.textContent || "")) return;
-        e.preventDefault(); e.stopPropagation();
-        askLeave("Ro'yxatga olish yakunlanmagan", "Formadagi ma'lumotlar hali ro'yxatga olinmagan. Qoralama avtomatik saqlangan — Devonxonaga qaytib, ishni davom ettirishingiz mumkin.", function () { window.__navAllow = true; t.click(); window.__navAllow = false; });
-      }, true);
       window.addEventListener("beforeunload", function (e) {
         var openDirty = Array.prototype.some.call(document.querySelectorAll(DLG), function (d) { return d.__dirty; });
-        if (openDirty || dxDirty()) { e.preventDefault(); e.returnValue = ""; return ""; }
+        if (openDirty) { e.preventDefault(); e.returnValue = ""; return ""; }
       });
     }
     document.addEventListener("mousedown", function (ev) {
