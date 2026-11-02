@@ -50,6 +50,7 @@
     if (n.caseOpen && n.caseNum) return { key: 'case:' + n.caseNum, label: 'Ish ' + n.caseNum, nav: n };
     if (page === 'list') return { key: 'list|' + (n.lInst || '') + '|' + (n.lTab || ''), label: (n.lInst || 'Ishlar ro\'yxati') + (n.lTab ? ' · ' + tabName(n.lTab) : ''), nav: n };
     if (page === 'devon') return { key: 'devon', label: 'Devonxona', nav: n };
+    if (page === 'ds') return { key: 'ds', label: 'Design System', nav: n };
     return { key: 'dash', label: 'Bosh sahifa', nav: n };
   }
   function tabName(k) {

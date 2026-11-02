@@ -3863,6 +3863,446 @@ body{overflow:visible}
 .ido-note svg{color:#4f46e5;flex:none;margin-top:1px}
 .ido-note b{color:#1e293b;font-weight:600}
 @media (max-width:700px){.ido-g{grid-template-columns:1fr}}
+
+/* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
+.ds-root{
+  /* Ranglar — asosiy identitet (mavjud tizimdan) */
+  --ds-primary:#2563eb;--ds-primary-hover:#1d4ed8;--ds-primary-active:#1e40af;--ds-primary-soft:#eff4ff;--ds-primary-soft-2:#dbe6ff;--ds-on-primary:#ffffff;
+  --ds-secondary:#475569;--ds-secondary-hover:#334155;--ds-secondary-soft:#f1f5f9;
+  --ds-accent:#4f46e5;--ds-accent-soft:#eef2ff;--ds-accent-grad:linear-gradient(135deg,#4f7cff 0%,#4f46e5 100%);
+  --ds-bg:#f4f4f5;--ds-surface:#ffffff;--ds-surface-2:#f8fafc;--ds-surface-3:#f1f5f9;
+  --ds-border:#e2e8f0;--ds-border-strong:#d5dbe4;--ds-divider:#eef1f5;
+  --ds-text:#0f172a;--ds-text-2:#475569;--ds-muted:#64748b;--ds-subtle:#94a3b8;
+  --ds-success:#16a34a;--ds-success-text:#15803d;--ds-success-soft:#ecfdf3;--ds-success-border:#bbf0cf;
+  --ds-warning:#d97706;--ds-warning-text:#b45309;--ds-warning-soft:#fff7e6;--ds-warning-border:#fde7c2;
+  --ds-error:#dc2626;--ds-error-text:#b91c1c;--ds-error-soft:#fef2f2;--ds-error-border:#fecaca;
+  --ds-info:#2563eb;--ds-info-text:#1d4ed8;--ds-info-soft:#eef4ff;--ds-info-border:#c7d7fe;
+  --ds-hover:#f8fafc;--ds-active:#eef2f7;--ds-focus:rgba(37,99,235,.20);--ds-disabled-bg:#f1f5f9;--ds-disabled-text:#94a3b8;--ds-overlay:rgba(15,23,42,.45);
+  /* Tipografiya */
+  --ds-font:"SF Pro Text","SF Pro Display","SF Pro",-apple-system,BlinkMacSystemFont,Inter,system-ui,"Segoe UI",sans-serif;
+  --ds-font-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  /* Radius / soya / chegara */
+  --ds-r-xs:4px;--ds-r-sm:6px;--ds-r-md:8px;--ds-r-lg:12px;--ds-r-xl:16px;--ds-r-2xl:20px;--ds-r-full:999px;
+  --ds-sh-xs:0 1px 2px rgba(15,23,42,.05);--ds-sh-sm:0 1px 2px rgba(15,23,42,.04),0 4px 14px rgba(15,23,42,.05);--ds-sh-md:0 8px 24px rgba(15,23,42,.08);--ds-sh-lg:0 18px 48px rgba(15,23,42,.16);
+  --ds-bw:1px;--ds-bw-2:1.5px;--ds-bw-3:2px;
+  /* Komponent o'lchamlari */
+  --ds-h-sm:32px;--ds-h-md:38px;--ds-h-lg:44px;
+  --ds-ease:cubic-bezier(.2,0,0,1);
+  font-family:var(--ds-font);color:var(--ds-text);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;
+}
+.ds-root[data-theme="dark"]{
+  --ds-primary:#3b82f6;--ds-primary-hover:#60a5fa;--ds-primary-active:#2563eb;--ds-primary-soft:rgba(59,130,246,.14);--ds-primary-soft-2:rgba(59,130,246,.26);--ds-on-primary:#ffffff;
+  --ds-secondary:#cbd5e1;--ds-secondary-hover:#e2e8f0;--ds-secondary-soft:#1f2937;
+  --ds-accent:#818cf8;--ds-accent-soft:rgba(129,140,248,.14);
+  --ds-bg:#0b1120;--ds-surface:#111827;--ds-surface-2:#162033;--ds-surface-3:#1f2937;
+  --ds-border:#263247;--ds-border-strong:#334155;--ds-divider:#1e293b;
+  --ds-text:#e5e7eb;--ds-text-2:#cbd5e1;--ds-muted:#94a3b8;--ds-subtle:#64748b;
+  --ds-success:#22c55e;--ds-success-text:#4ade80;--ds-success-soft:rgba(34,197,94,.12);--ds-success-border:rgba(34,197,94,.3);
+  --ds-warning:#f59e0b;--ds-warning-text:#fbbf24;--ds-warning-soft:rgba(245,158,11,.12);--ds-warning-border:rgba(245,158,11,.3);
+  --ds-error:#ef4444;--ds-error-text:#f87171;--ds-error-soft:rgba(239,68,68,.12);--ds-error-border:rgba(239,68,68,.32);
+  --ds-info:#3b82f6;--ds-info-text:#93c5fd;--ds-info-soft:rgba(59,130,246,.12);--ds-info-border:rgba(59,130,246,.3);
+  --ds-hover:#172033;--ds-active:#1e293b;--ds-focus:rgba(96,165,250,.28);--ds-disabled-bg:#1f2937;--ds-disabled-text:#64748b;--ds-overlay:rgba(2,6,23,.7);
+  --ds-sh-sm:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25);--ds-sh-md:0 8px 24px rgba(0,0,0,.35);--ds-sh-lg:0 18px 48px rgba(0,0,0,.5);
+  color-scheme:dark;
+}
+/* Ilovaning invert-qorong'u rejimi DS sahifasiga ta'sir qilmasin (DS o'z tokenlari bilan qorong'u bo'ladi) */
+html[data-theme="dark"] .ds-host{filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] .ds-host img{filter:none}
+
+.ds-root *,.ds-root *::before,.ds-root *::after{box-sizing:border-box}
+.ds-root{background:var(--ds-bg);border-radius:16px;min-height:calc(100vh - 140px);transition:background-color .2s var(--ds-ease),color .2s var(--ds-ease)}
+.ds-root button,.ds-root input,.ds-root select,.ds-root textarea{font:inherit;color:inherit}
+.ds-root svg.ds-i{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ds-root .ds-i.sm{width:14px;height:14px}.ds-root .ds-i.lg{width:20px;height:20px}
+
+/* ---------- Sahifa tuzilmasi ---------- */
+.ds-page{padding:24px 28px 64px;max-width:1280px}
+.ds-hero{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:28px;flex-wrap:wrap}
+.ds-hero h1{margin:0;font-size:28px;line-height:36px;font-weight:700;letter-spacing:-.02em}
+.ds-hero p{margin:6px 0 0;color:var(--ds-muted);font-size:14px;max-width:720px}
+.ds-sec{scroll-margin-top:100px;margin-bottom:40px}
+.ds-sec>h2{display:flex;align-items:center;gap:10px;margin:0 0 4px;font-size:22px;line-height:30px;font-weight:700;letter-spacing:-.01em}
+.ds-sec>h2 .ds-num{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px;background:var(--ds-primary-soft);color:var(--ds-primary);font-size:13px;font-weight:700}
+.ds-sec>.ds-lead{margin:0 0 18px;color:var(--ds-muted)}
+.ds-spec{background:var(--ds-surface);border:1px solid var(--ds-border);border-radius:var(--ds-r-xl);margin-bottom:16px;overflow:visible}
+.ds-spec>.ds-code{border-radius:0 0 var(--ds-r-xl) var(--ds-r-xl)}
+.ds-spec>.ds-spec-b:last-child>.ds-tb-wrap{border:0}
+.ds-spec-h{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--ds-divider)}
+.ds-spec-h b{font-size:15px;font-weight:600}
+.ds-spec-h small{display:block;color:var(--ds-muted);font-size:12.5px;margin-top:2px}
+.ds-spec-b{padding:20px 18px;display:flex;flex-direction:column;gap:18px}
+.ds-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.ds-row.ds-top{align-items:flex-start}
+.ds-grid{display:grid;gap:16px}
+.ds-g2{grid-template-columns:repeat(2,minmax(0,1fr))}.ds-g3{grid-template-columns:repeat(3,minmax(0,1fr))}.ds-g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.ds-cap{font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ds-subtle);min-width:92px}
+.ds-code{position:relative;margin:0;padding:12px 14px;border-top:1px solid var(--ds-divider);background:var(--ds-surface-2);font-family:var(--ds-font-mono);font-size:12px;line-height:1.6;color:var(--ds-text-2);white-space:pre;overflow:auto}
+.ds-copy{position:absolute;top:8px;right:8px}
+
+/* ---------- Ranglar ---------- */
+.ds-sw{border:1px solid var(--ds-border);border-radius:var(--ds-r-lg);overflow:hidden;background:var(--ds-surface);text-align:left;cursor:pointer;padding:0;transition:transform .15s var(--ds-ease),box-shadow .15s var(--ds-ease)}
+.ds-sw:hover{transform:translateY(-2px);box-shadow:var(--ds-sh-md)}
+.ds-sw-c{height:64px;border-bottom:1px solid var(--ds-divider)}
+.ds-sw-t{padding:10px 12px;display:flex;flex-direction:column;gap:2px}
+.ds-sw-t b{font-size:13px;font-weight:600}
+.ds-sw-t code{font-family:var(--ds-font-mono);font-size:11.5px;color:var(--ds-muted)}
+.ds-sw-t small{font-size:11.5px;color:var(--ds-subtle);line-height:1.35}
+.ds-rule{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:var(--ds-r-lg);background:var(--ds-surface-2);border:1px solid var(--ds-divider);font-size:13px;color:var(--ds-text-2)}
+
+/* ---------- Tipografiya ---------- */
+.ds-type{display:grid;grid-template-columns:170px 1fr 230px;gap:16px;align-items:baseline;padding:12px 0;border-bottom:1px dashed var(--ds-divider)}
+.ds-type:last-child{border-bottom:0}
+.ds-type .meta{font-family:var(--ds-font-mono);font-size:11.5px;color:var(--ds-muted)}
+.ds-h1{font-size:32px;line-height:40px;font-weight:700;letter-spacing:-.02em}
+.ds-h2{font-size:26px;line-height:34px;font-weight:700;letter-spacing:-.015em}
+.ds-h3{font-size:22px;line-height:30px;font-weight:600;letter-spacing:-.01em}
+.ds-h4{font-size:18px;line-height:26px;font-weight:600}
+.ds-h5{font-size:16px;line-height:24px;font-weight:600}
+.ds-h6{font-size:14px;line-height:20px;font-weight:600}
+.ds-body-lg{font-size:16px;line-height:26px}
+.ds-body-md{font-size:14px;line-height:22px}
+.ds-body-sm{font-size:13px;line-height:20px}
+.ds-label{font-size:13px;line-height:18px;font-weight:500;color:var(--ds-text)}
+.ds-caption{font-size:12px;line-height:16px;color:var(--ds-muted)}
+.ds-helper{font-size:12px;line-height:16px;color:var(--ds-muted)}
+.ds-link{color:var(--ds-primary);text-decoration:none;font-weight:500;cursor:pointer;border-radius:4px}
+.ds-link:hover{text-decoration:underline;text-underline-offset:3px}
+.ds-err-t{font-size:12px;line-height:16px;color:var(--ds-error-text);display:inline-flex;align-items:center;gap:5px}
+
+/* ---------- Button ---------- */
+.ds-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid transparent;border-radius:var(--ds-r-md);font-weight:600;white-space:nowrap;cursor:pointer;user-select:none;transition:background-color .15s var(--ds-ease),border-color .15s var(--ds-ease),color .15s var(--ds-ease),box-shadow .15s var(--ds-ease),transform .1s var(--ds-ease)}
+.ds-btn:active:not(:disabled){transform:translateY(1px)}
+.ds-btn:focus-visible{outline:0;box-shadow:0 0 0 3px var(--ds-focus)}
+.ds-btn.sm{height:var(--ds-h-sm);padding:0 12px;font-size:12.5px;border-radius:7px}
+.ds-btn.md{height:var(--ds-h-md);padding:0 15px;font-size:13.5px}
+.ds-btn.lg{height:var(--ds-h-lg);padding:0 20px;font-size:14.5px;border-radius:10px}
+.ds-btn.icon.sm{width:var(--ds-h-sm);padding:0}.ds-btn.icon.md{width:var(--ds-h-md);padding:0}.ds-btn.icon.lg{width:var(--ds-h-lg);padding:0}
+.ds-btn.v-primary{background:var(--ds-primary);color:var(--ds-on-primary)}
+.ds-btn.v-primary:hover:not(:disabled),.ds-btn.v-primary.is-hover{background:var(--ds-primary-hover)}
+.ds-btn.v-primary.is-active{background:var(--ds-primary-active)}
+.ds-btn.v-secondary{background:var(--ds-primary-soft);color:var(--ds-primary)}
+.ds-btn.v-secondary:hover:not(:disabled),.ds-btn.v-secondary.is-hover{background:var(--ds-primary-soft-2)}
+.ds-btn.v-outline{background:var(--ds-surface);border-color:var(--ds-border-strong);color:var(--ds-text)}
+.ds-btn.v-outline:hover:not(:disabled),.ds-btn.v-outline.is-hover{background:var(--ds-hover);border-color:var(--ds-subtle)}
+.ds-btn.v-ghost{background:transparent;color:var(--ds-text-2)}
+.ds-btn.v-ghost:hover:not(:disabled),.ds-btn.v-ghost.is-hover{background:var(--ds-active);color:var(--ds-text)}
+.ds-btn.v-danger{background:var(--ds-error);color:#fff}
+.ds-btn.v-danger:hover:not(:disabled),.ds-btn.v-danger.is-hover{background:var(--ds-error-text)}
+.ds-btn.v-danger-outline{background:var(--ds-surface);border-color:var(--ds-error-border);color:var(--ds-error-text)}
+.ds-btn.v-danger-outline:hover:not(:disabled){background:var(--ds-error-soft)}
+.ds-btn:disabled{cursor:not-allowed;background:var(--ds-disabled-bg)!important;border-color:transparent!important;color:var(--ds-disabled-text)!important;box-shadow:none!important}
+.ds-btn.loading{cursor:progress}
+.ds-btn.loading .ds-btn-l{visibility:hidden}
+.ds-btn .ds-spin-abs{position:absolute;inset:0;display:grid;place-items:center}
+.ds-btn-l{display:inline-flex;align-items:center;gap:7px}
+
+/* ---------- Spinner / Skeleton / Progress ---------- */
+.ds-spinner{display:inline-block;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:dsSpin .7s linear infinite;flex:none}
+.ds-spinner.sm{width:14px;height:14px}.ds-spinner.md{width:20px;height:20px}.ds-spinner.lg{width:28px;height:28px;border-width:3px}
+@keyframes dsSpin{to{transform:rotate(360deg)}}
+.ds-skel{display:block;border-radius:6px;background:linear-gradient(90deg,var(--ds-surface-3) 25%,var(--ds-active) 37%,var(--ds-surface-3) 63%);background-size:400% 100%;animation:dsShim 1.4s ease infinite}
+@keyframes dsShim{0%{background-position:100% 50%}100%{background-position:0 50%}}
+.ds-prog{height:8px;border-radius:999px;background:var(--ds-surface-3);overflow:hidden}
+.ds-prog>i{display:block;height:100%;border-radius:inherit;background:var(--ds-primary);transition:width .4s var(--ds-ease)}
+.ds-prog.v-success>i{background:var(--ds-success)}.ds-prog.v-warning>i{background:var(--ds-warning)}.ds-prog.v-error>i{background:var(--ds-error)}
+.ds-prog.ind>i{width:35%!important;animation:dsInd 1.2s var(--ds-ease) infinite}
+@keyframes dsInd{0%{transform:translateX(-100%)}100%{transform:translateX(300%)}}
+.ds-ring{position:relative;display:inline-grid;place-items:center}
+.ds-ring b{position:absolute;font-size:12px;font-weight:700}
+
+/* ---------- Forms ---------- */
+.ds-field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.ds-field>label,.ds-field .ds-flabel{font-size:13px;font-weight:500;color:var(--ds-text);display:flex;gap:4px}
+.ds-req{color:var(--ds-error)}
+.ds-ctl{position:relative;display:flex;align-items:center;gap:8px;height:var(--ds-h-md);padding:0 12px;border:1px solid var(--ds-border-strong);border-radius:var(--ds-r-md);background:var(--ds-surface);transition:border-color .15s var(--ds-ease),box-shadow .15s var(--ds-ease);color:var(--ds-muted)}
+.ds-ctl.sm{height:var(--ds-h-sm);font-size:13px}.ds-ctl.lg{height:var(--ds-h-lg)}
+.ds-ctl:hover{border-color:var(--ds-subtle)}
+.ds-ctl.focus,.ds-ctl:focus-within{border-color:var(--ds-primary);box-shadow:0 0 0 3px var(--ds-focus)}
+.ds-ctl.err{border-color:var(--ds-error)}
+.ds-ctl.err:focus-within,.ds-ctl.err.focus{box-shadow:0 0 0 3px var(--ds-error-soft)}
+.ds-ctl.dis{background:var(--ds-disabled-bg);border-color:var(--ds-border);cursor:not-allowed;color:var(--ds-disabled-text)}
+.ds-ctl input,.ds-ctl select{flex:1;min-width:0;height:100%;border:0;outline:0;background:transparent;font-size:14px;color:var(--ds-text)}
+.ds-ctl.sm input{font-size:13px}
+.ds-ctl input::placeholder,.ds-ta::placeholder{color:var(--ds-subtle)}
+.ds-ctl input:disabled{cursor:not-allowed;color:var(--ds-disabled-text)}
+.ds-ctl input[type=number]::-webkit-inner-spin-button{appearance:none}
+.ds-ctl .ds-adorn{display:inline-flex;align-items:center;color:var(--ds-muted)}
+.ds-ctl .ds-ib{width:24px;height:24px;border:0;border-radius:6px;background:transparent;display:grid;place-items:center;color:var(--ds-muted);cursor:pointer}
+.ds-ctl .ds-ib:hover{background:var(--ds-active);color:var(--ds-text)}
+.ds-step{display:flex;flex-direction:column;margin-right:-6px}
+.ds-step button{height:15px;width:22px;border:0;background:transparent;color:var(--ds-muted);cursor:pointer;display:grid;place-items:center;border-radius:4px}
+.ds-step button:hover{background:var(--ds-active);color:var(--ds-text)}
+.ds-ta{width:100%;min-height:96px;padding:10px 12px;border:1px solid var(--ds-border-strong);border-radius:var(--ds-r-md);background:var(--ds-surface);resize:vertical;outline:0;font-size:14px;line-height:1.5;color:var(--ds-text);transition:border-color .15s,box-shadow .15s}
+.ds-ta:focus{border-color:var(--ds-primary);box-shadow:0 0 0 3px var(--ds-focus)}
+.ds-ta.err{border-color:var(--ds-error)}
+.ds-ta:disabled{background:var(--ds-disabled-bg);color:var(--ds-disabled-text);cursor:not-allowed}
+.ds-fmeta{display:flex;justify-content:space-between;gap:8px}
+.ds-sel-btn{width:100%;justify-content:space-between;cursor:pointer;text-align:left;color:var(--ds-text)}
+.ds-sel-btn .ph{color:var(--ds-subtle)}
+.ds-sel-btn .val{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ds-chev{transition:transform .15s var(--ds-ease);color:var(--ds-muted)}
+.ds-open .ds-chev{transform:rotate(180deg)}
+.ds-pop{position:absolute;z-index:40;top:calc(100% + 6px);left:0;min-width:100%;background:var(--ds-surface);border:1px solid var(--ds-border);border-radius:var(--ds-r-lg);box-shadow:var(--ds-sh-lg);padding:6px;animation:dsPop .14s var(--ds-ease)}
+.ds-pop.right{left:auto;right:0}
+.ds-pop.up{top:auto;bottom:calc(100% + 6px)}
+@keyframes dsPop{from{opacity:0;transform:translateY(-4px) scale(.98)}}
+.ds-opt{display:flex;align-items:center;gap:10px;width:100%;min-height:36px;padding:7px 10px;border:0;border-radius:8px;background:transparent;text-align:left;font-size:13.5px;color:var(--ds-text);cursor:pointer}
+.ds-opt:hover,.ds-opt.kb{background:var(--ds-hover)}
+.ds-opt.on{background:var(--ds-primary-soft);color:var(--ds-primary);font-weight:600}
+.ds-opt .ck{margin-left:auto;color:var(--ds-primary)}
+.ds-opt.danger{color:var(--ds-error-text)}
+.ds-opt.danger:hover{background:var(--ds-error-soft)}
+.ds-opt:disabled{opacity:.5;cursor:not-allowed}
+.ds-pop-sep{height:1px;background:var(--ds-divider);margin:5px 4px}
+.ds-pop-h{padding:6px 10px 4px;font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ds-subtle)}
+.ds-pop-search{margin:2px 2px 6px}
+.ds-ms{height:auto;min-height:var(--ds-h-md);padding:4px 8px;flex-wrap:wrap;cursor:pointer}
+.ds-ms .ph{color:var(--ds-subtle);padding:0 4px;font-size:14px}
+.ds-cb{position:relative;display:inline-flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:14px;color:var(--ds-text);user-select:none}
+.ds-cb input{position:absolute;opacity:0;width:1px;height:1px}
+.ds-cb-box{width:18px;height:18px;margin-top:1px;flex:none;border:1.5px solid var(--ds-border-strong);border-radius:5px;background:var(--ds-surface);display:grid;place-items:center;color:#fff;transition:background-color .12s,border-color .12s,box-shadow .12s}
+.ds-cb-box svg{width:12px;height:12px;stroke-width:3;opacity:0;transform:scale(.6);transition:opacity .12s,transform .12s}
+.ds-cb:hover .ds-cb-box{border-color:var(--ds-primary)}
+.ds-cb input:checked+.ds-cb-box,.ds-cb input:indeterminate+.ds-cb-box{background:var(--ds-primary);border-color:var(--ds-primary)}
+.ds-cb input:checked+.ds-cb-box svg,.ds-cb input:indeterminate+.ds-cb-box svg{opacity:1;transform:none}
+.ds-cb input:focus-visible+.ds-cb-box{box-shadow:0 0 0 3px var(--ds-focus)}
+.ds-cb.ds-rd .ds-cb-box{border-radius:50%}
+.ds-cb.ds-rd .ds-cb-box::after{content:"";width:8px;height:8px;border-radius:50%;background:#fff;transform:scale(0);transition:transform .12s}
+.ds-cb.ds-rd input:checked+.ds-cb-box::after{transform:scale(1)}
+.ds-cb.err .ds-cb-box{border-color:var(--ds-error)}
+.ds-cb.dis{cursor:not-allowed;color:var(--ds-disabled-text)}
+.ds-cb.dis .ds-cb-box{background:var(--ds-disabled-bg);border-color:var(--ds-border)}
+.ds-cb.dis input:checked+.ds-cb-box{background:var(--ds-subtle);border-color:var(--ds-subtle)}
+.ds-cb small{display:block;color:var(--ds-muted);font-size:12px}
+.ds-sw2{position:relative;display:inline-flex;align-items:center;gap:10px;cursor:pointer;font-size:14px;user-select:none}
+.ds-sw2 input{position:absolute;opacity:0;width:1px;height:1px}
+.ds-sw2-t{position:relative;width:38px;height:22px;border-radius:999px;background:var(--ds-border-strong);transition:background-color .18s var(--ds-ease);flex:none}
+.ds-sw2-t::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(15,23,42,.25);transition:transform .18s var(--ds-ease)}
+.ds-sw2 input:checked+.ds-sw2-t{background:var(--ds-primary)}
+.ds-sw2 input:checked+.ds-sw2-t::after{transform:translateX(16px)}
+.ds-sw2 input:focus-visible+.ds-sw2-t{box-shadow:0 0 0 3px var(--ds-focus)}
+.ds-sw2.sm .ds-sw2-t{width:30px;height:18px}.ds-sw2.sm .ds-sw2-t::after{width:12px;height:12px}.ds-sw2.sm input:checked+.ds-sw2-t::after{transform:translateX(12px)}
+.ds-sw2.dis{cursor:not-allowed;color:var(--ds-disabled-text)}.ds-sw2.dis .ds-sw2-t{opacity:.5}
+.ds-drop{display:flex;flex-direction:column;align-items:center;gap:8px;padding:26px 18px;border:1.5px dashed var(--ds-border-strong);border-radius:var(--ds-r-lg);background:var(--ds-surface-2);text-align:center;cursor:pointer;transition:border-color .15s,background-color .15s}
+.ds-drop:hover,.ds-drop.over{border-color:var(--ds-primary);background:var(--ds-primary-soft)}
+.ds-drop .dic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--ds-surface);color:var(--ds-primary);box-shadow:var(--ds-sh-xs)}
+.ds-files{display:flex;flex-direction:column;gap:8px}
+.ds-file{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--ds-border);border-radius:10px;background:var(--ds-surface)}
+.ds-file .fi{width:32px;height:32px;border-radius:8px;display:grid;place-items:center;background:var(--ds-error-soft);color:var(--ds-error-text);font-size:10px;font-weight:700}
+.ds-file .fm{flex:1;min-width:0}
+.ds-file .fm b{display:block;font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ds-file .fm small{color:var(--ds-muted);font-size:12px}
+/* Kalendar */
+.ds-cal{width:288px;padding:10px}
+.ds-cal.range{width:560px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ds-cal-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.ds-cal-h b{font-size:14px;font-weight:600}
+.ds-cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.ds-cal-g span{height:28px;display:grid;place-items:center;font-size:11.5px;font-weight:600;color:var(--ds-subtle)}
+.ds-day{height:36px;border:0;border-radius:8px;background:transparent;font-size:13px;color:var(--ds-text);cursor:pointer;position:relative}
+.ds-day:hover{background:var(--ds-hover)}
+.ds-day.out{color:var(--ds-subtle)}
+.ds-day.today{font-weight:700;color:var(--ds-primary)}
+.ds-day.today::after{content:"";position:absolute;bottom:5px;left:50%;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:currentColor}
+.ds-day.inr{background:var(--ds-primary-soft);border-radius:0}
+.ds-day.sel{background:var(--ds-primary);color:#fff;font-weight:600}
+.ds-day.sel.today::after{background:#fff}
+.ds-day:disabled{opacity:.35;cursor:not-allowed}
+.ds-cal-f{display:flex;justify-content:space-between;gap:8px;margin-top:8px;padding-top:8px;border-top:1px solid var(--ds-divider);grid-column:1/-1}
+
+/* ---------- Badge / Tag / Status / Avatar ---------- */
+.ds-badge{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap;border:1px solid transparent}
+.ds-badge.sm{height:20px;padding:0 7px;font-size:11px}
+.ds-badge.dot::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.ds-badge.v-neutral{background:var(--ds-surface-3);color:var(--ds-text-2)}
+.ds-badge.v-primary{background:var(--ds-primary-soft);color:var(--ds-primary)}
+.ds-badge.v-success{background:var(--ds-success-soft);color:var(--ds-success-text)}
+.ds-badge.v-warning{background:var(--ds-warning-soft);color:var(--ds-warning-text)}
+.ds-badge.v-error{background:var(--ds-error-soft);color:var(--ds-error-text)}
+.ds-badge.v-info{background:var(--ds-info-soft);color:var(--ds-info-text)}
+.ds-badge.v-accent{background:var(--ds-accent-soft);color:var(--ds-accent)}
+.ds-badge.solid.v-primary{background:var(--ds-primary);color:#fff}.ds-badge.solid.v-success{background:var(--ds-success);color:#fff}.ds-badge.solid.v-error{background:var(--ds-error);color:#fff}.ds-badge.solid.v-warning{background:var(--ds-warning);color:#fff}
+.ds-badge.v-outline{background:transparent;border-color:currentColor}
+.ds-count{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--ds-error);color:#fff;font-size:10.5px;font-weight:700}
+.ds-tag{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 6px 0 10px;border-radius:7px;background:var(--ds-surface-3);border:1px solid var(--ds-border);font-size:12.5px;color:var(--ds-text)}
+.ds-tag.nox{padding-right:10px}
+.ds-tag button{width:18px;height:18px;border:0;border-radius:5px;background:transparent;color:var(--ds-muted);display:grid;place-items:center;cursor:pointer}
+.ds-tag button:hover{background:var(--ds-active);color:var(--ds-text)}
+.ds-tag.v-primary{background:var(--ds-primary-soft);border-color:var(--ds-primary-soft-2);color:var(--ds-primary)}
+.ds-status{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--ds-text-2)}
+.ds-status i{width:8px;height:8px;border-radius:50%;background:var(--ds-subtle);box-shadow:0 0 0 3px var(--ds-surface-3)}
+.ds-status.v-success i{background:var(--ds-success);box-shadow:0 0 0 3px var(--ds-success-soft)}
+.ds-status.v-warning i{background:var(--ds-warning);box-shadow:0 0 0 3px var(--ds-warning-soft)}
+.ds-status.v-error i{background:var(--ds-error);box-shadow:0 0 0 3px var(--ds-error-soft)}
+.ds-status.v-info i{background:var(--ds-info);box-shadow:0 0 0 3px var(--ds-info-soft)}
+.ds-status.pulse i{animation:dsPulse 1.6s ease-in-out infinite}
+@keyframes dsPulse{50%{box-shadow:0 0 0 6px transparent}}
+.ds-av{position:relative;display:inline-grid;place-items:center;flex:none;border-radius:50%;background:var(--ds-primary-soft);color:var(--ds-primary);font-weight:700;overflow:visible}
+.ds-av img{width:100%;height:100%;border-radius:inherit;object-fit:cover}
+.ds-av.xs{width:24px;height:24px;font-size:10px}.ds-av.sm{width:32px;height:32px;font-size:12px}.ds-av.md{width:40px;height:40px;font-size:14px}.ds-av.lg{width:56px;height:56px;font-size:18px}
+.ds-av.sq{border-radius:10px}
+.ds-av .on{position:absolute;right:-1px;bottom:-1px;width:30%;height:30%;min-width:8px;min-height:8px;border-radius:50%;background:var(--ds-success);border:2px solid var(--ds-surface)}
+.ds-avg{display:inline-flex}
+.ds-avg .ds-av{box-shadow:0 0 0 2px var(--ds-surface)}
+.ds-avg .ds-av+.ds-av{margin-left:-8px}
+
+/* ---------- Card / Alert / Toast ---------- */
+.ds-card{background:var(--ds-surface);border:1px solid var(--ds-border);border-radius:var(--ds-r-xl);overflow:hidden}
+.ds-card.elev{border-color:transparent;box-shadow:var(--ds-sh-sm)}
+.ds-card.hov{transition:transform .18s var(--ds-ease),box-shadow .18s var(--ds-ease);cursor:pointer}
+.ds-card.hov:hover{transform:translateY(-2px);box-shadow:var(--ds-sh-md)}
+.ds-card-h{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:16px 18px 0}
+.ds-card-h b{font-size:15px;font-weight:600}
+.ds-card-h small{display:block;color:var(--ds-muted);font-size:12.5px;margin-top:2px}
+.ds-card-b{padding:14px 18px;color:var(--ds-text-2);font-size:13.5px}
+.ds-card-f{display:flex;justify-content:flex-end;gap:8px;padding:12px 18px;border-top:1px solid var(--ds-divider);background:var(--ds-surface-2)}
+.ds-stat{display:flex;flex-direction:column;gap:6px;padding:16px 18px}
+.ds-stat .sn{font-size:30px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.ds-alert{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:var(--ds-r-lg);border:1px solid;font-size:13.5px}
+.ds-alert .ai{margin-top:1px}
+.ds-alert .ab{flex:1;min-width:0}
+.ds-alert .ab b{display:block;font-weight:600;margin-bottom:2px}
+.ds-alert.v-info{background:var(--ds-info-soft);border-color:var(--ds-info-border);color:var(--ds-info-text)}
+.ds-alert.v-success{background:var(--ds-success-soft);border-color:var(--ds-success-border);color:var(--ds-success-text)}
+.ds-alert.v-warning{background:var(--ds-warning-soft);border-color:var(--ds-warning-border);color:var(--ds-warning-text)}
+.ds-alert.v-error{background:var(--ds-error-soft);border-color:var(--ds-error-border);color:var(--ds-error-text)}
+.ds-alert .ab span{color:var(--ds-text-2)}
+.ds-alert .ax{border:0;background:transparent;color:inherit;opacity:.7;cursor:pointer;border-radius:6px;width:24px;height:24px;display:grid;place-items:center}
+.ds-alert .ax:hover{opacity:1;background:rgba(127,127,127,.12)}
+.ds-toasts{position:fixed;right:24px;bottom:24px;z-index:2147483200;display:flex;flex-direction:column;gap:10px;width:360px}
+.ds-toast{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:var(--ds-r-lg);background:var(--ds-surface);border:1px solid var(--ds-border);box-shadow:var(--ds-sh-lg);animation:dsToast .22s var(--ds-ease)}
+.ds-toast .ti{width:28px;height:28px;flex:none;border-radius:8px;display:grid;place-items:center}
+.ds-toast.v-success .ti{background:var(--ds-success-soft);color:var(--ds-success-text)}
+.ds-toast.v-error .ti{background:var(--ds-error-soft);color:var(--ds-error-text)}
+.ds-toast.v-warning .ti{background:var(--ds-warning-soft);color:var(--ds-warning-text)}
+.ds-toast.v-info .ti{background:var(--ds-info-soft);color:var(--ds-info-text)}
+.ds-toast .tb{flex:1;min-width:0;font-size:13px;color:var(--ds-text-2)}
+.ds-toast .tb b{display:block;color:var(--ds-text);font-size:13.5px;font-weight:600}
+@keyframes dsToast{from{opacity:0;transform:translateY(10px) scale(.98)}}
+.ds-notif{display:flex;gap:12px;padding:12px 14px;border-bottom:1px solid var(--ds-divider);position:relative}
+.ds-notif:last-child{border-bottom:0}
+.ds-notif.unread{background:var(--ds-primary-soft)}
+.ds-notif .nb{flex:1;min-width:0;font-size:13px;color:var(--ds-text-2)}
+.ds-notif .nb b{color:var(--ds-text);font-weight:600}
+.ds-notif small{color:var(--ds-subtle);font-size:12px}
+
+/* ---------- Modal ---------- */
+.ds-ov{position:fixed;inset:0;z-index:2147483150;background:var(--ds-overlay);display:grid;place-items:center;padding:24px;animation:dsFade .16s ease}
+@keyframes dsFade{from{opacity:0}}
+.ds-modal{width:100%;max-width:520px;max-height:calc(100vh - 48px);display:flex;flex-direction:column;background:var(--ds-surface);border-radius:var(--ds-r-xl);box-shadow:var(--ds-sh-lg);animation:dsModal .2s var(--ds-ease);overflow:hidden}
+.ds-modal.sm{max-width:420px}.ds-modal.lg{max-width:760px}
+@keyframes dsModal{from{opacity:0;transform:translateY(12px) scale(.98)}}
+.ds-modal-h{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:18px 20px 14px;border-bottom:1px solid var(--ds-divider)}
+.ds-modal-h b{font-size:17px;font-weight:600}
+.ds-modal-h small{display:block;color:var(--ds-muted);font-size:13px;margin-top:2px}
+.ds-modal-b{padding:18px 20px;overflow:auto;display:flex;flex-direction:column;gap:14px}
+.ds-modal-f{display:flex;justify-content:flex-end;gap:8px;padding:14px 20px;border-top:1px solid var(--ds-divider);background:var(--ds-surface-2)}
+.ds-dialog{align-items:center;text-align:center;padding:26px 24px 8px}
+.ds-dialog .di{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;margin:0 auto 4px}
+.ds-dialog.v-danger .di{background:var(--ds-error-soft);color:var(--ds-error-text)}
+.ds-dialog.v-warning .di{background:var(--ds-warning-soft);color:var(--ds-warning-text)}
+
+/* ---------- Tabs / Accordion / Tooltip ---------- */
+.ds-tabs{display:flex;gap:4px;border-bottom:1px solid var(--ds-border)}
+.ds-tab{position:relative;height:42px;padding:0 14px;border:0;background:transparent;font-size:13.5px;font-weight:500;color:var(--ds-muted);cursor:pointer;display:inline-flex;align-items:center;gap:8px;border-radius:8px 8px 0 0}
+.ds-tab:hover{color:var(--ds-text)}
+.ds-tab.on{color:var(--ds-primary);font-weight:600}
+.ds-tab.on::after{content:"";position:absolute;left:10px;right:10px;bottom:-1px;height:2px;border-radius:2px;background:var(--ds-primary)}
+.ds-tab:focus-visible{outline:0;box-shadow:inset 0 0 0 2px var(--ds-focus)}
+.ds-seg{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--ds-border);border-radius:12px;background:var(--ds-surface)}
+.ds-seg .ds-tab{height:34px;border-radius:8px;padding:0 14px}
+.ds-seg .ds-tab.on{background:#3b82f6;color:#fff}
+.ds-seg .ds-tab.on::after{display:none}
+.ds-tab .ds-count{background:var(--ds-surface-3);color:var(--ds-text-2)}
+.ds-tab.on .ds-count{background:var(--ds-primary-soft);color:var(--ds-primary)}
+.ds-seg .ds-tab.on .ds-count{background:rgba(255,255,255,.25);color:#fff}
+.ds-acc{border:1px solid var(--ds-border);border-radius:var(--ds-r-lg);background:var(--ds-surface);overflow:hidden}
+.ds-acc-i+.ds-acc-i{border-top:1px solid var(--ds-divider)}
+.ds-acc-t{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:14px 16px;border:0;background:transparent;text-align:left;font-size:14px;font-weight:600;color:var(--ds-text);cursor:pointer}
+.ds-acc-t:hover{background:var(--ds-hover)}
+.ds-acc-c{padding:0 16px 14px;color:var(--ds-text-2);font-size:13.5px;animation:dsFade .18s ease}
+.ds-tip-w{position:relative;display:inline-flex}
+.ds-tip{position:absolute;z-index:50;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);white-space:nowrap;padding:6px 10px;border-radius:7px;background:#1e293b;color:#fff;font-size:12px;font-weight:500;pointer-events:none;animation:dsFade .12s ease}
+.ds-tip::after{content:"";position:absolute;left:50%;top:100%;margin-left:-5px;border:5px solid transparent;border-top-color:#1e293b}
+.ds-tip.bottom{bottom:auto;top:calc(100% + 8px)}
+.ds-tip.bottom::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:#1e293b}
+.ds-popover{width:300px;padding:14px}
+.ds-popover b{display:block;font-size:14px;margin-bottom:4px}
+.ds-popover p{margin:0 0 12px;color:var(--ds-text-2);font-size:13px}
+
+/* ---------- Breadcrumbs / Pagination ---------- */
+.ds-bc{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ds-muted);flex-wrap:wrap}
+.ds-bc a{color:var(--ds-muted);text-decoration:none;cursor:pointer;border-radius:4px}
+.ds-bc a:hover{color:var(--ds-primary)}
+.ds-bc .cur{color:var(--ds-text);font-weight:600}
+.ds-pg{display:flex;align-items:center;gap:4px}
+.ds-pg button{min-width:34px;height:34px;padding:0 8px;border:1px solid transparent;border-radius:8px;background:transparent;font-size:13px;font-weight:500;color:var(--ds-text-2);cursor:pointer;display:grid;place-items:center}
+.ds-pg button:hover:not(:disabled){background:var(--ds-hover);border-color:var(--ds-border)}
+.ds-pg button.on{background:var(--ds-primary);color:#fff;font-weight:600}
+.ds-pg button:disabled{opacity:.4;cursor:not-allowed}
+.ds-pg .gap{width:24px;text-align:center;color:var(--ds-subtle)}
+
+/* ---------- Table ---------- */
+.ds-tb-wrap{background:var(--ds-surface);border:1px solid var(--ds-border);border-radius:var(--ds-r-xl);overflow:visible}
+.ds-tb-bar{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--ds-divider);flex-wrap:wrap}
+.ds-tb-bar .grow{flex:1}
+.ds-tb-sel{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--ds-primary-soft);border-bottom:1px solid var(--ds-primary-soft-2);font-size:13px;color:var(--ds-primary);font-weight:600}
+.ds-tb-scroll{overflow:visible}
+.ds-tb thead th:first-child{border-top-left-radius:var(--ds-r-xl)}.ds-tb thead th:last-child{border-top-right-radius:var(--ds-r-xl)}
+.ds-tb-bar+.ds-tb-scroll .ds-tb thead th,.ds-tb-sel+.ds-tb-scroll .ds-tb thead th{border-radius:0}
+.ds-tb{width:100%;border-collapse:separate;border-spacing:0;font-size:13.5px}
+.ds-tb th{position:sticky;top:0;z-index:1;height:44px;padding:0 14px;background:var(--ds-surface-2);border-bottom:1px solid var(--ds-border);text-align:left;font-size:12px;font-weight:600;color:var(--ds-muted);white-space:nowrap}
+.ds-tb th.sortable{cursor:pointer;user-select:none}
+.ds-tb th.sortable:hover{color:var(--ds-text)}
+.ds-tb th .si{display:inline-flex;vertical-align:middle;margin-left:4px;opacity:.5}
+.ds-tb th.sorted{color:var(--ds-text)}
+.ds-tb th.sorted .si{opacity:1;color:var(--ds-primary)}
+.ds-tb td{height:56px;padding:8px 14px;border-bottom:1px solid var(--ds-divider);color:var(--ds-text);vertical-align:middle}
+.ds-tb tr:last-child td{border-bottom:0}
+.ds-tb tbody tr{transition:background-color .12s}
+.ds-tb tbody tr:hover td{background:var(--ds-hover)}
+.ds-tb tbody tr.sel td{background:var(--ds-primary-soft)}
+.ds-tb .w-cb{width:48px;padding-right:0}
+.ds-tb .w-act{width:56px;text-align:right}
+.ds-tb td small{display:block;color:var(--ds-muted);font-size:12px}
+.ds-tb .num{font-variant-numeric:tabular-nums;font-weight:600}
+.ds-tb-f{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;border-top:1px solid var(--ds-divider);font-size:13px;color:var(--ds-muted)}
+.ds-tb.compact td{height:42px}
+
+/* ---------- Empty state ---------- */
+.ds-empty{display:flex;flex-direction:column;align-items:center;gap:8px;padding:36px 20px;text-align:center}
+.ds-empty .ei{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:var(--ds-surface-3);color:var(--ds-muted);margin-bottom:4px}
+.ds-empty b{font-size:15px;font-weight:600}
+.ds-empty p{margin:0 0 6px;color:var(--ds-muted);font-size:13px;max-width:360px}
+
+/* ---------- App shell demo (Sidebar / Header / Nav) ---------- */
+.ds-shell{display:grid;grid-template-columns:64px 200px 1fr;height:340px;border:1px solid var(--ds-border);border-radius:var(--ds-r-xl);overflow:hidden;background:var(--ds-bg)}
+.ds-rail{display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 0;background:var(--ds-surface);border-right:1px solid var(--ds-border)}
+.ds-rail-i{width:40px;height:40px;border:0;border-radius:12px;background:transparent;color:var(--ds-muted);display:grid;place-items:center;cursor:pointer;position:relative}
+.ds-rail-i:hover{background:var(--ds-hover);color:var(--ds-text)}
+.ds-rail-i.on{background:var(--ds-accent-grad);color:#fff;box-shadow:0 6px 16px rgba(79,70,229,.3)}
+.ds-sub{padding:14px 10px;background:var(--ds-surface);border-right:1px solid var(--ds-border);display:flex;flex-direction:column;gap:2px}
+.ds-sub b{font-size:13.5px;padding:2px 10px 10px}
+.ds-nav-i{display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;border:0;border-radius:9px;background:transparent;font-size:13.5px;color:var(--ds-text-2);cursor:pointer;text-align:left}
+.ds-nav-i:hover{background:var(--ds-hover);color:var(--ds-text)}
+.ds-nav-i.on{background:var(--ds-primary-soft);color:var(--ds-primary);font-weight:600}
+.ds-nav-h{padding:10px 10px 4px;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ds-subtle)}
+.ds-hdr{display:flex;align-items:center;justify-content:space-between;gap:12px;height:60px;padding:0 18px;background:var(--ds-surface);border-bottom:1px solid var(--ds-border)}
+.ds-hdr .t small{display:block;font-size:11.5px;color:var(--ds-muted)}
+.ds-hdr .t b{font-size:16px}
+.ds-shell-main{display:flex;flex-direction:column;min-width:0}
+.ds-shell-body{padding:16px 18px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+
+/* ---------- Token jadvali ---------- */
+.ds-tok{width:100%;border-collapse:collapse;font-size:13px}
+.ds-tok th,.ds-tok td{padding:9px 12px;border-bottom:1px solid var(--ds-divider);text-align:left;vertical-align:middle}
+.ds-tok th{font-size:11.5px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--ds-subtle);background:var(--ds-surface-2)}
+.ds-tok code{font-family:var(--ds-font-mono);font-size:12px;color:var(--ds-text-2)}
+.ds-tok .vis{display:inline-block;vertical-align:middle}
+.ds-kbd{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border:1px solid var(--ds-border);border-bottom-width:2px;border-radius:6px;background:var(--ds-surface);font-family:var(--ds-font-mono);font-size:11px;color:var(--ds-text-2)}
+.ds-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (prefers-reduced-motion:reduce){.ds-root *{animation:none!important;transition:none!important}}
+
 </style>
 </helmet>
 
@@ -4006,8 +4446,8 @@ body{overflow:visible}
 </div>
 </sc-if>
 <div class="l-app {{appCls}}">
-  <aside class="l-rail"><div class="l-logo"><img src="assets/logo.png" alt="O'zbekiston Respublikasi Oliy sudi" width="40" height="40"></div><button class="{{railDashCls}}" aria-label="Bosh sahifa" title="Bosh sahifa" aria-current="{{railDashCur}}" onClick="{{goDash}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"></path></svg></button><sc-if value="{{railShowDevon}}" hint-placeholder-val="{{ false }}"><button class="{{railDevonCls}}" title="Devonxona · Ro'yxatga olish" aria-label="Devonxona" aria-current="{{railDevonCur}}" onClick="{{goDevon}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="4"></circle><path d="M2 21a7 7 0 0 1 14 0M19 8v6M16 11h6"></path></svg></button></sc-if><sc-if value="{{railShowIsh}}" hint-placeholder-val="{{ true }}"><div class="l-rgrp"><button class="{{railIshCls}}" aria-label="Ishlar" aria-haspopup="menu" onClick="{{goList}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M4 7h16M6 7l-3 7a3 3 0 0 0 6 0zM18 7l-3 7a3 3 0 0 0 6 0zM8 21h8"></path></svg></button><div class="l-fly" role="menu"><div class="l-flyin"><b style="font-size: 13px; padding: 4px 10px 8px; display: block; color: #64748b">Da'vo tartibida</b><sc-for list="{{lInsts}}" as="i" hint-placeholder-count="6"><button class="{{i.snCls}}" role="menuitem" onClick="{{i.pick}}">{{i.label}}</button></sc-for></div></div></div></sc-if><button class="l-ri" style="margin-top: auto" title="Tizimdan chiqish" aria-label="Tizimdan chiqish" onClick="{{lgLogout}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"></path></svg></button><button class="{{pfBtnCls}}" aria-haspopup="dialog" aria-expanded="{{pfStr}}" title="{{pfName}} · {{pfRole}}" aria-label="Profil va sozlamalar: {{pfName}}" onClick="{{pfToggle}}"><span class="pf-av">{{pfIni}}</span><span class="pf-dot"></span></button></aside>
-  <aside class="l-sub"><button class="l-subhit" tabindex="-1" aria-hidden="true" title="Yon menyuni yopish" onClick="{{subToggle}}"></button><sc-if value="{{isDash}}" hint-placeholder-val="{{ false }}"><b class="l-sub-t1" title="{{dbCabinet}}">{{dbCabinet}}</b><small class="l-sub-t2" title="{{dbUserLine}}">{{dbUserLine}}</small><button class="l-sn on" aria-current="page">Bosh sahifa</button><sc-if value="{{railShowIsh}}" hint-placeholder-val="{{ true }}"><button class="l-sn" onClick="{{goList}}">Ishlar ro'yxati</button></sc-if><sc-if value="{{railShowDevon}}" hint-placeholder-val="{{ false }}"><button class="l-sn" onClick="{{goDevon}}">Ro'yxatga olish</button></sc-if></sc-if><sc-if value="{{regSubShow}}" hint-placeholder-val="{{ false }}"><b style="font-size: 14px; padding: 4px 12px 14px; display: block">Devonxona</b><button class="{{regDevCls}}" onClick="{{goDevon}}">Ro'yxatga olish</button><div class="l-sn-sub"><span class="l-sn-h" title="Ro'yxatga olingan ishlar">Ro'yxatga olingan ishlar</span><button class="{{regListCls}}" onClick="{{goRegList}}">Da'vo tartibida</button></div></sc-if><sc-if value="{{showListSub}}" hint-placeholder-val="{{ true }}"><b style="font-size: 14px; padding: 4px 12px 14px; display: block">Da'vo tartibida</b><sc-for list="{{lInsts}}" as="i" hint-placeholder-count="6"><button class="{{i.snCls}}" onClick="{{i.pick}}">{{i.label}}</button></sc-for></sc-if><sc-if value="{{isCasePage}}" hint-placeholder-val="{{ false }}"><button class="l-sn" style="display: flex; align-items: center; gap: 8px; color: #475569" onClick="{{caseClose}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>{{caseBackLbl}}</button><div class="kv" style="padding: 10px 12px 12px; border-bottom: 1px solid #eef1f5; margin-bottom: 6px"><small>Ish</small><b style="font-size: 14px">{{caseNum}}</b></div><nav class="l-casenav" aria-label="Ish bo'limlari"><sc-for list="{{navGroups}}" as="g" hint-placeholder-count="8"><div class="l-cg">{{g.title}}</div><sc-for list="{{g.items}}" as="it" hint-placeholder-count="3"><a class="l-ci {{it.cls}}" href="#{{it.id}}" onClick="{{it.go}}" aria-current="{{it.current}}">{{it.label}}</a></sc-for></sc-for></nav></sc-if></aside><button class="l-subclose" title="Yon menyuni yopish" aria-label="Yon menyuni yopish" aria-expanded="true" onClick="{{subToggle}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button>
+  <aside class="l-rail"><div class="l-logo"><img src="assets/logo.png" alt="O'zbekiston Respublikasi Oliy sudi" width="40" height="40"></div><button class="{{railDashCls}}" aria-label="Bosh sahifa" title="Bosh sahifa" aria-current="{{railDashCur}}" onClick="{{goDash}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"></path></svg></button><sc-if value="{{railShowDevon}}" hint-placeholder-val="{{ false }}"><button class="{{railDevonCls}}" title="Devonxona · Ro'yxatga olish" aria-label="Devonxona" aria-current="{{railDevonCur}}" onClick="{{goDevon}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="4"></circle><path d="M2 21a7 7 0 0 1 14 0M19 8v6M16 11h6"></path></svg></button></sc-if><sc-if value="{{railShowIsh}}" hint-placeholder-val="{{ true }}"><div class="l-rgrp"><button class="{{railIshCls}}" aria-label="Ishlar" aria-haspopup="menu" onClick="{{goList}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M4 7h16M6 7l-3 7a3 3 0 0 0 6 0zM18 7l-3 7a3 3 0 0 0 6 0zM8 21h8"></path></svg></button><div class="l-fly" role="menu"><div class="l-flyin"><b style="font-size: 13px; padding: 4px 10px 8px; display: block; color: #64748b">Da'vo tartibida</b><sc-for list="{{lInsts}}" as="i" hint-placeholder-count="6"><button class="{{i.snCls}}" role="menuitem" onClick="{{i.pick}}">{{i.label}}</button></sc-for></div></div></div></sc-if><button class="{{railDsCls}}" title="Design System · UI kutubxona" aria-label="Design System" aria-current="{{railDsCur}}" onClick="{{goDs}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a10 10 0 1 1 10-10c0 3-3 3-5 3h-2a2 2 0 0 0-1 3.7A2 2 0 0 1 12 22z"></path><path d="M7.5 11h.01M10 7h.01M15 7h.01M17.5 11h.01"></path></svg></button><button class="l-ri" style="margin-top: auto" title="Tizimdan chiqish" aria-label="Tizimdan chiqish" onClick="{{lgLogout}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"></path></svg></button><button class="{{pfBtnCls}}" aria-haspopup="dialog" aria-expanded="{{pfStr}}" title="{{pfName}} · {{pfRole}}" aria-label="Profil va sozlamalar: {{pfName}}" onClick="{{pfToggle}}"><span class="pf-av">{{pfIni}}</span><span class="pf-dot"></span></button></aside>
+  <aside class="l-sub"><button class="l-subhit" tabindex="-1" aria-hidden="true" title="Yon menyuni yopish" onClick="{{subToggle}}"></button><sc-if value="{{isDs}}" hint-placeholder-val="{{ false }}"><b class="l-sub-t1">Design System</b><small class="l-sub-t2">UI komponentlar kutubxonasi</small><sc-for list="{{dsCats}}" as="c" hint-placeholder-count="6"><button class="{{c.cls}}" onClick="{{c.go}}">{{c.label}}</button></sc-for></sc-if><sc-if value="{{isDash}}" hint-placeholder-val="{{ false }}"><b class="l-sub-t1" title="{{dbCabinet}}">{{dbCabinet}}</b><small class="l-sub-t2" title="{{dbUserLine}}">{{dbUserLine}}</small><button class="l-sn on" aria-current="page">Bosh sahifa</button><sc-if value="{{railShowIsh}}" hint-placeholder-val="{{ true }}"><button class="l-sn" onClick="{{goList}}">Ishlar ro'yxati</button></sc-if><sc-if value="{{railShowDevon}}" hint-placeholder-val="{{ false }}"><button class="l-sn" onClick="{{goDevon}}">Ro'yxatga olish</button></sc-if></sc-if><sc-if value="{{regSubShow}}" hint-placeholder-val="{{ false }}"><b style="font-size: 14px; padding: 4px 12px 14px; display: block">Devonxona</b><button class="{{regDevCls}}" onClick="{{goDevon}}">Ro'yxatga olish</button><div class="l-sn-sub"><span class="l-sn-h" title="Ro'yxatga olingan ishlar">Ro'yxatga olingan ishlar</span><button class="{{regListCls}}" onClick="{{goRegList}}">Da'vo tartibida</button></div></sc-if><sc-if value="{{showListSub}}" hint-placeholder-val="{{ true }}"><b style="font-size: 14px; padding: 4px 12px 14px; display: block">Da'vo tartibida</b><sc-for list="{{lInsts}}" as="i" hint-placeholder-count="6"><button class="{{i.snCls}}" onClick="{{i.pick}}">{{i.label}}</button></sc-for></sc-if><sc-if value="{{isCasePage}}" hint-placeholder-val="{{ false }}"><button class="l-sn" style="display: flex; align-items: center; gap: 8px; color: #475569" onClick="{{caseClose}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>{{caseBackLbl}}</button><div class="kv" style="padding: 10px 12px 12px; border-bottom: 1px solid #eef1f5; margin-bottom: 6px"><small>Ish</small><b style="font-size: 14px">{{caseNum}}</b></div><nav class="l-casenav" aria-label="Ish bo'limlari"><sc-for list="{{navGroups}}" as="g" hint-placeholder-count="8"><div class="l-cg">{{g.title}}</div><sc-for list="{{g.items}}" as="it" hint-placeholder-count="3"><a class="l-ci {{it.cls}}" href="#{{it.id}}" onClick="{{it.go}}" aria-current="{{it.current}}">{{it.label}}</a></sc-for></sc-for></nav></sc-if></aside><button class="l-subclose" title="Yon menyuni yopish" aria-label="Yon menyuni yopish" aria-expanded="true" onClick="{{subToggle}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button>
   <button class="l-subopen" title="Yon menyuni ochish" aria-label="Yon menyuni ochish" aria-expanded="false" onClick="{{subToggle}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
   <div class="l-main">
     <div class="l-top">
@@ -4029,6 +4469,7 @@ body{overflow:visible}
         </sc-if>
       </div></div>
     </div>
+    <sc-if value="{{isDs}}" hint-placeholder-val="{{ false }}"><div class="ds-host" id="ds-host"></div></sc-if>
     <sc-if value="{{isListPage}}" hint-placeholder-val="{{ true }}">
     <div class="l-tabrow"><div class="l-tabs seg-tabs" role="tablist"><sc-for list="{{lTabs}}" as="t" hint-placeholder-count="8"><button class="{{t.cls}}" role="tab" aria-selected="{{t.sel}}" onClick="{{t.pick}}">{{t.label}}<sc-if value="{{t.hasN}}" hint-placeholder-val="{{ false }}"><span class="l-tabn">{{t.n}}</span></sc-if></button></sc-for></div><button type="button" class="{{lfF2Cls}}" aria-expanded="{{lfFStr}}" aria-controls="lf-panel" aria-label="Filtrlar" title="Filtrlar" onClick="{{lfFToggle}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M7 12h10M10 17h4"></path></svg><span class="lf-lbl">Filtrlar</span><sc-if value="{{lfFHasN}}" hint-placeholder-val="{{ false }}"><span class="lf-n">{{lfFN}}</span></sc-if><svg class="i s lf-fchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button></div>
     <div class="l-card">
@@ -7282,6 +7723,546 @@ function dxPad(n) { return (n < 10 ? "0" : "") + n; }
 function dxToday() { var d = new Date(); return dxPad(d.getDate()) + "." + dxPad(d.getMonth() + 1) + "." + d.getFullYear(); }
 function dxTodayIso() { var d = new Date(); return d.getFullYear() + "-" + dxPad(d.getMonth() + 1) + "-" + dxPad(d.getDate()); }
 
+// ================= Raqamli sud — Design System: React komponentlar kutubxonasi =================
+// Barcha komponentlar haqiqiy React komponentlari (window.React). Stillar faqat tokenlardan (.ds-root CSS o'zgaruvchilari).
+// Variant va o'lcham props orqali boshqariladi: <Button variant="primary" size="md" loading />
+var RSDS = (function () {
+  var R = function () { return window.React; };
+  var h = function () { return window.React.createElement.apply(null, arguments); };
+  var F = function () { var a = [window.React.Fragment, null]; for (var i = 0; i < arguments.length; i++) a.push(arguments[i]); return h.apply(null, a); };
+  var useState = function (v) { return window.React.useState(v); };
+  var useEffect = function (f, d) { return window.React.useEffect(f, d); };
+  var useRef = function (v) { return window.React.useRef(v); };
+  var useMemo = function (f, d) { return window.React.useMemo(f, d); };
+  var copyText = function (t) { try { var pr = navigator.clipboard && navigator.clipboard.writeText(t); if (pr && pr.catch) pr.catch(function () {}); } catch (e) {} };
+  var cx = function () { var o = []; for (var i = 0; i < arguments.length; i++) { var a = arguments[i]; if (!a) continue; if (typeof a === "string") o.push(a); else for (var k in a) if (a[k]) o.push(k); } return o.join(" "); };
+
+  // ---------- Design tokenlar (yagona manba; CSS o'zgaruvchilari bilan bir xil) ----------
+  var TOKENS = {
+    color: {
+      primary: { DEFAULT: "#2563eb", hover: "#1d4ed8", active: "#1e40af", soft: "#eff4ff", "soft-2": "#dbe6ff" },
+      secondary: { DEFAULT: "#475569", hover: "#334155", soft: "#f1f5f9" },
+      accent: { DEFAULT: "#4f46e5", soft: "#eef2ff", gradient: "linear-gradient(135deg,#4f7cff,#4f46e5)" },
+      background: "#f4f4f5", surface: { DEFAULT: "#ffffff", 2: "#f8fafc", 3: "#f1f5f9" },
+      border: { DEFAULT: "#e2e8f0", strong: "#d5dbe4", divider: "#eef1f5" },
+      text: { primary: "#0f172a", secondary: "#475569", muted: "#64748b", subtle: "#94a3b8" },
+      success: { DEFAULT: "#16a34a", text: "#15803d", soft: "#ecfdf3", border: "#bbf0cf" },
+      warning: { DEFAULT: "#d97706", text: "#b45309", soft: "#fff7e6", border: "#fde7c2" },
+      error: { DEFAULT: "#dc2626", text: "#b91c1c", soft: "#fef2f2", border: "#fecaca" },
+      info: { DEFAULT: "#2563eb", text: "#1d4ed8", soft: "#eef4ff", border: "#c7d7fe" },
+      state: { hover: "#f8fafc", active: "#eef2f7", focus: "rgba(37,99,235,.20)", "disabled-bg": "#f1f5f9", "disabled-text": "#94a3b8" }
+    },
+    font: { family: '"SF Pro Text","SF Pro Display",-apple-system,Inter,system-ui,sans-serif', mono: 'ui-monospace,"SF Mono",Menlo,monospace' },
+    fontSize: { h1: ["32px", "40px", 700], h2: ["26px", "34px", 700], h3: ["22px", "30px", 600], h4: ["18px", "26px", 600], h5: ["16px", "24px", 600], h6: ["14px", "20px", 600], "body-lg": ["16px", "26px", 400], "body-md": ["14px", "22px", 400], "body-sm": ["13px", "20px", 400], label: ["13px", "18px", 500], caption: ["12px", "16px", 400], helper: ["12px", "16px", 400] },
+    spacing: { 0.5: "2px", 1: "4px", 1.5: "6px", 2: "8px", 2.5: "10px", 3: "12px", 4: "16px", 5: "20px", 6: "24px", 8: "32px", 10: "40px", 12: "48px" },
+    radius: { xs: "4px", sm: "6px", md: "8px", lg: "12px", xl: "16px", "2xl": "20px", full: "999px" },
+    shadow: { xs: "0 1px 2px rgba(15,23,42,.05)", sm: "0 1px 2px rgba(15,23,42,.04), 0 4px 14px rgba(15,23,42,.05)", md: "0 8px 24px rgba(15,23,42,.08)", lg: "0 18px 48px rgba(15,23,42,.16)", focus: "0 0 0 3px rgba(37,99,235,.20)" },
+    borderWidth: { DEFAULT: "1px", 1.5: "1.5px", 2: "2px" },
+    size: { control: { sm: "32px", md: "38px", lg: "44px" }, icon: { sm: "14px", md: "16px", lg: "20px" }, avatar: { xs: "24px", sm: "32px", md: "40px", lg: "56px" } }
+  };
+
+  // ---------- Ikonkalar ----------
+  var P = {
+    check: "M5 12l5 5 9-10", x: "M6 6l12 12M18 6L6 18", plus: "M12 5v14M5 12h14", minus: "M5 12h14", search: "M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14zM20 20l-4-4",
+    chev: "M6 9l6 6 6-6", chevR: "M9 6l6 6-6 6", chevL: "M15 6l-6 6 6 6", chevU: "M6 15l6-6 6 6", eye: "M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z", eyeOff: "M3 3l18 18M10.6 6.1A10 10 0 0 1 12 6c6.5 0 10 6 10 6a17 17 0 0 1-3 3.6M6.6 6.6C3.9 8.3 2 12 2 12s3.5 6 10 6a9.6 9.6 0 0 0 4.4-1.1M9.9 9.9a3 3 0 0 0 4.2 4.2",
+    cal: "M4 6h16v14H4zM8 3v4M16 3v4M4 10h16", upload: "M12 16V4M7 9l5-5 5 5M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3", file: "M7 3h7l5 5v13H7zM14 3v5h5", trash: "M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3",
+    edit: "M4 20h4L19 9l-4-4L4 16z", more: "M12 6h.01M12 12h.01M12 18h.01", info: "M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18zM12 11v5M12 8h.01", ok: "M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18zM8 12l3 3 5-6",
+    warn: "M12 3l10 18H2zM12 10v4M12 17h.01", err: "M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18zM9 9l6 6M15 9l-6 6", bell: "M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 21a2 2 0 0 0 4 0",
+    home: "M3 11l9-8 9 8M5 10v10h14V10", user: "M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0", users: "M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM2 21a7 7 0 0 1 14 0M16 3.1a4 4 0 0 1 0 7.8M22 21a7 7 0 0 0-5-6.7",
+    scale: "M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0zM17 7l-3 7a3 3 0 0 0 6 0zM8 21h8", folder: "M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z", filter: "M4 6h16M7 12h10M10 18h4",
+    download: "M12 4v12M7 11l5 5 5-5M4 20h16", copy: "M9 9h11v11H9zM5 15H4V4h11v1", sun: "M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4", moon: "M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z",
+    inbox: "M3 13h5l2 3h4l2-3h5M5 5h14l2 8v6H3v-6z", sort: "M8 9l4-4 4 4M16 15l-4 4-4-4", arrowR: "M5 12h14M13 6l6 6-6 6", send: "M22 2L11 13M22 2l-7 20-4-9-9-4z", lock: "M5 11h14v10H5zM8 11V7a4 4 0 0 1 8 0v4", hash: "M4 9h16M4 15h16M10 3L8 21M16 3l-2 18", palette: "M12 22a10 10 0 1 1 10-10c0 3-3 3-5 3h-2a2 2 0 0 0-1 3.7A2 2 0 0 1 12 22zM7.5 11h.01M10 7h.01M15 7h.01M17.5 11h.01"
+  };
+  function Icon(p) { return h("svg", { className: cx("ds-i", p.size), viewBox: "0 0 24 24", "aria-hidden": "true", style: p.style }, h("path", { d: P[p.name] || p.name })); }
+
+  // ---------- Umumiy: tashqariga bosilganda yopish ----------
+  function useOutside(ref, open, close) {
+    useEffect(function () {
+      if (!open) return;
+      var f = function (e) { if (ref.current && !ref.current.contains(e.target)) close(); };
+      var k = function (e) { if (e.key === "Escape") close(); };
+      document.addEventListener("mousedown", f); document.addEventListener("keydown", k);
+      return function () { document.removeEventListener("mousedown", f); document.removeEventListener("keydown", k); };
+    }, [open]);
+  }
+
+  // ================= 3. Buttons =================
+  function Spinner(p) { return h("span", { className: cx("ds-spinner", p.size || "md"), role: "status", "aria-label": p.label || "Yuklanmoqda", style: p.color ? { color: p.color } : null }); }
+  function Button(p) {
+    var v = p.variant || "primary", s = p.size || "md", icon = p.iconOnly;
+    var cls = cx("ds-btn", "v-" + v, s, { icon: icon, loading: p.loading, "is-hover": p.forceState === "hover", "is-active": p.forceState === "active", focus: p.forceState === "focus" }, p.className);
+    var style = p.forceState === "focus" ? Object.assign({ boxShadow: "0 0 0 3px var(--ds-focus)" }, p.style) : p.style;
+    var ic = function (n) { return n ? h(Icon, { name: n, size: s === "lg" ? "" : "sm" }) : null; };
+    return h("button", { type: p.type || "button", className: cls, style: style, disabled: p.disabled || p.loading, onClick: p.onClick, title: p.title, "aria-label": p["aria-label"] || (icon ? p.title : undefined), "aria-busy": p.loading ? "true" : undefined },
+      h("span", { className: "ds-btn-l" }, ic(p.iconLeft || (icon ? p.icon : null)), icon ? null : p.children, ic(p.iconRight)),
+      p.loading ? h("span", { className: "ds-spin-abs" }, h(Spinner, { size: "sm" })) : null);
+  }
+  function IconButton(p) { return h(Button, Object.assign({ variant: "ghost" }, p, { iconOnly: true })); }
+
+  // ================= 4. Forms =================
+  function Field(p) {
+    return h("div", { className: "ds-field", style: p.style },
+      p.label ? h("label", { htmlFor: p.id }, p.label, p.required ? h("span", { className: "ds-req" }, "*") : null) : null,
+      p.children,
+      (p.error || p.helper || p.counter) ? h("div", { className: "ds-fmeta" },
+        p.error ? h("span", { className: "ds-err-t" }, h(Icon, { name: "err", size: "sm" }), p.error) : h("span", { className: "ds-helper" }, p.helper || ""),
+        p.counter ? h("span", { className: "ds-helper" }, p.counter) : null) : null);
+  }
+  function Input(p) {
+    var st = useState(p.defaultValue || ""), val = p.value != null ? p.value : st[0], setVal = function (v) { st[1](v); p.onChange && p.onChange(v); };
+    var show = useState(false), t = p.type || "text", real = t === "password" ? (show[0] ? "text" : "password") : (t === "search" ? "text" : t);
+    var inc = function (d) { var n = (parseFloat(val) || 0) + d * (p.step || 1); if (p.min != null) n = Math.max(p.min, n); if (p.max != null) n = Math.min(p.max, n); setVal(String(n)); };
+    var ctl = h("div", { className: cx("ds-ctl", p.size, { err: p.error, dis: p.disabled, focus: p.forceFocus }) },
+      t === "search" ? h("span", { className: "ds-adorn" }, h(Icon, { name: "search" })) : (p.icon ? h("span", { className: "ds-adorn" }, h(Icon, { name: p.icon })) : null),
+      p.prefix ? h("span", { className: "ds-adorn", style: { fontSize: 13 } }, p.prefix) : null,
+      h("input", { id: p.id, type: real, value: val, placeholder: p.placeholder, disabled: p.disabled, inputMode: t === "number" ? "decimal" : undefined, "aria-invalid": p.error ? "true" : undefined, onChange: function (e) { setVal(e.target.value); }, onKeyDown: function (e) { if (t === "number" && (e.key === "ArrowUp" || e.key === "ArrowDown")) { e.preventDefault(); inc(e.key === "ArrowUp" ? 1 : -1); } } }),
+      p.suffix ? h("span", { className: "ds-adorn", style: { fontSize: 13 } }, p.suffix) : null,
+      t === "search" && val ? h("button", { type: "button", className: "ds-ib", "aria-label": "Tozalash", onClick: function () { setVal(""); } }, h(Icon, { name: "x", size: "sm" })) : null,
+      t === "password" ? h("button", { type: "button", className: "ds-ib", "aria-label": show[0] ? "Yashirish" : "Ko'rsatish", onClick: function () { show[1](!show[0]); } }, h(Icon, { name: show[0] ? "eyeOff" : "eye", size: "sm" })) : null,
+      t === "number" && !p.disabled ? h("span", { className: "ds-step" }, h("button", { type: "button", tabIndex: -1, "aria-label": "Oshirish", onClick: function () { inc(1); } }, h(Icon, { name: "chevU", size: "sm" })), h("button", { type: "button", tabIndex: -1, "aria-label": "Kamaytirish", onClick: function () { inc(-1); } }, h(Icon, { name: "chev", size: "sm" }))) : null);
+    return p.label || p.helper || p.error ? h(Field, { id: p.id, label: p.label, required: p.required, helper: p.helper, error: p.error, style: p.style }, ctl) : ctl;
+  }
+  function Textarea(p) {
+    var st = useState(p.defaultValue || ""), max = p.maxLength;
+    return h(Field, { id: p.id, label: p.label, required: p.required, helper: p.helper, error: p.error, counter: max ? st[0].length + " / " + max : null },
+      h("textarea", { id: p.id, className: cx("ds-ta", { err: p.error }), rows: p.rows || 4, maxLength: max, placeholder: p.placeholder, disabled: p.disabled, value: st[0], onChange: function (e) { st[1](e.target.value); } }));
+  }
+  function Select(p) {
+    var o = useState(false), open = o[0], setOpen = o[1], st = useState(p.defaultValue || ""), val = p.value != null ? p.value : st[0];
+    var q = useState(""), ref = useRef(null); useOutside(ref, open, function () { setOpen(false); });
+    var opts = p.options || [], cur = opts.filter(function (x) { return x.value === val; })[0];
+    var list = p.searchable && q[0] ? opts.filter(function (x) { return x.label.toLowerCase().indexOf(q[0].toLowerCase()) >= 0; }) : opts;
+    var pick = function (v) { st[1](v); p.onChange && p.onChange(v); setOpen(false); q[1](""); };
+    var btn = h("div", { ref: ref, style: { position: "relative" }, className: open ? "ds-open" : "" },
+      h("button", { type: "button", className: cx("ds-ctl ds-sel-btn", p.size, { err: p.error, dis: p.disabled, focus: open }), disabled: p.disabled, "aria-haspopup": "listbox", "aria-expanded": open ? "true" : "false", onClick: function () { setOpen(!open); } },
+        p.icon ? h(Icon, { name: p.icon }) : null,
+        h("span", { className: cx("val", { ph: !cur }) }, cur ? cur.label : (p.placeholder || "Tanlang")), h(Icon, { name: "chev", size: "sm", style: { flex: "none" } })),
+      open ? h("div", { className: "ds-pop", role: "listbox" },
+        p.searchable ? h("div", { className: "ds-pop-search" }, h(Input, { type: "search", size: "sm", placeholder: "Qidirish…", value: q[0], onChange: q[1] })) : null,
+        list.length ? list.map(function (x) { return h("button", { key: x.value, type: "button", role: "option", "aria-selected": x.value === val ? "true" : "false", className: cx("ds-opt", { on: x.value === val }), disabled: x.disabled, onClick: function () { pick(x.value); } }, x.icon ? h(Icon, { name: x.icon }) : null, x.label, x.value === val ? h("span", { className: "ck" }, h(Icon, { name: "check", size: "sm" })) : null); })
+          : h("div", { className: "ds-helper", style: { padding: "10px" } }, "Hech narsa topilmadi")) : null);
+    return h(Field, { label: p.label, required: p.required, helper: p.helper, error: p.error }, btn);
+  }
+  function MultiSelect(p) {
+    var o = useState(false), open = o[0], setOpen = o[1], st = useState(p.defaultValue || []), ref = useRef(null); useOutside(ref, open, function () { setOpen(false); });
+    var opts = p.options || [], val = st[0];
+    var tog = function (v) { st[1](val.indexOf(v) >= 0 ? val.filter(function (x) { return x !== v; }) : val.concat([v])); };
+    return h(Field, { label: p.label, helper: p.helper, error: p.error },
+      h("div", { ref: ref, style: { position: "relative" }, className: open ? "ds-open" : "" },
+        h("div", { className: cx("ds-ctl ds-ms", { focus: open, err: p.error }), role: "button", tabIndex: 0, "aria-expanded": open ? "true" : "false", onClick: function () { setOpen(!open); }, onKeyDown: function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setOpen(!open); } } },
+          val.length ? val.map(function (v) { var x = opts.filter(function (y) { return y.value === v; })[0]; return h(Tag, { key: v, variant: "primary", onRemove: function () { tog(v); } }, x ? x.label : v); }) : h("span", { className: "ph" }, p.placeholder || "Bir nechtasini tanlang"),
+          h("span", { style: { marginLeft: "auto", display: "inline-flex" } }, h(Icon, { name: "chev", size: "sm" }))),
+        open ? h("div", { className: "ds-pop" }, opts.map(function (x) { var on = val.indexOf(x.value) >= 0; return h("button", { key: x.value, type: "button", className: "ds-opt", onClick: function (e) { e.stopPropagation(); tog(x.value); } }, h("span", { className: "ds-cb" }, h("input", { type: "checkbox", checked: on, readOnly: true, tabIndex: -1 }), h("span", { className: "ds-cb-box" }, h(Icon, { name: "check" }))), x.label); }),
+          h("div", { className: "ds-pop-sep" }), h("div", { className: "ds-row", style: { justifyContent: "space-between", padding: "2px 4px" } }, h(Button, { size: "sm", variant: "ghost", onClick: function () { st[1]([]); } }, "Tozalash"), h(Button, { size: "sm", onClick: function () { setOpen(false); } }, "Tayyor"))) : null));
+  }
+  function Checkbox(p) {
+    var st = useState(!!p.defaultChecked), on = p.checked != null ? p.checked : st[0], ref = useRef(null);
+    useEffect(function () { if (ref.current) ref.current.indeterminate = !!p.indeterminate; }, [p.indeterminate]);
+    return h("label", { className: cx("ds-cb", { err: p.error, dis: p.disabled }), onClick: p.onClick },
+      h("input", { ref: ref, type: "checkbox", checked: on, disabled: p.disabled, tabIndex: p.tabIndex, readOnly: p.readOnly, "aria-label": p["aria-label"], onChange: function (e) { st[1](e.target.checked); p.onChange && p.onChange(e.target.checked); } }),
+      h("span", { className: "ds-cb-box" }, h(Icon, { name: p.indeterminate ? "minus" : "check" })),
+      p.label ? h("span", null, p.label, p.desc ? h("small", null, p.desc) : null) : null);
+  }
+  function RadioGroup(p) {
+    var st = useState(p.defaultValue), name = useMemo(function () { return "rg" + Math.random().toString(36).slice(2, 7); }, []);
+    return h("div", { role: "radiogroup", "aria-label": p.label, style: { display: "flex", flexDirection: p.row ? "row" : "column", gap: p.row ? 20 : 12, flexWrap: "wrap" } },
+      (p.options || []).map(function (o) { return h("label", { key: o.value, className: cx("ds-cb ds-rd", { dis: p.disabled || o.disabled, err: p.error }) }, h("input", { type: "radio", name: name, value: o.value, checked: st[0] === o.value, disabled: p.disabled || o.disabled, onChange: function () { st[1](o.value); } }), h("span", { className: "ds-cb-box" }), h("span", null, o.label, o.desc ? h("small", null, o.desc) : null)); }));
+  }
+  function Switch(p) {
+    var st = useState(!!p.defaultChecked);
+    return h("label", { className: cx("ds-sw2", p.size, { dis: p.disabled }) }, h("input", { type: "checkbox", role: "switch", checked: st[0], disabled: p.disabled, onChange: function (e) { st[1](e.target.checked); } }), h("span", { className: "ds-sw2-t" }), p.label ? h("span", null, p.label) : null);
+  }
+  function FileUpload(p) {
+    var st = useState(p.defaultFiles || []), over = useState(false), inp = useRef(null);
+    var add = function (list) { var a = []; for (var i = 0; i < list.length; i++) a.push({ name: list[i].name, size: list[i].size }); st[1](st[0].concat(a)); };
+    var fmt = function (b) { return b > 1048576 ? (b / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(b / 1024)) + " KB"; };
+    return h(Field, { label: p.label, helper: p.helper, error: p.error },
+      h("div", { className: cx("ds-drop", { over: over[0] }), role: "button", tabIndex: 0, onClick: function () { inp.current && inp.current.click(); }, onKeyDown: function (e) { if (e.key === "Enter") inp.current.click(); }, onDragOver: function (e) { e.preventDefault(); over[1](true); }, onDragLeave: function () { over[1](false); }, onDrop: function (e) { e.preventDefault(); over[1](false); add(e.dataTransfer.files); } },
+        h("span", { className: "dic" }, h(Icon, { name: "upload", size: "lg" })),
+        h("b", { style: { fontSize: 13.5 } }, "Faylni shu yerga tashlang yoki ", h("span", { className: "ds-link" }, "tanlang")),
+        h("span", { className: "ds-helper" }, p.accept || "PDF, DOCX, JPG · 20 MB gacha"),
+        h("input", { ref: inp, type: "file", multiple: true, hidden: true, onChange: function (e) { add(e.target.files); e.target.value = ""; } })),
+      st[0].length ? h("div", { className: "ds-files", style: { marginTop: 4 } }, st[0].map(function (f, i) { var ext = (f.name.split(".").pop() || "").slice(0, 4).toUpperCase(); return h("div", { key: i, className: "ds-file" }, h("span", { className: "fi" }, ext), h("span", { className: "fm" }, h("b", null, f.name), h("small", null, fmt(f.size))), h(IconButton, { icon: "trash", size: "sm", title: "O'chirish", onClick: function () { st[1](st[0].filter(function (_, j) { return j !== i; })); } })); })) : null);
+  }
+  // ---- Date picker ----
+  var MONTHS = ["Yanvar", "Fevral", "Mart", "Aprel", "May", "Iyun", "Iyul", "Avgust", "Sentyabr", "Oktyabr", "Noyabr", "Dekabr"], WD = ["Du", "Se", "Ch", "Pa", "Ju", "Sh", "Ya"];
+  var d0 = function (d) { return new Date(d.getFullYear(), d.getMonth(), d.getDate()); };
+  var fmtD = function (d) { if (!d) return ""; var p2 = function (n) { return (n < 10 ? "0" : "") + n; }; return p2(d.getDate()) + "." + p2(d.getMonth() + 1) + "." + d.getFullYear(); };
+  function Month(p) {
+    var y = p.view.getFullYear(), m = p.view.getMonth(), first = new Date(y, m, 1), start = (first.getDay() + 6) % 7, today = d0(new Date()).getTime(), cells = [];
+    for (var i = 0; i < 42; i++) cells.push(new Date(y, m, 1 - start + i));
+    var a = p.from ? p.from.getTime() : 0, b = p.to ? p.to.getTime() : (p.hover && p.from ? p.hover.getTime() : 0), lo = Math.min(a, b || a), hi = Math.max(a, b || a);
+    return h("div", null,
+      h("div", { className: "ds-cal-h" }, p.prev ? h(IconButton, { icon: "chevL", size: "sm", title: "Oldingi oy", onClick: p.prev }) : h("span", { style: { width: 32 } }), h("b", null, MONTHS[m] + " " + y), p.next ? h(IconButton, { icon: "chevR", size: "sm", title: "Keyingi oy", onClick: p.next }) : h("span", { style: { width: 32 } })),
+      h("div", { className: "ds-cal-g" }, WD.map(function (w) { return h("span", { key: w }, w); }),
+        cells.map(function (c) { var t = c.getTime(), sel = t === a || (p.to && t === p.to.getTime()), inr = p.range && a && t > lo && t < hi; return h("button", { key: t, type: "button", className: cx("ds-day", { out: c.getMonth() !== m, today: t === today, sel: sel, inr: inr && !sel }), onClick: function () { p.onPick(c); }, onMouseEnter: p.onHover ? function () { p.onHover(c); } : null, "aria-label": fmtD(c) }, c.getDate()); })));
+  }
+  function DatePicker(p) {
+    var o = useState(false), open = o[0], setOpen = o[1], st = useState(p.defaultValue || null), view = useState(p.defaultValue || new Date()), ref = useRef(null); useOutside(ref, open, function () { setOpen(false); });
+    var mv = function (d) { var v = view[0]; view[1](new Date(v.getFullYear(), v.getMonth() + d, 1)); };
+    return h(Field, { label: p.label, helper: p.helper, error: p.error },
+      h("div", { ref: ref, style: { position: "relative" } },
+        h("button", { type: "button", className: cx("ds-ctl ds-sel-btn", { focus: open, err: p.error, dis: p.disabled }), disabled: p.disabled, onClick: function () { setOpen(!open); } }, h(Icon, { name: "cal" }), h("span", { className: cx("val", { ph: !st[0] }) }, st[0] ? fmtD(st[0]) : "kk.oo.yyyy")),
+        open ? h("div", { className: "ds-pop ds-cal" }, h(Month, { view: view[0], from: st[0], prev: function () { mv(-1); }, next: function () { mv(1); }, onPick: function (d) { st[1](d); setOpen(false); } }),
+          h("div", { className: "ds-cal-f" }, h(Button, { size: "sm", variant: "ghost", onClick: function () { st[1](null); } }, "Tozalash"), h(Button, { size: "sm", variant: "secondary", onClick: function () { var t = d0(new Date()); st[1](t); view[1](t); setOpen(false); } }, "Bugun"))) : null));
+  }
+  function DateRangePicker(p) {
+    var o = useState(false), open = o[0], setOpen = o[1], fr = useState(null), to = useState(null), hv = useState(null), view = useState(new Date()), ref = useRef(null); useOutside(ref, open, function () { setOpen(false); });
+    var v = view[0], next = new Date(v.getFullYear(), v.getMonth() + 1, 1);
+    var pick = function (d) { if (!fr[0] || to[0]) { fr[1](d); to[1](null); } else if (d < fr[0]) { to[1](fr[0]); fr[1](d); } else to[1](d); };
+    var preset = function (days) { var t = d0(new Date()); fr[1](new Date(t.getTime() - days * 864e5)); to[1](t); };
+    return h(Field, { label: p.label, helper: p.helper },
+      h("div", { ref: ref, style: { position: "relative" } },
+        h("button", { type: "button", className: cx("ds-ctl ds-sel-btn", { focus: open }), onClick: function () { setOpen(!open); } }, h(Icon, { name: "cal" }), h("span", { className: cx("val", { ph: !fr[0] }) }, fr[0] ? fmtD(fr[0]) + " — " + (to[0] ? fmtD(to[0]) : "…") : "Sanadan — sanagacha")),
+        open ? h("div", { className: "ds-pop ds-cal range" },
+          h(Month, { view: v, range: true, from: fr[0], to: to[0], hover: hv[0], onHover: hv[1], prev: function () { view[1](new Date(v.getFullYear(), v.getMonth() - 1, 1)); }, onPick: pick }),
+          h(Month, { view: next, range: true, from: fr[0], to: to[0], hover: hv[0], onHover: hv[1], next: function () { view[1](new Date(v.getFullYear(), v.getMonth() + 1, 1)); }, onPick: pick }),
+          h("div", { className: "ds-cal-f" }, h("div", { className: "ds-row", style: { gap: 6 } }, h(Button, { size: "sm", variant: "outline", onClick: function () { preset(6); } }, "7 kun"), h(Button, { size: "sm", variant: "outline", onClick: function () { preset(29); } }, "30 kun")), h("div", { className: "ds-row", style: { gap: 6 } }, h(Button, { size: "sm", variant: "ghost", onClick: function () { fr[1](null); to[1](null); } }, "Tozalash"), h(Button, { size: "sm", disabled: !to[0], onClick: function () { setOpen(false); } }, "Qo'llash")))) : null));
+  }
+
+  // ================= 6. Boshqa UI =================
+  function Badge(p) { return h("span", { className: cx("ds-badge", "v-" + (p.variant || "neutral"), p.size, { dot: p.dot, solid: p.solid, outline: p.outline }) }, p.icon ? h(Icon, { name: p.icon, size: "sm" }) : null, p.children); }
+  function Tag(p) { return h("span", { className: cx("ds-tag", p.variant && "v-" + p.variant, { nox: !p.onRemove }) }, p.children, p.onRemove ? h("button", { type: "button", "aria-label": "Olib tashlash", onClick: function (e) { e.stopPropagation(); p.onRemove(); } }, h(Icon, { name: "x", size: "sm" })) : null); }
+  function Status(p) { return h("span", { className: cx("ds-status", p.variant && "v-" + p.variant, { pulse: p.pulse }) }, h("i"), p.children); }
+  var AVC = ["#eff4ff|#2563eb", "#ecfdf3|#15803d", "#fff7e6|#b45309", "#f3f0ff|#6d28d9", "#fef2f2|#b91c1c"];
+  function Avatar(p) {
+    var ini = (p.name || "?").split(/\s+/).map(function (w) { return w[0]; }).slice(0, 2).join("").toUpperCase(), c = AVC[(p.name || "").length % AVC.length].split("|");
+    return h("span", { className: cx("ds-av", p.size || "md", { sq: p.square }), title: p.name, style: p.src ? null : { background: c[0], color: c[1] } }, p.src ? h("img", { src: p.src, alt: p.name || "" }) : ini, p.online ? h("span", { className: "on" }) : null);
+  }
+  function AvatarGroup(p) { var list = p.names || [], max = p.max || 4; return h("span", { className: "ds-avg" }, list.slice(0, max).map(function (n) { return h(Avatar, { key: n, name: n, size: p.size || "sm" }); }), list.length > max ? h("span", { className: cx("ds-av", p.size || "sm"), style: { background: "var(--ds-surface-3)", color: "var(--ds-text-2)" } }, "+" + (list.length - max)) : null); }
+  function Skeleton(p) { return h("span", { className: "ds-skel", style: { width: p.w || "100%", height: p.h || 12, borderRadius: p.circle ? "50%" : p.r } }); }
+  function Progress(p) { return h("div", { className: cx("ds-prog", p.variant && "v-" + p.variant, { ind: p.indeterminate }), role: "progressbar", "aria-valuenow": p.value, "aria-valuemin": 0, "aria-valuemax": 100 }, h("i", { style: { width: (p.value || 0) + "%" } })); }
+  function ProgressRing(p) { var r = 22, c = 2 * Math.PI * r, v = p.value || 0, col = p.variant === "success" ? "var(--ds-success)" : "var(--ds-primary)"; return h("span", { className: "ds-ring" }, h("svg", { width: 56, height: 56, viewBox: "0 0 56 56" }, h("circle", { cx: 28, cy: 28, r: r, fill: "none", stroke: "var(--ds-surface-3)", strokeWidth: 6 }), h("circle", { cx: 28, cy: 28, r: r, fill: "none", stroke: col, strokeWidth: 6, strokeLinecap: "round", strokeDasharray: c, strokeDashoffset: c * (1 - v / 100), transform: "rotate(-90 28 28)", style: { transition: "stroke-dashoffset .5s" } })), h("b", null, v + "%")); }
+  function Card(p) {
+    return h("div", { className: cx("ds-card", { elev: p.elevated, hov: p.hoverable }), onClick: p.onClick, style: p.style },
+      p.title ? h("div", { className: "ds-card-h" }, h("div", null, h("b", null, p.title), p.subtitle ? h("small", null, p.subtitle) : null), p.action || null) : null,
+      p.children ? h("div", { className: "ds-card-b" }, p.children) : null,
+      p.footer ? h("div", { className: "ds-card-f" }, p.footer) : null);
+  }
+  var AI = { info: "info", success: "ok", warning: "warn", error: "err" };
+  function Alert(p) { var v = p.variant || "info"; return h("div", { className: cx("ds-alert", "v-" + v), role: v === "error" ? "alert" : undefined }, h("span", { className: "ai" }, h(Icon, { name: AI[v] })), h("div", { className: "ab" }, p.title ? h("b", null, p.title) : null, h("span", null, p.children)), p.action || null, p.onClose ? h("button", { type: "button", className: "ax", "aria-label": "Yopish", onClick: p.onClose }, h(Icon, { name: "x", size: "sm" })) : null); }
+  function Modal(p) {
+    useEffect(function () { if (!p.open) return; var k = function (e) { if (e.key === "Escape") p.onClose && p.onClose(); }; document.addEventListener("keydown", k); return function () { document.removeEventListener("keydown", k); }; }, [p.open]);
+    if (!p.open) return null;
+    var portal = window.ReactDOM && window.ReactDOM.createPortal;
+    var node = h("div", { className: "ds-host" }, h("div", { className: "ds-root", "data-theme": p.theme, style: { background: "transparent", minHeight: 0 } }, h("div", { className: "ds-ov", onMouseDown: function (e) { if (e.target === e.currentTarget) p.onClose && p.onClose(); } },
+      h("div", { className: cx("ds-modal", p.size), role: "dialog", "aria-modal": "true", "aria-label": p.title },
+        p.title ? h("div", { className: "ds-modal-h" }, h("div", null, h("b", null, p.title), p.subtitle ? h("small", null, p.subtitle) : null), h(IconButton, { icon: "x", size: "sm", title: "Yopish", onClick: p.onClose })) : null,
+        h("div", { className: "ds-modal-b" }, p.children),
+        p.footer ? h("div", { className: "ds-modal-f" }, p.footer) : null))));
+    return portal ? portal(node, document.body) : node;
+  }
+  function ConfirmDialog(p) {
+    return h(Modal, { open: p.open, onClose: p.onClose, size: "sm", theme: p.theme, footer: F(h(Button, { variant: "outline", onClick: p.onClose }, "Bekor qilish"), h(Button, { variant: p.tone === "danger" ? "danger" : "primary", loading: p.loading, onClick: p.onConfirm }, p.confirmText || "Tasdiqlash")) },
+      h("div", { className: cx("ds-dialog", "v-" + (p.tone || "danger")) }, h("div", { className: "di" }, h(Icon, { name: p.tone === "warning" ? "warn" : "trash", size: "lg" })), h("b", { style: { fontSize: 17 } }, p.title), h("p", { style: { margin: "4px 0 0", color: "var(--ds-text-2)", fontSize: 13.5 } }, p.children)));
+  }
+  function Tabs(p) {
+    var st = useState(p.defaultValue || (p.items[0] && p.items[0].value)), seg = p.variant === "segmented";
+    var cur = p.items.filter(function (i) { return i.value === st[0]; })[0];
+    return h("div", null,
+      h("div", { className: seg ? "ds-seg" : "ds-tabs", role: "tablist" }, p.items.map(function (i) { var on = i.value === st[0]; return h("button", { key: i.value, type: "button", role: "tab", "aria-selected": on ? "true" : "false", className: cx("ds-tab", { on: on }), onClick: function () { st[1](i.value); } }, i.icon ? h(Icon, { name: i.icon, size: "sm" }) : null, i.label, i.count != null ? h("span", { className: "ds-count" }, i.count) : null); })),
+      cur && cur.content ? h("div", { role: "tabpanel", style: { paddingTop: 14 } }, cur.content) : null);
+  }
+  function Accordion(p) {
+    var st = useState(p.defaultOpen != null ? [p.defaultOpen] : []);
+    var tog = function (i) { var o = st[0]; st[1](o.indexOf(i) >= 0 ? o.filter(function (x) { return x !== i; }) : (p.multiple ? o.concat([i]) : [i])); };
+    return h("div", { className: "ds-acc" }, p.items.map(function (it, i) { var on = st[0].indexOf(i) >= 0; return h("div", { key: i, className: cx("ds-acc-i", { "ds-open": on }) }, h("button", { type: "button", className: "ds-acc-t", "aria-expanded": on ? "true" : "false", onClick: function () { tog(i); } }, it.title, h(Icon, { name: "chev", size: "sm", style: { transition: "transform .15s", transform: on ? "rotate(180deg)" : "none", color: "var(--ds-muted)" } })), on ? h("div", { className: "ds-acc-c" }, it.content) : null); }));
+  }
+  function Tooltip(p) { var st = useState(false); return h("span", { className: "ds-tip-w", onMouseEnter: function () { st[1](true); }, onMouseLeave: function () { st[1](false); }, onFocus: function () { st[1](true); }, onBlur: function () { st[1](false); } }, p.children, st[0] ? h("span", { className: cx("ds-tip", p.placement), role: "tooltip" }, p.content) : null); }
+  function Dropdown(p) {
+    var o = useState(false), ref = useRef(null); useOutside(ref, o[0], function () { o[1](false); });
+    return h("div", { ref: ref, style: { position: "relative", display: "inline-flex" } },
+      h("span", { onClick: function () { o[1](!o[0]); } }, p.trigger),
+      o[0] ? h("div", { className: cx("ds-pop", p.align === "right" ? "right" : "", p.up ? "up" : ""), role: "menu", style: { minWidth: p.width || 200 } }, (p.items || []).map(function (it, i) {
+        if (it === "-") return h("div", { key: i, className: "ds-pop-sep" });
+        if (it.header) return h("div", { key: i, className: "ds-pop-h" }, it.header);
+        return h("button", { key: i, type: "button", role: "menuitem", className: cx("ds-opt", { danger: it.danger }), disabled: it.disabled, onClick: function () { o[1](false); it.onClick && it.onClick(); } }, it.icon ? h(Icon, { name: it.icon }) : null, it.label, it.kbd ? h("span", { className: "ds-kbd", style: { marginLeft: "auto" } }, it.kbd) : null);
+      })) : null);
+  }
+  function Popover(p) { var o = useState(false), ref = useRef(null); useOutside(ref, o[0], function () { o[1](false); }); return h("div", { ref: ref, style: { position: "relative", display: "inline-flex" } }, h("span", { onClick: function () { o[1](!o[0]); } }, p.trigger), o[0] ? h("div", { className: "ds-pop ds-popover", role: "dialog" }, p.children(function () { o[1](false); })) : null); }
+  function Breadcrumbs(p) { return h("nav", { className: "ds-bc", "aria-label": "Breadcrumb" }, p.items.map(function (it, i) { var last = i === p.items.length - 1; return h(window.React.Fragment, { key: i }, i ? h(Icon, { name: "chevR", size: "sm" }) : null, last ? h("span", { className: "cur", "aria-current": "page" }, it) : h("a", { tabIndex: 0 }, it)); })); }
+  function Pagination(p) {
+    var page = p.page, n = p.pages, set = p.onChange, nums = [];
+    for (var i = 1; i <= n; i++) if (i === 1 || i === n || Math.abs(i - page) <= 1) nums.push(i); else if (nums[nums.length - 1] !== "…") nums.push("…");
+    return h("div", { className: "ds-pg" }, h("button", { type: "button", disabled: page <= 1, "aria-label": "Oldingi", onClick: function () { set(page - 1); } }, h(Icon, { name: "chevL", size: "sm" })),
+      nums.map(function (x, i) { return x === "…" ? h("span", { key: "g" + i, className: "gap" }, "…") : h("button", { key: x, type: "button", className: x === page ? "on" : "", "aria-current": x === page ? "page" : undefined, onClick: function () { set(x); } }, x); }),
+      h("button", { type: "button", disabled: page >= n, "aria-label": "Keyingi", onClick: function () { set(page + 1); } }, h(Icon, { name: "chevR", size: "sm" })));
+  }
+  function EmptyState(p) { return h("div", { className: "ds-empty" }, h("span", { className: "ei" }, h(Icon, { name: p.icon || "inbox", size: "lg" })), h("b", null, p.title), p.text ? h("p", null, p.text) : null, p.action || null); }
+  function Notification(p) { return h("div", { className: cx("ds-notif", { unread: p.unread }) }, h(Avatar, { name: p.name, size: "sm" }), h("div", { className: "nb" }, h("div", null, h("b", null, p.name), " ", p.text), h("small", null, p.time)), p.unread ? h("span", { style: { width: 8, height: 8, borderRadius: "50%", background: "var(--ds-primary)", marginTop: 6 } }) : null); }
+
+  // ---- Toast tizimi ----
+  var toastSet = null, toastId = 0;
+  function Toaster() {
+    var st = useState([]); toastSet = st[1];
+    return h("div", { className: "ds-toasts", "aria-live": "polite" }, st[0].map(function (t) { return h("div", { key: t.id, className: cx("ds-toast", "v-" + t.variant) }, h("span", { className: "ti" }, h(Icon, { name: AI[t.variant] || "info" })), h("div", { className: "tb" }, h("b", null, t.title), t.text), h(IconButton, { icon: "x", size: "sm", title: "Yopish", onClick: function () { toastSet(function (a) { return a.filter(function (x) { return x.id !== t.id; }); }); } })); }));
+  }
+  function toast(variant, title, text) { if (!toastSet) return; var id = ++toastId; toastSet(function (a) { return a.concat([{ id: id, variant: variant, title: title, text: text }]).slice(-4); }); setTimeout(function () { toastSet && toastSet(function (a) { return a.filter(function (x) { return x.id !== id; }); }); }, 4200); }
+
+  // ================= 5. Table (DataTable) =================
+  function DataTable(p) {
+    var cols = p.columns, sort = useState({ key: p.defaultSort || null, dir: 1 }), q = useState(""), fil = useState("all"), page = useState(1), sel = useState({}), per = p.pageSize || 5;
+    var rows = useMemo(function () {
+      var r = p.data.slice();
+      if (q[0]) { var s = q[0].toLowerCase(); r = r.filter(function (x) { return cols.some(function (c) { return String(x[c.key] == null ? "" : x[c.key]).toLowerCase().indexOf(s) >= 0; }); }); }
+      if (p.filter && fil[0] !== "all") r = r.filter(function (x) { return x[p.filter.key] === fil[0]; });
+      if (sort[0].key) { var k = sort[0].key, d = sort[0].dir; r.sort(function (a, b) { return (a[k] > b[k] ? 1 : a[k] < b[k] ? -1 : 0) * d; }); }
+      return r;
+    }, [q[0], fil[0], sort[0], p.data]);
+    var pages = Math.max(1, Math.ceil(rows.length / per)), pg = Math.min(page[0], pages), view = rows.slice((pg - 1) * per, pg * per);
+    var selIds = Object.keys(sel[0]).filter(function (k) { return sel[0][k]; }), allOn = view.length && view.every(function (r) { return sel[0][r.id]; }), someOn = view.some(function (r) { return sel[0][r.id]; });
+    var togAll = function () { var o = Object.assign({}, sel[0]); view.forEach(function (r) { o[r.id] = !allOn; }); sel[1](o); };
+    var srt = function (c) { if (!c.sortable) return; sort[1](sort[0].key === c.key ? { key: c.key, dir: -sort[0].dir } : { key: c.key, dir: 1 }); };
+    var body;
+    if (p.loading) body = [0, 1, 2, 3].map(function (i) { return h("tr", { key: i }, p.selectable ? h("td", { className: "w-cb" }, h(Skeleton, { w: 18, h: 18, r: 5 })) : null, cols.map(function (c, j) { return h("td", { key: j }, h(Skeleton, { w: j === 0 ? "70%" : "55%", h: 12 })); }), p.rowActions ? h("td") : null); });
+    else if (!view.length) body = [h("tr", { key: "e" }, h("td", { colSpan: cols.length + (p.selectable ? 1 : 0) + (p.rowActions ? 1 : 0), style: { height: "auto" } }, h(EmptyState, { icon: "search", title: q[0] ? "Hech narsa topilmadi" : "Ma'lumot yo'q", text: q[0] ? "«" + q[0] + "» bo'yicha natija yo'q. Qidiruvni o'zgartirib ko'ring." : "Hali yozuvlar qo'shilmagan.", action: q[0] ? h(Button, { size: "sm", variant: "outline", onClick: function () { q[1](""); } }, "Qidiruvni tozalash") : null })))];
+    else body = view.map(function (r) { var on = !!sel[0][r.id]; return h("tr", { key: r.id, className: on ? "sel" : "" }, p.selectable ? h("td", { className: "w-cb" }, h(Checkbox, { checked: on, "aria-label": "Tanlash", onChange: function (v) { var o = Object.assign({}, sel[0]); o[r.id] = v; sel[1](o); } })) : null, cols.map(function (c, j) { return h("td", { key: j, className: c.num ? "num" : "" }, c.render ? c.render(r) : r[c.key]); }), p.rowActions ? h("td", { className: "w-act" }, h(Dropdown, { align: "right", trigger: h(IconButton, { icon: "more", size: "sm", title: "Amallar" }), items: p.rowActions(r) })) : null); });
+    return h("div", { className: "ds-tb-wrap" },
+      p.toolbar !== false ? h("div", { className: "ds-tb-bar" },
+        h("div", { style: { width: 280 } }, h(Input, { type: "search", size: "sm", placeholder: p.searchPlaceholder || "Qidirish…", value: q[0], onChange: function (v) { q[1](v); page[1](1); } })),
+        p.filter ? h("div", { className: "ds-seg", style: { padding: 3 } }, [{ value: "all", label: "Barchasi" }].concat(p.filter.options).map(function (o) { return h("button", { key: o.value, type: "button", className: cx("ds-tab", { on: fil[0] === o.value }), style: { height: 28, fontSize: 12.5 }, onClick: function () { fil[1](o.value); page[1](1); } }, o.label); })) : null,
+        h("span", { className: "grow" }), p.actions || null) : null,
+      selIds.length ? h("div", { className: "ds-tb-sel" }, selIds.length + " ta tanlandi", h("span", { style: { flex: 1 } }), h(Button, { size: "sm", variant: "outline", iconLeft: "download" }, "Eksport"), h(Button, { size: "sm", variant: "danger-outline", iconLeft: "trash", onClick: function () { sel[1]({}); toast("success", "O'chirildi", selIds.length + " ta yozuv o'chirildi (namuna)"); } }, "O'chirish"), h(IconButton, { icon: "x", size: "sm", title: "Bekor qilish", onClick: function () { sel[1]({}); } })) : null,
+      h("div", { className: "ds-tb-scroll" }, h("table", { className: cx("ds-tb", { compact: p.compact }) },
+        h("thead", null, h("tr", null, p.selectable ? h("th", { className: "w-cb" }, h(Checkbox, { checked: !!allOn, indeterminate: !allOn && someOn, "aria-label": "Barchasini tanlash", onChange: togAll })) : null,
+          cols.map(function (c, j) { var on = sort[0].key === c.key; return h("th", { key: j, className: cx({ sortable: c.sortable, sorted: on }), style: { width: c.width }, onClick: function () { srt(c); }, "aria-sort": on ? (sort[0].dir > 0 ? "ascending" : "descending") : undefined }, c.title, c.sortable ? h("span", { className: "si" }, h(Icon, { name: on ? (sort[0].dir > 0 ? "chevU" : "chev") : "sort", size: "sm" })) : null); }),
+          p.rowActions ? h("th", { className: "w-act" }) : null)),
+        h("tbody", null, body))),
+      p.pagination !== false && !p.loading ? h("div", { className: "ds-tb-f" }, h("span", null, rows.length ? ((pg - 1) * per + 1) + "–" + Math.min(pg * per, rows.length) + " / " + rows.length + " ta" : "0 ta"), h(Pagination, { page: pg, pages: pages, onChange: page[1] })) : null);
+  }
+
+  // ================= Kutubxona sahifasi (namoyish) =================
+  var CATS = [["colors", "Ranglar"], ["typography", "Tipografiya"], ["buttons", "Tugmalar"], ["forms", "Kiritish maydonlari"], ["tables", "Jadvallar"], ["feedback", "Xabarlar va holatlar"], ["overlays", "Modal va oynalar"], ["navigation", "Navigatsiya"], ["display", "Ko'rsatish elementlari"], ["tokens", "Design tokenlar"], ["architecture", "Arxitektura"]];
+  function Spec(p) {
+    var cp = useState(false);
+    return h("div", { className: "ds-spec" },
+      h("div", { className: "ds-spec-h" }, h("div", null, h("b", null, p.title), p.desc ? h("small", null, p.desc) : null), p.right || null),
+      h("div", { className: "ds-spec-b", style: p.bodyStyle }, p.children),
+      p.code ? h("pre", { className: "ds-code" }, p.code, h("span", { className: "ds-copy" }, h(Button, { size: "sm", variant: "ghost", iconLeft: cp[0] ? "check" : "copy", onClick: function () { copyText(p.code); cp[1](true); setTimeout(function () { cp[1](false); }, 1400); } }, cp[0] ? "Nusxalandi" : "Nusxa"))) : null);
+  }
+  function Sec(p) { return h("section", { id: "ds-" + p.id, className: "ds-sec", "data-ds-sec": p.id }, h("h2", null, h("span", { className: "ds-num" }, p.n), p.title), p.lead ? h("p", { className: "ds-lead" }, p.lead) : null, p.children); }
+  function Row(p) { return h("div", { className: cx("ds-row", p.top ? "ds-top" : "") }, p.cap ? h("span", { className: "ds-cap" }, p.cap) : null, p.children); }
+
+  var COLOR_GROUPS = [
+    ["Brend", [["Primary", "--ds-primary", "#2563eb", "Asosiy amallar, faol holat, havolalar"], ["Primary hover", "--ds-primary-hover", "#1d4ed8", "Primary ustiga borganda"], ["Primary active", "--ds-primary-active", "#1e40af", "Bosilgan holat"], ["Primary soft", "--ds-primary-soft", "#eff4ff", "Tanlangan qator, ikkilamchi fon"], ["Secondary", "--ds-secondary", "#475569", "Ikkilamchi matn va ikonkalar"], ["Accent", "--ds-accent", "#4f46e5", "Sidebar faol bandi, gradient urg'u"]]],
+    ["Fon va yuzalar", [["Background", "--ds-bg", "#f4f4f5", "Sahifa foni"], ["Surface", "--ds-surface", "#ffffff", "Kartochka, jadval, modal"], ["Surface 2", "--ds-surface-2", "#f8fafc", "Jadval sarlavhasi, footer"], ["Border", "--ds-border", "#e2e8f0", "Kartochka va jadval chegarasi"], ["Border strong", "--ds-border-strong", "#d5dbe4", "Input chegarasi"], ["Divider", "--ds-divider", "#eef1f5", "Ichki ajratgich chiziqlar"]]],
+    ["Matn", [["Text primary", "--ds-text", "#0f172a", "Sarlavha va asosiy matn"], ["Text secondary", "--ds-text-2", "#475569", "Tavsif matni"], ["Muted", "--ds-muted", "#64748b", "Yordamchi matn, label"], ["Subtle", "--ds-subtle", "#94a3b8", "Placeholder, o'chirilgan"]]],
+    ["Holat ranglari", [["Success", "--ds-success", "#16a34a", "Muvaffaqiyat, «Hal qilingan»"], ["Warning", "--ds-warning", "#d97706", "Ogohlantirish, muddat yaqin"], ["Error", "--ds-error", "#dc2626", "Xato, o'chirish, muddat buzilgan"], ["Info", "--ds-info", "#2563eb", "Ma'lumot xabarlari"]]],
+    ["Interaktiv holatlar", [["Hover", "--ds-hover", "#f8fafc", "Qator/band ustiga borganda"], ["Active", "--ds-active", "#eef2f7", "Bosilgan ghost element"], ["Focus ring", "--ds-focus", "rgba(37,99,235,.20)", "Klaviatura fokusi (3px halqa)"], ["Disabled bg", "--ds-disabled-bg", "#f1f5f9", "O'chirilgan element foni"], ["Disabled text", "--ds-disabled-text", "#94a3b8", "O'chirilgan matn"]]]
+  ];
+  var CASES = [
+    { id: 1, num: "R4-1901-2603/4234", ariz: "Aralov Yunus Bazarovich", jav: "Shaymonov Ilhom Norboy o'g'li", turi: "Korporativ nizo", sana: "2026-06-15", summa: 1000000, st: "korib" },
+    { id: 2, num: "R4-1901-2603/4235", ariz: "Karimov Akmal Saidovich", jav: "Normurodov Bekzod Azizovich", turi: "Shartnoma majburiyati", sana: "2026-06-20", summa: 2450000, st: "majlis" },
+    { id: 3, num: "R4-1901-2603/4236", ariz: "\"Durable Slate Industry\" MChJ", jav: "«Toshkent suv ta'minoti» AJ", turi: "Qarshi da'vo", sana: "2026-06-18", summa: 15800000, st: "qoldi" },
+    { id: 4, num: "R4-1901-2603/4237", ariz: "Rahimova Dilnoza Anvarovna", jav: "Xolmatov Dilshod Rustamovich", turi: "Bankrotlik", sana: "2026-06-12", summa: 730000, st: "yakun" },
+    { id: 5, num: "R4-1901-2603/4238", ariz: "Tursunova Zarina Olimovna", jav: "Yusupov Akmal Ilhomovich", turi: "Shartnoma majburiyati", sana: "2026-06-22", summa: 4100000, st: "korib" },
+    { id: 6, num: "R4-1901-2603/4239", ariz: "Qodirov Sherzod Anvarovich", jav: "\"Agro Invest Group\" MChJ", turi: "Korporativ nizo", sana: "2026-06-09", summa: 9900000, st: "majlis" },
+    { id: 7, num: "R4-1901-2603/4240", ariz: "Ergasheva Malika Anvarovna", jav: "Aliyeva Nodira Rustamovna", turi: "Yuridik fakt", sana: "2026-06-25", summa: 350000, st: "qoldi" },
+    { id: 8, num: "R4-1901-2603/4241", ariz: "Abdusattorova Asila", jav: "Karimov Akmal Saidovich", turi: "Qarshi da'vo", sana: "2026-06-11", summa: 6200000, st: "yakun" }
+  ];
+  var ST = { korib: ["Ko'rib chiqishda", "info"], majlis: ["Majlis tayinlangan", "success"], qoldi: ["Qoldirilgan", "warning"], yakun: ["Yakunlangan", "neutral"] };
+  var money = function (n) { return n.toLocaleString("ru-RU").replace(/,/g, " ") + " so'm"; };
+  var dfmt = function (s) { var p = s.split("-"); return p[2] + "." + p[1] + "." + p[0]; };
+
+  function Page(p) {
+    var th = useState(p.theme || "light"), theme = th[0];
+    var modal = useState(false), confirm = useState(false), cLoad = useState(false), mLoad = useState(false), pg = useState(3), tLoad = useState(false), alerts = useState([1, 1, 1, 1]), prog = useState(62);
+    var rootRef = useRef(null);
+    useEffect(function () { p.onTheme && p.onTheme(theme); }, [theme]);
+    // scroll-spy: faol bo'limni chap navigatsiyaga yuboradi
+    useEffect(function () {
+      var secs = function () { return rootRef.current ? rootRef.current.querySelectorAll("[data-ds-sec]") : []; };
+      var on = function () { var best = null, list = secs(); for (var i = 0; i < list.length; i++) { var t = list[i].getBoundingClientRect().top; if (t < 160) best = list[i].getAttribute("data-ds-sec"); } if (!best && list[0]) best = list[0].getAttribute("data-ds-sec"); if (best && best !== Page._last) { Page._last = best; p.onSection && p.onSection(best); } };
+      window.addEventListener("scroll", on, true); setTimeout(on, 50);
+      return function () { window.removeEventListener("scroll", on, true); };
+    }, []);
+    var cols = [
+      { key: "num", title: "Ish raqami", sortable: true, width: 190, render: function (r) { return h("div", null, h("b", { style: { fontWeight: 600 } }, r.num), h("small", null, r.turi)); } },
+      { key: "ariz", title: "Arizachi", sortable: true, render: function (r) { return h("div", { className: "ds-row", style: { gap: 10, flexWrap: "nowrap" } }, h(Avatar, { name: r.ariz, size: "sm" }), r.ariz); } },
+      { key: "jav", title: "Javobgar", sortable: true },
+      { key: "sana", title: "Sana", sortable: true, width: 110, render: function (r) { return dfmt(r.sana); } },
+      { key: "summa", title: "Da'vo summasi", sortable: true, num: true, width: 150, render: function (r) { return money(r.summa); } },
+      { key: "st", title: "Holat", width: 170, render: function (r) { return h(Badge, { variant: ST[r.st][1], dot: true }, ST[r.st][0]); } }
+    ];
+    var rowActions = function (r) { return [{ header: r.num }, { label: "Batafsil ko'rish", icon: "eye" }, { label: "Tahrirlash", icon: "edit", kbd: "E" }, { label: "Yuklab olish", icon: "download" }, "-", { label: "O'chirish", icon: "trash", danger: true, onClick: function () { confirm[1](true); } }]; };
+    var opts = [{ value: "dv", label: "Da'vo arizasi" }, { value: "ar", label: "Ariza" }, { value: "qd", label: "Qarshi da'vo arizasi" }, { value: "ap", label: "Apellyatsiya shikoyati" }, { value: "ks", label: "Kassatsiya shikoyati", disabled: true }];
+    var tokCss = Object.keys(TOKENS.color).map(function (k) { var v = TOKENS.color[k]; return typeof v === "string" ? "  " + k + ": " + v : "  " + k + ": { " + Object.keys(v).map(function (s) { return s + ": " + JSON.stringify(v[s]); }).join(", ") + " }"; }).join(",\n");
+    var tw = "// tailwind.config.js — Design System tokenlari\nmodule.exports = {\n  theme: { extend: {\n    colors: {\n" + tokCss.replace(/^/gm, "    ") + "\n    },\n    fontFamily: { sans: ['SF Pro Text', 'Inter', 'system-ui', 'sans-serif'] },\n    borderRadius: " + JSON.stringify(TOKENS.radius) + ",\n    boxShadow: { xs: '" + TOKENS.shadow.xs + "', sm: '" + TOKENS.shadow.sm + "', md: '" + TOKENS.shadow.md + "', lg: '" + TOKENS.shadow.lg + "' },\n    height: { 'ctl-sm': '32px', 'ctl-md': '38px', 'ctl-lg': '44px' }\n  } }\n};";
+
+    return h("div", { ref: rootRef, className: "ds-root", "data-theme": theme },
+      h("div", { className: "ds-page" },
+        h("div", { className: "ds-hero" },
+          h("div", null, h(Breadcrumbs, { items: ["Raqamli sud", "UI kutubxona", "Design System"] }), h("h1", { style: { marginTop: 8 } }, "Design System · UI Component Library"), h("p", null, "Tizimdagi barcha UI elementlar yagona standartda: ranglar, tipografiya, tokenlar va qayta foydalaniladigan React komponentlari. Har bir namuna — haqiqiy, interaktiv komponent.")),
+          h("div", { className: "ds-row" }, h(Badge, { variant: "accent" }, "v1.0 · " + CATS.length + " bo'lim"), h("div", { className: "ds-seg", role: "group", "aria-label": "Mavzu" }, h("button", { type: "button", className: cx("ds-tab", { on: theme === "light" }), onClick: function () { th[1]("light"); } }, h(Icon, { name: "sun", size: "sm" }), "Light"), h("button", { type: "button", className: cx("ds-tab", { on: theme === "dark" }), onClick: function () { th[1]("dark"); } }, h(Icon, { name: "moon", size: "sm" }), "Dark")))),
+
+        // 1. Colors
+        h(Sec, { id: "colors", n: 1, title: "Ranglar", lead: "Mavjud tizimning asosiy identitetidan olingan palitra. Rang kodini nusxalash uchun kartochkani bosing." },
+          COLOR_GROUPS.map(function (g) { return h(Spec, { key: g[0], title: g[0] }, h("div", { className: "ds-grid ds-g3" }, g[1].map(function (c) { return h("button", { key: c[1], type: "button", className: "ds-sw", onClick: function () { copyText(c[2]); toast("success", "Nusxalandi", c[0] + " · " + c[2]); } }, h("div", { className: "ds-sw-c", style: { background: "var(" + c[1] + ")" } }), h("div", { className: "ds-sw-t" }, h("b", null, c[0]), h("code", null, c[2] + "  ·  var(" + c[1] + ")"), h("small", null, c[3]))); }))); }),
+          h(Spec, { title: "Foydalanish qoidalari" }, h("div", { className: "ds-grid ds-g2" },
+            h("div", { className: "ds-rule" }, h(Icon, { name: "ok", style: { color: "var(--ds-success)" } }), h("span", null, h("b", null, "Primary"), " — sahifada bitta asosiy amal uchun (Saqlash, Keyingi bosqich). Bir ekranda 1–2 tadan ko'p primary tugma bo'lmasin.")),
+            h("div", { className: "ds-rule" }, h(Icon, { name: "ok", style: { color: "var(--ds-success)" } }), h("span", null, h("b", null, "Holat ranglari"), " faqat ma'noga ega joyda: yashil — muvaffaqiyat, sariq — ogohlantirish, qizil — xato/o'chirish.")),
+            h("div", { className: "ds-rule" }, h(Icon, { name: "ok", style: { color: "var(--ds-success)" } }), h("span", null, h("b", null, "Kontrast"), " — asosiy matn (#0f172a) oq fonda 17:1, muted (#64748b) 4.8:1 — WCAG AA talabiga mos.")),
+            h("div", { className: "ds-rule" }, h(Icon, { name: "err", style: { color: "var(--ds-error)" } }), h("span", null, h("b", null, "HEX qiymatni to'g'ridan-to'g'ri yozmang"), " — har doim token: ", h("code", null, "var(--ds-primary)"), ". Shunda Dark Mode va keyingi o'zgarishlar avtomatik ishlaydi."))))),
+
+        // 2. Typography
+        h(Sec, { id: "typography", n: 2, title: "Tipografiya", lead: "Shrift: SF Pro Text (zaxira: Inter, system-ui). Barcha o'lchamlar 4px tizimiga mos qator balandligi bilan." },
+          h(Spec, { title: "Sarlavhalar va matn uslublari" }, h("div", null,
+            [["H1", "ds-h1", "32 / 40 · Bold 700", "Sahifa sarlavhasi"], ["H2", "ds-h2", "26 / 34 · Bold 700", "Bo'lim sarlavhasi"], ["H3", "ds-h3", "22 / 30 · Semibold 600", "Kartochka guruhi"], ["H4", "ds-h4", "18 / 26 · Semibold 600", "Modal sarlavhasi"], ["H5", "ds-h5", "16 / 24 · Semibold 600", "Kartochka sarlavhasi"], ["H6", "ds-h6", "14 / 20 · Semibold 600", "Kichik sarlavha"],
+              ["Body Large", "ds-body-lg", "16 / 26 · Regular 400", "Muhim tavsif matni"], ["Body Medium", "ds-body-md", "14 / 22 · Regular 400", "Asosiy matn (standart)"], ["Body Small", "ds-body-sm", "13 / 20 · Regular 400", "Jadval va ro'yxat matni"], ["Label", "ds-label", "13 / 18 · Medium 500", "Forma maydoni nomi"], ["Caption", "ds-caption", "12 / 16 · Regular 400", "Vaqt, meta ma'lumot"], ["Helper text", "ds-helper", "12 / 16 · Regular 400", "Maydon ostidagi izoh"]].map(function (t) { return h("div", { key: t[0], className: "ds-type" }, h("span", { className: "meta" }, t[0]), h("span", { className: t[1] }, t[3]), h("span", { className: "meta" }, t[2])); }),
+            h("div", { className: "ds-type" }, h("span", { className: "meta" }, "Link"), h("span", null, "Batafsil ma'lumot uchun ", h("a", { className: "ds-link", tabIndex: 0 }, "ish kartochkasini oching")), h("span", { className: "meta" }, "14 · Medium 500 · primary")),
+            h("div", { className: "ds-type" }, h("span", { className: "meta" }, "Error text"), h("span", { className: "ds-err-t" }, h(Icon, { name: "err", size: "sm" }), "Hujjat raqami kiritilishi shart"), h("span", { className: "meta" }, "12 / 16 · error-text"))))),
+
+        // 3. Buttons
+        h(Sec, { id: "buttons", n: 3, title: "Tugmalar", lead: "Bitta <Button> komponenti — variant, size, holatlar va ikonkalar props orqali." },
+          h(Spec, { title: "Variantlar", code: '<Button variant="primary">Saqlash<\/Button>\n<Button variant="secondary">Qoralama<\/Button>\n<Button variant="outline">Bekor qilish<\/Button>\n<Button variant="ghost">Yopish<\/Button>\n<Button variant="danger" iconLeft="trash">O\'chirish<\/Button>' },
+            h(Row, null, h(Button, { variant: "primary" }, "Saqlash"), h(Button, { variant: "secondary" }, "Qoralama"), h(Button, { variant: "outline" }, "Bekor qilish"), h(Button, { variant: "ghost" }, "Yopish"), h(Button, { variant: "danger", iconLeft: "trash" }, "O'chirish"), h(Button, { variant: "danger-outline" }, "Rad etish"))),
+          h(Spec, { title: "O'lchamlar", desc: "Small 32px · Medium 38px · Large 44px" },
+            ["primary", "outline"].map(function (v) { return h(Row, { key: v, cap: v }, ["sm", "md", "lg"].map(function (s) { return h(Button, { key: s, variant: v, size: s, iconRight: "arrowR" }, { sm: "Small", md: "Medium", lg: "Large" }[s]); })); })),
+          h(Spec, { title: "Holatlar", desc: "Default · Hover · Active · Focus · Disabled · Loading" },
+            ["primary", "secondary", "outline", "ghost", "danger"].map(function (v) { return h(Row, { key: v, cap: v }, h(Button, { variant: v }, "Default"), h(Button, { variant: v, forceState: "hover" }, "Hover"), h(Button, { variant: v, forceState: "active" }, "Active"), h(Button, { variant: v, forceState: "focus" }, "Focus"), h(Button, { variant: v, disabled: true }, "Disabled"), h(Button, { variant: v, loading: true }, "Loading")); })),
+          h(Spec, { title: "Ikonkali tugmalar", code: '<Button iconLeft="plus">Qo\'shish<\/Button>\n<IconButton icon="edit" title="Tahrirlash" />\n<IconButton icon="trash" variant="danger-outline" title="O\'chirish" />' },
+            h(Row, { cap: "Text + icon" }, h(Button, { iconLeft: "plus" }, "Qo'shish"), h(Button, { variant: "outline", iconLeft: "download" }, "Hisobot"), h(Button, { variant: "secondary", iconRight: "arrowR" }, "Keyingi bosqich"), h(Button, { variant: "outline", iconLeft: "filter", iconRight: "chev" }, "Filtrlar")),
+            h(Row, { cap: "Icon button" }, ["sm", "md", "lg"].map(function (s) { return h(IconButton, { key: s, icon: "edit", size: s, variant: "outline", title: "Tahrirlash" }); }), h(IconButton, { icon: "more", title: "Ko'proq" }), h(IconButton, { icon: "plus", variant: "primary", title: "Qo'shish" }), h(IconButton, { icon: "trash", variant: "danger-outline", title: "O'chirish" }), h(IconButton, { icon: "bell", variant: "outline", title: "Bildirishnomalar", disabled: true })),
+            h(Row, { cap: "Interaktiv" }, h(Button, { loading: tLoad[0], iconLeft: "send", onClick: function () { tLoad[1](true); setTimeout(function () { tLoad[1](false); toast("success", "Yuborildi", "Hujjat sudyaga yuborildi"); }, 1400); } }, "Sudyaga yuborish")))),
+
+        // 4. Forms
+        h(Sec, { id: "forms", n: 4, title: "Kiritish maydonlari", lead: "Barcha maydonlar bir xil balandlik (38px), chegara, fokus halqasi va xato uslubiga ega." },
+          h(Spec, { title: "Matn maydonlari", code: '<Input label="Hujjat raqami" required placeholder="Raqamni kiriting" />\n<Input type="number" label="Summa" suffix="so\'m" />\n<Input type="password" label="Parol" />\n<Input type="search" placeholder="Qidirish…" />' },
+            h("div", { className: "ds-grid ds-g2" },
+              h(Input, { label: "Text input", placeholder: "Hujjat raqamini kiriting", helper: "Masalan: 4-11-2405/44" }),
+              h(Input, { label: "Number input", type: "number", defaultValue: "1000000", suffix: "so'm", helper: "↑ / ↓ tugmalari bilan o'zgartiring" }),
+              h(Input, { label: "Password", type: "password", defaultValue: "maxfiy123", required: true }),
+              h(Input, { label: "Search", type: "search", placeholder: "F.I.Sh., STIR yoki ish raqami" }))),
+          h(Spec, { title: "Holatlar", desc: "Default · Focus · Error · Disabled" },
+            h("div", { className: "ds-grid ds-g4" }, h(Input, { label: "Default", placeholder: "Kiriting…" }), h(Input, { label: "Focus", placeholder: "Kiriting…", forceFocus: true }), h(Input, { label: "Error", defaultValue: "12/ab", error: "Format noto'g'ri" }), h(Input, { label: "Disabled", defaultValue: "Avtomatik beriladi", disabled: true }))),
+          h(Spec, { title: "Tanlash maydonlari", code: '<Select label="Hujjat turi" options={opts} searchable />\n<MultiSelect label="Ish turkumlari" options={opts} />' },
+            h("div", { className: "ds-grid ds-g2" },
+              h(Select, { label: "Select", required: true, options: opts, placeholder: "Hujjat turini tanlang" }),
+              h(Select, { label: "Select (qidiruvli)", searchable: true, options: opts, defaultValue: "qd" }),
+              h(MultiSelect, { label: "Multi select", options: opts.slice(0, 4), defaultValue: ["dv", "qd"] }),
+              h(Select, { label: "Select · error", options: opts, error: "Hujjat turini tanlash majburiy" }))),
+          h(Spec, { title: "Sana tanlash", desc: "Bitta sana va sana oralig'i (ikki oylik ko'rinish, tezkor oraliqlar)" },
+            h("div", { className: "ds-grid ds-g2" }, h(DatePicker, { label: "Date picker", helper: "Hujjat sanasi" }), h(DateRangePicker, { label: "Date range picker", helper: "Hisobot davri" }))),
+          h(Spec, { title: "Checkbox · Radio · Switch" },
+            h("div", { className: "ds-grid ds-g3" },
+              h("div", { style: { display: "flex", flexDirection: "column", gap: 12 } }, h("span", { className: "ds-cap" }, "Checkbox"), h(Checkbox, { label: "Yagona darcha orqali", defaultChecked: true }), h(Checkbox, { label: "Qoldiq", desc: "Qoldiq ish sifatida belgilash" }), h(Checkbox, { label: "Indeterminate", indeterminate: true, checked: true }), h(Checkbox, { label: "Xato holat", error: true }), h(Checkbox, { label: "Disabled", disabled: true, defaultChecked: true })),
+              h("div", { style: { display: "flex", flexDirection: "column", gap: 12 } }, h("span", { className: "ds-cap" }, "Radio"), h(RadioGroup, { label: "Yuborish turi", defaultValue: "p", options: [{ value: "p", label: "Pochta orqali" }, { value: "e", label: "Elektron shaklda", desc: "E-SUD tizimi orqali" }, { value: "q", label: "Qo'lda topshirish" }, { value: "x", label: "Disabled", disabled: true }] })),
+              h("div", { style: { display: "flex", flexDirection: "column", gap: 14 } }, h("span", { className: "ds-cap" }, "Switch"), h(Switch, { label: "Manfaatida idora", defaultChecked: true }), h(Switch, { label: "Avto eslatma" }), h(Switch, { label: "Small", size: "sm", defaultChecked: true }), h(Switch, { label: "Disabled", disabled: true })))),
+          h(Spec, { title: "Textarea va fayl yuklash" },
+            h("div", { className: "ds-grid ds-g2" }, h(Textarea, { label: "Textarea", placeholder: "Ish mazmunini qisqacha yozing…", maxLength: 300, helper: "Qisqa va aniq" }), h(FileUpload, { label: "File upload", defaultFiles: [{ name: "Da'vo arizasi.pdf", size: 482000 }] })))),
+
+        // 5. Tables
+        h(Sec, { id: "tables", n: 5, title: "Jadvallar", lead: "<DataTable> — saralash, qidiruv, filtr, sahifalash, qator tanlash, amallar menyusi, bo'sh va yuklanish holatlari." },
+          h(Spec, { title: "Murakkab jadval", desc: "Ustun sarlavhasini bosing — saralanadi. Qatorlarni belgilang — tanlov paneli chiqadi.", bodyStyle: { padding: 0, gap: 0 }, code: '<DataTable\n  columns={columns} data={cases} selectable pageSize={5}\n  filter=\x7b\x7b key: "st", options: statuses \x7d\x7d\n  rowActions={(row) => [{ label: "Tahrirlash", icon: "edit" }, "-", { label: "O\'chirish", danger: true }]}\n/>' },
+            h(DataTable, { columns: cols, data: CASES, selectable: true, pageSize: 5, defaultSort: "sana", rowActions: rowActions, filter: { key: "st", options: [{ value: "korib", label: "Ko'rib chiqish" }, { value: "majlis", label: "Majlis" }, { value: "qoldi", label: "Qoldirilgan" }] }, actions: h(Button, { size: "sm", iconLeft: "plus" }, "Yangi ish") })),
+          h("div", { className: "ds-grid ds-g2" },
+            h(Spec, { title: "Oddiy jadval", bodyStyle: { padding: 0 } }, h(DataTable, { compact: true, toolbar: false, pagination: false, columns: [{ key: "num", title: "Ish raqami" }, { key: "turi", title: "Turi" }, { key: "st", title: "Holat", render: function (r) { return h(Badge, { size: "sm", variant: ST[r.st][1] }, ST[r.st][0]); } }], data: CASES.slice(0, 4) })),
+            h("div", null,
+              h(Spec, { title: "Yuklanish holati (Loading)", bodyStyle: { padding: 0 } }, h(DataTable, { loading: true, toolbar: false, columns: cols.slice(0, 3), data: [] })),
+              h(Spec, { title: "Bo'sh holat (Empty)", bodyStyle: { padding: 0 } }, h(DataTable, { toolbar: false, pagination: false, columns: cols.slice(0, 3), data: [] })))),
+          h(Spec, { title: "Status va badge'lar" }, h(Row, null, Object.keys(ST).map(function (k) { return h(Badge, { key: k, variant: ST[k][1], dot: true }, ST[k][0]); }), h(Badge, { variant: "error", dot: true }, "Muddati buzilgan"), h(Badge, { variant: "accent" }, "Qarshi da'vo"), h(Badge, { variant: "warning", icon: "copy" }, "Dublikat")))),
+
+        // 6a. Feedback
+        h(Sec, { id: "feedback", n: 6, title: "Xabarlar va holatlar", lead: "Toast, Alert, Notification, Spinner, Skeleton, Progress va Empty state." },
+          h(Spec, { title: "Toast", desc: "Pastki o'ng burchakda 4 soniya ko'rinadi", code: 'toast("success", "Saqlandi", "Ish ma\'lumotlari yangilandi")' },
+            h(Row, null, h(Button, { variant: "outline", iconLeft: "ok", onClick: function () { toast("success", "Saqlandi", "Ish ma'lumotlari yangilandi"); } }, "Success"), h(Button, { variant: "outline", iconLeft: "info", onClick: function () { toast("info", "Yangi hujjat", "R4-1901-2603/4234 ishiga Ajrim qo'shildi"); } }, "Info"), h(Button, { variant: "outline", iconLeft: "warn", onClick: function () { toast("warning", "Muddat yaqin", "3 kun ichida majlis tayinlanishi kerak"); } }, "Warning"), h(Button, { variant: "outline", iconLeft: "err", onClick: function () { toast("error", "Saqlab bo'lmadi", "Majburiy maydonlarni to'ldiring"); } }, "Error"))),
+          h(Spec, { title: "Alert" }, ["info", "success", "warning", "error"].map(function (v, i) { return alerts[0][i] ? h(Alert, { key: v, variant: v, title: { info: "Ma'lumot", success: "Muvaffaqiyatli", warning: "Diqqat", error: "Xatolik" }[v], onClose: function () { var a = alerts[0].slice(); a[i] = 0; alerts[1](a); } }, { info: "Da'vo davlat yoki boshqa idora manfaatida qo'zg'atilgan bo'lsa, tugmani yoqing.", success: "Ish ro'yxatga olindi va sudyaga taqsimlandi.", warning: "Ish qo'zg'atish muddati 2 kundan keyin tugaydi.", error: "Davlat boji to'lanmagan — ishni qabul qilib bo'lmaydi." }[v]) : null; }), alerts[0].indexOf(0) >= 0 ? h(Button, { size: "sm", variant: "ghost", onClick: function () { alerts[1]([1, 1, 1, 1]); } }, "Qayta ko'rsatish") : null),
+          h("div", { className: "ds-grid ds-g2" },
+            h(Spec, { title: "Notification", bodyStyle: { padding: 0, gap: 0 } }, h(Notification, { name: "Tojiyev Zokirjon", text: "sizga yangi ish yubordi · R4-1901-2603/4234", time: "2 daqiqa oldin", unread: true }), h(Notification, { name: "Ergashev Jahongir", text: "majlis bayonnomasini yukladi", time: "1 soat oldin", unread: true }), h(Notification, { name: "Qodirova Dilfuza", text: "ishni ro'yxatga oldi", time: "Kecha, 16:40" })),
+            h(Spec, { title: "Spinner · Skeleton · Progress" },
+              h(Row, { cap: "Spinner" }, h(Spinner, { size: "sm", color: "var(--ds-primary)" }), h(Spinner, { color: "var(--ds-primary)" }), h(Spinner, { size: "lg", color: "var(--ds-primary)" })),
+              h(Row, { cap: "Skeleton", top: true }, h("div", { className: "ds-row", style: { gap: 12, flex: 1, flexWrap: "nowrap" } }, h(Skeleton, { w: 40, h: 40, circle: true }), h("div", { style: { flex: 1, display: "flex", flexDirection: "column", gap: 8 } }, h(Skeleton, { w: "60%", h: 12 }), h(Skeleton, { w: "90%", h: 10 }), h(Skeleton, { w: "40%", h: 10 })))),
+              h(Row, { cap: "Progress" }, h("div", { style: { flex: 1, display: "flex", flexDirection: "column", gap: 10 } }, h(Progress, { value: prog[0] }), h(Progress, { value: 100, variant: "success" }), h(Progress, { indeterminate: true }), h("div", { className: "ds-row" }, h(Button, { size: "sm", variant: "outline", iconLeft: "minus", onClick: function () { prog[1](Math.max(0, prog[0] - 10)); } }, "10"), h(Button, { size: "sm", variant: "outline", iconLeft: "plus", onClick: function () { prog[1](Math.min(100, prog[0] + 10)); } }, "10"))), h(ProgressRing, { value: prog[0] })))),
+          h(Spec, { title: "Empty state" }, h(EmptyState, { icon: "folder", title: "Hali ish yo'q", text: "Bu bo'limda ko'rib chiqilayotgan ishlar yo'q. Yangi ish ro'yxatga olinganda shu yerda paydo bo'ladi.", action: h(Button, { iconLeft: "plus" }, "Ish qo'shish") }))),
+
+        // 6b. Overlays
+        h(Sec, { id: "overlays", n: 7, title: "Modal va oynalar", lead: "Modal, Dialog, Dropdown, Popover va Tooltip — Esc va tashqariga bosish bilan yopiladi." },
+          h(Spec, { title: "Modal va Dialog", code: '<Modal open={open} title="Da\'vogar qo\'shish" onClose={close} footer={…}>…<\/Modal>\n<ConfirmDialog open tone="danger" title="Ishni o\'chirasizmi?" onConfirm={…} />' },
+            h(Row, null, h(Button, { iconLeft: "plus", onClick: function () { modal[1](true); } }, "Modalni ochish"), h(Button, { variant: "danger-outline", iconLeft: "trash", onClick: function () { confirm[1](true); } }, "Tasdiqlash dialogi"))),
+          h(Spec, { title: "Dropdown · Popover · Tooltip" },
+            h(Row, null,
+              h(Dropdown, { trigger: h(Button, { variant: "outline", iconRight: "chev" }, "Boshqalar"), items: [{ label: "Soddalashtirilganga o'tkazish", icon: "arrowR" }, { label: "Boshqa sudga", icon: "send" }, { label: "Qayta taqsimlash", icon: "users" }, "-", { label: "O'chirish", icon: "trash", danger: true }] }),
+              h(Popover, { trigger: h(Button, { variant: "outline", iconLeft: "info" }, "Popover") }, function (close) { return F(h("b", null, "Ish holati"), h("p", null, "Ish ko'rib chiqish bosqichida. Keyingi bosqichga o'tkazish uchun natija kiritilishi kerak."), h("div", { className: "ds-row", style: { justifyContent: "flex-end" } }, h(Button, { size: "sm", variant: "ghost", onClick: close }, "Yopish"), h(Button, { size: "sm", onClick: close }, "Natija kiritish"))); }),
+              h(Tooltip, { content: "Ish raqamidan nusxa olish" }, h(IconButton, { icon: "copy", variant: "outline", title: "Nusxa" })),
+              h(Tooltip, { content: "Pastda chiqadigan tooltip", placement: "bottom" }, h(Button, { variant: "ghost" }, "Tooltip (pastda)"))))),
+
+        // 6c. Navigation
+        h(Sec, { id: "navigation", n: 8, title: "Navigatsiya", lead: "Tabs, Accordion, Breadcrumbs, Pagination, Sidebar va Header." },
+          h(Spec, { title: "Tabs", code: '<Tabs variant="segmented" items={[{ value: "korib", label: "Ko\'rib chiqish", count: 5 }, …]} />' },
+            h(Tabs, { items: [{ value: "a", label: "Umumiy", content: h("span", { className: "ds-body-sm", style: { color: "var(--ds-text-2)" } }, "Ish bo'yicha umumiy ma'lumotlar.") }, { value: "b", label: "Tomonlar", count: 6, content: h("span", { className: "ds-body-sm", style: { color: "var(--ds-text-2)" } }, "Da'vogar va javobgarlar ro'yxati.") }, { value: "c", label: "Hujjatlar", count: 12, content: h("span", { className: "ds-body-sm", style: { color: "var(--ds-text-2)" } }, "Ish hujjatlari.") }] }),
+            h(Tabs, { variant: "segmented", items: [{ value: "a", label: "Ko'rib chiqish", count: 5 }, { value: "b", label: "Sudgacha majlis", count: 2 }, { value: "c", label: "Natija qo'yish" }, { value: "d", label: "Yakunlangan" }] })),
+          h("div", { className: "ds-grid ds-g2" },
+            h(Spec, { title: "Accordion" }, h(Accordion, { defaultOpen: 0, items: [{ title: "Ish mazmuni va da'vo summasi", content: "Da'vo summasi: 1 000 000 so'm. Ish yuritish tartibi — da'vo tartibida." }, { title: "Sud xarajatlari", content: "Davlat boji to'langan, pochta xarajati kutilmoqda." }, { title: "Boshqa ma'lumotlar", content: "Qo'shimcha izohlar yo'q." }] })),
+            h(Spec, { title: "Breadcrumbs va Pagination" }, h(Breadcrumbs, { items: ["Da'vo tartibida", "Birinchi instansiya", "R4-1901-2603/4234"] }), h(Pagination, { page: pg[0], pages: 12, onChange: pg[1] }))),
+          h(Spec, { title: "Sidebar · Header · Navigation", desc: "Ilova qobig'i — mavjud tizim tuzilmasi asosida" },
+            h("div", { className: "ds-shell" },
+              h("div", { className: "ds-rail" }, h("span", { style: { width: 32, height: 32, borderRadius: 10, background: "var(--ds-accent-grad)", marginBottom: 8 } }), h("button", { type: "button", className: "ds-rail-i on", "aria-label": "Bosh sahifa" }, h(Icon, { name: "home" })), h("button", { type: "button", className: "ds-rail-i", "aria-label": "Ishlar" }, h(Icon, { name: "scale" })), h("button", { type: "button", className: "ds-rail-i", "aria-label": "Devonxona" }, h(Icon, { name: "user" })), h("span", { style: { flex: 1 } }), h(Avatar, { name: "Tojiyev Zokirjon", size: "sm", online: true })),
+              h("div", { className: "ds-sub" }, h("b", null, "Da'vo tartibida"), h("button", { type: "button", className: "ds-nav-i on" }, "Birinchi instansiya"), h("button", { type: "button", className: "ds-nav-i" }, "Apellyatsiya"), h("button", { type: "button", className: "ds-nav-i" }, "Kassatsiya"), h("div", { className: "ds-nav-h" }, "Boshqa"), h("button", { type: "button", className: "ds-nav-i" }, "Taftish")),
+              h("div", { className: "ds-shell-main" },
+                h("div", { className: "ds-hdr" }, h("div", { className: "t" }, h("small", null, "Da'vo tartibida › Birinchi instansiya"), h("b", null, "Birinchi instansiya")), h("div", { style: { width: 240 } }, h(Input, { type: "search", size: "sm", placeholder: "Qidiruv" })), h("div", { className: "ds-row", style: { gap: 8 } }, h(IconButton, { icon: "bell", variant: "outline", size: "sm", title: "Bildirishnomalar" }), h(Avatar, { name: "Ergashev Jahongir", size: "sm" }))),
+                h("div", { className: "ds-shell-body" }, [["Ko'rib chiqishda", "5", "info"], ["Majlis tayinlangan", "2", "success"], ["Muddati buzilgan", "1", "error"]].map(function (k) { return h("div", { key: k[0], className: "ds-card elev ds-stat" }, h("span", { className: "ds-caption" }, k[0]), h("span", { className: "sn" }, k[1]), h(Badge, { size: "sm", variant: k[2], dot: true }, k[2] === "error" ? "Diqqat" : "Normal")); })))))),
+
+        // 6d. Display
+        h(Sec, { id: "display", n: 9, title: "Ko'rsatish elementlari", lead: "Card, Avatar, Badge, Tag va Status." },
+          h(Spec, { title: "Cards" }, h("div", { className: "ds-grid ds-g3" },
+            h(Card, { title: "Oddiy kartochka", subtitle: "Chegara bilan", action: h(IconButton, { icon: "more", size: "sm", title: "Amallar" }) }, "Kartochka ichidagi tavsif matni. Har qanday kontentni o'z ichiga olishi mumkin."),
+            h(Card, { elevated: true, title: "Soyali kartochka", subtitle: "Dashboard uchun", footer: F(h(Button, { size: "sm", variant: "ghost" }, "Bekor"), h(Button, { size: "sm" }, "Ochish")) }, "Footer bilan amallar kartochkasi."),
+            h(Card, { elevated: true, hoverable: true, onClick: function () { toast("info", "Kartochka bosildi", "Hover va bosish holati"); } }, h("div", { className: "ds-row", style: { justifyContent: "space-between" } }, h("span", { className: "ds-caption" }, "Muddati buzilgan arizalar"), h(Icon, { name: "arrowR" })), h("div", { style: { fontSize: 30, fontWeight: 700, color: "var(--ds-text)", margin: "6px 0" } }, "2"), h(Badge, { size: "sm", variant: "error", icon: "chevU" }, "1 tasi bugun")))),
+          h("div", { className: "ds-grid ds-g2" },
+            h(Spec, { title: "Avatar" }, h(Row, { cap: "O'lchamlar" }, ["xs", "sm", "md", "lg"].map(function (s) { return h(Avatar, { key: s, name: "Tojiyev Zokirjon", size: s }); })), h(Row, { cap: "Holat" }, h(Avatar, { name: "Ergashev Jahongir", online: true }), h(Avatar, { name: "Qodirova Dilfuza", square: true }), h(AvatarGroup, { names: ["Aralov Yunus", "Karimov Akmal", "Rahimova Dilnoza", "Shaymonov Ilhom", "Normurodov Bekzod", "Tursunova Zarina"], max: 4 }))),
+            h(Spec, { title: "Badge · Tag · Status" },
+              h(Row, { cap: "Badge" }, ["neutral", "primary", "success", "warning", "error", "info"].map(function (v) { return h(Badge, { key: v, variant: v }, v); }), h(Badge, { variant: "primary", solid: true }, "Solid"), h("span", { className: "ds-count" }, "3")),
+              h(Row, { cap: "Tag" }, h(Tag, { onRemove: function () { toast("info", "Tag olib tashlandi", ""); } }, "Prokuratura"), h(Tag, { variant: "primary", onRemove: function () {} }, "Termiz sh."), h(Tag, null, "Faqat o'qish")),
+              h(Row, { cap: "Status" }, h(Status, { variant: "success", pulse: true }, "Onlayn"), h(Status, { variant: "warning" }, "Kutilmoqda"), h(Status, { variant: "error" }, "Rad etilgan"), h(Status, null, "Faol emas"))))),
+
+        // 7. Tokens
+        h(Sec, { id: "tokens", n: 10, title: "Design tokenlar", lead: "Barcha qiymatlarning yagona manbasi. CSS o'zgaruvchilari (.ds-root) va JS obyekti (RSDS.TOKENS) bir xil." },
+          h("div", { className: "ds-grid ds-g2" },
+            h(Spec, { title: "Spacing (4px tizimi)", bodyStyle: { padding: 0 } }, h("table", { className: "ds-tok" }, h("thead", null, h("tr", null, h("th", null, "Token"), h("th", null, "Qiymat"), h("th", null, "Ko'rinish"))), h("tbody", null, Object.keys(TOKENS.spacing).map(function (k) { return h("tr", { key: k }, h("td", null, h("code", null, "space-" + k)), h("td", null, h("code", null, TOKENS.spacing[k])), h("td", null, h("span", { className: "vis", style: { width: TOKENS.spacing[k], height: 10, background: "var(--ds-primary)", borderRadius: 2 } }))); })))),
+            h("div", null,
+              h(Spec, { title: "Border radius", bodyStyle: { padding: 0 } }, h("table", { className: "ds-tok" }, h("tbody", null, Object.keys(TOKENS.radius).map(function (k) { return h("tr", { key: k }, h("td", null, h("code", null, "radius-" + k)), h("td", null, h("code", null, TOKENS.radius[k])), h("td", null, h("span", { className: "vis", style: { width: 36, height: 24, border: "2px solid var(--ds-primary)", borderRadius: TOKENS.radius[k], background: "var(--ds-primary-soft)" } }))); })))),
+              h(Spec, { title: "Shadows", bodyStyle: { padding: 0 } }, h("table", { className: "ds-tok" }, h("tbody", null, ["xs", "sm", "md", "lg"].map(function (k) { return h("tr", { key: k }, h("td", null, h("code", null, "shadow-" + k)), h("td", { style: { maxWidth: 220 } }, h("code", null, TOKENS.shadow[k])), h("td", null, h("span", { className: "vis", style: { width: 44, height: 28, borderRadius: 8, background: "var(--ds-surface)", boxShadow: "var(--ds-sh-" + k + ")" } }))); })))))),
+          h("div", { className: "ds-grid ds-g2" },
+            h(Spec, { title: "Typography tokenlari", bodyStyle: { padding: 0 } }, h("table", { className: "ds-tok" }, h("thead", null, h("tr", null, h("th", null, "Token"), h("th", null, "Size / Line"), h("th", null, "Weight"))), h("tbody", null, Object.keys(TOKENS.fontSize).map(function (k) { var v = TOKENS.fontSize[k]; return h("tr", { key: k }, h("td", null, h("code", null, "text-" + k)), h("td", null, h("code", null, v[0] + " / " + v[1])), h("td", null, h("code", null, v[2]))); })))),
+            h(Spec, { title: "Border width va komponent o'lchamlari", bodyStyle: { padding: 0 } }, h("table", { className: "ds-tok" }, h("tbody", null,
+              h("tr", null, h("td", null, h("code", null, "border")), h("td", null, h("code", null, "1px")), h("td", null, "Kartochka, input")), h("tr", null, h("td", null, h("code", null, "border-1.5")), h("td", null, h("code", null, "1.5px")), h("td", null, "Checkbox, dropzone")), h("tr", null, h("td", null, h("code", null, "border-2")), h("td", null, h("code", null, "2px")), h("td", null, "Faol tab chizig'i")),
+              h("tr", null, h("td", null, h("code", null, "control-sm / md / lg")), h("td", null, h("code", null, "32 / 38 / 44px")), h("td", null, "Button, Input, Select")), h("tr", null, h("td", null, h("code", null, "icon-sm / md / lg")), h("td", null, h("code", null, "14 / 16 / 20px")), h("td", null, "Ikonkalar")), h("tr", null, h("td", null, h("code", null, "avatar xs–lg")), h("td", null, h("code", null, "24 / 32 / 40 / 56px")), h("td", null, "Avatar")))))),
+          h(Spec, { title: "Tailwind CSS konfiguratsiyasi", desc: "Asosiy (Nuxt / React) loyihada shu tokenlarni Tailwind orqali ishlatish uchun", code: tw }, h("span", { className: "ds-helper" }, "Tokenlar JSON ko'rinishida ham mavjud: ", h("code", null, "RSDS.TOKENS")))),
+
+        // 8. Architecture
+        h(Sec, { id: "architecture", n: 11, title: "Komponent arxitekturasi", lead: "Qayta foydalaniladigan komponentlar ro'yxati va qoidalar." },
+          h(Spec, { title: "Komponentlar xaritasi", bodyStyle: { padding: 0 } }, h("table", { className: "ds-tok" }, h("thead", null, h("tr", null, h("th", null, "Komponent"), h("th", null, "Asosiy props"), h("th", null, "Mavjud tizimdagi o'rni"))), h("tbody", null,
+            [["Button / IconButton", "variant, size, loading, disabled, iconLeft, iconRight", ".btn, .btn.pri, .d2-btn, .rsc-btn → birlashtirildi"], ["Input", "type (text|number|password|search), size, error, helper, prefix/suffix", ".fld input, .dx-in, .l-search"], ["Select / MultiSelect", "options, searchable, defaultValue, error", ".dx-sel, .dx-selbtn, .gs-*"], ["DatePicker / DateRangePicker", "defaultValue, label, helper", "gcal kalendari"], ["Checkbox / RadioGroup / Switch", "checked, indeterminate, disabled, error", ".l-chk, .radio, .dx-sw"], ["DataTable", "columns, data, selectable, filter, rowActions, loading, pageSize", ".l-table, .d2-tbl, ish ro'yxatlari"], ["Badge / Tag / Status", "variant, dot, solid, onRemove, pulse", ".badge, .chip, .tag, .d2-kc"], ["Card / Alert / Toast", "title, footer, elevated, variant, onClose", ".d2-card, .note, .warn, .flash"], ["Modal / ConfirmDialog", "open, title, size, footer, tone", "casemodal, dx modallari, askLeave"], ["Tabs / Accordion / Dropdown / Popover / Tooltip", "items, variant, align, placement", ".seg-tabs, .l-tabs, .dd, .qs-menu"]].map(function (r) { return h("tr", { key: r[0] }, h("td", null, h("b", null, r[0])), h("td", null, h("code", null, r[1])), h("td", { className: "ds-caption" }, r[2])); })))),
+          h("div", { className: "ds-grid ds-g2" },
+            h(Spec, { title: "Qoidalar" }, h("div", { style: { display: "flex", flexDirection: "column", gap: 10 } }, ["Har bir komponent bitta faylda, variant/size props orqali boshqariladi — nusxa ko'chirilgan stil yo'q.", "Stillarda faqat tokenlar (var(--ds-*)) — HEX yozilmaydi; Dark Mode tokenlar almashishi orqali ishlaydi.", "Komponent o'zgarsa, uni ishlatgan barcha sahifalarda avtomatik aks etadi.", "Barcha interaktiv elementlarda klaviatura fokusi (3px halqa), aria-atributlari va Esc bilan yopish bor."].map(function (t, i) { return h("div", { key: i, className: "ds-rule" }, h(Icon, { name: "ok", style: { color: "var(--ds-success)" } }), h("span", null, t)); }))),
+            h(Spec, { title: "Foydalanish", code: "// Istalgan sahifada:\nconst { Button, Input, DataTable, toast } = window.RSDS;\n\nh(Button, { variant: \"primary\", size: \"md\", iconLeft: \"plus\",\n  onClick: () => toast(\"success\", \"Qo'shildi\") }, \"Qo'shish\");\n\n// Butun kutubxonani boshqa joyga o'rnatish:\nRSDS.mount(document.getElementById(\"app\"), { theme: \"dark\" });" }, h("span", { className: "ds-helper" }, "Komponentlar global ", h("code", null, "window.RSDS"), " orqali boshqa sahifalarda ham qayta ishlatiladi."))))),
+
+      h(Modal, { open: modal[0], theme: theme, title: "Da'vogar qo'shish", subtitle: "Shaxsni qidirib toping va ishga biriktiring", onClose: function () { modal[1](false); }, footer: F(h(Button, { variant: "outline", onClick: function () { modal[1](false); } }, "Bekor qilish"), h(Button, { iconLeft: "check", loading: mLoad[0], onClick: function () { mLoad[1](true); setTimeout(function () { mLoad[1](false); modal[1](false); toast("success", "Da'vogar qo'shildi", "Aralov Yunus Bazarovich ishga biriktirildi"); }, 1000); } }, "Saqlash")) },
+        h(Tabs, { variant: "segmented", items: [{ value: "uz", label: "O'zbekiston fuqarosi" }, { value: "ch", label: "Chet el fuqarosi" }] }),
+        h("div", { className: "ds-grid ds-g2" }, h(Input, { label: "Pasport / ID-karta", placeholder: "AB 1234567", required: true }), h(DatePicker, { label: "Tug'ilgan sana" })),
+        h(Select, { label: "Taraf turi", options: [{ value: "dv", label: "Da'vogar" }, { value: "jv", label: "Javobgar" }, { value: "3", label: "Uchinchi shaxs" }], defaultValue: "dv" }),
+        h(Alert, { variant: "info" }, "Ma'lumotlar GSP tizimidan avtomatik olinadi.")),
+      h(ConfirmDialog, { open: confirm[0], theme: theme, tone: "danger", title: "Ishni o'chirasizmi?", confirmText: "Ha, o'chirish", loading: cLoad[0], onClose: function () { confirm[1](false); }, onConfirm: function () { cLoad[1](true); setTimeout(function () { cLoad[1](false); confirm[1](false); toast("success", "O'chirildi", "Ish arxivga ko'chirildi (namuna)"); }, 900); } }, "R4-1901-2603/4234 ishi va unga tegishli hujjatlar o'chiriladi. Bu amalni ortga qaytarib bo'lmaydi."),
+      h(Toaster));
+  }
+
+  // ---------- O'rnatish ----------
+  var roots = [];
+  function mount(el, opts) {
+    var RD = window.ReactDOM; if (!RD || !el) return null;
+    var root = RD.createRoot ? RD.createRoot(el) : null;
+    var node = h(Page, opts || {});
+    if (root) root.render(node); else RD.render(node, el);
+    var rec = { el: el, root: root }; roots.push(rec); return rec;
+  }
+  function unmount(rec) { try { if (rec.root) rec.root.unmount(); else window.ReactDOM.unmountComponentAtNode(rec.el); } catch (e) {} roots = roots.filter(function (r) { return r !== rec; }); }
+  function scrollTo(id) { var el = document.getElementById("ds-" + id); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }
+
+  var api = { TOKENS: TOKENS, CATS: CATS, mount: mount, unmount: unmount, scrollTo: scrollTo, toast: toast, Icon: Icon, Button: Button, IconButton: IconButton, Spinner: Spinner, Field: Field, Input: Input, Textarea: Textarea, Select: Select, MultiSelect: MultiSelect, Checkbox: Checkbox, RadioGroup: RadioGroup, Switch: Switch, FileUpload: FileUpload, DatePicker: DatePicker, DateRangePicker: DateRangePicker, Badge: Badge, Tag: Tag, Status: Status, Avatar: Avatar, AvatarGroup: AvatarGroup, Skeleton: Skeleton, Progress: Progress, ProgressRing: ProgressRing, Card: Card, Alert: Alert, Modal: Modal, ConfirmDialog: ConfirmDialog, Tabs: Tabs, Accordion: Accordion, Tooltip: Tooltip, Dropdown: Dropdown, Popover: Popover, Breadcrumbs: Breadcrumbs, Pagination: Pagination, EmptyState: EmptyState, Notification: Notification, Toaster: Toaster, DataTable: DataTable, Page: Page };
+  try { window.RSDS = api; } catch (e) {}
+  return api;
+})();
+
 class Component extends DCLogic {
   constructor(...args) {
     super(...args);
@@ -7421,7 +8402,7 @@ class Component extends DCLogic {
       var sv = JSON.parse(window.localStorage.getItem("adolat.nav") || "null");
       if (sv && typeof sv === "object") { var st0 = this.state; NAVK.forEach(function (k) { if (sv[k] !== undefined && sv[k] !== null) st0[k] = sv[k]; }); }
       if (this.state.caseOpen && !this.state.caseNum) this.state.caseOpen = false;
-      if (["dash", "list", "devon"].indexOf(this.state.page) < 0) this.state.page = "dash";
+      if (["dash", "list", "devon", "ds"].indexOf(this.state.page) < 0) this.state.page = "dash";
       this._navScroll = JSON.parse(window.localStorage.getItem("adolat.navScroll") || "null");
     } catch (e) {}
   }
@@ -7446,6 +8427,20 @@ class Component extends DCLogic {
   }
   componentDidMount() {
     var self = this;
+    // ===== Design System sahifasi: React kutubxonasini #ds-host ga o'rnatish / olib tashlash =====
+    try {
+      var dsRec = null;
+      var dsSync = function () {
+        var host = document.getElementById("ds-host");
+        if (dsRec && (!host || dsRec.el !== host || !dsRec.el.isConnected)) { RSDS.unmount(dsRec); dsRec = null; }
+        if (host && !dsRec && window.ReactDOM) {
+          dsRec = RSDS.mount(host, { theme: document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light", onSection: function (id) { if (self.state.dsCat !== id) self.setState({ dsCat: id }); } });
+        }
+      };
+      this._dsObs = new MutationObserver(function () { var host = document.getElementById("ds-host"); if ((host && !dsRec) || (dsRec && !host)) dsSync(); });
+      this._dsObs.observe(document.body, { childList: true, subtree: true });
+      setTimeout(dsSync, 0);
+    } catch (x) {}
     // ===== scroll holatini eslab qolish va qayta yuklanganda tiklash =====
     try {
       var caseScroller = function () { var c = document.querySelector(".casemodal"); var el = c; while (el && el !== document.body) { var o = getComputedStyle(el).overflowY; if ((o === "auto" || o === "scroll") && el.scrollHeight > el.clientHeight) return el; el = el.parentElement; } return null; };
@@ -7851,6 +8846,7 @@ class Component extends DCLogic {
   }
 
   componentWillUnmount() {
+    try { if (this._dsObs) this._dsObs.disconnect(); } catch (x) {}
     try { if (this._exitObs) this._exitObs.disconnect(); } catch (x) {}
     try { document.removeEventListener("scroll", this._onD3Scroll, true); } catch (x) {}
     try { window.removeEventListener("scroll", this._onNavScroll, true); } catch (x) {}
@@ -9451,21 +10447,25 @@ class Component extends DCLogic {
       var ariza = dx.ariza ? fileView(dx.ariza, "ariza") : { name: "", size: "", ext: "", ftCls: "dx-ft", prog: 0, loading: false, done: false };
 
       Object.assign(__out, {
-        isDevon: isDevon, isListPage: !isDevon && !isDash, isDash: isDash,
+        isDevon: isDevon, isListPage: !isDevon && !isDash && !(s.page === "ds" && !s.caseOpen), isDash: isDash,
         railDashCls: isDash ? "l-ri on" : "l-ri", railDashCur: isDash ? "page" : "false",
         goDash: function () { self.setState({ page: "dash", caseOpen: false, subView: "", lMenu: 0, lBell: false, dd: "", pf: false }); try { window.scrollTo(0, 0); } catch (e) {} },
-        showListSub: !(s.caseOpen && s.openMode === "page") && !isDevon && !isDash && (s.listSrc || "main") !== "reg",
-        topCrumb: isDash ? ({ sudya: "Sudya", yordamchi: "Sudya yordamchisi", devon: "Devonxona mudiri", operator: "Operator" }[s.role || "yordamchi"] + " kabineti") : isDevon ? "Devonxona" : (s.listSrc || "main") === "reg" ? "Ro'yxatga olish" : "Da'vo tartibida", topTitle: isDash ? "Bosh sahifa" : isDevon ? "Ro'yxatga olish" : (s.listSrc || "main") === "reg" ? "Da'vo tartibida" : s.lInst,
+        showListSub: !(s.caseOpen && s.openMode === "page") && !isDevon && !isDash && s.page !== "ds" && (s.listSrc || "main") !== "reg",
+        topCrumb: s.page === "ds" && !s.caseOpen ? "UI kutubxona" : isDash ? ({ sudya: "Sudya", yordamchi: "Sudya yordamchisi", devon: "Devonxona mudiri", operator: "Operator" }[s.role || "yordamchi"] + " kabineti") : isDevon ? "Devonxona" : (s.listSrc || "main") === "reg" ? "Ro'yxatga olish" : "Da'vo tartibida", topTitle: s.page === "ds" && !s.caseOpen ? "Design System" : isDash ? "Bosh sahifa" : isDevon ? "Ro'yxatga olish" : (s.listSrc || "main") === "reg" ? "Da'vo tartibida" : s.lInst,
+        isDs: s.page === "ds" && !s.caseOpen,
+        railDsCls: s.page === "ds" && !s.caseOpen ? "l-ri on" : "l-ri", railDsCur: s.page === "ds" && !s.caseOpen ? "page" : "false",
+        goDs: function () { self.setState({ page: "ds", caseOpen: false, subView: "", lMenu: 0, lBell: false, dd: "", pf: false }); try { window.scrollTo(0, 0); } catch (x) {} },
+        dsCats: RSDS.CATS.map(function (c, i) { return { label: (i + 1) + ". " + c[1], cls: "l-sn" + ((s.dsCat || "colors") === c[0] ? " on" : ""), go: function () { RSDS.scrollTo(c[0]); } }; }),
         railShowIsh: (s.role || "yordamchi") === "sudya" || (s.role || "yordamchi") === "yordamchi", railShowDevon: s.role === "devon",
         railDevonCls: isDevon ? "l-ri on" : "l-ri", railDevonCur: isDevon ? "page" : "false",
-        railIshCls: isDevon || isDash ? "l-ri" : "l-ri on",
+        railIshCls: isDevon || isDash || (s.page === "ds" && !s.caseOpen) ? "l-ri" : "l-ri on",
         goDevon: function () {
           self.setState({ page: "devon", caseOpen: false, subView: "", lMenu: 0, lBell: false, dd: "" });
           try { window.scrollTo(0, 0); } catch (e) {}
         },
         goList: function () { self.setState(Object.assign(self._switchList("main"), { page: "list", caseOpen: false })); try { window.scrollTo(0, 0); } catch (e) {} },
         goRegList: function () { self.setState(Object.assign(self._switchList("reg"), { page: "list", caseOpen: false, subView: "", lBell: false, dd: "" })); try { window.scrollTo(0, 0); } catch (e) {} },
-        isRegList: (s.listSrc || "main") === "reg", regSubShow: !isDash && (isDevon || ((s.listSrc || "main") === "reg" && !(s.caseOpen && s.openMode === "page"))),
+        isRegList: (s.listSrc || "main") === "reg", regSubShow: !isDash && s.page !== "ds" && (isDevon || ((s.listSrc || "main") === "reg" && !(s.caseOpen && s.openMode === "page"))),
         regDevCls: isDevon ? "l-sn on" : "l-sn", regListCls: !isDevon && (s.listSrc || "main") === "reg" ? "l-sn on" : "l-sn",
         caseBackLbl: (s.listSrc || "main") === "reg" ? "Da'vo tartibida" : s.lInst,
         dx: dx, dxSet: dxSet, dxToggle: dxToggle, dxB: dxB,
