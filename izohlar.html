@@ -41,6 +41,10 @@
   .go:hover{text-decoration:underline}
   .quote{display:block;margin-top:6px;padding:4px 8px;border-left:3px solid #f59e0b;background:#fffbeb;color:#78350f;font-size:12.5px;white-space:pre-wrap;word-break:break-word;max-width:360px}
   .kind{display:inline-block;margin-left:4px;padding:1px 6px;border-radius:6px;background:#f1f5f9;color:#475569;font-size:11px}
+  .shot{display:block;margin-top:8px;width:150px;height:94px;border:1px solid var(--line);border-radius:8px;overflow:hidden;cursor:zoom-in;padding:0;background:#f1f5f9}
+  .shot img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+  .lb{position:fixed;inset:0;background:rgba(15,23,42,.6);display:grid;place-items:center;padding:24px;z-index:50}
+  .lb img{max-width:min(1200px,100%);max-height:calc(100vh - 48px);border-radius:12px;box-shadow:0 24px 64px rgba(0,0,0,.35);background:#fff}
   .muted{color:var(--mut)}
   .empty{padding:48px 16px;text-align:center;color:var(--mut)}
   .err{padding:14px 16px;border-radius:12px;background:#fef2f2;color:#b91c1c;margin-bottom:12px;display:none}
@@ -103,11 +107,11 @@
       var t2 = el('td'); t2.appendChild(el('div', 'txt', c.text));
       reps(c.id).forEach(function (r) { var d = el('div', 'rep'); d.appendChild(el('b', null, r.author + ': ')); d.appendChild(document.createTextNode(r.text)); t2.appendChild(d); });
       tr.appendChild(t2);
-      var t3 = el('td'); t3.appendChild(el('span', 'scr', c.screenLabel || c.screen || '—')); if (c.kind === 'text' || c.kind === 'element') t3.appendChild(el('span', 'kind', c.kind === 'text' ? 'Matn' : 'Komponent')); if (c.where) { t3.appendChild(el('br')); t3.appendChild(el('span', 'where', c.where)); } if (c.ctx) { t3.appendChild(el('br')); t3.appendChild(el('span', 'where', '🗂 ' + c.ctx)); } if (c.quote) t3.appendChild(el('span', 'quote', '“' + c.quote + '”')); tr.appendChild(t3);
+      var t3 = el('td'); t3.appendChild(el('span', 'scr', c.screenLabel || c.screen || '—')); if (c.kind === 'text' || c.kind === 'element') t3.appendChild(el('span', 'kind', c.kind === 'text' ? 'Matn' : 'Komponent')); if (c.where) { t3.appendChild(el('br')); t3.appendChild(el('span', 'where', c.where)); } if (c.ctx) { t3.appendChild(el('br')); t3.appendChild(el('span', 'where', '🗂 ' + c.ctx)); } if (c.quote) t3.appendChild(el('span', 'quote', '“' + c.quote + '”')); if (c.shot) { var sb = el('button', 'shot'); sb.type = 'button'; sb.title = 'Izoh yozilgan paytdagi ekran'; var im = el('img'); im.loading = 'lazy'; im.alt = 'Skrinshot'; im.src = '/api/comments?shot=' + encodeURIComponent(c.id); sb.appendChild(im); sb.addEventListener('click', function () { var lb = el('div', 'lb'), bi = el('img'); bi.src = im.src; lb.appendChild(bi); lb.addEventListener('click', function () { lb.remove(); }); document.body.appendChild(lb); }); t3.appendChild(sb); } tr.appendChild(t3);
       tr.appendChild(el('td', 'hide-m', c.author));
       tr.appendChild(el('td', 'hide-m muted', fmt(c.at)));
       var t6 = el('td'); t6.appendChild(el('span', 'stt' + (c.resolved ? ' ok' : ''), c.resolved ? 'Hal qilingan' : 'Ochiq')); tr.appendChild(t6);
-      var t7 = el('td'), a = el('a', 'go', 'Saytda ko\'rish →'); a.href = '/?c=' + encodeURIComponent(c.id); t7.appendChild(a); tr.appendChild(t7);
+      var t7 = el('td'), a = el('a', 'go', 'Saytda ko\'rish →'); a.href = '/?c=' + encodeURIComponent(c.id); t7.appendChild(a); if (c.steps && c.steps.length) { var pl = el('a', 'go', '▶ Joyni ochish'); pl.href = '/?c=' + encodeURIComponent(c.id) + '&play=1'; pl.title = 'Izoh yozilgan menyu/oynani avtomatik ochadi'; t7.appendChild(el('br')); t7.appendChild(pl); } tr.appendChild(t7);
       tb.appendChild(tr);
     });
   }

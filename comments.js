@@ -3,7 +3,7 @@
 (function () {
   'use strict';
   var API = '/api/comments';
-  var LS_NAME = 'rs.cname', LS_OPEN = 'rs.openAfter';
+  var LS_NAME = 'rs.cname', LS_OPEN = 'rs.openAfter', LS_REPLAY = 'rs.replay';
   var S = { list: [], mode: false, draft: null, open: null, panel: false, tab: 'open', q: '', scr: 'all', configured: true, loaded: false, err: '', flash: null };
 
   // ---------- yordamchilar ----------
@@ -27,6 +27,8 @@
     x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>',
     check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>',
     undo: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-2"/></svg>',
+    play: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>',
+    cam: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>',
     table: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/></svg>',
     trash: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>'
   };
@@ -102,8 +104,13 @@
   function vis(el) { return el && el.isConnected && el.getClientRects().length > 0; }
   function byText(c) {
     if (!c.fp || !c.tag) return null;
-    var list = document.querySelectorAll(c.tag), hit = null;
-    for (var i = 0; i < list.length; i++) { if (!root.contains(list[i]) && tc(list[i]) === c.fp && vis(list[i])) hit = list[i]; }
+    var list = document.querySelectorAll(c.tag), hit = null, best = -1, want = c.sel.split(' > ');
+    for (var i = 0; i < list.length; i++) {
+      var el = list[i]; if (root.contains(el) || el.closest('[data-ghost]') || tc(el) !== c.fp || !vis(el)) continue;
+      // bir xil matnli elementlar ko'p bo'lsa — manzili eng o'xshashini olamiz
+      var got = selOf(el).split(' > '), k = 0; while (k < got.length && k < want.length && got[k] === want[k]) k++;
+      if (k > best) { best = k; hit = el; }
+    }
     return hit;
   }
   // selector topgan element haqiqatan o'sha joymi (yopiq menyu o'rnida boshqa element bo'lib qolmasin)
@@ -117,10 +124,10 @@
   }
   function findEl(c) {
     if (!c || !c.sel) return null;
-    var key = c === S.draft ? '__d' : c.id, e = EC[key], now = Date.now();
+    var key = c._k || (c === S.draft ? '__d' : c.id), e = EC[key], now = Date.now();
     if (e && now - e.t < 500 && (e.el ? vis(e.el) : true)) return e.el;
     var el = null; try { el = document.querySelector(c.sel); } catch (x) {}
-    if (el && (!vis(el) || !same(c, el))) el = null;
+    if (el && (!vis(el) || !same(c, el) || el.closest('[data-ghost]'))) el = null;
     if (!el) el = byText(c);
     EC[key] = { el: el, t: now };
     return el;
@@ -274,7 +281,7 @@
       d.where ? h('div', { class: 'rsc-where' }, [document.createTextNode('📍 ' + d.where), d.ctx ? h('small', { text: '🗂 ' + d.ctx }) : null]) : null,
       d.quote ? h('div', { class: 'rsc-quote', text: '“' + d.quote + '”' }) : null,
       form({ ph: 'Izohingizni yozing…  (Ctrl+Enter — yuborish)', btn: 'Yuborish', cancel: function () { S.draft = null; build(); },
-        submit: function (nm, t) { return api('POST', Object.assign({}, d, { author: nm, text: t })).then(function (j) { S.list.push(j.comment); S.draft = null; S.open = j.comment.id; build(); }); } })
+        submit: function (nm, t) { var body = Object.assign({}, d, { author: nm, text: t }); delete body._shot; return api('POST', body).then(function (j) { S.list.push(j.comment); S.draft = null; S.open = j.comment.id; saveShot(j.comment, d._shot); build(); }); } })
     ]);
   }
   function threadPop(c) {
@@ -289,9 +296,18 @@
     var th = h('div', { class: 'rsc-thread' }, [msgEl(c)].concat(rs.map(msgEl)));
     return h('div', { class: 'rsc-pop', 'data-for': c.id, role: 'dialog', 'aria-label': 'Izoh ' + numOf(c) }, [
       h('div', { class: 'rsc-ph' }, [h('span', {}, [h('b', { text: '#' + numOf(c) }), document.createTextNode(' · ' + (c.resolved ? 'Hal qilingan' : c.screenLabel))]), acts]),
-      h('div', { class: 'rsc-miss' }, [h('b', { text: 'Bu joy hozir ekranda ko\'rinmayapti' }), document.createTextNode('Izoh ochilib-yopiladigan menyu, oyna yoki forma ichida yozilgan' + (c.ctx || c.where ? ': ' : '.')), (c.ctx || c.where) ? h('em', { text: c.ctx || c.where }) : null, document.createTextNode(' O\'sha joyni oching — izoh belgisi avtomatik o\'sha yerda paydo bo\'ladi.')]),
+      h('div', { class: 'rsc-miss' }, [h('b', { text: 'Bu joy hozir ekranda ko\'rinmayapti' }), document.createTextNode('Izoh ochilib-yopiladigan menyu, oyna yoki forma ichida yozilgan' + (c.ctx || c.where ? ': ' : '.')), (c.ctx || c.where) ? h('em', { text: c.ctx || c.where }) : null, document.createTextNode(c.steps && c.steps.length ? ' Pastdagi «Joyni ochish» tugmasi uni avtomatik ochib beradi.' : (c.shot ? ' Skrinshotda qayerda yozilganini ko\'rasiz; o\'sha joyni ochsangiz belgi paydo bo\'ladi.' : ' O\'sha joyni oching — izoh belgisi avtomatik o\'sha yerda paydo bo\'ladi.'))]),
       c.where ? h('div', { class: 'rsc-where' }, [document.createTextNode('📍 ' + c.where), c.ctx ? h('small', { text: '🗂 ' + c.ctx }) : null]) : null,
       c.quote ? h('div', { class: 'rsc-quote', text: '“' + c.quote + '”' }) : null,
+      (c.shot || SHOT[c.id] || (c.steps && c.steps.length)) ? h('div', { class: 'rsc-ctx' }, [
+        c.shot ? h('button', { type: 'button', class: 'rsc-thumb', title: 'Izoh yozilgan paytdagi ekran', 'aria-label': 'Skrinshotni kattalashtirish', onclick: function () { lightbox(c); } }, [h('img', { src: shotUrl(c), alt: '', loading: 'lazy' }), h('span', { html: IC.cam + 'Skrinshot' })])
+          : SHOT[c.id] ? h('span', { class: 'rsc-thumb wait', text: 'Skrinshot saqlanmoqda…' }) : null,
+        (c.steps && c.steps.length) ? h('div', { class: 'rsc-cbox' }, [
+          h('button', { type: 'button', class: 'rsc-btn pri rsc-play', html: IC.play + 'Joyni ochish', title: 'Sahifani qayta yuklab, izoh yozilgan menyu/oynani avtomatik ochadi', onclick: function () { startReplay(c); } }),
+          h('details', { class: 'rsc-steps' }, [h('summary', { text: c.steps.length + ' ta qadam' }), h('ol', {}, c.steps.map(function (st) { return h('li', { text: st.label || st.fp || st.tag }); }))])
+        ]) : null
+      ]) : null,
+      S.rpFail && S.rpFail.id === c.id ? h('div', { class: 'rsc-err rsc-rpf', text: 'Joyni avtomatik ochib bo\'lmadi (' + (S.rpFail.at + 1) + '-qadamda element topilmadi). Skrinshot va qadamlar bo\'yicha qo\'lda oching.' }) : null,
       th,
       form({ ph: 'Javob yozing…', btn: 'Javob berish', submit: function (nm, t) { return api('POST', { parent: c.id, author: nm, text: t, screen: c.screen }).then(function (j) { S.list.push(j.comment); build(); }); } })
     ]);
@@ -325,6 +341,7 @@
             c.where ? h('span', { class: 'rsc-scr', text: '📍 ' + c.where }) : null,
             c.ctx ? h('span', { class: 'rsc-scr', text: '🗂 ' + c.ctx }) : null,
             c.screen === curKey && !findEl(c) ? h('span', { class: 'rsc-hid', text: 'Yopiq menyu/oyna ichida' }) : null,
+            c.shot ? h('span', { class: 'rsc-scr', text: '📷 skrinshot bor' + (c.steps && c.steps.length ? ' · ▶ joyni ochish mumkin' : '') }) : null,
             n ? h('span', { class: 'rsc-scr', text: '💬 ' + n + ' ta javob' }) : null
           ])
         ]));
@@ -347,6 +364,125 @@
     ]);
   }
 
+  // ---------- skrinshot (izoh yozilgan paytdagi ekran) ----------
+  var MSP = null, SHOT = {};
+  function loadMS() {
+    if (window.modernScreenshot) return Promise.resolve();
+    if (!MSP) MSP = new Promise(function (res, rej) { var sc = document.createElement('script'); sc.src = 'vendor/modern-screenshot.js'; sc.onload = res; sc.onerror = function () { MSP = null; rej(new Error('load')); }; document.head.appendChild(sc); });
+    return MSP;
+  }
+  function capture(mark) {
+    return loadMS().then(function () {
+      var W = window.innerWidth, H = window.innerHeight, sx = window.scrollX, sy = window.scrollY, tagged = [];
+      var all = document.body.getElementsByTagName('*');
+      for (var i = 0; i < all.length; i++) {
+        var el = all[i]; if (root.contains(el)) continue;
+        var pos = getComputedStyle(el).position, dx = 0, dy = 0;
+        if (pos === 'fixed') { dx = sx; dy = sy; }
+        else if (pos === 'sticky') {
+          var r1 = el.getBoundingClientRect(), ov = el.style.getPropertyValue('position'), op = el.style.getPropertyPriority('position');
+          el.style.setProperty('position', 'relative', 'important'); var r0 = el.getBoundingClientRect();
+          if (ov) el.style.setProperty('position', ov, op); else el.style.removeProperty('position');
+          dx = r1.left - r0.left; dy = r1.top - r0.top;
+        } else continue;
+        if (dx || dy) { el.setAttribute('data-rsc-sh', dx + ' ' + dy); tagged.push(el); }
+      }
+      var sc = Math.min(.75, 1100 / W);
+      var done = function () { tagged.forEach(function (t) { t.removeAttribute('data-rsc-sh'); }); };
+      return window.modernScreenshot.domToCanvas(document.documentElement, {
+        scale: sc, width: W, height: H, backgroundColor: getComputedStyle(document.body).backgroundColor || '#fff',
+        style: { transform: 'translate(' + (-sx) + 'px,' + (-sy) + 'px)' },
+        filter: function (n) { return !(n.classList && n.classList.contains('rsc-root')); },
+        onCloneEachNode: function (n) { if (n.nodeType === 1 && n.hasAttribute && n.hasAttribute('data-rsc-sh')) { var v = n.getAttribute('data-rsc-sh').split(' '); n.style.translate = v[0] + 'px ' + v[1] + 'px'; n.removeAttribute('data-rsc-sh'); } },
+        timeout: 20000
+      }).then(function (cv) {
+        done();
+        var x = cv.getContext('2d'), k = cv.width / W;
+        if (mark && mark.rect) { var m = mark.rect; x.lineWidth = 3; x.strokeStyle = '#2563eb'; x.fillStyle = 'rgba(37,99,235,.10)'; x.beginPath(); if (x.roundRect) x.roundRect((m.l - 3) * k, (m.t - 3) * k, (m.w + 6) * k, (m.h + 6) * k, 6); else x.rect((m.l - 3) * k, (m.t - 3) * k, (m.w + 6) * k, (m.h + 6) * k); x.fill(); x.stroke(); }
+        if (mark && mark.x != null) { var px = mark.x * k, py = mark.y * k; x.beginPath(); x.arc(px, py, 11, 0, Math.PI * 2); x.fillStyle = '#f59e0b'; x.fill(); x.lineWidth = 3; x.strokeStyle = '#fff'; x.stroke(); }
+        return cv.toDataURL('image/jpeg', .72);
+      }, function (e) { done(); throw e; });
+    });
+  }
+  function startShot(d, el, x, y) {
+    var rc = el && el.getBoundingClientRect ? el.getBoundingClientRect() : null;
+    d._shot = capture({ rect: rc ? { l: rc.left, t: rc.top, w: rc.width, h: rc.height } : null, x: x, y: y }).catch(function () { return null; });
+  }
+  function saveShot(c, p) {
+    if (!p) return;
+    SHOT[c.id] = 'saving'; build();
+    p.then(function (img) {
+      if (!img || img.length > 900000) { delete SHOT[c.id]; build(); return; }
+      return api('POST', { action: 'shot', id: c.id, img: img }).then(function () { c.shot = true; delete SHOT[c.id]; build(); });
+    }).catch(function () { delete SHOT[c.id]; build(); });
+  }
+  function shotUrl(c) { return API + '?shot=' + encodeURIComponent(c.id); }
+  function lightbox(c) {
+    var bx = h('div', { class: 'rsc-lb', role: 'dialog', 'aria-label': 'Skrinshot', onclick: function () { bx.remove(); } }, [
+      h('div', { class: 'rsc-lbin', onclick: function (e) { e.stopPropagation(); } }, [
+        h('div', { class: 'rsc-lbh' }, [h('b', { text: '#' + numOf(c) + ' · ' + (c.screenLabel || '') }), h('small', { text: 'Izoh yozilgan paytdagi ekran — sariq nuqta izoh joyi' }),
+          h('button', { type: 'button', class: 'rsc-ib', 'aria-label': 'Yopish', html: IC.x, onclick: function () { bx.remove(); } })]),
+        h('img', { src: shotUrl(c), alt: 'Izoh yozilgan joy skrinshoti' })
+      ])]);
+    root.appendChild(bx);
+  }
+
+  // ---------- qadamlar: ekranda qilingan bosishlarni eslab qolamiz (yopiq menyuni qayta ochish uchun) ----------
+  var ACT = [], actKey = '';
+  function actPush(o) { var k = screen().key; if (k !== actKey) { ACT = []; actKey = k; } ACT.push(o); if (ACT.length > 30) ACT.shift(); }
+  document.addEventListener('click', function (e) {
+    if (S.mode || !e.isTrusted || inUi(e.target) || replaying) return;
+    var t = e.target.closest && e.target.closest('button,a,[role=option],[role=tab],[role=menuitem],[role=checkbox],[role=radio],[role=switch],label,summary,[tabindex]') || e.target;
+    if (!t || t === document.body || t.matches('input:not([type=checkbox]):not([type=radio]),textarea,select')) return;
+    actPush({ sel: selOf(t), fp: tc(t), tag: t.tagName.toLowerCase(), label: describe(t) });
+  }, true);
+  document.addEventListener('change', function (e) {
+    var t = e.target; if (!t || !e.isTrusted || inUi(t) || replaying || t.tagName !== 'SELECT') return;
+    actPush({ kind: 'select', sel: selOf(t), fp: '', tag: 'select', value: t.value, label: describe(t) + ' = ' + ((t.selectedOptions && t.selectedOptions[0] && t.selectedOptions[0].textContent) || t.value).trim() });
+  }, true);
+  function stepsNow() { return screen().key === actKey ? ACT.slice() : []; }
+
+  var replaying = false, rpMsg = null;
+  function rpShow(t) { if (!rpMsg) { rpMsg = h('div', { class: 'rsc-hint rsc-rp' }); root.appendChild(rpMsg); } rpMsg.textContent = t; }
+  function rpHide() { if (rpMsg) { rpMsg.remove(); rpMsg = null; } }
+  function waitEl(st, ms) {
+    return new Promise(function (res) { var t0 = Date.now(); (function tick() { var el = findEl(st); if (el) return res(el); if (Date.now() - t0 > ms) return res(null); setTimeout(tick, 120); })(); });
+  }
+  // animatsiyalar (chiqib ketayotgan nusxalar) tugashini kutamiz — aks holda element manzili siljiydi
+  function settle() {
+    return new Promise(function (res) { var t0 = Date.now(); (function tick() { if (!document.querySelector('[data-ghost]') || Date.now() - t0 > 1500) return setTimeout(res, 120); setTimeout(tick, 80); })(); });
+  }
+  function replay(c) {
+    var steps = (c.steps || []).map(function (st, i) { return Object.assign({ _k: 'rp' + i + c.id }, st); });
+    replaying = true; S.open = null; build();
+    var i = 0;
+    (function next() {
+      if (i >= steps.length) return finish(true);
+      rpShow('Izoh joyi ochilmoqda… ' + (i + 1) + ' / ' + steps.length + ' — ' + (steps[i].label || ''));
+      settle().then(function () { return waitEl(steps[i], 3000); }).then(function (el) {
+        if (!el) return finish(false, i);
+        try {
+          el.scrollIntoView({ block: 'center' });
+          if (steps[i].kind === 'select') { var setter = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value').set; setter.call(el, steps[i].value); el.dispatchEvent(new Event('change', { bubbles: true })); el.dispatchEvent(new Event('input', { bubbles: true })); }
+          else el.click();
+        } catch (e) {}
+        i++; setTimeout(next, 500);
+      });
+    })();
+    function finish(ok, at) {
+      setTimeout(function () {
+        replaying = false; rpHide();
+        S.open = c.id; S.rpFail = ok || anchorPos(c) ? null : { id: c.id, at: at };
+        build(); reveal(c);
+      }, 350);
+    }
+  }
+  function startReplay(c) {
+    lsSet(LS_REPLAY, c.id);
+    var cur = nav(); if (c.nav) lsSet('adolat.nav', JSON.stringify(Object.assign({}, cur, c.nav)));
+    lsSet('adolat.navScroll', null); window.location.reload();
+  }
+
   // izohga o'tish: boshqa ekranda bo'lsa — ilova holatini yozib, sahifani qayta yuklaymiz (ilova o'sha joyni tiklaydi)
   function goTo(c) {
     if (c.screen === screen().key) { S.open = c.id; S.panel = window.innerWidth > 1100 ? S.panel : false; build(); reveal(c); return; }
@@ -357,7 +493,9 @@
   }
   function afterLoad() {
     var qs = (location.search.match(/[?&]c=([\w-]+)/) || [])[1];
-    if (qs) { history.replaceState(null, '', location.pathname); var qc = S.list.filter(function (x) { return x.id === qs; })[0]; if (qc) { if (qc.screen !== screen().key) { goTo(qc); return; } lsSet(LS_OPEN, qc.id); } }
+    var play = /[?&]play=1/.test(location.search);
+    if (qs) { history.replaceState(null, '', location.pathname); var qc = S.list.filter(function (x) { return x.id === qs; })[0]; if (qc && play && qc.steps && qc.steps.length) { startReplay(qc); return; } if (qc) { if (qc.screen !== screen().key) { goTo(qc); return; } lsSet(LS_OPEN, qc.id); } }
+    var rp = lsGet(LS_REPLAY); if (rp) { lsSet(LS_REPLAY, null); lsSet(LS_OPEN, null); var rc = S.list.filter(function (x) { return x.id === rp; })[0]; if (rc) { setTimeout(function () { replay(rc); }, 900); return; } }
     var id = lsGet(LS_OPEN); if (!id) return; lsSet(LS_OPEN, null);
     var c = S.list.filter(function (x) { return x.id === id; })[0]; if (!c) return;
     var tries = 0; (function wait() { if (anchorPos(c) || tries++ > 25) { S.open = c.id; build(); reveal(c); return; } setTimeout(wait, 200); })();
@@ -430,6 +568,7 @@
     var el = HOV.el || pick(e.clientX, e.clientY) || e.target; if (!el || el === document.documentElement || el === document.body) return;
     var r = el.getBoundingClientRect(), scr = screen(), cl = function (v) { return Math.max(0, Math.min(1, v)); };
     S.draft = { kind: 'element', where: describe(el), ctx: ctxOf(el), fp: tc(el), tag: el.tagName.toLowerCase(), sel: selOf(el), rx: r.width ? cl((e.clientX - r.left) / r.width) : 0, ry: r.height ? cl((e.clientY - r.top) / r.height) : 0, px: e.pageX, py: e.pageY, screen: scr.key, screenLabel: scr.label, nav: scr.nav };
+    S.draft.steps = stepsNow(); startShot(S.draft, el, e.clientX, e.clientY);
     S.mode = false; document.documentElement.classList.remove('rsc-mode');
     build();
   }, true);
@@ -447,6 +586,7 @@
     var rr = SEL.range.getClientRects(), last = rr.length ? rr[rr.length - 1] : SEL.range.getBoundingClientRect(), r = el.getBoundingClientRect(), scr = screen();
     var cl = function (v) { return Math.max(0, Math.min(1, v)); };
     S.draft = { kind: 'text', quote: SEL.text.slice(0, 500), where: describe(el), ctx: ctxOf(el), fp: tc(el), tag: el.tagName.toLowerCase(), sel: selOf(el), rx: r.width ? cl((last.right - r.left) / r.width) : 0, ry: r.height ? cl((last.top - r.top) / r.height) : 0, px: 0, py: 0, screen: scr.key, screenLabel: scr.label, nav: scr.nav };
+    S.draft.steps = stepsNow(); var srect = SEL.range.getBoundingClientRect(); S.draft._shot = capture({ rect: { l: srect.left, t: srect.top, w: srect.width, h: srect.height }, x: last.right, y: last.top }).catch(function () { return null; });
     S.open = null; build();
   });
   function checkSel() {
@@ -465,6 +605,7 @@
   document.addEventListener('keydown', function (e) {
     if (S.mode && HOV.base && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) { e.preventDefault(); e.stopPropagation(); setHover(HOV.base, HOV.up + (e.key === 'ArrowUp' ? 1 : -1)); return; }
     var t = e.target, typing = t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable);
+    if (e.key === 'Escape' && root.querySelector('.rsc-lb')) { root.querySelector('.rsc-lb').remove(); e.stopPropagation(); return; }
     if (e.key === 'Escape') { if (S.mode) { setMode(false); e.stopPropagation(); } else if (S.draft || S.open) { S.draft = null; S.open = null; build(); e.stopPropagation(); } else if (S.panel) { S.panel = false; build(); } return; }
     if (!typing && !e.ctrlKey && !e.metaKey && !e.altKey && (e.key === 'c' || e.key === 'C') && !S.draft) { setMode(!S.mode); }
     if (!typing && !e.ctrlKey && !e.metaKey && !e.altKey && (e.key === 'l' || e.key === 'L')) { S.panel = !S.panel; build(); }

@@ -18,6 +18,8 @@ async function tcpClient() {
 }
 const KEY = process.env.COMMENTS_KEY || 'rs:comments';
 const MAX_TEXT = 2000;
+const SHOTS = KEY + ':shots';
+const MAX_SHOT = 900000;
 
 async function redis(cmd) {
   if (!(URL_ && TOKEN)) { const c = await tcpClient(); return c.sendCommand(cmd.map(String)); }
@@ -40,7 +42,7 @@ function readBody(req) {
   if (typeof req.body === 'string') { try { return Promise.resolve(JSON.parse(req.body)); } catch (e) { return Promise.resolve({}); } }
   return new Promise((resolve) => {
     let d = '';
-    req.on('data', (c) => { d += c; if (d.length > 1e5) req.destroy(); });
+    req.on('data', (c) => { d += c; if (d.length > 1.5e6) req.destroy(); });
     req.on('end', () => { try { resolve(JSON.parse(d || '{}')); } catch (e) { resolve({}); } });
   });
 }
@@ -53,6 +55,15 @@ module.exports = async function handler(req, res) {
     return;
   }
   try {
+    if (req.method === 'GET' && req.query && req.query.shot) {
+      const img = await redis(['HGET', SHOTS, clean(req.query.shot, 40)]);
+      if (!img) { res.status(404).json({ error: 'not_found' }); return; }
+      const m = /^data:(image\/(?:jpeg|png|webp));base64,(.+)$/.exec(img);
+      if (!m) { res.status(404).json({ error: 'bad_image' }); return; }
+      res.setHeader('Content-Type', m[1]); res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      res.status(200).end(Buffer.from(m[2], 'base64'));
+      return;
+    }
     if (req.method === 'GET') {
       const flat = (await redis(['HGETALL', KEY])) || [];
       const out = [];
@@ -62,6 +73,17 @@ module.exports = async function handler(req, res) {
       return;
     }
     const b = await readBody(req);
+    if (req.method === 'POST' && b.action === 'shot') {
+      const id = clean(b.id, 40), img = String(b.img || '');
+      if (!/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(img) || img.length > MAX_SHOT) { res.status(400).json({ error: 'bad_image' }); return; }
+      const raw = await redis(['HGET', KEY, id]);
+      if (!raw) { res.status(404).json({ error: 'not_found' }); return; }
+      const c = JSON.parse(raw); c.shot = true;
+      await redis(['HSET', SHOTS, id, img]);
+      await redis(['HSET', KEY, id, JSON.stringify(c)]);
+      res.status(200).json({ comment: c });
+      return;
+    }
     if (req.method === 'POST') {
       const text = clean(b.text, MAX_TEXT).trim();
       if (!text) { res.status(400).json({ error: 'empty' }); return; }
@@ -80,6 +102,10 @@ module.exports = async function handler(req, res) {
         ctx: clean(b.ctx, 300).trim() || null,
         fp: clean(b.fp, 160) || null,
         tag: /^[a-z][a-z0-9-]{0,20}$/.test(String(b.tag || '')) ? b.tag : null,
+        steps: Array.isArray(b.steps) ? b.steps.slice(-30).map((st) => ({
+          kind: st && st.kind === 'select' ? 'select' : 'click', sel: clean(st && st.sel, 1500), fp: clean(st && st.fp, 160),
+          tag: /^[a-z][a-z0-9-]{0,20}$/.test(String(st && st.tag || '')) ? st.tag : '', label: clean(st && st.label, 160), value: clean(st && st.value, 200),
+        })).filter((st) => st.sel) : [],
         rx: Number(b.rx) || 0, ry: Number(b.ry) || 0,
         px: Number(b.px) || 0, py: Number(b.py) || 0,
         resolved: false,
@@ -106,6 +132,7 @@ module.exports = async function handler(req, res) {
       const ids = [id];
       for (let i = 0; i < flat.length; i += 2) { try { const c = JSON.parse(flat[i + 1]); if (c.parent === id) ids.push(c.id); } catch (e) {} }
       await redis(['HDEL', KEY].concat(ids));
+      await redis(['HDEL', SHOTS].concat(ids));
       res.status(200).json({ deleted: ids.length });
       return;
     }
