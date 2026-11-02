@@ -5,10 +5,22 @@
 
 const URL_ = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
 const TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+// REST bo'lmasa — oddiy Redis ulanishi (Vercel'dagi "Redis" integratsiyasi REDIS_URL beradi)
+const TCP_URL = process.env.REDIS_URL || process.env.KV_URL;
+let tcp = null;
+async function tcpClient() {
+  if (tcp) return tcp;
+  const { createClient } = require('redis');
+  const c = createClient({ url: TCP_URL });
+  c.on('error', () => {});
+  await c.connect();
+  tcp = c; return c;
+}
 const KEY = process.env.COMMENTS_KEY || 'rs:comments';
 const MAX_TEXT = 2000;
 
 async function redis(cmd) {
+  if (!(URL_ && TOKEN)) { const c = await tcpClient(); return c.sendCommand(cmd.map(String)); }
   const r = await fetch(URL_, {
     method: 'POST',
     headers: { Authorization: 'Bearer ' + TOKEN, 'Content-Type': 'application/json' },
@@ -35,8 +47,9 @@ function readBody(req) {
 
 module.exports = async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
-  if (!URL_ || !TOKEN) {
-    res.status(503).json({ error: 'not_configured', message: "Izohlar uchun ma'lumotlar bazasi ulanmagan" });
+  if (!(URL_ && TOKEN) && !TCP_URL) {
+    const seen = Object.keys(process.env).filter((k) => /REDIS|KV_|UPSTASH|DATABASE|POSTGRES/i.test(k));
+    res.status(503).json({ error: 'not_configured', message: "Izohlar uchun ma'lumotlar bazasi ulanmagan", envNames: seen });
     return;
   }
   try {
