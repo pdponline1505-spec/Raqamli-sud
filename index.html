@@ -852,6 +852,7 @@ div[role="status"]{background:linear-gradient(135deg,#1e293b,#312e81) !important
 /* top bars flush to the top and side edges */
 .l-main{padding:0 24px 32px}
 .l-top{margin:0 -24px;border-radius:0;border-width:0 0 1px;border-color:#e4e4e7;position:sticky;top:0;z-index:12;padding:16px 24px}
+.l-app.pgmode .l-top{transform:translateY(calc(var(--cw-off,0px) * -1))}
 .casemodal:not(.quick) .top{border-radius:0;border-width:0 0 1px;border-color:#e4e4e7;margin:0 0 20px;padding:16px 24px}
 .casemodal:not(.quick) .top.compact{padding:10px 24px}
 .casemodal:not(.quick) .main{padding:0 24px 40px}
@@ -7752,12 +7753,16 @@ class Component extends DCLogic {
     }
 
     // asosiy sarlavha (l-top) balandligini o'lchab, to'liq ish sahifasini uning ostidan boshlaymiz
-    this._measureTop = function () { try { var el = document.querySelector(".l-top"); if (!el) return; var h = Math.round(el.getBoundingClientRect().bottom); if (h > 0 && Math.abs(h - (self.state.ltH || 0)) > 1) self.setState({ ltH: h }); } catch (x) {} };
+    this._measureTop = function () { try { var el = document.querySelector(".l-top"); if (!el) return; var h = Math.round(el.getBoundingClientRect().bottom + (self._cwOff || 0)); if (h > 0 && Math.abs(h - (self.state.ltH || 0)) > 1) self.setState({ ltH: h }); } catch (x) {} };
     requestAnimationFrame(this._measureTop);
     window.addEventListener("resize", this._measureTop);
     this._onScroll = function (ev) {
       try {
         var box = document.querySelector(".casemodal");
+        // to'liq ish sahifasida asosiy header kontent bilan birga yuqoriga suriladi (fixed emas)
+        var pg = box && self.state.caseOpen && self.state.openMode === "page";
+        var off = pg ? Math.max(0, Math.min(box.scrollTop, self.state.ltH || 81)) : 0;
+        if (off !== (self._cwOff || 0)) { self._cwOff = off; document.documentElement.style.setProperty("--cw-off", off + "px"); }
         if (box) {
           var y = box.scrollTop, want = self.state.hdrCompact ? y > 16 : y > 96;
           if (want !== !!self.state.hdrCompact) {
@@ -8666,7 +8671,7 @@ class Component extends DCLogic {
         self.flash("Umumiy ma'lumotlar saqlandi");
       },
       caseOpen: s.caseOpen, caseNum: s.caseNum,
-      caseClose: function () { self.setState({ hdrCompact: false, caseOpen: false, subView: "", cf: null, bkFormOpen: false, tmModal: "", umModal: false, ihMode: "", nsModal: false, ekModal: false, tcModal: false, modal: false, drawer: "", bkDetail: "", dd: "", delModal: false }); },
+      caseClose: function () { self._cwOff = 0; document.documentElement.style.setProperty("--cw-off", "0px"); self.setState({ hdrCompact: false, caseOpen: false, subView: "", cf: null, bkFormOpen: false, tmModal: "", umModal: false, ihMode: "", nsModal: false, ekModal: false, tcModal: false, modal: false, drawer: "", bkDetail: "", dd: "", delModal: false }); },
       lTabs: lTabs, lTabName: (L_TABS.filter(function (t) { return t[0] === s.lTab; })[0] || ["", ""])[1], lTotTxt: lRows.length + " ta ish", lTotN: lRows.length, lRows: lRows, lEmpty: lRows.length === 0,
       lEmptyT: lfAny && stageRows.length ? "Filtr bo'yicha ish topilmadi" : "Bu bosqichda ishlar yo'q",
       lEmptyS: lfAny && stageRows.length ? "Qidiruv so'zini yoki filtrlarni o'zgartiring" : "Ishlar keyingi bosqichga o'tkazilganda shu yerda ko'rinadi",
@@ -8820,7 +8825,7 @@ class Component extends DCLogic {
       railTitle: s.subCollapsed ? "Yon menyuni ochish" : "Yon menyuni yopish", railExp: s.subCollapsed ? "false" : "true",
       railArrowCls: s.subCollapsed ? "" : "open",
       subToggle: function () { self.setState({ subCollapsed: !self.state.subCollapsed }); },
-      cwWrap: s.openMode === "page" ? "position: fixed; top: " + (s.ltH || 81) + "px; right: 0; bottom: 0; left: " + (s.subCollapsed ? 72 : 292) + "px; transition: left 240ms cubic-bezier(.2,0,0,1); z-index: 40; display: block; padding: 0; background: #f4f4f5"
+      cwWrap: s.openMode === "page" ? "position: fixed; top: calc(" + (s.ltH || 81) + "px - var(--cw-off, 0px)); right: 0; bottom: 0; left: " + (s.subCollapsed ? 72 : 292) + "px; transition: left 240ms cubic-bezier(.2,0,0,1); z-index: 40; display: block; padding: 0; background: #f4f4f5"
         : "position: fixed; inset: 0; z-index: 40; display: grid; place-items: center; padding: 24px",
       cwCls: s.openMode === "modal" ? "quick" : "",
       hdrCls: s.hdrCompact && s.openMode === "page" ? "compact" : "",
@@ -8828,7 +8833,7 @@ class Component extends DCLogic {
       phClose: function () { self.setState({ phView: null }); },
       phKey: function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ phView: null }); } },
       hdrMb: s.hdrCompact && s.openMode === "page" ? (20 + (s.hdrPad || 92)) + "px" : "",
-      cwBox: s.openMode === "page" ? "width: 100%; height: calc(100vh - " + (s.ltH || 81) + "px); max-width: none; border-radius: 0; border: 0; box-shadow: none; background: transparent" : "",
+      cwBox: s.openMode === "page" ? "width: 100%; height: calc(100vh - " + (s.ltH || 81) + "px + var(--cw-off, 0px)); max-width: none; border-radius: 0; border: 0; box-shadow: none; background: transparent" : "",
       ihOpen: !!s.ihMode, ihModeHist: s.ihMode === "hist", ihModeView: s.ihMode === "view",
       ihTitle: s.ihMode === "view" ? "Ishni ko'rish" : "Ish tarixi",
       ihTabView: s.ihMode === "view" ? "on" : "", ihTabHist: s.ihMode === "hist" ? "on" : "",
