@@ -3864,6 +3864,38 @@ body{overflow:visible}
 .ido-note b{color:#1e293b;font-weight:600}
 @media (max-width:700px){.ido-g{grid-template-columns:1fr}}
 
+
+/* Ish ro'yxati jadvali: Figma'dagidek katakchali ko'rinish (desktop) */
+@media (min-width:1025px){
+  .l-table .l-row{gap:0 !important;padding:0 !important;align-items:stretch}
+  .l-table .l-row>*:not(.l-rowbtn){display:flex;align-items:center;min-width:0;padding:12px 16px;border-left:1px solid #eceef2}
+  .l-table .l-row>.l-chk,.l-table .l-head>:first-child{align-self:center;justify-self:center;padding:0;border-left:0}
+  .l-table .l-row>:last-child{justify-content:center;padding:0 8px;justify-self:stretch !important}
+  .l-table .l-row>.l-clamp{-webkit-line-clamp:unset;-webkit-box-orient:unset;overflow:visible}
+  .l-table .l-row>.l-clamp>.sc-interp{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .l-table .l-head>*{padding-top:12px;padding-bottom:12px}
+  .l-table .l-head>*:not(:first-child):not(:last-child){justify-content:space-between}
+  .l-table .l-row:not(.l-head){min-height:58px}
+  .l-table .l-row>.kv{justify-content:center;align-items:flex-start}
+}
+/* Dashboard "Yaqin sud majlislari" jadvali: katakchali ko'rinish */
+@media (min-width:761px){
+  .d2-t{border:1px solid #eceef2;border-radius:12px;overflow:hidden}
+  .d2-t .d2-tr{gap:0;padding:0;align-items:stretch;border-top:1px solid #eceef2}
+  .d2-t .d2-th{border-top:0;background:#f8fafc;color:#64748b}
+  .d2-t .d2-tr>*{padding:12px 14px;border-left:1px solid #eceef2;align-content:center}
+  .d2-t .d2-tr>.kv{justify-content:center}
+  .d2-t .d2-tr>.d2-party{align-items:center}
+  .d2-t .d2-tr>:last-child{justify-self:stretch !important;display:flex;justify-content:center}
+  .d2-t .d2-tr>:first-child{border-left:0}
+  .d2-t .d2-tr>:last-child{align-items:center;padding:0}
+  .d2-t .d2-th>*{padding-top:10px;padding-bottom:10px}
+  .d2-t .d2-tr:not(.d2-th)>:nth-child(5)>span{white-space:nowrap}
+}
+@media (min-width:761px) and (max-width:1700px){
+  .d2-t .d2-tr>*{padding-left:10px;padding-right:10px}
+  .d2-t .d2-tr>:last-child{padding:0}
+}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
