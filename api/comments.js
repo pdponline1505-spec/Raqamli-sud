@@ -37,6 +37,13 @@ function clean(v, max) {
   return String(v == null ? '' : v).replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g, '').slice(0, max);
 }
 
+function cleanSteps(v) {
+  return Array.isArray(v) ? v.slice(-40).map((st) => ({
+    kind: st && (st.kind === 'select' || st.kind === 'input') ? st.kind : 'click', sel: clean(st && st.sel, 1500), fp: clean(st && st.fp, 160),
+    tag: /^[a-z][a-z0-9-]{0,20}$/.test(String(st && st.tag || '')) ? st.tag : '', label: clean(st && st.label, 160), value: clean(st && st.value, 200),
+  })).filter((st) => st.sel) : [];
+}
+
 function readBody(req) {
   if (req.body && typeof req.body === 'object') return Promise.resolve(req.body);
   if (typeof req.body === 'string') { try { return Promise.resolve(JSON.parse(req.body)); } catch (e) { return Promise.resolve({}); } }
@@ -102,10 +109,7 @@ module.exports = async function handler(req, res) {
         ctx: clean(b.ctx, 300).trim() || null,
         fp: clean(b.fp, 160) || null,
         tag: /^[a-z][a-z0-9-]{0,20}$/.test(String(b.tag || '')) ? b.tag : null,
-        steps: Array.isArray(b.steps) ? b.steps.slice(-30).map((st) => ({
-          kind: st && st.kind === 'select' ? 'select' : 'click', sel: clean(st && st.sel, 1500), fp: clean(st && st.fp, 160),
-          tag: /^[a-z][a-z0-9-]{0,20}$/.test(String(st && st.tag || '')) ? st.tag : '', label: clean(st && st.label, 160), value: clean(st && st.value, 200),
-        })).filter((st) => st.sel) : [],
+        steps: cleanSteps(b.steps),
         rx: Number(b.rx) || 0, ry: Number(b.ry) || 0,
         px: Number(b.px) || 0, py: Number(b.py) || 0,
         resolved: false,
@@ -121,6 +125,7 @@ module.exports = async function handler(req, res) {
       if (!raw) { res.status(404).json({ error: 'not_found' }); return; }
       const c = JSON.parse(raw);
       if (typeof b.resolved === 'boolean') c.resolved = b.resolved;
+      if (Array.isArray(b.steps)) c.steps = cleanSteps(b.steps);
       if (typeof b.text === 'string' && b.text.trim()) { c.text = clean(b.text, MAX_TEXT).trim(); c.edited = Date.now(); }
       await redis(['HSET', KEY, id, JSON.stringify(c)]);
       res.status(200).json({ comment: c });

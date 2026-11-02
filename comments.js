@@ -296,7 +296,7 @@
     var th = h('div', { class: 'rsc-thread' }, [msgEl(c)].concat(rs.map(msgEl)));
     return h('div', { class: 'rsc-pop', 'data-for': c.id, role: 'dialog', 'aria-label': 'Izoh ' + numOf(c) }, [
       h('div', { class: 'rsc-ph' }, [h('span', {}, [h('b', { text: '#' + numOf(c) }), document.createTextNode(' · ' + (c.resolved ? 'Hal qilingan' : c.screenLabel))]), acts]),
-      h('div', { class: 'rsc-miss' }, [h('b', { text: 'Bu joy hozir ekranda ko\'rinmayapti' }), document.createTextNode('Izoh ochilib-yopiladigan menyu, oyna yoki forma ichida yozilgan' + (c.ctx || c.where ? ': ' : '.')), (c.ctx || c.where) ? h('em', { text: c.ctx || c.where }) : null, document.createTextNode(c.steps && c.steps.length ? ' Pastdagi «Joyni ochish» tugmasi uni avtomatik ochib beradi.' : (c.shot ? ' Skrinshotda qayerda yozilganini ko\'rasiz; o\'sha joyni ochsangiz belgi paydo bo\'ladi.' : ' O\'sha joyni oching — izoh belgisi avtomatik o\'sha yerda paydo bo\'ladi.'))]),
+      h('div', { class: 'rsc-miss' }, [h('b', { text: 'Bu joy hozir ekranda ko\'rinmayapti' }), document.createTextNode('Izoh ochilib-yopiladigan menyu, oyna yoki forma ichida yozilgan' + (c.ctx || c.where ? ': ' : '.')), (c.ctx || c.where) ? h('em', { text: c.ctx || c.where }) : null, document.createTextNode(c.steps && c.steps.length ? ' «Joyni ochish» tugmasi uni avtomatik ochib beradi (ro\'yxatdan bosganda ham o\'zi ochiladi).' : (c.shot ? ' Skrinshotda qayerda yozilganini ko\'rasiz; o\'sha joyni ochsangiz belgi paydo bo\'ladi.' : ' O\'sha joyni oching — izoh belgisi avtomatik o\'sha yerda paydo bo\'ladi.'))]),
       c.where ? h('div', { class: 'rsc-where' }, [document.createTextNode('📍 ' + c.where), c.ctx ? h('small', { text: '🗂 ' + c.ctx }) : null]) : null,
       c.quote ? h('div', { class: 'rsc-quote', text: '“' + c.quote + '”' }) : null,
       (c.shot || SHOT[c.id] || (c.steps && c.steps.length)) ? h('div', { class: 'rsc-ctx' }, [
@@ -440,6 +440,13 @@
     var t = e.target; if (!t || !e.isTrusted || inUi(t) || replaying || t.tagName !== 'SELECT') return;
     actPush({ kind: 'select', sel: selOf(t), fp: '', tag: 'select', value: t.value, label: describe(t) + ' = ' + ((t.selectedOptions && t.selectedOptions[0] && t.selectedOptions[0].textContent) || t.value).trim() });
   }, true);
+  document.addEventListener('input', function (e) {
+    var t = e.target; if (!t || !e.isTrusted || inUi(t) || replaying) return;
+    if (!(t.tagName === 'TEXTAREA' || (t.tagName === 'INPUT' && /^(text|search|number|tel|email|)$/.test(t.type || '')))) return;
+    var sel = selOf(t), last = ACT[ACT.length - 1], v = String(t.value || '').slice(0, 200);
+    if (last && last.kind === 'input' && last.sel === sel && screen().key === actKey) { last.value = v; last.label = (t.getAttribute('aria-label') || t.placeholder || 'Matn') + ' = ' + v; return; }
+    actPush({ kind: 'input', sel: sel, fp: '', tag: t.tagName.toLowerCase(), value: v, label: (t.getAttribute('aria-label') || t.placeholder || 'Matn') + ' = ' + v });
+  }, true);
   function stepsNow() { return screen().key === actKey ? ACT.slice() : []; }
 
   var replaying = false, rpMsg = null;
@@ -463,7 +470,8 @@
         if (!el) return finish(false, i);
         try {
           el.scrollIntoView({ block: 'center' });
-          if (steps[i].kind === 'select') { var setter = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value').set; setter.call(el, steps[i].value); el.dispatchEvent(new Event('change', { bubbles: true })); el.dispatchEvent(new Event('input', { bubbles: true })); }
+          if (steps[i].kind === 'input') { var proto = el.tagName === 'TEXTAREA' ? HTMLTextAreaElement.prototype : HTMLInputElement.prototype; Object.getOwnPropertyDescriptor(proto, 'value').set.call(el, steps[i].value || ''); el.dispatchEvent(new Event('input', { bubbles: true })); el.dispatchEvent(new Event('change', { bubbles: true })); }
+          else if (steps[i].kind === 'select') { var setter = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value').set; setter.call(el, steps[i].value); el.dispatchEvent(new Event('change', { bubbles: true })); el.dispatchEvent(new Event('input', { bubbles: true })); }
           else el.click();
         } catch (e) {}
         i++; setTimeout(next, 500);
@@ -479,13 +487,17 @@
   }
   function startReplay(c) {
     lsSet(LS_REPLAY, c.id);
+    // Devonxona qoralamasi bo'lsa, qadamlar toza formadan boshlanishi uchun vaqtincha zaxiraga olamiz
+    var dr = lsGet('adolat.dx.draft.v3'); if (dr && c.screen === 'devon') { lsSet('adolat.dx.draft.backup', dr); lsSet('adolat.dx.draft.v3', null); }
     var cur = nav(); if (c.nav) lsSet('adolat.nav', JSON.stringify(Object.assign({}, cur, c.nav)));
     lsSet('adolat.navScroll', null); window.location.reload();
   }
 
   // izohga o'tish: boshqa ekranda bo'lsa — ilova holatini yozib, sahifani qayta yuklaymiz (ilova o'sha joyni tiklaydi)
   function goTo(c) {
-    if (c.screen === screen().key) { S.open = c.id; S.panel = window.innerWidth > 1100 ? S.panel : false; build(); reveal(c); return; }
+    var hasSteps = c.steps && c.steps.length;
+    if (c.screen === screen().key && (findEl(c) || !hasSteps)) { S.open = c.id; S.panel = window.innerWidth > 1100 ? S.panel : false; build(); reveal(c); return; }
+    if (hasSteps) { startReplay(c); return; }
     if (c.nav) { var cur = nav(); lsSet('adolat.nav', JSON.stringify(Object.assign({}, cur, c.nav))); lsSet('adolat.navScroll', null); lsSet(LS_OPEN, c.id); window.location.reload(); }
   }
   function reveal(c) {
@@ -494,7 +506,7 @@
   function afterLoad() {
     var qs = (location.search.match(/[?&]c=([\w-]+)/) || [])[1];
     var play = /[?&]play=1/.test(location.search);
-    if (qs) { history.replaceState(null, '', location.pathname); var qc = S.list.filter(function (x) { return x.id === qs; })[0]; if (qc && play && qc.steps && qc.steps.length) { startReplay(qc); return; } if (qc) { if (qc.screen !== screen().key) { goTo(qc); return; } lsSet(LS_OPEN, qc.id); } }
+    if (qs) { history.replaceState(null, '', location.pathname); var qc = S.list.filter(function (x) { return x.id === qs; })[0]; if (qc && qc.steps && qc.steps.length && (play || qc.screen !== screen().key)) { startReplay(qc); return; } if (qc) { if (qc.screen !== screen().key) { goTo(qc); return; } lsSet(LS_OPEN, qc.id); } }
     var rp = lsGet(LS_REPLAY); if (rp) { lsSet(LS_REPLAY, null); lsSet(LS_OPEN, null); var rc = S.list.filter(function (x) { return x.id === rp; })[0]; if (rc) { setTimeout(function () { replay(rc); }, 900); return; } }
     var id = lsGet(LS_OPEN); if (!id) return; lsSet(LS_OPEN, null);
     var c = S.list.filter(function (x) { return x.id === id; })[0]; if (!c) return;
