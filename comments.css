@@ -119,3 +119,26 @@ a.rsc-ib{text-decoration:none}
 .rsc-lbin img{display:block;max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;background:#f1f5f9}
 @keyframes rscFade{from{opacity:0}}
 .rsc-pop:not(.miss) .rsc-play{display:none}
+
+/* ===== Ixcham o'ng panel (eski katta tugmalar o'rniga) ===== */
+.rsc-dock{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:2147483100;display:flex;flex-direction:column;gap:2px;padding:5px 4px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid #e2e8f0;border-right:0;border-radius:12px 0 0 12px;box-shadow:-4px 6px 18px rgba(15,23,42,.10);transition:transform 220ms var(--rsc-e),opacity 180ms var(--rsc-e),right 260ms var(--rsc-e)}
+.rsc-dock.min{transform:translate(110%,-50%);opacity:0;pointer-events:none}
+.rsc-dock.shift{right:360px}
+.rsc-db{position:relative;width:34px;height:34px;border:0;border-radius:9px;background:transparent;color:#475569;display:grid;place-items:center;cursor:pointer;transition:background-color 140ms,color 140ms}
+.rsc-db:hover{background:#f1f5f9;color:#0f172a}
+.rsc-db.on{background:#2563eb;color:#fff}
+.rsc-db svg{width:17px;height:17px}
+.rsc-db b{position:absolute;top:2px;right:1px;min-width:15px;height:15px;padding:0 4px;border-radius:999px;background:#2563eb;color:#fff;font-size:9.5px;font-weight:700;line-height:15px;text-align:center;box-shadow:0 0 0 2px #fff}
+.rsc-db b.gr{background:#94a3b8}
+.rsc-db.on b{background:#fff;color:#2563eb}
+.rsc-dmin{height:22px;color:#94a3b8;margin-top:2px;border-top:1px solid #eef1f5;border-radius:0 0 8px 8px}
+.rsc-dmin svg{width:13px;height:13px}
+.rsc-db::after{content:attr(data-tip);position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%) translateX(4px);white-space:nowrap;padding:5px 9px;border-radius:7px;background:#1e293b;color:#fff;font-size:12px;font-weight:500;opacity:0;pointer-events:none;transition:opacity 120ms,transform 120ms}
+.rsc-db:hover::after,.rsc-db:focus-visible::after{opacity:1;transform:translateY(-50%)}
+.rsc-db:focus-visible,.rsc-dtab:focus-visible{outline:2px solid #93b4fd;outline-offset:1px}
+.rsc-dtab{position:fixed;right:0;top:50%;transform:translate(100%,-50%);z-index:2147483100;width:18px;height:44px;padding:0;border:1px solid #e2e8f0;border-right:0;border-radius:9px 0 0 9px;background:rgba(255,255,255,.95);color:#64748b;display:grid;place-items:center;cursor:pointer;box-shadow:-3px 4px 12px rgba(15,23,42,.08);transition:transform 220ms var(--rsc-e),width 160ms var(--rsc-e)}
+.rsc-dtab.show{transform:translate(0,-50%)}
+.rsc-dtab:hover{width:26px;color:#2563eb}
+.rsc-dtab svg{width:12px;height:12px}
+.rsc-dtab b{position:absolute;top:-6px;left:-6px;min-width:15px;height:15px;padding:0 4px;border-radius:999px;background:#2563eb;color:#fff;font-size:9.5px;font-weight:700;line-height:15px;box-shadow:0 0 0 2px #fff}
+@media (max-width:760px){.rsc-dock.shift{right:0;opacity:0;pointer-events:none}}

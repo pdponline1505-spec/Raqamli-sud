@@ -175,8 +175,14 @@
   // ---------- DOM ----------
   var root = h('div', { class: 'rsc-root' });
   var layer = h('div', { class: 'rsc-layer', 'aria-live': 'polite' });
-  var fab = h('button', { type: 'button', class: 'rsc-fab', 'aria-pressed': 'false', title: 'Izoh qoldirish (C)', onclick: function () { setMode(!S.mode); } });
-  var listBtn = h('button', { type: 'button', class: 'rsc-listbtn', title: 'Izohlar ro\'yxati (L)', 'aria-label': 'Izohlar ro\'yxati', onclick: function () { S.panel = !S.panel; build(); } });
+  var fab = h('button', { type: 'button', class: 'rsc-db', 'aria-pressed': 'false', 'aria-label': 'Izoh qoldirish', 'data-tip': 'Izoh qoldirish · C', onclick: function () { setMode(!S.mode); } });
+  var listBtn = h('button', { type: 'button', class: 'rsc-db', 'aria-label': 'Izohlar ro\'yxati', 'data-tip': 'Izohlar ro\'yxati · L', onclick: function () { S.panel = !S.panel; build(); } });
+  // ixcham panel: o'ng chekkada, kerak bo'lmasa ingichka tilchaga yig'iladi
+  var LS_DOCK = 'rs.dockMin';
+  var dockMin = lsGet(LS_DOCK) === '1';
+  var dockHide = h('button', { type: 'button', class: 'rsc-db rsc-dmin', 'aria-label': 'Izoh panelini yig\'ish', 'data-tip': 'Yig\'ish', html: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>', onclick: function () { dockMin = true; lsSet(LS_DOCK, '1'); build(); } });
+  var dockTab = h('button', { type: 'button', class: 'rsc-dtab', 'aria-label': 'Izoh panelini ochish', title: 'Izohlar', onclick: function () { dockMin = false; lsSet(LS_DOCK, null); build(); } });
+  var dock = h('div', { class: 'rsc-dock', role: 'toolbar', 'aria-label': 'Izohlar' }, [fab, listBtn, dockHide]);
   var hint = null, panel = null;
   // hover (komponent tanlash) va matn belgilash uchun qatlam
   var hl = h('div', { class: 'rsc-layer rsc-hl' });
@@ -184,7 +190,7 @@
   var abox = h('div', { class: 'rsc-abox' });
   hl.appendChild(abox); hl.appendChild(hbox);
   var selBtn = h('button', { type: 'button', class: 'rsc-selbtn', 'aria-label': 'Belgilangan matnga izoh qoldirish' });
-  root.appendChild(hl); root.appendChild(layer); root.appendChild(listBtn); root.appendChild(fab); root.appendChild(selBtn);
+  root.appendChild(hl); root.appendChild(layer); root.appendChild(dock); root.appendChild(dockTab); root.appendChild(selBtn);
   var HOV = { base: null, up: 0, el: null, label: '' }, SEL = null;
   function climb(el, n) { while (n-- > 0 && el && el.parentElement && el.parentElement !== document.body) el = el.parentElement; return el; }
   // menyu ortidagi shaffof "yopish" qatlamlarini o'tkazib yuboramiz
@@ -226,10 +232,15 @@
 
   function build() {
     var open = roots().filter(function (c) { return !c.resolved; }).length;
-    fab.innerHTML = IC.chat; fab.appendChild(document.createTextNode(S.mode ? 'Joyni tanlang' : 'Izoh'));
-    if (open) fab.appendChild(h('b', { text: String(open) }));
+    var tot = roots().length;
+    fab.innerHTML = S.mode ? IC.x : IC.chat; if (open && !S.mode) fab.appendChild(h('b', { text: String(open) }));
+    fab.setAttribute('data-tip', S.mode ? 'Bekor qilish · Esc' : 'Izoh qoldirish · C');
     fab.classList.toggle('on', S.mode); fab.setAttribute('aria-pressed', S.mode ? 'true' : 'false');
-    listBtn.innerHTML = IC.list; listBtn.appendChild(document.createTextNode('Ro\'yxat')); var tot = roots().length; if (tot) listBtn.appendChild(h('b', { text: String(tot) })); listBtn.classList.toggle('on', S.panel);
+    listBtn.innerHTML = IC.list; if (tot) listBtn.appendChild(h('b', { class: 'gr', text: String(tot) })); listBtn.classList.toggle('on', S.panel);
+    var mini = dockMin && !S.mode && !S.panel;
+    dock.classList.toggle('min', mini); dockTab.classList.toggle('show', mini);
+    dock.classList.toggle('shift', !!S.panel);
+    dockTab.innerHTML = IC.chat; if (open) dockTab.appendChild(h('b', { text: String(open) }));
     if (hint) { hint.remove(); hint = null; }
     if (S.mode) { hint = h('div', { class: 'rsc-hint', text: 'Komponent ustiga olib boring va bosing · ↑ / ↓ — kattaroq / kichikroq blok · Esc — bekor qilish' }); root.appendChild(hint); }
     layer.innerHTML = '';
@@ -529,7 +540,7 @@
       if (!q || q.off && fid === '__draft') {
         if (fid === '__draft') { pop.style.display = 'none'; }
         else { pop.style.display = ''; pop.classList.add('miss'); var pw = pop.offsetWidth || 320, ph2 = pop.offsetHeight || 200;
-          pop.style.left = Math.max(12, window.innerWidth - pw - (S.panel && window.innerWidth > 760 ? 380 : 20)) + 'px'; pop.style.top = Math.max(12, window.innerHeight - ph2 - 130) + 'px'; }
+          pop.style.left = Math.max(12, window.innerWidth - pw - (S.panel && window.innerWidth > 760 ? 420 : 60)) + 'px'; pop.style.top = Math.max(12, window.innerHeight - ph2 - 20) + 'px'; }
       } else {
         pop.style.display = ''; pop.classList.remove('miss');
         var w = pop.offsetWidth || 320, hh = pop.offsetHeight || 200;
