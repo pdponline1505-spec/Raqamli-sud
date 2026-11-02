@@ -12,7 +12,7 @@
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     },
     {
-      "source": "/(index.html|support.js)?",
+      "source": "/(index.html|support.js|comments.js|comments.css)?",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
     }
   ]
