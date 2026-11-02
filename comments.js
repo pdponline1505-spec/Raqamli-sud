@@ -537,7 +537,7 @@
   function afterLoad() {
     var qs = (location.search.match(/[?&]c=([\w-]+)/) || [])[1];
     var play = /[?&]play=1/.test(location.search);
-    if (qs) { history.replaceState(null, '', location.pathname); var qc = S.list.filter(function (x) { return x.id === qs; })[0]; if (qc && ((qc.steps && qc.steps.length) || qc.hasDraft) && (play || qc.screen !== screen().key)) { startReplay(qc); return; } if (qc) { if (qc.screen !== screen().key) { goTo(qc); return; } lsSet(LS_OPEN, qc.id); } }
+    if (qs) { history.replaceState(null, '', location.pathname); var qc = S.list.filter(function (x) { return x.id === qs; })[0]; if (qc && ((qc.steps && qc.steps.length) || qc.hasDraft) && (play || qc.screen !== screen().key || !findEl(qc))) { startReplay(qc); return; } if (qc) { if (qc.screen !== screen().key) { goTo(qc); return; } lsSet(LS_OPEN, qc.id); } }
     var rp = lsGet(LS_REPLAY); if (rp) { lsSet(LS_REPLAY, null); lsSet(LS_OPEN, null); var rc = S.list.filter(function (x) { return x.id === rp; })[0]; if (rc) { setTimeout(function () { replay(rc); }, 900); return; } }
     var id = lsGet(LS_OPEN); if (!id) return; lsSet(LS_OPEN, null);
     var c = S.list.filter(function (x) { return x.id === id; })[0]; if (!c) return;
