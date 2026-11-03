@@ -4173,6 +4173,17 @@ svg.ic-ed,svg.ic-del{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linec
 .itk-sr{display:inline-flex;align-items:center;gap:14px}
 .btn.sm.itk-addsum{height:32px;border-color:#c7d2fe;background:#f5f7ff;color:#3b4fd8;font-weight:600}
 .btn.sm.itk-addsum:hover{background:#eef2ff;border-color:#a5b4fc}
+/* Qarshi da'vo: shaxs kartochkasi — surat yonida ma'lumot, qatorda 2/3 ta */
+.qx.qx3 .qx2-fl{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+@media (min-width:1400px){.qx.qx3 .qx2-fl{grid-template-columns:repeat(3,minmax(0,1fr)) !important}}
+@media (max-width:700px){.qx.qx3 .qx2-fl{grid-template-columns:minmax(0,1fr) !important}}
+.qx.qx3 .qx2-f.qx4-f{flex-direction:row !important;align-items:center !important;gap:14px !important;padding:12px 14px !important}
+.qx.qx3 .qx4-f .qx-fav{width:60px !important;height:68px !important;border-radius:12px !important;object-position:center 18%;box-shadow:0 1px 4px rgba(15,23,42,.1)}
+.qx4-i{display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-width:0;flex:1}
+.qx.qx3 .qx4-i b{font-size:15px;font-weight:600;color:#0f172a;white-space:nowrap !important;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.qx.qx3 .qx4-i small{display:flex !important;align-items:center;gap:5px;font-size:12.5px;color:#64748b;white-space:nowrap !important;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.qx4-i small svg{width:13px;height:13px;flex:none}
+.qx4-i .ak-role{height:22px;font-size:11.5px}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -5784,7 +5795,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
           <div class="qx3-s"><small>Yuborish turi</small><b>{{q.via}}</b></div>
         </div>
         <div class="qx3-fb"><span class="qx2-lbl">Shikoyat bergan shaxslar <span class="dx-cnt">{{q.filN}}</span></span>
-          <div class="qx2-fl"><sc-for list="{{q.filers}}" as="f" hint-placeholder-count="1"><div class="qx2-f"><div class="qx2-ft"><img class="qx-fav" src="{{f.photo}}" alt=""><span class="{{f.roleCls}}" style="margin-left: auto; align-self: flex-start">{{f.role}}</span></div><div class="kv" style="gap: 3px; min-width: 0"><b title="{{f.name}}">{{f.name}}</b><small title="{{f.org}}">{{f.org}}</small></div></div></sc-for>
+          <div class="qx2-fl"><sc-for list="{{q.filers}}" as="f" hint-placeholder-count="1"><div class="qx2-f qx4-f"><img class="qx-fav" src="{{f.photo}}" alt=""><div class="qx4-i"><b title="{{f.name}}">{{f.name}}</b><small title="{{f.org}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg>{{f.org}}</small><span class="{{f.roleCls}}">{{f.role}}</span></div></div></sc-for>
           <sc-if value="{{q.noFilers}}" hint-placeholder-val="{{ false }}"><small class="muted">Shikoyat bergan shaxs ko'rsatilmagan</small></sc-if></div>
         </div>
       </div>
