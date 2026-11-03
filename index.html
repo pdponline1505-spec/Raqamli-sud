@@ -3914,6 +3914,11 @@ nav.nav a{font-size:14px;line-height:20px;font-weight:500;color:#475569;border-r
 nav.nav a:not(.on):hover{color:#0f172a}
 nav.nav a.on{font-weight:600;color:#2563eb}
 nav.nav a.todo{color:#b45309}
+/* Shikoyat bergan shaxs: tepada tanlangan manfaatdor idora */
+.ak-role.qorg{background:#e0f2fe;color:#0369a1}
+.qs-opt.qorg{background:#f5fbff;box-shadow:inset 0 0 0 1px #d7ecfb}
+.qs-opt.qorg:hover{background:#eaf6ff}
+.qs-opt.qorg img{border-radius:10px}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -11969,6 +11974,10 @@ class Component extends DCLogic {
           ["Ergasheva Malika Anvarovna", "Ayol", "boshqa", "Uchinchi shaxs", "Ishda ishtirok etmagan"],
           ["Yusupov Akmal Ilhomovich", "Erkak", "boshqa", "Ishonchli vakil", "\"Agro Invest Group\" MChJ"],
           ["Normatova Dilfuza Baxtiyorovna", "Ayol", "pro", "Prokuror", "O'zbekiston Respublikasi Bosh prokuraturasi"]];
+        // tepada "Manfaatida idora" bo'limida tanlangan tashkilot — tayyor shaxslar ro'yxatining boshida chiqadi
+        var qsDx = s.dx || {}, qsIdo = qsDx.idoraOn && qsDx.idPick ? DX_ALL.filter(function (o) { return o.id === qsDx.idPick; })[0] || null : null;
+        var ORG_IC = "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#e0f2fe"/><path d="M14 33h20M16 33V22M21 33V22M27 33V22M32 33V22M13 22l11-7 11 7z" fill="none" stroke="#0369a1" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+        if (qsIdo) READY = [[qsIdo.name, "", "idora", "Manfaatdor idora", [qsIdo.turi, qsIdo.tum || qsIdo.vil || qsIdo.resp].filter(Boolean).join(" · "), qsIdo]].concat(READY);
         var qsQ = (s.qsQ || "").trim().toLowerCase();
         __out.qsMenuOpen = !!s.qsOpen && isQd;
         __out.qsMenuStr = __out.qsMenuOpen ? "true" : "false";
@@ -11978,9 +11987,12 @@ class Component extends DCLogic {
         __out.qsQv = s.qsQ || "";
         __out.qsSetQ = function (e) { self.setState({ qsQ: e.target.value }); };
         var readyRows = READY.map(function (r, k) { return { r: r, k: k }; }).filter(function (x) { var r = x.r; return !qsQ || (r[0] + " " + r[3] + " " + r[4]).toLowerCase().indexOf(qsQ) >= 0; });
-        __out.qsReady = readyRows.map(function (x) { var r = x.r, k = x.k, added = qList.some(function (p) { return p.name === r[0]; });
-          return { name: r[0], photo: portrait(r[0], r[1]), role: r[3], org: r[4], tagCls: "ak-role " + (r[2] === "pro" ? "pro" : "bs"), added: added, notAdded: !added, cls: "qs-opt" + (added ? " on" : ""), dis: added,
-            pick: function () { if (added) return; var pp = tmPerson(900 + k, r[0], bd(k + 2), r[1]); pp.id = "rd" + k + "-" + Date.now(); pp.kind = r[2]; pp.role2 = r[3]; pp.org = r[4]; pp.side = ({ "Prokuror": "pro", "Advokat": "adv", "Ishonchli vakil": "vakil", "Uchinchi shaxs": "uch" })[r[3]] || ""; pp.sideLocked = !!pp.side;
+        __out.qsReady = readyRows.map(function (x) { var r = x.r, k = x.k - (qsIdo ? 1 : 0), added = qList.some(function (p) { return p.name === r[0]; }), isOrg = r[2] === "idora";
+          return { name: r[0], photo: isOrg ? ORG_IC : portrait(r[0], r[1]), role: r[3], org: r[4], tagCls: "ak-role " + (isOrg ? "qorg" : r[2] === "pro" ? "pro" : "bs"), added: added, notAdded: !added, cls: "qs-opt" + (isOrg ? " qorg" : "") + (added ? " on" : ""), dis: added,
+            pick: function () { if (added) return;
+              if (isOrg) { var o = r[5], po = { id: "ido-" + o.id + "-" + Date.now(), name: o.name, kind: "idora", isOrg: true, role2: "Manfaatdor idora", org: r[4] || o.turi || "", stir: o.stir, side: "", sideLocked: false };
+                self.setState({ qdShk: (self.state.qdShk || []).concat([po]), qsOpen: false, qsQ: "" }); self.flash(o.name + " qo'shildi · tarafini tanlang"); return; }
+              var pp = tmPerson(900 + k, r[0], bd(k + 2), r[1]); pp.id = "rd" + k + "-" + Date.now(); pp.kind = r[2]; pp.role2 = r[3]; pp.org = r[4]; pp.side = ({ "Prokuror": "pro", "Advokat": "adv", "Ishonchli vakil": "vakil", "Uchinchi shaxs": "uch" })[r[3]] || ""; pp.sideLocked = !!pp.side;
               self.setState({ qdShk: (self.state.qdShk || []).concat([pp]), qsOpen: false, qsQ: "" }); self.flash(r[0] + " qo'shildi" + (pp.sideLocked ? " · tarafi tizimdan olindi" : " · tarafini tanlang")); } }; });
         __out.qsReadyHas = readyRows.length > 0; __out.qsReadyNone = !readyRows.length;
         __out.qsReadyCnt = readyRows.length + " ta";
@@ -11991,11 +12003,11 @@ class Component extends DCLogic {
         var SIDES = [{ v: "dv", l: "Da'vogar", sub: "Asosiy ishdagi da'vogar" }, { v: "jv", l: "Javobgar", sub: "Asosiy ishdagi javobgar" },
           { v: "fdv", l: "Fuqaroviy da'vogar", sub: "Fuqaroviy da'vo bildirgan shaxs" }, { v: "fjv", l: "Fuqaroviy javobgar", sub: "Fuqaroviy da'vo bo'yicha javobgar" },
           { v: "vakil", l: "Ishonchli vakil", sub: "Ishonchnoma asosida" }, { v: "adv", l: "Advokat", sub: "Order asosida" }, { v: "uch", l: "Uchinchi shaxs", sub: "Ishda ishtirok etuvchi uchinchi shaxs" }, { v: "pro", l: "Prokuror", sub: "Prokuratura vakili" }];
-        __out.qsList = qList.map(function (p, i) { var pro = p.kind === "pro";
+        __out.qsList = qList.map(function (p, i) { var pro = p.kind === "pro", org = !!p.isOrg;
           var sd = dd("qs-side-" + i, SIDES, p.side || "", function (e) { var v = e.target.value; self.setState(function (prev) { return { qdShk: (prev.qdShk || []).map(function (x) { return x.id === p.id ? Object.assign({}, x, { side: v }) : x; }) }; }); },
             { ph: "Tarafini tanlang", noSplit: true, bc: qErrOn && !p.side ? "#dc2626" : "" });
-          return { name: p.name, photo: portrait(p.name, p.gender), jsh: p.jshshir || "—", birth: p.birth ? isoToUz(p.birth) : "—",
-            role: p.role2 || (pro ? "Prokuror" : "Boshqa shaxs"), roleCls: "ak-role " + (pro ? "pro" : "bs"), holat: pro ? "Prokuratura vakili" : "Ishda ishtirok etmagan",
+          return { name: p.name, photo: org ? ORG_IC : portrait(p.name, p.gender), jsh: org ? (p.stir || "—") : (p.jshshir || "—"), birth: org ? "STIR " + (p.stir || "—") : (p.birth ? isoToUz(p.birth) : "—"),
+            role: p.role2 || (pro ? "Prokuror" : "Boshqa shaxs"), roleCls: "ak-role " + (org ? "qorg" : pro ? "pro" : "bs"), holat: org ? "Manfaatida idora" : pro ? "Prokuratura vakili" : "Ishda ishtirok etmagan",
             sideDd: sd, org: p.org || (pro ? "Prokuratura vakili" : "Ishda ishtirok etmagan"), trCls: "qs-tr" + (qErrOn && !p.side ? " err" : ""), sideErr: qErrOn && !p.side, sideLocked: !!p.sideLocked, sideFree: !p.sideLocked, sideLbl: (SIDES.filter(function (o) { return o.v === p.side; })[0] || { l: "—" }).l,
             sideTxt: p.side ? (SIDES.filter(function (o) { return o.v === p.side; })[0] || { l: "—" }).l : "Tarafini tanlang", sideIcCls: "qs-tic " + (p.side || "none"),
             chipCls: "qs-chip " + (p.side || "none") + (p.sideLocked ? " lock" : "") + (qErrOn && !p.side ? " err" : ""), hasSide: !!p.side, noSide: !p.side,
