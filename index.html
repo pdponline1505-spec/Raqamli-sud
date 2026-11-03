@@ -4001,6 +4001,16 @@ body:has([aria-modal="true"]) .l-app .l-top{z-index:1 !important}
 .pc.pc-lite{align-items:center !important;padding:12px 18px !important}
 .pc.pc-lite .pc-ph{width:44px !important;height:44px !important;border-radius:12px !important}
 .pc.pc-lite .pc-main{display:flex;flex-direction:column;justify-content:center;min-width:0;flex:1}
+/* Tomonlar: asosiy shaxsni tanlash */
+.tm-mainrow{display:flex;align-items:center;gap:12px;padding:10px 18px;background:#f8fafc;border-bottom:1px solid #eef1f5}
+.tm-ml{display:inline-flex;align-items:center;gap:6px;flex:none;font-size:13px;font-weight:600;color:#475569}
+.tm-ml svg{width:14px;height:14px;fill:#3b82f6;stroke:#3b82f6}
+.tm-mainsel{position:relative;flex:1;min-width:0;max-width:420px}
+.tm-mainsel .dx-selbtn{height:38px}
+.tm-mainsel .dx-menu{z-index:46}
+.tm-mh{display:block;padding:6px 10px 4px;font-size:11.5px;font-weight:600;color:#94a3b8}
+.card:has(.tm-mainsel.open){position:relative;z-index:46;overflow:visible !important}
+.tm-mainrow .dx-ddbg{z-index:45}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -5479,6 +5489,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
     <div class="g2" style="gap: 16px; align-items: start">
       <div class="card" style="overflow: hidden; background: #fbfcfe">
         <div class="between" style="padding: 14px 18px; background: #ffffff; border-bottom: 1px solid #eef1f5"><span class="row" style="gap: 8px"><b style="font-size: 16px">Da'vogar</b><span class="dx-cnt">{{tmDvCount}}</span><span class="{{vkDv.cls}}" title="Vakolat tekshiruvi natijasi">{{vkDv.txt}}</span><sc-if value="{{vkDv.retry}}" hint-placeholder-val="{{ false }}"><button class="vk-re" onClick="{{vkDv.check}}">Qayta tekshirish</button></sc-if></span><button class="btn sm" onClick="{{tmAddDv}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v8M8 12h8"></path></svg>Qo'shish</button></div>
+        <sc-if value="{{tmMainDv.show}}" hint-placeholder-val="{{ false }}"><div class="tm-mainrow"><span class="tm-ml"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6-5.4-3.1-5.4 3.1 1.2-6L3.3 9.3l6.1-.7z"></path></svg>Asosiy shaxs</span><span class="{{tmMainDv.dd.cls}} tm-mainsel" id="{{tmMainDv.dd.id}}" onKeyDown="{{tmMainDv.dd.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{tmMainDv.dd.exp}}" onClick="{{tmMainDv.dd.toggle}}"><span class="{{tmMainDv.dd.vcls}}">{{tmMainDv.dd.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{tmMainDv.dd.open}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{dxDdClose}}"></button><span class="dx-menu" role="listbox" onClick="{{tmMainDv.dd.stop}}"><span class="tm-mh">Asosiy shaxsni tanlang</span><sc-for list="{{tmMainDv.dd.opts}}" as="o" hint-placeholder-count="2"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></div></sc-if>
         <sc-if value="{{tmInDv}}" hint-placeholder-val="{{ false }}">
         <div class="tmpanel">
           <div class="between"><b style="font-size: 14px">{{tmTitle}}</b><button class="ib" aria-label="Panelni yopish" onClick="{{tmClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
@@ -5531,6 +5542,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
       </div>
       <div class="card" style="overflow: hidden; background: #fbfcfe">
         <div class="between" style="padding: 14px 18px; background: #ffffff; border-bottom: 1px solid #eef1f5"><span class="row" style="gap: 8px"><b style="font-size: 16px">Javobgar</b><span class="dx-cnt">{{tmJvCount}}</span><span class="{{vkJv.cls}}" title="Vakolat tekshiruvi natijasi">{{vkJv.txt}}</span><sc-if value="{{vkJv.retry}}" hint-placeholder-val="{{ false }}"><button class="vk-re" onClick="{{vkJv.check}}">Qayta tekshirish</button></sc-if></span><button class="btn sm" onClick="{{tmAddJv}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v8M8 12h8"></path></svg>Qo'shish</button></div>
+        <sc-if value="{{tmMainJv.show}}" hint-placeholder-val="{{ false }}"><div class="tm-mainrow"><span class="tm-ml"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6-5.4-3.1-5.4 3.1 1.2-6L3.3 9.3l6.1-.7z"></path></svg>Asosiy shaxs</span><span class="{{tmMainJv.dd.cls}} tm-mainsel" id="{{tmMainJv.dd.id}}" onKeyDown="{{tmMainJv.dd.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{tmMainJv.dd.exp}}" onClick="{{tmMainJv.dd.toggle}}"><span class="{{tmMainJv.dd.vcls}}">{{tmMainJv.dd.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{tmMainJv.dd.open}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{dxDdClose}}"></button><span class="dx-menu" role="listbox" onClick="{{tmMainJv.dd.stop}}"><span class="tm-mh">Asosiy shaxsni tanlang</span><sc-for list="{{tmMainJv.dd.opts}}" as="o" hint-placeholder-count="2"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></div></sc-if>
         <sc-if value="{{tmInJv}}" hint-placeholder-val="{{ false }}">
         <div class="tmpanel">
           <div class="between"><b style="font-size: 14px">{{tmTitle}}</b><button class="ib" aria-label="Panelni yopish" onClick="{{tmClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
@@ -11939,6 +11951,13 @@ class Component extends DCLogic {
         function () { setImEd(function (x) { return { v: Object.assign({}, x.v, { javs: [] }), err: "" }; }); },
         { disabled: s.dxJv.length === 0, ph: s.dxJv.length ? "Javobgarlarni tanlang" : "Avval javobgar qo'shing" });
       __out.dxS = dxS; __out.dxDdOpen = !!ddOpen && isDevon && ddOpen !== "ap-sudya";
+      // ---- Tomonlar: asosiy shaxsni qayta tanlash ----
+      ["Dv", "Jv"].forEach(function (k) { var key = "tm" + k, lst = s[key] || [], hasM = lst.some(function (x) { return x.main; });
+        var cur = lst.filter(function (x, i) { return hasM ? x.main : i === 0; })[0];
+        __out["tmMain" + k] = { show: lst.length > 1 && s.openMode === "page",
+          dd: dd("tm-main-" + k, lst.map(function (x) { return { v: String(x.id), l: x.name, sub: x.jshshir ? "JSHSHIR " + x.jshshir : "" }; }), cur ? String(cur.id) : "",
+            function (e) { var v = e.target.value, o = {}, nm = ""; o[key] = (self.state[key] || []).map(function (x) { if (String(x.id) === v) nm = x.name; return Object.assign({}, x, { main: String(x.id) === v }); }); self.setState(o); self.flash(nm + " asosiy shaxs etib belgilandi"); },
+            { noSplit: true, ph: "Tanlang" }) }; });
       // ---- Sudya · umumiy tahrirlash: manfaatida idorani Devonxonadagi ketma-ketlikda tanlash ----
       (function () {
         var u = Object.assign({ idTab: "nom", idQ: "", idCat: "", idResp: "", idVil: "", idTum: "", idSearched: false, idHits: [], idQLast: "" }, s.umI || {});
