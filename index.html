@@ -3968,6 +3968,15 @@ body:has([aria-modal="true"]) .l-app .l-top{z-index:1 !important}
 .qv-side{flex:none;font-size:12px;color:#475569;padding:0 8px;height:22px;display:inline-flex;align-items:center;border-radius:999px;background:#f1f5f9}
 .qv-side:empty{display:none}
 .qv-stir:empty{display:none}
+/* Qarshi da'volar: shikoyat bergan shaxslar ro'yxati */
+.qx-fil{display:flex;flex-direction:column;border:1px solid #e6ebf3;border-radius:12px;background:#fff;overflow:hidden}
+.qx-fh{display:flex;align-items:center;gap:8px;padding:10px 14px;font-size:12px;font-weight:600;color:#64748b;background:#f8fafc;border-bottom:1px solid #eef1f5}
+.qx-fr{display:flex;align-items:center;gap:12px;padding:10px 14px;min-width:0}
+.qx-fr+.qx-fr{border-top:1px solid #eef1f5}
+.qx-fr b{font-size:14px;font-weight:600;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.qx-fr small{font-size:12px;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.qx-fav{width:36px;height:36px;border-radius:10px;object-fit:cover;object-position:center 20%;flex:none;background:#e2e8f0}
+.qx-fr .ak-role,.qv-fr .ak-role{flex:none;height:24px;font-size:12px}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -5446,10 +5455,10 @@ html[data-theme="dark"] .ds-host img{filter:none}
             <div class="kv" style="gap: 2px; min-width: 0"><small>Qarshi da'vo</small><div class="row" style="gap: 10px; flex-wrap: wrap"><b class="qx-num">№ {{q.num}}</b><span class="badge {{q.badgeCls}}">{{q.status}}</span><sc-if value="{{q.fromDevon}}" hint-placeholder-val="{{ false }}"><span class="qx-src">Devonxonadan</span></sc-if></div></div></div>
           <button class="btn qx-more" onClick="{{q.open}}">Batafsil<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
         </div>
-        <div class="qx-flow">
-          <div class="qx-party"><div class="kv qx-pk"><span class="qx-stir">{{q.dvSub}}</span><b title="{{q.dvName}}">{{q.dvName}}</b></div><span class="qx-role">Qarshi da'vogar</span></div>
-          <span class="qx-arrow" title="talab qiladi"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
-          <div class="qx-party"><div class="kv qx-pk"><span class="qx-stir">{{q.jvSub}}</span><b title="{{q.jvName}}">{{q.jvName}}</b></div><span class="qx-role">Qarshi javobgar</span></div>
+        <div class="qx-fil">
+          <span class="qx-fh">Shikoyat bergan shaxslar <span class="dx-cnt">{{q.filN}}</span></span>
+          <sc-for list="{{q.filers}}" as="f" hint-placeholder-count="1"><div class="qx-fr"><img class="qx-fav" src="{{f.photo}}" alt=""><div class="kv" style="gap: 2px; min-width: 0; flex: 1"><b title="{{f.name}}">{{f.name}}</b><small title="{{f.org}}">{{f.org}}</small></div><span class="{{f.roleCls}}">{{f.role}}</span><sc-if value="{{f.hasSide}}" hint-placeholder-val="{{ false }}"><span class="qv-side">{{f.side}}</span></sc-if></div></sc-for>
+          <sc-if value="{{q.noFilers}}" hint-placeholder-val="{{ false }}"><small class="muted" style="padding: 10px 14px">Shikoyat bergan shaxs ko'rsatilmagan</small></sc-if>
         </div>
         <div class="qx-meta">
           <span><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l2-8h14l2 8v6H3z"></path><path d="M3 13h5l1 3h6l1-3h5"></path></svg>Kirim № <b>{{q.kirim}}</b></span>
@@ -7421,27 +7430,10 @@ html[data-theme="dark"] .ds-host img{filter:none}
         <span>Talab <b>{{drawer.sum}}</b></span>
       </div>
 
-      <div class="qv-sec">
-        <span class="qv-lbl">Tomonlar</span>
-        <div class="qv-parties">
-          <div class="qv-pc">
-            <span class="qv-ptag a">Qarshi da'vogar</span>
-            <sc-for list="{{drawer.dvList}}" as="pp" hint-placeholder-count="1"><div class="qv-pid"><span class="qv-av a" aria-hidden="true">{{pp.ini}}</span><div class="kv" style="gap: 2px; min-width: 0"><b title="{{pp.name}}">{{pp.name}}</b><span class="qv-stir">{{pp.sub}}</span></div></div></sc-for>
-            <span class="qv-was"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h13l-3-3M17 17H4l3 3"></path></svg>Asosiy ishda — javobgar</span>
-          </div>
-          <div class="qv-link" aria-hidden="true"><span class="qv-linkline"></span><span class="qv-linkc"><svg class="i s" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span><small>talab qiladi</small></div>
-          <div class="qv-pc">
-            <span class="qv-ptag b">Qarshi javobgar</span>
-            <sc-for list="{{drawer.jvList}}" as="pp" hint-placeholder-count="1"><div class="qv-pid"><span class="qv-av b" aria-hidden="true">{{pp.ini}}</span><div class="kv" style="gap: 2px; min-width: 0"><b title="{{pp.name}}">{{pp.name}}</b><span class="qv-stir">{{pp.sub}}</span></div></div></sc-for>
-            <span class="qv-was"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h13l-3-3M17 17H4l3 3"></path></svg>Asosiy ishda — da'vogar</span>
-          </div>
-        </div>
-      </div>
-
       <sc-if value="{{drawer.hasFilers}}" hint-placeholder-val="{{ false }}">
       <div class="qv-sec">
-        <span class="qv-lbl">Shikoyat bergan shaxslar</span>
-        <div class="qv-fl"><sc-for list="{{drawer.filers}}" as="f" hint-placeholder-count="1"><div class="qv-fr"><span class="qv-av a sm" aria-hidden="true">{{f.ini}}</span><div class="kv" style="gap: 2px; min-width: 0; flex: 1"><b title="{{f.name}}">{{f.name}}</b><small>{{f.org}}</small></div><span class="{{f.roleCls}}">{{f.role}}</span><sc-if value="{{f.hasSide}}" hint-placeholder-val="{{ false }}"><span class="qv-side">{{f.side}}</span></sc-if></div></sc-for></div>
+        <span class="qv-lbl">Shikoyat bergan shaxslar <span class="dx-cnt">{{drawer.filN}}</span></span>
+        <div class="qv-fl"><sc-for list="{{drawer.filers}}" as="f" hint-placeholder-count="1"><div class="qv-fr"><img class="qx-fav" src="{{f.photo}}" alt=""><div class="kv" style="gap: 2px; min-width: 0; flex: 1"><b title="{{f.name}}">{{f.name}}</b><small>{{f.org}}</small></div><span class="{{f.roleCls}}">{{f.role}}</span><sc-if value="{{f.hasSide}}" hint-placeholder-val="{{ false }}"><span class="qv-side">{{f.side}}</span></sc-if></div></sc-for></div>
       </div>
       </sc-if>
 
@@ -8432,9 +8424,9 @@ class Component extends DCLogic {
       nav: "umumiy",
       toast: "",
       qarshi: [
-        { id: "a", ofNum: "R4-1901-2603/4234", num: "R4-2001-2609/245", st: "yangi", kirim: "5341", kirimDate: "29.09.2026 13:35", key: "2026-09-29 13:35", via: "Elektron shaklda", sum: "1 000 000 UZS", auto: true },
-        { id: "b", ofNum: "R4-1901-2603/4234", num: "R4-2001-2607/189", st: "korib", kirim: "5123", kirimDate: "27.09.2026 11:29", key: "2026-09-27 11:29", via: "Elektron shaklda", sum: "1 000 000 UZS", auto: true },
-        { id: "c", ofNum: "R4-1901-2603/4234", num: "R4-2001-2588/114", st: "korildi", kirim: "4987", kirimDate: "22.09.2026 09:40", key: "2026-09-22 09:40", via: "Qog'oz shaklda", sum: "1 000 000 UZS", auto: true }
+        { id: "a", ofNum: "R4-1901-2603/4234", filers: [{ name: "Aliyeva Nodira Rustamovna", gender: "Ayol", kind: "pro", role: "Prokuror", org: "Termiz shahar prokuraturasi", side: "Prokuror" }], num: "R4-2001-2609/245", st: "yangi", kirim: "5341", kirimDate: "29.09.2026 13:35", key: "2026-09-29 13:35", via: "Elektron shaklda", sum: "1 000 000 UZS", auto: true },
+        { id: "b", ofNum: "R4-1901-2603/4234", filers: [{ name: "Rasulov Bobur Akmalovich", gender: "Erkak", kind: "boshqa", role: "Advokat", org: "\"Adolat himoyasi\" advokatlik firmasi", side: "Advokat" }, { name: "Tursunova Zarina Olimovna", gender: "Ayol", kind: "boshqa", role: "Ishonchli vakil", org: "Ishonchnoma asosida", side: "Ishonchli vakil" }], num: "R4-2001-2607/189", st: "korib", kirim: "5123", kirimDate: "27.09.2026 11:29", key: "2026-09-27 11:29", via: "Elektron shaklda", sum: "1 000 000 UZS", auto: true },
+        { id: "c", ofNum: "R4-1901-2603/4234", filers: [{ name: "Qodirov Sherzod Anvarovich", gender: "Erkak", kind: "pro", role: "Prokuror", org: "Surxondaryo viloyati prokuraturasi", side: "Prokuror" }], num: "R4-2001-2588/114", st: "korildi", kirim: "4987", kirimDate: "22.09.2026 09:40", key: "2026-09-22 09:40", via: "Qog'oz shaklda", sum: "1 000 000 UZS", auto: true }
       ],
       qSortDesc: true,
       drawer: "",
@@ -9161,21 +9153,25 @@ class Component extends DCLogic {
       self.setState(patch);
     };
     var qCase = self.qOfCase(s);
+    var Q_ORG_IC = "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#e0f2fe"/><path d="M14 33h20M16 33V22M21 33V22M27 33V22M32 33V22M13 22l11-7 11 7z" fill="none" stroke="#0369a1" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    var qFil = function (q) { return (q.filers || []).map(function (f) { var sd = f.side && f.side !== f.role ? f.side : "";
+      return { name: f.name, role: f.role || "—", org: f.org || "—", side: sd, hasSide: !!sd, ini: qdIni(f.name), photo: f.isOrg ? Q_ORG_IC : portrait(f.name, f.gender || (/ovna|evna|qizi/i.test(f.name) ? "Ayol" : "Erkak")),
+        roleCls: "ak-role " + (f.isOrg ? "qorg" : f.kind === "pro" ? "pro" : "bs") }; }); };
     var qParty = function (q) {
       if (q.src === "devon") {
         var L = function (arr) { return (arr || []).map(function (p) { return { name: p.name, sub: p.stir ? "STIR " + p.stir : (p.jsh ? "JSHSHIR " + p.jsh : ""), ini: qdIni(p.name) }; }); };
         var dl = L(q.dv), jl = L(q.jv);
         return { dvList: dl, jvList: jl, dvName: (dl[0] || { name: "—" }).name + (dl.length > 1 ? " +" + (dl.length - 1) : ""), dvSub: (dl[0] || {}).sub || "Asosiy ishda — javobgar",
           jvName: (jl[0] || { name: "—" }).name + (jl.length > 1 ? " +" + (jl.length - 1) : ""), jvSub: (jl[0] || {}).sub || "Asosiy ishda — da'vogar",
-          filers: (q.filers || []).map(function (f) { return { name: f.name, role: f.role, org: f.org, side: f.side && f.side !== f.role ? f.side : "", hasSide: !!(f.side && f.side !== f.role), ini: qdIni(f.name), roleCls: "ak-role " + (f.isOrg ? "qorg" : f.kind === "pro" ? "pro" : "bs") }; }), hasFilers: !!(q.filers || []).length,
+          filers: qFil(q), hasFilers: !!(q.filers || []).length, filN: (q.filers || []).length + " ta",
           ariza: q.ariza || "qarshi_davo_arizasi.pdf", arizaSize: q.arizaSize || "—", sudya: q.sudya || "Tojiyev Zokirjon Xolboyevich", fromDevon: true };
       }
       var D = { name: "\"Durable Slate Industry\" MChJ", sub: "STIR 306694399", ini: "DS" }, T = { name: "«Toshkent suv ta'minoti» AJ", sub: "STIR 201577953", ini: "TS" };
-      return { dvList: [D], jvList: [T], dvName: D.name, dvSub: D.sub, jvName: T.name, jvSub: T.sub, filers: [], hasFilers: false, ariza: "qarshi_davo_arizasi.pdf", arizaSize: "212 KB", sudya: "Tojiyev Zokirjon Xolboyevich", fromDevon: false };
+      return { dvList: [D], jvList: [T], dvName: D.name, dvSub: D.sub, jvName: T.name, jvSub: T.sub, filers: qFil(q), hasFilers: !!(q.filers || []).length, filN: (q.filers || []).length + " ta", ariza: "qarshi_davo_arizasi.pdf", arizaSize: "212 KB", sudya: "Tojiyev Zokirjon Xolboyevich", fromDevon: false };
     };
     var qarshi = qCase.slice().sort(function (x, y) { return s.qSortDesc ? (x.key < y.key ? 1 : -1) : (x.key > y.key ? 1 : -1); })
       .map(function (q) {
-        return Object.assign({}, q, qParty(q), {
+        return Object.assign({}, q, qParty(q), { noFilers: !(q.filers || []).length }, {
           status: Q_ST[q.st][0], badgeCls: Q_ST[q.st][1],
           viaShort: (q.via || "").split(" ")[0], dateOnly: (q.kirimDate || "").split(" ")[0], qxCls: q.st === "yangi" ? "isnew" : "",
           bg: q.st === "yangi" ? "#f5f8ff" : "#ffffff",
@@ -9212,7 +9208,7 @@ class Component extends DCLogic {
       canAccept: false, // qarshi da'vo oynasi faqat ko'rish uchun
       linkedBy: dq.auto ? "Tizim (avtomatik)" : "Qo'lda",
       accept: function () { self.updQ(dq.id, { st: "qabul" }); self.flash("Qarshi da'vo ish yuritishga qabul qilindi"); }
-    }) : { dvList: [], jvList: [], filers: [], hasFilers: false, ariza: "", arizaSize: "",  num: "", kirim: "", kirimDate: "", arrived: "", sum: "", via: "", dateOnly: "", sudya: "", sudyaPhoto: "", steps: [], progPct: "0%", progTxt: "", progNote: "", dl: function () {}, status: "", badgeCls: "", canAccept: false, linkedBy: "", accept: function () {} };
+    }) : { dvList: [], jvList: [], filers: [], hasFilers: false, filN: "", ariza: "", arizaSize: "",  num: "", kirim: "", kirimDate: "", arrived: "", sum: "", via: "", dateOnly: "", sudya: "", sudyaPhoto: "", steps: [], progPct: "0%", progTxt: "", progNote: "", dl: function () {}, status: "", badgeCls: "", canAccept: false, linkedBy: "", accept: function () {} };
     var unread = s.notifs.filter(function (n) { return n.unread; }).length;
     var notifs = s.notifs.map(function (n) {
       return Object.assign({}, n, {
