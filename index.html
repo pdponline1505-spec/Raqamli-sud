@@ -3925,6 +3925,7 @@ html,body{overflow-x:clip}
 /* tezkor ko'rish oynasi (modal) ochiq bo'lsa header uning ostida qoladi */
 body:has(.cw-wrap) .l-app:not(.pgmode) .l-top{z-index:12 !important}
 body:has([aria-modal="true"]) .l-app .l-top{z-index:1 !important}
+.qv-ro{margin-right:auto;display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:999px;background:#f1f5f9;color:#64748b;font-size:12.5px;font-weight:500}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -7360,6 +7361,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
       </div>
     </div>
     <div class="qv-f">
+      <span class="qv-ro"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>Faqat ko'rish uchun</span>
       <button class="btn qv-close" onClick="{{closeDrawer}}">Yopish</button>
       <sc-if value="{{drawer.canAccept}}" hint-placeholder-val="{{ true }}"><button class="btn pri" onClick="{{drawer.accept}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Ish yuritishga qabul qilish</button></sc-if>
     </div>
@@ -9086,7 +9088,7 @@ class Component extends DCLogic {
       ],
       dl: function () { self.flash("«qarshi_davo_arizasi.pdf» yuklab olinmoqda"); },
       status: Q_ST[dq.st][0], badgeCls: Q_ST[dq.st][1],
-      canAccept: dq.st !== "qabul",
+      canAccept: false, // qarshi da'vo oynasi faqat ko'rish uchun
       linkedBy: dq.auto ? "Tizim (avtomatik)" : "Qo'lda",
       accept: function () { self.updQ(dq.id, { st: "qabul" }); self.flash("Qarshi da'vo ish yuritishga qabul qilindi"); }
     } : { num: "", kirim: "", kirimDate: "", arrived: "", sum: "", via: "", dateOnly: "", sudya: "", sudyaPhoto: "", steps: [], progPct: "0%", progTxt: "", progNote: "", dl: function () {}, status: "", badgeCls: "", canAccept: false, linkedBy: "", accept: function () {} };
