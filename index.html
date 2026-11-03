@@ -9688,6 +9688,8 @@ class Component extends DCLogic {
           finger: function () { self.fpStart({ key: key, id: p.id, name: p.name }); } });
       });
     };
+    // asosiy shaxs ro'yxatda doim birinchi turadi (qolganlar tartibi o'zgarmaydi)
+    var mainFirst = function (l) { return l.filter(function (x) { return x.isMain; }).concat(l.filter(function (x) { return !x.isMain; })); };
     var openTm = function (key) { return function () { self.setState({ tmModal: key, tmFuq: "uz", tmPass: true, tmTab: "pasport", tmQ: "", tmSearched: false, tmPicked: {}, tmManual: {}, tmErr: "" }); }; };
     var TM_TABS = [["pasport", "Pasport bo'yicha", "Pasport / ID-karta seriya raqami", "AB 1234567"], ["jshshir", "JSHSHIR bo'yicha", "JSHSHIR (14 xonali)", "5150 5012 3456 78"], ["fish", "F.I.Sh. bo'yicha", "Familiya, ism, otasining ismi", "Abdusattorova Saida"]];
     var tabCur = TM_TABS.filter(function (t) { return t[0] === s.tmTab; })[0];
@@ -9987,7 +9989,7 @@ class Component extends DCLogic {
       toFull: function () { self.setState({ openMode: "page" }); self.flash("Batafsil ko'rish ochildi — barcha amallar mavjud"); },
       qxEmpty: !qCase.length,
       qxSub: qCase.length + " ta qarshi da'vo" + (qCase.filter(function (q) { return q.st === "yangi"; }).length ? " · " + qCase.filter(function (q) { return q.st === "yangi"; }).length + " tasi yangi" : "") + " · asosiy ish bilan birga ko'riladi",
-      tmDv: tmMap("tmDv"), tmJv: tmMap("tmJv"),
+      tmDv: mainFirst(tmMap("tmDv")), tmJv: mainFirst(tmMap("tmJv")),
       qtJv: tmMap("qtJv"), qtAr: tmMap("qtAr"), qsh: tmMap("qsh"),
       qtJvHas: s.qtJv.length > 0, qtJvEmpty: !s.qtJv.length, qtJvCount: s.qtJv.length + " ta", qtJvAdd: openTm("qtJv"),
       qtArHas: s.qtAr.length > 0, qtArEmpty: !s.qtAr.length, qtArCount: s.qtAr.length + " ta", qtArAdd: openTm("qtAr"),
