@@ -4110,6 +4110,9 @@ body:has([aria-modal="true"]) .l-app .l-top{z-index:1 !important}
 .qpc.qpc-v2 .qpc-acts .ib.pc-ed:hover{background:#eef2ff;color:#1d4ed8 !important}
 .qpc.qpc-v2 .qpc-acts .ib.pc-del:hover{background:#fef2f2;color:#dc2626 !important}
 .qpc.qpc-v2 .qpc-sep{height:22px;margin:0 6px}
+/* Ish mazmuni: tasdiqlash holati ko'rsatilmaydi */
+.itk.pend{border-color:#e6ebf3 !important}
+.itk.pend .itk-h{background:linear-gradient(180deg,#fbfcfe 0%,#f6f8fc 100%) !important}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -5788,7 +5791,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
   </section>
 
   <section class="sec" id="turkumlar">
-    <div class="sh"><div><h2>Ish turkumlari va da'vo summasi</h2><p>{{itkSub}}</p></div><div class="tools"><button class="btn" onClick="{{itkAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Turkum qo'shish</button></div></div>
+    <div class="sh"><div><h2>Ish mazmuni</h2><p>{{itkSub}}</p></div><div class="tools"><button class="btn" onClick="{{itkAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Turkum qo'shish</button></div></div>
     <div class="dx-entries" role="list" aria-label="Ish turkumlari va ularning da'vo summalari">
       <sc-for list="{{itk}}" as="t" hint-placeholder-count="2">
       <div class="{{t.cls}}" role="listitem">
@@ -5796,13 +5799,10 @@ html[data-theme="dark"] .ds-host img{filter:none}
           <div class="row" style="gap: 10px; flex-wrap: wrap; min-width: 0">
             <span class="dx-code">{{t.code}}</span><b class="dx-cname">{{t.name}}</b>
             <sc-if value="{{t.isMain}}" hint-placeholder-val="{{ true }}"><span class="dx-tag prim"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true" style="width: 12px; height: 12px; fill: currentColor; stroke: none"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg>Asosiy talab</span></sc-if>
-            <sc-if value="{{t.ok}}" hint-placeholder-val="{{ true }}"><span class="itk-tag ok"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Tasdiqlangan</span></sc-if>
-            <sc-if value="{{t.notOk}}" hint-placeholder-val="{{ false }}"><span class="itk-tag wait">Tasdiqlanmagan</span></sc-if>
           </div>
           <div class="dx-eacts">
             <sc-if value="{{t.notConfirm}}" hint-placeholder-val="{{ true }}">
             <sc-if value="{{t.canMain}}" hint-placeholder-val="{{ false }}"><button class="btn sm itk-main" onClick="{{t.makeMain}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg>Asosiy qilish</button></sc-if>
-            <sc-if value="{{t.notOk}}" hint-placeholder-val="{{ false }}"><button class="btn sm itk-ok" onClick="{{t.confirm}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Tasdiqlash</button></sc-if>
             <button class="ib" title="Turkumni tahrirlash" aria-label="Turkumni tahrirlash" onClick="{{t.edit}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"></path></svg></button>
             <button class="ib" title="O'chirish" aria-label="Turkumni o'chirish" style="color: #dc2626" onClick="{{t.askDel}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"></path></svg></button>
             </sc-if>
@@ -7769,7 +7769,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1920,"height":1080}}'>
 var NAV = [
   { t: "Birinchi instansiya", i: [["umumiy", "Umumiy"], ["tomonlar", "Tomonlar"], ["qarshi", "Qarshi da'volar"]] },
-  { t: "Ish mazmuni", i: [["bankrotlik", "Bankrotlik bo'yicha"], ["turkumlar", "Ish turkumlari va da'vo summasi"]] },
+  { t: "Ish mazmuni", i: [["bankrotlik", "Bankrotlik bo'yicha"], ["turkumlar", "Ish mazmuni"]] },
   { t: "Ishtirokchilar", i: [["qtomonlar", "Qo'shimcha tomonlar"], ["qshaxslar", "Qo'shimcha shaxslar"]] },
   { t: "Hujjatlar", i: [["hujjatlar", "Ish hujjatlari"], ["jildlar", "Yig'ma jildlar"], ["loglar", "Loglar"], ["prokuratura", "Prokuratura"]] },
   { t: "Da'voni ta'minlash", i: [["notarius", "Notarius tizimidan"], ["mib", "MIB tizimidan"], ["tahujjat", "Da'voni ta'minlash hujjatlari"], ["tasir", "Ta'sir choralari"], ["ijrov", "Ijro varaqalari"]] },
@@ -12784,7 +12784,6 @@ class Component extends DCLogic {
           return { code: a.code || String(i + 1), name: a.name, isMain: i === 0, ok: !!t.ok, notOk: !t.ok,
             canMain: i > 0,
             makeMain: function () {
-              if (!t.ok) { self.flash("Asosiy qilishdan oldin turkumni tasdiqlang"); return; }
               var cur = self.state.itk.filter(function (x) { return x.id === t.id; })[0]; if (!cur) return;
               self.setState({ itkDel: "", itk: [cur].concat(self.state.itk.filter(function (x) { return x.id !== t.id; })) });
               self.flash("«" + a.name + "» asosiy ish turkumi qilib belgilandi");
@@ -12794,7 +12793,7 @@ class Component extends DCLogic {
             javTxt: (t.javs || []).join(", "), jv: __out._jvChips(t.javs || []).slice(0, 3), jHas: (t.javs || []).length > 0, jNone: !(t.javs || []).length,
             sums: __out._itkSums(t), hasSums: (t.sums || []).length > 0, sumCount: (t.sums || []).length + " ta", sumTotal: __out._byCur(t.sums || []),
             sumEmpty: !(t.sums || []).length, addSum: __out._itkAddSum(t), addSumLabel: (t.sums || []).length ? "Yana da'vo summasi qo'shish" : "Da'vo summasi qo'shish",
-            cls: "dx-entry itk2" + (cd ? " del" : "") + (t.ok ? "" : " pend"), confirmDel: cd, notConfirm: !cd,
+            cls: "dx-entry itk2" + (cd ? " del" : ""), confirmDel: cd, notConfirm: !cd,
             confirm: function () { self.setState({ itk: self.state.itk.map(function (x) { return x.id === t.id ? Object.assign({}, x, { ok: true }) : x; }) }); self.flash("Ish turkumi tasdiqlandi"); },
             edit: function () { self.setState({ itkDel: "", dxDd: "", itkForm: { mode: "edit", id: t.id, turkum: t.turkum, qturkum: t.qturkum || "", iturkum: t.iturkum || "", javs: (t.javs || []).slice(), err: "" } }); },
             askDel: function () { self.setState({ itkDel: t.id }); }, askText: (t.sums || []).length ? "O'chirilsinmi? " + t.sums.length + " ta da'vo summasi ham o'chadi." : "O'chirilsinmi?",
@@ -12802,7 +12801,7 @@ class Component extends DCLogic {
             del: function () { self.setState({ itkDel: "", itk: self.state.itk.filter(function (x) { return x.id !== t.id; }) }); self.flash("Ish turkumi o'chirildi"); } };
         }),
         itkEmpty: list.length === 0,
-        itkSub: list.length ? list.length + " ta turkum · " + okN + " tasi tasdiqlangan" : "Turkum va unga tegishli da'vo summalari",
+        itkSub: list.length ? list.length + " ta ish turkumi · da'vo summalari bilan" : "Ish turkumlari va ularga tegishli da'vo summalari",
         itkGrandHas: list.some(function (x) { return (x.sums || []).length; }), itkGrand: __out._byCur([].concat.apply([], list.map(function (x) { return x.sums || []; }))),
         itkAdd: function () { self.setState({ itkDel: "", dxDd: "", itkForm: { mode: "new", id: "", turkum: "", qturkum: "", iturkum: "", javs: [], err: "" } }); }
       });
