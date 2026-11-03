@@ -3919,6 +3919,12 @@ nav.nav a.todo{color:#b45309}
 .qs-opt.qorg{background:#f5fbff;box-shadow:inset 0 0 0 1px #d7ecfb}
 .qs-opt.qorg:hover{background:#eaf6ff}
 .qs-opt.qorg img{border-radius:10px}
+/* Gorizontal siljishning oldini olish + header doim ochiq menyular ustida */
+html,body{overflow-x:clip}
+.l-top{z-index:50 !important}
+/* tezkor ko'rish oynasi (modal) ochiq bo'lsa header uning ostida qoladi */
+body:has(.cw-wrap) .l-app:not(.pgmode) .l-top{z-index:12 !important}
+body:has([aria-modal="true"]) .l-app .l-top{z-index:1 !important}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -5306,7 +5312,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
 </div>
 <sc-if value="{{lMenuOpen}}" hint-placeholder-val="{{ false }}"><button aria-label="Menyuni yopish" onClick="{{lCloseMenu}}" style="position: fixed; inset: 0; z-index: 15; background: transparent; border: 0; cursor: default"></button></sc-if>
 <sc-if value="{{caseOpen}}" hint-placeholder-val="{{ false }}">
-<div style="{{cwWrap}}">
+<div class="cw-wrap" style="{{cwWrap}}">
   <sc-if value="{{isModalMode}}" hint-placeholder-val="{{ false }}"><button aria-label="Ish oynasini yopish" onClick="{{caseClose}}" style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.5); border: 0; cursor: default"></button></sc-if>
   <div class="casemodal {{cwCls}}" style="{{cwBox}}" role="region" aria-label="Ish ma'lumotlari">
 <div class="shell" style="width: 100%; min-height: 100%">
@@ -8494,6 +8500,21 @@ class Component extends DCLogic {
       };
       this._dsObs = new MutationObserver(function () { var host = document.getElementById("ds-host"); if ((host && !dsRec) || (dsRec && !host)) dsSync(); });
       this._dsObs.observe(document.body, { childList: true, subtree: true });
+      // ochiladigan menyular ekran o'ng chetidan chiqib ketmasin (sahifa chapga siljimasin)
+      var fitMenus = function () {
+        var vw = document.documentElement.clientWidth;
+        document.querySelectorAll(".dx-menu:not([data-fit]), .lf-menu:not([data-fit])").forEach(function (m) {
+          m.setAttribute("data-fit", "1");
+          var r = m.getBoundingClientRect(); if (!r.width) return;
+          if (r.right > vw - 12) {
+            m.style.setProperty("left", "auto", "important"); m.style.setProperty("right", "0", "important"); m.style.transformOrigin = "top right";
+            var r2 = m.getBoundingClientRect();
+            if (r2.left < 12) { m.style.setProperty("max-width", Math.max(200, r2.right - 12) + "px", "important"); }
+          }
+        });
+      };
+      this._fitObs = new MutationObserver(function () { fitMenus(); });
+      this._fitObs.observe(document.body, { childList: true, subtree: true });
       setTimeout(dsSync, 0);
     } catch (x) {}
     // ===== scroll holatini eslab qolish va qayta yuklanganda tiklash =====
@@ -8902,6 +8923,7 @@ class Component extends DCLogic {
 
   componentWillUnmount() {
     try { if (this._dsObs) this._dsObs.disconnect(); } catch (x) {}
+    try { if (this._fitObs) this._fitObs.disconnect(); } catch (x) {}
     try { if (this._exitObs) this._exitObs.disconnect(); } catch (x) {}
     try { document.removeEventListener("scroll", this._onD3Scroll, true); } catch (x) {}
     try { window.removeEventListener("scroll", this._onNavScroll, true); } catch (x) {}
