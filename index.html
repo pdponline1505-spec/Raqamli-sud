@@ -4160,6 +4160,16 @@ svg.ic-ed,svg.ic-del{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linec
 .itk-sumw{position:relative;display:inline-flex}
 .itk-summ{left:auto !important;right:0;top:calc(100% + 6px);min-width:300px;z-index:46}
 .sec:has(.itk-summ){position:relative;z-index:45}
+/* Qarshi da'vo: shikoyat bergan shaxslar kattaroq — qatorda 2 yoki 4 ta */
+.qx.qx3 .qx2-fl{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:12px}
+@media (min-width:1500px){.qx.qx3 .qx2-fl{grid-template-columns:repeat(4,minmax(0,1fr)) !important}}
+@media (max-width:700px){.qx.qx3 .qx2-fl{grid-template-columns:minmax(0,1fr) !important}}
+.qx.qx3 .qx2-f{flex-direction:column;align-items:flex-start;gap:12px;padding:16px;border-radius:14px}
+.qx.qx3 .qx2-f>.kv{width:100%}
+.qx.qx3 .qx2-f .qx-fav{width:56px;height:56px;border-radius:14px}
+.qx.qx3 .qx2-f b{font-size:15px;white-space:normal;line-height:1.3}
+.qx.qx3 .qx2-f small{font-size:12.5px;white-space:normal}
+.qx2-ft{display:flex;align-items:center;gap:12px;width:100%}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -5771,7 +5781,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
           <div class="qx3-s"><small>Yuborish turi</small><b>{{q.via}}</b></div>
         </div>
         <div class="qx3-fb"><span class="qx2-lbl">Shikoyat bergan shaxslar <span class="dx-cnt">{{q.filN}}</span></span>
-          <div class="qx2-fl"><sc-for list="{{q.filers}}" as="f" hint-placeholder-count="1"><div class="qx2-f"><img class="qx-fav" src="{{f.photo}}" alt=""><div class="kv" style="gap: 2px; min-width: 0; flex: 1"><b title="{{f.name}}">{{f.name}}</b><small title="{{f.org}}">{{f.org}}</small></div><span class="{{f.roleCls}}">{{f.role}}</span></div></sc-for>
+          <div class="qx2-fl"><sc-for list="{{q.filers}}" as="f" hint-placeholder-count="1"><div class="qx2-f"><div class="qx2-ft"><img class="qx-fav" src="{{f.photo}}" alt=""><span class="{{f.roleCls}}" style="margin-left: auto; align-self: flex-start">{{f.role}}</span></div><div class="kv" style="gap: 3px; min-width: 0"><b title="{{f.name}}">{{f.name}}</b><small title="{{f.org}}">{{f.org}}</small></div></div></sc-for>
           <sc-if value="{{q.noFilers}}" hint-placeholder-val="{{ false }}"><small class="muted">Shikoyat bergan shaxs ko'rsatilmagan</small></sc-if></div>
         </div>
       </div>
