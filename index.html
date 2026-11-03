@@ -4035,6 +4035,26 @@ body:has([aria-modal="true"]) .l-app .l-top{z-index:1 !important}
 .tm-lock{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 10px;border-radius:999px;background:#f1f5f9;color:#64748b;font-size:12.5px;font-weight:500}
 .tm-lock svg{width:13px;height:13px}
 @media (max-width:640px){.tm-ed-g{grid-template-columns:minmax(0,1fr)}}
+/* Barmoq izini skanerlash oynasi */
+.fp-m{position:relative;width:420px;max-width:100%;padding:22px;display:flex;flex-direction:column;gap:16px;box-shadow:0 24px 64px rgba(15,23,42,.25)}
+.fp-h{display:flex;flex-direction:column;gap:2px}
+.fp-h b{font-size:18px;font-weight:600;color:#0f172a}
+.fp-nm{font-size:14px;color:#475569}
+.fp-act .dx-selbtn{height:44px}
+.fp-zone{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;min-height:190px;padding:20px;border:1.5px dashed #93c5fd;border-radius:14px;background:#f5f9ff}
+.fp-ring{position:relative;width:84px;height:84px;border-radius:50%;display:grid;place-items:center;background:#fff;box-shadow:0 0 0 1px #dbeafe}
+.fp-spin{position:absolute;inset:-3px;border-radius:50%;border:3px solid #dbeafe;border-top-color:#3b82f6;animation:fpSpin 1s linear infinite}
+@keyframes fpSpin{to{transform:rotate(360deg)}}
+.fp-ic{width:38px;height:38px;fill:none;stroke:#1e40af;stroke-width:1.6;stroke-linecap:round;animation:fpPulse 1.6s ease-in-out infinite}
+@keyframes fpPulse{0%,100%{opacity:.55}50%{opacity:1}}
+.fp-ring.ok{background:#ecfdf3;box-shadow:0 0 0 1px #bbf7d0}
+.fp-ok{width:36px;height:36px;fill:none;stroke:#16a34a;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.fp-tx{font-size:14px;color:#475569;text-align:center}
+.fp-tx.ok{color:#15803d;font-weight:500}
+.fp-f{display:flex;justify-content:flex-end;gap:8px}
+.fp-cancel{border-color:transparent;background:transparent;font-weight:600}
+.fp-m .dx-menu{z-index:5}
+@media (prefers-reduced-motion:reduce){.fp-spin,.fp-ic{animation:none}}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -6731,6 +6751,20 @@ html[data-theme="dark"] .ds-host img{filter:none}
   </div>
 </div>
 </sc-if>
+<sc-if value="{{fpOpen}}" hint-placeholder-val="{{ false }}">
+<div style="position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 24px">
+  <button aria-label="Oynani yopish" onClick="{{fpClose}}" style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.45); border: 0; cursor: default"></button>
+  <div role="dialog" aria-modal="true" aria-label="Barmoq izini skanerlash" class="card fp-m" onKeyDown="{{fpKey}}">
+    <div class="fp-h"><b>Barmoq izini skanerlash —</b><span class="fp-nm">{{fpName}}</span></div>
+    <label class="fld fp-act"><span>Harakat turi</span><span class="{{fpDd.cls}}" id="{{fpDd.id}}" onKeyDown="{{fpDd.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{fpDd.exp}}" onClick="{{fpDd.toggle}}"><span class="{{fpDd.vcls}}">{{fpDd.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{fpDd.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{fpDd.stop}}"><sc-for list="{{fpDd.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><span class="dx-olbl">{{o.name}}</span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
+    <div class="fp-zone">
+      <sc-if value="{{fpScan}}" hint-placeholder-val="{{ true }}"><div class="fp-ring"><span class="fp-spin" aria-hidden="true"></span><svg class="fp-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 11c0 3.5-.6 6.3-1.7 8.4M8.5 20.5c1-2 1.5-4.6 1.5-7.5a2 2 0 1 1 4 0c0 1.1-.1 2.2-.2 3.2M17.7 19.4c.5-2 .8-4.1.8-6.4a6.5 6.5 0 0 0-11.6-4M5.4 12.6c-.1.4-.1.9-.1 1.4 0 1.5-.2 3-.6 4.3M15.2 21.2c.3-.9.5-1.9.7-2.9M3.6 9.7a9 9 0 0 1 16.6 0M20.8 14.8c.1-.6.2-1.2.2-1.8"></path></svg></div><span class="fp-tx" aria-live="polite">Barmog'ingizni skanerga qo'ying...</span></sc-if>
+      <sc-if value="{{fpOk}}" hint-placeholder-val="{{ false }}"><div class="fp-ring ok"><svg class="fp-ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></div><span class="fp-tx ok" aria-live="polite">{{fpOkTxt}}</span></sc-if>
+    </div>
+    <div class="fp-f"><sc-if value="{{fpOk}}" hint-placeholder-val="{{ false }}"><button class="btn" onClick="{{fpRetry}}">Qayta skanerlash</button><button class="btn pri" onClick="{{fpClose}}">Yopish</button></sc-if><sc-if value="{{fpScan}}" hint-placeholder-val="{{ true }}"><button class="btn fp-cancel" onClick="{{fpClose}}">Bekor qilish</button></sc-if></div>
+  </div>
+</div>
+</sc-if>
 <sc-if value="{{tmEdOpen}}" hint-placeholder-val="{{ false }}">
 <div style="position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 24px">
   <button aria-label="Oynani yopish" onClick="{{tmEdClose}}" style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.45); border: 0; cursor: default"></button>
@@ -9169,6 +9203,14 @@ class Component extends DCLogic {
     try { var el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) {}
   }
 
+  fpStart(who) {
+    var self = this; clearTimeout(this._fpT);
+    this.setState({ fp: Object.assign({ act: (this.state.fp && this.state.fp.act) || "imzo", st: "scan" }, who) });
+    this._fpT = setTimeout(function () { var f = self.state.fp; if (!f || f.st !== "scan") return;
+      var o = { fp: Object.assign({}, f, { st: "ok", at: new Date().toTimeString().slice(0, 5) }) };
+      if (f.key && self.state[f.key]) o[f.key] = self.state[f.key].map(function (x) { return x.id === f.id ? Object.assign({}, x, { fpOk: true }) : x; });
+      self.setState(o); }, 2800);
+  }
   qPatch(id, patch) {
     if (String(id).indexOf("qd-") === 0) { qdRegSave(qdRegAll().map(function (x) { return x.id === id ? Object.assign({}, x, patch) : x; })); return { qdRegV: Date.now() }; }
     return { qarshi: this.state.qarshi.map(function (x) { return x.id === id ? Object.assign({}, x, patch) : x; }) };
@@ -9606,7 +9648,7 @@ class Component extends DCLogic {
           remove: function () { var o = {}; o[key] = self.state[key].filter(function (x) { return x.id !== p.id; }); self.setState(o); self.flash(p.name + " olib tashlandi"); },
           viewPhoto: function () { self.setState({ phView: { photo: portrait(p.name, p.gender), name: p.name, jsh: p.jshshir || "—", gender: p.gender, age: ageOf(p.birth), birthUz: isoToUz(p.birth) } }); },
           doc: function () { self.flash("Shaxsni tasdiqlovchi hujjat ko'rish oynasida ochiladi"); },
-          finger: function () { self.flash("Barmoq izini biriktirish skaneri ishga tushiriladi"); } });
+          finger: function () { self.fpStart({ key: key, id: p.id, name: p.name }); } });
       });
     };
     var openTm = function (key) { return function () { self.setState({ tmModal: key, tmFuq: "uz", tmPass: true, tmTab: "pasport", tmQ: "", tmSearched: false, tmPicked: {}, tmManual: {}, tmErr: "" }); }; };
@@ -9988,6 +10030,11 @@ class Component extends DCLogic {
       um: umView, umModal: s.umModal, umForm: umFormView, umSet: umSet, umBorder: umBorder, umErr: s.umErr, umIdSet: umIdSet,
       umHasIdora: !!s.umForm.idora, umNoIdora: !s.umForm.idora,
       tmAskOpen: !!s.tmAsk,
+      fpOpen: !!s.fp, fpName: s.fp ? s.fp.name : "", fpScan: !!(s.fp && s.fp.st === "scan"), fpOk: !!(s.fp && s.fp.st === "ok"),
+      fpOkTxt: s.fp && s.fp.st === "ok" ? "Barmoq izi qabul qilindi · " + ({ imzo: "Hujjat imzolandi", tasdiq: "Shaxs tasdiqlandi", majlis: "Majlisda ishtirok qayd etildi" })[s.fp.act] + " · " + (s.fp.at || "") : "",
+      fpClose: function () { clearTimeout(self._fpT); self.setState({ fp: null, dxDd: "" }); },
+      fpRetry: function () { var f = self.state.fp; if (f) self.fpStart({ key: f.key, id: f.id, name: f.name }); },
+      fpKey: function (e) { if (e.key === "Escape") { e.stopPropagation(); clearTimeout(self._fpT); self.setState({ fp: null, dxDd: "" }); } },
       tmEdOpen: !!s.tmEd,
       tmEdTitle: s.tmEd ? (s.tmEd.key === "tmDv" ? "Da'vogar" : "Javobgar") + " ma'lumotlarini tahrirlash" : "",
       tmEdSub: s.tmEd ? (s.tmEd.org ? "Yuridik shaxs" : "Jismoniy shaxs") + " · " + (s.tmEd.f.name || "") : "",
@@ -12024,6 +12071,9 @@ class Component extends DCLogic {
         function () { setImEd(function (x) { return { v: Object.assign({}, x.v, { javs: [] }), err: "" }; }); },
         { disabled: s.dxJv.length === 0, ph: s.dxJv.length ? "Javobgarlarni tanlang" : "Avval javobgar qo'shing" });
       __out.dxS = dxS; __out.dxDdOpen = !!ddOpen && isDevon && ddOpen !== "ap-sudya";
+      // ---- Barmoq izini skanerlash: harakat turi ----
+      __out.fpDd = dd("fp-act", [{ v: "imzo", l: "Hujjat imzolash" }, { v: "tasdiq", l: "Shaxsni tasdiqlash" }, { v: "majlis", l: "Sud majlisida ishtirok" }], (s.fp && s.fp.act) || "imzo",
+        function (e) { var v = e.target.value; var f = self.state.fp; if (!f) return; self.setState({ fp: Object.assign({}, f, { act: v }) }); if (f.st === "ok") self.fpStart({ key: f.key, id: f.id, name: f.name }); }, { noSplit: true });
       // ---- Tomonlar: asosiy shaxsni qayta tanlash ----
       ["Dv", "Jv"].forEach(function (k) { var key = "tm" + k, lst = s[key] || [], hasM = lst.some(function (x) { return x.main; });
         var cur = lst.filter(function (x, i) { return hasM ? x.main : i === 0; })[0];
