@@ -957,6 +957,7 @@ div[role="status"]{background:linear-gradient(135deg,#1e293b,#312e81) !important
 .qv-steps .qd-step:last-child{padding-bottom:0}
 .qv-steps .qd-step b{font-size:14px}
 .qv-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.qv-one{display:block}
 .qv-judge{display:flex;align-items:center;gap:12px}
 .qv-judge img{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:center 20%;flex:none}
 .qv-judge b{font-size:14px;font-weight:600;color:#0f172a}.qv-judge small{font-size:12px;color:#64748b}
@@ -7453,11 +7454,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
       </div>
       </sc-if>
 
-      <div class="qv-two">
-        <div class="qv-sec">
-          <span class="qv-lbl">Mas'ul sudya</span>
-          <div class="qv-card qv-judge"><img src="{{drawer.sudyaPhoto}}" alt=""><div class="kv" style="gap: 2px; min-width: 0"><b>{{drawer.sudya}}</b><small>{{drawer.sudyaSub}}</small></div></div>
-        </div>
+      <div class="qv-one">
         <div class="qv-sec">
           <span class="qv-lbl">Ariza</span>
           <div class="qv-card qv-file"><span class="dx-ft">PDF</span><div class="kv" style="gap: 2px; min-width: 0; flex: 1"><b title="{{drawer.ariza}}">{{drawer.ariza}}</b><small title="Devonxonada yuklangan">{{drawer.arizaSize}} · Devonxonadan</small></div><button class="ib" aria-label="Arizani ko'rish" onClick="{{soon}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button><button class="ib" aria-label="Arizani yuklab olish" onClick="{{drawer.dl}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg></button></div>
