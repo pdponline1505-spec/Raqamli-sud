@@ -4022,6 +4022,19 @@ body:has([aria-modal="true"]) .l-app .l-top{z-index:1 !important}
 .pc-mt.on .pc-st{fill:#2563eb;stroke:#2563eb}
 .tm-askic{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#eff6ff}
 .tm-askic svg{width:22px;height:22px;fill:#3b82f6;stroke:#3b82f6;stroke-linejoin:round}
+/* Tomonlar: tahrirlash oynasi, da'vogar qulfi */
+.tm-ed{position:relative;width:720px;max-width:100%;max-height:calc(100vh - 48px);display:flex;flex-direction:column;padding:0;overflow:hidden;box-shadow:0 24px 64px rgba(15,23,42,.25)}
+.tm-ed-h{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:18px 22px;border-bottom:1px solid #eef1f5}
+.tm-ed-b{padding:18px 22px;overflow:auto;display:flex;flex-direction:column;gap:10px}
+.tm-ed-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+.tm-ed-g .tm-ed-w{grid-column:1 / -1}
+.tm-ed-g .fld input{width:100%}
+.tm-ed-seg{display:flex;width:100%}
+.tm-ed-seg button{flex:1}
+.tm-ed-f{display:flex;justify-content:flex-end;gap:8px;padding:14px 22px;border-top:1px solid #eef1f5;background:#fbfcfe}
+.tm-lock{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 10px;border-radius:999px;background:#f1f5f9;color:#64748b;font-size:12.5px;font-weight:500}
+.tm-lock svg{width:13px;height:13px}
+@media (max-width:640px){.tm-ed-g{grid-template-columns:minmax(0,1fr)}}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -5499,7 +5512,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
     <div class="sh"><div><h2>Tomonlar</h2><p>Da'vogar va javobgar</p></div></div>
     <div class="g2" style="gap: 16px; align-items: start">
       <div class="card" style="overflow: hidden; background: #fbfcfe">
-        <div class="between" style="padding: 14px 18px; background: #ffffff; border-bottom: 1px solid #eef1f5"><span class="row" style="gap: 8px"><b style="font-size: 16px">Da'vogar</b><span class="dx-cnt">{{tmDvCount}}</span></span><button class="btn sm" onClick="{{tmAddDv}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v8M8 12h8"></path></svg>Qo'shish</button></div>
+        <div class="between" style="padding: 14px 18px; background: #ffffff; border-bottom: 1px solid #eef1f5"><span class="row" style="gap: 8px"><b style="font-size: 16px">Da'vogar</b><span class="dx-cnt">{{tmDvCount}}</span></span><span class="tm-lock" title="Da'vogarni o'chirib yoki yangi qo'shib bo'lmaydi · faqat ma'lumotlarini tahrirlash mumkin"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>Faqat tahrirlash</span></div>
         <sc-if value="{{tmInDv}}" hint-placeholder-val="{{ false }}">
         <div class="tmpanel">
           <div class="between"><b style="font-size: 14px">{{tmTitle}}</b><button class="ib" aria-label="Panelni yopish" onClick="{{tmClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
@@ -5543,7 +5556,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
             <button class="pc-phbtn" aria-label="{{p.name}} — rasmni kattalashtirish" title="Rasmni kattalashtirish" onClick="{{p.viewPhoto}}"><img class="pc-ph" src="{{p.photo}}" alt="{{p.name}}"><span class="pc-zoom"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4M11 8v6M8 11h6"></path></svg></span></button>
             <div class="pc-main">
               <div class="pc-top"><b class="pc-name">{{p.name}}</b><sc-if value="{{p.showBadge}}" hint-placeholder-val="{{ false }}"><span class="pc-mb" title="Asosiy shaxs"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6-5.4-3.1-5.4 3.1 1.2-6L3.3 9.3l6.1-.7z"></path></svg>Asosiy</span></sc-if>
-                <div class="pc-acts"><button class="ib pc-id" aria-label="Shaxsni tasdiqlovchi hujjat" title="Hujjat" onClick="{{p.doc}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="9" cy="11" r="2"></circle><path d="M6 16a3 3 0 0 1 6 0M14 10h4M14 13h4"></path></svg></button><button class="ib pc-fp" aria-label="Barmoq izi" title="Barmoq izi" onClick="{{p.finger}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 11v4M8.5 7.5A5 5 0 0 1 17 11v2M7 11v2a5 5 0 0 0 1 3M12 3a8 8 0 0 1 8 8v1M4 12v-1a8 8 0 0 1 3-6.2M15 15a9 9 0 0 1-1 4"></path></svg></button><span class="pc-sep"></span><button class="ib" aria-label="{{p.name}} — tahrirlash" title="Tahrirlash" onClick="{{p.edit}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"></path></svg></button><button class="ib pc-del" aria-label="{{p.name}} — o'chirish" title="O'chirish" onClick="{{p.remove}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"></path></svg></button></div>
+                <div class="pc-acts"><button class="ib pc-id" aria-label="Shaxsni tasdiqlovchi hujjat" title="Hujjat" onClick="{{p.doc}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="9" cy="11" r="2"></circle><path d="M6 16a3 3 0 0 1 6 0M14 10h4M14 13h4"></path></svg></button><button class="ib pc-fp" aria-label="Barmoq izi" title="Barmoq izi" onClick="{{p.finger}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 11v4M8.5 7.5A5 5 0 0 1 17 11v2M7 11v2a5 5 0 0 0 1 3M12 3a8 8 0 0 1 8 8v1M4 12v-1a8 8 0 0 1 3-6.2M15 15a9 9 0 0 1-1 4"></path></svg></button><span class="pc-sep"></span><button class="ib" aria-label="{{p.name}} — tahrirlash" title="Tahrirlash" onClick="{{p.edit}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"></path></svg></button></div>
               </div>
               <dl class="pc-meta"><div><dt>Tug'ilgan sana</dt><dd>{{p.birthUz}}</dd></div><div><dt>Jinsi · yoshi</dt><dd>{{p.gender}} · {{p.age}} yosh</dd></div></dl>
               <div class="pc-foot"><span class="pc-addr" title="{{p.manzil}} · {{p.tuman}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><span>{{p.manzil}}</span></span><sc-if value="{{p.mainTog}}" hint-placeholder-val="{{ false }}"><button type="button" class="{{p.mainCls}}" role="radio" aria-checked="{{p.mainStr}}" title="{{p.mainTitle}}" onClick="{{p.makeMain}}"><svg class="pc-st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6-5.4-3.1-5.4 3.1 1.2-6L3.3 9.3l6.1-.7z"></path></svg>{{p.mainTxt}}</button></sc-if></div>
@@ -6715,6 +6728,17 @@ html[data-theme="dark"] .ds-host img{filter:none}
       <span class="row" style="gap: 8px; font-size: 14px; color: #475569"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8v.5"></path></svg>{{nsSummary}}</span>
       <div class="row" style="gap: 8px"><button class="btn" style="height: 40px; border-color: transparent; background: #f4f4f5" onClick="{{nsClose}}">Bekor qilish</button><button class="btn pri" style="height: 40px; padding: 0 18px" onClick="{{nsSave}}">O'tkazish<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button></div>
     </div>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{tmEdOpen}}" hint-placeholder-val="{{ false }}">
+<div style="position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 24px">
+  <button aria-label="Oynani yopish" onClick="{{tmEdClose}}" style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.45); border: 0; cursor: default"></button>
+  <div role="dialog" aria-modal="true" aria-label="{{tmEdTitle}}" class="card tm-ed" onKeyDown="{{tmEdKey}}">
+    <div class="tm-ed-h"><div class="kv" style="gap: 2px; min-width: 0"><b style="font-size: 17px">{{tmEdTitle}}</b><small class="muted">{{tmEdSub}}</small></div><button class="ib" aria-label="Yopish" onClick="{{tmEdClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+    <div class="tm-ed-b"><div class="tm-ed-g"><sc-for list="{{tmEdFields}}" as="f" hint-placeholder-count="6"><label class="{{f.cls}}"><span>{{f.label}}<sc-if value="{{f.req}}" hint-placeholder-val="{{ false }}"> <b style="color: #b91c1c">*</b></sc-if></span><sc-if value="{{f.isInput}}" hint-placeholder-val="{{ true }}"><input type="{{f.type}}" value="{{f.val}}" onChange="{{f.set}}" data-fmt="{{f.fmt}}"></sc-if><sc-if value="{{f.isSeg}}" hint-placeholder-val="{{ false }}"><span class="seg tm-ed-seg"><sc-for list="{{f.opts}}" as="o" hint-placeholder-count="2"><button type="button" class="{{o.cls}}" onClick="{{o.pick}}">{{o.l}}</button></sc-for></span></sc-if></label></sc-for></div>
+      <sc-if value="{{tmEdErr}}" hint-placeholder-val="{{ false }}"><small class="dx-err" style="margin: 0">{{tmEdErrTxt}}</small></sc-if></div>
+    <div class="tm-ed-f"><button class="btn" onClick="{{tmEdClose}}">Bekor qilish</button><button class="btn pri" onClick="{{tmEdSave}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h11l3 3v15H5z"></path><path d="M8 3v5h8M8 21v-7h8v7"></path></svg>Saqlash</button></div>
   </div>
 </div>
 </sc-if>
@@ -9576,7 +9600,9 @@ class Component extends DCLogic {
           makeMain: function () { if (isMain) return; var cur = lst.filter(function (x, k2) { return hasMain ? x.main : k2 === 0; })[0];
             self.setState({ tmAsk: { key: key, id: p.id, name: p.name, cur: cur ? cur.name : "", side: key === "tmDv" ? "Da'vogar" : key === "tmJv" ? "Javobgar" : "Taraf" } }); }, ini: initials(p.name), avBg: c[0], avFg: c[1], photo: portrait(p.name, p.gender), birthUz: isoToUz(p.birth), age: ageOf(p.birth), jsh: p.jshshir || "—",
           isFem: p.gender === "Ayol", isMale: p.gender !== "Ayol",
-          edit: function () { self.flash("«" + p.name + "» ma'lumotlarini tahrirlash oynasi prototipda chizilmagan"); },
+          edit: function () { var org = !!p.isOrg || /MChJ|AJ\b|XK\b|QK\b|«|"/.test(p.name);
+            self.setState({ tmEd: { key: key, id: p.id, org: org, f: Object.assign({ name: p.name, birth: p.birth || "", gender: p.gender || "Erkak", viloyat: p.viloyat || "", tuman: p.tuman || "", manzil: p.manzil || "", tel: p.tel || "",
+              qisqa: p.qisqa || "", stir: p.stir || "", rahbar: p.rahbar || "", rahbarJsh: p.rahbarJsh || "", hisob: p.hisob || "", kichik: p.kichik || "Yo'q", ustav: p.ustav || "", ishchi: p.ishchi || "", okpo: p.okpo || "" }) } }); },
           remove: function () { var o = {}; o[key] = self.state[key].filter(function (x) { return x.id !== p.id; }); self.setState(o); self.flash(p.name + " olib tashlandi"); },
           viewPhoto: function () { self.setState({ phView: { photo: portrait(p.name, p.gender), name: p.name, jsh: p.jshshir || "—", gender: p.gender, age: ageOf(p.birth), birthUz: isoToUz(p.birth) } }); },
           doc: function () { self.flash("Shaxsni tasdiqlovchi hujjat ko'rish oynasida ochiladi"); },
@@ -9962,6 +9988,22 @@ class Component extends DCLogic {
       um: umView, umModal: s.umModal, umForm: umFormView, umSet: umSet, umBorder: umBorder, umErr: s.umErr, umIdSet: umIdSet,
       umHasIdora: !!s.umForm.idora, umNoIdora: !s.umForm.idora,
       tmAskOpen: !!s.tmAsk,
+      tmEdOpen: !!s.tmEd,
+      tmEdTitle: s.tmEd ? (s.tmEd.key === "tmDv" ? "Da'vogar" : "Javobgar") + " ma'lumotlarini tahrirlash" : "",
+      tmEdSub: s.tmEd ? (s.tmEd.org ? "Yuridik shaxs" : "Jismoniy shaxs") + " · " + (s.tmEd.f.name || "") : "",
+      tmEdFields: s.tmEd ? (function () { var e = s.tmEd, f = e.f;
+        var set = function (k) { return function (ev) { var v = ev.target.value; self.setState(function (prev) { if (!prev.tmEd) return null; var ff = Object.assign({}, prev.tmEd.f); ff[k] = v; return { tmEd: Object.assign({}, prev.tmEd, { f: ff, err: "" }) }; }); }; };
+        var F = e.org ? [["name", "Nomi", "text", 2], ["qisqa", "Qisqa nomi", "text", 1], ["stir", "STIR", "text", 1], ["viloyat", "Viloyat", "text", 1], ["manzil", "Manzil", "text", 1], ["rahbar", "Rahbar", "text", 1], ["rahbarJsh", "Rahbar JSHSHIR", "text", 1], ["tel", "Telefon", "tel", 1], ["hisob", "Hisob raqami", "text", 1], ["kichik", "Kichik biznes", "seg2", 1], ["ustav", "Ustav fondi", "text", 1], ["ishchi", "Ishchilar soni", "text", 1], ["okpo", "Yuridik shaxs kodi (OKPO)", "text", 1]]
+          : [["name", "F.I.Sh.", "text", 2], ["birth", "Tug'ilgan sana", "date", 1], ["gender", "Jinsi", "seg", 1], ["viloyat", "Viloyat", "text", 1], ["tuman", "Tuman (shahar)", "text", 1], ["manzil", "Manzil", "text", 2], ["tel", "Telefon", "tel", 1]];
+        return F.map(function (x) { var opts = x[2] === "seg" ? ["Erkak", "Ayol"] : x[2] === "seg2" ? ["Ha", "Yo'q"] : [];
+          return { k: x[0], label: x[1], val: f[x[0]] || "", type: x[2] === "tel" ? "text" : x[2], set: set(x[0]), isInput: x[2] !== "seg" && x[2] !== "seg2", isSeg: x[2] === "seg" || x[2] === "seg2", cls: "fld" + (x[3] === 2 ? " tm-ed-w" : ""),
+            req: x[0] === "name", err: x[0] === "name" && !!e.err, fmt: x[2] === "tel" ? "tel" : "",
+            opts: opts.map(function (o) { return { l: o, cls: f[x[0]] === o ? "on" : "", pick: function () { set(x[0])({ target: { value: o } }); } }; }) }; }); })() : [],
+      tmEdErr: !!(s.tmEd && s.tmEd.err), tmEdErrTxt: s.tmEd && s.tmEd.err ? s.tmEd.err : "",
+      tmEdClose: function () { self.setState({ tmEd: null }); },
+      tmEdKey: function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ tmEd: null }); } },
+      tmEdSave: function () { var e = self.state.tmEd; if (!e) return; if (!String(e.f.name || "").trim()) { self.setState({ tmEd: Object.assign({}, e, { err: (e.org ? "Nomi" : "F.I.Sh.") + " kiritilishi shart" }) }); return; }
+        var o = { tmEd: null }; o[e.key] = (self.state[e.key] || []).map(function (x) { return x.id === e.id ? Object.assign({}, x, e.f, { name: String(e.f.name).trim() }) : x; }); self.setState(o); self.flash(String(e.f.name).trim() + " ma'lumotlari saqlandi"); },
       tmAskText: s.tmAsk ? s.tmAsk.side + " tarafida asosiy shaxs «" + (s.tmAsk.cur || "—") + "» o'rniga «" + s.tmAsk.name + "» bo'ladi." : "",
       tmAskNo: function () { self.setState({ tmAsk: null }); },
       tmAskKey: function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ tmAsk: null }); } },
