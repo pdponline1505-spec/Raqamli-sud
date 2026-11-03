@@ -4189,6 +4189,27 @@ svg.ic-ed,svg.ic-del{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linec
 #tomonlar > .g2 > .card,#qtomonlar > .g2 > .card{display:flex;flex-direction:column;height:100%}
 #tomonlar > .g2 > .card > .tp-list,#qtomonlar > .g2 > .card > .tp-list{flex:1 1 auto;height:332px;max-height:332px !important}
 #tomonlar > .g2 > .card > .tp-list:has(.pc-v2),#qtomonlar > .g2 > .card > .tp-list:has(.pc-v2){justify-content:flex-start}
+/* Qarshi da'vo — shikoyat bergan shaxs kartasi (qf5) */
+.qf5{position:relative;display:flex;align-items:stretch;gap:14px;padding:14px 16px 14px 18px;border:1px solid #e3e8f0;border-radius:14px;background:#fff;min-width:0;overflow:hidden;transition:border-color .15s,box-shadow .15s,transform .15s}
+.qf5::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--qf-c,#94a3b8)}
+.qf5:hover{border-color:#cbd5e1;box-shadow:0 6px 18px -8px rgba(15,23,42,.18);transform:translateY(-1px)}
+.qf5.t-pro{--qf-c:#7c3aed}.qf5.t-adv{--qf-c:#2563eb}.qf5.t-vk{--qf-c:#64748b}.qf5.t-org{--qf-c:#0284c7}
+.qf5-ph{width:64px;height:76px;border-radius:12px;object-fit:cover;object-position:center 18%;flex:none;background:#e2e8f0;box-shadow:0 1px 4px rgba(15,23,42,.12)}
+.qf5-b{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1}
+.qf5-h{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;min-width:0}
+.qf5-h b{font-size:15px;font-weight:600;color:#0f172a;line-height:1.35;min-width:0;overflow-wrap:anywhere}
+.qx.qx3 .qx3-fb .qx2-fl{grid-template-columns:repeat(auto-fill,minmax(min(100%,440px),1fr)) !important;gap:12px !important}
+.qf5-h .ak-role{flex:none;height:22px;font-size:11.5px;padding:0 9px}
+.qf5-org{display:flex;align-items:center;gap:6px;font-size:13px;color:#475569;min-width:0}
+.qf5-org span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.qf5-org svg,.qf5-mi svg,.qf5-doc svg{width:14px;height:14px;flex:none;color:#94a3b8}
+.qf5-ft{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:8px;border-top:1px dashed #e2e8f0;min-width:0}
+.qf5-mi{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:#334155;font-variant-numeric:tabular-nums;white-space:nowrap}
+.qf5-doc{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:8px;border:1px solid #e2e8f0;background:#f8fafc;font:inherit;font-size:12px;font-weight:500;color:#1e40af;cursor:pointer;white-space:nowrap;transition:background-color .15s,border-color .15s}
+.qf5-doc svg{color:#3b82f6}
+.qf5-doc:hover{background:#eff6ff;border-color:#bfdbfe}
+.qf5-doc:focus-visible{outline:2px solid #3b82f6;outline-offset:2px}
+@media (max-width:520px){.qf5-ft{flex-wrap:wrap}}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -5800,7 +5821,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
           <div class="qx3-s"><small>Yuborish turi</small><b>{{q.via}}</b></div>
         </div>
         <div class="qx3-fb"><span class="qx2-lbl">Shikoyat bergan shaxslar <span class="dx-cnt">{{q.filN}}</span></span>
-          <div class="qx2-fl"><sc-for list="{{q.filers}}" as="f" hint-placeholder-count="1"><div class="qx2-f qx4-f"><img class="qx-fav" src="{{f.photo}}" alt=""><div class="qx4-i"><b title="{{f.name}}">{{f.name}}</b><small title="{{f.org}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg>{{f.org}}</small><span class="{{f.roleCls}}">{{f.role}}</span></div></div></sc-for>
+          <div class="qx2-fl"><sc-for list="{{q.filers}}" as="f" hint-placeholder-count="1"><div class="{{f.cardCls}}"><img class="qf5-ph" src="{{f.photo}}" alt=""><div class="qf5-b"><div class="qf5-h"><b title="{{f.name}}">{{f.name}}</b><span class="{{f.roleCls}}">{{f.role}}</span></div><small class="qf5-org" title="{{f.org}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg><span>{{f.org}}</span></small><div class="qf5-ft"><span class="qf5-mi"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg>{{f.phone}}</span><button class="qf5-doc" type="button" title="Vakolat hujjatini ko'rish" onClick="{{f.openDoc}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6M9 13h6M9 17h4"></path></svg>{{f.docName}}</button></div></div></div></sc-for>
           <sc-if value="{{q.noFilers}}" hint-placeholder-val="{{ false }}"><small class="muted">Shikoyat bergan shaxs ko'rsatilmagan</small></sc-if></div>
         </div>
       </div>
@@ -5872,7 +5893,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
   </section>
 
   <section class="sec" id="turkumlar">
-    <div class="sh"><div><h2>Ish mazmuni va da'vo summasi</h2><p>{{itkSub}}</p></div><div class="tools itk-tools"><button class="btn" onClick="{{itkAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Turkum qo'shish</button></div></div>
+    <div class="sh"><div><h2>Ish mazmuni va da'vo summasi</h2><p>{{itkSub}}</p></div><div class="tools itk-tools"><button class="btn" onClick="{{itkAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Ish mazmuni qo'shish</button></div></div>
     <div class="dx-entries" role="list" aria-label="Ish turkumlari va ularning da'vo summalari">
       <sc-for list="{{itk}}" as="t" hint-placeholder-count="2">
       <div class="{{t.cls}}" role="listitem">
@@ -5922,7 +5943,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
       </div>
       </sc-for>
     </div>
-    <sc-if value="{{itkEmpty}}" hint-placeholder-val="{{ false }}"><div class="bk2-empty"><b>Ish turkumi kiritilmagan</b><small>«Turkum qo'shish» orqali ish turkumini tanlang, so'ng unga da'vo summalarini biriktiring</small><button class="btn pri" onClick="{{itkAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Turkum qo'shish</button></div></sc-if>
+    <sc-if value="{{itkEmpty}}" hint-placeholder-val="{{ false }}"><div class="bk2-empty"><b>Ish mazmuni kiritilmagan</b><small>«Ish mazmuni qo'shish» orqali ish turkumini tanlang, so'ng unga da'vo summalarini biriktiring</small><button class="btn pri" onClick="{{itkAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Ish mazmuni qo'shish</button></div></sc-if>
     <sc-if value="{{itkGrandHas}}" hint-placeholder-val="{{ true }}"><div class="dx-grand" style="margin-top: 12px"><span class="row" style="gap: 8px"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg>Umumiy da'vo summasi</span><b>{{itkGrand}}</b></div></sc-if>
   </section>
 
@@ -9404,7 +9425,11 @@ class Component extends DCLogic {
     var Q_ORG_IC = "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#e0f2fe"/><path d="M14 33h20M16 33V22M21 33V22M27 33V22M32 33V22M13 22l11-7 11 7z" fill="none" stroke="#0369a1" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
     var qFil = function (q) { return (q.filers || []).map(function (f) { var sd = f.side && f.side !== f.role ? f.side : "";
       return { name: f.name, role: f.role || "—", org: f.org || "—", side: sd, hasSide: !!sd, ini: qdIni(f.name), photo: f.isOrg ? Q_ORG_IC : portrait(f.name, f.gender || (/ovna|evna|qizi/i.test(f.name) ? "Ayol" : "Erkak")),
-        roleCls: "ak-role " + (f.isOrg ? "qorg" : f.kind === "pro" ? "pro" : "bs") }; }); };
+        roleCls: "ak-role " + (f.isOrg ? "qorg" : f.kind === "pro" ? "pro" : "bs"),
+        cardCls: "qf5 " + (f.isOrg ? "t-org" : f.kind === "pro" ? "t-pro" : /advokat/i.test(f.role || "") ? "t-adv" : "t-vk"),
+        phone: f.phone || (function () { var h = 0, n = String(f.name || ""); for (var i = 0; i < n.length; i++) h = (h * 31 + n.charCodeAt(i)) >>> 0; var d = String(1000000 + h % 9000000).slice(-7); return "+998 9" + (h % 10) + " " + d.slice(0, 3) + "-" + d.slice(3, 5) + "-" + d.slice(5, 7); })(),
+        docName: f.kind === "pro" ? "Xizmat guvohnomasi" : /advokat/i.test(f.role || "") ? "Advokat orderi" : "Ishonchnoma",
+        openDoc: (function (nm, dn) { return function (e) { if (e && e.stopPropagation) e.stopPropagation(); self.flash(dn + " · " + nm); }; })(f.name, f.kind === "pro" ? "Xizmat guvohnomasi" : /advokat/i.test(f.role || "") ? "Advokat orderi" : "Ishonchnoma") }; }); };
     var qParty = function (q) {
       if (q.src === "devon") {
         var L = function (arr) { return (arr || []).map(function (p) { return { name: p.name, sub: p.stir ? "STIR " + p.stir : (p.jsh ? "JSHSHIR " + p.jsh : ""), ini: qdIni(p.name) }; }); };
@@ -11149,7 +11174,7 @@ class Component extends DCLogic {
             function () { self.setState(function (prev) { return prev.itkForm ? { itkForm: Object.assign({}, prev.itkForm, { javs: [] }) } : null; }); },
             { ph: jvOpts.length ? "Javobgarlarni tanlang" : "Ishda javobgar yo'q", disabled: !jvOpts.length })
         };
-        __out.itkTitle = f && f.mode === "edit" ? "Ish turkumini tahrirlash" : "Ish turkumi qo'shish";
+        __out.itkTitle = f && f.mode === "edit" ? "Ish mazmunini tahrirlash" : "Ish mazmuni qo'shish";
         __out.itkErr = !!(f && f.err); __out.itkErrText = f ? f.err : "";
         __out.itkDdOpen = !!ddOpen && !!f;
         __out.itkDdClose = function () { self.setState({ dxDd: "" }); };
@@ -11163,7 +11188,7 @@ class Component extends DCLogic {
           var item = { turkum: ff.turkum, qturkum: ff.qturkum, iturkum: ff.iturkum, javs: (ff.javs || []).slice() };
           if (ff.mode === "edit") self.setState({ itkForm: null, dxDd: "", itk: st.itk.map(function (x) { return x.id === ff.id ? Object.assign({}, x, item) : x; }) });
           else self.setState({ itkForm: null, dxDd: "", itk: st.itk.concat([Object.assign({ id: "t" + Date.now(), ok: false, sums: [] }, item)]) });
-          self.flash(ff.mode === "edit" ? "Ish turkumi saqlandi" : "Ish turkumi qo'shildi · tasdiqlash kutilmoqda");
+          self.flash(ff.mode === "edit" ? "Ish mazmuni saqlandi" : "Ish mazmuni qo'shildi");
         };
       })();
       var QSH_ROL = ["Guvoh", "Ekspert", "Mutaxassis", "Tarjimon", "Vakil", "Boshqa"].map(function (r) { return { v: r, l: r }; });
@@ -12880,7 +12905,7 @@ class Component extends DCLogic {
         itkSumAdd: function () { var l = self.state.itk || []; if (!l.length) return; if (l.length === 1) { __out._itkAddSum(l[0])(); return; } self.setState({ itkSumMenu: !self.state.itkSumMenu }); },
         itkSumClose: function () { self.setState({ itkSumMenu: false }); },
         itkSumOpts: list.map(function (t, i) { var a = sc(t.turkum); return { code: a.code || String(i + 1), name: a.name, isMain: i === 0, pick: function () { self.setState({ itkSumMenu: false }); __out._itkAddSum(t)(); } }; }),
-        itkSub: list.length ? list.length + " ta ish turkumi · da'vo summalari bilan" : "Ish turkumlari va ularga tegishli da'vo summalari",
+        itkSub: list.length ? list.length + " ta ish mazmuni · da'vo summalari bilan" : "Ish mazmuni va unga tegishli da'vo summalari",
         itkGrandHas: list.some(function (x) { return (x.sums || []).length; }), itkGrand: __out._byCur([].concat.apply([], list.map(function (x) { return x.sums || []; }))),
         itkAdd: function () { self.setState({ itkDel: "", dxDd: "", itkForm: { mode: "new", id: "", turkum: "", qturkum: "", iturkum: "", javs: [], err: "" } }); }
       });
