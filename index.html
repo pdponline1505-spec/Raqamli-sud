@@ -3926,6 +3926,20 @@ html,body{overflow-x:clip}
 body:has(.cw-wrap) .l-app:not(.pgmode) .l-top{z-index:12 !important}
 body:has([aria-modal="true"]) .l-app .l-top{z-index:1 !important}
 .qv-ro{margin-right:auto;display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:999px;background:#f1f5f9;color:#64748b;font-size:12.5px;font-weight:500}
+/* Sudya: umumiy tahrirlash — manfaatida idora (Devonxona kartochkasi bilan bir xil) */
+.ume-ido{margin-top:2px}
+.ume-ido .ido-g{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ume-idq{display:flex;flex-direction:column;align-items:stretch;gap:10px}
+.ume-qin{display:flex;align-items:center;gap:8px;height:44px;padding:0 12px;border:1px solid #d5dbe4;border-radius:10px;background:#fff;color:#64748b}
+.ume-qin:focus-within{border-color:#6366f1;box-shadow:0 0 0 3px rgba(99,102,241,.15)}
+.ume-qin input{flex:1;border:0;outline:0;background:transparent;font:inherit;font-size:14px;color:#0f172a;min-width:0}
+.ume-hits{display:flex;flex-direction:column;gap:6px}
+.ume-hits:empty{display:none}
+.ume-hit{display:flex;align-items:center;gap:12px;width:100%;padding:10px 12px;border:1px solid #e6ebf3;border-radius:12px;background:#fff;font:inherit;color:inherit;cursor:pointer;text-align:left}
+.ume-hit:hover{border-color:#c7d2fe;background:#f8faff}
+.ume-hit b{font-size:14px;font-weight:600;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ume-hit small{font-size:12px;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dx-orgic.sm{width:34px;height:34px;flex:none}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -6704,18 +6718,32 @@ html[data-theme="dark"] .ds-host img{filter:none}
       <div class="ume-sec">
         <div class="ume-st"><span class="umt-ic" style="background: #e0f2fe; color: #0369a1"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg></span><div class="kv" style="gap: 2px"><b>Manfaatida idora</b><small>Ish kimning manfaatida ko'rilayotgani</small></div></div>
         <sc-if value="{{umHasIdora}}" hint-placeholder-val="{{ true }}">
-        <div class="ume-org">
-          <div class="between" style="gap: 12px"><div class="row" style="gap: 10px; min-width: 0"><b style="font-size: 16px">{{umForm.idora.name}}</b><span class="badge b-blue">Manfaatdor idora</span></div><button class="btn sm" style="color: #dc2626; border-color: #fecaca" onClick="{{umIdRemove}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"></path></svg>Olib tashlash</button></div>
-          <div class="ume-grid3">
-            <label class="fld"><span>Idora turi</span><span class="{{gsel.umForm_idora_turi.cls}}" id="{{gsel.umForm_idora_turi.id}}" onKeyDown="{{gsel.umForm_idora_turi.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{gsel.umForm_idora_turi.exp}}" disabled="{{gsel.umForm_idora_turi.dis}}" onClick="{{gsel.umForm_idora_turi.toggle}}" style="border-color: {{gsel.umForm_idora_turi.bc}}"><span class="{{gsel.umForm_idora_turi.vcls}}">{{gsel.umForm_idora_turi.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{gsel.umForm_idora_turi.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{gsel.umForm_idora_turi.stop}}"><sc-for list="{{gsel.umForm_idora_turi.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
-            <label class="fld"><span>Telefon</span><span class="ifx"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg><input inputmode="tel" data-fmt="tel" value="{{umForm.idora.tel}}" onChange="{{umIdSet.tel}}" placeholder="+998 __ ___ __ __"></span></label>
-            <label class="fld"><span>STIR</span><span class="ifx"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4L7 20M17 4l-2 16M4 9h17M3 15h17"></path></svg><input value="{{umForm.idora.stir}}" onChange="{{umIdSet.stir}}" placeholder="9 xonali raqam"></span></label>
-            <label class="fld" style="grid-column: 1 / -1"><span>Manzil</span><span class="ifx"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><input value="{{umForm.idora.manzil}}" onChange="{{umIdSet.manzil}}" placeholder="Manzilni kiriting"></span></label>
+        <div class="ido ume-ido">
+          <div class="ido-h">
+            <span class="dx-orgic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg></span>
+            <div class="ido-t">
+              <b class="ido-n">{{umIdo.name}}</b>
+              <div class="ido-chips"><span class="chip">Manfaatdor idora</span><span class="ido-lvl">{{umIdo.lvl}}</span></div>
+            </div>
+            <button class="btn sm ido-del" onClick="{{umIdRemove}}" title="Tanlovni bekor qilish" aria-label="Manfaatdor idorani o'chirish"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"></path></svg>O'chirish</button>
           </div>
+          <div class="ido-g">
+            <div class="ido-c"><span class="ido-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></span><div class="kv"><small>Idora turi</small><b>{{umIdo.turi}}</b><em>{{umIdo.catName}}</em></div></div>
+            <div class="ido-c"><span class="ido-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg></span><div class="kv"><small>Hudud</small><b>{{umIdo.hudud}}</b><em>{{umIdo.hududSub}}</em></div></div>
+            <div class="ido-c"><span class="ido-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></span><div class="kv"><small>Telefon</small><b>{{umIdo.tel}}</b><em>Ishonch telefoni</em></div></div>
+            <div class="ido-c"><span class="ido-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h16M4 15h16M10 3L8 21M16 3l-2 18"></path></svg></span><div class="kv"><small>STIR</small><b class="mono">{{umIdo.stir}}</b><em>Soliq to'lovchi raqami</em></div></div>
+          </div>
+          <div class="ido-note"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path></svg><span>Ma'lumotlar idoralar ma'lumotnomasidan olinadi — Devonxonada kiritilgan bilan bir xil. Boshqa idorani biriktirish uchun avval joriysini o'chiring.</span></div>
         </div>
         </sc-if>
         <sc-if value="{{umNoIdora}}" hint-placeholder-val="{{ false }}">
-        <div class="ume-empty"><small class="muted">Manfaatida idora biriktirilmagan</small><div class="row" style="gap: 10px"><label class="fld" style="flex: 1"><span class="sr">Idorani tanlang</span><span class="{{gsel.umPick.cls}}" id="{{gsel.umPick.id}}" onKeyDown="{{gsel.umPick.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{gsel.umPick.exp}}" disabled="{{gsel.umPick.dis}}" onClick="{{gsel.umPick.toggle}}" style="border-color: {{gsel.umPick.bc}}"><span class="{{gsel.umPick.vcls}}">{{gsel.umPick.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{gsel.umPick.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{gsel.umPick.stop}}"><sc-for list="{{gsel.umPick.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label><button class="btn" style="height: 44px" onClick="{{umIdAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Biriktirish</button></div></div>
+        <div class="ume-empty ume-idq">
+          <small class="muted">Manfaatida idora biriktirilmagan · idoralar ma'lumotnomasidan qidiring</small>
+          <label class="ume-qin"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><input type="search" value="{{umQ}}" onChange="{{umSetQ}}" placeholder="Idora nomi yoki STIR bo'yicha qidiring" aria-label="Idorani qidirish"></label>
+          <sc-if value="{{umQShort}}" hint-placeholder-val="{{ true }}"><small class="muted">Kamida 2 ta belgi kiriting</small></sc-if>
+          <sc-if value="{{umNoHits}}" hint-placeholder-val="{{ false }}"><small class="muted">Hech narsa topilmadi · nomni aniqlashtiring</small></sc-if>
+          <div class="ume-hits"><sc-for list="{{umHits}}" as="h" hint-placeholder-count="0"><button type="button" class="ume-hit" onClick="{{h.pick}}"><span class="dx-orgic sm"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg></span><span class="kv" style="gap: 1px; min-width: 0; flex: 1; text-align: left"><b>{{h.name}}</b><small>{{h.sub}}</small></span><span class="btn sm">Tanlash</span></button></sc-for></div>
+        </div>
         </sc-if>
       </div>
 
@@ -7730,6 +7758,10 @@ var DX_ALL = (function () {
   return out;
 })();
 var DX_IDORA = DX_ALL;
+// Manfaatdor idora: Devonxona va Sudya bo'limlarida bir xil ma'lumot (ma'lumotnoma DX_ALL'dan)
+var idoFind = function (x) { if (!x) return null; return DX_ALL.filter(function (o) { return (x.id && o.id === x.id) || o.name === x.name; })[0] || null; };
+var idoView = function (o) { if (!o) return null; var cat = DX_CATS.filter(function (c) { return o.cats && o.cats.indexOf(c.id) >= 0; })[0];
+  return Object.assign({}, o, { lvl: o.level === "r" ? "Respublika darajasi" : o.level === "v" ? "Viloyat darajasi" : "Tuman darajasi", catName: cat ? cat.label : "", hudud: o.tum || o.vil || o.resp || "", hududSub: o.tum ? (o.vil || o.resp) : (o.vil ? o.resp : (o.manzil || "")) }); };
 var DX_SEL_SPECS = [{"key": "turi", "val": "dx.turi", "h": "dxSet.turi", "bc": "dxB.turi", "ph": "Tanlang", "opts": [{"v": "Da'vo arizasi", "l": "Da'vo arizasi"}, {"v": "Ariza", "l": "Ariza"}, {"v": "Qarshi da'vo arizasi", "l": "Qarshi da'vo arizasi"}, {"v": "Apellyatsiya shikoyati", "l": "Apellyatsiya shikoyati"}, {"v": "Kassatsiya shikoyati", "l": "Kassatsiya shikoyati"}]}, {"key": "inst", "val": "dx.inst", "h": "dxSet.inst", "bc": "dxB.inst", "ph": "Tanlang", "opts": [{"v": "Birinchi instansiya", "l": "Birinchi instansiya"}, {"v": "Apellyatsiya", "l": "Apellyatsiya"}, {"v": "Kassatsiya", "l": "Kassatsiya"}, {"v": "Taftish", "l": "Taftish"}, {"v": "Qarshi da'vo", "l": "Qarshi da'vo"}]}, {"key": "yub", "val": "dx.yub", "h": "dxSet.yub", "opts": [{"v": "1 – pochta orqali", "l": "1 – pochta orqali"}, {"v": "2 – elektron shaklda", "l": "2 – elektron shaklda"}, {"v": "3 – devonxona orqali", "l": "3 – devonxona orqali"}]}, {"key": "idCat", "val": "dx.idCat", "h": "dxIdSetCat", "ph": "Kategoriyani tanlang", "dyn": "dxCats", "shape": "c"}, {"key": "idResp", "val": "dx.idResp", "h": "dxIdSetResp", "dis": "dxRespOff", "ph": "Tanlang", "dyn": "dxResps", "shape": "o"}, {"key": "idVil", "val": "dx.idVil", "h": "dxIdSetVil", "dis": "dxVilOff", "phHole": "dxVilPh", "dyn": "dxVils", "shape": "o"}, {"key": "idTum", "val": "dx.idTum", "h": "dxIdSetTum", "dis": "dxTumOff", "phHole": "dxTumPh", "dyn": "dxTums", "shape": "o"}, {"key": "im_tartib", "val": "dxImEd.v.tartib", "h": "dxImSet.tartib", "opts": [{"v": "Da'vo tartibida", "l": "Da'vo tartibida"}, {"v": "Buyruq tartibida", "l": "Buyruq tartibida"}, {"v": "Alohida tartibda", "l": "Alohida tartibda"}]}, {"key": "im_nizo", "val": "dxImEd.v.nizo", "h": "dxImSet.nizo", "ph": "Tanlang", "opts": [{"v": "1 – Fuqarolik-huquqiy munosabatlarga oid", "l": "1 – Fuqarolik-huquqiy munosabatlarga oid"}, {"v": "2 – Ma'muriy va boshqa ommaviy munosabatlarga oid", "l": "2 – Ma'muriy va boshqa ommaviy munosabatlarga oid"}, {"v": "3 – Korporativ nizolar", "l": "3 – Korporativ nizolar"}]}, {"key": "im_ariza", "val": "dxImEd.v.ariza", "h": "dxImSet.ariza", "opts": [{"v": "Umumiy", "l": "Umumiy"}, {"v": "Soddalashtirilgan", "l": "Soddalashtirilgan"}]}, {"key": "im_turkum", "val": "dxImEd.v.turkum", "h": "dxImSet.turkum", "bc": "dxImTurkumB", "ph": "Tanlang", "opts": [{"v": "1 – Oldi-sotdi shartnomasi yuzasidan", "l": "1 – Oldi-sotdi shartnomasi yuzasidan"}, {"v": "2 – Mulk ijarasiga doir", "l": "2 – Mulk ijarasiga doir"}, {"v": "3 – Shartnoma majburiyatlarini bajarish yuzasidan", "l": "3 – Shartnoma majburiyatlarini bajarish yuzasidan"}, {"v": "4 – Korporativ nizolar yuzasidan", "l": "4 – Korporativ nizolar yuzasidan"}]}, {"key": "im_qturkum", "val": "dxImEd.v.qturkum", "h": "dxImSet.qturkum", "ph": "Tanlang", "opts": [{"v": "1.1 – Chakana oldi-sotdi shartnomasi yuzasidan", "l": "1.1 – Chakana oldi-sotdi shartnomasi yuzasidan"}, {"v": "1.2 – Ulgurji oldi-sotdi shartnomasi yuzasidan", "l": "1.2 – Ulgurji oldi-sotdi shartnomasi yuzasidan"}, {"v": "2.1 – Avtotransport vositasi ijarasiga doir", "l": "2.1 – Avtotransport vositasi ijarasiga doir"}]}, {"key": "im_iturkum", "val": "dxImEd.v.iturkum", "h": "dxImSet.iturkum", "ph": "Tanlang", "opts": [{"v": "59 – Javobgarga majburiyat yuklash", "l": "59 – Javobgarga majburiyat yuklash"}, {"v": "60 – Notarial harakatlarni haqiqiy emas deb topish", "l": "60 – Notarial harakatlarni haqiqiy emas deb topish"}]}, {"key": "bValyuta", "val": "dx.bValyuta", "h": "dxSet.bValyuta", "dis": "dxChetOff", "opts": [{"v": "So'm", "l": "So'm"}, {"v": "AQSh dollari", "l": "AQSh dollari"}, {"v": "Yevro", "l": "Yevro"}]}, {"key": "pochta", "val": "dx.pochta", "h": "dxSet.pochta", "ph": "Holatni tanlang", "opts": [{"v": "To'langan", "l": "To'langan"}, {"v": "To'lanmagan", "l": "To'lanmagan"}, {"v": "To'lovdan ozod qilingan", "l": "To'lovdan ozod qilingan"}]}, {"key": "vka", "val": "dx.vka", "h": "dxSet.vka", "ph": "Holatni tanlang", "opts": [{"v": "To'langan", "l": "To'langan"}, {"v": "To'lanmagan", "l": "To'lanmagan"}, {"v": "Talab qilinmaydi", "l": "Talab qilinmaydi"}]}, {"key": "ilTuri", "val": "dx.ilTuri", "h": "dxSet.ilTuri", "bc": "dxB.ilTuri", "ph": "Hujjat turini tanlang", "opts": [{"v": "Ishonchnoma", "l": "Ishonchnoma"}, {"v": "Davlat boji to'langanlik kvitansiyasi", "l": "Davlat boji to'langanlik kvitansiyasi"}, {"v": "Shartnoma nusxasi", "l": "Shartnoma nusxasi"}, {"v": "Talabnoma (pretenziya)", "l": "Talabnoma (pretenziya)"}, {"v": "Boshqa hujjat", "l": "Boshqa hujjat"}]}];
 var DX_IM_KEYS = ["tartib", "nizo", "ariza", "turkum", "qturkum", "iturkum"];
 var DX_SM_KEYS = ["asosiy", "manaviy", "moddiy", "boy", "avans", "penya", "jarima", "foiz"];
@@ -8431,7 +8463,7 @@ class Component extends DCLogic {
       tmJv: [tmPerson(3, "Rahimova Dilnoza Anvarovna", "2000-10-10", "Ayol"), tmPerson(4, "Normurodov Bekzod Azizovich", "2000-10-10", "Erkak"), tmPerson(5, "Rasulov Mansur Akbarovich", "1983-01-30", "Erkak"), tmPerson(6, "Toshmatova Gulnora Erkinovna", "1990-09-18", "Ayol")],
       tmModal: "", tmFuq: "uz", tmPass: true, tmTab: "pasport", tmQ: "", tmSearched: false, tmPicked: {}, tmManual: {}, tmErr: "",
       um: { hujjatRaqam: "123456789", hujjatSana: "2026-07-17", kirimRaqam: "4225", kirimSana: "2026-07-22T08:54", jonatish: "Elektron shaklda", sudya: "Kattakulov Abror Abduxoliq o'g'li", elektron: "Shakllantirilmagan",
-        qoldiq: true, idora: { name: "O'zbekiston Respublikasi Adliya vazirligi", turi: "Boshqarma", tel: "+998 71 123 45 67", stir: "201 234 567", manzil: "Toshkent shahri, Sayilgoh ko'chasi, 5-uy" } },
+        qoldiq: true, idora: { name: "O'zbekiston Respublikasi Adliya vazirligi" } },
       umModal: false, umForm: { idora: null }, umErr: false, umPick: "",
       lRows: L_DATA, lTab: "korib", lSel: {}, lMenu: 0, lMore: false, lBell: false, bsOpen: false, bsForm: { natija: "", ajrim: "", sana: "", farq: "", joy: "", yordamchi: "" }, bsErr: false, ldIds: [],
       stage: "Ko'rib chiqish", nsVar: "b", nsModal: false, nsForm: { natija: "", ajrim: "", sana: "", farq: "", joy: "", yordamchi: "" }, nsErr: false, delModal: false,
@@ -9424,6 +9456,9 @@ class Component extends DCLogic {
     ["turi", "tel", "stir", "manzil"].forEach(function (k) {
       umIdSet[k] = function (e) { var f = Object.assign({}, self.state.umForm); f.idora = Object.assign({}, f.idora); f.idora[k] = e.target.value; self.setState({ umForm: f }); };
     });
+    var umHitsArr = (function () { var q = String(s.umQ || "").trim().toLowerCase(), qd = q.replace(/\D/g, ""); if (q.length < 2) return [];
+        return DX_ALL.filter(function (o) { return o.name.toLowerCase().indexOf(q) >= 0 || (qd.length >= 3 && String(o.stir).replace(/\D/g, "").indexOf(qd) >= 0); }).slice(0, 6).map(function (o) { var v = idoView(o);
+          return { name: o.name, sub: [v.turi, v.hudud, "STIR " + o.stir].filter(Boolean).join(" · "), pick: function () { self.setState({ umForm: Object.assign({}, self.state.umForm, { idora: { id: o.id, name: o.name } }), umQ: "" }); } }; }); })();
     var umFormView = Object.assign({}, s.umForm, { idora: s.umForm.idora || { name: "", turi: "", tel: "", stir: "", manzil: "" } });
     var umView = Object.assign({}, s.um, {
       hujjatSanaUz: isoToUz(s.um.hujjatSana), kirimSanaUz: dtUz(s.um.kirimSana),
@@ -9432,7 +9467,7 @@ class Component extends DCLogic {
       elHint: s.um.elektron === "Shakllantirilgan" ? "Ish materiallari elektron shaklda tayyor" : "Ish materiallari hali elektron shaklda tayyorlanmagan",
       sudyaPhoto: portrait(s.um.sudya, "Erkak"),
       idoraName: s.um.idora ? s.um.idora.name : "Biriktirilmagan",
-      idoraMeta: s.um.idora ? [s.um.idora.turi, s.um.idora.stir ? "STIR " + s.um.idora.stir : ""].filter(Boolean).join(" · ") + (s.um.qoldiq ? " · Qoldiq bor" : "") : (s.um.qoldiq ? "Qoldiq bor" : "")
+      idoraMeta: (function () { var v = idoView(idoFind(s.um.idora)) || s.um.idora; return v ? [v.turi, v.hudud, v.stir ? "STIR " + v.stir : ""].filter(Boolean).join(" · ") + (s.um.qoldiq ? " · Qoldiq bor" : "") : (s.um.qoldiq ? "Qoldiq bor" : ""); })()
     });
 
     // ---------- keyingi bosqich ----------
@@ -9779,6 +9814,10 @@ class Component extends DCLogic {
       umDirtyColor: (function () { var a = s.umForm || {}, b = s.um; var d = ["hujjatRaqam", "hujjatSana", "qoldiq"].some(function (k) { return a[k] !== b[k]; }) || JSON.stringify(a.idora || null) !== JSON.stringify(b.idora || null); return d ? "#d97706" : "#94a3b8"; })(),
       um: umView, umModal: s.umModal, umForm: umFormView, umSet: umSet, umBorder: umBorder, umErr: s.umErr, umIdSet: umIdSet,
       umHasIdora: !!s.umForm.idora, umNoIdora: !s.umForm.idora,
+      umIdo: idoView(idoFind(s.umForm.idora)) || Object.assign({ turi: "—", catName: "", hudud: "—", hududSub: "", tel: "—", stir: "—", lvl: "" }, s.umForm.idora || {}),
+      umQ: s.umQ || "", umSetQ: function (e) { self.setState({ umQ: e.target.value }); },
+      umHits: umHitsArr, umNoHits: String(s.umQ || "").trim().length >= 2 && !umHitsArr.length,
+      umQShort: String(s.umQ || "").trim().length < 2,
       umQoldiqCls: s.umForm.qoldiq ? "toggle on" : "toggle", umQoldiqStr: s.umForm.qoldiq ? "true" : "false",
       umToggleQoldiq: function () { self.setState({ umForm: Object.assign({}, self.state.umForm, { qoldiq: !self.state.umForm.qoldiq }) }); },
       umIdRemove: function () { self.setState({ umForm: Object.assign({}, self.state.umForm, { idora: null }), umPick: "" }); },
@@ -10569,7 +10608,7 @@ class Component extends DCLogic {
         dxIdMore: hits.length > LIM, dxIdMoreText: "Yana " + (hits.length - LIM) + " ta natija bor — qidiruvni aniqlashtiring",
         dxIdHas: !!picked, dxIdNone: !picked, dxIdPaneCls: picked ? "dx-pane" : "dx-pane dashed",
         dxIdEmptyText: dx.idTab === "nom" ? "Chap tarafda idora nomi yoki STIR bo'yicha qidirib, natijadan tanlang" : "Chap tarafdagi filtrlar orqali kategoriyani, hududni tanlang",
-        dxIdora: picked ? (function (o) { var cat = DX_CATS.filter(function (c) { return o.cats && o.cats.indexOf(c.id) >= 0; })[0]; return Object.assign({}, o, { lvl: o.level === "r" ? "Respublika darajasi" : o.level === "v" ? "Viloyat darajasi" : "Tuman darajasi", catName: cat ? cat.label : "", hudud: o.tum || o.vil || o.resp, hududSub: o.tum ? (o.vil || o.resp) : (o.vil ? o.resp : (o.manzil || "")) }); })(picked) : { name: "", turi: "", manzil: "", tel: "", stir: "" },
+        dxIdora: picked ? idoView(picked) : { name: "", turi: "", manzil: "", tel: "", stir: "" },
         dxIdRemove: function () { var n = picked ? picked.name : ""; setDx({ idPick: "" }); if (n) self.flash(n + " olib tashlandi"); },
         dxDv: tmMap("dxDv"), dxJv: tmMap("dxJv"), dxDvEmpty: s.dxDv.length === 0, dxJvEmpty: s.dxJv.length === 0,
         dxDvHas: s.dxDv.length > 0, dxJvHas: s.dxJv.length > 0, dxDvCount: s.dxDv.length + " ta", dxJvCount: s.dxJv.length + " ta",
