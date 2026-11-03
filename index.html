@@ -3927,7 +3927,8 @@ body:has(.cw-wrap) .l-app:not(.pgmode) .l-top{z-index:12 !important}
 body:has([aria-modal="true"]) .l-app .l-top{z-index:1 !important}
 .qv-ro{margin-right:auto;display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:999px;background:#f1f5f9;color:#64748b;font-size:12.5px;font-weight:500}
 /* Sudya: umumiy tahrirlash — manfaatida idora (Devonxona kartochkasi bilan bir xil) */
-.ume-ido{margin-top:2px}
+.ume-ido{margin-top:2px;padding:0;height:auto}
+.ume-ido .ido-h{padding-bottom:14px}
 .ume-ido .ido-g{grid-template-columns:repeat(2,minmax(0,1fr))}
 .ume-idq{display:flex;flex-direction:column;align-items:stretch;gap:10px}
 .ume-qin{display:flex;align-items:center;gap:8px;height:44px;padding:0 12px;border:1px solid #d5dbe4;border-radius:10px;background:#fff;color:#64748b}
@@ -5401,7 +5402,8 @@ html[data-theme="dark"] .ds-host img{filter:none}
       </div>
       <div class="umt umt-wide">
         <span class="umt-ic lg" style="background: #e0f2fe; color: #0369a1"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg></span>
-        <div class="kv" style="gap: 4px; min-width: 0"><small>Manfaatida idora</small><b style="font-size: 16px">{{um.idoraName}}</b><span class="umt-meta">{{um.idoraMeta}}</span></div>
+        <div class="kv" style="gap: 4px; min-width: 0; flex: 1"><small>Manfaatida idora</small><b style="font-size: 16px">{{um.idoraName}}</b><span class="umt-meta">{{um.idoraMeta}}</span></div>
+        <sc-if value="{{umCanAddIdo}}" hint-placeholder-val="{{ false }}"><button class="btn sm" style="align-self: center; flex: none" onClick="{{umOpenAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Qo'shish</button></sc-if>
       </div>
     </div>
   </section>
@@ -6737,13 +6739,14 @@ html[data-theme="dark"] .ds-host img{filter:none}
         </div>
         </sc-if>
         <sc-if value="{{umNoIdora}}" hint-placeholder-val="{{ false }}">
-        <div class="ume-empty ume-idq">
-          <small class="muted">Manfaatida idora biriktirilmagan · idoralar ma'lumotnomasidan qidiring</small>
-          <label class="ume-qin"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><input type="search" value="{{umQ}}" onChange="{{umSetQ}}" placeholder="Idora nomi yoki STIR bo'yicha qidiring" aria-label="Idorani qidirish"></label>
+        <sc-if value="{{umAddCta}}" hint-placeholder-val="{{ true }}"><button type="button" class="dx-cta" onClick="{{umAddOpen}}"><span class="dx-cta-ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg></span><span class="dx-cta-t"><b>Manfaatida idora qo'shish</b><small>Ish biror idora manfaatida ko'rilayotgan bo'lsa, uni idoralar ma'lumotnomasidan tanlang</small></span><span class="dx-cta-plus"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></span></button></sc-if>
+        <sc-if value="{{umAddOn}}" hint-placeholder-val="{{ false }}"><div class="ume-empty ume-idq">
+          <div class="between" style="gap: 10px"><b style="font-size: 14px">Manfaatida idora qo'shish</b><button type="button" class="btn sm" onClick="{{umAddClose}}">Bekor qilish</button></div>
+          <label class="ume-qin"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><input type="search" autofocus value="{{umQ}}" onChange="{{umSetQ}}" placeholder="Idora nomi yoki STIR bo'yicha qidiring" aria-label="Idorani qidirish"></label>
           <sc-if value="{{umQShort}}" hint-placeholder-val="{{ true }}"><small class="muted">Kamida 2 ta belgi kiriting</small></sc-if>
           <sc-if value="{{umNoHits}}" hint-placeholder-val="{{ false }}"><small class="muted">Hech narsa topilmadi · nomni aniqlashtiring</small></sc-if>
           <div class="ume-hits"><sc-for list="{{umHits}}" as="h" hint-placeholder-count="0"><button type="button" class="ume-hit" onClick="{{h.pick}}"><span class="dx-orgic sm"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg></span><span class="kv" style="gap: 1px; min-width: 0; flex: 1; text-align: left"><b>{{h.name}}</b><small>{{h.sub}}</small></span><span class="btn sm">Tanlash</span></button></sc-for></div>
-        </div>
+        </div></sc-if>
         </sc-if>
       </div>
 
@@ -9814,13 +9817,17 @@ class Component extends DCLogic {
       umDirtyColor: (function () { var a = s.umForm || {}, b = s.um; var d = ["hujjatRaqam", "hujjatSana", "qoldiq"].some(function (k) { return a[k] !== b[k]; }) || JSON.stringify(a.idora || null) !== JSON.stringify(b.idora || null); return d ? "#d97706" : "#94a3b8"; })(),
       um: umView, umModal: s.umModal, umForm: umFormView, umSet: umSet, umBorder: umBorder, umErr: s.umErr, umIdSet: umIdSet,
       umHasIdora: !!s.umForm.idora, umNoIdora: !s.umForm.idora,
+      umCanAddIdo: !s.um.idora && s.openMode === "page",
       umIdo: idoView(idoFind(s.umForm.idora)) || Object.assign({ turi: "—", catName: "", hudud: "—", hududSub: "", tel: "—", stir: "—", lvl: "" }, s.umForm.idora || {}),
       umQ: s.umQ || "", umSetQ: function (e) { self.setState({ umQ: e.target.value }); },
+      umAddOn: !s.umForm.idora && !!s.umAdd, umAddCta: !s.umForm.idora && !s.umAdd,
+      umAddOpen: function () { self.setState({ umAdd: true, umQ: "" }); },
+      umAddClose: function () { self.setState({ umAdd: false, umQ: "" }); },
       umHits: umHitsArr, umNoHits: String(s.umQ || "").trim().length >= 2 && !umHitsArr.length,
       umQShort: String(s.umQ || "").trim().length < 2,
       umQoldiqCls: s.umForm.qoldiq ? "toggle on" : "toggle", umQoldiqStr: s.umForm.qoldiq ? "true" : "false",
       umToggleQoldiq: function () { self.setState({ umForm: Object.assign({}, self.state.umForm, { qoldiq: !self.state.umForm.qoldiq }) }); },
-      umIdRemove: function () { self.setState({ umForm: Object.assign({}, self.state.umForm, { idora: null }), umPick: "" }); },
+      umIdRemove: function () { self.setState({ umForm: Object.assign({}, self.state.umForm, { idora: null }), umPick: "", umAdd: false, umQ: "" }); },
       umPick: s.umPick, umSetPick: function (e) { self.setState({ umPick: e.target.value }); },
       umIdAdd: function () {
         var n = self.state.umPick; if (!n) { self.flash("Avval idorani tanlang"); return; }
@@ -9828,7 +9835,9 @@ class Component extends DCLogic {
       },
       umErrText: UM_REQ.filter(function (r) { return !String(s.umForm[r[0]] || "").trim(); }).map(function (r) { return r[1]; }).join(", "),
       umCopyHujjat: function () { try { navigator.clipboard.writeText(self.state.um.hujjatRaqam); } catch (e) {} self.flash("Hujjat raqami nusxalandi"); },
-      umOpen: function () { var u = self.state.um; self.setState({ umModal: true, umErr: false, umPick: "", umForm: Object.assign({}, u, { idora: u.idora ? Object.assign({}, u.idora) : null }) }); },
+      umOpenAdd: function () { var u = self.state.um; self.setState({ umModal: true, umErr: false, umPick: "", umAdd: true, umQ: "", umForm: Object.assign({}, u, { idora: u.idora ? Object.assign({}, u.idora) : null }) });
+        setTimeout(function () { var bd = document.querySelector(".ume .ume-b"); if (bd) bd.scrollTop = bd.scrollHeight; var inp = document.querySelector(".ume-qin input"); if (inp) inp.focus(); }, 80); },
+      umOpen: function () { var u = self.state.um; self.setState({ umModal: true, umErr: false, umPick: "", umAdd: false, umQ: "", umForm: Object.assign({}, u, { idora: u.idora ? Object.assign({}, u.idora) : null }) }); },
       umClose: function () { self.setState({ umModal: false }); },
       umSave: function () {
         var f = self.state.umForm;
