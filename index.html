@@ -3941,6 +3941,15 @@ body:has([aria-modal="true"]) .l-app .l-top{z-index:1 !important}
 .ume-hit b{font-size:14px;font-weight:600;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ume-hit small{font-size:12px;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .dx-orgic.sm{width:34px;height:34px;flex:none}
+.ume-idp{display:flex;flex-direction:column;gap:10px}
+.ume-idp-h{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.ume-idp-h b{font-size:14px;font-weight:600;color:#0f172a}
+.ume-idp .dx-pane{position:relative}
+.ume-idp .fld .dx-ic>input{width:100%;padding-left:40px}
+.ume-idp .fld .dx-ic .dx-selbtn{padding-left:40px}
+.ume-idp .dx-list{max-height:260px}
+.ume-sec:has(.dx-sel.open){position:relative;z-index:46}
+.ume .dx-ddbg{z-index:45}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -6740,12 +6749,44 @@ html[data-theme="dark"] .ds-host img{filter:none}
         </sc-if>
         <sc-if value="{{umNoIdora}}" hint-placeholder-val="{{ false }}">
         <sc-if value="{{umAddCta}}" hint-placeholder-val="{{ true }}"><button type="button" class="dx-cta" onClick="{{umAddOpen}}"><span class="dx-cta-ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg></span><span class="dx-cta-t"><b>Manfaatida idora qo'shish</b><small>Ish biror idora manfaatida ko'rilayotgan bo'lsa, uni idoralar ma'lumotnomasidan tanlang</small></span><span class="dx-cta-plus"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></span></button></sc-if>
-        <sc-if value="{{umAddOn}}" hint-placeholder-val="{{ false }}"><div class="ume-empty ume-idq">
-          <div class="between" style="gap: 10px"><b style="font-size: 14px">Manfaatida idora qo'shish</b><button type="button" class="btn sm" onClick="{{umAddClose}}">Bekor qilish</button></div>
-          <label class="ume-qin"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><input type="search" autofocus value="{{umQ}}" onChange="{{umSetQ}}" placeholder="Idora nomi yoki STIR bo'yicha qidiring" aria-label="Idorani qidirish"></label>
-          <sc-if value="{{umQShort}}" hint-placeholder-val="{{ true }}"><small class="muted">Kamida 2 ta belgi kiriting</small></sc-if>
-          <sc-if value="{{umNoHits}}" hint-placeholder-val="{{ false }}"><small class="muted">Hech narsa topilmadi · nomni aniqlashtiring</small></sc-if>
-          <div class="ume-hits"><sc-for list="{{umHits}}" as="h" hint-placeholder-count="0"><button type="button" class="ume-hit" onClick="{{h.pick}}"><span class="dx-orgic sm"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg></span><span class="kv" style="gap: 1px; min-width: 0; flex: 1; text-align: left"><b>{{h.name}}</b><small>{{h.sub}}</small></span><span class="btn sm">Tanlash</span></button></sc-for></div>
+        <sc-if value="{{umAddOn}}" hint-placeholder-val="{{ false }}"><div class="ume-idp">
+          <sc-if value="{{umI.ddOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{dxDdClose}}"></button></sc-if>
+          <div class="ume-idp-h"><b>Manfaatida idora qo'shish</b><button type="button" class="btn sm" onClick="{{umAddClose}}">Bekor qilish</button></div>
+          <div class="dx-pane">
+              <div class="l-tabs" style="padding: 0 16px" role="tablist"><button role="tab" class="{{umI.tabNom}}" aria-selected="{{umI.nomStr}}" onClick="{{umI.tab.nom}}">Idora nomi orqali</button><button role="tab" class="{{umI.tabHud}}" aria-selected="{{umI.hudStr}}" onClick="{{umI.tab.hudud}}">Hudud bo'yicha</button></div>
+              <div style="padding: 16px; display: flex; flex-direction: column; gap: 14px">
+
+                <sc-if value="{{umI.byNom}}" hint-placeholder-val="{{ true }}">
+                <div class="row" style="gap: 10px; align-items: flex-end">
+                  <label class="fld" style="flex: 1; min-width: 0"><span>Qidiruv</span><span class="dx-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><input value="{{umI.q}}" onChange="{{umI.setQ}}" onKeyDown="{{umI.key}}" placeholder="Idora nomi, STIR yoki manzil bo'yicha qidiring" style="padding-right: 44px"><sc-if value="{{umI.hasQ}}" hint-placeholder-val="{{ false }}"><button class="ib dx-clr" aria-label="Qidiruvni tozalash" onClick="{{umI.clear}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></sc-if></span></label>
+                  <button class="btn pri" style="height: 44px" onClick="{{umI.search}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>Izlash</button>
+                </div>
+                </sc-if>
+
+                <sc-if value="{{umI.byHud}}" hint-placeholder-val="{{ false }}">
+                <div class="dx-g2" style="gap: 14px 16px">
+                  <label class="fld"><span>Kategoriyani tanlang</span><span class="dx-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg><span class="{{umI.cat.cls}}" id="{{umI.cat.id}}" onKeyDown="{{umI.cat.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{umI.cat.exp}}" disabled="{{umI.cat.dis}}" onClick="{{umI.cat.toggle}}" style="border-color: {{umI.cat.bc}}"><span class="{{umI.cat.vcls}}">{{umI.cat.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{umI.cat.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{umI.cat.stop}}"><sc-for list="{{umI.cat.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></span></label>
+                  <label class="fld"><span>Respublika</span><span class="dx-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><span class="{{umI.resp.cls}}" id="{{umI.resp.id}}" onKeyDown="{{umI.resp.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{umI.resp.exp}}" disabled="{{umI.resp.dis}}" onClick="{{umI.resp.toggle}}" style="border-color: {{umI.resp.bc}}"><span class="{{umI.resp.vcls}}">{{umI.resp.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{umI.resp.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{umI.resp.stop}}"><sc-for list="{{umI.resp.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></span></label>
+                  <label class="fld"><span>Viloyat</span><span class="dx-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><span class="{{umI.vil.cls}}" id="{{umI.vil.id}}" onKeyDown="{{umI.vil.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{umI.vil.exp}}" disabled="{{umI.vil.dis}}" onClick="{{umI.vil.toggle}}" style="border-color: {{umI.vil.bc}}"><span class="{{umI.vil.vcls}}">{{umI.vil.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{umI.vil.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{umI.vil.stop}}"><sc-for list="{{umI.vil.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></span></label>
+                  <label class="fld"><span>Tuman</span><span class="dx-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><span class="{{umI.tum.cls}}" id="{{umI.tum.id}}" onKeyDown="{{umI.tum.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{umI.tum.exp}}" disabled="{{umI.tum.dis}}" onClick="{{umI.tum.toggle}}" style="border-color: {{umI.tum.bc}}"><span class="{{umI.tum.vcls}}">{{umI.tum.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{umI.tum.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{umI.tum.stop}}"><sc-for list="{{umI.tum.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></span></label>
+                </div>
+                </sc-if>
+
+                <sc-if value="{{umI.hint}}" hint-placeholder-val="{{ false }}"><small class="muted">{{umI.hintText}}</small></sc-if>
+                <sc-if value="{{umI.noRes}}" hint-placeholder-val="{{ false }}"><div class="note">{{umI.noResText}}</div></sc-if>
+                <sc-if value="{{umI.hasRes}}" hint-placeholder-val="{{ false }}">
+                <div class="kv" style="gap: 8px">
+                  <small class="muted">{{umI.resHead}}</small>
+                  <div class="dx-list">
+                    <sc-for list="{{umI.res}}" as="r" hint-placeholder-count="3">
+                    <div class="dx-li" style="background: {{r.bg}}"><div class="row" style="gap: 10px; min-width: 0"><span class="dx-orgic sm"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg></span><div class="kv" style="min-width: 0"><b>{{r.name}}</b><small>{{r.meta}}</small></div></div><button class="{{r.btnCls}}" aria-pressed="{{r.onStr}}" onClick="{{r.pick}}"><sc-if value="{{r.on}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if>{{r.btnLabel}}</button></div>
+                    </sc-for>
+                  </div>
+                  <sc-if value="{{umI.more}}" hint-placeholder-val="{{ false }}"><small class="muted">{{umI.moreText}}</small></sc-if>
+                </div>
+                </sc-if>
+              </div>
+            </div>
         </div></sc-if>
         </sc-if>
       </div>
@@ -9821,7 +9862,7 @@ class Component extends DCLogic {
       umIdo: idoView(idoFind(s.umForm.idora)) || Object.assign({ turi: "—", catName: "", hudud: "—", hududSub: "", tel: "—", stir: "—", lvl: "" }, s.umForm.idora || {}),
       umQ: s.umQ || "", umSetQ: function (e) { self.setState({ umQ: e.target.value }); },
       umAddOn: !s.umForm.idora && !!s.umAdd, umAddCta: !s.umForm.idora && !s.umAdd,
-      umAddOpen: function () { self.setState({ umAdd: true, umQ: "" }); },
+      umAddOpen: function () { self.setState({ umAdd: true, umQ: "", umI: null }); },
       umAddClose: function () { self.setState({ umAdd: false, umQ: "" }); },
       umHits: umHitsArr, umNoHits: String(s.umQ || "").trim().length >= 2 && !umHitsArr.length,
       umQShort: String(s.umQ || "").trim().length < 2,
@@ -9835,8 +9876,8 @@ class Component extends DCLogic {
       },
       umErrText: UM_REQ.filter(function (r) { return !String(s.umForm[r[0]] || "").trim(); }).map(function (r) { return r[1]; }).join(", "),
       umCopyHujjat: function () { try { navigator.clipboard.writeText(self.state.um.hujjatRaqam); } catch (e) {} self.flash("Hujjat raqami nusxalandi"); },
-      umOpenAdd: function () { var u = self.state.um; self.setState({ umModal: true, umErr: false, umPick: "", umAdd: true, umQ: "", umForm: Object.assign({}, u, { idora: u.idora ? Object.assign({}, u.idora) : null }) });
-        setTimeout(function () { var bd = document.querySelector(".ume .ume-b"); if (bd) bd.scrollTop = bd.scrollHeight; var inp = document.querySelector(".ume-qin input"); if (inp) inp.focus(); }, 80); },
+      umOpenAdd: function () { var u = self.state.um; self.setState({ umModal: true, umErr: false, umPick: "", umAdd: true, umQ: "", umI: null, umForm: Object.assign({}, u, { idora: u.idora ? Object.assign({}, u.idora) : null }) });
+        setTimeout(function () { var bd = document.querySelector(".ume .ume-b"); if (bd) bd.scrollTop = bd.scrollHeight; var inp = document.querySelector(".ume-idp input"); if (inp) inp.focus(); }, 80); },
       umOpen: function () { var u = self.state.um; self.setState({ umModal: true, umErr: false, umPick: "", umAdd: false, umQ: "", umForm: Object.assign({}, u, { idora: u.idora ? Object.assign({}, u.idora) : null }) }); },
       umClose: function () { self.setState({ umModal: false }); },
       umSave: function () {
@@ -11810,6 +11851,72 @@ class Component extends DCLogic {
         function () { setImEd(function (x) { return { v: Object.assign({}, x.v, { javs: [] }), err: "" }; }); },
         { disabled: s.dxJv.length === 0, ph: s.dxJv.length ? "Javobgarlarni tanlang" : "Avval javobgar qo'shing" });
       __out.dxS = dxS; __out.dxDdOpen = !!ddOpen && isDevon && ddOpen !== "ap-sudya";
+      // ---- Sudya · umumiy tahrirlash: manfaatida idorani Devonxonadagi ketma-ketlikda tanlash ----
+      (function () {
+        var u = Object.assign({ idTab: "nom", idQ: "", idCat: "", idResp: "", idVil: "", idTum: "", idSearched: false, idHits: [], idQLast: "" }, s.umI || {});
+        var setU = function (patch) { self.setState(function (prev) { return { umI: Object.assign({ idTab: "nom", idQ: "", idCat: "", idResp: "", idVil: "", idTum: "", idSearched: false, idHits: [], idQLast: "" }, prev.umI || {}, patch) }; }); };
+        var cat = DX_CATS.filter(function (c) { return c.id === u.idCat; })[0] || null;
+        var respList = cat ? Object.keys(DX_REGIONS) : [];
+        var noVil = !!(u.idResp && DX_REGIONS[u.idResp] && DX_REGIONS[u.idResp][""]);
+        var vilList = cat && !cat.respOnly && u.idResp ? Object.keys(DX_REGIONS[u.idResp]).filter(Boolean) : [];
+        var tumList = cat && !cat.respOnly && u.idResp ? ((DX_REGIONS[u.idResp] || {})[noVil ? "" : u.idVil] || []) : [];
+        var hits = [], hint = "", noResText = "", resHead = "";
+        if (u.idTab === "nom") {
+          if (u.idSearched) {
+            hits = DX_ALL.filter(function (o) { return u.idHits.indexOf(o.id) >= 0; });
+            noResText = "«" + u.idQLast + "» bo'yicha idora topilmadi. Idora nomi, turi, viloyat/tuman, STIR yoki telefon bo'yicha qidirish mumkin — masalan «Termiz soliq». Yoki «Hudud bo'yicha» bo'limidan tanlang.";
+            resHead = "Qidiruv natijasi · " + hits.length + " ta";
+          } else hint = "Idora nomi, turi, hududi (viloyat/tuman), STIR yoki telefon raqamining bir qismini yozing. Masalan: «Surxondaryo prokuratura», «Termiz soliq», «Adliya» yoki STIR raqami.";
+        } else {
+          if (!cat) hint = "Avval kategoriyani tanlang — so'ng respublika, viloyat va tuman bo'yicha toraytiring.";
+          else if (!u.idResp) hint = "Respublikani tanlang.";
+          else {
+            var lvl = cat.respOnly ? "r" : (u.idTum ? "t" : (u.idVil ? "v" : "r"));
+            hits = DX_ALL.filter(function (o) {
+              if (o.cats.indexOf(cat.id) < 0 || o.resp !== u.idResp || o.level !== lvl) return false;
+              if (lvl === "v") return o.vil === u.idVil;
+              if (lvl === "t") return o.tum === u.idTum && (noVil || o.vil === u.idVil);
+              return true;
+            });
+            resHead = cat.label + " · " + (lvl === "t" ? u.idTum : (lvl === "v" ? u.idVil : u.idResp));
+            noResText = cat.respOnly ? "Bu respublikada tanlangan kategoriya bo'yicha idora topilmadi." : "Bu darajada idora yo'q. Viloyat yoki tumanni tanlab, quyi darajadagi idorani toping.";
+            if (hits.length && !cat.respOnly && lvl !== "t") hint = noVil || u.idVil ? "Tuman (shahar) idorasi kerak bo'lsa, tumanni tanlang." : "Viloyat (shahar) idorasi kerak bo'lsa, viloyatni tanlang.";
+          }
+        }
+        var LIM = 60;
+        var run = function () {
+          var d = Object.assign({ idQ: "" }, self.state.umI || {}), nz = function (x) { return String(x || "").toLowerCase().replace(/[‘’ʻʼ`´]/g, "'"); }, q = nz(String(d.idQ || "").trim());
+          if (!q) { self.flash("Qidirish uchun idora nomi yoki STIR kiriting"); return; }
+          var qd = q.replace(/\s/g, ""), words = q.split(/\s+/).filter(Boolean);
+          var catL = function (o) { return DX_CATS.filter(function (c) { return o.cats && o.cats.indexOf(c.id) >= 0; }).map(function (c) { return c.label; }).join(" "); };
+          var res = DX_ALL.filter(function (o) {
+            var hay = nz([o.name, o.manzil, o.turi, o.resp, o.vil, o.tum, catL(o)].join(" "));
+            if (words.every(function (w) { return hay.indexOf(w) >= 0; })) return true;
+            return /^\d{3,}$/.test(qd) && (o.stir.replace(/\s/g, "").indexOf(qd) >= 0 || o.tel.replace(/\D/g, "").indexOf(qd) >= 0);
+          });
+          setU({ idSearched: true, idHits: res.map(function (o) { return o.id; }), idQLast: String(d.idQ || "").trim() });
+        };
+        var ph = function (l) { return [{ v: "", l: l }]; };
+        __out.umI = {
+          q: u.idQ, setQ: function (e) { setU({ idQ: e.target.value }); }, key: function (e) { if (e.key === "Enter") { e.preventDefault(); run(); } },
+          search: run, hasQ: !!u.idQ, clear: function () { setU({ idQ: "", idSearched: false, idHits: [], idQLast: "" }); },
+          tab: { nom: function () { setU({ idTab: "nom" }); }, hudud: function () { setU({ idTab: "hudud" }); } },
+          tabNom: u.idTab === "nom" ? "on" : "", tabHud: u.idTab === "hudud" ? "on" : "", nomStr: u.idTab === "nom" ? "true" : "false", hudStr: u.idTab === "hudud" ? "true" : "false",
+          byNom: u.idTab === "nom", byHud: u.idTab === "hudud",
+          cat: dd("umi-cat", ph("Kategoriyani tanlang").concat(DX_CATS.map(function (c) { return { v: c.id, l: c.label }; })), u.idCat, function (e) { setU({ idCat: e.target.value, idResp: "", idVil: "", idTum: "" }); }, { noSplit: true, ph: "Kategoriyani tanlang" }),
+          resp: dd("umi-resp", ph("Tanlang").concat(respList.map(function (x) { return { v: x, l: x }; })), u.idResp, function (e) { setU({ idResp: e.target.value, idVil: "", idTum: "" }); }, { noSplit: true, ph: "Tanlang", disabled: !cat }),
+          vil: dd("umi-vil", ph(cat && cat.respOnly || noVil ? "Qo'llanilmaydi" : "Tanlang").concat(vilList.map(function (x) { return { v: x, l: x }; })), u.idVil, function (e) { setU({ idVil: e.target.value, idTum: "" }); }, { noSplit: true, ph: cat && cat.respOnly || noVil ? "Qo'llanilmaydi" : "Tanlang", disabled: !cat || !!(cat && cat.respOnly) || !u.idResp || noVil }),
+          tum: dd("umi-tum", ph(cat && cat.respOnly ? "Qo'llanilmaydi" : "Tanlang").concat(tumList.map(function (x) { return { v: x, l: x }; })), u.idTum, function (e) { setU({ idTum: e.target.value }); }, { noSplit: true, ph: cat && cat.respOnly ? "Qo'llanilmaydi" : "Tanlang", disabled: !cat || !!(cat && cat.respOnly) || !u.idResp || (!noVil && !u.idVil) }),
+          hint: !!hint, hintText: hint,
+          noRes: !!noResText && hits.length === 0 && (u.idTab === "nom" ? u.idSearched : !!(cat && u.idResp)), noResText: noResText,
+          hasRes: hits.length > 0, resHead: resHead, more: hits.length > LIM, moreText: "Yana " + (hits.length - LIM) + " ta natija bor — qidiruvni aniqlashtiring",
+          res: hits.slice(0, LIM).map(function (o) {
+            return { name: o.name, meta: [o.turi, o.manzil].filter(Boolean).join(" · "), btnCls: "tmsel", btnLabel: "Tanlash",
+              pick: function () { self.setState({ umForm: Object.assign({}, self.state.umForm, { idora: { id: o.id, name: o.name } }), umAdd: false, dxDd: "" }); self.flash(o.name + " manfaatdor idora sifatida tanlandi"); } };
+          }),
+          ddOpen: !!s.umModal && String(ddOpen).indexOf("umi-") === 0
+        };
+      })();
       // ---- Yuqori instansiya: shikoyat qilinayotgan ishni tanlash ----
       (function () {
         var d = s.dx || {}, higher = !!d.inst && d.inst !== "Birinchi instansiya" && d.inst !== "Qarshi da'vo";
