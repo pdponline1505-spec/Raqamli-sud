@@ -4119,6 +4119,42 @@ svg.ic-ed,svg.ic-del{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linec
 .ib:has(> svg.ic-ed):hover{background:#eef2ff !important;color:#1d4ed8 !important}
 .ib:has(> svg.ic-del):hover{background:#fef2f2 !important;color:#dc2626 !important}
 .ib > svg.ic-ed,.ib > svg.ic-del{width:18px;height:18px}
+/* Qarshi da'vo kartochkasi v2: chapda rekvizitlar, o'ngda shikoyat bergan shaxslar */
+.qx.qx2{display:grid !important;grid-template-columns:minmax(260px,320px) minmax(0,1fr);gap:0 !important;padding:0 !important;overflow:hidden}
+.qx2-l{display:flex;flex-direction:column;gap:14px;padding:18px 20px;border-right:1px solid #e6ebf3;background:#fff}
+.qx2-cap{font-size:12px;color:#64748b}
+.qx2-sum{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;background:#f5f8ff;border:1px solid #e3eafd}
+.qx2-sum small{font-size:11.5px;color:#64748b}
+.qx2-sum b{font-size:18px;font-weight:700;color:#1e3a8a;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.qx2-kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0;font-size:13px}
+.qx2-kv>div{display:contents}
+.qx2-kv dt{color:#64748b}
+.qx2-kv dd{margin:0;color:#0f172a;font-weight:500;text-align:right;font-variant-numeric:tabular-nums}
+.qx2-r{display:flex;flex-direction:column;gap:12px;padding:18px 20px;min-width:0;background:linear-gradient(180deg,#fbfcfe 0%,#f7f9fc 100%)}
+.qx2-rh{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.qx2-lbl{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#334155}
+.qx2-fl{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px}
+.qx2-f{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid #e6ebf3;border-radius:12px;background:#fff;min-width:0}
+.qx2-f b{font-size:14px;font-weight:600;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.qx2-f small{font-size:12px;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.qx2-f .ak-role{flex:none;height:24px;font-size:12px}
+.qx.qx2.isnew::before{width:3px}
+@media (max-width:900px){.qx.qx2{grid-template-columns:minmax(0,1fr)}.qx2-l{border-right:0;border-bottom:1px solid #e6ebf3}}
+/* Qarshi da'vo kartochkasi v3: ixcham — sarlavha, ko'rsatkichlar qatori, shikoyat bergan shaxslar */
+.qx.qx3{display:flex !important;flex-direction:column;gap:14px !important;padding:16px 20px 18px !important}
+.qx3-h{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.qx3-h .qx-num{font-size:15px}
+.qx3-st{display:grid;grid-template-columns:1.3fr 1fr 1.2fr 1.2fr;border:1px solid #e6ebf3;border-radius:12px;background:#fff;overflow:hidden}
+.qx3-s{display:flex;flex-direction:column;gap:3px;padding:10px 14px;min-width:0}
+.qx3-s+.qx3-s{border-left:1px solid #eef1f5}
+.qx3-s small{font-size:11.5px;color:#64748b}
+.qx3-s b{font-size:14px;font-weight:600;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-variant-numeric:tabular-nums}
+.qx3-s.qx3-pri{background:#f5f8ff}
+.qx3-s.qx3-pri b{font-size:16px;font-weight:700;color:#1e3a8a}
+.qx3-fb{display:flex;flex-direction:column;gap:10px}
+.qx.qx3 .qx2-fl{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.qx.qx3.isnew::before{width:3px}
+@media (max-width:900px){.qx3-st{grid-template-columns:repeat(2,minmax(0,1fr))}.qx3-s:nth-child(3){border-left:0}.qx3-s:nth-child(n+3){border-top:1px solid #eef1f5}}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -5711,22 +5747,17 @@ html[data-theme="dark"] .ds-host img{filter:none}
     <sc-if value="{{qxEmpty}}" hint-placeholder-val="{{ false }}"><div class="qm-empty"><svg width="64" height="64" viewBox="0 0 72 72" fill="none" aria-hidden="true"><path d="M36 14L58 25v24L36 60 14 49V25z" fill="#eef1f5"></path><path d="M36 14l22 11-22 11-22-11z" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" stroke-linejoin="round"></path><path d="M14 25v24l22 11V36M58 25v24L36 60" stroke="#cbd5e1" stroke-width="1.2" stroke-linejoin="round"></path></svg><b>Qarshi da'volar yo'q</b><small>Qarshi da'vo arizasi kelib tushganda shu yerda ko'rinadi</small></div></sc-if>
     <div class="qx-list">
       <sc-for list="{{qarshi}}" as="q" hint-placeholder-count="2">
-      <div class="qx {{q.qxCls}}">
-        <div class="qx-top">
-          <div class="row" style="gap: 12px; min-width: 0"><span class="umt-ic" style="width: 40px; height: 40px; border-radius: 12px; background: #eef0ff; color: #4f46e5"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h13l-3-3M17 17H4l3 3"></path></svg></span>
-            <div class="kv" style="gap: 2px; min-width: 0"><small>Qarshi da'vo</small><div class="row" style="gap: 10px; flex-wrap: wrap"><b class="qx-num">№ {{q.num}}</b><span class="badge {{q.badgeCls}}">{{q.status}}</span><sc-if value="{{q.fromDevon}}" hint-placeholder-val="{{ false }}"><span class="qx-src">Devonxonadan</span></sc-if></div></div></div>
-          <button class="btn qx-more" onClick="{{q.open}}">Batafsil<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
+      <div class="qx qx3 {{q.qxCls}}">
+        <div class="qx3-h"><div class="row" style="gap: 10px; flex-wrap: wrap; min-width: 0"><span class="qx2-cap">Qarshi da'vo</span><b class="qx-num">№ {{q.num}}</b><span class="badge {{q.badgeCls}}">{{q.status}}</span><sc-if value="{{q.fromDevon}}" hint-placeholder-val="{{ false }}"><span class="qx-src">Devonxonadan</span></sc-if></div><button class="btn qx-more" onClick="{{q.open}}">Batafsil<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></div>
+        <div class="qx3-st">
+          <div class="qx3-s qx3-pri"><small>Talab summasi</small><b>{{q.sum}}</b></div>
+          <div class="qx3-s"><small>Kirim №</small><b>{{q.kirim}}</b></div>
+          <div class="qx3-s"><small>Kirim sanasi</small><b>{{q.kirimDate}}</b></div>
+          <div class="qx3-s"><small>Yuborish turi</small><b>{{q.via}}</b></div>
         </div>
-        <div class="qx-fil">
-          <span class="qx-fh">Shikoyat bergan shaxslar <span class="dx-cnt">{{q.filN}}</span></span>
-          <sc-for list="{{q.filers}}" as="f" hint-placeholder-count="1"><div class="qx-fr"><img class="qx-fav" src="{{f.photo}}" alt=""><div class="kv" style="gap: 2px; min-width: 0; flex: 1"><b title="{{f.name}}">{{f.name}}</b><small title="{{f.org}}">{{f.org}}</small></div><span class="{{f.roleCls}}">{{f.role}}</span><sc-if value="{{f.hasSide}}" hint-placeholder-val="{{ false }}"><span class="qv-side">{{f.side}}</span></sc-if></div></sc-for>
-          <sc-if value="{{q.noFilers}}" hint-placeholder-val="{{ false }}"><small class="muted" style="padding: 10px 14px">Shikoyat bergan shaxs ko'rsatilmagan</small></sc-if>
-        </div>
-        <div class="qx-meta">
-          <span><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l2-8h14l2 8v6H3z"></path><path d="M3 13h5l1 3h6l1-3h5"></path></svg>Kirim № <b>{{q.kirim}}</b></span>
-          <span><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg><b>{{q.kirimDate}}</b></span>
-          <span><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2-7z"></path></svg><b>{{q.via}}</b></span>
-          <span><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="12" cy="12" r="3"></circle></svg>Talab <b>{{q.sum}}</b></span>
+        <div class="qx3-fb"><span class="qx2-lbl">Shikoyat bergan shaxslar <span class="dx-cnt">{{q.filN}}</span></span>
+          <div class="qx2-fl"><sc-for list="{{q.filers}}" as="f" hint-placeholder-count="1"><div class="qx2-f"><img class="qx-fav" src="{{f.photo}}" alt=""><div class="kv" style="gap: 2px; min-width: 0; flex: 1"><b title="{{f.name}}">{{f.name}}</b><small title="{{f.org}}">{{f.org}}</small></div><span class="{{f.roleCls}}">{{f.role}}</span></div></sc-for>
+          <sc-if value="{{q.noFilers}}" hint-placeholder-val="{{ false }}"><small class="muted">Shikoyat bergan shaxs ko'rsatilmagan</small></sc-if></div>
         </div>
       </div>
       </sc-for>
