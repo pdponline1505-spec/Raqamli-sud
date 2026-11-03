@@ -4184,6 +4184,11 @@ svg.ic-ed,svg.ic-del{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linec
 .qx.qx3 .qx4-i small{display:flex !important;align-items:center;gap:5px;font-size:12.5px;color:#64748b;white-space:nowrap !important;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 .qx4-i small svg{width:13px;height:13px;flex:none}
 .qx4-i .ak-role{height:22px;font-size:11.5px}
+/* Tomonlar / Qo'shimcha tomonlar: ikki ustun pastki chizig'i bir tekisda */
+#tomonlar > .g2,#qtomonlar > .g2{align-items:stretch !important}
+#tomonlar > .g2 > .card,#qtomonlar > .g2 > .card{display:flex;flex-direction:column;height:100%}
+#tomonlar > .g2 > .card > .tp-list,#qtomonlar > .g2 > .card > .tp-list{flex:1 1 auto;height:332px;max-height:332px !important}
+#tomonlar > .g2 > .card > .tp-list:has(.pc-v2),#qtomonlar > .g2 > .card > .tp-list:has(.pc-v2){justify-content:flex-start}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
