@@ -3950,6 +3950,11 @@ body:has([aria-modal="true"]) .l-app .l-top{z-index:1 !important}
 .ume-idp .dx-list{max-height:260px}
 .ume-sec:has(.dx-sel.open){position:relative;z-index:46}
 .ume .dx-ddbg{z-index:45}
+/* Qarshi da'vo oynasi: taraf nomlari bir qatorda */
+@media (min-width:641px){.qv-parties{grid-template-columns:minmax(0,1fr) 60px minmax(0,1fr)}}
+.qv-pc{padding:16px}
+.qv-pid .kv{flex:1}
+.qv-pid b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -7409,13 +7414,13 @@ html[data-theme="dark"] .ds-host img{filter:none}
         <div class="qv-parties">
           <div class="qv-pc">
             <span class="qv-ptag a">Qarshi da'vogar</span>
-            <div class="qv-pid"><span class="qv-av a" aria-hidden="true">DS</span><div class="kv" style="gap: 2px; min-width: 0"><b>"Durable Slate Industry" MChJ</b><span class="qv-stir">STIR 306694399</span></div></div>
+            <div class="qv-pid"><span class="qv-av a" aria-hidden="true">DS</span><div class="kv" style="gap: 2px; min-width: 0"><b title="&quot;Durable Slate Industry&quot; MChJ">"Durable Slate Industry" MChJ</b><span class="qv-stir">STIR 306694399</span></div></div>
             <span class="qv-was"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h13l-3-3M17 17H4l3 3"></path></svg>Asosiy ishda — javobgar</span>
           </div>
           <div class="qv-link" aria-hidden="true"><span class="qv-linkline"></span><span class="qv-linkc"><svg class="i s" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span><small>talab qiladi</small></div>
           <div class="qv-pc">
             <span class="qv-ptag b">Qarshi javobgar</span>
-            <div class="qv-pid"><span class="qv-av b" aria-hidden="true">TS</span><div class="kv" style="gap: 2px; min-width: 0"><b>«Toshkent suv ta'minoti» AJ</b><span class="qv-stir">STIR 201577953</span></div></div>
+            <div class="qv-pid"><span class="qv-av b" aria-hidden="true">TS</span><div class="kv" style="gap: 2px; min-width: 0"><b title="«Toshkent suv ta'minoti» AJ">«Toshkent suv ta'minoti» AJ</b><span class="qv-stir">STIR 201577953</span></div></div>
             <span class="qv-was"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h13l-3-3M17 17H4l3 3"></path></svg>Asosiy ishda — da'vogar</span>
           </div>
         </div>
