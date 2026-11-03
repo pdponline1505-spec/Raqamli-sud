@@ -4978,7 +4978,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
 
           </article>
           </sc-for>
-          <button type="button" class="dx-cta" onClick="{{apcAddMore}}"><span class="dx-cta-ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><path d="M12 10v6M9 13h6"></path></svg></span><span class="dx-cta-t"><b>Yana shikoyat qilinayotgan ish qo'shish</b><small>{{apiNum}} · shu ish raqamining boshqa instansiyasi · ixtiyoriy</small></span><span class="dx-cta-jv"><span class="dx-cta-jn">{{apcCardsN}} tanlangan</span></span><span class="dx-cta-plus"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></span></button>
+          <button type="button" class="dx-cta" onClick="{{apcAddMore}}"><span class="dx-cta-ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><path d="M12 10v6M9 13h6"></path></svg></span><span class="dx-cta-t"><b>Yana shikoyat qilinayotgan ish qo'shish</b><small>Ro'yxatdan yana ish tanlang yoki raqam bo'yicha qidiring · ixtiyoriy</small></span><span class="dx-cta-jv"><span class="dx-cta-jn">{{apcCardsN}} tanlangan</span></span><span class="dx-cta-plus"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></span></button>
           <sc-if value="{{apsBlock}}" hint-placeholder-val="{{ false }}"><div class="qs-list" role="list" aria-label="Shikoyat bergan shaxslar">
             <div class="qs-lh"><span class="qs-lbl">Shikoyat bergan shaxslar</span><span class="dx-cnt">{{qsCnt}}</span></div>
             <div class="qs-tbl" role="table" aria-label="Shikoyat bergan shaxslar">
@@ -12044,7 +12044,10 @@ class Component extends DCLogic {
         Object.keys(bases).forEach(function (num) { var b = bases[num]; LOW.filter(function (l) { return l > 1; }).forEach(function (l) {
           var dt = addD(b.sana, 45 * (l - 1)), dl = IDOCS[l].map(function (x) { return { name: x[0], turi: x[1], ext: x[2].toUpperCase(), ftCls: dxFtCls(x[2]), size: x[3], date: dt }; });
           byNum[num + "@" + l] = Object.assign({}, b, { key: num + "@" + l, lvl: l, inst: LNAME[l], docs: dl, docN: dl.length, doc: IDOCS[l][1][0], docDate: dt }); }); });
-        var shown = q.length >= 2 ? all.filter(function (c) { return c.num.toLowerCase().replace(/\s/g, "").indexOf(q) >= 0; }) : [];
+        // "Yana qo'shish" bosilganda qidiruvsiz ham butun ro'yxat chiqadi (tanlanganlar tepada)
+        var pMore = !!(pk && pk.more);
+        var shown = q.length >= 2 ? all.filter(function (c) { return c.num.toLowerCase().replace(/\s/g, "").indexOf(q) >= 0; })
+          : pMore ? all.slice().sort(function (a, b) { return (items[b.key] ? 1 : 0) - (items[a.key] ? 1 : 0); }) : [];
         var SEL = s.apcSel || {};
         // bitta ishda bir nechta hujjat: { docs: [...], part } (eski { doc } ko'rinishi ham o'qiladi)
         var docsOf = function (it) { return !it ? [] : (it.docs && it.docs.length) ? it.docs.slice() : it.doc ? [it.doc] : []; };
@@ -12094,7 +12097,7 @@ class Component extends DCLogic {
               if (left.length) sel2[n] = Object.assign({}, SEL[n], { docs: left, doc: left[0] }); else { delete sel2[n]; rest = list.filter(function (x) { return x !== n; }); }
               self.setState(apply(rest, sel2)); self.flash(c.num + (cd.doc ? " · " + cd.doc : "") + " ro'yxatdan olib tashlandi"); } }; });
         // ---- tanlash oynasi ----
-        var openPick = function () { var its = {}; list.forEach(function (k) { its[k] = Object.assign({}, SEL[k] || {}); }); self.setState({ apcPick: { items: its, q: "", cur: "" }, dxDd: "" }); };
+        var openPick = function (more) { var its = {}; list.forEach(function (k) { its[k] = Object.assign({}, SEL[k] || {}); }); self.setState({ apcPick: { items: its, q: "", cur: "", more: more === true }, dxDd: "" }); };
         // ---- "Yana qo'shish": faqat shu ish raqami, boshqa (quyi) instansiya ----
         var apiNums = []; list.forEach(function (k) { var b = baseOf(k); if (apiNums.indexOf(b) < 0) apiNums.push(b); });
         var keyFor = function (num, l) { if (l > 1) return num + "@" + l; return list.filter(function (k) { return baseOf(k) === num && k.indexOf("@") < 0; })[0] || (byNum[num] ? num : num + "#0"); };
@@ -12110,7 +12113,7 @@ class Component extends DCLogic {
         __out.apiOpen = function () { self.setState({ apiPick: true, dxDd: "" }); };
         __out.apiClose = function () { self.setState({ apiPick: null }); };
         __out.apiKey = function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ apiPick: null }); } };
-        __out.apcOpen = openPick; __out.apcAddMore = __out.apiOpen;
+        __out.apcOpen = function () { openPick(false); }; __out.apcAddMore = function () { openPick(true); };
         // tanlash oynasidan to'g'ridan-to'g'ri formaga yozish (instansiya oqimi)
         var commit = function (its) { var keys = list.filter(function (k) { return its[k]; }).concat(Object.keys(its).filter(function (k) { return list.indexOf(k) < 0 && byNum[k]; }));
           self.setState(apply(keys, its, { apcPick: null })); };
@@ -12134,10 +12137,10 @@ class Component extends DCLogic {
             key: function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openDrw(c.key); } },
             pick: function () { openDrw(c.key); } }; });
         __out.apcDdOpen2 = false;
-        __out.apcEmpty = !shown.length && q.length >= 2; __out.apcAsk = q.length < 2;
+        __out.apcEmpty = !shown.length && q.length >= 2; __out.apcAsk = q.length < 2 && !pMore;
         var nSel = Object.keys(items).length, nCards = Object.keys(items).reduce(function (a, k) { return a + Math.max(1, docsOf(items[k]).length); }, 0);
         __out.apcNoSel = !nSel;
-        __out.apcCount = nSel ? nCards + " ta ish tanlandi" + (nCards > nSel ? " (" + nSel + " ta ish raqamidan)" : "") + " · har birida hujjat va qism belgilangan" : (q.length >= 2 ? shown.length + " ta ish topildi · ishni bosib hujjatlarini tanlang" : "Ish raqamini kiriting");
+        __out.apcCount = nSel ? nCards + " ta ish tanlandi" + (nCards > nSel ? " (" + nSel + " ta ish raqamidan)" : "") + " · har birida hujjat va qism belgilangan" : (q.length >= 2 ? shown.length + " ta ish topildi · ishni bosib hujjatlarini tanlang" : pMore ? shown.length + " ta ish · qo'shimcha ishni tanlang yoki raqam bo'yicha qidiring" : "Ish raqamini kiriting");
         __out.apcSaveLbl = nSel ? "Tanlash (" + nCards + ")" : "Tanlash";
         __out.apcSave = function () { var w = self.state.apcPick; if (!w) return; var keys = Object.keys(w.items || {}).filter(function (k) { return byNum[k]; });
           if (!keys.length) { self.flash("Kamida bitta ishni tanlang"); return; }
