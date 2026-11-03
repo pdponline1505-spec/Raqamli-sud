@@ -3967,6 +3967,7 @@ body:has([aria-modal="true"]) .l-app .l-top{z-index:1 !important}
 .qv-av.sm{width:34px;height:34px;font-size:12px;border-radius:10px}
 .qv-side{flex:none;font-size:12px;color:#475569;padding:0 8px;height:22px;display:inline-flex;align-items:center;border-radius:999px;background:#f1f5f9}
 .qv-side:empty{display:none}
+.qv-judge small,.qv-file small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
 .qv-stir:empty{display:none}
 /* Qarshi da'volar: shikoyat bergan shaxslar ro'yxati */
 .qx-fil{display:flex;flex-direction:column;border:1px solid #e6ebf3;border-radius:12px;background:#fff;overflow:hidden}
@@ -7457,11 +7458,11 @@ html[data-theme="dark"] .ds-host img{filter:none}
       <div class="qv-two">
         <div class="qv-sec">
           <span class="qv-lbl">Mas'ul sudya</span>
-          <div class="qv-card qv-judge"><img src="{{drawer.sudyaPhoto}}" alt=""><div class="kv" style="gap: 2px; min-width: 0"><b>{{drawer.sudya}}</b><small>Birinchi instansiya</small></div></div>
+          <div class="qv-card qv-judge"><img src="{{drawer.sudyaPhoto}}" alt=""><div class="kv" style="gap: 2px; min-width: 0"><b>{{drawer.sudya}}</b><small>{{drawer.sudyaSub}}</small></div></div>
         </div>
         <div class="qv-sec">
           <span class="qv-lbl">Ariza</span>
-          <div class="qv-card qv-file"><span class="dx-ft">PDF</span><div class="kv" style="gap: 2px; min-width: 0; flex: 1"><b title="{{drawer.ariza}}">{{drawer.ariza}}</b><small>{{drawer.arizaSize}}</small></div><button class="ib" aria-label="Arizani ko'rish" onClick="{{soon}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button><button class="ib" aria-label="Arizani yuklab olish" onClick="{{drawer.dl}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg></button></div>
+          <div class="qv-card qv-file"><span class="dx-ft">PDF</span><div class="kv" style="gap: 2px; min-width: 0; flex: 1"><b title="{{drawer.ariza}}">{{drawer.ariza}}</b><small title="Devonxonada yuklangan">{{drawer.arizaSize}} · Devonxonadan</small></div><button class="ib" aria-label="Arizani ko'rish" onClick="{{soon}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button><button class="ib" aria-label="Arizani yuklab olish" onClick="{{drawer.dl}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg></button></div>
         </div>
       </div>
     </div>
@@ -9210,7 +9211,7 @@ class Component extends DCLogic {
     var dq = s.drawer ? qCase.filter(function (y) { return y.id === s.drawer; })[0] : null;
     var drawer = dq ? Object.assign(qParty(dq), {
       num: dq.num, kirim: dq.kirim, kirimDate: dq.kirimDate, arrived: dq.kirimDate, sum: dq.sum, via: dq.via,
-      dateOnly: (dq.kirimDate || "").split(" ")[0], sudya: dq.sudya || "Tojiyev Zokirjon Xolboyevich", sudyaPhoto: portrait(dq.sudya || "Tojiyev Zokirjon Xolboyevich", "Erkak"),
+      dateOnly: (dq.kirimDate || "").split(" ")[0], sudya: (s.um && s.um.sudya) || "—", sudyaPhoto: portrait((s.um && s.um.sudya) || "", "Erkak"), sudyaSub: "Asosiy ishning mas'ul sudyasi",
       progPct: dq.st === "qabul" ? "100%" : (dq.st === "korildi" ? "100%" : (dq.st === "korib" ? "66%" : "33%")),
       progTxt: dq.st === "qabul" ? "4 / 4" : (dq.st === "korib" ? "3 / 4" : (dq.st === "korildi" ? "4 / 4" : "2 / 4")),
       progNote: dq.st === "qabul" ? "Ish yuritishga qabul qilingan" : (dq.st === "korildi" ? "Ko'rib chiqish yakunlangan" : "Keyingi qadam: ish yuritishga qabul qilish"),
