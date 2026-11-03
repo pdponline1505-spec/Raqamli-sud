@@ -3977,6 +3977,8 @@ body:has([aria-modal="true"]) .l-app .l-top{z-index:1 !important}
 .qx-fr small{font-size:12px;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
 .qx-fav{width:36px;height:36px;border-radius:10px;object-fit:cover;object-position:center 20%;flex:none;background:#e2e8f0}
 .qx-fr .ak-role,.qv-fr .ak-role{flex:none;height:24px;font-size:12px}
+/* Apellyatsiya: umumiy shikoyat bergan shaxslar */
+.aps-empty{min-height:0 !important;display:block !important;text-align:left;padding:14px 16px;border:1.5px dashed #cbd5e1;border-radius:12px;color:#64748b;font-size:13.5px;background:#fbfcfe}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -4959,26 +4961,41 @@ html[data-theme="dark"] .ds-host img{filter:none}
               <div class="apb-p"><span class="apb-l">Javobgar · {{c.jvN}}</span><span class="row" style="gap: 8px"><span class="dx-avs"><sc-for list="{{c.javAv}}" as="a" hint-placeholder-count="1"><img src="{{a}}" alt=""></sc-for></span><span class="pp-wrap"><b>{{c.jvFirst}}</b><sc-if value="{{c.jvPP.more}}" hint-placeholder-val="{{ false }}"><button type="button" class="pp-more" aria-haspopup="dialog" aria-expanded="{{c.jvPP.str}}" aria-label="Barcha javobgarlar" onClick="{{c.jvPP.toggle}}">{{c.jvPP.txt}}</button></sc-if><sc-if value="{{c.jvPP.open}}" hint-placeholder-val="{{ false }}"><button type="button" class="pp-bg" tabindex="-1" aria-label="Yopish" onClick="{{c.jvPP.close}}"></button><span class="pp-pop" style="top: {{c.jvPP.top}}px; left: {{c.jvPP.left}}px" role="dialog" aria-label="Javobgarlar"><span class="pp-h">Javobgarlar · {{c.jvPP.n}} ta</span><sc-for list="{{c.jvPP.all}}" as="x" hint-placeholder-count="2"><span class="pp-it"><img src="{{x.photo}}" alt=""><span class="kv" style="gap: 0; min-width: 0"><b>{{x.name}}</b><small>{{x.sub}}</small></span></span></sc-for></span></sc-if></span></span></div>
               <div class="apb-p"><span class="apb-l">Ish hujjatlari</span><span class="row" style="gap: 6px"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"></path><path d="M14 3v4h4M9 13h6M9 17h6"></path></svg><b>{{c.docN}} ta</b></span></div>
             </footer>
-            <div class="ak-in">
-              <div class="ak-in-h"><h4 class="ak-in-t"><span>Shikoyat bergan shaxs</span> <span class="dx-tag req">Majburiy</span></h4><div class="row" style="gap: 10px; align-items: center"><sc-if value="{{c.akCanAll}}" hint-placeholder-val="{{ false }}"><button type="button" class="apd-all" onClick="{{c.akAll}}">Barcha kartochkalarga qo'llash</button></sc-if><sc-if value="{{c.akEmpty}}" hint-placeholder-val="{{ true }}"><button type="button" class="btn sm" onClick="{{c.akDd.toggle}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v8M8 12h8"></path></svg>Qo'shish</button></sc-if></div></div>
-              <span class="{{c.akDd.cls}} ak-pick" id="{{c.akDd.id}}" onKeyDown="{{c.akDd.kd}}">
-                <sc-if value="{{c.akEmpty}}" hint-placeholder-val="{{ true }}"><div class="dx-empty ak-empty" style="border-color: {{c.akDd.bc}}"><button type="button" class="dx-plus" aria-haspopup="listbox" aria-expanded="{{c.akDd.exp}}" aria-label="Shikoyat bergan shaxs qo'shish · {{c.docName}}" onClick="{{c.akDd.toggle}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button><b>Shikoyat bergan shaxs qo'shish</b><small>Da'vogar, javobgar, prokuror yoki boshqa shaxsni tanlang</small></div></sc-if>
-                <sc-if value="{{c.akSel}}" hint-placeholder-val="{{ false }}"><div class="ak-card">
-                  <sc-if value="{{c.akPP.hasPhoto}}" hint-placeholder-val="{{ true }}"><img class="ak-ph" src="{{c.akPP.photo}}" alt="{{c.akPP.name}}"></sc-if>
-                  <sc-if value="{{c.akPP.isPro}}" hint-placeholder-val="{{ false }}"><span class="ak-ph ak-ph-ic" aria-hidden="true"><svg class="i" style="width: 26px; height: 26px" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg></span></sc-if>
-                  <div class="kv" style="gap: 6px; min-width: 0; flex: 1"><div class="row" style="gap: 8px; flex-wrap: wrap; align-items: center"><b class="ak-nm">{{c.akPP.name}}</b><span class="{{c.akPP.roleCls}}">{{c.akPP.role}}</span></div>
-                    <dl class="ak-meta"><div><dt>JSHSHIR</dt><dd>{{c.akPP.jsh}}</dd></div><div><dt>Tug'ilgan sana</dt><dd>{{c.akPP.birth}}</dd></div><div><dt>{{c.akPP.srcL}}</dt><dd>{{c.akPP.src}}</dd></div></dl></div>
-                  <div class="row" style="gap: 6px; align-items: center"><button type="button" class="btn sm" aria-haspopup="listbox" aria-expanded="{{c.akDd.exp}}" onClick="{{c.akDd.toggle}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"></path></svg>O'zgartirish</button><button type="button" class="ib apb-del" title="Tanlovni bekor qilish" aria-label="Shikoyat bergan shaxsni olib tashlash" onClick="{{c.akRemove}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"></path></svg></button></div>
-                </div></sc-if>
-                <sc-if value="{{c.akDd.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu ak-menu" role="listbox" onClick="{{c.akDd.stop}}"><sc-for list="{{c.akDd.opts}}" as="o" hint-placeholder-count="4"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if>
-              </span>
-              <sc-if value="{{c.akErrOn}}" hint-placeholder-val="{{ false }}"><small class="dx-err" style="margin: 0">Shikoyat bergan shaxsni tanlang</small></sc-if>
-            </div>
+
           </article>
           </sc-for>
           <button type="button" class="dx-cta" onClick="{{apcAddMore}}"><span class="dx-cta-ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><path d="M12 10v6M9 13h6"></path></svg></span><span class="dx-cta-t"><b>Yana shikoyat qilinayotgan ish qo'shish</b><small>{{apiNum}} · shu ish raqamining boshqa instansiyasi · ixtiyoriy</small></span><span class="dx-cta-jv"><span class="dx-cta-jn">{{apcCardsN}} tanlangan</span></span><span class="dx-cta-plus"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></span></button>
         </div></div></sc-if>
       </section>
+      <sc-if value="{{apsShow}}" hint-placeholder-val="{{ false }}">
+      <section class="dx-sec aps-sec" style="border-color: {{qsBorder}}">
+        <div class="dx-h"><h3><span class="dx-ht">Shikoyat bergan shaxslar</span> <span class="dx-tag req">Majburiy</span></h3><sc-if value="{{apsCta}}" hint-placeholder-val="{{ false }}"><span class="qs-cta qs-cta-h" onKeyDown="{{qsKey}}"><button type="button" class="btn sm qs-hbtn" aria-haspopup="dialog" aria-expanded="{{qsMenuStr}}" onClick="{{qsToggle}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v8M8 12h8"></path></svg>Shikoyat bergan shaxs qo'shish<svg class="i s qs-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{qsMenuOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="qs-mbg" tabindex="-1" aria-label="Menyuni yopish" onClick="{{qsClose}}"></button><span class="qs-menu" role="dialog" aria-label="Shikoyat bergan shaxsni tanlash">
+  <label class="qs-q"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><input type="search" placeholder="F.I.Sh., lavozim yoki tashkilot bo'yicha qidiring" aria-label="Shaxslarni qidirish" autofocus="{{ true }}" value="{{qsQv}}" onChange="{{qsSetQ}}"></label>
+  <span class="qs-sec-h">Tayyor shaxslar <span class="dx-cnt">{{qsReadyCnt}}</span></span>
+  <span class="qs-scroll" role="listbox" aria-label="Tayyor shaxslar"><sc-for list="{{qsReady}}" as="r" hint-placeholder-count="4"><button type="button" role="option" aria-selected="{{r.added}}" class="{{r.cls}}" disabled="{{r.dis}}" onClick="{{r.pick}}"><img src="{{r.photo}}" alt=""><span class="kv" style="gap: 1px; min-width: 0; flex: 1; text-align: left"><b>{{r.name}}</b><small>{{r.org}}</small></span><span class="{{r.tagCls}}">{{r.role}}</span><sc-if value="{{r.added}}" hint-placeholder-val="{{ false }}"><svg class="i s qs-tick" viewBox="0 0 24 24" aria-label="Qo'shilgan"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for>
+    <sc-if value="{{qsReadyNone}}" hint-placeholder-val="{{ false }}"><span class="qs-none">Hech kim topilmadi · pastdan yangi shaxs qo'shing</span></sc-if></span>
+  <span class="qs-new"><button type="button" class="qs-newb" onClick="{{qsNewBoshqa}}"><span class="qs-newi" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24"><circle cx="10" cy="8" r="4"></circle><path d="M3 21a7 7 0 0 1 14 0M19 8v6M16 11h6"></path></svg></span><span class="kv" style="gap: 0; text-align: left"><b>Yangi shaxs qo'shish</b><small>Ro'yxatda yo'q bo'lsa · pasport, JSHSHIR yoki STIR bo'yicha</small></span></button></span>
+</span></sc-if></span></sc-if></div>
+        <div class="dx-b" style="display: flex; flex-direction: column; gap: 12px">
+          <small class="muted">{{apsHint}}</small>
+          <sc-if value="{{apsNone}}" hint-placeholder-val="{{ true }}"><div class="dx-empty aps-empty"><span>Shikoyat bergan shaxs qo'shilmagan · yuqoridagi «Shikoyat bergan shaxs qo'shish» tugmasi orqali tomonlar, tayyor shaxslar yoki yangi shaxsni qo'shing</span></div></sc-if>
+          <sc-if value="{{apsBlock}}" hint-placeholder-val="{{ false }}"><div class="qs-list" role="list" aria-label="Shikoyat bergan shaxslar">
+            <div class="qs-lh"><span class="qs-lbl">Shikoyat bergan shaxslar</span><span class="dx-cnt">{{qsCnt}}</span></div>
+            <div class="qs-tbl" role="table" aria-label="Shikoyat bergan shaxslar">
+              <div class="qs-tr qs-th" role="row"><span role="columnheader">Shaxs</span><span role="columnheader">Tug'ilgan sana</span><span role="columnheader">Tashkilot / holati</span><span role="columnheader">Tarafi <b class="dx-req">*</b></span><span role="columnheader" aria-label="Amallar"></span></div>
+              <sc-for list="{{qsList}}" as="p" hint-placeholder-count="2"><div class="{{p.trCls}}" role="row">
+                <span class="qs-c1" role="cell"><img class="qs-av" src="{{p.photo}}" alt="{{p.name}}"><span class="kv" style="gap: 4px; min-width: 0"><b class="qs-nmb">{{p.name}}</b><span class="{{p.roleCls}}">{{p.role}}</span></span></span>
+                <span class="qs-cv" role="cell">{{p.birth}}</span>
+                <span class="qs-cv qs-org" role="cell">{{p.org}}</span>
+                <span role="cell"><div class="qs-side2"><sc-if value="{{p.sideLocked}}" hint-placeholder-val="{{ false }}"><span class="{{p.chipCls}}" title="Tizimdagi maqomi · o'zgartirib bo'lmaydi"><span class="qs-cdot" aria-hidden="true"></span>{{p.sideLbl}}<svg class="i s qs-cic" viewBox="0 0 24 24" aria-label="Tizimdan · o'zgartirib bo'lmaydi"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg></span></sc-if><sc-if value="{{p.sideFree}}" hint-placeholder-val="{{ true }}"><span class="{{p.sideDd.cls}} qs-cwrap" id="{{p.sideDd.id}}" onKeyDown="{{p.sideDd.kd}}"><button type="button" class="{{p.chipCls}}" aria-haspopup="listbox" aria-expanded="{{p.sideDd.exp}}" aria-label="{{p.name}} — tarafi" onClick="{{p.sideDd.toggle}}"><sc-if value="{{p.hasSide}}" hint-placeholder-val="{{ true }}"><span class="qs-cdot" aria-hidden="true"></span></sc-if><sc-if value="{{p.noSide}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></sc-if>{{p.sideTxt}}<svg class="i s qs-cic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{p.sideDd.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu qs-cmenu" role="listbox" onClick="{{p.sideDd.stop}}"><span class="qs-cmh">Shikoyat bergan shaxsning tarafi</span><sc-for list="{{p.sideOpts}}" as="o" hint-placeholder-count="5"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><span class="{{o.dotCls}}" aria-hidden="true"></span><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></sc-if></div></span>
+                <span role="cell" class="qs-ca"><button type="button" class="ib apb-del" title="Olib tashlash" aria-label="{{p.name}} — olib tashlash" onClick="{{p.remove}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"></path></svg></button></span>
+              </div></sc-for>
+            </div>
+          </div></sc-if>
+          <sc-if value="{{qsErr}}" hint-placeholder-val="{{ false }}"><small class="dx-err" style="margin: 0">{{qsErrTxt}}</small></sc-if>
+        </div>
+      </section>
+      </sc-if>
       </sc-if>
       <sc-if value="{{dxNotAp}}" hint-placeholder-val="{{ true }}">
       
@@ -7867,7 +7884,7 @@ function dxMissing(st) {
     idora: d.idoraOn && !d.idPick, dv: d.inst !== "Qarshi da'vo" && !st.dxDv.length, jv: d.inst !== "Qarshi da'vo" && !st.dxJv.length, apc: !!d.inst && d.inst !== "Birinchi instansiya" && d.inst !== "Qarshi da'vo" && !(st.apcs && st.apcs.length), apcPart: !!d.inst && d.inst !== "Birinchi instansiya" && d.inst !== "Qarshi da'vo" && (st.apcs || []).some(function (k) { var it = (st.apcSel || {})[k]; return !it || !it.doc || !it.part; }),
     qd: d.inst === "Qarshi da'vo" && !st.qdNum,
     qdShk: d.inst === "Qarshi da'vo" && !((st.qdShk || []).length > 0 && (st.qdShk || []).every(function (p) { return !!p.side; })),
-    apShk: !!d.inst && d.inst !== "Birinchi instansiya" && d.inst !== "Qarshi da'vo" && !(function () { var a = st.ap || {}, t = a.shk || ""; if (true) { var ids = []; (st.apcs || []).forEach(function (n) { var it = (st.apcSel || {})[n] || {}, dl = it.docs && it.docs.length ? it.docs : it.doc ? [it.doc] : [""]; dl.forEach(function (dn) { ids.push(n + "|" + dn); }); }); return ids.length > 0 && ids.every(function (id) { return !!(a.map || {})[id]; }); } return t === "pro" ? !!a.pro : t === "boshqa" ? (st.apShk || []).length > 0 : t.indexOf("p:") === 0 ? (t.charAt(2) === "d" ? st.dxDv : st.dxJv).some(function (p) { return p.name === t.slice(5); }) : false; })(),
+    apShk: !!d.inst && d.inst !== "Birinchi instansiya" && d.inst !== "Qarshi da'vo" && !((st.apShk || []).length > 0 && (st.apShk || []).every(function (p) { return !!p.side; })),
     im: !d.im.length || dxImDirty(d), mazmun: !d.mazmun.trim(), ariza: !(d.ariza && d.ariza.prog >= 100) };
 }
 function dxExt(name) { var m = /\.([a-z0-9]+)$/i.exec(name || ""); return m ? m[1].toLowerCase() : ""; }
@@ -9888,7 +9905,7 @@ class Component extends DCLogic {
           self.flash(p0.name + " tanlandi");
           return;
         }
-        if (key === "qdShk") add = add.map(function (x) { return Object.assign({ kind: st.qdKind || "boshqa", side: "" }, x); });
+        if (key === "qdShk" || key === "apShk") add = add.map(function (x) { return Object.assign({ kind: st.qdKind || "boshqa", side: "" }, x); });
         var o = { tmModal: "" }; o[key] = (key === "qdShkP" || key === "qdShkPro") ? add.slice(0, 1) : (st[key] || []).concat(add);
         if (key === "apShk" && st.akTarget) { var a0 = Object.assign({}, st.ap), m0 = Object.assign({}, a0.map || {}); m0[st.akTarget] = "bs:" + add[0].id; a0.map = m0; o.ap = a0; o.akTarget = ""; }
         self.setState(o);
@@ -12193,13 +12210,15 @@ class Component extends DCLogic {
         __out.qdCanFill = !!qdCase && !(s.dxDv || []).length && !(s.dxJv || []).length;
         __out.qdRemove = function () { self.setState({ qdNum: "" }); self.flash("Asosiy ish olib tashlandi · tomonlar o'zgarishsiz qoldi"); };
         // ---- Qarshi da'vo: shikoyat bergan shaxslar (bir nechta) · har biri uchun turi va tarafi ----
-        var qList = s.qdShk || [], qErrOn = !!s.dxErr && isQd;
+        // shikoyat bergan shaxslar: qarshi da'voda — qdShk, apellyatsiya/kassatsiyada — barcha tanlangan ishlar uchun umumiy apShk
+        var shkKey = higher ? "apShk" : "qdShk", shkMode = isQd || higher;
+        var qList = s[shkKey] || [], qErrOn = !!s.dxErr && shkMode;
         var qNoSide = qList.filter(function (p) { return !p.side; }).length;
         var qErr = qErrOn && (!qList.length || qNoSide > 0);
         __out.qsBorder = qErr ? "#dc2626" : ""; __out.qsErr = qErr;
         __out.qsErrTxt = !qList.length ? "Kamida bitta shikoyat bergan shaxsni qo'shing" : qNoSide + " ta shaxsning tarafi tanlanmagan";
         __out.qsDd = dd("qs-t", [{ v: "boshqa", l: "Boshqa shaxs", sub: "Ishda ishtirok etmagan shaxs" }, { v: "pro", l: "Prokuror", sub: "Prokuratura vakili" }], "",
-          function (e) { var v = e.target.value; self.setState({ qdKind: v }); openTm("qdShk")(); }, { ph: "Tanlang", noSplit: true });
+          function (e) { var v = e.target.value; self.setState({ qdKind: v }); openTm(shkKey)(); }, { ph: "Tanlang", noSplit: true });
         __out.qsCtaType = isQd && !!qdCase;
         // ---- "Shikoyat bergan shaxs qo'shish" menyusi: qidiruv + tayyor shaxslar + yangi qo'shish ----
         var READY = [
@@ -12214,9 +12233,14 @@ class Component extends DCLogic {
         // tepada "Manfaatida idora" bo'limida tanlangan tashkilot — tayyor shaxslar ro'yxatining boshida chiqadi
         var qsDx = s.dx || {}, qsIdo = qsDx.idoraOn && qsDx.idPick ? DX_ALL.filter(function (o) { return o.id === qsDx.idPick; })[0] || null : null;
         var ORG_IC = "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#e0f2fe"/><path d="M14 33h20M16 33V22M21 33V22M27 33V22M32 33V22M13 22l11-7 11 7z" fill="none" stroke="#0369a1" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+        if (higher) { var seenP = {}, caseP = [];
+          cards.forEach(function (cd) { var c = byNum[cd.n]; if (!c) return; var nn = cd.n.split("#")[0].split("@")[0];
+            [["dv", "Da'vogar"], ["jv", "Javobgar"]].forEach(function (sd) { (c[sd[0]] || []).forEach(function (pp) { if (seenP[pp.name]) return; seenP[pp.name] = 1; caseP.push([pp.name, pp.gender || "Erkak", "boshqa", sd[1], nn + " · shikoyat qilinayotgan ish"]); }); }); });
+          READY = caseP.concat(READY); }
+        var nPre = (qsIdo ? 1 : 0);
         if (qsIdo) READY = [[qsIdo.name, "", "idora", "Manfaatdor idora", [qsIdo.turi, qsIdo.tum || qsIdo.vil || qsIdo.resp].filter(Boolean).join(" · "), qsIdo]].concat(READY);
         var qsQ = (s.qsQ || "").trim().toLowerCase();
-        __out.qsMenuOpen = !!s.qsOpen && isQd;
+        __out.qsMenuOpen = !!s.qsOpen && shkMode;
         __out.qsMenuStr = __out.qsMenuOpen ? "true" : "false";
         __out.qsToggle = function () { self.setState({ qsOpen: !self.state.qsOpen, qsQ: "", dxDd: "" }); };
         __out.qsClose = function () { self.setState({ qsOpen: false, qsQ: "" }); };
@@ -12224,32 +12248,34 @@ class Component extends DCLogic {
         __out.qsQv = s.qsQ || "";
         __out.qsSetQ = function (e) { self.setState({ qsQ: e.target.value }); };
         var readyRows = READY.map(function (r, k) { return { r: r, k: k }; }).filter(function (x) { var r = x.r; return !qsQ || (r[0] + " " + r[3] + " " + r[4]).toLowerCase().indexOf(qsQ) >= 0; });
-        __out.qsReady = readyRows.map(function (x) { var r = x.r, k = x.k - (qsIdo ? 1 : 0), added = qList.some(function (p) { return p.name === r[0]; }), isOrg = r[2] === "idora";
-          return { name: r[0], photo: isOrg ? ORG_IC : portrait(r[0], r[1]), role: r[3], org: r[4], tagCls: "ak-role " + (isOrg ? "qorg" : r[2] === "pro" ? "pro" : "bs"), added: added, notAdded: !added, cls: "qs-opt" + (isOrg ? " qorg" : "") + (added ? " on" : ""), dis: added,
+        __out.qsReady = readyRows.map(function (x) { var r = x.r, k = x.k - nPre, added = qList.some(function (p) { return p.name === r[0]; }), isOrg = r[2] === "idora";
+          return { name: r[0], photo: isOrg ? ORG_IC : portrait(r[0], r[1]), role: r[3], org: r[4], tagCls: "ak-role " + (isOrg ? "qorg" : r[2] === "pro" ? "pro" : r[3] === "Da'vogar" ? "dv" : r[3] === "Javobgar" ? "jv" : "bs"), added: added, notAdded: !added, cls: "qs-opt" + (isOrg ? " qorg" : "") + (added ? " on" : ""), dis: added,
             pick: function () { if (added) return;
               if (isOrg) { var o = r[5], po = { id: "ido-" + o.id + "-" + Date.now(), name: o.name, kind: "idora", isOrg: true, role2: "Manfaatdor idora", org: r[4] || o.turi || "", stir: o.stir, side: "", sideLocked: false };
-                self.setState({ qdShk: (self.state.qdShk || []).concat([po]), qsOpen: false, qsQ: "" }); self.flash(o.name + " qo'shildi · tarafini tanlang"); return; }
-              var pp = tmPerson(900 + k, r[0], bd(k + 2), r[1]); pp.id = "rd" + k + "-" + Date.now(); pp.kind = r[2]; pp.role2 = r[3]; pp.org = r[4]; pp.side = ({ "Prokuror": "pro", "Advokat": "adv", "Ishonchli vakil": "vakil", "Uchinchi shaxs": "uch" })[r[3]] || ""; pp.sideLocked = !!pp.side;
-              self.setState({ qdShk: (self.state.qdShk || []).concat([pp]), qsOpen: false, qsQ: "" }); self.flash(r[0] + " qo'shildi" + (pp.sideLocked ? " · tarafi tizimdan olindi" : " · tarafini tanlang")); } }; });
+                var o1 = { qsOpen: false, qsQ: "" }; o1[shkKey] = (self.state[shkKey] || []).concat([po]); self.setState(o1); self.flash(o.name + " qo'shildi · tarafini tanlang"); return; }
+              var pp = tmPerson(900 + k, r[0], bd(k + 2), r[1]); pp.id = "rd" + k + "-" + Date.now(); pp.kind = r[2]; pp.role2 = r[3]; pp.org = r[4]; pp.side = ({ "Prokuror": "pro", "Advokat": "adv", "Ishonchli vakil": "vakil", "Uchinchi shaxs": "uch", "Da'vogar": "dv", "Javobgar": "jv" })[r[3]] || ""; pp.sideLocked = !!pp.side;
+              var o2 = { qsOpen: false, qsQ: "" }; o2[shkKey] = (self.state[shkKey] || []).concat([pp]); self.setState(o2); self.flash(r[0] + " qo'shildi" + (pp.sideLocked ? " · tarafi tizimdan olindi" : " · tarafini tanlang")); } }; });
         __out.qsReadyHas = readyRows.length > 0; __out.qsReadyNone = !readyRows.length;
         __out.qsReadyCnt = readyRows.length + " ta";
-        __out.qsNewBoshqa = function () { self.setState({ qsOpen: false, qsQ: "", qdKind: "boshqa" }); openTm("qdShk")(); };
-        __out.qsNewPro = function () { self.setState({ qsOpen: false, qsQ: "", qdKind: "pro" }); openTm("qdShk")(); };
+        __out.qsNewBoshqa = function () { self.setState({ qsOpen: false, qsQ: "", qdKind: "boshqa" }); openTm(shkKey)(); };
+        __out.qsNewPro = function () { self.setState({ qsOpen: false, qsQ: "", qdKind: "pro" }); openTm(shkKey)(); };
         __out.qsBlock = isQd && !!qdCase && qList.length > 0;
+        __out.apsShow = higher; __out.apsCta = higher && cards.length > 0; __out.apsBlock = higher && qList.length > 0; __out.apsNone = higher && !qList.length;
+        __out.apsHint = cards.length ? "Shikoyat bergan shaxs barcha tanlangan ishlar uchun umumiy — bitta yoki bir nechta bo'lishi mumkin" : "Avval shikoyat qilinayotgan ishni tanlang";
         __out.qsCnt = qList.length + " ta";
         var SIDES = [{ v: "dv", l: "Da'vogar", sub: "Asosiy ishdagi da'vogar" }, { v: "jv", l: "Javobgar", sub: "Asosiy ishdagi javobgar" },
           { v: "fdv", l: "Fuqaroviy da'vogar", sub: "Fuqaroviy da'vo bildirgan shaxs" }, { v: "fjv", l: "Fuqaroviy javobgar", sub: "Fuqaroviy da'vo bo'yicha javobgar" },
           { v: "vakil", l: "Ishonchli vakil", sub: "Ishonchnoma asosida" }, { v: "adv", l: "Advokat", sub: "Order asosida" }, { v: "uch", l: "Uchinchi shaxs", sub: "Ishda ishtirok etuvchi uchinchi shaxs" }, { v: "pro", l: "Prokuror", sub: "Prokuratura vakili" }];
         __out.qsList = qList.map(function (p, i) { var pro = p.kind === "pro", org = !!p.isOrg;
-          var sd = dd("qs-side-" + i, SIDES, p.side || "", function (e) { var v = e.target.value; self.setState(function (prev) { return { qdShk: (prev.qdShk || []).map(function (x) { return x.id === p.id ? Object.assign({}, x, { side: v }) : x; }) }; }); },
+          var sd = dd("qs-side-" + i, SIDES, p.side || "", function (e) { var v = e.target.value; self.setState(function (prev) { var o3 = {}; o3[shkKey] = (prev[shkKey] || []).map(function (x) { return x.id === p.id ? Object.assign({}, x, { side: v }) : x; }); return o3; }); },
             { ph: "Tarafini tanlang", noSplit: true, bc: qErrOn && !p.side ? "#dc2626" : "" });
           return { name: p.name, photo: org ? ORG_IC : portrait(p.name, p.gender), jsh: org ? (p.stir || "—") : (p.jshshir || "—"), birth: org ? "STIR " + (p.stir || "—") : (p.birth ? isoToUz(p.birth) : "—"),
-            role: p.role2 || (pro ? "Prokuror" : "Boshqa shaxs"), roleCls: "ak-role " + (org ? "qorg" : pro ? "pro" : "bs"), holat: org ? "Manfaatida idora" : pro ? "Prokuratura vakili" : "Ishda ishtirok etmagan",
+            role: p.role2 || (pro ? "Prokuror" : "Boshqa shaxs"), roleCls: "ak-role " + (org ? "qorg" : pro ? "pro" : p.role2 === "Da'vogar" ? "dv" : p.role2 === "Javobgar" ? "jv" : "bs"), holat: org ? "Manfaatida idora" : pro ? "Prokuratura vakili" : "Ishda ishtirok etmagan",
             sideDd: sd, org: p.org || (pro ? "Prokuratura vakili" : "Ishda ishtirok etmagan"), trCls: "qs-tr" + (qErrOn && !p.side ? " err" : ""), sideErr: qErrOn && !p.side, sideLocked: !!p.sideLocked, sideFree: !p.sideLocked, sideLbl: (SIDES.filter(function (o) { return o.v === p.side; })[0] || { l: "—" }).l,
             sideTxt: p.side ? (SIDES.filter(function (o) { return o.v === p.side; })[0] || { l: "—" }).l : "Tarafini tanlang", sideIcCls: "qs-tic " + (p.side || "none"),
             chipCls: "qs-chip " + (p.side || "none") + (p.sideLocked ? " lock" : "") + (qErrOn && !p.side ? " err" : ""), hasSide: !!p.side, noSide: !p.side,
             sideOpts: sd.opts.map(function (o, k) { return Object.assign({}, o, { dotCls: "qs-odot " + (SIDES[k] || {}).v }); }), rowCls: "qs-row" + (qErrOn && !p.side ? " err" : ""),
-            remove: function () { self.setState({ qdShk: (self.state.qdShk || []).filter(function (x) { return x.id !== p.id; }) }); } }; });
+            remove: function () { var o4 = {}; o4[shkKey] = (self.state[shkKey] || []).filter(function (x) { return x.id !== p.id; }); self.setState(o4); } }; });
         // ---- shikoyat bergan shaxs (yuqori instansiya) · faqat bitta shaxs ----
         var ak = s.ap || {}, akT = ak.shk || "", akDv = s.dxDv || [], akJv = s.dxJv || [];
         var setAk = function (patch) { self.setState(function (prev) { return { ap: Object.assign({}, prev.ap, patch) }; }); };
