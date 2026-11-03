@@ -3980,6 +3980,13 @@ body:has([aria-modal="true"]) .l-app .l-top{z-index:1 !important}
 .qx-fr .ak-role,.qv-fr .ak-role{flex:none;height:24px;font-size:12px}
 /* Apellyatsiya: umumiy shikoyat bergan shaxslar */
 .aps-empty{min-height:0 !important;display:block !important;text-align:left;padding:14px 16px;border:1.5px dashed #cbd5e1;border-radius:12px;color:#64748b;font-size:13.5px;background:#fbfcfe}
+/* Yangi qarshi da'vo: faqat "Yangi" yorlig'i va chap chetdagi ingichka ko'k chiziq */
+.qx.isnew{border-color:#e6ebf3 !important;box-shadow:none !important}
+.qx.isnew::before{display:block !important;content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:#3b82f6}
+.qx.isnew .qx-more{background:#f1f5f9 !important;border-color:transparent !important;color:#0f172a !important}
+.qx.isnew .qx-more:hover{background:#e8edf5 !important}
+.qx.isnew .qx-meta>span{background:#f1f5f9 !important}
+.qx.isnew .qx-meta b{color:#0f172a !important}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
