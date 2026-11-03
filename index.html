@@ -5547,6 +5547,16 @@ html[data-theme="dark"] .ds-host img{filter:none}
   </div>
 </div>
 <sc-if value="{{lMenuOpen}}" hint-placeholder-val="{{ false }}"><button aria-label="Menyuni yopish" onClick="{{lCloseMenu}}" style="position: fixed; inset: 0; z-index: 15; background: transparent; border: 0; cursor: default"></button></sc-if>
+<sc-if value="{{tmAskOpen}}" hint-placeholder-val="{{ false }}">
+<div style="position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 24px">
+  <button aria-label="Oynani yopish" onClick="{{tmAskNo}}" style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.45); border: 0; cursor: default"></button>
+  <div role="alertdialog" aria-modal="true" aria-label="Asosiy shaxsni o'zgartirish" class="card" style="position: relative; width: 460px; max-width: 100%; padding: 22px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 24px 64px rgba(15, 23, 42, 0.25)" onKeyDown="{{tmAskKey}}">
+    <div class="tm-askic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6-5.4-3.1-5.4 3.1 1.2-6L3.3 9.3l6.1-.7z"></path></svg></div>
+    <div class="kv" style="gap: 6px"><b style="font-size: 16px">{{tmAskTitle}}</b><span style="font-size: 14px; color: #475569">{{tmAskText}}</span></div>
+    <div class="row" style="justify-content: flex-end; gap: 8px"><button class="btn" onClick="{{tmAskNo}}">Yo'q, bekor qilish</button><button class="btn pri" onClick="{{tmAskYes}}">Ha, o'zgartirish</button></div>
+  </div>
+</div>
+</sc-if>
 <sc-if value="{{caseOpen}}" hint-placeholder-val="{{ false }}">
 <div class="cw-wrap" style="{{cwWrap}}">
   <sc-if value="{{isModalMode}}" hint-placeholder-val="{{ false }}"><button aria-label="Ish oynasini yopish" onClick="{{caseClose}}" style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.5); border: 0; cursor: default"></button></sc-if>
@@ -6868,16 +6878,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
   </div>
 </div>
 </sc-if>
-<sc-if value="{{tmAskOpen}}" hint-placeholder-val="{{ false }}">
-<div style="position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 24px">
-  <button aria-label="Oynani yopish" onClick="{{tmAskNo}}" style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.45); border: 0; cursor: default"></button>
-  <div role="alertdialog" aria-modal="true" aria-label="Asosiy shaxsni o'zgartirish" class="card" style="position: relative; width: 460px; max-width: 100%; padding: 22px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 24px 64px rgba(15, 23, 42, 0.25)" onKeyDown="{{tmAskKey}}">
-    <div class="tm-askic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6-5.4-3.1-5.4 3.1 1.2-6L3.3 9.3l6.1-.7z"></path></svg></div>
-    <div class="kv" style="gap: 6px"><b style="font-size: 16px">Asosiy shaxsni o'zgartirasizmi?</b><span style="font-size: 14px; color: #475569">{{tmAskText}}</span></div>
-    <div class="row" style="justify-content: flex-end; gap: 8px"><button class="btn" onClick="{{tmAskNo}}">Yo'q, bekor qilish</button><button class="btn pri" onClick="{{tmAskYes}}">Ha, o'zgartirish</button></div>
-  </div>
-</div>
-</sc-if>
+
 <sc-if value="{{delModal}}" hint-placeholder-val="{{ false }}">
 <div style="position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 24px">
   <button aria-label="Oynani yopish" onClick="{{delClose}}" style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.45); border: 0; cursor: default"></button>
@@ -10145,10 +10146,11 @@ class Component extends DCLogic {
       tmEdKey: function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ tmEd: null }); } },
       tmEdSave: function () { var e = self.state.tmEd; if (!e) return; if (!String(e.f.name || "").trim()) { self.setState({ tmEd: Object.assign({}, e, { err: (e.org ? "Nomi" : "F.I.Sh.") + " kiritilishi shart" }) }); return; }
         var o = { tmEd: null }; o[e.key] = (self.state[e.key] || []).map(function (x) { return x.id === e.id ? Object.assign({}, x, e.f, { name: String(e.f.name).trim() }) : x; }); self.setState(o); self.flash(String(e.f.name).trim() + " ma'lumotlari saqlandi"); },
-      tmAskText: s.tmAsk ? s.tmAsk.side + " tarafida asosiy shaxs «" + (s.tmAsk.cur || "—") + "» o'rniga «" + s.tmAsk.name + "» bo'ladi." : "",
+      tmAskTitle: s.tmAsk && s.tmAsk.title ? s.tmAsk.title : "Asosiy shaxsni o'zgartirasizmi?",
+      tmAskText: s.tmAsk && s.tmAsk.text ? s.tmAsk.text : s.tmAsk ? s.tmAsk.side + " tarafida asosiy shaxs «" + (s.tmAsk.cur || "—") + "» o'rniga «" + s.tmAsk.name + "» bo'ladi." : "",
       tmAskNo: function () { self.setState({ tmAsk: null }); },
       tmAskKey: function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ tmAsk: null }); } },
-      tmAskYes: function () { var a = self.state.tmAsk; if (!a) return; var o = { tmAsk: null }; o[a.key] = (self.state[a.key] || []).map(function (x) { return Object.assign({}, x, { main: x.id === a.id }); }); self.setState(o); self.flash(a.name + " asosiy shaxs etib belgilandi"); },
+      tmAskYes: function () { var a = self.state.tmAsk; if (!a) return; if (a.yes) { self.setState({ tmAsk: null }); a.yes(); return; } var o = { tmAsk: null }; o[a.key] = (self.state[a.key] || []).map(function (x) { return Object.assign({}, x, { main: x.id === a.id }); }); self.setState(o); self.flash(a.name + " asosiy shaxs etib belgilandi"); },
       umCanAddIdo: !s.um.idora && s.openMode === "page",
       umIdo: idoView(idoFind(s.umForm.idora)) || Object.assign({ turi: "—", catName: "", hudud: "—", hududSub: "", tel: "—", stir: "—", lvl: "" }, s.umForm.idora || {}),
       umQ: s.umQ || "", umSetQ: function (e) { self.setState({ umQ: e.target.value }); },
@@ -10713,9 +10715,11 @@ class Component extends DCLogic {
             setDx(p); self.flash((i + 1) + "-talab o'chirildi" + (sums.length ? " (" + sums.length + " ta summa bilan)" : ""));
           },
           makeMain: function () {
-            var d = self.state.dx, me = d.im.filter(function (x) { return x.id === r.id; })[0]; if (!me) return;
-            setDx({ im: [me].concat(d.im.filter(function (x) { return x.id !== r.id; })) });
-            self.flash("«" + splitCode(me.turkum).name + "» asosiy talab qilib belgilandi");
+            var d0 = self.state.dx, me0 = d0.im.filter(function (x) { return x.id === r.id; })[0]; if (!me0) return;
+            self.setState({ tmAsk: { title: "Asosiy talabni o'zgartirasizmi?", text: "Asosiy talab «" + splitCode((d0.im[0] || {}).turkum).name + "» o'rniga «" + splitCode(me0.turkum).name + "» bo'ladi.", yes: function () {
+              var d = self.state.dx, me = d.im.filter(function (x) { return x.id === r.id; })[0]; if (!me) return;
+              setDx({ im: [me].concat(d.im.filter(function (x) { return x.id !== r.id; })) });
+              self.flash("«" + splitCode(me.turkum).name + "» asosiy talab qilib belgilandi"); } } });
           } };
       });
       var sigOf = function (x) { return [x.turkum, x.qturkum, x.iturkum, (x.javs || []).slice().sort().join(",")].join("|"); };
@@ -12821,9 +12825,11 @@ class Component extends DCLogic {
           return { code: a.code || String(i + 1), name: a.name, isMain: i === 0, ok: !!t.ok, notOk: !t.ok,
             canMain: i > 0,
             makeMain: function () {
-              var cur = self.state.itk.filter(function (x) { return x.id === t.id; })[0]; if (!cur) return;
-              self.setState({ itkDel: "", itk: [cur].concat(self.state.itk.filter(function (x) { return x.id !== t.id; })) });
-              self.flash("«" + a.name + "» asosiy ish turkumi qilib belgilandi");
+              var main0 = sc((self.state.itk[0] || {}).turkum).name || "—";
+              self.setState({ tmAsk: { title: "Asosiy ish turkumini o'zgartirasizmi?", text: "Asosiy talab «" + main0 + "» o'rniga «" + a.name + "» bo'ladi.", yes: function () {
+                var cur = self.state.itk.filter(function (x) { return x.id === t.id; })[0]; if (!cur) return;
+                self.setState({ itkDel: "", itk: [cur].concat(self.state.itk.filter(function (x) { return x.id !== t.id; })) });
+                self.flash("«" + a.name + "» asosiy ish turkumi qilib belgilandi"); } } });
             },
             qHas: !!t.qturkum, qNone: !t.qturkum, qCode: q.code, qName: q.name,
             iHas: !!t.iturkum, iNone: !t.iturkum, iCode: k.code, iName: k.name,
