@@ -4155,6 +4155,11 @@ svg.ic-ed,svg.ic-del{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linec
 .qx.qx3 .qx2-fl{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
 .qx.qx3.isnew::before{width:3px}
 @media (max-width:900px){.qx3-st{grid-template-columns:repeat(2,minmax(0,1fr))}.qx3-s:nth-child(3){border-left:0}.qx3-s:nth-child(n+3){border-top:1px solid #eef1f5}}
+/* Ish mazmuni: turkum va da'vo summasi qo'shish tugmalari yonma-yon */
+.itk-tools{display:flex;align-items:center;gap:8px}
+.itk-sumw{position:relative;display:inline-flex}
+.itk-summ{left:auto !important;right:0;top:calc(100% + 6px);min-width:300px;z-index:46}
+.sec:has(.itk-summ){position:relative;z-index:45}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -5838,7 +5843,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
   </section>
 
   <section class="sec" id="turkumlar">
-    <div class="sh"><div><h2>Ish mazmuni</h2><p>{{itkSub}}</p></div><div class="tools"><button class="btn" onClick="{{itkAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Turkum qo'shish</button></div></div>
+    <div class="sh"><div><h2>Ish mazmuni</h2><p>{{itkSub}}</p></div><div class="tools itk-tools"><button class="btn" onClick="{{itkAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Turkum qo'shish</button><sc-if value="{{itkHasAny}}" hint-placeholder-val="{{ true }}"><span class="itk-sumw"><button class="btn pri" aria-haspopup="menu" aria-expanded="{{itkSumStr}}" onClick="{{itkSumAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Da'vo summasi qo'shish<sc-if value="{{itkSumMulti}}" hint-placeholder-val="{{ true }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true" style="margin-left: 2px"><path d="M6 9l6 6 6-6"></path></svg></sc-if></button><sc-if value="{{itkSumOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg" tabindex="-1" aria-label="Menyuni yopish" onClick="{{itkSumClose}}"></button><span class="dx-menu itk-summ" role="menu"><span class="tm-mh">Qaysi ish turkumiga?</span><sc-for list="{{itkSumOpts}}" as="o" hint-placeholder-count="2"><button type="button" role="menuitem" class="dx-opt" onClick="{{o.pick}}"><span class="dx-ocode">{{o.code}}</span><span class="dx-olbl">{{o.name}}<sc-if value="{{o.isMain}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">Asosiy talab</small></sc-if></span></button></sc-for></span></sc-if></span></sc-if></div></div>
     <div class="dx-entries" role="list" aria-label="Ish turkumlari va ularning da'vo summalari">
       <sc-for list="{{itk}}" as="t" hint-placeholder-count="2">
       <div class="{{t.cls}}" role="listitem">
@@ -5883,8 +5888,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
                     </div>
                   </div>
                   </sc-for>
-            <sc-if value="{{t.sumEmpty}}" hint-placeholder-val="{{ false }}"><small class="muted">Bu turkumga da'vo summasi hali biriktirilmagan.</small></sc-if>
-            <button class="dx-pill" onClick="{{t.addSum}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>{{t.addSumLabel}}</button>
+            <sc-if value="{{t.sumEmpty}}" hint-placeholder-val="{{ false }}"><small class="muted">Bu turkumga da'vo summasi hali biriktirilmagan · yuqoridagi «Da'vo summasi qo'shish» orqali qo'shing</small></sc-if>
           </div>
         </div>
       </div>
@@ -12844,6 +12848,10 @@ class Component extends DCLogic {
             del: function () { self.setState({ itkDel: "", itk: self.state.itk.filter(function (x) { return x.id !== t.id; }) }); self.flash("Ish turkumi o'chirildi"); } };
         }),
         itkEmpty: list.length === 0,
+        itkHasAny: list.length > 0, itkSumMulti: list.length > 1, itkSumOpen: !!s.itkSumMenu && list.length > 1, itkSumStr: s.itkSumMenu ? "true" : "false",
+        itkSumAdd: function () { var l = self.state.itk || []; if (!l.length) return; if (l.length === 1) { __out._itkAddSum(l[0])(); return; } self.setState({ itkSumMenu: !self.state.itkSumMenu }); },
+        itkSumClose: function () { self.setState({ itkSumMenu: false }); },
+        itkSumOpts: list.map(function (t, i) { var a = sc(t.turkum); return { code: a.code || String(i + 1), name: a.name, isMain: i === 0, pick: function () { self.setState({ itkSumMenu: false }); __out._itkAddSum(t)(); } }; }),
         itkSub: list.length ? list.length + " ta ish turkumi · da'vo summalari bilan" : "Ish turkumlari va ularga tegishli da'vo summalari",
         itkGrandHas: list.some(function (x) { return (x.sums || []).length; }), itkGrand: __out._byCur([].concat.apply([], list.map(function (x) { return x.sums || []; }))),
         itkAdd: function () { self.setState({ itkDel: "", dxDd: "", itkForm: { mode: "new", id: "", turkum: "", qturkum: "", iturkum: "", javs: [], err: "" } }); }
