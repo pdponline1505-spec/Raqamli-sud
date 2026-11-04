@@ -4431,6 +4431,23 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .pbx-p.bad{border-color:#fca5a5;box-shadow:0 0 0 3px #fef2f2}
 .pbx-p .btn.sm{flex:none}
 @media (max-width:620px){.pbx-p{flex-wrap:wrap}}
+/* Ish hujjatlari: guruhlar va integratsiya */
+.dg-tabs{display:flex;gap:4px;flex-wrap:wrap;padding:4px;border-radius:12px;background:#f1f5f9;width:max-content;max-width:100%}
+.dg-tab{display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 12px;border:0;border-radius:9px;background:transparent;font:inherit;font-size:13.5px;color:#475569;cursor:pointer;white-space:nowrap}
+.dg-tab:hover{color:#0f172a}
+.dg-tab.on{background:#fff;color:#0f172a;font-weight:500;box-shadow:0 1px 2px rgba(15,23,42,.08)}
+.dg-n{min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#e2e8f0;color:#475569;font-size:11.5px;font-weight:600;display:inline-grid;place-items:center}
+.dg-tab.on .dg-n{background:#dbeafe;color:#1d4ed8}
+.dg-org{display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 8px;border-radius:999px;font-size:11.5px;font-weight:500;background:#eef2f7;color:#334155}
+.dg-org.pr{background:#eef2ff;color:#3730a3}.dg-org.mib{background:#fff7ed;color:#9a3412}.dg-org.adv{background:#f0fdfa;color:#0f766e}
+.doc-st.org{background:#f1f5f9;color:#475569}
+.jf-grps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.jf-g{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid #e2e8f0;border-radius:12px;background:#fff;font:inherit;text-align:left;cursor:pointer}
+.jf-g b{font-size:14px;font-weight:600;color:#0f172a}.jf-g small{font-size:12px;color:#64748b}
+.jf-g.on{border-color:#93c5fd;background:#eff6ff}
+.jf-g.on .ap-rad{border-color:#3073f1;box-shadow:inset 0 0 0 4px #3073f1}
+.itkm-g.one{grid-template-columns:minmax(0,1fr) !important}
+@media (max-width:560px){.jf-grps{grid-template-columns:minmax(0,1fr)}}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -6274,13 +6291,14 @@ html[data-theme="dark"] .ds-host img{filter:none}
       <label class="search"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><input type="search" placeholder="Hujjat nomi bo'yicha qidirish" aria-label="Hujjat qidirish" value="{{q}}" onChange="{{onSearch}}"></label>
       <button class="select" onClick="{{toggleSort}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16M4 17l3 3 3-3M17 20V4M14 7l3-3 3 3"></path></svg>{{sortLabel}}</button>
     </div>
+    <div class="dg-tabs" role="tablist" aria-label="Hujjat guruhlari"><sc-for list="{{docGrpTabs}}" as="g" hint-placeholder-count="4"><button type="button" role="tab" aria-selected="{{g.str}}" class="{{g.cls}}" onClick="{{g.pick}}"><sc-if value="{{g.isOrg}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"></path><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"></path></svg></sc-if>{{g.label}}<span class="dg-n">{{g.n}}</span></button></sc-for></div>
     <div class="doc-list" role="list">
       <sc-for list="{{docs}}" as="d" hint-placeholder-count="6">
       <div class="{{d.rowCls}}" role="listitem">
         <span class="{{d.ftCls}}">{{d.ftLabel}}</span>
         <div class="doc-main">
-          <div class="row" style="gap: 8px; flex-wrap: wrap"><b class="doc-title">{{d.title}}</b><span class="{{d.stCls}}">{{d.status}}</span><sc-if value="{{d.hasChg}}" hint-placeholder-val="{{ false }}"><span class="ver-chg">{{d.chgTxt}}</span></sc-if></div>
-          <span class="doc-meta">{{d.instLabel}} · {{d.type}} · {{d.dateStr}} · Eshnazarov A.</span>
+          <div class="row" style="gap: 8px; flex-wrap: wrap"><b class="doc-title">{{d.title}}</b><sc-if value="{{d.isOrg}}" hint-placeholder-val="{{ false }}"><span class="{{d.orgCls}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"></path><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"></path></svg>{{d.orgShort}}</span></sc-if><span class="{{d.stCls}}">{{d.status}}</span><sc-if value="{{d.hasChg}}" hint-placeholder-val="{{ false }}"><span class="ver-chg">{{d.chgTxt}}</span></sc-if></div>
+          <span class="doc-meta">{{d.meta}}</span>
         </div>
         <div class="doc-files"><sc-for list="{{d.files}}" as="f" hint-placeholder-count="1"><span class="doc-fx">{{f.ext}}</span></sc-for><sc-if value="{{d.hasExtra}}" hint-placeholder-val="{{ false }}"><span class="doc-fx more">{{d.extra}} ilova</span></sc-if></div>
         <div class="doc-acts">
@@ -7462,8 +7480,9 @@ html[data-theme="dark"] .ds-host img{filter:none}
       <button class="ib qv-x" aria-label="Yopish" onClick="{{jfClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
     </div>
     <div class="qv-b itkm-b">
-      <div class="itkm-g">
-        <label class="fld"><span>{{jfToLabel}} <b class="dx-req">*</b></span><span class="{{jfS.to.cls}}" id="{{jfS.to.id}}" onKeyDown="{{jfS.to.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{jfS.to.exp}}" disabled="{{jfS.to.dis}}" onClick="{{jfS.to.toggle}}" style="border-color: {{jfS.to.bc}}"><span class="{{jfS.to.vcls}}">{{jfS.to.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{jfS.to.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{jfS.to.stop}}"><sc-for list="{{jfS.to.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
+      <sc-if value="{{jfIsDoc}}" hint-placeholder-val="{{ false }}"><div class="jf-grps" role="radiogroup" aria-label="Hujjat guruhi"><sc-for list="{{jfGrps}}" as="g" hint-placeholder-count="2"><button type="button" role="radio" aria-checked="{{g.str}}" class="{{g.cls}}" onClick="{{g.pick}}"><span class="ap-rad"></span><span class="kv" style="gap: 1px"><b>{{g.l}}</b><small>{{g.sub}}</small></span></button></sc-for></div></sc-if>
+      <div class="{{jfGridCls}}">
+        <sc-if value="{{jfNeedTo}}" hint-placeholder-val="{{ true }}"><label class="fld"><span>{{jfToLabel}} <b class="dx-req">*</b></span><span class="{{jfS.to.cls}}" id="{{jfS.to.id}}" onKeyDown="{{jfS.to.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{jfS.to.exp}}" disabled="{{jfS.to.dis}}" onClick="{{jfS.to.toggle}}" style="border-color: {{jfS.to.bc}}"><span class="{{jfS.to.vcls}}">{{jfS.to.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{jfS.to.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{jfS.to.stop}}"><sc-for list="{{jfS.to.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label></sc-if>
         <label class="fld"><span>Hujjat turi <b class="dx-req">*</b></span><span class="{{jfS.turi.cls}}" id="{{jfS.turi.id}}" onKeyDown="{{jfS.turi.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{jfS.turi.exp}}" disabled="{{jfS.turi.dis}}" onClick="{{jfS.turi.toggle}}" style="border-color: {{jfS.turi.bc}}"><span class="{{jfS.turi.vcls}}">{{jfS.turi.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{jfS.turi.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{jfS.turi.stop}}"><sc-for list="{{jfS.turi.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
       </div>
       <sc-if value="{{jfNoFile}}" hint-placeholder-val="{{ true }}">
@@ -8970,7 +8989,11 @@ class Component extends DCLogic {
         { id: 9, title: "Xabarnoma", type: "Sud hujjatlari", inst: 1, st: "tayyor", gen: true, date: "2026-06-24", files: ["PDF"], sends: [{ who: "Aralov Yunus Bazarovich", role: "Da'vogar", via: "Elektron pochta orqali", st: "ok", at: "24.06.2026 09:28" }, { who: "Shaymonov Ilhom Norboy o'g'li", role: "Javobgar", via: "Elektron pochta orqali", st: "go", at: "24.06.2026 09:28" }] },
         { id: 4, title: "Ijro varaqasi", type: "Ijro hujjatlari", inst: 1, st: "imzo", date: "2026-08-24", files: ["PDF"], sends: [] },
         { id: 5, title: "Da'vo arizasi", type: "Arizachi/Javobgar", inst: 1, st: "tayyor", date: "2026-06-11", files: ["PDF", "W"], extra: "+3" },
-        { id: 6, title: "Davlat boji kvitansiyasi", type: "Kvitansiyalar", inst: 1, st: "tayyor", date: "2026-06-22", files: ["PDF"] }
+        { id: 6, title: "Davlat boji kvitansiyasi", type: "Kvitansiyalar", inst: 1, st: "tayyor", date: "2026-06-22", files: ["PDF"] },
+        { id: 21, title: "Prokuror xulosasi", type: "Prokuratura", inst: 1, st: "tayyor", date: "2026-07-10", files: ["PDF"], org: { name: "Termiz shahar prokuraturasi", short: "Prokuratura", sys: "E-prokuratura", k: "pr" } },
+        { id: 22, title: "Ijro ishi holati to'g'risida ma'lumotnoma", type: "MIB", inst: 1, st: "tayyor", date: "2026-08-28", files: ["PDF"], org: { name: "Termiz tumani MIB bo'limi", short: "MIB", sys: "MIB AIS", k: "mib" } },
+        { id: 23, title: "Advokat orderi № 0451", type: "Advokatlar palatasi", inst: 1, st: "tayyor", date: "2026-06-15", files: ["PDF"], org: { name: "O'zbekiston Advokatlar palatasi", short: "Advokatlar palatasi", sys: "Advokatlar palatasi integratsiyasi", k: "adv" } },
+        { id: 24, title: "Prokuror protesti", type: "Prokuratura", inst: 1, st: "tayyor", date: "2026-08-02", files: ["PDF", "W"], org: { name: "Surxondaryo viloyati prokuraturasi", short: "Prokuratura", sys: "E-prokuratura", k: "pr" } }
       ],
       docType: "Hammasi",
       insts: Object.assign({}, INST_ALL),
@@ -9768,7 +9791,13 @@ class Component extends DCLogic {
     // ---------- documents ----------
     var insts = s.pendingInsts || s.insts;
     var q = s.q.trim().toLowerCase();
+    var grpOf = function (d) { return d.org ? "org" : (d.grp || (/Arizachi|Kvitansiya/.test(d.type) ? "taraf" : "sud")); };
+    var dGrp = s.docGrp || "all";
+    var docGrpTabs = [["all", "Barchasi"], ["sud", "Sud hujjatlari"], ["taraf", "Taraflarning hujjatlari"], ["org", "Boshqa tashkilotlar"]].map(function (g) {
+      var n = g[0] === "all" ? s.docs.length : s.docs.filter(function (d) { return grpOf(d) === g[0]; }).length, on = dGrp === g[0];
+      return { label: g[1], n: n, cls: "dg-tab" + (on ? " on" : "") + (g[0] === "org" ? " org" : ""), str: on ? "true" : "false", isOrg: g[0] === "org", pick: function () { self.setState({ docGrp: g[0], docAll: false, docMenu: 0 }); } }; });
     var docs = s.docs.filter(function (d) {
+      if (dGrp !== "all" && grpOf(d) !== dGrp) return false;
       if (s.docType !== "Hammasi" && d.type !== s.docType) return false;
       if (s.docSt && s.docSt !== "all" && d.st !== s.docSt) return false;
       if (!s.insts[d.inst]) return false;
@@ -9778,11 +9807,13 @@ class Component extends DCLogic {
       .map(function (d) {
         return {
           title: d.title, type: d.type, instLabel: INST_NAME[d.inst], dateStr: fmtDate(d.date),
-          status: DOC_ST[d.st][0], badgeCls: DOC_ST[d.st][1],
+          isOrg: !!d.org, orgShort: d.org ? d.org.short : "", orgCls: "dg-org " + (d.org ? d.org.k : ""), isTaraf: grpOf(d) === "taraf",
+          meta: d.org ? d.org.name + " · " + fmtDate(d.date) + " · integratsiya: " + d.org.sys : INST_NAME[d.inst] + " · " + d.type + " · " + fmtDate(d.date) + " · " + (d.author || (grpOf(d) === "taraf" ? "Taraf tomonidan" : "Eshnazarov A.")),
+          status: d.org ? "Kelib tushgan" : DOC_ST[d.st][0], badgeCls: DOC_ST[d.st][1],
           isImzo: d.st === "imzo", isTasdiq: d.st === "tasdiq", isTayyor: d.st === "tayyor",
           files: d.files.map(function (f) { return { label: f, cls: FILE_CLS[f], ext: ({ PDF: "PDF", W: "DOCX", X: "XLSX" })[f] || f }; }),
           ftCls: "dx-ft" + (({ PDF: "", W: " w", X: " x" })[d.files[0]] || ""), ftLabel: ({ PDF: "PDF", W: "DOC", X: "XLS" })[d.files[0]] || "FILE",
-          stCls: "doc-st " + d.st, rowCls: "doc-row" + (d.st !== "tayyor" ? " act " + d.st : ""),
+          stCls: "doc-st " + (d.org ? "org" : d.st), rowCls: "doc-row" + (d.st !== "tayyor" ? " act " + d.st : ""),
           hasVer: !!DOC_VERS[d.title] && d.st !== "imzo", verN: DOC_VERS[d.title] ? DOC_VERS[d.title].v.length : 0,
           hasChg: !!(DOC_VERS[d.title] && DOC_VERS[d.title].chg), chgTxt: DOC_VERS[d.title] && DOC_VERS[d.title].chg ? "Tuzatish kiritilgan · " + DOC_VERS[d.title].chg.length : "",
           openVer: function () { var n = DOC_VERS[d.title].v.length; self.setState({ verDoc: d.title, verA: Math.max(0, n - 2), verB: n - 1, verMode: "inline" }); },
@@ -9793,10 +9824,10 @@ class Component extends DCLogic {
           send: function () { self.setState({ dxDd: "", ys: { doc: d.title, type: "Barchasi", q: "", list: [], err: "" } }); },
           view: function () { self.flash("«" + d.title + "» ko'rish oynasida ochiladi"); },
           download: function () { self.flash("«" + d.title + "» yuklab olinmoqda"); },
-          canEdit: !!d.gen && d.st === "imzo", canSend: d.st !== "imzo", isPub: d.st !== "imzo" && (s.pb || []).some(function (x) { return x.title === d.title && x.st === "elon"; }), pubUrl: "https://" + (((s.pb || []).filter(function (x) { return x.title === d.title; })[0] || {}).url || "public.sud.uz"), pubAt: (((s.pb || []).filter(function (x) { return x.title === d.title; })[0] || {}).date || ""), edit: function () { self.setState({ docMenu: 0, oo: { id: d.id, title: d.title, date: d.date } }); },
+          canEdit: !!d.gen && d.st === "imzo", canSend: d.st !== "imzo" && !d.org, isPub: d.st !== "imzo" && (s.pb || []).some(function (x) { return x.title === d.title && x.st === "elon"; }), pubUrl: "https://" + (((s.pb || []).filter(function (x) { return x.title === d.title; })[0] || {}).url || "public.sud.uz"), pubAt: (((s.pb || []).filter(function (x) { return x.title === d.title; })[0] || {}).date || ""), edit: function () { self.setState({ docMenu: 0, oo: { id: d.id, title: d.title, date: d.date } }); },
           menuOpen: s.docMenu === d.id, menuStr: s.docMenu === d.id ? "true" : "false",
           toggleMenu: function () { self.setState({ docMenu: self.state.docMenu === d.id ? 0 : d.id }); },
-          menuEdit: !!d.gen && d.st === "imzo", menuCanSend: d.st !== "imzo", menuNoSend: d.st === "imzo", menuSend: function () { self.setState({ docMenu: 0, dxDd: "", ys: { doc: d.title, type: "Barchasi", q: "", list: [], err: "" } }); },
+          menuEdit: !!d.gen && d.st === "imzo", menuCanSend: d.st !== "imzo" && !d.org, menuNoSend: d.st === "imzo", menuSend: function () { self.setState({ docMenu: 0, dxDd: "", ys: { doc: d.title, type: "Barchasi", q: "", list: [], err: "" } }); },
           sends: (d.sends || []).map(function (x) { return { who: x.who, role: x.role, via: x.via, at: x.at, ok: x.st === "ok", stTxt: x.st === "ok" ? "Yetkazilgan" : "Yetkazilmoqda", stCls: "dsn-st " + (x.st === "ok" ? "ok" : "go") }; }),
           hasSends: !!(d.sends || []).length, noSends: !(d.sends || []).length,
           sendSum: (function () { var a = d.sends || [], ok = a.filter(function (x) { return x.st === "ok"; }).length; return a.length ? a.length + " ta ishtirokchi · " + ok + " tasiga yetkazilgan" : ""; })()
@@ -10848,7 +10879,7 @@ class Component extends DCLogic {
         self.flash("Qarshi da'vo qo'shildi");
       },
 
-      docs: docsShown, docsEmpty: docs.length === 0, docCount: docs.length,
+      docs: docsShown, docsEmpty: docs.length === 0, docCount: docs.length, docGrpTabs: docGrpTabs,
       docsMore: docsMore, docsMoreLbl: s.docAll ? "Yig'ish" : "Yana " + (docsAllN - DOC_LIM) + " ta hujjatni ko'rsatish", docsMoreCls: "doc-more" + (s.docAll ? " open" : ""),
       docsToggle: function () { self.setState({ docAll: !self.state.docAll }); },
       docPagerTxt: docsMore && !s.docAll ? docsAllN + " ta hujjatdan " + DOC_LIM + " tasi ko'rsatilmoqda" : docsAllN + " ta hujjat ko'rsatilmoqda",
@@ -11492,7 +11523,13 @@ class Component extends DCLogic {
         var opts = function (list, ph) { return [{ v: "", l: ph }].concat(list.map(function (x) { return { v: x, l: x }; })); };
         var isDoc = !!(f && f.mode === "doc");
         var allPeople = [["tmDv", "Da'vogar"], ["tmJv", "Javobgar"], ["qtJv", "Qo'shimcha javobgar"], ["qtAr", "Arizachi"], ["qsh", "Qo'shimcha shaxs"]].reduce(function (a, k) { return a.concat((s[k[0]] || []).map(function (p) { return { v: p.name, l: p.name, sub: k[1] }; })); }, []);
-        if (isDoc) { TURI = TYPES.filter(function (t) { return t !== "Hammasi"; }).concat(["Gibrid pochta xizmatiga yuborilgan hujjat"]); }
+        var grp = v.grp || "sud";
+        var SUD_T = ["Hal qiluv qarori", "Ajrim", "Sud majlisi bayonnomasi", "Chaqiruv qog'ozi", "Xabarnoma", "Ijro varaqasi", "Sud buyrug'i"];
+        var TAR_T = ["Da'vo arizasi", "Da'voga e'tiroz (nizo)", "Qo'shimcha dalillar", "Iltimosnoma", "Ishonchnoma", "To'lov kvitansiyasi", "Boshqa hujjat"];
+        if (isDoc) { TURI = grp === "sud" ? SUD_T : TAR_T; MAZ = grp === "sud" ? ["Ish bo'yicha qabul qilingan sud hujjati", "Sud hujjatining nusxasi", "Tuzatish kiritilgan nusxa"] : ["Asosiy hujjat", "Qo'shimcha dalil", "Ilova"]; }
+        __out.jfIsDoc = isDoc; __out.jfNeedTo = !isDoc || grp === "taraf"; __out.jfGridCls = "itkm-g" + (isDoc && grp === "sud" ? " one" : "");
+        __out.jfGrps = [["sud", "Sud hujjati", "Sud tomonidan qabul qilingan yoki tuzilgan"], ["taraf", "Taraflarning hujjati", "Ishtirokchilar taqdim etgan"]].map(function (g) { var on = grp === g[0];
+          return { l: g[1], sub: g[2], cls: "jf-g" + (on ? " on" : ""), str: on ? "true" : "false", pick: function () { self.setState(function (prev) { return prev.jf ? { jf: Object.assign({}, prev.jf, { grp: g[0], turi: "", to: g[0] === "sud" ? "" : prev.jf.to, mazmun: "", err: "" }) } : null; }); } }; });
         var toOpts = isDoc ? [{ v: "", l: "Ishtirokchini tanlang" }].concat(allPeople)
           : [{ v: "", l: "Qabul qiluvchini tanlang" }].concat(ORGS.map(function (x) { return { v: x, l: x, sub: "Tashkilot" }; })).concat(people.map(function (x) { return { v: x, l: x, sub: "Ishtirokchi" }; }));
         __out.jfTitle = isDoc ? "Hujjat biriktirish" : "So'rov qo'shish";
@@ -11535,16 +11572,16 @@ class Component extends DCLogic {
         __out.jfSave = function () {
           var st = self.state, w = st.jf; if (!w) return;
           var miss = [];
-          if (!w.to) miss.push(w.mode === "doc" ? "ishtirokchi" : "qabul qiluvchi"); if (!w.turi) miss.push("hujjat turi"); if (!w.file) miss.push("fayl"); else if (!w.mazmun) miss.push("hujjat mazmuni");
+          if (!w.to && !(w.mode === "doc" && (w.grp || "sud") === "sud")) miss.push(w.mode === "doc" ? "ishtirokchi" : "qabul qiluvchi"); if (!w.turi) miss.push("hujjat turi"); if (!w.file) miss.push("fayl"); else if (!w.mazmun) miss.push("hujjat mazmuni");
           if (miss.length) { self.setState({ jf: Object.assign({}, w, { err: "To'ldirilmagan: " + miss.join(", ") }) }); return; }
           if (w.file.prog < 100) { self.setState({ jf: Object.assign({}, w, { err: "Fayl yuklanishini kuting" }) }); return; }
           var d = new Date(), iso = d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
           if (w.mode === "doc") {
-            var nm = String(w.mazmun).replace(/^[\d.]+\s*–\s*/, "");
-            var dt = TYPES.indexOf(w.turi) > 0 ? w.turi : "Arizachi/Javobgar";
+            var g0 = w.grp || "sud", nm = w.turi;
+            var dt = g0 === "sud" ? (w.turi === "Ijro varaqasi" ? "Ijro hujjatlari" : "Sud hujjatlari") : (w.turi === "To'lov kvitansiyasi" ? "Kvitansiyalar" : "Arizachi/Javobgar");
             close();
-            self.setState({ docSt: "all", docs: [{ id: Date.now(), title: nm.charAt(0).toUpperCase() + nm.slice(1), type: dt, inst: 1, st: dt === "Sud hujjatlari" ? "imzo" : "tayyor", date: iso, files: [String(w.file.ext || "pdf").toUpperCase() === "PDF" ? "PDF" : "PDF"] }].concat(self.state.docs) });
-            self.flash("Hujjat biriktirildi · " + w.to);
+            self.setState({ docSt: "all", docGrp: g0, docs: [{ id: Date.now(), title: nm.charAt(0).toUpperCase() + nm.slice(1), type: dt, grp: g0, author: g0 === "taraf" ? w.to : "", inst: 1, st: g0 === "sud" ? "imzo" : "tayyor", date: iso, files: [String(w.file.ext || "pdf").toUpperCase() === "PDF" ? "PDF" : "PDF"] }].concat(self.state.docs) });
+            self.flash("Hujjat biriktirildi · " + (w.to || "Sud hujjatlari"));
             return;
           }
           var n = String(1000 + Math.floor(Math.random() * 8999));
