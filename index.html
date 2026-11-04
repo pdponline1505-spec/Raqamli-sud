@@ -4808,6 +4808,21 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .qx2-fl.qfs::-webkit-scrollbar{width:6px}
 .qx2-fl.qfs::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:99px}
 .qx2-fl.qfs::-webkit-scrollbar-track{background:transparent}
+@keyframes umsIn{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes umsFade{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
+@keyframes umsPop{0%{opacity:0;transform:scale(.6)}70%{transform:scale(1.08)}100%{opacity:1;transform:none}}
+@keyframes umsDot{0%{box-shadow:0 0 0 0 currentColor}100%{box-shadow:0 0 0 8px transparent}}
+.ums.ums-go .ums-c{animation:umsIn .55s cubic-bezier(.2,.7,.2,1) backwards}
+.ums.ums-go .ums-c:nth-child(2){animation-delay:.06s}.ums.ums-go .ums-c:nth-child(3){animation-delay:.12s}.ums.ums-go .ums-c:nth-child(4){animation-delay:.18s}.ums.ums-go .ums-c:nth-child(5){animation-delay:.26s}.ums.ums-go .ums-c:nth-child(6){animation-delay:.32s}
+.ums.ums-go .ums-c .ums-l{animation:umsFade .45s ease-out backwards;animation-delay:inherit}
+.ums.ums-go .ums-c .ums-v{animation:umsFade .5s ease-out backwards}
+.ums.ums-go .ums-c:nth-child(1) .ums-v{animation-delay:.12s}.ums.ums-go .ums-c:nth-child(2) .ums-v{animation-delay:.18s}.ums.ums-go .ums-c:nth-child(3) .ums-v{animation-delay:.26s}.ums.ums-go .ums-c:nth-child(4) .ums-v{animation-delay:.32s}.ums.ums-go .ums-c:nth-child(5) .ums-v{animation-delay:.4s}.ums.ums-go .ums-c:nth-child(6) .ums-v{animation-delay:.46s}
+.ums.ums-go .ums-c .ums-m{animation:umsFade .5s ease-out backwards;animation-delay:.75s}
+.ums.ums-go .ums-c .ums-av{animation:umsPop .5s cubic-bezier(.2,.8,.3,1.2) backwards;animation-delay:.38s}
+.ums.ums-go .ums-c .ums-cp{animation:umsFade .4s ease-out backwards;animation-delay:.9s}
+.ums.ums-go .ums-st::before{animation:umsDot 1.2s ease-out .6s 2}
+.casemodal:not(.quick) .ums:not(.ums-go) .ums-c{opacity:0}
+@media (prefers-reduced-motion: reduce){.ums-c,.ums-c *,.ums-st::before{animation:none !important}.casemodal:not(.quick) .ums:not(.ums-go) .ums-c{opacity:1}}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -6286,8 +6301,8 @@ html[data-theme="dark"] .ds-host img{filter:none}
       <sc-if value="{{umEditing}}" hint-placeholder-val="{{ false }}"><button class="btn" onClick="{{umClose}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>Bekor qilish</button><button class="btn pri" onClick="{{umSave}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h11l3 3v15H5z"></path><path d="M8 3v5h8M8 21v-7h8v7"></path></svg>Saqlash</button></sc-if>
     </div></div>
     <div class="ums">
-      <div class="ums-c"><span class="ums-l"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"></path><path d="M14 3v4h4"></path><path d="M9 13h6M9 17h4"></path></svg>Hujjat raqami</span><div class="ums-row"><b class="ums-v">{{um.hujjatRaqam}}</b><span class="ums-m">{{um.hujjatSanaUz}}</span><button class="ib ums-cp" aria-label="Hujjat raqamini nusxalash" title="Nusxalash" onClick="{{umCopyHujjat}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg></button></div></div>
-      <div class="ums-c"><span class="ums-l"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l2-8h14l2 8v6H3z"></path><path d="M3 13h5l1 3h6l1-3h5"></path></svg>Kirim raqami</span><div class="ums-row"><b class="ums-v">{{um.kirimRaqam}}</b><span class="ums-m">{{um.kirimSanaUz}}</span></div></div>
+      <div class="ums-c"><span class="ums-l"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"></path><path d="M14 3v4h4"></path><path d="M9 13h6M9 17h4"></path></svg>Hujjat raqami</span><div class="ums-row"><b class="ums-v cnt">{{um.hujjatRaqam}}</b><span class="ums-m">{{um.hujjatSanaUz}}</span><button class="ib ums-cp" aria-label="Hujjat raqamini nusxalash" title="Nusxalash" onClick="{{umCopyHujjat}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg></button></div></div>
+      <div class="ums-c"><span class="ums-l"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l2-8h14l2 8v6H3z"></path><path d="M3 13h5l1 3h6l1-3h5"></path></svg>Kirim raqami</span><div class="ums-row"><b class="ums-v cnt">{{um.kirimRaqam}}</b><span class="ums-m">{{um.kirimSanaUz}}</span></div></div>
       <div class="ums-c"><span class="ums-l"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2-7z"></path></svg>Kelib tushish shakli</span><div class="ums-row"><b class="ums-v txt">{{um.jonatish}}</b></div></div>
       <div class="ums-c"><span class="ums-l"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a5 5 0 0 1-.5-9.97A6 6 0 0 1 18 9a4.5 4.5 0 0 1-.5 9z"></path></svg>Elektron shakl</span><div class="ums-row" title="{{um.elHint}}"><b class="{{umsElCls}}">{{um.elektron}}</b></div></div>
       <div class="ums-c w2"><span class="ums-l"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4l6 6M11 7l6 6M8 10l6-6M12 14l6-6M3 21l8-8"></path></svg>Mas'ul sudya</span><div class="ums-row"><img class="ums-av" src="{{um.sudyaPhoto}}" alt=""><b class="ums-v txt ell">{{um.sudya}}</b><span class="ums-m ell">Termiz tumanlararo iqtisodiy sudi</span></div></div>
@@ -9655,6 +9670,28 @@ class Component extends DCLogic {
       if (th0 !== (self.state.theme || "light") || lg0 !== (self.state.lang || "uz")) self.setState({ theme: th0, lang: lg0 });
       window.__adolatTheme(th0);
       if (lg0 === "uzc") setTimeout(function () { window.__adolatLang("uzc"); }, 300);
+    }
+
+    // ===== Umumiy: ochilganda sonlar oshib boradi =====
+    if (!window.__umsAnim) {
+      window.__umsAnim = 1;
+      var umsRM = function () { return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches; };
+      var umsRun = function (root) {
+        root.setAttribute("data-anim", "1"); root.classList.add("ums-go");
+        if (umsRM()) return;
+        Array.prototype.forEach.call(root.querySelectorAll(".ums-v.cnt"), function (el, k) {
+          var tn = el.querySelector(".sc-interp") || el, fin = String(tn.textContent || "").trim();
+          if (!/^\d{1,12}$/.test(fin)) return;
+          var to = parseInt(fin, 10), len = fin.length, dur = 1200 + k * 150, t0 = 0, delay = 160 + k * 90;
+          tn.textContent = fin.replace(/\d/g, "0");
+          var step = function (ts) { if (!t0) t0 = ts; var x = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - x, 3);
+            var v = String(Math.round(to * e)); while (v.length < len) v = "0" + v; tn.textContent = x < 1 ? v : fin; if (x < 1) requestAnimationFrame(step); };
+          setTimeout(function () { requestAnimationFrame(step); }, delay);
+        });
+      };
+      var umsScan = function () { var r = document.querySelector(".casemodal:not(.quick) .ums:not([data-anim])"); if (r) umsRun(r); };
+      try { new MutationObserver(umsScan).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["class"] }); } catch (er) {}
+      setTimeout(umsScan, 0);
     }
 
     // ochiluvchi ro'yxat pastda sig'masa — yuqoriga ochiladi (oynalar va aylantiriladigan bloklar ichida)
