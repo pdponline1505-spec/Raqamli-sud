@@ -4578,7 +4578,8 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 @media (max-width:640px){.pbr-g{grid-template-columns:minmax(0,1fr) !important}}
 .pbr-g .fld{min-width:0}
 .pbr-g .dx-selv{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
-.pbr-g .dx-menu,.pbr-g .dx-menu.up{position:static !important;display:block;margin-top:6px;width:auto !important;min-width:0 !important;max-width:none !important;max-height:none !important;top:auto !important;bottom:auto !important;box-shadow:0 8px 24px rgba(15,23,42,.10)}
+.pbr-g .dx-menu,.pbr-g .dx-menu.up{position:fixed !important;z-index:95 !important;margin:0 !important;min-width:0 !important;max-width:none !important;overflow:auto !important;box-shadow:0 12px 32px rgba(15,23,42,.16) !important;visibility:hidden}
+.pbr-g .dx-menu[data-pos]{visibility:visible}
 .pbr-sab .dx-olbl{white-space:normal}
 .pbr-hint{height:44px;display:flex;align-items:center;padding:0 14px;border:1px dashed #e2e8f0;border-radius:10px;color:#94a3b8;font-size:13px}
 .pbr-doc{display:inline-flex;align-items:center;gap:6px}
@@ -9489,6 +9490,7 @@ class Component extends DCLogic {
     // ochiluvchi ro'yxat pastda sig'masa — yuqoriga ochiladi (oynalar va aylantiriladigan bloklar ichida)
     document.addEventListener("click", function (e) {
       var b = e.target && e.target.closest && e.target.closest(".dx-selbtn"); if (!b) return;
+      if (b.closest(".pbr-g")) { requestAnimationFrame(function () { requestAnimationFrame(function () { if (window.__pbrPos) window.__pbrPos(); }); }); return; }
       var place = function () {
         var sel = b.parentElement, m = sel && sel.querySelector(".dx-menu"); if (!m) return;
         m.classList.remove("up"); m.style.maxHeight = "";
@@ -11993,6 +11995,16 @@ class Component extends DCLogic {
         __out.pbS.sabab = dd("pb-sabab", SAB, v.reason || "", function (e) { setF({ reason: e.target.value }); }, { ph: "Sababni tanlang", noSplit: true, bc: errOn && rux === "yoq" && !v.reason ? "#dc2626" : "" });
         __out.pbfRuxHa = rux === "ha"; __out.pbfRuxYoq = rux === "yoq"; __out.pbfRuxNone = !rux;
         __out.pbfGridCls = "itkm-g pbr-g" + (rux ? "" : " one");
+        if (ddOpen && ddOpen.indexOf("pb-") === 0 && f) {
+          if (!window.__pbrPos) { window.__pbrPos = function () { try { var m = document.querySelector(".pbr-g .dx-sel.open .dx-menu"); if (!m) return; var b = m.parentElement.querySelector(".dx-selbtn").getBoundingClientRect(), vh = window.innerHeight, below = vh - b.bottom - 12, above = b.top - 12;
+              var h = Math.min(m.scrollHeight || 320, 360), up = below < Math.min(h, 220) && above > below, st = m.style;
+              st.setProperty("left", Math.round(b.left) + "px", "important"); st.setProperty("width", Math.round(b.width) + "px", "important"); st.setProperty("right", "auto", "important");
+              if (up) { st.setProperty("top", "auto", "important"); st.setProperty("bottom", Math.round(vh - b.top + 6) + "px", "important"); st.setProperty("max-height", Math.round(above) + "px", "important"); }
+              else { st.setProperty("bottom", "auto", "important"); st.setProperty("top", Math.round(b.bottom + 6) + "px", "important"); st.setProperty("max-height", Math.round(below) + "px", "important"); }
+              m.setAttribute("data-pos", "1"); } catch (er) {} };
+            window.addEventListener("scroll", window.__pbrPos, true); window.addEventListener("resize", window.__pbrPos); }
+          setTimeout(window.__pbrPos, 0); setTimeout(window.__pbrPos, 60);
+        }
         var pf = v.file || null, base = pbDocObj ? pbDocObj.title.toLowerCase().replace(/[ʼ'’]/g, "").replace(/\s+/g, "_") : "qaror";
         __out.pbfNoFile = rux === "ha" && !pf && !v.aiBusy; __out.pbfHasFile = rux === "ha" && !!pf && !v.aiBusy; __out.pbfAiBusy = rux === "ha" && !!v.aiBusy;
         __out.pbfUpCls = "pbu" + (errOn && rux === "ha" && v.mode && !pf ? " err" : "");
