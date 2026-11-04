@@ -4357,6 +4357,42 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .oo-status{display:flex;align-items:center;gap:18px;height:28px;padding:0 14px;background:#f7f7f7;border-top:1px solid #dfdfdf;font-size:12px;color:#555}
 .oo-zoom{letter-spacing:.08em}
 @media (max-width:720px){.oo-wrap{padding:0}.oo{border-radius:0}.oo-saved,.oo-co{display:none}.oo-page{padding:40px 24px;font-size:12pt}}
+/* Tomonlarga yuborish — akkordeon kartalar */
+.ysm-q{flex:none !important;height:40px;min-height:40px}
+.ysm-q input{height:38px}
+.ysm-right>*{flex:none}
+.ysm-card{scroll-margin-top:64px}
+.ysm-rh{position:sticky;top:-18px;z-index:2;margin:-18px -24px 0;padding:14px 24px 10px;background:#f6f7f9}
+.ysm-prog{font-size:12px;font-weight:500;color:#b45309;background:#fff7e6;border-radius:999px;padding:2px 8px}
+.ysm-prog.ok{color:#15803d;background:#ecfdf3}
+.ysm-card{gap:0 !important;padding:0 !important;overflow:hidden;transition:border-color .15s,box-shadow .15s}
+.ysm-ch2{display:flex;align-items:center;gap:12px;padding:12px 14px 12px 16px;cursor:pointer;min-width:0}
+.ysm-ch2:hover{background:#fafbfc}
+.ysm-av{width:36px;height:36px;border-radius:50%;object-fit:cover;object-position:center 20%;flex:none;background:#e2e8f0}
+.ysm-nm{font-size:14px;font-weight:600;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ysm-rl{font-size:12px;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ysm-chips{display:flex;gap:4px;flex-wrap:nowrap;overflow:hidden;max-width:40%}
+.ysm-chip{flex:none;height:22px;padding:0 8px;border-radius:6px;background:#f1f5f9;color:#334155;font-size:11.5px;display:inline-flex;align-items:center;white-space:nowrap}
+.ysm-st{flex:none;display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 9px;border-radius:999px;font-size:12px;font-weight:500;white-space:nowrap}
+.ysm-st::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.ysm-st.ok{background:#ecfdf3;color:#15803d}
+.ysm-st.todo{background:#fff7e6;color:#b45309}
+.ysm-st.bad{background:#fef2f2;color:#dc2626}
+.ysm-x{color:#dc2626 !important;flex:none}
+.ysm-chev{flex:none;color:#94a3b8;transition:transform .2s}
+.ysm-card.open .ysm-chev{transform:rotate(180deg)}
+.ysm-card.open .ysm-ch2{border-bottom:1px solid #eef1f5}
+.ysm-cb{display:flex;flex-direction:column;gap:14px;padding:14px 18px 16px;animation:ysmDrop .18s ease-out}
+@keyframes ysmDrop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.ysm-card.err{border-color:#fca5a5 !important;box-shadow:0 0 0 3px #fef2f2 !important}
+.ysm-card.err .ysm-ch2{background:#fffafa}
+.ysm-fe{display:block;margin-top:4px;font-size:12px;color:#dc2626}
+@media (max-width:900px){.ysm-chips{display:none}}
+.pbf-hint{display:flex;align-items:flex-start;gap:8px;padding:10px 12px;border-radius:10px;background:#fff7e6;color:#92400e;font-size:12.5px;line-height:1.45}
+.pbf-hint svg{flex:none;margin-top:1px}
+.doc-pub{display:inline-flex;align-items:center;gap:5px;height:30px;padding:0 10px;border-radius:8px;background:#ecfdf3;color:#15803d;font-size:12.5px;font-weight:500;text-decoration:none;white-space:nowrap}
+.dsn-lock{opacity:.6;cursor:not-allowed;align-items:flex-start}
+.dsn-lock small{font-size:11.5px;color:#64748b}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -6210,13 +6246,13 @@ html[data-theme="dark"] .ds-host img{filter:none}
         </div>
         <div class="doc-files"><sc-for list="{{d.files}}" as="f" hint-placeholder-count="1"><span class="doc-fx">{{f.ext}}</span></sc-for><sc-if value="{{d.hasExtra}}" hint-placeholder-val="{{ false }}"><span class="doc-fx more">{{d.extra}} ilova</span></sc-if></div>
         <div class="doc-acts">
-          <sc-if value="{{d.canEdit}}" hint-placeholder-val="{{ false }}"><button class="btn sm doc-oo" onClick="{{d.edit}}" title="ONLYOFFICE muharririda tahrirlash"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg>Tahrirlash</button></sc-if><sc-if value="{{d.isImzo}}" hint-placeholder-val="{{ false }}"><button class="btn sm" onClick="{{d.send}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2-7z"></path></svg>Yuborish</button><button class="btn sm pri" onClick="{{d.sign}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21c3-1 5-3 7-6M14 4l6 6-9 9H5v-6z"></path></svg>Imzolash</button></sc-if>
+          <sc-if value="{{d.canEdit}}" hint-placeholder-val="{{ false }}"><button class="btn sm doc-oo" onClick="{{d.edit}}" title="ONLYOFFICE muharririda tahrirlash"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg>Tahrirlash</button></sc-if><sc-if value="{{d.isPub}}" hint-placeholder-val="{{ false }}"><a class="doc-pub" href="{{d.pubUrl}}" target="_blank" rel="noopener" title="Saytda e'lon qilingan · {{d.pubAt}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg>E'lon qilingan</a></sc-if><sc-if value="{{d.canSend}}" hint-placeholder-val="{{ false }}"><button class="btn sm" onClick="{{d.send}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2-7z"></path></svg>Yuborish</button></sc-if><sc-if value="{{d.isImzo}}" hint-placeholder-val="{{ false }}"><button class="btn sm pri" onClick="{{d.sign}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21c3-1 5-3 7-6M14 4l6 6-9 9H5v-6z"></path></svg>Imzolash</button></sc-if>
           <sc-if value="{{d.isTasdiq}}" hint-placeholder-val="{{ false }}"><button class="btn sm pri" onClick="{{d.approve}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Tasdiqlash</button></sc-if>
           <sc-if value="{{d.canAi}}" hint-placeholder-val="{{ false }}"><button class="ib ai-ib" aria-label="{{d.title}} — AI tahlil" title="AI tahlil" onClick="{{d.openAi}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"></path><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"></path></svg></button></sc-if>
           <sc-if value="{{d.hasVer}}" hint-placeholder-val="{{ false }}"><button class="ib ver-ib" aria-label="{{d.title}} — versiyalarni taqqoslash" title="Versiyalar ({{d.verN}})" onClick="{{d.openVer}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v12"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg><span class="ver-n">{{d.verN}}</span></button></sc-if>
           <button class="ib" aria-label="{{d.title}} — ko'rish" title="Ko'rish" onClick="{{d.view}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
           <button class="ib" aria-label="{{d.title}} — yuklab olish" title="Yuklab olish" onClick="{{d.download}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg></button>
-          <span class="doc-mw"><button class="ib" aria-label="Boshqa amallar" title="Boshqa amallar" aria-haspopup="menu" aria-expanded="{{d.menuStr}}" onClick="{{d.toggleMenu}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg></button><sc-if value="{{d.menuOpen}}" hint-placeholder-val="{{ false }}"><div class="ihmenu doc-menu" role="menu"><sc-if value="{{d.menuEdit}}" hint-placeholder-val="{{ false }}"><button class="ihitem" role="menuitem" onClick="{{d.edit}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg>ONLYOFFICE da tahrirlash</button></sc-if><button class="ihitem" role="menuitem" onClick="{{d.menuSend}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2-7z"></path></svg>Ishtirokchilarga yuborish</button><button class="ihitem" role="menuitem" onClick="{{d.download}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>Yuklab olish</button><div class="dsn"><div class="dsn-h"><b>Yuborilganlar</b><small>{{d.sendSum}}</small></div><sc-if value="{{d.noSends}}" hint-placeholder-val="{{ false }}"><div class="dsn-empty">Hujjat hali hech kimga yuborilmagan</div></sc-if><sc-for list="{{d.sends}}" as="x" hint-placeholder-count="2"><div class="dsn-r"><div class="kv" style="gap: 1px; min-width: 0; flex: 1"><b class="dsn-who">{{x.who}}</b><small class="dsn-sub">{{x.role}} · {{x.via}} · {{x.at}}</small></div><span class="{{x.stCls}}">{{x.stTxt}}</span></div></sc-for></div></div></sc-if></span>
+          <span class="doc-mw"><button class="ib" aria-label="Boshqa amallar" title="Boshqa amallar" aria-haspopup="menu" aria-expanded="{{d.menuStr}}" onClick="{{d.toggleMenu}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg></button><sc-if value="{{d.menuOpen}}" hint-placeholder-val="{{ false }}"><div class="ihmenu doc-menu" role="menu"><sc-if value="{{d.menuEdit}}" hint-placeholder-val="{{ false }}"><button class="ihitem" role="menuitem" onClick="{{d.edit}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg>ONLYOFFICE da tahrirlash</button></sc-if><sc-if value="{{d.menuCanSend}}" hint-placeholder-val="{{ true }}"><button class="ihitem" role="menuitem" onClick="{{d.menuSend}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2-7z"></path></svg>Ishtirokchilarga yuborish</button></sc-if><sc-if value="{{d.menuNoSend}}" hint-placeholder-val="{{ false }}"><div class="ihitem dsn-lock" aria-disabled="true"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg><span class="kv" style="gap: 1px"><span>Ishtirokchilarga yuborish</span><small>Hujjat imzolangandan keyin yuborish mumkin</small></span></div></sc-if><button class="ihitem" role="menuitem" onClick="{{d.download}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>Yuklab olish</button><div class="dsn"><div class="dsn-h"><b>Yuborilganlar</b><small>{{d.sendSum}}</small></div><sc-if value="{{d.noSends}}" hint-placeholder-val="{{ false }}"><div class="dsn-empty">Hujjat hali hech kimga yuborilmagan</div></sc-if><sc-for list="{{d.sends}}" as="x" hint-placeholder-count="2"><div class="dsn-r"><div class="kv" style="gap: 1px; min-width: 0; flex: 1"><b class="dsn-who">{{x.who}}</b><small class="dsn-sub">{{x.role}} · {{x.via}} · {{x.at}}</small></div><span class="{{x.stCls}}">{{x.stTxt}}</span></div></sc-for></div></div></sc-if></span>
         </div>
       </div>
       </sc-for>
@@ -7327,7 +7363,8 @@ html[data-theme="dark"] .ds-host img{filter:none}
     <div class="ysm-body">
       <aside class="ysm-left">
         <label class="fld"><span>Ishtirokchi turi</span><span class="{{ysS.type.cls}}" id="{{ysS.type.id}}" onKeyDown="{{ysS.type.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{ysS.type.exp}}" disabled="{{ysS.type.dis}}" onClick="{{ysS.type.toggle}}" style="border-color: {{ysS.type.bc}}"><span class="{{ysS.type.vcls}}">{{ysS.type.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{ysS.type.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{ysS.type.stop}}"><sc-for list="{{ysS.type.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
-        <div class="between"><b class="ysm-lt">Barcha ishtirokchilar</b><small class="muted">{{ysCandCount}} ta topildi</small></div>
+        <label class="lf-search ysm-q" style="margin: 0"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><input type="search" placeholder="Ism bo'yicha qidirish" aria-label="Ishtirokchini qidirish" value="{{ysQ}}" onChange="{{ysSetQ}}"></label>
+        <div class="between"><b class="ysm-lt">Ishtirokchilar</b><small class="muted">{{ysCandCount}} ta topildi</small></div>
         <div class="ysm-cands">
           <sc-for list="{{ysCands}}" as="c" hint-placeholder-count="3">
           <div class="{{c.cls}}"><img src="{{c.photo}}" alt=""><div class="kv" style="gap: 1px; min-width: 0; flex: 1"><b>{{c.name}}</b><small>{{c.sub}}</small></div>
@@ -7337,28 +7374,33 @@ html[data-theme="dark"] .ds-host img{filter:none}
           </sc-for>
           <sc-if value="{{ysCandEmpty}}" hint-placeholder-val="{{ false }}"><small class="muted" style="padding: 12px 4px">Bu turdagi ishtirokchi yo'q</small></sc-if>
         </div>
-        <button class="btn ysm-all" onClick="{{ysAddAll}}" disabled="{{ysAllDis}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v8M8 12h8"></path></svg>Barchasini qo'shish</button>
+        <button class="btn ysm-all" onClick="{{ysAddAll}}" disabled="{{ysAllDis}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v8M8 12h8"></path></svg>{{ysAllLbl}}</button>
       </aside>
       <div class="ysm-right">
-        <div class="between"><span class="row" style="gap: 8px"><b class="ysm-rt">Qo'shilgan ishtirokchilar</b><span class="dx-cnt">{{ysCount}}</span></span><sc-if value="{{ysHas}}" hint-placeholder-val="{{ true }}"><button class="btn sm" style="color: #dc2626" onClick="{{ysClear}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg>Tozalash</button></sc-if></div>
+        <div class="between ysm-rh"><span class="row" style="gap: 8px"><b class="ysm-rt">Qo'shilgan ishtirokchilar</b><span class="dx-cnt">{{ysCount}}</span><sc-if value="{{ysHas}}" hint-placeholder-val="{{ true }}"><span class="{{ysProgCls}}">{{ysProg}}</span></sc-if></span><sc-if value="{{ysHas}}" hint-placeholder-val="{{ true }}"><span class="row" style="gap: 6px"><button class="btn sm" onClick="{{ysFold}}">{{ysFoldLbl}}</button><button class="btn sm" style="color: #dc2626" onClick="{{ysClear}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg>Tozalash</button></span></sc-if></div>
         <sc-if value="{{ysEmpty}}" hint-placeholder-val="{{ false }}"><div class="bk2-empty" style="background: #fff"><b>Ishtirokchi qo'shilmagan</b><small>Chap tomondan ishtirokchi turini tanlab, «＋» orqali qo'shing</small></div></sc-if>
-        <sc-for list="{{ysList}}" as="r" hint-placeholder-count="2">
+        <sc-for list="{{ysList}}" as="r" hint-placeholder-count="3">
         <div class="{{r.cls}}">
-          <div class="ysm-ch">
-            <div class="kv" style="gap: 2px; min-width: 0; flex: 1"><small>F.I.Sh · {{r.role}}</small><b>{{r.name}}</b></div>
-            <div class="kv" style="gap: 2px; flex: none"><small>Tug'ilgan sanasi</small><b>{{r.birth}}</b></div>
-            <button class="ib" style="color: #dc2626" aria-label="{{r.name}} — olib tashlash" title="Olib tashlash" onClick="{{r.remove}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M8 12h8"></path></svg></button>
+          <div class="ysm-ch2" role="button" tabindex="0" aria-expanded="{{r.exp}}" onClick="{{r.toggle}}">
+            <img class="ysm-av" src="{{r.photo}}" alt="">
+            <div class="kv" style="gap: 2px; min-width: 0; flex: 1"><b class="ysm-nm">{{r.name}}</b><small class="ysm-rl">{{r.role}} · Tug'ilgan: {{r.birth}}</small></div>
+            <sc-if value="{{r.closed}}" hint-placeholder-val="{{ true }}"><span class="ysm-chips"><sc-for list="{{r.chips}}" as="c" hint-placeholder-count="2"><span class="ysm-chip">{{c}}</span></sc-for></span></sc-if>
+            <span class="{{r.stCls}}">{{r.stTxt}}</span>
+            <button class="ib ysm-x" aria-label="{{r.name}} — olib tashlash" title="Olib tashlash" onClick="{{r.remove}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M8 12h8"></path></svg></button>
+            <svg class="i s ysm-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
           </div>
+          <sc-if value="{{r.open}}" hint-placeholder-val="{{ true }}"><div class="ysm-cb">
           <div class="ysm-g">
-            <label class="fld"><span>Manzil</span><input value="{{r.v.addr}}" onChange="{{r.set.addr}}" placeholder="Manzilni kiriting"></label>
-            <label class="fld"><span>Kiritish turi</span><span class="{{r.ktDd.cls}}" id="{{r.ktDd.id}}" onKeyDown="{{r.ktDd.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{r.ktDd.exp}}" disabled="{{r.ktDd.dis}}" onClick="{{r.ktDd.toggle}}" style="border-color: {{r.ktDd.bc}}"><span class="{{r.ktDd.vcls}}">{{r.ktDd.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{r.ktDd.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{r.ktDd.stop}}"><sc-for list="{{r.ktDd.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
-            <label class="fld"><span>Telefon raqami</span><input inputmode="tel" data-fmt="tel" value="{{r.v.tel}}" onChange="{{r.set.tel}}" placeholder="+998 __ ___ __ __"></label>
-            <label class="fld"><span>Elektron pochta</span><input type="email" value="{{r.v.email}}" onChange="{{r.set.email}}" placeholder="example@gmail.com"></label>
+            <label class="fld"><span>Manzil<sc-if value="{{r.needAddr}}" hint-placeholder-val="{{ false }}"> <b class="dx-req">*</b></sc-if></span><input value="{{r.v.addr}}" onChange="{{r.set.addr}}" placeholder="Manzilni kiriting" style="border-color: {{r.bcAddr}}"><sc-if value="{{r.eAddr}}" hint-placeholder-val="{{ false }}"><small class="ysm-fe">Pochta / feldyeger orqali yuborish uchun manzil kerak</small></sc-if></label>
+            <label class="fld"><span>Kiritish turi</span><span class="{{r.ktDd.cls}}" id="{{r.ktDd.id}}" onKeyDown="{{r.ktDd.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{r.ktDd.exp}}" disabled="{{r.ktDd.dis}}" onClick="{{r.ktDd.toggle}}" style="border-color: {{r.ktDd.bc}}"><span class="{{r.ktDd.vcls}}">{{r.ktDd.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{r.ktDd.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{r.ktDd.stop}}"><sc-for list="{{r.ktDd.opts}}" as="o" hint-placeholder-count="2"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><span class="dx-olbl">{{o.name}}</span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
+            <label class="fld"><span>Telefon raqami<sc-if value="{{r.needTel}}" hint-placeholder-val="{{ false }}"> <b class="dx-req">*</b></sc-if></span><input inputmode="tel" data-fmt="tel" value="{{r.v.tel}}" onChange="{{r.set.tel}}" placeholder="+998 __ ___ __ __" style="border-color: {{r.bcTel}}"><sc-if value="{{r.eTel}}" hint-placeholder-val="{{ false }}"><small class="ysm-fe">SMS / faks uchun telefon raqami kerak</small></sc-if></label>
+            <label class="fld"><span>Elektron pochta<sc-if value="{{r.needMail}}" hint-placeholder-val="{{ false }}"> <b class="dx-req">*</b></sc-if></span><input type="email" value="{{r.v.email}}" onChange="{{r.set.email}}" placeholder="example@gmail.com" style="border-color: {{r.bcMail}}"><sc-if value="{{r.eMail}}" hint-placeholder-val="{{ false }}"><small class="ysm-fe">Elektron pochta orqali yuborish uchun e-pochta manzili kerak</small></sc-if></label>
           </div>
-          <div class="ysm-mh"><small>Yuborish usuli</small><sc-if value="{{r.noMethod}}" hint-placeholder-val="{{ false }}"><small class="ysm-need">kamida bittasini belgilang</small></sc-if></div>
+          <div class="ysm-mh"><small>Yuborish usuli</small><sc-if value="{{r.eM}}" hint-placeholder-val="{{ false }}"><small class="ysm-need">kamida bittasini belgilang</small></sc-if></div>
           <div class="ysm-m" role="group" aria-label="Yuborish usullari">
             <sc-for list="{{r.methods}}" as="m" hint-placeholder-count="8"><button type="button" class="{{m.cls}}" role="checkbox" aria-checked="{{m.str}}" onClick="{{m.toggle}}"><span class="{{m.box}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span>{{m.label}}</button></sc-for>
           </div>
+          </div></sc-if>
         </div>
         </sc-for>
       </div>
@@ -7559,13 +7601,13 @@ html[data-theme="dark"] .ds-host img{filter:none}
   <div class="qv itkm" role="dialog" aria-modal="true" aria-labelledby="pbf-title" onKeyDown="{{pbfKey}}" style="width: min(620px, 100%)">
     <sc-if value="{{pbfDdOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg in" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{itkDdClose}}"></button></sc-if>
     <div class="qv-h">
-      <div class="kv" style="gap: 4px; min-width: 0"><b id="pbf-title" class="qv-title" style="font-size: 20px">Publikatsiya qilish</b><span class="qv-sub">Hujjat moderatordan o'tgach public.sud.uz saytida e'lon qilinadi</span></div>
+      <div class="kv" style="gap: 4px; min-width: 0"><b id="pbf-title" class="qv-title" style="font-size: 20px">Publikatsiya qilish</b><span class="qv-sub">Hal qiluv qarori va ajrimlar moderatordan o'tgach public.sud.uz saytida ochiq e'lon qilinadi</span></div>
       <button class="ib qv-x" aria-label="Yopish" onClick="{{pbfClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
     </div>
     <div class="qv-b itkm-b">
       <label class="fld"><span>Hujjat <b class="dx-req">*</b></span><span class="{{pbS.doc.cls}}" id="{{pbS.doc.id}}" onKeyDown="{{pbS.doc.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{pbS.doc.exp}}" disabled="{{pbS.doc.dis}}" onClick="{{pbS.doc.toggle}}" style="border-color: {{pbS.doc.bc}}"><span class="{{pbS.doc.vcls}}">{{pbS.doc.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{pbS.doc.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{pbS.doc.stop}}"><sc-for list="{{pbS.doc.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
       <button type="button" class="pb-opt" role="checkbox" aria-checked="{{pbfAnonStr}}" onClick="{{pbfToggleAnon}}"><span class="{{pbfAnonBox}}"><svg class="i" style="width: 12px; height: 12px; stroke-width: 3" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span><span class="kv" style="gap: 2px"><b>Shaxsga oid ma'lumotlarni yashirish</b><small>F.I.Sh., manzil, pasport va telefon raqamlari avtomatik niqoblanadi</small></span></button>
-      <sc-if value="{{pbfWarn}}" hint-placeholder-val="{{ false }}"><div class="sx-rej">Shaxsga oid ma'lumotlar yashirilmasa, hujjat moderatsiyadan o'tmasligi mumkin</div></sc-if>
+      <sc-if value="{{pbfHasHint}}" hint-placeholder-val="{{ false }}"><div class="pbf-hint"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg><span>{{pbfHint}}</span></div></sc-if><sc-if value="{{pbfWarn}}" hint-placeholder-val="{{ false }}"><div class="sx-rej">Shaxsga oid ma'lumotlar yashirilmasa, hujjat moderatsiyadan o'tmasligi mumkin</div></sc-if>
       <sc-if value="{{pbfErr}}" hint-placeholder-val="{{ false }}"><small class="dx-err" style="margin: 0">E'lon qilinadigan hujjatni tanlang</small></sc-if>
     </div>
     <div class="qv-f itkm-f">
@@ -7907,6 +7949,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
   </div>
 </div>
 </sc-if>
+
 
 
 <sc-if value="{{ooOpen}}" hint-placeholder-val="{{ false }}">
@@ -9699,20 +9742,20 @@ class Component extends DCLogic {
           files: d.files.map(function (f) { return { label: f, cls: FILE_CLS[f], ext: ({ PDF: "PDF", W: "DOCX", X: "XLSX" })[f] || f }; }),
           ftCls: "dx-ft" + (({ PDF: "", W: " w", X: " x" })[d.files[0]] || ""), ftLabel: ({ PDF: "PDF", W: "DOC", X: "XLS" })[d.files[0]] || "FILE",
           stCls: "doc-st " + d.st, rowCls: "doc-row" + (d.st !== "tayyor" ? " act " + d.st : ""),
-          hasVer: !!DOC_VERS[d.title], verN: DOC_VERS[d.title] ? DOC_VERS[d.title].v.length : 0,
+          hasVer: !!DOC_VERS[d.title] && d.st !== "imzo", verN: DOC_VERS[d.title] ? DOC_VERS[d.title].v.length : 0,
           hasChg: !!(DOC_VERS[d.title] && DOC_VERS[d.title].chg), chgTxt: DOC_VERS[d.title] && DOC_VERS[d.title].chg ? "Tuzatish kiritilgan · " + DOC_VERS[d.title].chg.length : "",
           openVer: function () { var n = DOC_VERS[d.title].v.length; self.setState({ verDoc: d.title, verA: Math.max(0, n - 2), verB: n - 1, verMode: "inline" }); },
           canAi: !!AI_DATA[d.title], openAi: function () { self.setState({ aiDoc: d.title, aiLoading: true }); setTimeout(function () { self.setState({ aiLoading: false }); }, 1200); },
           hasExtra: !!d.extra, extra: d.extra || "",
           sign: function () { self.updDoc(d.id, { st: "tasdiq" }); self.flash("«" + d.title + "» imzolandi — tasdiqlashga o'tdi"); },
           approve: function () { self.updDoc(d.id, { st: "tayyor" }); self.flash("«" + d.title + "» tasdiqlandi"); },
-          send: function () { self.setState({ dxDd: "", ys: { doc: d.title, type: "Arizachi", list: [], err: "" } }); },
+          send: function () { self.setState({ dxDd: "", ys: { doc: d.title, type: "Barchasi", q: "", list: [], err: "" } }); },
           view: function () { self.flash("«" + d.title + "» ko'rish oynasida ochiladi"); },
           download: function () { self.flash("«" + d.title + "» yuklab olinmoqda"); },
-          canEdit: !!d.gen && d.st !== "tayyor", edit: function () { self.setState({ docMenu: 0, oo: { id: d.id, title: d.title, date: d.date } }); },
+          canEdit: !!d.gen && d.st === "imzo", canSend: d.st !== "imzo", isPub: d.st !== "imzo" && (s.pb || []).some(function (x) { return x.title === d.title && x.st === "elon"; }), pubUrl: "https://" + (((s.pb || []).filter(function (x) { return x.title === d.title; })[0] || {}).url || "public.sud.uz"), pubAt: (((s.pb || []).filter(function (x) { return x.title === d.title; })[0] || {}).date || ""), edit: function () { self.setState({ docMenu: 0, oo: { id: d.id, title: d.title, date: d.date } }); },
           menuOpen: s.docMenu === d.id, menuStr: s.docMenu === d.id ? "true" : "false",
           toggleMenu: function () { self.setState({ docMenu: self.state.docMenu === d.id ? 0 : d.id }); },
-          menuEdit: !!d.gen, menuSend: function () { self.setState({ docMenu: 0, dxDd: "", ys: { doc: d.title, type: "Arizachi", list: [], err: "" } }); },
+          menuEdit: !!d.gen && d.st === "imzo", menuCanSend: d.st !== "imzo", menuNoSend: d.st === "imzo", menuSend: function () { self.setState({ docMenu: 0, dxDd: "", ys: { doc: d.title, type: "Barchasi", q: "", list: [], err: "" } }); },
           sends: (d.sends || []).map(function (x) { return { who: x.who, role: x.role, via: x.via, at: x.at, ok: x.st === "ok", stTxt: x.st === "ok" ? "Yetkazilgan" : "Yetkazilmoqda", stCls: "dsn-st " + (x.st === "ok" ? "ok" : "go") }; }),
           hasSends: !!(d.sends || []).length, noSends: !(d.sends || []).length,
           sendSum: (function () { var a = d.sends || [], ok = a.filter(function (x) { return x.st === "ok"; }).length; return a.length ? a.length + " ta ishtirokchi · " + ok + " tasiga yetkazilgan" : ""; })()
@@ -10773,7 +10816,8 @@ class Component extends DCLogic {
       docsEmptyT: (s.docs || []).length ? "Mos hujjat topilmadi" : "Hujjatlar hali yo'q",
       docsEmptyS: (s.docs || []).length ? "Filtr yoki qidiruv so'zini o'zgartiring" : "Qaror, ajrim yoki bayonnomani biriktiring yoki shablon asosida tuzing", filtered: filtered, docStTabs: docStTabs,
       docAttach: function () { self.setState({ dxDd: "", jfOver: false, jf: { mode: "doc", to: "", turi: "", mazmun: "", file: null, err: "" } }); },
-      docPublish: function () { self.setState({ dxDd: "", ys: { doc: "", type: "Arizachi", list: [], err: "" } }); },
+      docPublish: function () { var taken = (self.state.pb || []).map(function (x) { return x.title; }); var hqq = (self.state.docs || []).filter(function (d) { return d.st === "tayyor" && /qaror/i.test(d.title) && taken.indexOf(d.title) < 0; })[0];
+        self.setState({ dxDd: "", docMenu: 0, pbForm: { doc: hqq ? String(hqq.id) : "", anon: true, err: false } }); },
       docCompose: function () { var d = new Date(); self.setState({ dxDd: "", hc: { turi: "", sana: d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"), ai: false, err: "" } }); },
       docType: s.docType, typeOpts: typeOpts, instOpts: instOpts, instLabel: instLabel,
       ddType: s.dd === "type", ddInst: s.dd === "inst", anyDD: !!s.dd,
@@ -11622,7 +11666,9 @@ class Component extends DCLogic {
         __out.pbAdd = function () { self.setState({ dxDd: "", pbForm: { doc: "", anon: true, err: false } }); };
         var f = s.pbForm, v = f || { doc: "", anon: true, err: false };
         var taken = list.map(function (x) { return x.title; });
-        var docs = (s.docs || []).filter(function (d) { return d.st === "tayyor" && taken.indexOf(d.title) < 0; });
+        var docs = (s.docs || []).filter(function (d) { return d.st === "tayyor" && /qaror|ajrim/i.test(d.title) && taken.indexOf(d.title) < 0; });
+        var unsigned = (s.docs || []).filter(function (d) { return d.st !== "tayyor" && /qaror/i.test(d.title) && taken.indexOf(d.title) < 0; });
+        __out.pbfHint = unsigned.length ? "«" + unsigned[0].title + "» hali " + (unsigned[0].st === "imzo" ? "imzolanmagan" : "tasdiqlanmagan") + " — imzolanib tasdiqlangach bu ro'yxatda paydo bo'ladi" : ""; __out.pbfHasHint = !!unsigned.length;
         __out.pbfOpen = !!f && !!s.caseOpen;
         __out.pbS = { doc: dd("pb-doc", [{ v: "", l: "Hujjatni tanlang" }].concat(docs.map(function (d) { return { v: String(d.id), l: d.title, sub: d.type + " · " + isoToUz(d.date) }; })), v.doc, function (e) { var val = e.target.value; self.setState(function (prev) { return prev.pbForm ? { pbForm: Object.assign({}, prev.pbForm, { doc: val, err: false }) } : null; }); }, { ph: docs.length ? "Hujjatni tanlang" : "E'lon qilish uchun tayyor hujjat yo'q", noSplit: true, disabled: !docs.length, bc: v.err && !v.doc ? "#dc2626" : "" }) };
         __out.pbfAnonStr = v.anon ? "true" : "false"; __out.pbfAnonBox = v.anon ? "cbox on" : "cbox"; __out.pbfWarn = !!f && !v.anon;
@@ -12436,40 +12482,83 @@ class Component extends DCLogic {
       // ---- tomonlarga yuborish oynasi ----
       (function () {
         var y = s.ys;
-        var TYPES = [["Arizachi", "tmDv"], ["Javobgar", "tmJv"], ["Qo'shimcha javobgar", "qtJv"], ["Qo'shimcha arizachi", "qtAr"], ["Qo'shimcha shaxs", "qsh"]];
+        var TYPES = [["Barchasi", "*"], ["Arizachi", "tmDv"], ["Javobgar", "tmJv"], ["Qo'shimcha javobgar", "qtJv"], ["Qo'shimcha arizachi", "qtAr"], ["Qo'shimcha shaxs", "qsh"]];
         var METHODS = ["Faks orqali", "Maxsus aloqa xizmati orqali", "Elektron pochta orqali", "Shaxsan o'zi orqali", "Davlat feldyegerlik xizmati orqali", "Elektron shaklda", "SMS orqali", "Gibrid pochta orqali"];
+        var SHORT = { "Faks orqali": "Faks", "Maxsus aloqa xizmati orqali": "Maxsus aloqa", "Elektron pochta orqali": "E-pochta", "Shaxsan o'zi orqali": "Shaxsan", "Davlat feldyegerlik xizmati orqali": "Feldyeger", "Elektron shaklda": "Elektron", "SMS orqali": "SMS", "Gibrid pochta orqali": "Gibrid pochta" };
+        var NEED_ADDR = ["Maxsus aloqa xizmati orqali", "Davlat feldyegerlik xizmati orqali", "Gibrid pochta orqali"], NEED_TEL = ["SMS orqali", "Faks orqali"], NEED_MAIL = ["Elektron pochta orqali"];
+        // ko'p taraflik ishni ko'rsatish uchun qo'shimcha namunaviy ishtirokchilar
+        var EXTRA = {
+          tmDv: [{ id: "x1", name: "Rasulov Bobur Akmalovich", birth: "1988-03-14", gender: "Erkak", manzil: "Surxondaryo viloyati, Termiz shahri, Al-Hakim at-Termiziy ko'chasi, 21", tel: "+998 91 245 18 07", email: "b.rasulov@mail.uz" }],
+          tmJv: [{ id: "x2", name: "Normurodov Bekzod Azizovich", birth: "1979-11-02", gender: "Erkak", manzil: "Termiz shahri, Barkamol avlod ko'chasi, 4", tel: "+998 93 601 22 40", email: "" },
+                 { id: "x3", name: "\"Baraka Trans\" MChJ", birth: "", gender: "Erkak", manzil: "Termiz shahri, Islom Karimov ko'chasi, 88", tel: "+998 76 223 41 15", email: "info@barakatrans.uz" },
+                 { id: "x4", name: "Tursunova Zarina Olimovna", birth: "1992-06-21", gender: "Ayol", manzil: "", tel: "", email: "" }],
+          qtJv: [{ id: "x5", name: "Eshonqulov Sardor Rustamovich", birth: "1985-01-09", gender: "Erkak", manzil: "Denov tumani, Navro'z MFY, 12-uy", tel: "+998 99 310 77 21", email: "" },
+                 { id: "x6", name: "\"Surxon Agro Export\" MChJ", birth: "", gender: "Erkak", manzil: "Sherobod tumani, Paxtakor ko'chasi, 3", tel: "", email: "export@surxonagro.uz" }],
+          qtAr: [{ id: "x7", name: "Xolmatov Dilshod Rustamovich", birth: "1990-09-30", gender: "Erkak", manzil: "Termiz shahri, Mustaqillik ko'chasi, 17", tel: "+998 90 512 64 88", email: "d.xolmatov@gmail.com" }],
+          qsh: [{ id: "x8", name: "Ergasheva Malika Anvarovna", birth: "1987-12-12", gender: "Ayol", manzil: "Termiz shahri, Navoiy ko'chasi, 9", tel: "+998 97 410 30 55", email: "malika.e@mail.uz" },
+                { id: "x9", name: "Termiz shahar prokuraturasi", birth: "", gender: "Erkak", manzil: "Termiz shahri, Islom Karimov ko'chasi, 25", tel: "+998 76 221 10 02", email: "termiz@prokuratura.uz" },
+                { id: "x10", name: "Termiz tumani MIB bo'limi", birth: "", gender: "Erkak", manzil: "Termiz shahri, Farovon ko'chasi, 2", tel: "", email: "" }]
+        };
         var setY = function (fn) { self.setState(function (prev) { if (!prev.ys) return null; return { ys: Object.assign({}, prev.ys, fn(prev.ys)) }; }); };
-        var keyOf = function (t) { return (TYPES.filter(function (x) { return x[0] === t; })[0] || TYPES[0])[1]; };
-        var pool = y ? (s[keyOf(y.type)] || []) : [];
-        var uid = function (p) { return (y ? keyOf(y.type) : "") + ":" + p.id; };
+        var people = function (k) { return (s[k] || []).concat(EXTRA[k] || []); };
+        var curType = y ? (y.type || "Barchasi") : "Barchasi";
+        var pool = []; TYPES.forEach(function (t) { if (t[1] === "*") return; if (curType !== "Barchasi" && curType !== t[0]) return; people(t[1]).forEach(function (p) { pool.push({ p: p, role: t[0], key: t[1] }); }); });
+        var pq = y ? String(y.q || "").trim().toLowerCase() : "";
+        var shown = pool.filter(function (x) { return !pq || x.p.name.toLowerCase().indexOf(pq) >= 0; });
+        var uid = function (x) { return x.key + ":" + x.p.id; };
         var inList = function (id) { return !!(y && y.list.some(function (r) { return r.uid === id; })); };
-        var mkRow = function (p, role) { return { uid: uid(p), name: p.name, role: role, birth: isoToUz(p.birth), photo: portrait(p.name, p.gender), addr: p.manzil || "", kt: "Ro'yxat orqali", tel: "", email: "", m: { "Elektron pochta orqali": true, "Davlat feldyegerlik xizmati orqali": true } }; };
+        var mkRow = function (x) { var p = x.p; return { uid: uid(x), name: p.name, role: x.role, birth: p.birth ? isoToUz(p.birth) : "—", photo: portrait(p.name, p.gender), addr: p.manzil || "", kt: "Ro'yxat orqali", tel: p.tel || "", email: p.email || "", m: (function () { var m = {}; if (p.email) m["Elektron pochta orqali"] = true; if (p.manzil) m["Davlat feldyegerlik xizmati orqali"] = true; if (!p.email && !p.manzil) m["Elektron pochta orqali"] = true; return m; })() }; };
+        var missOf = function (r) { var on = METHODS.filter(function (m) { return r.m[m]; }), miss = {};
+          if (!on.length) miss.m = true;
+          if (on.some(function (m) { return NEED_ADDR.indexOf(m) >= 0; }) && !String(r.addr || "").trim()) miss.addr = true;
+          if (on.some(function (m) { return NEED_TEL.indexOf(m) >= 0; }) && String(r.tel || "").replace(/\D/g, "").length < 9) miss.tel = true;
+          if (on.some(function (m) { return NEED_MAIL.indexOf(m) >= 0; }) && !/^\S+@\S+\.\S+$/.test(String(r.email || "").trim())) miss.email = true;
+          return miss; };
+        var missN = function (r) { return Object.keys(missOf(r)).length; };
+        // yangi qo'shilganda to'ldirilganlarni yig'ib qo'yish (scroll kamayadi)
+        var collapseDone = function (list) { return list.map(function (r) { return missN(r) ? r : Object.assign({}, r, { open: false }); }); };
         __out.ysOpen = !!y && !!s.caseOpen;
         __out.ysDoc = y ? y.doc : "";
-        __out.ysSub = y && y.doc ? "«" + y.doc + "» hujjatini ishtirokchilarga yuborish" : "Ish hujjatlarini ishtirokchilarga yuborish (publikatsiya)";
-        __out.ysS = { type: dd("ys-type", TYPES.map(function (t) { return { v: t[0], l: t[0] }; }), y ? y.type : "", function (e) { setY(function () { return { type: e.target.value }; }); }, {}) };
-        var cands = pool.map(function (p) { var id = uid(p), on = inList(id);
-          return { name: p.name, sub: "Tug'ilgan: " + isoToUz(p.birth) + " · " + (p.manzil || "—"), photo: portrait(p.name, p.gender), can: !on, added: on, cls: "ysm-c" + (on ? " on" : ""),
-            add: function () { setY(function (w) { return { err: "", list: w.list.concat([mkRow(p, w.type)]) }; }); },
+        __out.ysSub = y && y.doc ? "«" + y.doc + "» hujjatini ishtirokchilarga yuborish" : "Ish hujjatlarini ishtirokchilarga yuborish";
+        __out.ysS = { type: dd("ys-type", TYPES.map(function (t) { var n = t[1] === "*" ? TYPES.slice(1).reduce(function (a, z) { return a + people(z[1]).length; }, 0) : people(t[1]).length; return { v: t[0], l: t[0] + " (" + n + ")" }; }), curType, function (e) { setY(function () { return { type: e.target.value }; }); }, {}) };
+        __out.ysQ = y ? (y.q || "") : ""; __out.ysSetQ = function (e) { var v = e.target.value; setY(function () { return { q: v }; }); };
+        var cands = shown.map(function (x) { var id = uid(x), on = inList(id), p = x.p;
+          return { name: p.name, sub: (curType === "Barchasi" ? x.role + " · " : "") + (p.birth ? "Tug'ilgan: " + isoToUz(p.birth) : "Yuridik shaxs") + (p.manzil ? " · " + p.manzil : ""), photo: portrait(p.name, p.gender), can: !on, added: on, cls: "ysm-c" + (on ? " on" : ""),
+            add: function () { setY(function (w) { return { err: "", list: collapseDone(w.list).concat([mkRow(x)]) }; }); },
             remove: function () { setY(function (w) { return { err: "", list: w.list.filter(function (r) { return r.uid !== id; }) }; }); } }; });
         __out.ysCands = cands; __out.ysCandCount = cands.length; __out.ysCandEmpty = !cands.length;
         __out.ysAllDis = !cands.some(function (c) { return c.can; });
-        __out.ysAddAll = function () { setY(function (w) { var add = pool.filter(function (p) { return !w.list.some(function (r) { return r.uid === uid(p); }); }).map(function (p) { return mkRow(p, w.type); }); return { err: "", list: w.list.concat(add) }; }); };
+        __out.ysAllLbl = curType === "Barchasi" ? "Barchasini qo'shish (" + cands.filter(function (c) { return c.can; }).length + ")" : "Barcha «" + curType + "»larni qo'shish";
+        __out.ysAddAll = function () { setY(function (w) { var add = shown.filter(function (x) { return !w.list.some(function (r) { return r.uid === uid(x); }); }).map(mkRow); return { err: "", list: collapseDone(w.list).concat(add) }; }); };
         var list = y ? y.list : [];
         var errOn = !!(y && y.err);
+        var RD = "#dc2626";
         __out.ysList = list.map(function (r) {
           var setField = function (k) { return function (e) { var v = e.target.value; setY(function (w) { return { list: w.list.map(function (x) { if (x.uid !== r.uid) return x; var z = Object.assign({}, x); z[k] = v; return z; }) }; }); }; };
-          var mc = METHODS.filter(function (m) { return r.m[m]; }).length;
-          return { name: r.name, role: r.role, birth: r.birth, v: r, set: { addr: setField("addr"), tel: setField("tel"), email: setField("email") },
+          var miss = missOf(r), n = Object.keys(miss).length, open = r.open != null ? !!r.open : n > 0;
+          var on = METHODS.filter(function (m) { return r.m[m]; });
+          var bad = function (k) { return errOn && miss[k]; };
+          return { name: r.name, role: r.role, birth: r.birth, v: r, photo: r.photo, set: { addr: setField("addr"), tel: setField("tel"), email: setField("email") },
             ktDd: dd("ys-kt-" + r.uid, [{ v: "Ro'yxat orqali", l: "Ro'yxat orqali" }, { v: "Qo'lda kiritish", l: "Qo'lda kiritish" }], r.kt, setField("kt"), {}),
-            noMethod: mc === 0, cls: "ysm-card" + (errOn && mc === 0 ? " err" : ""),
-            methods: METHODS.map(function (m) { var on = !!r.m[m]; return { label: m, cls: "ysm-mo" + (on ? " on" : ""), box: on ? "cbox on" : "cbox", str: on ? "true" : "false",
-              toggle: function () { setY(function (w) { return { err: "", list: w.list.map(function (x) { if (x.uid !== r.uid) return x; var mm = Object.assign({}, x.m); mm[m] = !mm[m]; return Object.assign({}, x, { m: mm }); }) }; }); } }; }),
-            remove: function () { setY(function (w) { return { list: w.list.filter(function (x) { return x.uid !== r.uid; }) }; }); } };
+            open: open, closed: !open, exp: open ? "true" : "false",
+            toggle: function () { setY(function (w) { return { list: w.list.map(function (x) { return x.uid === r.uid ? Object.assign({}, x, { open: !open }) : x; }) }; }); },
+            chips: on.map(function (m) { return SHORT[m] || m; }), noChips: !on.length,
+            ok: n === 0, stTxt: n === 0 ? "To'ldirilgan" : n + " ta maydon to'ldirilmagan", stCls: "ysm-st " + (n === 0 ? "ok" : (errOn ? "bad" : "todo")),
+            noMethod: !!miss.m, needAddr: !!miss.addr, needTel: !!miss.tel, needMail: !!miss.email,
+            bcAddr: bad("addr") ? RD : "", bcTel: bad("tel") ? RD : "", bcMail: bad("email") ? RD : "",
+            eAddr: bad("addr"), eTel: bad("tel"), eMail: bad("email"), eM: bad("m"),
+            cls: "ysm-card" + (open ? " open" : "") + (errOn && n ? " err" : "") + (n === 0 ? " done" : ""),
+            methods: METHODS.map(function (m) { var on2 = !!r.m[m]; return { label: m, cls: "ysm-mo" + (on2 ? " on" : ""), box: on2 ? "cbox on" : "cbox", str: on2 ? "true" : "false",
+              toggle: function () { setY(function (w) { return { list: w.list.map(function (x) { if (x.uid !== r.uid) return x; var mm = Object.assign({}, x.m); mm[m] = !mm[m]; return Object.assign({}, x, { m: mm }); }) }; }); } }; }),
+            remove: function (e) { if (e && e.stopPropagation) e.stopPropagation(); setY(function (w) { return { list: w.list.filter(function (x) { return x.uid !== r.uid; }) }; }); } };
         });
         var totalM = list.reduce(function (a, r) { return a + METHODS.filter(function (m) { return r.m[m]; }).length; }, 0);
+        var badN = list.filter(function (r) { return missN(r) > 0; }).length, anyOpen = __out.ysList.some(function (r) { return r.open; });
         __out.ysHas = list.length > 0; __out.ysEmpty = !list.length; __out.ysCount = list.length + " ta";
-        __out.ysSummary = list.length ? list.length + " ta ishtirokchi · " + totalM + " ta yuborish" : "Ishtirokchi tanlanmagan";
+        __out.ysProg = list.length ? (list.length - badN) + " / " + list.length + " to'ldirilgan" : ""; __out.ysProgCls = "ysm-prog" + (badN ? "" : " ok");
+        __out.ysFoldLbl = anyOpen ? "Hammasini yig'ish" : "Hammasini ochish";
+        __out.ysFold = function () { setY(function (w) { return { list: w.list.map(function (x) { return Object.assign({}, x, { open: !anyOpen }); }) }; }); };
+        __out.ysSummary = list.length ? list.length + " ta ishtirokchi · " + totalM + " ta yuborish" + (badN ? " · " + badN + " tasida to'ldirilmagan maydon bor" : "") : "Ishtirokchi tanlanmagan";
         __out.ysErr = errOn; __out.ysErrText = y ? y.err : "";
         __out.ysDdOpen = !!ddOpen && (ddOpen.indexOf("ys-") === 0);
         __out.ysClear = function () { setY(function () { return { list: [], err: "" }; }); };
@@ -12478,7 +12567,12 @@ class Component extends DCLogic {
         __out.ysSave = function () {
           var w = self.state.ys; if (!w) return;
           if (!w.list.length) { setY(function () { return { err: "Kamida bitta ishtirokchi qo'shing" }; }); return; }
-          if (w.list.some(function (r) { return !METHODS.some(function (m) { return r.m[m]; }); })) { setY(function () { return { err: "Har bir ishtirokchi uchun yuborish usulini belgilang" }; }); return; }
+          var bads = w.list.filter(function (r) { return missN(r) > 0; });
+          if (bads.length) {
+            // to'ldirilmaganlar ochiladi va qizil bo'ladi, to'ldirilganlar yig'iladi
+            setY(function (z) { return { err: bads.length + " ta ishtirokchida to'ldirilmagan maydonlar bor — qizil bilan belgilandi", list: z.list.map(function (x) { return Object.assign({}, x, { open: missN(x) > 0 }); }) }; });
+            setTimeout(function () { try { var el = document.querySelector(".ysm-card.err"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) {} }, 80);
+            return; }
           var nowD = new Date(), pz = function (n) { return (n < 10 ? "0" : "") + n; }, at = pz(nowD.getDate()) + "." + pz(nowD.getMonth() + 1) + "." + nowD.getFullYear() + " " + pz(nowD.getHours()) + ":" + pz(nowD.getMinutes());
           var add = []; w.list.forEach(function (r) { METHODS.filter(function (m) { return r.m[m]; }).forEach(function (m) { add.push({ who: r.name, role: r.role, via: m, st: "go", at: at }); }); });
           self.setState({ ys: null, dxDd: "", docs: (self.state.docs || []).map(function (d) { return w.doc && d.title === w.doc ? Object.assign({}, d, { sends: add.concat(d.sends || []) }) : d; }) });
