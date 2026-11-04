@@ -4691,6 +4691,25 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .umz-eb b{font-size:15px;font-weight:600;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .umz-eb small{font-size:12.5px;color:#64748b;line-height:1.4}
 @media (max-width:900px){.umz-flow{grid-template-columns:minmax(0,1fr);gap:16px}.umz-step{flex-direction:row;align-items:flex-start;padding-right:0}.umz-step::before{top:28px;bottom:-18px;left:13px;right:auto;width:2px;height:auto}.umz-who{grid-template-columns:minmax(0,1fr)}}
+.qfr-h{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.qfr-roles{display:inline-flex;flex-wrap:wrap;gap:6px}
+.qfr-c{display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 9px;border-radius:999px;font-size:12px;font-weight:500}
+.qfr-c b{font-weight:700}
+.qfr-c.pro{background:#f3e8ff;color:#7e22ce}
+.qfr-c.adv{background:#e0f2fe;color:#0369a1}
+.qfr-c.vk{background:#fef3c7;color:#b45309}
+.qfr-c.org{background:#ecfdf3;color:#15803d}
+.qfr-more{display:flex;align-items:center;gap:14px;min-height:88px;padding:14px 18px;border-radius:16px;border:1.5px dashed #c7d2fe;background:#f8faff;cursor:pointer;text-align:left;font-family:inherit;transition:background .15s,border-color .15s}
+.qfr-more:hover{background:#eef2ff;border-color:#a5b4fc}
+.qfr-more:focus-visible{outline:2px solid #93c5fd;outline-offset:2px}
+.qfr-more b{font-size:15px;font-weight:600;color:#3073f1}
+.qfr-more small{font-size:12.5px;color:#64748b}
+.qfr-stack{display:inline-flex;flex:none}
+.qfr-stack img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #fff;margin-left:-10px;background:#e2e8f0}
+.qfr-stack img:first-child{margin-left:0}
+.qfr-chev{margin-left:auto;color:#3073f1;flex:none}
+.qfr-less{align-self:center;display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 14px;border-radius:999px;border:1px solid #e2e8f0;background:#fff;color:#3073f1;font:500 13px inherit;font-family:inherit;cursor:pointer;margin-top:2px}
+.qfr-less:hover{background:#eff6ff;border-color:#bfdbfe}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -6308,9 +6327,10 @@ html[data-theme="dark"] .ds-host img{filter:none}
           <div class="qx5-s"><i class="qx5-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg></i><div class="qx5-t"><small>Kirim sanasi</small><b>{{q.kirimDate}}</b></div></div>
           <div class="qx5-s"><i class="qx5-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"></path><path d="M22 2 11 13"></path></svg></i><div class="qx5-t"><small>Yuborish turi</small><b>{{q.via}}</b></div></div>
         </div>
-        <div class="qx3-fb"><span class="qx2-lbl">Shikoyat bergan shaxslar <span class="dx-cnt">{{q.filN}}</span></span>
-          <div class="qx2-fl"><sc-for list="{{q.filers}}" as="f" hint-placeholder-count="1"><div class="{{f.cardCls}}"><img class="qf5-ph" src="{{f.photo}}" alt=""><div class="qf5-b"><div class="qf5-h"><b title="{{f.name}}">{{f.name}}</b><span class="{{f.roleCls}}">{{f.role}}</span></div><small class="qf5-org" title="{{f.org}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg><span>{{f.org}}</span></small></div></div></sc-for>
+        <div class="qx3-fb"><div class="qfr-h"><span class="qx2-lbl">Shikoyat bergan shaxslar <span class="dx-cnt">{{q.filN}}</span></span><sc-if value="{{q.qfHasRoles}}" hint-placeholder-val="{{ false }}"><span class="qfr-roles"><sc-for list="{{q.qfRoles}}" as="r" hint-placeholder-count="3"><span class="{{r.cls}}">{{r.l}} <b>{{r.n}}</b></span></sc-for></span></sc-if></div>
+          <div class="qx2-fl"><sc-for list="{{q.filers}}" as="f" hint-placeholder-count="1"><div class="{{f.cardCls}}"><img class="qf5-ph" src="{{f.photo}}" alt=""><div class="qf5-b"><div class="qf5-h"><b title="{{f.name}}">{{f.name}}</b><span class="{{f.roleCls}}">{{f.role}}</span></div><small class="qf5-org" title="{{f.org}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg><span>{{f.org}}</span></small></div></div></sc-for><sc-if value="{{q.qfShowMore}}" hint-placeholder-val="{{ false }}"><button type="button" class="qfr-more" onClick="{{q.qfToggle}}" aria-label="{{q.qfMoreN}} — barchasini ko'rsatish"><span class="qfr-stack"><sc-for list="{{q.qfHid}}" as="h" hint-placeholder-count="3"><img src="{{h.photo}}" alt=""></sc-for></span><span class="kv" style="gap: 2px; min-width: 0"><b>{{q.qfMoreN}}</b><small>{{q.qfMoreSub}}</small></span><svg class="i s qfr-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button></sc-if>
           <sc-if value="{{q.noFilers}}" hint-placeholder-val="{{ false }}"><small class="muted">Shikoyat bergan shaxs ko'rsatilmagan</small></sc-if></div>
+          <sc-if value="{{q.qfShowLess}}" hint-placeholder-val="{{ false }}"><button type="button" class="qfr-less" onClick="{{q.qfToggle}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 15l-6-6-6 6"></path></svg>Yig'ish</button></sc-if>
         </div>
       </div>
       </sc-for>
@@ -9208,7 +9228,7 @@ class Component extends DCLogic {
       toast: "",
       qarshi: [
         { id: "a", ofNum: "R4-1901-2603/4234", filers: [{ name: "Aliyeva Nodira Rustamovna", gender: "Ayol", kind: "pro", role: "Prokuror", org: "Termiz shahar prokuraturasi", side: "Prokuror" }], num: "R4-2001-2609/245", st: "yangi", kirim: "5341", kirimDate: "29.09.2026 13:35", key: "2026-09-29 13:35", via: "Elektron shaklda", sum: "1 000 000 UZS", auto: true },
-        { id: "b", ofNum: "R4-1901-2603/4234", filers: [{ name: "Rasulov Bobur Akmalovich", gender: "Erkak", kind: "boshqa", role: "Advokat", org: "\"Adolat himoyasi\" advokatlik firmasi", side: "Advokat" }, { name: "Tursunova Zarina Olimovna", gender: "Ayol", kind: "boshqa", role: "Ishonchli vakil", org: "Ishonchnoma asosida", side: "Ishonchli vakil" }], num: "R4-2001-2607/189", st: "korib", kirim: "5123", kirimDate: "27.09.2026 11:29", key: "2026-09-27 11:29", via: "Elektron shaklda", sum: "1 000 000 UZS", auto: true },
+        { id: "b", ofNum: "R4-1901-2603/4234", filers: [{ name: "Rasulov Bobur Akmalovich", gender: "Erkak", kind: "boshqa", role: "Advokat", org: "\"Adolat himoyasi\" advokatlik firmasi", side: "Advokat" }, { name: "Tursunova Zarina Olimovna", gender: "Ayol", kind: "boshqa", role: "Ishonchli vakil", org: "Ishonchnoma asosida", side: "Ishonchli vakil" }, { name: "Ergashev Javlon Baxtiyorovich", gender: "Erkak", kind: "pro", role: "Prokuror", org: "Termiz tumani prokuraturasi", side: "Prokuror" }, { name: "Saidova Malika Anvarovna", gender: "Ayol", kind: "boshqa", role: "Advokat", org: "\"Huquq va adolat\" advokatlik byurosi", side: "Advokat" }, { name: "Hamroyev Sardor Olimovich", gender: "Erkak", kind: "boshqa", role: "Ishonchli vakil", org: "Ishonchnoma asosida", side: "Ishonchli vakil" }, { name: "Nurmatova Dilfuza Karimovna", gender: "Ayol", kind: "boshqa", role: "Advokat", org: "Surxondaryo hududiy advokatlar palatasi", side: "Advokat" }, { name: "Xolmatov Ulug'bek Rustamovich", gender: "Erkak", kind: "pro", role: "Prokuror", org: "Surxondaryo viloyati prokuraturasi", side: "Prokuror" }, { name: "Abdullayeva Nigora Sobirovna", gender: "Ayol", kind: "boshqa", role: "Ishonchli vakil", org: "Ishonchnoma asosida", side: "Ishonchli vakil" }, { name: "Rahmonov Otabek Ilhomovich", gender: "Erkak", kind: "boshqa", role: "Advokat", org: "\"Ishonch\" advokatlik firmasi", side: "Advokat" }, { name: "Yo'ldosheva Kamola Akmalovna", gender: "Ayol", kind: "boshqa", role: "Ishonchli vakil", org: "Ishonchnoma asosida", side: "Ishonchli vakil" }], num: "R4-2001-2607/189", st: "korib", kirim: "5123", kirimDate: "27.09.2026 11:29", key: "2026-09-27 11:29", via: "Elektron shaklda", sum: "1 000 000 UZS", auto: true },
         { id: "c", ofNum: "R4-1901-2603/4234", filers: [{ name: "Qodirov Sherzod Anvarovich", gender: "Erkak", kind: "pro", role: "Prokuror", org: "Surxondaryo viloyati prokuraturasi", side: "Prokuror" }], num: "R4-2001-2588/114", st: "korildi", kirim: "4987", kirimDate: "22.09.2026 09:40", key: "2026-09-22 09:40", via: "Qog'oz shaklda", sum: "1 000 000 UZS", auto: true }
       ],
       qSortDesc: true,
@@ -9978,7 +9998,13 @@ class Component extends DCLogic {
     };
     var qarshi = qCase.slice().sort(function (x, y) { return s.qSortDesc ? (x.key < y.key ? 1 : -1) : (x.key > y.key ? 1 : -1); })
       .map(function (q) {
+        var QF_LIM = 4, qfAll = qFil(q), qfOpen = !!(s.qFilAll || {})[q.id], qfMany = qfAll.length > QF_LIM;
+        var qfRoles = (function () { var m = {}, o = []; (q.filers || []).forEach(function (f) { var r = f.isOrg ? "Tashkilot" : f.role || "Boshqa"; if (!m[r]) { m[r] = 0; o.push(r); } m[r]++; }); return o.map(function (r) { return { l: r, n: m[r], cls: "qfr-c " + (/prokuror/i.test(r) ? "pro" : /advokat/i.test(r) ? "adv" : /tashkilot/i.test(r) ? "org" : "vk") }; }); })();
         return Object.assign({}, q, qParty(q), { noFilers: !(q.filers || []).length }, {
+          filers: qfMany && !qfOpen ? qfAll.slice(0, QF_LIM - 1) : qfAll, qfMany: qfMany, qfShowMore: qfMany && !qfOpen, qfShowLess: qfMany && qfOpen, qfRoles: qfRoles, qfHasRoles: qfRoles.length > 1,
+          qfHid: qfAll.slice(QF_LIM - 1, QF_LIM + 2).map(function (f) { return { photo: f.photo, name: f.name }; }), qfMoreN: "+" + (qfAll.length - (QF_LIM - 1)) + " ta shaxs", qfMoreSub: "Barchasini ko'rsatish",
+          qfToggle: function () { var o = Object.assign({}, self.state.qFilAll || {}); o[q.id] = !o[q.id]; self.setState({ qFilAll: o }); },
+        }, {
           status: Q_ST[q.st][0], badgeCls: Q_ST[q.st][1],
           viaShort: (q.via || "").split(" ")[0], dateOnly: (q.kirimDate || "").split(" ")[0], qxCls: q.st === "yangi" ? "isnew" : "",
           bg: q.st === "yangi" ? "#eff6ff" : "#ffffff",
