@@ -4448,6 +4448,11 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .jf-g.on .ap-rad{border-color:#3073f1;box-shadow:inset 0 0 0 4px #3073f1}
 .itkm-g.one{grid-template-columns:minmax(0,1fr) !important}
 @media (max-width:560px){.jf-grps{grid-template-columns:minmax(0,1fr)}}
+/* Publikatsiya oynasi — kontent oynadan chiqmasin, tana aylantiriladi */
+.qv.pbfm{overflow:hidden !important;max-height:calc(100vh - 32px) !important}
+.pbfm>.qv-b{flex:1 1 auto;min-height:0;overflow-y:auto !important;overscroll-behavior:contain}
+.pbfm>.qv-h,.pbfm>.qv-f{flex:none}
+.pbfm .pbx,.pbfm .pbx-list,.pbfm .pbx-p{min-width:0;max-width:100%;box-sizing:border-box}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -7655,7 +7660,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
 <sc-if value="{{pbfOpen}}" hint-placeholder-val="{{ false }}">
 <div class="qv-wrap">
   <button class="qv-bg" aria-label="Oynani yopish" onClick="{{pbfClose}}"></button>
-  <div class="qv itkm" role="dialog" aria-modal="true" aria-labelledby="pbf-title" onKeyDown="{{pbfKey}}" style="width: min(700px, 100%)">
+  <div class="qv itkm pbfm" role="dialog" aria-modal="true" aria-labelledby="pbf-title" onKeyDown="{{pbfKey}}" style="width: min(700px, 100%)">
     <sc-if value="{{pbfDdOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg in" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{itkDdClose}}"></button></sc-if><sc-if value="{{pbfModeOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg in" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{pbfModeClose}}"></button></sc-if>
     <div class="qv-h">
       <div class="kv" style="gap: 4px; min-width: 0"><b id="pbf-title" class="qv-title" style="font-size: 20px">Publikatsiya</b><span class="qv-sub">Sud qarorini public.sud.uz saytida e'lon qilish to'g'risida qaror</span></div>
