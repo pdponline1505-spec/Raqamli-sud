@@ -9792,6 +9792,9 @@ class Component extends DCLogic {
     this._fpT = setTimeout(function () { var f = self.state.fp; if (!f || f.st !== "scan") return;
       var o = { fp: Object.assign({}, f, { st: "ok", at: new Date().toTimeString().slice(0, 5) }) };
       if (f.key && self.state[f.key]) o[f.key] = self.state[f.key].map(function (x) { return x.id === f.id ? Object.assign({}, x, { fpOk: true }) : x; });
+      if (f.act === "rozi") { var rw = (self.state.lRows || []).filter(function (r) { return r.num === self.state.caseNum; })[0], stg = ({ korib: "pre", majlis: "pre", qoldir: "majlis", natija: "natija" })[(rw && rw.stage) || "korib"] || "pre";
+        var n = new Date(), z = function (x) { return (x < 10 ? "0" : "") + x; }, c = Object.assign({}, self.state.pubCons || {});
+        c[f.name] = { how: "finger", stage: stg, at: z(n.getDate()) + "." + z(n.getMonth() + 1) + "." + n.getFullYear() + " " + z(n.getHours()) + ":" + z(n.getMinutes()), src: "fp" }; o.pubCons = c; }
       self.setState(o); }, 2800);
   }
   qPatch(id, patch) {
@@ -10649,7 +10652,7 @@ class Component extends DCLogic {
       umHasIdora: !!s.umForm.idora, umNoIdora: !s.umForm.idora,
       tmAskOpen: !!s.tmAsk,
       fpOpen: !!s.fp, fpName: s.fp ? s.fp.name : "", fpScan: !!(s.fp && s.fp.st === "scan"), fpOk: !!(s.fp && s.fp.st === "ok"),
-      fpOkTxt: s.fp && s.fp.st === "ok" ? "Barmoq izi qabul qilindi · " + ({ imzo: "Hujjat imzolandi", tasdiq: "Shaxs tasdiqlandi", majlis: "Majlisda ishtirok qayd etildi" })[s.fp.act] + " · " + (s.fp.at || "") : "",
+      fpOkTxt: s.fp && s.fp.st === "ok" ? "Barmoq izi qabul qilindi · " + ({ imzo: "Hujjat imzolandi", tasdiq: "Shaxs tasdiqlandi", majlis: "Majlisda ishtirok qayd etildi", rozi: "Publikatsiyaga rozilik qayd etildi" })[s.fp.act] + " · " + (s.fp.at || "") : "",
       fpClose: function () { clearTimeout(self._fpT); self.setState({ fp: null, dxDd: "" }); },
       fpRetry: function () { var f = self.state.fp; if (f) self.fpStart({ key: f.key, id: f.id, name: f.name }); },
       fpKey: function (e) { if (e.key === "Escape") { e.stopPropagation(); clearTimeout(self._fpT); self.setState({ fp: null, dxDd: "" }); } },
@@ -11979,18 +11982,19 @@ class Component extends DCLogic {
         var curStage = v.stage || stageOf[(row && row.stage) || "korib"] || "pre";
         __out.pbfStages = STG.map(function (g) { var on = curStage === g[0]; return { l: g[1], str: on ? "true" : "false", cls: on ? "on" : "", pick: function () { setF({ stage: g[0] }); } }; });
         var cons = s.pubCons || {}, scanning = s.pubScan || "";
-        var parties = (s.tmDv || []).map(function (p) { return [p, "Da'vogar"]; }).concat((s.tmJv || []).map(function (p) { return [p, "Javobgar"]; }));
+        var parties = (s.tmDv || []).map(function (p) { return [p, "Da'vogar"]; }).concat((s.tmJv || []).map(function (p) { return [p, "Javobgar"]; }), (s.qtJv || []).map(function (p) { return [p, "Qo'shimcha javobgar"]; }), (s.qtAr || []).map(function (p) { return [p, "Arizachi"]; }))
+          .filter(function (x, i, a) { return a.findIndex(function (y) { return y[0].name === x[0].name; }) === i; });
         var nowUz = function () { var n = new Date(), z = function (x) { return (x < 10 ? "0" : "") + x; }; return z(n.getDate()) + "." + z(n.getMonth() + 1) + "." + n.getFullYear() + " " + z(n.getHours()) + ":" + z(n.getMinutes()); };
         var setCons = function (k, val) { var c = Object.assign({}, self.state.pubCons || {}); if (val) c[k] = val; else delete c[k]; self.setState({ pubCons: c, pubScan: "", pbForm: self.state.pbForm ? Object.assign({}, self.state.pbForm, { err: "" }) : null }); };
         var stLbl = function (k) { return (STG.filter(function (g) { return g[0] === k; })[0] || STG[0])[1]; };
-        __out.pbfParties = parties.map(function (x) { var p = x[0], k = x[1] + ":" + p.name, c = cons[k], sc = scanning === k;
+        __out.pbfParties = parties.map(function (x) { var p = x[0], k = p.name, c = cons[k], sc = scanning === k;
           return { name: p.name, photo: portrait(p.name, p.gender), ok: !!c, scan: !c && sc, need: !c && !sc,
-            sub: c ? x[1] + " · " + (c.how === "finger" ? "Barmoq izi bilan tasdiqlangan" : "Qog'oz hujjat · " + c.file) + " · " + stLbl(c.stage) + " · " + c.at : x[1] + " · rozilik olinmagan",
+            sub: c ? x[1] + " · " + (c.how === "finger" ? (c.src === "fp" ? "Barmoq izi bilan tasdiqlangan (taraflar bo'limida)" : "Barmoq izi bilan tasdiqlangan") : "Qog'oz hujjat · " + c.file) + " · " + stLbl(c.stage) + " · " + c.at : x[1] + " · rozilik olinmagan",
             cls: "pbx-p" + (c ? " ok" : (f && f.err && v.mode === "open" ? " bad" : "")),
             paper: function () { setCons(k, { how: "paper", file: "rozilik_" + p.name.split(" ")[0].toLowerCase().replace(/[^a-z]/g, "") + ".pdf", stage: curStage, at: nowUz() }); self.flash(p.name + " · qog'oz rozilik biriktirildi"); },
             finger: function () { self.setState({ pubScan: k }); setTimeout(function () { if (self.state.pubScan !== k) return; setCons(k, { how: "finger", stage: curStage, at: nowUz() }); self.flash(p.name + " · rozilik barmoq izi bilan tasdiqlandi"); }, 1400); },
             revoke: function () { setCons(k, null); } }; });
-        var consOk = parties.filter(function (x) { return cons[x[1] + ":" + x[0].name]; }).length;
+        var consOk = parties.filter(function (x) { return cons[x[0].name]; }).length;
         __out.pbfConsN = consOk + " / " + parties.length + " rozilik"; __out.pbfConsBadge = "pbx-badge " + (consOk === parties.length && parties.length ? "ok" : "wait");
         // ruxsat berilmasa — sabab
         var RS = ["Davlat siri", "Voyaga yetmaganlar ishtirokida", "Oilaviy munosabatlar", "Tijorat siri", "Boshqa"];
@@ -12963,7 +12967,7 @@ class Component extends DCLogic {
         { disabled: s.dxJv.length === 0, ph: s.dxJv.length ? "Javobgarlarni tanlang" : "Avval javobgar qo'shing" });
       __out.dxS = dxS; __out.dxDdOpen = !!ddOpen && isDevon && ddOpen !== "ap-sudya";
       // ---- Barmoq izini skanerlash: harakat turi ----
-      __out.fpDd = dd("fp-act", [{ v: "imzo", l: "Hujjat imzolash" }, { v: "tasdiq", l: "Shaxsni tasdiqlash" }, { v: "majlis", l: "Sud majlisida ishtirok" }], (s.fp && s.fp.act) || "imzo",
+      __out.fpDd = dd("fp-act", [{ v: "imzo", l: "Hujjat imzolash" }, { v: "tasdiq", l: "Shaxsni tasdiqlash" }, { v: "majlis", l: "Sud majlisida ishtirok" }].concat(s.fp && /^(tmDv|tmJv|qtJv|qtAr)$/.test(s.fp.key || "") ? [{ v: "rozi", l: "Publikatsiyaga rozilik", sub: "Sud qarorini to'liq shaklda e'lon qilishga rozilik" }] : []), (s.fp && s.fp.act) || "imzo",
         function (e) { var v = e.target.value; var f = self.state.fp; if (!f) return; self.setState({ fp: Object.assign({}, f, { act: v }) }); if (f.st === "ok") self.fpStart({ key: f.key, id: f.id, name: f.name }); }, { noSplit: true });
       // ---- Tomonlar: asosiy shaxsni qayta tanlash ----
       ["Dv", "Jv"].forEach(function (k) { var key = "tm" + k, lst = s[key] || [], hasM = lst.some(function (x) { return x.main; });
