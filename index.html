@@ -4283,6 +4283,11 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .apc-tbl.ap-wd .apc-doc{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .apc-date{display:inline-flex;align-items:center;gap:6px;color:#334155;font-variant-numeric:tabular-nums;white-space:nowrap}
 .apc-date svg{color:#94a3b8}
+/* Qarshi da'vo — shikoyat bergan shaxs kartasi (ixcham, telefon va hujjatsiz) */
+.qf5{align-items:center !important;padding:12px 16px !important}
+.qf5-ph{width:52px !important;height:52px !important;border-radius:12px !important}
+.qf5-b{gap:4px !important;justify-content:center}
+.qx.qx3 .qx3-fb .qx2-fl{grid-template-columns:repeat(auto-fill,minmax(min(100%,380px),1fr)) !important}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -5895,7 +5900,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
           <div class="qx5-s"><i class="qx5-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"></path><path d="M22 2 11 13"></path></svg></i><div class="qx5-t"><small>Yuborish turi</small><b>{{q.via}}</b></div></div>
         </div>
         <div class="qx3-fb"><span class="qx2-lbl">Shikoyat bergan shaxslar <span class="dx-cnt">{{q.filN}}</span></span>
-          <div class="qx2-fl"><sc-for list="{{q.filers}}" as="f" hint-placeholder-count="1"><div class="{{f.cardCls}}"><img class="qf5-ph" src="{{f.photo}}" alt=""><div class="qf5-b"><div class="qf5-h"><b title="{{f.name}}">{{f.name}}</b><span class="{{f.roleCls}}">{{f.role}}</span></div><small class="qf5-org" title="{{f.org}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg><span>{{f.org}}</span></small><div class="qf5-ft"><span class="qf5-mi"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg>{{f.phone}}</span><button class="qf5-doc" type="button" title="Vakolat hujjatini ko'rish" onClick="{{f.openDoc}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6M9 13h6M9 17h4"></path></svg>{{f.docName}}</button></div></div></div></sc-for>
+          <div class="qx2-fl"><sc-for list="{{q.filers}}" as="f" hint-placeholder-count="1"><div class="{{f.cardCls}}"><img class="qf5-ph" src="{{f.photo}}" alt=""><div class="qf5-b"><div class="qf5-h"><b title="{{f.name}}">{{f.name}}</b><span class="{{f.roleCls}}">{{f.role}}</span></div><small class="qf5-org" title="{{f.org}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg><span>{{f.org}}</span></small></div></div></sc-for>
           <sc-if value="{{q.noFilers}}" hint-placeholder-val="{{ false }}"><small class="muted">Shikoyat bergan shaxs ko'rsatilmagan</small></sc-if></div>
         </div>
       </div>
