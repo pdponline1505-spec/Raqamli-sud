@@ -4660,6 +4660,37 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .pbu-repl{cursor:pointer}
 .pbu-file.out{border-color:#e9d5ff;background:linear-gradient(135deg,#faf5ff,#fff)}
 @media (max-width:640px){.pbu-ai-chip{display:none}.pbu-steps{display:none}}
+.umz{display:flex;flex-direction:column;border-radius:16px;background:#fff;border:1px solid #e8edf3;overflow:hidden}
+.umz-flow{list-style:none;margin:0;padding:22px 24px 20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;position:relative}
+.umz-step{position:relative;display:flex;flex-direction:column;gap:12px;padding-right:20px;min-width:0}
+.umz-step::before{content:"";position:absolute;top:13px;left:36px;right:8px;height:2px;background:#bbf7d0;border-radius:2px}
+.umz-step:last-child::before{display:none}
+.umz-step.done+.umz-step.pend{}
+.umz-step.done:has(+ .umz-step.pend)::before{background:repeating-linear-gradient(90deg,#fca5a5 0 6px,transparent 6px 11px)}
+.umz-dot{position:relative;z-index:1;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;flex:none}
+.umz-dot .i{width:15px;height:15px;stroke-width:2.6}
+.umz-step.done .umz-dot{background:#16a34a;color:#fff;box-shadow:0 0 0 4px #dcfce7}
+.umz-step.pend .umz-dot{background:#fff;border:2px solid #ef4444;box-shadow:0 0 0 4px #fee2e2}
+.umz-step.pend .umz-dot::after{content:"";width:8px;height:8px;border-radius:50%;background:#ef4444;animation:dotPulse 1.6s ease-in-out infinite}
+.umz-sb{display:flex;flex-direction:column;gap:4px;min-width:0}
+.umz-k{font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#94a3b8}
+.umz-v{display:inline-flex;align-items:center;gap:2px;font-size:20px;font-weight:700;color:#0f172a;letter-spacing:-.01em;font-variant-numeric:tabular-nums;line-height:1.25}
+.umz-v.sm{font-size:16px;font-weight:600}
+.umz-step.pend .umz-v{color:#b91c1c}
+.umz-step.done:last-child .umz-v{color:#15803d}
+.umz-m{font-size:13px;color:#64748b;line-height:1.45}
+.umz-cp{width:26px !important;height:26px !important;min-width:26px !important;color:#94a3b8}
+.umz-cp:hover{color:#3073f1}
+.umz-cp .i{width:14px;height:14px}
+.umz-who{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:14px;background:#f8fafc;border-top:1px solid #eef1f5}
+.umz-e{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;background:#fff;border:1px solid #eef1f5;min-width:0}
+.umz-av{width:44px;height:44px;border-radius:12px;object-fit:cover;flex:none;background:#f1f5f9}
+.umz-ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;flex:none;background:#eff6ff;color:#3073f1}
+.umz-ico .i{width:20px;height:20px}
+.umz-eb{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.umz-eb b{font-size:15px;font-weight:600;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.umz-eb small{font-size:12.5px;color:#64748b;line-height:1.4}
+@media (max-width:900px){.umz-flow{grid-template-columns:minmax(0,1fr);gap:16px}.umz-step{flex-direction:row;align-items:flex-start;padding-right:0}.umz-step::before{top:28px;bottom:-18px;left:13px;right:auto;width:2px;height:auto}.umz-who{grid-template-columns:minmax(0,1fr)}}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -6137,15 +6168,15 @@ html[data-theme="dark"] .ds-host img{filter:none}
       <sc-if value="{{umView}}" hint-placeholder-val="{{ true }}"><button class="btn" onClick="{{umOpen}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg>Tahrirlash</button></sc-if>
       <sc-if value="{{umEditing}}" hint-placeholder-val="{{ false }}"><button class="btn" onClick="{{umClose}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>Bekor qilish</button><button class="btn pri" onClick="{{umSave}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h11l3 3v15H5z"></path><path d="M8 3v5h8M8 21v-7h8v7"></path></svg>Saqlash</button></sc-if>
     </div></div>
-    <div class="umy">
-      <div class="umy-r three">
-        <div class="umy-c"><span class="umy-l">Hujjat raqami</span><span class="umy-v">{{um.hujjatRaqam}}<button class="ib umy-cp" aria-label="Hujjat raqamini nusxalash" title="Nusxalash" onClick="{{umCopyHujjat}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg></button></span><span class="umy-s">{{um.hujjatSanaUz}}</span></div>
-        <div class="umy-c"><span class="umy-l">Kirim raqami</span><span class="umy-v">№ {{um.kirimRaqam}}</span><span class="umy-s">{{um.kirimSanaUz}} · {{um.jonatish}}</span></div>
-        <div class="umy-c"><span class="umy-l">Elektron shakl</span><span class="umy-v"><span class="{{umElCls}}">{{um.elektron}}</span></span><span class="umy-s">{{um.elHint}}</span></div>
-      </div>
-      <div class="umy-r two">
-        <div class="umy-c"><span class="umy-l">Mas'ul sudya</span><span class="umy-p"><img class="umy-av" src="{{um.sudyaPhoto}}" alt=""><span class="kv" style="gap: 2px; min-width: 0"><span class="umy-v sm">{{um.sudya}}</span><span class="umy-s">Birinchi instansiya · Termiz tumanlararo iqtisodiy sudi</span></span></span></div>
-        <div class="umy-c"><span class="umy-l">Manfaatida idora</span><span class="umy-p"><span class="kv" style="gap: 2px; min-width: 0; flex: 1"><span class="umy-v sm">{{um.idoraName}}</span><span class="umy-s">{{um.idoraMeta}}</span></span><sc-if value="{{umCanAddIdo}}" hint-placeholder-val="{{ false }}"><button class="btn sm" style="flex: none" onClick="{{umOpenAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Qo'shish</button></sc-if></span></div>
+    <div class="umz">
+      <ol class="umz-flow" aria-label="Ishning qabul qilinish yo'li">
+        <li class="umz-step done"><span class="umz-dot"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span><div class="umz-sb"><span class="umz-k">Hujjat</span><span class="umz-v">{{um.hujjatRaqam}}<button class="ib umz-cp" aria-label="Hujjat raqamini nusxalash" title="Nusxalash" onClick="{{umCopyHujjat}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg></button></span><span class="umz-m">{{um.hujjatSanaUz}}</span></div></li>
+        <li class="umz-step done"><span class="umz-dot"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span><div class="umz-sb"><span class="umz-k">Kirim</span><span class="umz-v">№&nbsp;{{um.kirimRaqam}}</span><span class="umz-m">{{um.kirimSanaUz}} · {{um.jonatish}}</span></div></li>
+        <li class="{{umzElCls}}"><span class="umz-dot"><sc-if value="{{umzElOk}}" hint-placeholder-val="{{ false }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></span><div class="umz-sb"><span class="umz-k">Elektron shakl</span><span class="umz-v sm">{{um.elektron}}</span><span class="umz-m">{{um.elHint}}</span></div></li>
+      </ol>
+      <div class="umz-who">
+        <div class="umz-e"><img class="umz-av" src="{{um.sudyaPhoto}}" alt=""><div class="umz-eb"><span class="umz-k">Mas'ul sudya</span><b>{{um.sudya}}</b><small>Birinchi instansiya · Termiz tumanlararo iqtisodiy sudi</small></div></div>
+        <div class="umz-e"><span class="umz-ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg></span><div class="umz-eb"><span class="umz-k">Manfaatida idora</span><b>{{um.idoraName}}</b><small>{{um.idoraMeta}}</small></div><sc-if value="{{umCanAddIdo}}" hint-placeholder-val="{{ false }}"><button class="btn sm" style="flex: none; align-self: center" onClick="{{umOpenAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Qo'shish</button></sc-if></div>
       </div>
     </div>
   </section>
@@ -10708,7 +10739,7 @@ class Component extends DCLogic {
         self.setState(o);
         self.flash(add.length + " ta shaxs " + (({ qtAr: "arizachi", qsh: "qo'shimcha shaxs", apShk: "shikoyat bergan shaxs", qdShkP: "shikoyat bergan shaxs", qdShkPro: "prokuror", qdShk: "shikoyat bergan shaxs" })[key] || (/Jv$/.test(key) ? "javobgar" : "da'vogar")) + " sifatida qo'shildi");
       },
-      umView: true, umEditing: false, umSub: "Ishning asosiy ma'lumotlari", umElCls: "umy-st " + ((s.um || {}).elektron === "Shakllantirilgan" ? "ok" : "no"), umCardBorder: "#e2e8f0", umCardShadow: "none",
+      umView: true, umEditing: false, umSub: "Ishning asosiy ma'lumotlari", umElCls: "umy-st " + ((s.um || {}).elektron === "Shakllantirilgan" ? "ok" : "no"), umzElOk: (s.um || {}).elektron === "Shakllantirilgan", umzElCls: "umz-step " + ((s.um || {}).elektron === "Shakllantirilgan" ? "done" : "pend"), umCardBorder: "#e2e8f0", umCardShadow: "none",
       umDirtyText: (function () { var a = s.umForm || {}, b = s.um; var keys = ["hujjatRaqam", "hujjatSana", "qoldiq"]; var d = keys.some(function (k) { return a[k] !== b[k]; }) || JSON.stringify(a.idora || null) !== JSON.stringify(b.idora || null); return d ? "Saqlanmagan o'zgarishlar bor" : "O'zgarish kiritilmagan"; })(),
       umDirtyColor: (function () { var a = s.umForm || {}, b = s.um; var d = ["hujjatRaqam", "hujjatSana", "qoldiq"].some(function (k) { return a[k] !== b[k]; }) || JSON.stringify(a.idora || null) !== JSON.stringify(b.idora || null); return d ? "#d97706" : "#94a3b8"; })(),
       um: umView, umModal: s.umModal, umForm: umFormView, umSet: umSet, umBorder: umBorder, umErr: s.umErr, umIdSet: umIdSet,
