@@ -4552,6 +4552,13 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .tme-hint.ok{color:#16a34a}
 .tm-ed-b{gap:14px !important}
 .tm-ed .tme-tel{z-index:6}
+.pim-phb{flex:none;padding:0;border:0;background:none;border-radius:12px;cursor:zoom-in;line-height:0;transition:transform .15s,box-shadow .15s}
+.pim-phb:hover{box-shadow:0 0 0 3px #dbeafe}
+.pim-phb:focus-visible{outline:2px solid #93c5fd;outline-offset:2px}
+.ph-box{padding:0 !important;background:transparent !important;box-shadow:none !important;max-width:none !important;gap:0 !important}
+.ph-box .ph-img{display:block;width:min(420px,86vw) !important;max-height:82vh !important;border-radius:18px !important;box-shadow:0 24px 64px rgba(15,23,42,.45)}
+.ph-box .ph-x{position:absolute !important;top:12px !important;right:12px !important;width:36px !important;height:36px !important;border-radius:50% !important;background:rgba(15,23,42,.55) !important;color:#fff !important;backdrop-filter:blur(6px);z-index:2}
+.ph-box .ph-x:hover{background:rgba(15,23,42,.75) !important}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -5002,7 +5009,6 @@ html[data-theme="dark"] .ds-host img{filter:none}
   <div class="ph-box" role="dialog" aria-modal="true" aria-label="{{ph.name}} rasmi" onKeyDown="{{phKey}}">
     <button class="ib ph-x" aria-label="Yopish" onClick="{{phClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
     <img class="ph-img" src="{{ph.photo}}" alt="{{ph.name}}">
-    <div class="ph-cap"><b>{{ph.name}}</b><small>JSHSHIR {{ph.jsh}} · {{ph.gender}} · {{ph.age}} yosh · tug'ilgan {{ph.birthUz}}</small></div>
   </div>
 </div>
 </sc-if>
@@ -5011,7 +5017,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
   <button class="qv-bg" aria-label="Oynani yopish" onClick="{{pi.close}}"></button>
   <div class="qv pim" role="dialog" aria-modal="true" aria-labelledby="pi-t" onKeyDown="{{pi.kd}}" style="width: min(760px, 100%)">
     <div class="qv-h pim-h">
-      <img class="pim-ph" src="{{pi.photo}}" alt="{{pi.name}}">
+      <button type="button" class="pim-phb" aria-label="Rasmni kattalashtirish" title="Rasmni kattalashtirish" onClick="{{pi.viewPhoto}}"><img class="pim-ph" src="{{pi.photo}}" alt="{{pi.name}}"></button>
       <div class="kv" style="gap: 8px; min-width: 0; flex: 1">
         <b id="pi-t" class="qv-title pim-name">{{pi.name}}</b>
         <div class="row" style="gap: 6px; flex-wrap: wrap"><span class="pim-side">{{pi.side}}</span><sc-if value="{{pi.isMain}}" hint-placeholder-val="{{ false }}"><span class="pim-main"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6-5.4-3.1-5.4 3.1 1.2-6L3.3 9.3l6.1-.7z"></path></svg>Asosiy shaxs</span></sc-if></div>
@@ -12537,7 +12543,7 @@ class Component extends DCLogic {
           close: close, kd: function (e) { if (e.key === "Escape") { e.stopPropagation(); close(); } },
           edit: function () { close(); if (x.edit) x.edit(); }, doc: function () { if (x.doc) x.doc(); }, finger: function () { close(); if (x.finger) x.finger(); },
           copy: function () { try { navigator.clipboard.writeText(String(x.jshshir || "").replace(/\s/g, "")); } catch (er) {} self.flash("JSHSHIR nusxalandi"); },
-          jsh: x.jshshir || "—", hasJsh: !org && !!x.jshshir
+          jsh: x.jshshir || "—", hasJsh: !org && !!x.jshshir, viewPhoto: function () { self.setState({ phView: { photo: x.photo || portrait(x.name, x.gender), name: x.name } }); }
         };
         setTimeout(function () { try { var m = document.querySelector(".pim"), b = m && m.querySelector(".qv-x"); if (b && !m.contains(document.activeElement)) b.focus(); } catch (er) {} }, 0);
       })();
