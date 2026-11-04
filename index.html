@@ -4803,11 +4803,15 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .ums-av{width:28px;height:28px;border-radius:50%;object-fit:cover;flex:none;background:#e2e8f0}
 @container (max-width:900px){.ums{grid-template-columns:repeat(2,minmax(0,1fr))}.ums-c.w2{grid-column:span 2}}
 @container (max-width:520px){.ums{grid-template-columns:minmax(0,1fr)}.ums-c.w2{grid-column:auto}.ums-c.w2 .ums-row{flex-wrap:wrap}}
-.qx.qx3 .qx3-fb .qx2-fl.qfs{max-height:226px;overflow-y:auto;overscroll-behavior:contain;padding:2px 6px 28px 2px;margin:-2px -6px -16px -2px;scrollbar-width:thin;scrollbar-color:#cbd5e1 transparent;-webkit-mask-image:linear-gradient(#000 calc(100% - 28px),transparent);mask-image:linear-gradient(#000 calc(100% - 28px),transparent)}
-.qx.qx3 .qx3-fb .qx2-fl.qfs:focus-visible{outline:2px solid #93c5fd;outline-offset:2px;border-radius:12px}
-.qx2-fl.qfs::-webkit-scrollbar{width:6px}
-.qx2-fl.qfs::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:99px}
-.qx2-fl.qfs::-webkit-scrollbar-track{background:transparent}
+.qfw{position:relative;min-width:0}
+.qfw.qfs{max-height:236px;overflow-y:auto;overscroll-behavior:contain;padding:2px 8px 22px 2px;margin:-2px -8px -10px -2px;scrollbar-width:thin;scrollbar-color:#cbd5e1 transparent;scroll-snap-type:y proximity;-webkit-mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 26px),transparent 100%);mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 26px),transparent 100%)}
+.qfw.qfs .qx2-fl{grid-auto-rows:auto !important;align-content:start !important}
+.qfw.qfs .qf5{flex:none;min-height:0;scroll-snap-align:start}
+.qfw.qfs:focus-visible{outline:2px solid #93c5fd;outline-offset:2px;border-radius:12px}
+.qfw.qfs::-webkit-scrollbar{width:6px}
+.qfw.qfs::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:99px}
+.qfw.qfs::-webkit-scrollbar-thumb:hover{background:#94a3b8}
+.qfw.qfs::-webkit-scrollbar-track{background:transparent;margin:4px 0 20px}
 @keyframes umsIn{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:none}}
 @keyframes umsFade{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
 @keyframes umsPop{0%{opacity:0;transform:scale(.6)}70%{transform:scale(1.08)}100%{opacity:1;transform:none}}
@@ -6438,8 +6442,8 @@ html[data-theme="dark"] .ds-host img{filter:none}
           <div class="qx5-s"><i class="qx5-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"></path><path d="M22 2 11 13"></path></svg></i><div class="qx5-t"><small>Kelib tushish shakli</small><b>{{q.via}}</b></div></div>
         </div>
         <div class="qx3-fb"><div class="qfr-h"><span class="qx2-lbl">Shikoyat bergan shaxslar <span class="dx-cnt">{{q.filN}}</span></span><sc-if value="{{q.qfHasRoles}}" hint-placeholder-val="{{ false }}"><span class="qfr-roles"><sc-for list="{{q.qfRoles}}" as="r" hint-placeholder-count="3"><span class="{{r.cls}}">{{r.l}} <b>{{r.n}}</b></span></sc-for></span></sc-if></div>
-          <div class="{{q.qfListCls}}" tabindex="{{q.qfTab}}" aria-label="Shikoyat bergan shaxslar ro'yxati"><sc-for list="{{q.filers}}" as="f" hint-placeholder-count="1"><div class="{{f.cardCls}}"><img class="qf5-ph" src="{{f.photo}}" alt=""><div class="qf5-b"><div class="qf5-h"><b title="{{f.name}}">{{f.name}}</b><span class="{{f.roleCls}}">{{f.role}}</span></div><small class="qf5-org" title="{{f.org}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg><span>{{f.org}}</span></small></div></div></sc-for>
-          <sc-if value="{{q.noFilers}}" hint-placeholder-val="{{ false }}"><small class="muted">Shikoyat bergan shaxs ko'rsatilmagan</small></sc-if></div>
+          <div class="{{q.qfListCls}}" tabindex="{{q.qfTab}}" aria-label="Shikoyat bergan shaxslar ro'yxati"><div class="qx2-fl"><sc-for list="{{q.filers}}" as="f" hint-placeholder-count="1"><div class="{{f.cardCls}}"><img class="qf5-ph" src="{{f.photo}}" alt=""><div class="qf5-b"><div class="qf5-h"><b title="{{f.name}}">{{f.name}}</b><span class="{{f.roleCls}}">{{f.role}}</span></div><small class="qf5-org" title="{{f.org}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg><span>{{f.org}}</span></small></div></div></sc-for>
+          <sc-if value="{{q.noFilers}}" hint-placeholder-val="{{ false }}"><small class="muted">Shikoyat bergan shaxs ko'rsatilmagan</small></sc-if></div></div>
           
         </div>
       </div>
@@ -10133,7 +10137,7 @@ class Component extends DCLogic {
         var QF_LIM = 4, qfAll = qFil(q), qfOpen = !!(s.qFilAll || {})[q.id], qfMany = qfAll.length > QF_LIM;
         var qfRoles = (function () { var m = {}, o = []; (q.filers || []).forEach(function (f) { var r = f.isOrg ? "Tashkilot" : f.role || "Boshqa"; if (!m[r]) { m[r] = 0; o.push(r); } m[r]++; }); return o.map(function (r) { return { l: r, n: m[r], cls: "qfr-c " + (/prokuror/i.test(r) ? "pro" : /advokat/i.test(r) ? "adv" : /tashkilot/i.test(r) ? "org" : "vk") }; }); })();
         return Object.assign({}, q, qParty(q), { noFilers: !(q.filers || []).length }, {
-          filers: qfAll, qfListCls: "qx2-fl" + (qfMany ? " qfs" : ""), qfTab: qfMany ? "0" : "-1", qfMany: qfMany, qfShowMore: qfMany && !qfOpen, qfShowLess: qfMany && qfOpen, qfRoles: qfRoles, qfHasRoles: qfRoles.length > 1,
+          filers: qfAll, qfListCls: "qfw" + (qfMany ? " qfs" : ""), qfTab: qfMany ? "0" : "-1", qfMany: qfMany, qfShowMore: qfMany && !qfOpen, qfShowLess: qfMany && qfOpen, qfRoles: qfRoles, qfHasRoles: qfRoles.length > 1,
           qfHid: qfAll.slice(QF_LIM, QF_LIM + 4).map(function (f) { return { photo: f.photo, name: f.name }; }), qfHidRest: qfAll.length - QF_LIM > 4, qfHidRestN: "+" + Math.max(0, qfAll.length - QF_LIM - 4),
           qfMoreCnt: Math.max(0, qfAll.length - QF_LIM), qfAllCnt: qfAll.length, qfExp: qfOpen ? "true" : "false", qfActLbl: qfOpen ? "Yig'ish" : "Barchasini ko'rsatish", qfBarCls: "qfr-bar" + (qfOpen ? " open" : ""),
           qfHidNames: (function () { var h = qfAll.slice(QF_LIM), sh = function (n) { var a = String(n).split(" "); return a[0] + (a[1] ? " " + a[1].charAt(0) + "." : ""); }; return h.slice(0, 3).map(function (f) { return sh(f.name); }).join(", ") + (h.length > 3 ? " va yana " + (h.length - 3) + " ta" : ""); })(),
