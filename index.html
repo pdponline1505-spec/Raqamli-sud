@@ -4727,6 +4727,20 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .umk-p small{font-size:12px;font-weight:400;color:#64748b;line-height:1.35}
 @media (max-width:1100px){.umk{grid-template-columns:minmax(0,1fr)}.umk-col:first-child .umk-r:last-child{border-bottom:1px dashed #e5e9f0}}
 @media (max-width:560px){.umk-r{grid-template-columns:minmax(0,1fr);gap:4px}}
+.qfr-bar{display:flex;align-items:center;gap:14px;width:100%;min-height:56px;padding:10px 12px 10px 14px;border-radius:14px;border:1px solid #e2e8f0;background:#fff;cursor:pointer;text-align:left;font-family:inherit;transition:background .15s,border-color .15s,box-shadow .15s}
+.qfr-bar:hover{border-color:#bfdbfe;box-shadow:0 4px 14px rgba(48,115,241,.08)}
+.qfr-bar:focus-visible{outline:2px solid #93c5fd;outline-offset:2px}
+.qfr-bar.open{min-height:44px;background:#f8fafc}
+.qfr-bar .qfr-stack img{width:32px;height:32px}
+.qfr-plus{width:32px;height:32px;border-radius:50%;margin-left:-10px;border:2px solid #fff;background:#eff6ff;color:#3073f1;font-size:11px;font-weight:700;display:grid;place-items:center}
+.qfr-txt{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.qfr-txt b{font-size:14px;font-weight:600;color:#0f172a}
+.qfr-txt small{font-size:12.5px;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qfr-act{flex:none;display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 14px;border-radius:10px;background:#eff6ff;color:#3073f1;font-size:13px;font-weight:600}
+.qfr-bar:hover .qfr-act{background:#dbeafe}
+.qfr-act .i{transition:transform .2s}
+.qfr-bar.open .qfr-act .i{transform:rotate(180deg)}
+.qfr-bar.open .qfr-txt b{font-weight:500;color:#64748b;font-size:13px}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -6335,9 +6349,9 @@ html[data-theme="dark"] .ds-host img{filter:none}
           <div class="qx5-s"><i class="qx5-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"></path><path d="M22 2 11 13"></path></svg></i><div class="qx5-t"><small>Yuborish turi</small><b>{{q.via}}</b></div></div>
         </div>
         <div class="qx3-fb"><div class="qfr-h"><span class="qx2-lbl">Shikoyat bergan shaxslar <span class="dx-cnt">{{q.filN}}</span></span><sc-if value="{{q.qfHasRoles}}" hint-placeholder-val="{{ false }}"><span class="qfr-roles"><sc-for list="{{q.qfRoles}}" as="r" hint-placeholder-count="3"><span class="{{r.cls}}">{{r.l}} <b>{{r.n}}</b></span></sc-for></span></sc-if></div>
-          <div class="qx2-fl"><sc-for list="{{q.filers}}" as="f" hint-placeholder-count="1"><div class="{{f.cardCls}}"><img class="qf5-ph" src="{{f.photo}}" alt=""><div class="qf5-b"><div class="qf5-h"><b title="{{f.name}}">{{f.name}}</b><span class="{{f.roleCls}}">{{f.role}}</span></div><small class="qf5-org" title="{{f.org}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg><span>{{f.org}}</span></small></div></div></sc-for><sc-if value="{{q.qfShowMore}}" hint-placeholder-val="{{ false }}"><button type="button" class="qfr-more" onClick="{{q.qfToggle}}" aria-label="{{q.qfMoreN}} — barchasini ko'rsatish"><span class="qfr-stack"><sc-for list="{{q.qfHid}}" as="h" hint-placeholder-count="3"><img src="{{h.photo}}" alt=""></sc-for></span><span class="kv" style="gap: 2px; min-width: 0"><b>{{q.qfMoreN}}</b><small>{{q.qfMoreSub}}</small></span><svg class="i s qfr-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button></sc-if>
+          <div class="qx2-fl"><sc-for list="{{q.filers}}" as="f" hint-placeholder-count="1"><div class="{{f.cardCls}}"><img class="qf5-ph" src="{{f.photo}}" alt=""><div class="qf5-b"><div class="qf5-h"><b title="{{f.name}}">{{f.name}}</b><span class="{{f.roleCls}}">{{f.role}}</span></div><small class="qf5-org" title="{{f.org}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg><span>{{f.org}}</span></small></div></div></sc-for>
           <sc-if value="{{q.noFilers}}" hint-placeholder-val="{{ false }}"><small class="muted">Shikoyat bergan shaxs ko'rsatilmagan</small></sc-if></div>
-          <sc-if value="{{q.qfShowLess}}" hint-placeholder-val="{{ false }}"><button type="button" class="qfr-less" onClick="{{q.qfToggle}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 15l-6-6-6 6"></path></svg>Yig'ish</button></sc-if>
+          <sc-if value="{{q.qfMany}}" hint-placeholder-val="{{ false }}"><button type="button" class="{{q.qfBarCls}}" aria-expanded="{{q.qfExp}}" onClick="{{q.qfToggle}}"><sc-if value="{{q.qfShowMore}}" hint-placeholder-val="{{ true }}"><span class="qfr-stack"><sc-for list="{{q.qfHid}}" as="h" hint-placeholder-count="3"><img src="{{h.photo}}" alt=""></sc-for><sc-if value="{{q.qfHidRest}}" hint-placeholder-val="{{ false }}"><span class="qfr-plus">{{q.qfHidRestN}}</span></sc-if></span><span class="qfr-txt"><b>Yana {{q.qfMoreCnt}} ta shaxs</b><small>{{q.qfHidNames}}</small></span></sc-if><sc-if value="{{q.qfShowLess}}" hint-placeholder-val="{{ false }}"><span class="qfr-txt"><b>Barcha {{q.qfAllCnt}} ta shaxs ko'rsatilmoqda</b></span></sc-if><span class="qfr-act">{{q.qfActLbl}}<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></span></button></sc-if>
         </div>
       </div>
       </sc-for>
@@ -10008,8 +10022,10 @@ class Component extends DCLogic {
         var QF_LIM = 4, qfAll = qFil(q), qfOpen = !!(s.qFilAll || {})[q.id], qfMany = qfAll.length > QF_LIM;
         var qfRoles = (function () { var m = {}, o = []; (q.filers || []).forEach(function (f) { var r = f.isOrg ? "Tashkilot" : f.role || "Boshqa"; if (!m[r]) { m[r] = 0; o.push(r); } m[r]++; }); return o.map(function (r) { return { l: r, n: m[r], cls: "qfr-c " + (/prokuror/i.test(r) ? "pro" : /advokat/i.test(r) ? "adv" : /tashkilot/i.test(r) ? "org" : "vk") }; }); })();
         return Object.assign({}, q, qParty(q), { noFilers: !(q.filers || []).length }, {
-          filers: qfMany && !qfOpen ? qfAll.slice(0, QF_LIM - 1) : qfAll, qfMany: qfMany, qfShowMore: qfMany && !qfOpen, qfShowLess: qfMany && qfOpen, qfRoles: qfRoles, qfHasRoles: qfRoles.length > 1,
-          qfHid: qfAll.slice(QF_LIM - 1, QF_LIM + 2).map(function (f) { return { photo: f.photo, name: f.name }; }), qfMoreN: "+" + (qfAll.length - (QF_LIM - 1)) + " ta shaxs", qfMoreSub: "Barchasini ko'rsatish",
+          filers: qfMany && !qfOpen ? qfAll.slice(0, QF_LIM) : qfAll, qfMany: qfMany, qfShowMore: qfMany && !qfOpen, qfShowLess: qfMany && qfOpen, qfRoles: qfRoles, qfHasRoles: qfRoles.length > 1,
+          qfHid: qfAll.slice(QF_LIM, QF_LIM + 4).map(function (f) { return { photo: f.photo, name: f.name }; }), qfHidRest: qfAll.length - QF_LIM > 4, qfHidRestN: "+" + Math.max(0, qfAll.length - QF_LIM - 4),
+          qfMoreCnt: Math.max(0, qfAll.length - QF_LIM), qfAllCnt: qfAll.length, qfExp: qfOpen ? "true" : "false", qfActLbl: qfOpen ? "Yig'ish" : "Barchasini ko'rsatish", qfBarCls: "qfr-bar" + (qfOpen ? " open" : ""),
+          qfHidNames: (function () { var h = qfAll.slice(QF_LIM), sh = function (n) { var a = String(n).split(" "); return a[0] + (a[1] ? " " + a[1].charAt(0) + "." : ""); }; return h.slice(0, 3).map(function (f) { return sh(f.name); }).join(", ") + (h.length > 3 ? " va yana " + (h.length - 3) + " ta" : ""); })(),
           qfToggle: function () { var o = Object.assign({}, self.state.qFilAll || {}); o[q.id] = !o[q.id]; self.setState({ qFilAll: o }); },
         }, {
           status: Q_ST[q.st][0], badgeCls: Q_ST[q.st][1],
