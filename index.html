@@ -4393,6 +4393,44 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .doc-pub{display:inline-flex;align-items:center;gap:5px;height:30px;padding:0 10px;border-radius:8px;background:#ecfdf3;color:#15803d;font-size:12.5px;font-weight:500;text-decoration:none;white-space:nowrap}
 .dsn-lock{opacity:.6;cursor:not-allowed;align-items:flex-start}
 .dsn-lock small{font-size:11.5px;color:#64748b}
+/* Publikatsiya qarori */
+.pbm-dd{position:relative;display:block}
+.pbm-menu{left:0 !important;right:0 !important;top:calc(100% + 4px) !important;bottom:auto !important;max-height:none !important;padding:6px !important;z-index:60}
+.pbm-gh{display:flex;align-items:center;gap:6px;padding:8px 10px 4px;font-size:12px;font-weight:600;color:#15803d;text-transform:uppercase;letter-spacing:.03em}
+.pbm-o{display:flex;align-items:center;gap:10px;width:100%;padding:9px 10px;border:0;border-radius:8px;background:transparent;font:inherit;text-align:left;cursor:pointer}
+.pbm-o.sub{padding-left:32px}
+.pbm-o:hover{background:#f1f5f9}
+.pbm-o b{font-size:14px;font-weight:500;color:#0f172a}.pbm-o small{font-size:12px;color:#64748b}
+.pbm-o .pbm-tk{visibility:hidden;color:#3073f1;flex:none}
+.pbm-o.on{background:#eff6ff}.pbm-o.on .pbm-tk{visibility:visible}
+.pbm-o.no b{color:#b91c1c}
+.pbm-sep{display:block;height:1px;margin:4px 6px;background:#eef1f5}
+.pbx{display:flex;flex-direction:column;gap:12px;padding:14px 16px;border:1px solid #e6ebf3;border-radius:14px;background:#fbfcfe}
+.pbx-h{display:flex;align-items:center;gap:12px}
+.pbx-h b{font-size:14.5px;color:#0f172a}.pbx-h small{font-size:12.5px;color:#64748b}
+.pbx-ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:none;background:#eff6ff;color:#3073f1}
+.pbx-ic.ai{background:#f5f3ff;color:#7c3aed}.pbx-ic.no{background:#fef2f2;color:#dc2626}
+.pbx-badge{flex:none;display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 9px;border-radius:999px;font-size:12px;font-weight:500;white-space:nowrap}
+.pbx-badge.ok{background:#ecfdf3;color:#15803d}.pbx-badge.wait{background:#fff7e6;color:#b45309}
+.pbx-chips{display:flex;flex-wrap:wrap;gap:6px}
+.pbx-chip{height:26px;padding:0 10px;border-radius:8px;background:#f1f5f9;color:#475569;font-size:12.5px;display:inline-flex;align-items:center;gap:6px}
+.pbx-chip b{color:#0f172a}
+.pbx-prev{margin:0;padding:10px 12px;border-radius:10px;background:#fff;border:1px dashed #cbd5e1;font-family:"Times New Roman",serif;font-size:14px;line-height:1.55;color:#1e293b}
+.pbx-prev mark{background:#ede9fe;color:#5b21b6;padding:0 4px;border-radius:4px}
+.pbx-rv{display:flex;flex-direction:column;gap:6px}
+.pbx-stage{display:flex;flex-direction:column;gap:6px}
+.pbx-seg{display:flex;gap:4px;padding:4px;border-radius:10px;background:#eef1f5;width:max-content;max-width:100%;flex-wrap:wrap}
+.pbx-seg button{height:30px;padding:0 12px;border:0;border-radius:8px;background:transparent;font:inherit;font-size:13px;color:#475569;cursor:pointer}
+.pbx-seg button.on{background:#fff;color:#0f172a;font-weight:500;box-shadow:0 1px 2px rgba(15,23,42,.08)}
+.pbx-list{display:flex;flex-direction:column;gap:8px}
+.pbx-p{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid #e6ebf3;border-radius:12px;background:#fff}
+.pbx-p img{width:36px;height:36px;border-radius:50%;object-fit:cover;object-position:center 20%;flex:none}
+.pbx-p b{font-size:13.5px;font-weight:600;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pbx-p small{font-size:12px;color:#64748b}
+.pbx-p.ok{border-color:#bbf7d0;background:#f6fef9}
+.pbx-p.bad{border-color:#fca5a5;box-shadow:0 0 0 3px #fef2f2}
+.pbx-p .btn.sm{flex:none}
+@media (max-width:620px){.pbx-p{flex-wrap:wrap}}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -7598,21 +7636,23 @@ html[data-theme="dark"] .ds-host img{filter:none}
 <sc-if value="{{pbfOpen}}" hint-placeholder-val="{{ false }}">
 <div class="qv-wrap">
   <button class="qv-bg" aria-label="Oynani yopish" onClick="{{pbfClose}}"></button>
-  <div class="qv itkm" role="dialog" aria-modal="true" aria-labelledby="pbf-title" onKeyDown="{{pbfKey}}" style="width: min(620px, 100%)">
-    <sc-if value="{{pbfDdOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg in" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{itkDdClose}}"></button></sc-if>
+  <div class="qv itkm" role="dialog" aria-modal="true" aria-labelledby="pbf-title" onKeyDown="{{pbfKey}}" style="width: min(700px, 100%)">
+    <sc-if value="{{pbfDdOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg in" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{itkDdClose}}"></button></sc-if><sc-if value="{{pbfModeOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg in" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{pbfModeClose}}"></button></sc-if>
     <div class="qv-h">
-      <div class="kv" style="gap: 4px; min-width: 0"><b id="pbf-title" class="qv-title" style="font-size: 20px">Publikatsiya qilish</b><span class="qv-sub">Hal qiluv qarori va ajrimlar moderatordan o'tgach public.sud.uz saytida ochiq e'lon qilinadi</span></div>
+      <div class="kv" style="gap: 4px; min-width: 0"><b id="pbf-title" class="qv-title" style="font-size: 20px">Publikatsiya</b><span class="qv-sub">Sud qarorini public.sud.uz saytida e'lon qilish to'g'risida qaror</span></div>
       <button class="ib qv-x" aria-label="Yopish" onClick="{{pbfClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
     </div>
     <div class="qv-b itkm-b">
       <label class="fld"><span>Hujjat <b class="dx-req">*</b></span><span class="{{pbS.doc.cls}}" id="{{pbS.doc.id}}" onKeyDown="{{pbS.doc.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{pbS.doc.exp}}" disabled="{{pbS.doc.dis}}" onClick="{{pbS.doc.toggle}}" style="border-color: {{pbS.doc.bc}}"><span class="{{pbS.doc.vcls}}">{{pbS.doc.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{pbS.doc.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{pbS.doc.stop}}"><sc-for list="{{pbS.doc.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
-      <button type="button" class="pb-opt" role="checkbox" aria-checked="{{pbfAnonStr}}" onClick="{{pbfToggleAnon}}"><span class="{{pbfAnonBox}}"><svg class="i" style="width: 12px; height: 12px; stroke-width: 3" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span><span class="kv" style="gap: 2px"><b>Shaxsga oid ma'lumotlarni yashirish</b><small>F.I.Sh., manzil, pasport va telefon raqamlari avtomatik niqoblanadi</small></span></button>
-      <sc-if value="{{pbfHasHint}}" hint-placeholder-val="{{ false }}"><div class="pbf-hint"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg><span>{{pbfHint}}</span></div></sc-if><sc-if value="{{pbfWarn}}" hint-placeholder-val="{{ false }}"><div class="sx-rej">Shaxsga oid ma'lumotlar yashirilmasa, hujjat moderatsiyadan o'tmasligi mumkin</div></sc-if>
-      <sc-if value="{{pbfErr}}" hint-placeholder-val="{{ false }}"><small class="dx-err" style="margin: 0">E'lon qilinadigan hujjatni tanlang</small></sc-if>
+      <label class="fld"><span>Publikatsiya qarori <b class="dx-req">*</b></span><span class="pbm-dd"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{pbfModeExp}}" onClick="{{pbfModeToggle}}" style="border-color: {{pbfModeBc}}"><span class="{{pbfModeVcls}}">{{pbfModeLbl}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{pbfModeOpen}}" hint-placeholder-val="{{ false }}"><span class="dx-menu pbm-menu" role="listbox"><span class="pbm-gh"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M8 12l3 3 5-6"></path></svg>Publikatsiya qilishga ruxsat etiladi</span><button type="button" role="option" class="{{pbfOpt.anon.cls}}" aria-selected="{{pbfOpt.anon.sel}}" onClick="{{pbfOpt.anon.pick}}"><span class="kv" style="gap: 2px; min-width: 0; flex: 1"><b>Shaxssizlantirilgan shaklda</b><small>AI shaxsga doir ma'lumotlarni avtomatik yashiradi · sudya yoki yordamchi tekshiradi</small></span><svg class="i s pbm-tk" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></button><button type="button" role="option" class="{{pbfOpt.open.cls}}" aria-selected="{{pbfOpt.open.sel}}" onClick="{{pbfOpt.open.pick}}"><span class="kv" style="gap: 2px; min-width: 0; flex: 1"><b>Ochiq shaklda</b><small>Taraflarning roziligi talab qilinadi</small></span><svg class="i s pbm-tk" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></button><span class="pbm-sep"></span><button type="button" role="option" class="{{pbfOpt.none.cls}}" aria-selected="{{pbfOpt.none.sel}}" onClick="{{pbfOpt.none.pick}}"><span class="kv" style="gap: 2px; min-width: 0; flex: 1"><b>Publikatsiya qilishga ruxsat berilmaydi</b><small>Qaror public.sud.uz saytida e'lon qilinmaydi</small></span><svg class="i s pbm-tk" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></button></span></sc-if></span></label>
+      <sc-if value="{{pbfIsAnon}}" hint-placeholder-val="{{ false }}"><div class="pbx"><div class="pbx-h"><span class="pbx-ic ai"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"></path></svg></span><div class="kv" style="gap: 1px; flex: 1"><b>AI shaxssizlantirish</b><small>Qaror matnidan shaxsga doir ma'lumotlar aniqlandi va yashirildi</small></div><span class="pbx-badge ok">{{pbfAiN}} ta yashirildi</span></div><div class="pbx-chips"><sc-for list="{{pbfAiCats}}" as="c" hint-placeholder-count="4"><span class="pbx-chip">{{c.l}} <b>{{c.n}}</b></span></sc-for></div><p class="pbx-prev">{{pbfAiPrev1}}<mark>{{pbfAiM1}}</mark>{{pbfAiPrev2}}<mark>{{pbfAiM2}}</mark>{{pbfAiPrev3}}</p><div class="pbx-rv"><span class="nx-l">Tekshiruvchi</span><div class="ex-chips"><sc-for list="{{pbfRevs}}" as="r" hint-placeholder-count="2"><button type="button" role="radio" aria-checked="{{r.str}}" class="{{r.cls}}" onClick="{{r.pick}}">{{r.l}}</button></sc-for></div></div><button type="button" class="pb-opt" role="checkbox" aria-checked="{{pbfRvStr}}" onClick="{{pbfRvToggle}}" style="border-color: {{pbfRvBc}}"><span class="{{pbfRvBox}}"><svg class="i" style="width: 12px; height: 12px; stroke-width: 3" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span><span class="kv" style="gap: 2px"><b>Shaxssizlantirilgan matn tekshirildi</b><small>{{pbfRvSub}}</small></span></button></div></sc-if>
+      <sc-if value="{{pbfIsOpen}}" hint-placeholder-val="{{ false }}"><div class="pbx"><div class="pbx-h"><span class="pbx-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"></path></svg></span><div class="kv" style="gap: 1px; flex: 1"><b>Taraflarning roziligi</b><small>Ochiq shaklda e'lon qilish uchun barcha taraflar rozilik berishi kerak</small></div><span class="{{pbfConsBadge}}">{{pbfConsN}}</span></div><div class="pbx-stage"><span class="nx-l">Rozilik olingan bosqich</span><div class="seg pbx-seg" role="radiogroup"><sc-for list="{{pbfStages}}" as="g" hint-placeholder-count="3"><button type="button" role="radio" aria-checked="{{g.str}}" class="{{g.cls}}" onClick="{{g.pick}}">{{g.l}}</button></sc-for></div></div><div class="pbx-list"><sc-for list="{{pbfParties}}" as="t" hint-placeholder-count="2"><div class="{{t.cls}}"><img src="{{t.photo}}" alt=""><div class="kv" style="gap: 1px; min-width: 0; flex: 1"><b>{{t.name}}</b><small>{{t.sub}}</small></div><sc-if value="{{t.ok}}" hint-placeholder-val="{{ false }}"><span class="pbx-badge ok">Rozilik berilgan</span><button type="button" class="ib" title="Rozilikni bekor qilish" aria-label="{{t.name}} — rozilikni bekor qilish" onClick="{{t.revoke}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></sc-if><sc-if value="{{t.scan}}" hint-placeholder-val="{{ false }}"><span class="pbx-badge wait"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 11v3a8 8 0 0 1-2 5M8 14a4 4 0 0 1 8 0v1M5 12a7 7 0 0 1 14 0v2a12 12 0 0 1-1 5M9 21a14 14 0 0 0 1-4M15 21a16 16 0 0 0 1-3"></path></svg>Barmoq izi kutilmoqda…</span></sc-if><sc-if value="{{t.need}}" hint-placeholder-val="{{ false }}"><button type="button" class="btn sm" onClick="{{t.paper}}" title="Qo'lda imzolangan qog'oz rozilikni skanerlab biriktirish"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4M7 9l5-5 5 5M5 20h14"></path></svg>Qog'oz rozilik</button><button type="button" class="btn sm" onClick="{{t.finger}}" title="Barmoq izi skaneri orqali tasdiqlash"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 11v3a8 8 0 0 1-2 5M8 14a4 4 0 0 1 8 0v1M5 12a7 7 0 0 1 14 0v2a12 12 0 0 1-1 5M9 21a14 14 0 0 0 1-4M15 21a16 16 0 0 0 1-3"></path></svg>Barmoq izi</button></sc-if></div></sc-for></div></div></sc-if>
+      <sc-if value="{{pbfIsNone}}" hint-placeholder-val="{{ false }}"><div class="pbx"><div class="pbx-h"><span class="pbx-ic no"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M5.6 5.6l12.8 12.8"></path></svg></span><div class="kv" style="gap: 1px; flex: 1"><b>Qaror e'lon qilinmaydi</b><small>Sababini belgilang — u ish materiallarida saqlanadi</small></div></div><div class="ex-chips"><sc-for list="{{pbfReasons}}" as="r" hint-placeholder-count="4"><button type="button" role="radio" aria-checked="{{r.str}}" class="{{r.cls}}" onClick="{{r.pick}}">{{r.l}}</button></sc-for></div></div></sc-if>
+      <sc-if value="{{pbfErr}}" hint-placeholder-val="{{ false }}"><small class="dx-err" style="margin: 0">{{pbfErrTxt}}</small></sc-if>
     </div>
     <div class="qv-f itkm-f">
       <button class="btn qv-close" onClick="{{pbfClose}}">Bekor qilish</button>
-      <button class="btn pri" onClick="{{pbfSave}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2-7z"></path></svg>Moderatsiyaga yuborish</button>
+      <button class="btn pri" onClick="{{pbfSave}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2-7z"></path></svg>{{pbfSaveLbl}}</button>
     </div>
   </div>
 </div>
@@ -8924,6 +8964,7 @@ class Component extends DCLogic {
         { id: 1, title: "Hal qiluv qarori", type: "Sud hujjatlari", inst: 1, st: "imzo", gen: true, date: "2026-07-17", files: ["PDF", "W"], extra: "+2", sends: [] },
         { id: 2, title: "Ajrim", type: "Sud hujjatlari", inst: 1, st: "tasdiq", gen: true, date: "2026-07-15", files: ["PDF", "W"], sends: [] },
         { id: 3, title: "Sud majlisi bayonnomasi", type: "Sud hujjatlari", inst: 2, st: "tayyor", date: "2026-07-12", files: ["PDF", "X"], sends: [{ who: "Aralov Yunus Bazarovich", role: "Da'vogar", via: "Elektron shaklda", st: "ok", at: "12.07.2026 16:40" }, { who: "Shaymonov Ilhom Norboy o'g'li", role: "Javobgar", via: "Gibrid pochta orqali", st: "go", at: "12.07.2026 16:42" }] },
+        { id: 10, title: "Qo'shimcha hal qiluv qarori", type: "Sud hujjatlari", inst: 1, st: "tayyor", gen: true, date: "2026-07-20", files: ["PDF", "W"], sends: [] },
         { id: 7, title: "Ishni sud muhokamasiga tayyorlash to'g'risida ajrim", type: "Sud hujjatlari", inst: 1, st: "tayyor", gen: true, date: "2026-06-25", files: ["PDF", "W"], sends: [{ who: "Aralov Yunus Bazarovich", role: "Da'vogar", via: "Elektron shaklda", st: "ok", at: "25.06.2026 11:05" }, { who: "Shaymonov Ilhom Norboy o'g'li", role: "Javobgar", via: "SMS orqali", st: "ok", at: "25.06.2026 11:05" }, { who: "Termiz shahar prokuraturasi", role: "Prokuror", via: "Maxsus aloqa xizmati orqali", st: "go", at: "25.06.2026 11:07" }] },
         { id: 8, title: "Chaqiruv qog'ozi", type: "Sud hujjatlari", inst: 1, st: "tayyor", gen: true, date: "2026-06-24", files: ["PDF"], sends: [{ who: "Shaymonov Ilhom Norboy o'g'li", role: "Javobgar", via: "Davlat feldyegerlik xizmati orqali", st: "ok", at: "24.06.2026 09:30" }] },
         { id: 9, title: "Xabarnoma", type: "Sud hujjatlari", inst: 1, st: "tayyor", gen: true, date: "2026-06-24", files: ["PDF"], sends: [{ who: "Aralov Yunus Bazarovich", role: "Da'vogar", via: "Elektron pochta orqali", st: "ok", at: "24.06.2026 09:28" }, { who: "Shaymonov Ilhom Norboy o'g'li", role: "Javobgar", via: "Elektron pochta orqali", st: "go", at: "24.06.2026 09:28" }] },
@@ -10817,7 +10858,7 @@ class Component extends DCLogic {
       docsEmptyS: (s.docs || []).length ? "Filtr yoki qidiruv so'zini o'zgartiring" : "Qaror, ajrim yoki bayonnomani biriktiring yoki shablon asosida tuzing", filtered: filtered, docStTabs: docStTabs,
       docAttach: function () { self.setState({ dxDd: "", jfOver: false, jf: { mode: "doc", to: "", turi: "", mazmun: "", file: null, err: "" } }); },
       docPublish: function () { var taken = (self.state.pb || []).map(function (x) { return x.title; }); var hqq = (self.state.docs || []).filter(function (d) { return d.st === "tayyor" && /qaror/i.test(d.title) && taken.indexOf(d.title) < 0; })[0];
-        self.setState({ dxDd: "", docMenu: 0, pbForm: { doc: hqq ? String(hqq.id) : "", anon: true, err: false } }); },
+        self.setState({ dxDd: "", docMenu: 0, pbForm: { doc: hqq ? String(hqq.id) : "", mode: "", rev: "sudya", rv: false, stage: "", reason: "", err: "" } }); },
       docCompose: function () { var d = new Date(); self.setState({ dxDd: "", hc: { turi: "", sana: d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"), ai: false, err: "" } }); },
       docType: s.docType, typeOpts: typeOpts, instOpts: instOpts, instLabel: instLabel,
       ddType: s.dd === "type", ddInst: s.dd === "inst", anyDD: !!s.dd,
@@ -11646,7 +11687,7 @@ class Component extends DCLogic {
       })();
       // ---- publikatsiyalar ----
       (function () {
-        var ST = { elon: ["E'lon qilingan", "nt-st on"], moder: ["Moderatsiyada", "nt-st wait"], yashirin: ["Ommadan yashirilgan", "nt-st off"], rad: ["Rad etilgan", "nt-st rej"] };
+        var ST = { taqiq: ["Publikatsiya qilinmaydi", "nt-st off"], elon: ["E'lon qilingan", "nt-st on"], moder: ["Moderatsiyada", "nt-st wait"], yashirin: ["Ommadan yashirilgan", "nt-st off"], rad: ["Rad etilgan", "nt-st rej"] };
         var list = s.pb || [];
         var upd = function (id, patch) { self.setState({ pb: self.state.pb.map(function (x) { return x.id === id ? Object.assign({}, x, patch) : x; }) }); };
         __out.pb = list.map(function (q) {
@@ -11663,27 +11704,73 @@ class Component extends DCLogic {
         });
         __out.pbEmpty = !list.length;
         __out.pbSub = list.length ? "Sud qarorlarini internet tarmog'ida e'lon qilish · " + list.filter(function (x) { return x.st === "elon"; }).length + " tasi e'lon qilingan · " + list.filter(function (x) { return x.st === "moder"; }).length + " tasi moderatsiyada" : "Sud qarorlarini internet tarmog'ida e'lon qilish";
-        __out.pbAdd = function () { self.setState({ dxDd: "", pbForm: { doc: "", anon: true, err: false } }); };
-        var f = s.pbForm, v = f || { doc: "", anon: true, err: false };
+        __out.pbAdd = function () { self.setState({ dxDd: "", pbForm: { doc: "", mode: "", rev: "sudya", rv: false, stage: "", reason: "", err: "" } }); };
+        var f = s.pbForm, v = f || { doc: "", mode: "", err: "" };
         var taken = list.map(function (x) { return x.title; });
-        var docs = (s.docs || []).filter(function (d) { return d.st === "tayyor" && /qaror|ajrim/i.test(d.title) && taken.indexOf(d.title) < 0; });
-        var unsigned = (s.docs || []).filter(function (d) { return d.st !== "tayyor" && /qaror/i.test(d.title) && taken.indexOf(d.title) < 0; });
-        __out.pbfHint = unsigned.length ? "«" + unsigned[0].title + "» hali " + (unsigned[0].st === "imzo" ? "imzolanmagan" : "tasdiqlanmagan") + " — imzolanib tasdiqlangach bu ro'yxatda paydo bo'ladi" : ""; __out.pbfHasHint = !!unsigned.length;
+        var docs = (s.docs || []).filter(function (d) { return d.st === "tayyor" && /qaror/i.test(d.title) && taken.indexOf(d.title) < 0; });
+        var setF = function (o) { self.setState(function (prev) { return prev.pbForm ? { pbForm: Object.assign({}, prev.pbForm, o, { err: "" }) } : null; }); };
         __out.pbfOpen = !!f && !!s.caseOpen;
-        __out.pbS = { doc: dd("pb-doc", [{ v: "", l: "Hujjatni tanlang" }].concat(docs.map(function (d) { return { v: String(d.id), l: d.title, sub: d.type + " · " + isoToUz(d.date) }; })), v.doc, function (e) { var val = e.target.value; self.setState(function (prev) { return prev.pbForm ? { pbForm: Object.assign({}, prev.pbForm, { doc: val, err: false }) } : null; }); }, { ph: docs.length ? "Hujjatni tanlang" : "E'lon qilish uchun tayyor hujjat yo'q", noSplit: true, disabled: !docs.length, bc: v.err && !v.doc ? "#dc2626" : "" }) };
-        __out.pbfAnonStr = v.anon ? "true" : "false"; __out.pbfAnonBox = v.anon ? "cbox on" : "cbox"; __out.pbfWarn = !!f && !v.anon;
-        __out.pbfToggleAnon = function () { self.setState(function (prev) { return prev.pbForm ? { pbForm: Object.assign({}, prev.pbForm, { anon: !prev.pbForm.anon }) } : null; }); };
-        __out.pbfErr = !!v.err && !v.doc;
+        __out.pbS = { doc: dd("pb-doc", [{ v: "", l: "Qarorni tanlang" }].concat(docs.map(function (d) { return { v: String(d.id), l: d.title, sub: d.type + " · " + isoToUz(d.date) }; })), v.doc, function (e) { setF({ doc: e.target.value }); }, { ph: docs.length ? "Qarorni tanlang" : "E'lon qilinadigan qaror yo'q", noSplit: true, bc: f && f.err && !v.doc ? "#dc2626" : "" }) };
         __out.pbfDdOpen = !!ddOpen && ddOpen === "pb-doc";
-        var close = function () { self.setState({ pbForm: null, dxDd: "" }); };
+        // publikatsiya qarori: ruxsat etiladi (shaxssizlantirilgan / ochiq) yoki ruxsat berilmaydi
+        var ML = { anon: "Ruxsat etiladi · Shaxssizlantirilgan shaklda", open: "Ruxsat etiladi · Ochiq shaklda", none: "Publikatsiya qilishga ruxsat berilmaydi" };
+        __out.pbfModeOpen = !!(f && f.modeDd); __out.pbfModeExp = __out.pbfModeOpen ? "true" : "false";
+        __out.pbfModeToggle = function () { setF({ modeDd: !(self.state.pbForm || {}).modeDd }); };
+        __out.pbfModeClose = function () { setF({ modeDd: false }); };
+        __out.pbfModeLbl = v.mode ? ML[v.mode] : "Tanlang"; __out.pbfModeVcls = v.mode ? "dx-selv" : "dx-selv ph";
+        __out.pbfModeBc = f && f.err && !v.mode ? "#dc2626" : "";
+        __out.pbfOpt = {}; ["anon", "open", "none"].forEach(function (k) { var on = v.mode === k; __out.pbfOpt[k] = { cls: "pbm-o" + (on ? " on" : "") + (k === "none" ? " no" : " sub"), sel: on ? "true" : "false", pick: function () { setF({ mode: k, modeDd: false }); } }; });
+        __out.pbfIsAnon = v.mode === "anon"; __out.pbfIsOpen = v.mode === "open"; __out.pbfIsNone = v.mode === "none";
+        // shaxssizlantirish (AI)
+        var row = (s.lRows || []).filter(function (r) { return r.num === s.caseNum; })[0] || { ariz: ["—"], jav: ["—"] };
+        var ini = function (n) { if (/MChJ|AJ|"|«/.test(n)) return n; var p = String(n).split(/\s+/); return p.length > 1 ? p[0].charAt(0) + ". " + p.slice(1).map(function (x) { return x.charAt(0) + "."; }).join(" ") : n; };
+        var CATS = [["F.I.Sh.", 6], ["Manzil", 3], ["JSHSHIR", 2], ["Pasport", 2], ["Telefon", 1]];
+        __out.pbfAiCats = CATS.map(function (c) { return { l: c[0], n: c[1] }; }); __out.pbfAiN = CATS.reduce(function (a, c) { return a + c[1]; }, 0);
+        __out.pbfAiPrev1 = "Da'vogar "; __out.pbfAiM1 = ini((row.ariz || ["—"])[0]); __out.pbfAiPrev2 = " (manzil: "; __out.pbfAiM2 = "[yashirilgan]"; __out.pbfAiPrev3 = ") javobgarga nisbatan da'vo arizasi bilan sudga murojaat qilgan…";
+        var REV = [["sudya", "Sudya · Tojiyev Z. X."], ["yord", "Yordamchi · Ergashev J. A."]];
+        __out.pbfRevs = REV.map(function (r) { var on = (v.rev || "sudya") === r[0]; return { l: r[1], str: on ? "true" : "false", cls: "ex-chip" + (on ? " on" : ""), pick: function () { setF({ rev: r[0] }); } }; });
+        __out.pbfRvStr = v.rv ? "true" : "false"; __out.pbfRvBox = v.rv ? "cbox on" : "cbox";
+        __out.pbfRvBc = f && f.err && v.mode === "anon" && !v.rv ? "#dc2626" : "";
+        __out.pbfRvSub = (REV.filter(function (r) { return r[0] === (v.rev || "sudya"); })[0] || REV[0])[1] + " AI yashirgan joylarni ko'rib chiqdi va tasdiqladi";
+        __out.pbfRvToggle = function () { setF({ rv: !(self.state.pbForm || {}).rv }); };
+        // ochiq shakl: taraflarning roziligi (qog'oz hujjat yoki barmoq izi)
+        var stageOf = { korib: "pre", majlis: "pre", qoldir: "majlis", natija: "natija" };
+        var STG = [["pre", "Sud majlisigacha"], ["majlis", "Sud majlisida"], ["natija", "Natija qo'yish jarayonida"]];
+        var curStage = v.stage || stageOf[(row && row.stage) || "korib"] || "pre";
+        __out.pbfStages = STG.map(function (g) { var on = curStage === g[0]; return { l: g[1], str: on ? "true" : "false", cls: on ? "on" : "", pick: function () { setF({ stage: g[0] }); } }; });
+        var cons = s.pubCons || {}, scanning = s.pubScan || "";
+        var parties = (s.tmDv || []).map(function (p) { return [p, "Da'vogar"]; }).concat((s.tmJv || []).map(function (p) { return [p, "Javobgar"]; }));
+        var nowUz = function () { var n = new Date(), z = function (x) { return (x < 10 ? "0" : "") + x; }; return z(n.getDate()) + "." + z(n.getMonth() + 1) + "." + n.getFullYear() + " " + z(n.getHours()) + ":" + z(n.getMinutes()); };
+        var setCons = function (k, val) { var c = Object.assign({}, self.state.pubCons || {}); if (val) c[k] = val; else delete c[k]; self.setState({ pubCons: c, pubScan: "", pbForm: self.state.pbForm ? Object.assign({}, self.state.pbForm, { err: "" }) : null }); };
+        var stLbl = function (k) { return (STG.filter(function (g) { return g[0] === k; })[0] || STG[0])[1]; };
+        __out.pbfParties = parties.map(function (x) { var p = x[0], k = x[1] + ":" + p.name, c = cons[k], sc = scanning === k;
+          return { name: p.name, photo: portrait(p.name, p.gender), ok: !!c, scan: !c && sc, need: !c && !sc,
+            sub: c ? x[1] + " · " + (c.how === "finger" ? "Barmoq izi bilan tasdiqlangan" : "Qog'oz hujjat · " + c.file) + " · " + stLbl(c.stage) + " · " + c.at : x[1] + " · rozilik olinmagan",
+            cls: "pbx-p" + (c ? " ok" : (f && f.err && v.mode === "open" ? " bad" : "")),
+            paper: function () { setCons(k, { how: "paper", file: "rozilik_" + p.name.split(" ")[0].toLowerCase().replace(/[^a-z]/g, "") + ".pdf", stage: curStage, at: nowUz() }); self.flash(p.name + " · qog'oz rozilik biriktirildi"); },
+            finger: function () { self.setState({ pubScan: k }); setTimeout(function () { if (self.state.pubScan !== k) return; setCons(k, { how: "finger", stage: curStage, at: nowUz() }); self.flash(p.name + " · rozilik barmoq izi bilan tasdiqlandi"); }, 1400); },
+            revoke: function () { setCons(k, null); } }; });
+        var consOk = parties.filter(function (x) { return cons[x[1] + ":" + x[0].name]; }).length;
+        __out.pbfConsN = consOk + " / " + parties.length + " rozilik"; __out.pbfConsBadge = "pbx-badge " + (consOk === parties.length && parties.length ? "ok" : "wait");
+        // ruxsat berilmasa — sabab
+        var RS = ["Davlat siri", "Voyaga yetmaganlar ishtirokida", "Oilaviy munosabatlar", "Tijorat siri", "Boshqa"];
+        __out.pbfReasons = RS.map(function (r) { var on = v.reason === r; return { l: r, str: on ? "true" : "false", cls: "ex-chip" + (on ? " on" : ""), pick: function () { setF({ reason: r }); } }; });
+        __out.pbfSaveLbl = v.mode === "none" ? "Saqlash" : "Moderatsiyaga yuborish";
+        __out.pbfErr = !!(f && f.err); __out.pbfErrTxt = (f && f.err) || "";
+        var close = function () { self.setState({ pbForm: null, dxDd: "", pubScan: "" }); };
         __out.pbfClose = close; __out.pbfKey = function (e) { if (e.key === "Escape") { e.stopPropagation(); close(); } };
         __out.pbfSave = function () {
           var w = self.state.pbForm; if (!w) return;
-          if (!w.doc) { self.setState({ pbForm: Object.assign({}, w, { err: true }) }); return; }
+          if (!w.doc) { setF({ err: "E'lon qilinadigan qarorni tanlang" }); self.setState({ pbForm: Object.assign({}, w, { err: "E'lon qilinadigan qarorni tanlang" }) }); return; }
+          if (!w.mode) { self.setState({ pbForm: Object.assign({}, w, { err: "Publikatsiya qarorini tanlang" }) }); return; }
+          if (w.mode === "anon" && !w.rv) { self.setState({ pbForm: Object.assign({}, w, { err: "Shaxssizlantirilgan matn sudya yoki yordamchi tomonidan tekshirilishi kerak" }) }); return; }
+          if (w.mode === "open" && consOk < parties.length) { self.setState({ pbForm: Object.assign({}, w, { err: (parties.length - consOk) + " ta tarafning roziligi olinmagan — qog'oz rozilikni biriktiring yoki barmoq izi bilan tasdiqlating" }) }); return; }
+          if (w.mode === "none" && !w.reason) { self.setState({ pbForm: Object.assign({}, w, { err: "Publikatsiya qilinmaslik sababini belgilang" }) }); return; }
           var d = (self.state.docs || []).filter(function (x) { return String(x.id) === w.doc; })[0]; if (!d) return;
           var t = new Date(), pad = function (n) { return (n < 10 ? "0" : "") + n; };
-          self.setState({ pbForm: null, dxDd: "", pb: [{ id: "p" + Date.now(), title: d.title, inst: INST_NAME[d.inst] || "Birinchi instansiya", size: "96 KB", author: "Eshnazarov A.", date: pad(t.getDate()) + "." + pad(t.getMonth() + 1) + "." + t.getFullYear(), st: "moder", url: "", views: 0, anon: !!w.anon }].concat(self.state.pb) });
-          self.flash("«" + d.title + "» moderatsiyaga yuborildi");
+          var st = w.mode === "none" ? "taqiq" : "moder";
+          self.setState({ pbForm: null, dxDd: "", pb: [{ id: "p" + Date.now(), title: d.title, inst: INST_NAME[d.inst] || "Birinchi instansiya", size: "96 KB", author: "Eshnazarov A.", date: pad(t.getDate()) + "." + pad(t.getMonth() + 1) + "." + t.getFullYear(), st: st, url: "", views: 0, anon: w.mode === "anon", reason: w.mode === "none" ? w.reason : "" }].concat(self.state.pb) });
+          self.flash(w.mode === "none" ? "«" + d.title + "» publikatsiya qilinmasligi belgilandi · " + w.reason : "«" + d.title + "» " + (w.mode === "anon" ? "shaxssizlantirilgan" : "ochiq") + " shaklda moderatsiyaga yuborildi");
         };
       })();
       // ---- yangi sud ekspertiza tizimi: so'rovlar ----
