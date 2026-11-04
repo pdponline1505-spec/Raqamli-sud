@@ -4279,6 +4279,10 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .nx-doc-open{color:#3777e6 !important;border-color:#c7dafd !important}
 @keyframes nxdoc{from{opacity:.4;transform:translateY(2px)}to{opacity:1;transform:none}}
 @media (max-width:560px){.nx-doc{flex-wrap:wrap}.nx-doc-acts{width:100%}.nx-doc-open{flex:1}}
+.apc-tbl.ap-wd .apc-tr{grid-template-columns:40px 196px minmax(0,1fr) minmax(0,1fr) 124px 124px 138px 14px !important;gap:0 12px !important}
+.apc-tbl.ap-wd .apc-doc{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.apc-date{display:inline-flex;align-items:center;gap:6px;color:#334155;font-variant-numeric:tabular-nums;white-space:nowrap}
+.apc-date svg{color:#94a3b8}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -4796,13 +4800,14 @@ html[data-theme="dark"] .ds-host img{filter:none}
     <div class="qv-b apcm-b">
       <div class="apcm-main">
         <div class="row" style="gap: 10px"><label class="lf-search" style="flex: 1; margin: 0"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><input type="search" placeholder="Ish raqamini yozing" aria-label="Ish raqamini yozing" autofocus="{{ true }}" value="{{apcQ}}" onChange="{{apcSetQ}}"></label><button class="btn" onClick="{{apcImport}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5M5 21h14"></path></svg>Import</button></div>
-        <div class="apc-tw"><div class="apc-tbl" role="table">
-          <div class="apc-tr apc-th" role="row"><span></span><span>Ish raqami</span><span>Arizachi</span><span>Javobgar</span><span>Ish yuritish tartibi</span><span>Instansiya</span><span></span></div>
+        <div class="apc-tw"><div class="apc-tbl ap-wd" role="table">
+          <div class="apc-tr apc-th" role="row"><span></span><span>Ish raqami</span><span>Arizachi</span><span>Javobgar</span><span>Ko'rilgan sana</span><span>Ish yuritish tartibi</span><span>Instansiya</span><span></span></div>
           <sc-for list="{{apcRows}}" as="r" hint-placeholder-count="6"><div class="{{r.itemCls}}"><div class="{{r.cls}}" role="row" tabindex="0" aria-selected="{{r.str}}" aria-expanded="{{r.str}}" onClick="{{r.pick}}" onKeyDown="{{r.key}}">
             <span><button type="button" class="apc-cb" role="checkbox" aria-checked="{{r.str}}" aria-label="{{r.num}} — tanlash" onClick="{{r.toggle}}"><span class="ap-rad"></span></button></span>
             <span class="kv" style="gap: 3px"><b class="apc-rn">{{r.num}}</b><small class="{{r.docCls}}">{{r.docCnt}}</small><sc-if value="{{r.hasTag}}" hint-placeholder-val="{{ false }}"><span class="{{r.tagCls}}">{{r.tag}}</span></sc-if></span>
             <span class="apc-pp"><span class="apc-avs"><sc-for list="{{r.avs}}" as="a" hint-placeholder-count="2"><img src="{{a}}" alt=""></sc-for></span><span class="kv" style="gap: 0; min-width: 0"><b>{{r.ariz}}</b><sc-if value="{{r.arizMore}}" hint-placeholder-val="{{ false }}"><small>{{r.arizN}} ta</small></sc-if></span></span>
             <span class="kv" style="gap: 0; min-width: 0"><b class="apc-up">{{r.jav}}</b><sc-if value="{{r.javMore}}" hint-placeholder-val="{{ false }}"><small>{{r.javN}} ta</small></sc-if></span>
+            <span class="apc-date"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>{{r.sana}}</span>
             <span><span class="{{r.tartibCls}}">{{r.tartib}}</span></span>
             <span><span class="chip">{{r.inst}}</span></span>
             <span class="apc-chev" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"></path></svg></span>
@@ -12417,7 +12422,7 @@ class Component extends DCLogic {
           var JV = [["\"Baraka Trans\" MChJ"], ["Normurodov Bekzod Azizovich", "Rasulov Bobur Akmalovich"], ["«Toshkent suv ta'minoti» AJ"], ["Shaymonov Ilhom Norboy o'g'li"]];
           var SD = ["Yetkazib berish shartnomasi yuzasidan", "Qarzni undirish yuzasidan", "Ijara shartnomasi yuzasidan", "Pudrat shartnomasi yuzasidan"];
           nums.forEach(function (num, ni) { var sd = seed + ni * 7, dd2 = 1 + sd % 27, mm2 = 1 + sd % 9;
-            var row = { id: 9900 + sd, num: num, tag: "", syn: true, ariz: AR[sd % 4], jav: JV[(sd >> 2) % 4], sud: SD[(sd >> 3) % 4], sana: (dd2 < 10 ? "0" : "") + dd2 + ".0" + mm2 + ".2026" };
+            var row = { id: 9900 + sd, num: num, tag: "", syn: true, ariz: AR[seed % 4], jav: JV[(seed + 1) % 4], sud: SD[(seed >> 3) % 4], sana: (dd2 < 10 ? "0" : "") + dd2 + ".0" + mm2 + ".2026" };
             var base = caseOf(row, sd); var x = Object.assign({}, base, { key: base.num + "#0", doc: VARS[0][0], docDate: base.sana }); all.push(x); byNum[x.key] = x; });
         }
         // ---- shu ish raqamining quyi instansiyalari (yuqori instansiyada shikoyat qilinadigan qarorlar) ----
@@ -12516,7 +12521,7 @@ class Component extends DCLogic {
         var openDrw = function (key) { setPick(function (w) { var its = Object.assign({}, w.items || {}); var it0 = its[key] || {}; var draft = { docs: docsOf(it0), part: it0.part || "" }; return { cur: key, drw: true, draft: draft, docErr: false, partErr: false }; }); };
         __out.apcRows = shown.map(function (c) { var it = items[c.key], on = !!it, r = c.r, tag = r.tag === "imp" ? ["Import", "apc-tag imp"] : r.tag === "dub" ? ["Dublikat", "apc-tag dub"] : r.tag === "qarshi" ? ["Qarshi da'vo", "apc-tag qd"] : null;
           var itDocs = docsOf(it);
-          return { num: c.num, doc: c.doc, docCnt: on ? "✓ " + (itDocs.length > 1 ? itDocs.length + " ta hujjat (" + itDocs.length + " ta ish)" : itDocs[0]) + " · " + it.part + " ustidan" : c.docN + " ta hujjat · hujjatlarni tanlash uchun bosing", docCls: "apc-doc" + (on ? " ok" : ""), tartib: TT(c).t, tartibCls: TT(c).cls, inst: "Birinchi instansiya", sud: c.sud, sana: c.docDate,
+          return { num: c.num, doc: c.doc, docCnt: on ? "✓ " + (itDocs.length > 1 ? itDocs.length + " ta hujjat (" + itDocs.length + " ta ish)" : itDocs[0]) + " · " + it.part + " ustidan" : c.docN + " ta hujjat · hujjatlarni tanlash uchun bosing", docCls: "apc-doc" + (on ? " ok" : ""), tartib: TT(c).t, tartibCls: TT(c).cls, inst: "Birinchi instansiya", sud: c.sud, sana: c.docDate || c.sana || "—",
             ariz: (c.dv[0] || {}).name || "—", arizN: c.dvN, arizMore: c.dvN > 1, jav: (c.jv[0] || {}).name || "—", javN: c.jvN, javMore: c.jvN > 1, avs: c.dv.slice(0, 3).map(function (x) { return x.photo; }),
             hasTag: !!tag, tag: tag ? tag[0] : "", tagCls: tag ? tag[1] : "", str: on ? "true" : "false", cls: "apc-tr" + (on ? " on" : ""), itemCls: "apc-item" + (on ? " sel" : ""),
             inlineOpen: false, p: { dv: [], jv: [], qs: [], docs: [] }, partCls: "", partDd: dd("apc-x", [], "", function () {}, {}),
