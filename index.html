@@ -4453,6 +4453,7 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .pbfm>.qv-b{flex:1 1 auto;min-height:0;overflow-y:auto !important;overscroll-behavior:contain}
 .pbfm>.qv-h,.pbfm>.qv-f{flex:none}
 .pbfm .pbx,.pbfm .pbx-list,.pbfm .pbx-p{min-width:0;max-width:100%;box-sizing:border-box}
+.pbfm .pbm-dd .dx-menu.pbm-menu,.pbfm .pbm-dd .dx-menu.pbm-menu.up{position:static !important;display:block;width:auto !important;max-width:none !important;margin-top:6px;top:auto !important;bottom:auto !important;max-height:none !important;box-shadow:0 8px 24px rgba(15,23,42,.10);transform-origin:top center}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -11757,7 +11758,7 @@ class Component extends DCLogic {
         // publikatsiya qarori: ruxsat etiladi (shaxssizlantirilgan / ochiq) yoki ruxsat berilmaydi
         var ML = { anon: "Ruxsat etiladi · Shaxssizlantirilgan shaklda", open: "Ruxsat etiladi · Ochiq shaklda", none: "Publikatsiya qilishga ruxsat berilmaydi" };
         __out.pbfModeOpen = !!(f && f.modeDd); __out.pbfModeExp = __out.pbfModeOpen ? "true" : "false";
-        __out.pbfModeToggle = function () { setF({ modeDd: !(self.state.pbForm || {}).modeDd }); };
+        __out.pbfModeToggle = function () { var op = !(self.state.pbForm || {}).modeDd; setF({ modeDd: op }); if (op) setTimeout(function () { try { var m = document.querySelector(".pbfm .pbm-menu"); if (m) { m.classList.remove("up"); m.style.maxHeight = ""; m.scrollIntoView({ behavior: "smooth", block: "nearest" }); } } catch (e) {} }, 30); };
         __out.pbfModeClose = function () { setF({ modeDd: false }); };
         __out.pbfModeLbl = v.mode ? ML[v.mode] : "Tanlang"; __out.pbfModeVcls = v.mode ? "dx-selv" : "dx-selv ph";
         __out.pbfModeBc = f && f.err && !v.mode ? "#dc2626" : "";
