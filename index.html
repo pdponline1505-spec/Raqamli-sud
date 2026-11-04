@@ -4477,6 +4477,74 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .qpc-vk .dx-sel.vk .dx-selbtn{height:26px;font-size:12.5px;padding:0 6px 0 10px;max-width:320px}
 .qpc-vk .dx-sel.vk .dx-selv{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .qpc-vk .dx-sel.vk .dx-menu{min-width:300px;left:0;right:auto}
+.pc-click{cursor:pointer}
+.pc-click:hover{background:#f8fafc !important;border-color:#bfdbfe !important}
+.pc-click.pc-mainp:hover{background:#eef4ff !important}
+.pc-click:focus-visible{outline:2px solid #93c5fd;outline-offset:2px}
+.pc-click:hover .pc-name,.pc-click:hover .qpc-name{color:#3073f1}
+.pim{max-height:calc(100vh - 48px);display:flex;flex-direction:column}
+.pim-h{align-items:center !important;gap:16px !important}
+.pim-ph{width:64px;height:64px;border-radius:14px;object-fit:cover;flex:none;background:#f1f5f9}
+.pim-name{font-size:19px !important;font-weight:600;color:#0f172a;line-height:1.25}
+.pim-sub{display:inline-flex;align-items:center;flex-wrap:wrap;gap:6px;font-size:13px;color:#64748b}
+.pim-dot{width:3px;height:3px;border-radius:50%;background:#cbd5e1}
+.pim-cp{width:24px !important;height:24px !important;min-width:24px !important}
+.pim-cp .i{width:13px;height:13px}
+.pim-side{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:999px;background:#eff6ff;color:#3073f1;font-size:12px;font-weight:600}
+.pim-main{display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 9px;border-radius:999px;background:#eef2ff;color:#4f46e5;font-size:12px;font-weight:500}
+.pim-main .i{width:12px;height:12px;fill:currentColor}
+.pim-b{overflow:auto;gap:18px !important}
+.pim-sec{display:flex;flex-direction:column;gap:10px}
+.pim-st{font-size:12px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.05em}
+.pim-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:#eef1f5;border:1px solid #eef1f5;border-radius:12px;overflow:hidden}
+.pi-kv{background:#fff;padding:10px 14px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.pi-kv.wide{grid-column:1 / -1}
+.pi-kv small{font-size:12px;color:#64748b}
+.pi-kv b{font-size:14px;font-weight:500;color:#0f172a;overflow-wrap:anywhere}
+.pim-reps{display:flex;flex-wrap:wrap;gap:8px}
+.pim-rep{display:flex;align-items:center;gap:10px;padding:8px 12px 8px 8px;border:1px solid #eef1f5;border-radius:12px;background:#fff}
+.pim-rep img{width:34px;height:34px;border-radius:9px;object-fit:cover}
+.pim-rep b{font-size:13.5px;font-weight:500;color:#0f172a}
+.pim-rep small{font-size:12px;color:#64748b}
+.pim-empty{font-size:13px;color:#94a3b8;padding:12px 14px;border:1px dashed #e2e8f0;border-radius:12px}
+@media (max-width:640px){.pim-grid{grid-template-columns:1fr}.pim-ph{width:52px;height:52px}}
+.tm-ed .fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+.tm-ed .tme-l{font-size:13px;color:#475569}
+.tme-note{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:#f8fafc;border:1px solid #eef1f5;font-size:13px;color:#475569}
+.tme-note .i{flex:none;color:#64748b}
+.tme-note b{font-weight:600;color:#334155}
+.tme-lock{display:flex;align-items:center;gap:8px;height:44px;padding:0 12px 0 14px;border-radius:10px;border:1px solid #e5e9f0;background:#f6f8fb;color:#475569;font-size:14px;cursor:not-allowed;min-width:0;user-select:text}
+.tme-lv{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#334155}
+.tme-li{flex:none;color:#94a3b8}
+.tme-lk{flex:none;width:14px !important;height:14px !important;color:#94a3b8;margin-left:auto}
+.tme-age{font-style:normal;font-size:12.5px;color:#94a3b8;white-space:nowrap}
+.tme-tel{display:flex;align-items:stretch;height:44px;border:1px solid #d8dee8;border-radius:10px;background:#fff;transition:border-color .15s,box-shadow .15s;position:relative}
+.tme-tel:focus-within{border-color:#3073f1;box-shadow:0 0 0 3px rgba(48,115,241,.14)}
+.tme-tel.err{border-color:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.12)}
+.tme-tel.ok{border-color:#bbf7d0}
+.tme-tel .tme-cc{flex:none;position:static}
+.tme-tel .tme-cc .dx-selbtn{height:100% !important;border:0 !important;border-right:1px solid #e5e9f0 !important;border-radius:10px 0 0 10px !important;background:#f8fafc !important;padding:0 8px 0 12px !important;gap:6px;min-width:0;width:auto !important;font-weight:500;color:#0f172a;box-shadow:none !important}
+.tme-tel .tme-cc .dx-selbtn:hover{background:#eff6ff !important}
+.tme-flag{font-size:16px;line-height:1}
+.tme-tel .tme-ccm,.tme-tel .tme-ccm.up{left:0 !important;right:auto !important;top:auto !important;bottom:calc(100% + 6px) !important;min-width:250px;max-height:300px !important;overflow:auto;z-index:70;transform-origin:bottom left}
+.tme-num{flex:1;min-width:0;border:0 !important;outline:0 !important;box-shadow:none !important;background:transparent !important;padding:0 12px !important;height:100% !important;font-size:15px !important;letter-spacing:.04em;font-variant-numeric:tabular-nums;color:#0f172a}
+.tme-num::placeholder{color:#a3adbd;letter-spacing:.04em}
+.tme-mail{display:flex;align-items:center;gap:8px;height:44px;padding:0 12px;border:1px solid #d8dee8;border-radius:10px;background:#fff;transition:border-color .15s,box-shadow .15s}
+.tme-mail>.i{flex:none;color:#94a3b8}
+.tme-mail:focus-within{border-color:#3073f1;box-shadow:0 0 0 3px rgba(48,115,241,.14)}
+.tme-mail:focus-within>.i:first-child{color:#3073f1}
+.tme-mail.err{border-color:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.12)}
+.tme-mail.ok{border-color:#bbf7d0}
+.tme-mail input{flex:1;min-width:0;border:0 !important;outline:0 !important;box-shadow:none !important;background:transparent !important;padding:0 !important;height:100% !important;font-size:14px !important;color:#0f172a}
+.tme-ok{flex:none;color:#16a34a}
+.tme-sug{display:flex;flex-wrap:wrap;gap:6px}
+.tme-sg{height:26px;padding:0 10px;border-radius:999px;border:1px solid #dbeafe;background:#eff6ff;color:#3073f1;font:500 12px inherit;font-family:inherit;cursor:pointer;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tme-sg:hover{background:#dbeafe}
+.tme-hint{font-size:12px;color:#94a3b8}
+.tme-hint.err{color:#dc2626}
+.tme-hint.ok{color:#16a34a}
+.tm-ed-b{gap:14px !important}
+.tm-ed .tme-tel{z-index:6}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -4928,6 +4996,27 @@ html[data-theme="dark"] .ds-host img{filter:none}
     <button class="ib ph-x" aria-label="Yopish" onClick="{{phClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
     <img class="ph-img" src="{{ph.photo}}" alt="{{ph.name}}">
     <div class="ph-cap"><b>{{ph.name}}</b><small>JSHSHIR {{ph.jsh}} · {{ph.gender}} · {{ph.age}} yosh · tug'ilgan {{ph.birthUz}}</small></div>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{piOpen}}" hint-placeholder-val="{{ false }}">
+<div class="qv-wrap" style="z-index: 78">
+  <button class="qv-bg" aria-label="Oynani yopish" onClick="{{pi.close}}"></button>
+  <div class="qv pim" role="dialog" aria-modal="true" aria-labelledby="pi-t" onKeyDown="{{pi.kd}}" style="width: min(760px, 100%)">
+    <div class="qv-h pim-h">
+      <img class="pim-ph" src="{{pi.photo}}" alt="{{pi.name}}">
+      <div class="kv" style="gap: 6px; min-width: 0; flex: 1">
+        <div class="row" style="gap: 8px; flex-wrap: wrap"><span class="pim-side">{{pi.side}}</span><sc-if value="{{pi.isMain}}" hint-placeholder-val="{{ false }}"><span class="pim-main"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6-5.4-3.1-5.4 3.1 1.2-6L3.3 9.3l6.1-.7z"></path></svg>Asosiy shaxs</span></sc-if></div>
+        <b id="pi-t" class="qv-title pim-name">{{pi.name}}</b>
+        <span class="pim-sub">{{pi.sub}}<sc-if value="{{pi.hasJsh}}" hint-placeholder-val="{{ true }}"><span class="pim-dot"></span>JSHSHIR {{pi.jsh}}<button type="button" class="ib pim-cp" title="JSHSHIR nusxalash" aria-label="JSHSHIR nusxalash" onClick="{{pi.copy}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg></button></sc-if></span>
+      </div>
+      <button class="ib qv-x" aria-label="Yopish" onClick="{{pi.close}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+    </div>
+    <div class="qv-b pim-b">
+      <sc-for list="{{pi.sections}}" as="sec" hint-placeholder-count="3"><div class="pim-sec"><div class="pim-st">{{sec.t}}</div><div class="pim-grid"><sc-for list="{{sec.rows}}" as="r" hint-placeholder-count="4"><div class="{{r.cls}}"><small>{{r.k}}</small><b>{{r.v}}</b></div></sc-for></div></div></sc-for>
+      <div class="pim-sec"><div class="pim-st">Vakillari</div><sc-if value="{{pi.hasReps}}" hint-placeholder-val="{{ false }}"><div class="pim-reps"><sc-for list="{{pi.reps}}" as="v" hint-placeholder-count="1"><div class="pim-rep"><img src="{{v.photo}}" alt=""><span class="kv" style="gap: 1px; min-width: 0"><b>{{v.name}}</b><small>{{v.role}}</small></span></div></sc-for></div></sc-if><sc-if value="{{pi.noReps}}" hint-placeholder-val="{{ true }}"><div class="pim-empty">Vakil yoki advokat biriktirilmagan</div></sc-if></div>
+    </div>
+    <div class="qv-f"><button class="btn sm" onClick="{{pi.doc}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"></rect><circle cx="9" cy="11" r="2"></circle><path d="M15 10h3M15 14h3"></path></svg>ID-karta</button><button class="btn sm" onClick="{{pi.finger}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10a2 2 0 0 0-2 2c0 1-.1 2.5-.3 4M14 13c0 2.4 0 6.4-1 9M2 12a10 10 0 0 1 18-6M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .3-2M9 6.8a6 6 0 0 1 9 5.2v2"></path></svg>Barmoq izi</button><span style="flex: 1"></span><button class="btn qv-close" onClick="{{pi.close}}">Yopish</button><button class="btn pri" onClick="{{pi.edit}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg>Tahrirlash</button></div>
   </div>
 </div>
 </sc-if>
@@ -5499,7 +5588,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
           <sc-if value="{{dxDvEmpty}}" hint-placeholder-val="{{ true }}"><div class="dx-empty"><button class="dx-plus" aria-label="Da'vogar qo'shish" onClick="{{dxAddDv}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button><b>Da'vogar qo'shish</b><small>Jismoniy yoki yuridik shaxsni tanlang</small></div></sc-if>
           <div class="dx-plist" tabindex="0" role="list" aria-label="Da'vogarlar">
           <sc-for list="{{dxDv}}" as="p" hint-placeholder-count="1">
-          <div class="pc pc-v2" role="listitem">
+          <div class="pc pc-v2 pc-click" role="listitem" tabindex="0" title="To'liq ma'lumotni ko'rish" aria-label="{{p.infoLbl}}" onClick="{{p.openInfo}}" onKeyDown="{{p.infoKey}}">
             <button class="pc-phbtn" aria-label="{{p.name}} — rasmni kattalashtirish" title="Rasmni kattalashtirish" onClick="{{p.viewPhoto}}"><img class="pc-ph" src="{{p.photo}}" alt="{{p.name}}"><span class="pc-zoom"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4M11 8v6M8 11h6"></path></svg></span></button>
             <div class="pc-main">
               <div class="pc-top"><b class="pc-name">{{p.name}}</b>
@@ -5517,7 +5606,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
           <sc-if value="{{dxJvEmpty}}" hint-placeholder-val="{{ true }}"><div class="dx-empty"><button class="dx-plus" aria-label="Javobgar qo'shish" onClick="{{dxAddJv}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button><b>Javobgar qo'shish</b><small>Jismoniy yoki yuridik shaxsni tanlang</small></div></sc-if>
           <div class="dx-plist" tabindex="0" role="list" aria-label="Javobgarlar">
           <sc-for list="{{dxJv}}" as="p" hint-placeholder-count="1">
-          <div class="pc pc-v2" role="listitem">
+          <div class="pc pc-v2 pc-click" role="listitem" tabindex="0" title="To'liq ma'lumotni ko'rish" aria-label="{{p.infoLbl}}" onClick="{{p.openInfo}}" onKeyDown="{{p.infoKey}}">
             <button class="pc-phbtn" aria-label="{{p.name}} — rasmni kattalashtirish" title="Rasmni kattalashtirish" onClick="{{p.viewPhoto}}"><img class="pc-ph" src="{{p.photo}}" alt="{{p.name}}"><span class="pc-zoom"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4M11 8v6M8 11h6"></path></svg></span></button>
             <div class="pc-main">
               <div class="pc-top"><b class="pc-name">{{p.name}}</b>
@@ -6007,7 +6096,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
         <sc-if value="{{tmDvEmpty}}" hint-placeholder-val="{{ false }}"><div class="dx-empty qp-empty" style="margin: 14px; border: 1.5px dashed #dbe2ea; border-radius: 14px"><button class="dx-plus" aria-label="Da'vogar qo'shish" onClick="{{tmAddDv}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button><b>Da'vogar qo'shish</b><small>Jismoniy yoki yuridik shaxsni tanlang</small></div></sc-if>
         <div class="tp-list" tabindex="0" role="list" aria-label="Da'vogarlar">
         <sc-for list="{{tmDv}}" as="p" hint-placeholder-count="2">
-          <div class="{{p.pcCls}} pc-v2" role="listitem">
+          <div class="{{p.pcCls}} pc-v2 pc-click" role="listitem" tabindex="0" title="To'liq ma'lumotni ko'rish" aria-label="{{p.infoLbl}}" onClick="{{p.openInfo}}" onKeyDown="{{p.infoKey}}">
             <button class="pc-phbtn" aria-label="{{p.name}} — rasmni kattalashtirish" title="Rasmni kattalashtirish" onClick="{{p.viewPhoto}}"><img class="pc-ph" src="{{p.photo}}" alt="{{p.name}}"><span class="pc-zoom"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4M11 8v6M8 11h6"></path></svg></span></button>
             <div class="pc-main">
               <div class="pc-top"><b class="pc-name">{{p.name}}</b><sc-if value="{{p.showBadge}}" hint-placeholder-val="{{ false }}"><span class="pc-mb" title="Asosiy shaxs"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6-5.4-3.1-5.4 3.1 1.2-6L3.3 9.3l6.1-.7z"></path></svg>Asosiy</span></sc-if>
@@ -6061,7 +6150,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
         <sc-if value="{{tmJvEmpty}}" hint-placeholder-val="{{ false }}"><div class="dx-empty qp-empty" style="margin: 14px; border: 1.5px dashed #dbe2ea; border-radius: 14px"><button class="dx-plus" aria-label="Javobgar qo'shish" onClick="{{tmAddJv}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button><b>Javobgar qo'shish</b><small>Jismoniy yoki yuridik shaxsni tanlang</small></div></sc-if>
         <div class="tp-list" tabindex="0" role="list" aria-label="Javobgarlar">
         <sc-for list="{{tmJv}}" as="p" hint-placeholder-count="2">
-          <div class="{{p.pcCls}} pc-v2" role="listitem">
+          <div class="{{p.pcCls}} pc-v2 pc-click" role="listitem" tabindex="0" title="To'liq ma'lumotni ko'rish" aria-label="{{p.infoLbl}}" onClick="{{p.openInfo}}" onKeyDown="{{p.infoKey}}">
             <button class="pc-phbtn" aria-label="{{p.name}} — rasmni kattalashtirish" title="Rasmni kattalashtirish" onClick="{{p.viewPhoto}}"><img class="pc-ph" src="{{p.photo}}" alt="{{p.name}}"><span class="pc-zoom"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4M11 8v6M8 11h6"></path></svg></span></button>
             <div class="pc-main">
               <div class="pc-top"><b class="pc-name">{{p.name}}</b><sc-if value="{{p.showBadge}}" hint-placeholder-val="{{ false }}"><span class="pc-mb" title="Asosiy shaxs"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6-5.4-3.1-5.4 3.1 1.2-6L3.3 9.3l6.1-.7z"></path></svg>Asosiy</span></sc-if>
@@ -6231,7 +6320,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
         <sc-if value="{{qtJvHas}}" hint-placeholder-val="{{ true }}">
         <div class="tp-list" tabindex="0" role="list">
         <sc-for list="{{qtJv}}" as="p" hint-placeholder-count="1">
-          <div class="pc pc-v2" role="listitem">
+          <div class="pc pc-v2 pc-click" role="listitem" tabindex="0" title="To'liq ma'lumotni ko'rish" aria-label="{{p.infoLbl}}" onClick="{{p.openInfo}}" onKeyDown="{{p.infoKey}}">
             <button class="pc-phbtn" aria-label="{{p.name}} — rasmni kattalashtirish" title="Rasmni kattalashtirish" onClick="{{p.viewPhoto}}"><img class="pc-ph" src="{{p.photo}}" alt="{{p.name}}"><span class="pc-zoom"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4M11 8v6M8 11h6"></path></svg></span></button>
             <div class="pc-main">
               <div class="pc-top"><b class="pc-name">{{p.name}}</b>
@@ -6251,7 +6340,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
         <sc-if value="{{qtArHas}}" hint-placeholder-val="{{ true }}">
         <div class="tp-list" tabindex="0" role="list">
         <sc-for list="{{qtAr}}" as="p" hint-placeholder-count="1">
-          <div class="pc pc-v2" role="listitem">
+          <div class="pc pc-v2 pc-click" role="listitem" tabindex="0" title="To'liq ma'lumotni ko'rish" aria-label="{{p.infoLbl}}" onClick="{{p.openInfo}}" onKeyDown="{{p.infoKey}}">
             <button class="pc-phbtn" aria-label="{{p.name}} — rasmni kattalashtirish" title="Rasmni kattalashtirish" onClick="{{p.viewPhoto}}"><img class="pc-ph" src="{{p.photo}}" alt="{{p.name}}"><span class="pc-zoom"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4M11 8v6M8 11h6"></path></svg></span></button>
             <div class="pc-main">
               <div class="pc-top"><b class="pc-name">{{p.name}}</b>
@@ -6277,7 +6366,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
         <sc-if value="{{qshHas}}" hint-placeholder-val="{{ true }}">
         <div class="tp-list qp-open qpc-list" role="list">
         <sc-for list="{{qsh}}" as="p" hint-placeholder-count="1">
-          <div class="qpc qpc-v2" role="listitem">
+          <div class="qpc qpc-v2 pc-click" role="listitem" tabindex="0" title="To'liq ma'lumotni ko'rish" aria-label="{{p.infoLbl}}" onClick="{{p.openInfo}}" onKeyDown="{{p.infoKey}}">
             <button class="pc-phbtn qpc-ph" aria-label="{{p.name}} — rasmni kattalashtirish" title="Rasmni kattalashtirish" onClick="{{p.viewPhoto}}"><img class="pc-ph" src="{{p.photo}}" alt="{{p.name}}"><span class="pc-zoom"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4M11 8v6M8 11h6"></path></svg></span></button>
             <div class="qpc-main">
               <div class="qpc-top"><b class="qpc-name">{{p.name}}</b><div class="pc-rolesel"><span class="{{p.rolDd.cls}}" id="{{p.rolDd.id}}" onKeyDown="{{p.rolDd.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{p.rolDd.exp}}" disabled="{{p.rolDd.dis}}" onClick="{{p.rolDd.toggle}}" style="border-color: {{p.rolDd.bc}}"><span class="{{p.rolDd.vcls}}">{{p.rolDd.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{p.rolDd.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{p.rolDd.stop}}"><sc-for list="{{p.rolDd.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></div></div>
@@ -7197,9 +7286,9 @@ html[data-theme="dark"] .ds-host img{filter:none}
 <sc-if value="{{tmEdOpen}}" hint-placeholder-val="{{ false }}">
 <div style="position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 24px">
   <button aria-label="Oynani yopish" onClick="{{tmEdClose}}" style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.45); border: 0; cursor: default"></button>
-  <div role="dialog" aria-modal="true" aria-label="{{tmEdTitle}}" class="card tm-ed" onKeyDown="{{tmEdKey}}">
+  <div role="dialog" aria-modal="true" aria-label="{{tmEdTitle}}" class="card tm-ed" onKeyDown="{{tmEdKey}}"><sc-if value="{{tmEdCc.open}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg in" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{itkDdClose}}"></button></sc-if>
     <div class="tm-ed-h"><div class="kv" style="gap: 2px; min-width: 0"><b style="font-size: 17px">{{tmEdTitle}}</b><small class="muted">{{tmEdSub}}</small></div><button class="ib" aria-label="Yopish" onClick="{{tmEdClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
-    <div class="tm-ed-b"><div class="tm-ed-g"><sc-for list="{{tmEdFields}}" as="f" hint-placeholder-count="6"><label class="{{f.cls}}"><span>{{f.label}}<sc-if value="{{f.req}}" hint-placeholder-val="{{ false }}"> <b style="color: #b91c1c">*</b></sc-if></span><sc-if value="{{f.isInput}}" hint-placeholder-val="{{ true }}"><input type="{{f.type}}" value="{{f.val}}" onChange="{{f.set}}" data-fmt="{{f.fmt}}"></sc-if><sc-if value="{{f.isSeg}}" hint-placeholder-val="{{ false }}"><span class="seg tm-ed-seg"><sc-for list="{{f.opts}}" as="o" hint-placeholder-count="2"><button type="button" class="{{o.cls}}" onClick="{{o.pick}}">{{o.l}}</button></sc-for></span></sc-if></label></sc-for></div>
+    <div class="tm-ed-b"><sc-if value="{{tmEdLockNote}}" hint-placeholder-val="{{ true }}"><div class="tme-note"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg><span>F.I.Sh., tug'ilgan sana va jinsi <b>IIV pasport bazasidan</b> olingan — ularni tahrirlab bo'lmaydi</span></div></sc-if><div class="tm-ed-g"><sc-for list="{{tmEdFields}}" as="f" hint-placeholder-count="6"><div class="{{f.cls}}"><span class="tme-l">{{f.label}}<sc-if value="{{f.req}}" hint-placeholder-val="{{ false }}"> <b style="color: #b91c1c">*</b></sc-if></span><sc-if value="{{f.isInput}}" hint-placeholder-val="{{ true }}"><input type="{{f.type}}" value="{{f.val}}" aria-label="{{f.label}}" onChange="{{f.set}}" data-fmt="{{f.fmt}}"></sc-if><sc-if value="{{f.isSeg}}" hint-placeholder-val="{{ false }}"><span class="seg tm-ed-seg"><sc-for list="{{f.opts}}" as="o" hint-placeholder-count="2"><button type="button" class="{{o.cls}}" onClick="{{o.pick}}">{{o.l}}</button></sc-for></span></sc-if><sc-if value="{{f.isLock}}" hint-placeholder-val="{{ false }}"><div class="tme-lock" aria-disabled="true" aria-label="{{f.lockLbl}}" title="Pasport bazasidan olingan — o'zgartirib bo'lmaydi"><sc-if value="{{f.isDate}}" hint-placeholder-val="{{ false }}"><svg class="i s tme-li" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="2"></rect><path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path></svg></sc-if><sc-if value="{{f.isGen}}" hint-placeholder-val="{{ false }}"><svg class="i s tme-li" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path></svg></sc-if><span class="tme-lv">{{f.disp}}</span><sc-if value="{{f.hasAge}}" hint-placeholder-val="{{ false }}"><em class="tme-age">{{f.age}}</em></sc-if><svg class="i s tme-lk" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></div></sc-if><sc-if value="{{f.isTel}}" hint-placeholder-val="{{ false }}"><div class="{{f.telCls}}"><span class="{{tmEdCc.cls}} tme-cc" id="{{tmEdCc.id}}" onKeyDown="{{tmEdCc.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-label="Davlat kodi" aria-expanded="{{tmEdCc.exp}}" onClick="{{tmEdCc.toggle}}"><span class="tme-flag" aria-hidden="true">{{tmEdCcFlag}}</span><span class="dx-selv">{{tmEdCcCode}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{tmEdCc.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu tme-ccm" role="listbox" onClick="{{tmEdCc.stop}}"><sc-for list="{{tmEdCc.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span><input class="tme-num" type="tel" inputmode="numeric" autocomplete="tel-national" aria-label="Telefon raqami" placeholder="{{f.ph}}" value="{{f.val}}" onChange="{{f.set}}"></div><small class="{{f.hintCls}}">{{f.hint}}</small></sc-if><sc-if value="{{f.isMail}}" hint-placeholder-val="{{ false }}"><div class="{{f.mailCls}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg><input type="email" inputmode="email" autocomplete="email" spellcheck="false" autocapitalize="none" aria-label="E-pochta" placeholder="masalan: ism.familiya@mail.uz" value="{{f.val}}" onChange="{{f.set}}"><sc-if value="{{f.mailOk}}" hint-placeholder-val="{{ false }}"><svg class="i s tme-ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></div><sc-if value="{{f.hasSug}}" hint-placeholder-val="{{ false }}"><div class="tme-sug"><sc-for list="{{f.sugs}}" as="g" hint-placeholder-count="3"><button type="button" class="tme-sg" onClick="{{g.pick}}">{{g.l}}</button></sc-for></div></sc-if><small class="{{f.hintCls}}">{{f.hint}}</small></sc-if></div></sc-for></div>
       <sc-if value="{{tmEdErr}}" hint-placeholder-val="{{ false }}"><small class="dx-err" style="margin: 0">{{tmEdErrTxt}}</small></sc-if></div>
     <div class="tm-ed-f"><button class="btn" onClick="{{tmEdClose}}">Bekor qilish</button><button class="btn pri" onClick="{{tmEdSave}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h11l3 3v15H5z"></path><path d="M8 3v5h8M8 21v-7h8v7"></path></svg>Saqlash</button></div>
   </div>
@@ -8297,6 +8386,8 @@ var TM_RES = [
   { name: "Abdusattorova Malika Botirovna", birth: "1988-03-21", gender: "Ayol", jshshir: "4210 3880 1177 09", viloyat: "Samarqand viloyati", tuman: "Samarqand shahri", manzil: "Samarqand sh., Registon ko'chasi, 3-uy" }
 ];
 function ageOf(iso) { if (!iso) return "—"; var b = new Date(iso), n = new Date(2026, 9, 2); var a = n.getFullYear() - b.getFullYear(); if (n.getMonth() < b.getMonth() || (n.getMonth() === b.getMonth() && n.getDate() < b.getDate())) a--; return String(a); }
+var TME_CC = [["+998", "🇺🇿", "90 123 45 67", [2, 3, 2, 2], "O'zbekiston"], ["+7", "🇰🇿", "701 123 45 67", [3, 3, 2, 2], "Qozog'iston"], ["+7 ", "🇷🇺", "912 345 67 89", [3, 3, 2, 2], "Rossiya"], ["+992", "🇹🇯", "90 123 4567", [2, 3, 4], "Tojikiston"], ["+996", "🇰🇬", "555 123 456", [3, 3, 3], "Qirg'iziston"], ["+993", "🇹🇲", "65 123456", [2, 6], "Turkmaniston"], ["+90", "🇹🇷", "532 123 45 67", [3, 3, 2, 2], "Turkiya"]];
+function TME_CC_OF(tel) { var t = String(tel || "").replace(/\s/g, ""); if (!t) return "+998"; var best = TME_CC.filter(function (c) { return t.indexOf(c[0].trim()) === 0; }).sort(function (a, b) { return b[0].trim().length - a[0].trim().length; })[0]; return best ? best[0] : "+998"; }
 function tmPerson(id, name, birth, gender) { return { id: id, name: name, birth: birth, gender: gender, jshshir: (function () { var d = String(51505012345600 + id * 1379).slice(0, 14); return d.slice(0, 4) + " " + d.slice(4, 8) + " " + d.slice(8, 12) + " " + d.slice(12); })(), viloyat: "Buxoro viloyati", tuman: "Mirzo Ulug'bek tumani", manzil: "Buxoro viloyati, Buxoro shahri, Navoiy ko'chasi, 12-uy" }; }
 // ---- illustrated placeholder portraits (SVG, no external images) ----
 var AV_M = [
@@ -10120,12 +10211,15 @@ class Component extends DCLogic {
             self.setState({ tmAsk: { key: key, id: p.id, name: p.name, cur: cur ? cur.name : "", side: key === "tmDv" ? "Da'vogar" : key === "tmJv" ? "Javobgar" : "Taraf" } }); }, ini: initials(p.name), avBg: c[0], avFg: c[1], photo: portrait(p.name, p.gender), birthUz: isoToUz(p.birth), age: ageOf(p.birth), jsh: p.jshshir || "—",
           isFem: p.gender === "Ayol", isMale: p.gender !== "Ayol",
           edit: function () { var org = !!p.isOrg || /MChJ|AJ\b|XK\b|QK\b|«|"/.test(p.name);
-            self.setState({ tmEd: { key: key, id: p.id, org: org, f: Object.assign({ name: p.name, birth: p.birth || "", gender: p.gender || "Erkak", viloyat: p.viloyat || "", tuman: p.tuman || "", manzil: p.manzil || "", tel: p.tel || "",
+            self.setState({ tmEd: { key: key, id: p.id, org: org, f: Object.assign({ name: p.name, birth: p.birth || "", gender: p.gender || "Erkak", viloyat: p.viloyat || "", tuman: p.tuman || "", manzil: p.manzil || "", tel: p.tel || "", email: p.email || "",
               qisqa: p.qisqa || "", stir: p.stir || "", rahbar: p.rahbar || "", rahbarJsh: p.rahbarJsh || "", hisob: p.hisob || "", kichik: p.kichik || "Yo'q", ustav: p.ustav || "", ishchi: p.ishchi || "", okpo: p.okpo || "" }) } }); },
           remove: function () { var o = {}; o[key] = self.state[key].filter(function (x) { return x.id !== p.id; }); self.setState(o); self.flash(p.name + " olib tashlandi"); },
           viewPhoto: function () { self.setState({ phView: { photo: portrait(p.name, p.gender), name: p.name, jsh: p.jshshir || "—", gender: p.gender, age: ageOf(p.birth), birthUz: isoToUz(p.birth) } }); },
           doc: function () { self.flash("Shaxsni tasdiqlovchi hujjat ko'rish oynasida ochiladi"); },
-          finger: function () { self.fpStart({ key: key, id: p.id, name: p.name }); } });
+          finger: function () { self.fpStart({ key: key, id: p.id, name: p.name }); },
+          infoLbl: p.name + " — to'liq ma'lumotni ko'rish",
+          openInfo: function (e) { var t = e && e.target; if (t && t.closest && t.closest("button, a, input, select, textarea, .dx-sel, .dx-menu, [role=menu]")) return; self.setState({ pInfo: { key: key, id: p.id }, dxDd: "" }); },
+          infoKey: function (e) { if ((e.key === "Enter" || e.key === " ") && e.target === e.currentTarget) { e.preventDefault(); self.setState({ pInfo: { key: key, id: p.id }, dxDd: "" }); } } });
       });
     };
     // asosiy shaxs ro'yxatda doim birinchi turadi (qolganlar tartibi o'zgarmaydi)
@@ -10523,16 +10617,45 @@ class Component extends DCLogic {
       tmEdFields: s.tmEd ? (function () { var e = s.tmEd, f = e.f;
         var set = function (k) { return function (ev) { var v = ev.target.value; self.setState(function (prev) { if (!prev.tmEd) return null; var ff = Object.assign({}, prev.tmEd.f); ff[k] = v; return { tmEd: Object.assign({}, prev.tmEd, { f: ff, err: "" }) }; }); }; };
         var F = e.org ? [["name", "Nomi", "text", 2], ["qisqa", "Qisqa nomi", "text", 1], ["stir", "STIR", "text", 1], ["viloyat", "Viloyat", "text", 1], ["manzil", "Manzil", "text", 1], ["rahbar", "Rahbar", "text", 1], ["rahbarJsh", "Rahbar JSHSHIR", "text", 1], ["tel", "Telefon", "tel", 1], ["hisob", "Hisob raqami", "text", 1], ["kichik", "Kichik biznes", "seg2", 1], ["ustav", "Ustav fondi", "text", 1], ["ishchi", "Ishchilar soni", "text", 1], ["okpo", "Yuridik shaxs kodi (OKPO)", "text", 1]]
-          : [["name", "F.I.Sh.", "text", 2], ["birth", "Tug'ilgan sana", "date", 1], ["gender", "Jinsi", "seg", 1], ["viloyat", "Viloyat", "text", 1], ["tuman", "Tuman (shahar)", "text", 1], ["manzil", "Manzil", "text", 2], ["tel", "Telefon", "tel", 1]];
+          : [["name", "F.I.Sh.", "lock", 2], ["birth", "Tug'ilgan sana", "lockdate", 1], ["gender", "Jinsi", "lockgen", 1], ["viloyat", "Viloyat", "text", 1], ["tuman", "Tuman (shahar)", "text", 1], ["manzil", "Manzil", "text", 2], ["tel", "Telefon", "tel", 1], ["email", "E-pochta", "email", 1]];
+        if (e.org) F.push(["email", "E-pochta", "email", 1]);
+        var cc = f.telCode || TME_CC_OF(f.tel), ccM = TME_CC.filter(function (c) { return c[0] === cc; })[0] || TME_CC[0];
+        var telDigits = f.telNum != null ? String(f.telNum).replace(/\D/g, "") : String(f.tel || "").replace(/\D/g, "").slice(String(ccM[0]).replace(/\D/g, "").length);
+        var fmtNum = function (d) { var g = ccM[3], out = "", k = 0; for (var gi = 0; gi < g.length && k < d.length; gi++) { out += (out ? " " : "") + d.slice(k, k + g[gi]); k += g[gi]; } return out; };
+        var telMax = ccM[3].reduce(function (a2, b2) { return a2 + b2; }, 0), telLen = telDigits.length;
+        var mv = String(f.email || "").trim(), mailValid = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(mv);
+        var DOMS = ["gmail.com", "mail.ru", "mail.uz", "yandex.ru", "inbox.uz"];
+        var sugs = (function () { if (!mv || mailValid) return []; var at = mv.indexOf("@"), user = at < 0 ? mv : mv.slice(0, at), dom = at < 0 ? "" : mv.slice(at + 1); if (!user || /\s/.test(user)) return []; return DOMS.filter(function (d) { return !dom || d.indexOf(dom.toLowerCase()) === 0; }).slice(0, 4).map(function (d) { return { l: user + "@" + d, pick: function () { var v = user + "@" + d; self.setState(function (prev) { if (!prev.tmEd) return null; var er = Object.assign({}, prev.tmEd.fErr || {}); delete er.email; return { tmEd: Object.assign({}, prev.tmEd, { f: Object.assign({}, prev.tmEd.f, { email: v }), fErr: er, err: "" }) }; }); } }; }); })();
+        var fe = e.fErr || {};
         return F.map(function (x) { var opts = x[2] === "seg" ? ["Erkak", "Ayol"] : x[2] === "seg2" ? ["Ha", "Yo'q"] : [];
-          return { k: x[0], label: x[1], val: f[x[0]] || "", type: x[2] === "tel" ? "text" : x[2], set: set(x[0]), isInput: x[2] !== "seg" && x[2] !== "seg2", isSeg: x[2] === "seg" || x[2] === "seg2", cls: "fld" + (x[3] === 2 ? " tm-ed-w" : ""),
+          var kind = x[2], isLock = kind.indexOf("lock") === 0, isTel = kind === "tel", isMail = kind === "email";
+          var telSet = function (ev) { var d = String(ev.target.value || "").replace(/\D/g, ""); var cd = String(ccM[0]).replace(/\D/g, ""); if (d.length > telMax && d.indexOf(cd) === 0) d = d.slice(cd.length); d = d.slice(0, telMax); self.setState(function (prev) { if (!prev.tmEd) return null; var ff = Object.assign({}, prev.tmEd.f, { telNum: d, telCode: ccM[0] }); var er = Object.assign({}, prev.tmEd.fErr || {}); delete er.tel; return { tmEd: Object.assign({}, prev.tmEd, { f: ff, err: "", fErr: er }) }; }); };
+          var mailSet = function (ev) { var v = String(ev.target.value || "").replace(/\s/g, ""); self.setState(function (prev) { if (!prev.tmEd) return null; var ff = Object.assign({}, prev.tmEd.f, { email: v }); var er = Object.assign({}, prev.tmEd.fErr || {}); delete er.email; return { tmEd: Object.assign({}, prev.tmEd, { f: ff, err: "", fErr: er }) }; }); };
+          var telHint = fe.tel ? fe.tel : telLen === 0 ? "Masalan: " + ccM[2] : telLen < telMax ? "Yana " + (telMax - telLen) + " ta raqam kiriting" : "Raqam to'liq kiritildi";
+          var mailHint = fe.email ? fe.email : !mv ? "Ixtiyoriy · bildirishnomalar shu manzilga yuboriladi" : mailValid ? "To'g'ri formatda" : "Format: nom@domen.uz";
+          return { k: x[0], label: x[1], val: isTel ? fmtNum(telDigits) : (f[x[0]] || ""), type: kind === "tel" ? "text" : kind, set: isTel ? telSet : isMail ? mailSet : set(x[0]),
+            isInput: !isLock && !isTel && !isMail && kind !== "seg" && kind !== "seg2", isSeg: kind === "seg" || kind === "seg2", isLock: isLock, isTel: isTel, isMail: isMail,
+            isDate: kind === "lockdate", isGen: kind === "lockgen", disp: kind === "lockdate" ? isoToUz(f.birth) : (f[x[0]] || "—"), hasAge: kind === "lockdate" && !!f.birth, age: f.birth ? ageOf(f.birth) + " yosh" : "", lockLbl: x[1] + ": " + (kind === "lockdate" ? isoToUz(f.birth) : (f[x[0]] || "—")) + " — o'zgartirib bo'lmaydi",
+            ph: ccM[2], telCls: "tme-tel" + (fe.tel ? " err" : telLen === telMax ? " ok" : ""), mailCls: "tme-mail" + (fe.email ? " err" : mailValid ? " ok" : ""), mailOk: mailValid,
+            hint: isTel ? telHint : isMail ? mailHint : "", hintCls: "tme-hint" + ((isTel && fe.tel) || (isMail && fe.email) ? " err" : (isTel && telLen === telMax) || (isMail && mailValid) ? " ok" : ""),
+            sugs: isMail ? sugs : [], hasSug: isMail && sugs.length > 0,
+            cls: "fld" + (x[3] === 2 ? " tm-ed-w" : "") + (isLock ? " tme-lf" : ""),
             req: x[0] === "name", err: x[0] === "name" && !!e.err, fmt: x[2] === "tel" ? "tel" : "",
             opts: opts.map(function (o) { return { l: o, cls: f[x[0]] === o ? "on" : "", pick: function () { set(x[0])({ target: { value: o } }); } }; }) }; }); })() : [],
       tmEdErr: !!(s.tmEd && s.tmEd.err), tmEdErrTxt: s.tmEd && s.tmEd.err ? s.tmEd.err : "",
-      tmEdClose: function () { self.setState({ tmEd: null }); },
+      tmEdClose: function () { self.setState({ tmEd: null, dxDd: "" }); },
       tmEdKey: function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ tmEd: null }); } },
       tmEdSave: function () { var e = self.state.tmEd; if (!e) return; if (!String(e.f.name || "").trim()) { self.setState({ tmEd: Object.assign({}, e, { err: (e.org ? "Nomi" : "F.I.Sh.") + " kiritilishi shart" }) }); return; }
-        var o = { tmEd: null }; o[e.key] = (self.state[e.key] || []).map(function (x) { return x.id === e.id ? Object.assign({}, x, e.f, { name: String(e.f.name).trim() }) : x; }); self.setState(o); self.flash(String(e.f.name).trim() + " ma'lumotlari saqlandi"); },
+        var f = e.f, cc = f.telCode || TME_CC_OF(f.tel), ccM = TME_CC.filter(function (c) { return c[0] === cc; })[0] || TME_CC[0], mx = ccM[3].reduce(function (a2, b2) { return a2 + b2; }, 0);
+        var d = f.telNum != null ? String(f.telNum).replace(/\D/g, "") : String(f.tel || "").replace(/\D/g, "").slice(String(ccM[0]).replace(/\D/g, "").length);
+        var mv = String(f.email || "").trim(), fErr = {};
+        if (d.length && d.length < mx) fErr.tel = "Telefon raqami to'liq emas — " + mx + " ta raqam bo'lishi kerak";
+        if (mv && !/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(mv)) fErr.email = "E-pochta noto'g'ri — masalan: ism@mail.uz";
+        if (fErr.tel || fErr.email) { self.setState({ tmEd: Object.assign({}, e, { fErr: fErr, err: "Belgilangan maydonlarni to'g'irlang" }) }); return; }
+        var g = ccM[3], out = "", k = 0; for (var gi = 0; gi < g.length && k < d.length; gi++) { out += (out ? " " : "") + d.slice(k, k + g[gi]); k += g[gi]; }
+        var clean = Object.assign({}, f, { tel: d.length ? ccM[0] + " " + out : "", email: mv }); delete clean.telNum; delete clean.telCode;
+        var o = { tmEd: null, dxDd: "" }; o[e.key] = (self.state[e.key] || []).map(function (x) { return x.id === e.id ? Object.assign({}, x, clean, { name: String(f.name).trim() }) : x; }); self.setState(o); self.flash(String(f.name).trim() + " ma'lumotlari saqlandi"); },
+      tmEdLockNote: !!(s.tmEd && !s.tmEd.org),
       tmAskTitle: s.tmAsk && s.tmAsk.title ? s.tmAsk.title : "Asosiy shaxsni o'zgartirasizmi?",
       tmAskText: s.tmAsk && s.tmAsk.text ? s.tmAsk.text : s.tmAsk ? s.tmAsk.side + " tarafida asosiy shaxs «" + (s.tmAsk.cur || "—") + "» o'rniga «" + s.tmAsk.name + "» bo'ladi." : "",
       tmAskNo: function () { self.setState({ tmAsk: null }); },
@@ -12376,6 +12499,47 @@ class Component extends DCLogic {
         __out.ooTool = function () {};
         __out.ooSave = function () { self.setState({ oo: Object.assign({}, self.state.oo, { saved: true }) }); self.flash("«" + t + "» saqlandi"); };
         __out.ooSign = function () { var id = o.id; self.setState({ oo: null, docs: (self.state.docs || []).map(function (d) { return d.id === id ? Object.assign({}, d, { st: "tasdiq" }) : d; }) }); self.flash("«" + t + "» imzolandi (E-IMZO) — tasdiqlashga o'tdi"); };
+      })();
+      // ---- taraf: to'liq ma'lumot oynasi ----
+      (function () {
+        var pi = s.pInfo, lst = pi && s[pi.key] ? tmMap(pi.key) : [], x = pi ? lst.filter(function (q) { return q.id === pi.id; })[0] : null;
+        __out.piOpen = !!x;
+        if (!x) { __out.pi = { sections: [], reps: [] }; return; }
+        var close = function () { self.setState({ pInfo: null }); };
+        var SIDE = { tmDv: "Da'vogar", tmJv: "Javobgar", dxDv: "Da'vogar", dxJv: "Javobgar", qtJv: "Qo'shimcha javobgar", qtAr: "Arizachi", qsh: x.rol || "Qo'shimcha shaxs" };
+        var n = Number(String(x.id).replace(/\D/g, "")) || 7, org = !!x.isOrg || /MChJ|AJ\b|XK\b|QK\b|«|"/.test(x.name);
+        var pad = function (v, k) { v = String(v); while (v.length < k) v = "0" + v; return v; };
+        var tel = x.tel || ("+998 9" + (n % 10) + " " + pad((n * 137) % 1000, 3) + " " + pad((n * 31) % 100, 2) + " " + pad((n * 17) % 100, 2));
+        var lat = String(x.name).split(" ").slice(0, 2).join(".").toLowerCase().replace(/[^a-z.]/g, "");
+        var mail = x.email || (lat + "@mail.uz");
+        var rows = function (a) { return a.filter(function (r) { return r; }).map(function (r) { return { k: r[0], v: r[1] || "—", cls: "pi-kv" + (r[2] ? " wide" : "") }; }); };
+        var reps = (s.qsh || []).filter(function (q) { return (q.rol === "Vakil" || q.rol === "Advokat") && String(q.vk) === String(x.id); })
+          .map(function (q) { return { name: q.name, role: q.rol, photo: portrait(q.name, q.gender) }; });
+        var sideK = pi.key === "tmDv" || pi.key === "tmJv" || pi.key === "dxDv" || pi.key === "dxJv";
+        var sections = org ? [
+          { t: "Tashkilot ma'lumotlari", rows: rows([["To'liq nomi", x.name, 1], ["STIR", x.stir || ("30" + pad(n * 7919 % 10000000, 7))], ["OKPO", x.okpo || pad(n * 4421 % 100000000, 8)], ["Rahbar", x.rahbar], ["Rahbar JSHSHIR", x.rahbarJsh], ["Hisob raqami", x.hisob], ["Kichik tadbirkorlik", x.kichik || "Yo'q"]]) },
+          { t: "Aloqa va manzil", rows: rows([["Telefon", tel], ["E-pochta", mail], ["Yuridik manzil", x.manzil, 1]]) }
+        ] : [
+          { t: "Shaxsiy ma'lumotlar", rows: rows([["JSHSHIR", x.jshshir], ["Pasport / ID-karta", "AD " + pad(n * 104729 % 10000000, 7)], ["Tug'ilgan sana", isoToUz(x.birth) + " (" + ageOf(x.birth) + " yosh)"], ["Jinsi", x.gender], ["Fuqaroligi", "O'zbekiston Respublikasi"], ["Tug'ilgan joyi", x.viloyat], ["Hujjat berilgan", (x.viloyat ? x.viloyat.replace(" viloyati", "") : "Toshkent") + " IIB · " + pad(10 + n % 18, 2) + ".0" + (1 + n % 9) + ".20" + pad(14 + n % 9, 2), 1]]) },
+          { t: "Aloqa va manzil", rows: rows([["Telefon", tel], ["E-pochta", mail], ["Viloyat", x.viloyat], ["Tuman", x.tuman], ["Doimiy yashash manzili", x.manzil, 1]]) }
+        ];
+        sections.push({ t: "Ishdagi ishtiroki", rows: rows([["Protsessual holati", SIDE[pi.key] || "Taraf"], sideK ? ["Asosiy shaxs", x.isMain ? "Ha" : "Yo'q"] : null, ["Ishga qo'shilgan", "11.06.2026"], ["Ma'lumot manbai", org ? "Soliq qo'mitasi · integratsiya" : "IIV pasport bazasi · integratsiya"]]) });
+        __out.pi = {
+          name: x.name, photo: x.photo || portrait(x.name, x.gender), side: SIDE[pi.key] || "Taraf", isMain: !!x.isMain && sideK,
+          sub: org ? "Yuridik shaxs" : "Jismoniy shaxs · " + (x.gender || "") + " · " + ageOf(x.birth) + " yosh",
+          sections: sections, reps: reps, hasReps: !!reps.length, noReps: !reps.length,
+          close: close, kd: function (e) { if (e.key === "Escape") { e.stopPropagation(); close(); } },
+          edit: function () { close(); if (x.edit) x.edit(); }, doc: function () { if (x.doc) x.doc(); }, finger: function () { close(); if (x.finger) x.finger(); },
+          copy: function () { try { navigator.clipboard.writeText(String(x.jshshir || "").replace(/\s/g, "")); } catch (er) {} self.flash("JSHSHIR nusxalandi"); },
+          jsh: x.jshshir || "—", hasJsh: !org && !!x.jshshir
+        };
+        setTimeout(function () { try { var m = document.querySelector(".pim"), b = m && m.querySelector(".qv-x"); if (b && !m.contains(document.activeElement)) b.focus(); } catch (er) {} }, 0);
+      })();
+      // ---- taraf tahrirlash: telefon davlat kodi ----
+      (function () {
+        var e = s.tmEd, f = e ? e.f : {}, cc = f.telCode || TME_CC_OF(f.tel), m = TME_CC.filter(function (c) { return c[0] === cc; })[0] || TME_CC[0];
+        __out.tmEdCc = dd("tme-cc", TME_CC.map(function (c) { return { v: c[0], l: c[1] + "  " + c[0].trim(), sub: c[4] }; }), cc, function (ev) { var v = ev.target.value; self.setState(function (prev) { if (!prev.tmEd) return null; var ff = Object.assign({}, prev.tmEd.f, { telCode: v, telNum: "" }); return { tmEd: Object.assign({}, prev.tmEd, { f: ff }), dxDd: "" }; }); setTimeout(function () { try { var i = document.querySelector(".tm-ed .tme-num"); if (i) i.focus(); } catch (er) {} }, 30); }, { extra: "tme-ccs", noSplit: true });
+        __out.tmEdCcFlag = m[1]; __out.tmEdCcCode = m[0].trim();
       })();
       // ---- Kalendar: sudyaning ishda bo'lmagan davri va band kunlar ----
       (function () {
