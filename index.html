@@ -4295,6 +4295,68 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .hc-ai:hover{background:linear-gradient(135deg,#dbeafe,#ede9fe) !important}
 .hc-ainote{display:flex;align-items:flex-start;gap:8px;padding:10px 12px;border-radius:10px;background:#f5f3ff;color:#5b21b6;font-size:12.5px;line-height:1.45}
 .hc-ainote svg{flex:none;margin-top:1px}
+/* Ish hujjatlari: tahrirlash, yuborilganlar menyusi, akkordeon */
+.doc-oo{color:#3073f1 !important;border-color:#bfdbfe !important;background:#fff !important}
+.doc-mw{position:relative;display:inline-flex}
+.doc-menu{right:0;top:38px;width:390px;max-width:calc(100vw - 32px);z-index:46}
+.doc-row{position:relative}
+.doc-list{overflow:visible !important}
+.doc-list .doc-row:has(.doc-menu){z-index:47}
+.dsn{margin-top:4px;padding:10px 8px 4px;border-top:1px solid #eef1f5;display:flex;flex-direction:column;gap:6px}
+.dsn-h{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.dsn-h b{font-size:12px;font-weight:600;color:#0f172a;text-transform:uppercase;letter-spacing:.04em}
+.dsn-h small{font-size:12px;color:#64748b}
+.dsn-empty{font-size:12.5px;color:#94a3b8;padding:6px 0 4px}
+.dsn-r{display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:10px;background:#f8fafc}
+.dsn-who{font-size:13px;font-weight:500;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dsn-sub{font-size:11.5px;color:#64748b;line-height:1.4}
+.dsn-st{flex:none;display:inline-flex;align-items:center;gap:5px;height:22px;padding:0 8px;border-radius:999px;font-size:11.5px;font-weight:500}
+.dsn-st::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.dsn-st.ok{background:#ecfdf3;color:#15803d}
+.dsn-st.go{background:#fff7e6;color:#b45309}
+.dsn-st.go::before{animation:dsnPulse 1.4s ease-in-out infinite}
+@keyframes dsnPulse{50%{opacity:.3}}
+.doc-more{display:flex;align-items:center;justify-content:center;gap:6px;width:auto;align-self:stretch;box-sizing:border-box;height:40px;margin-top:8px;border:1px dashed #cbd5e1;border-radius:12px;background:#f8fafc;color:#3073f1;font:inherit;font-size:13.5px;font-weight:500;cursor:pointer}
+.doc-more:hover{background:#eff6ff;border-color:#bfdbfe}
+.doc-more svg{transition:transform .2s}
+.doc-more.open svg{transform:rotate(180deg)}
+/* ONLYOFFICE muharriri */
+.oo-wrap{position:fixed;inset:0;z-index:80;background:rgba(15,23,42,.45);display:flex;padding:16px}
+.oo{flex:1;display:flex;flex-direction:column;background:#f3f3f3;border-radius:12px;overflow:hidden;box-shadow:0 24px 60px rgba(15,23,42,.35);font-family:Arial,Helvetica,sans-serif}
+.oo-top{display:flex;align-items:center;justify-content:space-between;gap:12px;height:48px;padding:0 12px 0 14px;background:#446995;color:#fff}
+.oo-brand{display:flex;align-items:center;gap:10px;min-width:0}
+.oo-brand>b{font-size:13px;letter-spacing:.06em}
+.oo-sep{width:1px;height:20px;background:rgba(255,255,255,.3)}
+.oo-doc{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.oo-saved{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:rgba(255,255,255,.75);white-space:nowrap}
+.oo-tr{display:flex;align-items:center;gap:8px}
+.oo-co{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#8fb4e3;color:#1f3a5f;font-size:11px;font-weight:700}
+.oo-btn{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;font:inherit;font-size:13px;cursor:pointer}
+.oo-btn:hover{background:rgba(255,255,255,.22)}
+.oo-btn.ghost{border-color:transparent;background:transparent}
+.oo-btn.pri{background:#fff;color:#446995;border-color:#fff;font-weight:600}
+.oo-tabs{display:flex;gap:2px;padding:0 10px;background:#446995}
+.oo-tab{height:30px;padding:0 12px;border:0;border-radius:4px 4px 0 0;background:transparent;color:rgba(255,255,255,.85);font:inherit;font-size:12.5px;cursor:pointer}
+.oo-tab.on{background:#f7f7f7;color:#333}
+.oo-tools{display:flex;align-items:center;gap:4px;padding:6px 10px;background:#f7f7f7;border-bottom:1px solid #dfdfdf;flex-wrap:wrap}
+.oo-g{display:flex;align-items:center;gap:2px;padding:0 6px;border-right:1px solid #e1e1e1}
+.oo-g:last-child{border-right:0}
+.oo-t{width:28px;height:28px;display:grid;place-items:center;border:1px solid transparent;border-radius:3px;background:transparent;color:#444;font-size:14px;cursor:pointer}
+.oo-t:hover,.oo-t.on{background:#e0e0e0;border-color:#d0d0d0}
+.oo-sel{display:inline-flex;align-items:center;justify-content:space-between;gap:6px;height:26px;padding:0 6px;border:1px solid #cfcfcf;border-radius:2px;background:#fff;color:#444;font:inherit;font-size:12px;cursor:pointer}
+.oo-canvas{flex:1;overflow:auto;padding:24px 16px 40px;display:flex;flex-direction:column;align-items:center;gap:0}
+.oo-ruler{width:min(794px,100%);height:18px;background:repeating-linear-gradient(90deg,#c8c8c8 0 1px,transparent 1px 37.8px) bottom/100% 6px no-repeat,#fafafa;border:1px solid #dcdcdc;border-bottom:0}
+.oo-page{width:min(794px,100%);min-height:1000px;padding:72px 64px 80px 96px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.18);font-family:"Times New Roman",Times,serif;font-size:14pt;line-height:1.5;color:#111;outline:0}
+.oo-page p{margin:0 0 6px}
+.oo-page .oo-c{text-align:center}
+.oo-page .b{font-weight:700}
+.oo-page .oo-h{font-size:16pt;letter-spacing:.08em;margin-top:6px}
+.oo-page .oo-j{text-align:justify;text-indent:1.25cm}
+.oo-page .oo-row{white-space:pre}
+.oo-page .oo-sp{height:10px}
+.oo-status{display:flex;align-items:center;gap:18px;height:28px;padding:0 14px;background:#f7f7f7;border-top:1px solid #dfdfdf;font-size:12px;color:#555}
+.oo-zoom{letter-spacing:.08em}
+@media (max-width:720px){.oo-wrap{padding:0}.oo{border-radius:0}.oo-saved,.oo-co{display:none}.oo-page{padding:40px 24px;font-size:12pt}}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -6116,7 +6178,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
 
   <section class="sec" id="hujjatlar">
     <div class="sh"><div><h2>Ish hujjatlari</h2><p>Qarorlar, ajrimlar va bayonnomalar — imzolash va tasdiqlash holati bilan</p></div>
-      <div class="tools"><button class="btn pri" onClick="{{docAttach}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Hujjat biriktirish</button><button class="btn soft" onClick="{{docCompose}}">Hujjat tuzish</button><button class="btn soft" onClick="{{docPublish}}">Publikatsiya</button></div></div>
+      <div class="tools"><button class="btn pri" onClick="{{docAttach}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Hujjat biriktirish</button><button class="btn soft" onClick="{{docCompose}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6M12 12v6M9 15h6"></path></svg>Hujjat yaratish</button><button class="btn soft" onClick="{{docPublish}}">Publikatsiya</button></div></div>
     <div class="row" style="flex-wrap: wrap; gap: 8px; position: relative; z-index: 20">
       <div style="position: relative">
         <button class="{{typeBtnCls}}" aria-expanded="{{ddTypeStr}}" onClick="{{toggleType}}">Hujjat turi: {{docType}}<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
@@ -6148,19 +6210,21 @@ html[data-theme="dark"] .ds-host img{filter:none}
         </div>
         <div class="doc-files"><sc-for list="{{d.files}}" as="f" hint-placeholder-count="1"><span class="doc-fx">{{f.ext}}</span></sc-for><sc-if value="{{d.hasExtra}}" hint-placeholder-val="{{ false }}"><span class="doc-fx more">{{d.extra}} ilova</span></sc-if></div>
         <div class="doc-acts">
-          <sc-if value="{{d.isImzo}}" hint-placeholder-val="{{ false }}"><button class="btn sm" onClick="{{d.send}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2-7z"></path></svg>Yuborish</button><button class="btn sm pri" onClick="{{d.sign}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21c3-1 5-3 7-6M14 4l6 6-9 9H5v-6z"></path></svg>Imzolash</button></sc-if>
+          <sc-if value="{{d.canEdit}}" hint-placeholder-val="{{ false }}"><button class="btn sm doc-oo" onClick="{{d.edit}}" title="ONLYOFFICE muharririda tahrirlash"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg>Tahrirlash</button></sc-if><sc-if value="{{d.isImzo}}" hint-placeholder-val="{{ false }}"><button class="btn sm" onClick="{{d.send}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2-7z"></path></svg>Yuborish</button><button class="btn sm pri" onClick="{{d.sign}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21c3-1 5-3 7-6M14 4l6 6-9 9H5v-6z"></path></svg>Imzolash</button></sc-if>
           <sc-if value="{{d.isTasdiq}}" hint-placeholder-val="{{ false }}"><button class="btn sm pri" onClick="{{d.approve}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Tasdiqlash</button></sc-if>
           <sc-if value="{{d.canAi}}" hint-placeholder-val="{{ false }}"><button class="ib ai-ib" aria-label="{{d.title}} — AI tahlil" title="AI tahlil" onClick="{{d.openAi}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"></path><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"></path></svg></button></sc-if>
           <sc-if value="{{d.hasVer}}" hint-placeholder-val="{{ false }}"><button class="ib ver-ib" aria-label="{{d.title}} — versiyalarni taqqoslash" title="Versiyalar ({{d.verN}})" onClick="{{d.openVer}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v12"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg><span class="ver-n">{{d.verN}}</span></button></sc-if>
           <button class="ib" aria-label="{{d.title}} — ko'rish" title="Ko'rish" onClick="{{d.view}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
           <button class="ib" aria-label="{{d.title}} — yuklab olish" title="Yuklab olish" onClick="{{d.download}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg></button>
-          <button class="ib" aria-label="Boshqa amallar" title="Boshqa amallar" onClick="{{soon}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg></button>
+          <span class="doc-mw"><button class="ib" aria-label="Boshqa amallar" title="Boshqa amallar" aria-haspopup="menu" aria-expanded="{{d.menuStr}}" onClick="{{d.toggleMenu}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg></button><sc-if value="{{d.menuOpen}}" hint-placeholder-val="{{ false }}"><div class="ihmenu doc-menu" role="menu"><sc-if value="{{d.menuEdit}}" hint-placeholder-val="{{ false }}"><button class="ihitem" role="menuitem" onClick="{{d.edit}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg>ONLYOFFICE da tahrirlash</button></sc-if><button class="ihitem" role="menuitem" onClick="{{d.menuSend}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2-7z"></path></svg>Ishtirokchilarga yuborish</button><button class="ihitem" role="menuitem" onClick="{{d.download}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>Yuklab olish</button><div class="dsn"><div class="dsn-h"><b>Yuborilganlar</b><small>{{d.sendSum}}</small></div><sc-if value="{{d.noSends}}" hint-placeholder-val="{{ false }}"><div class="dsn-empty">Hujjat hali hech kimga yuborilmagan</div></sc-if><sc-for list="{{d.sends}}" as="x" hint-placeholder-count="2"><div class="dsn-r"><div class="kv" style="gap: 1px; min-width: 0; flex: 1"><b class="dsn-who">{{x.who}}</b><small class="dsn-sub">{{x.role}} · {{x.via}} · {{x.at}}</small></div><span class="{{x.stCls}}">{{x.stTxt}}</span></div></sc-for></div></div></sc-if></span>
         </div>
       </div>
       </sc-for>
     </div>
+    <sc-if value="{{docMenuAny}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg in" tabindex="-1" aria-label="Menyuni yopish" onClick="{{docMenuClose}}"></button></sc-if>
+    <sc-if value="{{docsMore}}" hint-placeholder-val="{{ false }}"><button type="button" class="{{docsMoreCls}}" onClick="{{docsToggle}}">{{docsMoreLbl}}<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button></sc-if>
     <sc-if value="{{docsEmpty}}" hint-placeholder-val="{{ false }}"><div class="empty"><b>{{docsEmptyT}}</b><small>{{docsEmptyS}}</small><sc-if value="{{docsNone}}" hint-placeholder-val="{{ false }}"><button class="btn sm pri" onClick="{{docAttach}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Hujjat biriktirish</button></sc-if><sc-if value="{{docsFiltered}}" hint-placeholder-val="{{ true }}"><button class="btn sm" onClick="{{resetFilters}}">Filtrlarni tozalash</button></sc-if></div></sc-if>
-    <div class="pager"><span>{{docCount}} ta hujjat ko'rsatilmoqda</span><sc-if value="{{filtered}}" hint-placeholder-val="{{ false }}"><button class="btn sm ghost" onClick="{{resetFilters}}">Filtrlarni tozalash</button></sc-if></div>
+    <div class="pager"><span>{{docPagerTxt}}</span><sc-if value="{{filtered}}" hint-placeholder-val="{{ false }}"><button class="btn sm ghost" onClick="{{resetFilters}}">Filtrlarni tozalash</button></sc-if></div>
   </section>
 
   <section class="sec" id="jildlar">
@@ -7844,16 +7908,28 @@ html[data-theme="dark"] .ds-host img{filter:none}
 </div>
 </sc-if>
 
+
+<sc-if value="{{ooOpen}}" hint-placeholder-val="{{ false }}">
+<div class="oo-wrap" role="dialog" aria-modal="true" aria-label="ONLYOFFICE hujjat muharriri" onKeyDown="{{ooKey}}">
+  <div class="oo">
+    <div class="oo-top"><div class="oo-brand"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l10 5-10 5L2 7z" fill="#ff6f3d"></path><path d="M2 12l10 5 10-5" fill="none" stroke="#95c038" stroke-width="2.4" stroke-linejoin="round"></path><path d="M2 17l10 5 10-5" fill="none" stroke="#5dc0e8" stroke-width="2.4" stroke-linejoin="round"></path></svg><b>ONLYOFFICE</b><span class="oo-sep"></span><span class="oo-doc"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6"></path></svg>{{ooFile}}</span><span class="oo-saved"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>{{ooSavedTxt}}</span></div><div class="oo-tr"><span class="oo-co" title="Hozir tahrirlayapti">TZ</span><button type="button" class="oo-btn ghost" onClick="{{ooClose}}">Yopish</button><button type="button" class="oo-btn" onClick="{{ooSave}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h11l3 3v15H5z"></path><path d="M8 3v5h8M8 21v-7h8v7"></path></svg>Saqlash</button><button type="button" class="oo-btn pri" onClick="{{ooSign}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21c3-1 5-3 7-6M14 4l6 6-9 9H5v-6z"></path></svg>Imzolash</button></div></div>
+    <div class="oo-tabs"><button type="button" class="oo-tab" onClick="{{ooTool}}">Fayl</button><button type="button" class="oo-tab on" onClick="{{ooTool}}">Bosh sahifa</button><button type="button" class="oo-tab" onClick="{{ooTool}}">Qo'shish</button><button type="button" class="oo-tab" onClick="{{ooTool}}">Maket</button><button type="button" class="oo-tab" onClick="{{ooTool}}">Havolalar</button><button type="button" class="oo-tab" onClick="{{ooTool}}">Hamkorlik</button><button type="button" class="oo-tab" onClick="{{ooTool}}">Himoya</button><button type="button" class="oo-tab" onClick="{{ooTool}}">Ko'rinish</button></div>
+    <div class="oo-tools"><div class="oo-g"><button type="button" class="oo-t" title="Bekor qilish" onClick="{{ooTool}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14L4 9l5-5"></path><path d="M4 9h10a6 6 0 0 1 0 12h-3"></path></svg></button><button type="button" class="oo-t" title="Qaytarish" onClick="{{ooTool}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 14l5-5-5-5"></path><path d="M20 9H10a6 6 0 0 0 0 12h3"></path></svg></button></div><div class="oo-g"><button type="button" class="oo-sel" style="width: 150px" onClick="{{ooTool}}">Times New Roman<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><button type="button" class="oo-sel" style="width: 56px" onClick="{{ooTool}}">14<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button></div><div class="oo-g"><button type="button" class="oo-t" title="Qalin" onClick="{{ooTool}}"><b>B</b></button><button type="button" class="oo-t" title="Kursiv" onClick="{{ooTool}}"><i style="font-family: serif">I</i></button><button type="button" class="oo-t" title="Tagiga chizilgan" onClick="{{ooTool}}"><u>U</u></button><button type="button" class="oo-t" title="Ustidan chizilgan" onClick="{{ooTool}}"><s>S</s></button></div><div class="oo-g"><button type="button" class="oo-t" title="Chapga" onClick="{{ooTool}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 10h10M4 14h16M4 18h10"></path></svg></button><button type="button" class="oo-t" title="Markazga" onClick="{{ooTool}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 10h10M4 14h16M7 18h10"></path></svg></button><button type="button" class="oo-t" title="O'ngga" onClick="{{ooTool}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M10 10h10M4 14h16M10 18h10"></path></svg></button><button type="button" class="oo-t on" title="Kenglik bo'yicha" onClick="{{ooTool}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg></button></div><div class="oo-g"><button type="button" class="oo-t" title="Belgili ro'yxat" onClick="{{ooTool}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="7" r="1"></circle><circle cx="5" cy="12" r="1"></circle><circle cx="5" cy="17" r="1"></circle><path d="M9 7h11M9 12h11M9 17h11"></path></svg></button><button type="button" class="oo-t" title="Raqamli ro'yxat" onClick="{{ooTool}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h2v4M4 10h3M4 14h3l-3 4h3M10 7h10M10 12h10M10 17h10"></path></svg></button></div><div class="oo-g"><button type="button" class="oo-t" title="Jadval" onClick="{{ooTool}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1"></rect><path d="M3 10h18M3 15h18M9 4v16M15 4v16"></path></svg></button><button type="button" class="oo-t" title="Rasm" onClick="{{ooTool}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="9" cy="10" r="2"></circle><path d="M21 16l-5-5-8 8"></path></svg></button></div><span style="flex: 1"></span><div class="oo-g"><button type="button" class="oo-sel" onClick="{{ooTool}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9"></path><path d="M12 7v5l3 2"></path></svg>Versiyalar tarixi</button></div></div>
+    <div class="oo-canvas"><div class="oo-ruler"></div><div class="oo-page" contenteditable="true" spellcheck="false" onInput="{{ooInput}}"><sc-for list="{{ooParas}}" as="pp" hint-placeholder-count="8"><p class="{{pp.cls}}">{{pp.t}}</p></sc-for></div></div>
+    <div class="oo-status"><span>Sahifa 1 / 1</span><span>So'zlar soni: {{ooWords}}</span><span>O'zbek (lotin)</span><span style="flex: 1"></span><span>Hujjat ish materiallariga avtomatik biriktiriladi</span><span class="oo-zoom">− 100% +</span></div>
+  </div>
+</div>
+</sc-if>
 <sc-if value="{{hcOpen}}" hint-placeholder-val="{{ false }}">
 <div class="qv-wrap">
   <button class="qv-bg" aria-label="Oynani yopish" onClick="{{hcClose}}"></button>
   <div class="qv nxm nxm-main hcm" role="dialog" aria-modal="true" aria-labelledby="hc-title" onKeyDown="{{hcKey}}">
     <sc-if value="{{hcDdOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg in" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{itkDdClose}}"></button></sc-if>
-    <div class="qv-h"><div class="nx-hh"><span class="nx-si"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6M9 14h6M9 18h4"></path></svg></span><div class="kv" style="gap: 2px"><b id="hc-title" class="qv-title">Hujjat tuzish</b><small>{{hcSub}}</small></div></div><div class="row" style="gap: 8px; align-items: center; margin-left: auto"><button class="ib qv-x" aria-label="Yopish" onClick="{{hcClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div></div>
+    <div class="qv-h"><div class="nx-hh"><span class="nx-si"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6M9 14h6M9 18h4"></path></svg></span><div class="kv" style="gap: 2px"><b id="hc-title" class="qv-title">Hujjat yaratish</b><small>{{hcSub}}</small></div></div><div class="row" style="gap: 8px; align-items: center; margin-left: auto"><button class="ib qv-x" aria-label="Yopish" onClick="{{hcClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div></div>
     <div class="qv-b nxm-b"><div class="nx-cg"><label class="fld"><span>Hujjat turi <b class="dx-req">*</b></span><span class="{{hcS.turi.cls}}" id="{{hcS.turi.id}}" onKeyDown="{{hcS.turi.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{hcS.turi.exp}}" disabled="{{hcS.turi.dis}}" onClick="{{hcS.turi.toggle}}" style="border-color: {{hcS.turi.bc}}"><span class="{{hcS.turi.vcls}}">{{hcS.turi.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{hcS.turi.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{hcS.turi.stop}}"><sc-for list="{{hcS.turi.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label><label class="fld"><span>Hujjat sanasi</span><span class="cal-dd gcal"><button type="button" class="cal-btn" aria-haspopup="dialog" aria-expanded="{{gcal.hc_sana.exp}}" style="border-color: #e2e8f0" onClick="{{gcal.hc_sana.toggle}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg><span class="{{gcal.hc_sana.lblCls}}">{{gcal.hc_sana.label}}</span></button><sc-if value="{{gcal.hc_sana.open}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg in" tabindex="-1" aria-label="Kalendarni yopish" onClick="{{calClose}}"></button><span class="{{gcal.hc_sana.popCls}}" role="dialog" aria-label="Sanani tanlash" onKeyDown="{{gcal.hc_sana.key}}" onClick="{{gcal.hc_sana.stop}}"><span class="cal-h"><button type="button" class="ib" aria-label="Oldingi" onClick="{{gcal.hc_sana.prev}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button><button type="button" class="cal-title" aria-label="Oy va yilni tanlash" onClick="{{gcal.hc_sana.title}}">{{gcal.hc_sana.month}}<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><button type="button" class="ib" aria-label="Keyingi" onClick="{{gcal.hc_sana.next}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></span><sc-if value="{{gcal.hc_sana.isD}}" hint-placeholder-val="{{ true }}"><span class="cal-wd"><span>Du</span><span>Se</span><span>Ch</span><span>Pa</span><span>Ju</span><span>Sh</span><span>Ya</span></span><span class="cal-grid"><sc-for list="{{gcal.hc_sana.days}}" as="d" hint-placeholder-count="35"><button type="button" class="{{d.cls}}" title="{{d.title}}" aria-label="{{d.aria}}" disabled="{{d.dis}}" onClick="{{d.pick}}">{{d.n}}</button></sc-for></span></sc-if><sc-if value="{{gcal.hc_sana.isM}}" hint-placeholder-val="{{ false }}"><span class="cal-mgrid"><sc-for list="{{gcal.hc_sana.months}}" as="o" hint-placeholder-count="12"><button type="button" class="{{o.cls}}" onClick="{{o.pick}}">{{o.label}}</button></sc-for></span></sc-if><sc-if value="{{gcal.hc_sana.hasTime}}" hint-placeholder-val="{{ false }}"><span class="cal-time"><span>Vaqt</span><input type="text" inputmode="numeric" placeholder="SS:dd" maxlength="5" aria-label="Vaqt, soat va daqiqa" value="{{gcal.hc_sana.time}}" onChange="{{gcal.hc_sana.setTime}}"></span></sc-if><span class="cal-ft"><button type="button" class="cal-lnk" onClick="{{gcal.hc_sana.clear}}">Tozalash</button><button type="button" class="cal-lnk pri" onClick="{{gcal.hc_sana.today}}">Bugun</button></span></span></sc-if></span></label></div>
       <sc-if value="{{hcErr}}" hint-placeholder-val="{{ false }}"><small class="dx-err" style="margin: 0">{{hcErrTxt}}</small></sc-if>
     </div>
-    <div class="qv-f"><button class="btn qv-close" style="margin-left: auto" onClick="{{hcClose}}">Yopish</button><button class="btn pri" disabled="{{hcDis}}" onClick="{{hcSave}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h11l3 3v15H5z"></path><path d="M8 3v5h8M8 21v-7h8v7"></path></svg>Saqlash</button></div>
+    <div class="qv-f"><button class="btn qv-close" style="margin-left: auto" onClick="{{hcClose}}">Yopish</button><button class="btn pri" disabled="{{hcDis}}" onClick="{{hcSave}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"></path></svg>Yaratish</button></div>
   </div>
 </div>
 </sc-if>
@@ -8802,10 +8878,13 @@ class Component extends DCLogic {
       form: { num: "", kirim: "", date: "", sum: "" },
       formErr: false,
       docs: [
-        { id: 1, title: "Hal qiluv qarori", type: "Sud hujjatlari", inst: 1, st: "imzo", date: "2026-07-17", files: ["PDF"], extra: "+2" },
-        { id: 2, title: "Ajrim", type: "Sud hujjatlari", inst: 1, st: "tasdiq", date: "2026-07-15", files: ["PDF", "W"] },
-        { id: 3, title: "Sud majlisi bayonnomasi", type: "Sud hujjatlari", inst: 2, st: "tayyor", date: "2026-07-12", files: ["PDF", "X"] },
-        { id: 4, title: "Ijro varaqasi", type: "Ijro hujjatlari", inst: 1, st: "imzo", date: "2026-08-24", files: ["PDF"] },
+        { id: 1, title: "Hal qiluv qarori", type: "Sud hujjatlari", inst: 1, st: "imzo", gen: true, date: "2026-07-17", files: ["PDF", "W"], extra: "+2", sends: [] },
+        { id: 2, title: "Ajrim", type: "Sud hujjatlari", inst: 1, st: "tasdiq", gen: true, date: "2026-07-15", files: ["PDF", "W"], sends: [] },
+        { id: 3, title: "Sud majlisi bayonnomasi", type: "Sud hujjatlari", inst: 2, st: "tayyor", date: "2026-07-12", files: ["PDF", "X"], sends: [{ who: "Aralov Yunus Bazarovich", role: "Da'vogar", via: "Elektron shaklda", st: "ok", at: "12.07.2026 16:40" }, { who: "Shaymonov Ilhom Norboy o'g'li", role: "Javobgar", via: "Gibrid pochta orqali", st: "go", at: "12.07.2026 16:42" }] },
+        { id: 7, title: "Ishni sud muhokamasiga tayyorlash to'g'risida ajrim", type: "Sud hujjatlari", inst: 1, st: "tayyor", gen: true, date: "2026-06-25", files: ["PDF", "W"], sends: [{ who: "Aralov Yunus Bazarovich", role: "Da'vogar", via: "Elektron shaklda", st: "ok", at: "25.06.2026 11:05" }, { who: "Shaymonov Ilhom Norboy o'g'li", role: "Javobgar", via: "SMS orqali", st: "ok", at: "25.06.2026 11:05" }, { who: "Termiz shahar prokuraturasi", role: "Prokuror", via: "Maxsus aloqa xizmati orqali", st: "go", at: "25.06.2026 11:07" }] },
+        { id: 8, title: "Chaqiruv qog'ozi", type: "Sud hujjatlari", inst: 1, st: "tayyor", gen: true, date: "2026-06-24", files: ["PDF"], sends: [{ who: "Shaymonov Ilhom Norboy o'g'li", role: "Javobgar", via: "Davlat feldyegerlik xizmati orqali", st: "ok", at: "24.06.2026 09:30" }] },
+        { id: 9, title: "Xabarnoma", type: "Sud hujjatlari", inst: 1, st: "tayyor", gen: true, date: "2026-06-24", files: ["PDF"], sends: [{ who: "Aralov Yunus Bazarovich", role: "Da'vogar", via: "Elektron pochta orqali", st: "ok", at: "24.06.2026 09:28" }, { who: "Shaymonov Ilhom Norboy o'g'li", role: "Javobgar", via: "Elektron pochta orqali", st: "go", at: "24.06.2026 09:28" }] },
+        { id: 4, title: "Ijro varaqasi", type: "Ijro hujjatlari", inst: 1, st: "imzo", date: "2026-08-24", files: ["PDF"], sends: [] },
         { id: 5, title: "Da'vo arizasi", type: "Arizachi/Javobgar", inst: 1, st: "tayyor", date: "2026-06-11", files: ["PDF", "W"], extra: "+3" },
         { id: 6, title: "Davlat boji kvitansiyasi", type: "Kvitansiyalar", inst: 1, st: "tayyor", date: "2026-06-22", files: ["PDF"] }
       ],
@@ -9629,9 +9708,18 @@ class Component extends DCLogic {
           approve: function () { self.updDoc(d.id, { st: "tayyor" }); self.flash("«" + d.title + "» tasdiqlandi"); },
           send: function () { self.setState({ dxDd: "", ys: { doc: d.title, type: "Arizachi", list: [], err: "" } }); },
           view: function () { self.flash("«" + d.title + "» ko'rish oynasida ochiladi"); },
-          download: function () { self.flash("«" + d.title + "» yuklab olinmoqda"); }
+          download: function () { self.flash("«" + d.title + "» yuklab olinmoqda"); },
+          canEdit: !!d.gen && d.st !== "tayyor", edit: function () { self.setState({ docMenu: 0, oo: { id: d.id, title: d.title, date: d.date } }); },
+          menuOpen: s.docMenu === d.id, menuStr: s.docMenu === d.id ? "true" : "false",
+          toggleMenu: function () { self.setState({ docMenu: self.state.docMenu === d.id ? 0 : d.id }); },
+          menuEdit: !!d.gen, menuSend: function () { self.setState({ docMenu: 0, dxDd: "", ys: { doc: d.title, type: "Arizachi", list: [], err: "" } }); },
+          sends: (d.sends || []).map(function (x) { return { who: x.who, role: x.role, via: x.via, at: x.at, ok: x.st === "ok", stTxt: x.st === "ok" ? "Yetkazilgan" : "Yetkazilmoqda", stCls: "dsn-st " + (x.st === "ok" ? "ok" : "go") }; }),
+          hasSends: !!(d.sends || []).length, noSends: !(d.sends || []).length,
+          sendSum: (function () { var a = d.sends || [], ok = a.filter(function (x) { return x.st === "ok"; }).length; return a.length ? a.length + " ta ishtirokchi · " + ok + " tasiga yetkazilgan" : ""; })()
         };
       });
+    var DOC_LIM = 5, docsAllN = docs.length, docsMore = docsAllN > DOC_LIM;
+    var docsShown = (docsMore && !s.docAll) ? docs.slice(0, DOC_LIM) : docs;
     var DOC_TABS = [["all", "Hammasi", "#94a3b8"], ["imzo", "Imzolashda", "#f59e0b"], ["tasdiq", "Tasdiqlashda", "#3073f1"], ["tayyor", "Tayyor", "#22c55e"]];
     var docStTabs = DOC_TABS.map(function (t) {
       var on = (s.docSt || "all") === t[0];
@@ -10676,7 +10764,11 @@ class Component extends DCLogic {
         self.flash("Qarshi da'vo qo'shildi");
       },
 
-      docs: docs, docsEmpty: docs.length === 0, docCount: docs.length,
+      docs: docsShown, docsEmpty: docs.length === 0, docCount: docs.length,
+      docsMore: docsMore, docsMoreLbl: s.docAll ? "Yig'ish" : "Yana " + (docsAllN - DOC_LIM) + " ta hujjatni ko'rsatish", docsMoreCls: "doc-more" + (s.docAll ? " open" : ""),
+      docsToggle: function () { self.setState({ docAll: !self.state.docAll }); },
+      docPagerTxt: docsMore && !s.docAll ? docsAllN + " ta hujjatdan " + DOC_LIM + " tasi ko'rsatilmoqda" : docsAllN + " ta hujjat ko'rsatilmoqda",
+      docMenuAny: !!s.docMenu, docMenuClose: function () { self.setState({ docMenu: 0 }); },
       docsNone: !(s.docs || []).length, docsFiltered: docs.length === 0 && (s.docs || []).length > 0,
       docsEmptyT: (s.docs || []).length ? "Mos hujjat topilmadi" : "Hujjatlar hali yo'q",
       docsEmptyS: (s.docs || []).length ? "Filtr yoki qidiruv so'zini o'zgartiring" : "Qaror, ajrim yoki bayonnomani biriktiring yoki shablon asosida tuzing", filtered: filtered, docStTabs: docStTabs,
@@ -12028,7 +12120,7 @@ class Component extends DCLogic {
         var HT = ["Hal qiluv qarori", "Qo'shimcha hal qiluv qarori", "Ishni sud muhokamasiga tayyorlash to'g'risida ajrim", "Ishni sud muhokamasiga tayinlash to'g'risida ajrim", "Ishni ko'rishni keyinga qoldirish to'g'risida ajrim", "Ish yuritishni to'xtatish to'g'risida ajrim", "Sud majlisi bayonnomasi", "Chaqiruv qog'ozi", "Xabarnoma", "Ijro varaqasi"];
         var setW = function (o) { self.setState(function (prev) { return prev.hc ? { hc: Object.assign({}, prev.hc, o, { err: "" }) } : null; }); };
         __out.hcOpen = !!w;
-        __out.hcSub = (s.caseNum || "") + " · hujjat shablon asosida tuziladi";
+        __out.hcSub = (s.caseNum || "") + " · hujjat shablon asosida yaratiladi va tahrirlash uchun ochiladi";
         __out.hcF = w || {};
         __out.hcSet = { sana: function (e) { setW({ sana: e.target.value }); } };
         __out.hcS = { turi: dd("hc-turi", [{ v: "", l: "Tanlang" }].concat(HT.map(function (x) { return { v: x, l: x }; })), (w && w.turi) || "", function (e) { setW({ turi: e.target.value, ai: false }); }, { ph: "Tanlang", noSplit: true, bc: w && w.err && !w.turi ? "#dc2626" : "" }) };
@@ -12042,8 +12134,51 @@ class Component extends DCLogic {
         __out.hcAi = function () { setW({ turi: "Hal qiluv qarori", ai: true }); self.flash("AI hal qiluv qarori loyihasini tayyorladi"); };
         __out.hcSave = function () { var x = self.state.hc; if (!x) return; if (!x.turi) { self.setState({ hc: Object.assign({}, x, { err: "Hujjat turini tanlang" }) }); return; }
           var iso = x.sana || new Date().toISOString().slice(0, 10);
-          self.setState({ hc: null, dxDd: "", calKey: "", docSt: "all", docs: [{ id: Date.now(), title: x.turi + (x.ai ? " (AI loyihasi)" : ""), type: "Sud hujjatlari", inst: 1, st: "imzo", date: iso, files: ["W"] }].concat(self.state.docs || []) });
-          self.flash("«" + x.turi + "» tuzildi · imzolash kutilmoqda"); };
+          var nid = Date.now();
+          self.setState({ hc: null, dxDd: "", calKey: "", docSt: "all", docAll: false, oo: { id: nid, title: x.turi, date: iso }, docs: [{ id: nid, title: x.turi + (x.ai ? " (AI loyihasi)" : ""), type: "Sud hujjatlari", inst: 1, st: "imzo", gen: true, date: iso, files: ["W"], sends: [] }].concat(self.state.docs || []) });
+          self.flash("«" + x.turi + "» shablon asosida yaratildi · tahrirlash oynasi ochildi"); };
+      })();
+      // ---- ONLYOFFICE muharriri (generatsiya qilingan hujjatni tahrirlash) ----
+      (function () {
+        var o = s.oo;
+        __out.ooOpen = !!o;
+        if (!o) { __out.ooParas = []; return; }
+        var row = (s.lRows || []).filter(function (r) { return r.num === s.caseNum; })[0] || (s.lRows || [])[0] || { num: s.caseNum, ariz: ["—"], jav: ["—"], sud: "" };
+        var t = String(o.title || "Hujjat").replace(/ \(AI loyihasi\)$/, "");
+        var low = t.toLowerCase();
+        var head = /qaror/.test(low) ? (/qo'shimcha/.test(low) ? "QO'SHIMCHA HAL QILUV QARORI" : "HAL QILUV QARORI") : /ajrim/.test(low) ? "AJRIM" : t.toUpperCase();
+        var dp = String(o.date || "").split("-"), dUz = dp.length === 3 ? dp[2] + "." + dp[1] + "." + dp[0] : "";
+        var about = /ajrim/.test(low) && head === "AJRIM" ? t.replace(/ ajrim$/i, "").replace(/^Ishni /, "ishni ") : "";
+        __out.ooFile = t.replace(/[\s']+/g, "_") + ".docx";
+        __out.ooSavedTxt = o.saved ? "Barcha o'zgarishlar saqlandi" : "Avtomatik saqlash yoqilgan";
+        var P = [
+          ["oo-c b", "O'ZBEKISTON RESPUBLIKASI"],
+          ["oo-c b", "TERMIZ TUMANLARARO IQTISODIY SUDI"],
+          ["oo-sp", ""],
+          ["oo-c b oo-h", head],
+          about ? ["oo-c", /to'g'risida$/.test(about) ? about : about + " to'g'risida"] : ["oo-c", "O'zbekiston Respublikasi nomidan"],
+          ["oo-row", dUz + " yil" + "\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003" + "Termiz shahri"],
+          ["oo-sp", ""],
+          ["oo-j", "Termiz tumanlararo iqtisodiy sudi sudyasi Tojiyev Z. X. raisligida, sud majlisi kotibi Ergashev J. A. ishtirokida, " + (row.ariz || ["—"])[0] + "ning " + (row.jav || ["—"])[0] + "ga nisbatan " + String(row.sud || "da'vo talabi yuzasidan").toLowerCase() + " qo'zg'atilgan " + (row.num || "") + "-sonli iqtisodiy ishni ko'rib chiqib,"],
+          ["oo-c b", "ANIQLADI:"],
+          ["oo-j", "Da'vogar sudga da'vo arizasi bilan murojaat qilib, javobgardan qarzdorlikni undirishni so'ragan. Da'vo arizasi va unga ilova qilingan hujjatlar O'zbekiston Respublikasi Iqtisodiy protsessual kodeksi talablariga muvofiq rasmiylashtirilgan."],
+          ["oo-j", "Ish materiallarini o'rganib chiqib, sud quyidagi xulosaga keldi: [asoslantiruvchi qism shu yerda to'ldiriladi]."],
+          ["oo-j", "Bayon etilganlarga asosan, O'zbekiston Respublikasi Iqtisodiy protsessual kodeksining tegishli moddalariga amal qilib, sud"],
+          ["oo-c b", head === "AJRIM" ? "AJRIM QILDI:" : "QAROR QILDI:"],
+          ["oo-j", "1. " + (head === "AJRIM" ? "[Ajrimning xulosa qismi shu yerda to'ldiriladi]." : "Da'vo talablari qanoatlantirilsin.")],
+          ["oo-j", "2. Ushbu hujjat nusxasi ishda ishtirok etuvchi shaxslarga yuborilsin."],
+          ["oo-sp", ""],
+          ["oo-row b", "Sudya" + "\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003" + "Z. X. Tojiyev"]
+        ];
+        __out.ooParas = P.map(function (x) { return { cls: x[0], t: x[1] }; });
+        __out.ooWords = P.reduce(function (a, x) { return a + (x[1] ? x[1].split(/\s+/).filter(Boolean).length : 0); }, 0);
+        var close = function () { self.setState({ oo: null }); };
+        __out.ooClose = close;
+        __out.ooKey = function (e) { if (e.key === "Escape") { e.stopPropagation(); close(); } };
+        __out.ooInput = function () { if (!self.state.oo || !self.state.oo.saved) return; self.setState({ oo: Object.assign({}, self.state.oo, { saved: false }) }); };
+        __out.ooTool = function () {};
+        __out.ooSave = function () { self.setState({ oo: Object.assign({}, self.state.oo, { saved: true }) }); self.flash("«" + t + "» saqlandi"); };
+        __out.ooSign = function () { var id = o.id; self.setState({ oo: null, docs: (self.state.docs || []).map(function (d) { return d.id === id ? Object.assign({}, d, { st: "tasdiq" }) : d; }) }); self.flash("«" + t + "» imzolandi (E-IMZO) — tasdiqlashga o'tdi"); };
       })();
       // ---- Kalendar: sudyaning ishda bo'lmagan davri va band kunlar ----
       (function () {
@@ -12344,8 +12479,10 @@ class Component extends DCLogic {
           var w = self.state.ys; if (!w) return;
           if (!w.list.length) { setY(function () { return { err: "Kamida bitta ishtirokchi qo'shing" }; }); return; }
           if (w.list.some(function (r) { return !METHODS.some(function (m) { return r.m[m]; }); })) { setY(function () { return { err: "Har bir ishtirokchi uchun yuborish usulini belgilang" }; }); return; }
-          self.setState({ ys: null, dxDd: "" });
-          self.flash((w.doc ? "«" + w.doc + "» " : "Hujjatlar ") + w.list.length + " ta ishtirokchiga yuborildi");
+          var nowD = new Date(), pz = function (n) { return (n < 10 ? "0" : "") + n; }, at = pz(nowD.getDate()) + "." + pz(nowD.getMonth() + 1) + "." + nowD.getFullYear() + " " + pz(nowD.getHours()) + ":" + pz(nowD.getMinutes());
+          var add = []; w.list.forEach(function (r) { METHODS.filter(function (m) { return r.m[m]; }).forEach(function (m) { add.push({ who: r.name, role: r.role, via: m, st: "go", at: at }); }); });
+          self.setState({ ys: null, dxDd: "", docs: (self.state.docs || []).map(function (d) { return w.doc && d.title === w.doc ? Object.assign({}, d, { sends: add.concat(d.sends || []) }) : d; }) });
+          self.flash((w.doc ? "«" + w.doc + "» " : "Hujjatlar ") + w.list.length + " ta ishtirokchiga yuborildi · holati: yetkazilmoqda");
         };
       })();
       var gp = function (path) { return path.split(".").reduce(function (acc, seg) { return acc == null ? acc : acc[seg]; }, __out); };
