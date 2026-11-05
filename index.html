@@ -5418,6 +5418,10 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .igq-sub{font-size:12.5px;color:#334155;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media (prefers-reduced-motion:reduce){.igq .cur .igq-bar i{animation:none}}
 @media (max-width:640px){.igq{grid-template-columns:minmax(0,1fr);gap:14px}}
+.igm-warn{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-radius:12px;border:1px solid #fde68a;background:#fffbeb}
+.igm-warn b{font-size:13.5px;font-weight:600;color:#92400e}
+.igm-warn small{font-size:12.5px;color:#a16207;line-height:1.4}
+.igm-wi{width:30px;height:30px;border-radius:9px;flex:none;display:grid;place-items:center;background:#fef3c7;color:#d97706}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -7375,9 +7379,6 @@ html[data-theme="dark"] .ds-host img{filter:none}
     <div class="ig-bar"><div class="kv" style="gap: 2px; min-width: 0"><b>Prokuraturaga yuborilgan so'rovlar</b><small>{{prSub}}</small></div><div class="tools"><button class="ib pr-ref" title="Holatni yangilash" aria-label="Holatni yangilash" onClick="{{prRefresh}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.9-3.9M4 5v4h4M4 13a8 8 0 0 0 14.9 3.9M20 19v-4h-4"></path></svg></button><sc-if value="{{igNewClosed}}" hint-placeholder-val="{{ true }}"><button class="btn pri" onClick="{{igNewOpen}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>So'rov yuborish</button></sc-if></div></div>
 
 
-    <sc-if value="{{prHasAssigned}}" hint-placeholder-val="{{ true }}">
-    <div class="pr-asg"><span class="prd-av" style="width: 40px; height: 40px; font-size: 13px">{{prAssigned.ini}}</span><div class="kv" style="gap: 2px; min-width: 0; flex: 1"><small>Ishga biriktirilgan prokuror</small><b>{{prAssigned.name}}</b></div><span class="pr-asg-m">{{prAssigned.filial}} · {{prAssigned.date}} dan</span></div>
-    </sc-if>
 
     <div class="pr-list">
       <sc-for list="{{prList}}" as="r" hint-placeholder-count="3">
@@ -7395,9 +7396,6 @@ html[data-theme="dark"] .ds-host img{filter:none}
     </div></sc-if>
     <sc-if value="{{igGen}}" hint-placeholder-val="{{ false }}"><div class="pt-pane ig-pane">
     <div class="ig-bar"><div class="kv" style="gap: 2px; min-width: 0"><b>{{ig.title}}</b><small>{{ig.sub}}</small></div><div class="tools"><button class="ib pr-ref" title="Holatni yangilash" aria-label="Holatni yangilash" onClick="{{ig.refresh}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.9-3.9M4 5v4h4M4 13a8 8 0 0 0 14.9 3.9M20 19v-4h-4"></path></svg></button><sc-if value="{{igNewClosed}}" hint-placeholder-val="{{ true }}"><button class="btn pri" onClick="{{igNewOpen}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>So'rov yuborish</button></sc-if></div></div>
-    <sc-if value="{{ig.hasAsg}}" hint-placeholder-val="{{ false }}">
-    <div class="pr-asg"><span class="prd-av" style="width: 40px; height: 40px; font-size: 13px">{{ig.asg.ini}}</span><div class="kv" style="gap: 2px; min-width: 0; flex: 1"><small>{{ig.asgLbl}}</small><b>{{ig.asg.name}}</b></div><span class="pr-asg-m">{{ig.asg.org}} · {{ig.asg.date}} dan</span></div>
-    </sc-if>
     <div class="pr-list">
       <sc-for list="{{ig.list}}" as="r" hint-placeholder-count="2">
       <div class="{{r.rowCls}}">
@@ -8564,6 +8562,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
     <sc-if value="{{igDdOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg in" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{itkDdClose}}"></button></sc-if>
     <div class="igm-h"><span class="{{igm.icCls}}" aria-hidden="true"></span><div class="kv" style="gap: 2px; min-width: 0; flex: 1"><b id="igm-t">{{igm.title}}</b><small>{{igm.sub}}</small></div><button class="ib qv-x" aria-label="Yopish" onClick="{{igm.close}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
     <div class="igm-b">
+      <sc-if value="{{igm.hasWarn}}" hint-placeholder-val="{{ false }}"><div class="igm-warn" role="note"><span class="igm-wi" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24"><path d="M12 3l9.5 16.5h-19z"></path><path d="M12 10v4M12 17v.5"></path></svg></span><div class="kv" style="gap: 2px; min-width: 0"><b>{{igm.warnT}}</b><small>{{igm.warnS}}</small></div></div></sc-if>
       <div class="igm-f"><span class="igm-l">{{igm.f1Lbl}} <b>*</b></span><span class="{{igF1.cls}}" id="{{igF1.id}}" onKeyDown="{{igF1.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{igF1.exp}}" disabled="{{igF1.dis}}" onClick="{{igF1.toggle}}" style="border-color: {{igF1.bc}}"><span class="{{igF1.vcls}}">{{igF1.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{igF1.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{igF1.stop}}"><sc-for list="{{igF1.opts}}" as="o" hint-placeholder-count="4"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span><small class="{{igm.f1HintCls}}">{{igm.f1Hint}}</small></div>
       <sc-if value="{{igm.hasF2}}" hint-placeholder-val="{{ true }}"><div class="igm-f"><span class="igm-l">{{igm.f2Lbl}} <b>*</b></span><span class="{{igF2.cls}}" id="{{igF2.id}}" onKeyDown="{{igF2.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{igF2.exp}}" disabled="{{igF2.dis}}" onClick="{{igF2.toggle}}" style="border-color: {{igF2.bc}}"><span class="{{igF2.vcls}}">{{igF2.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{igF2.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{igF2.stop}}"><sc-for list="{{igF2.opts}}" as="o" hint-placeholder-count="4"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span><small class="{{igm.f2HintCls}}">{{igm.f2Hint}}</small></div></sc-if>
     </div>
@@ -11085,6 +11084,7 @@ class Component extends DCLogic {
     };
 
     // ---------- prokuratura ----------
+    var igShort = function (n) { var a = String(n || "").trim().split(/\s+/); return a[0] ? a[0] + (a[1] ? " " + a[1].charAt(0) + "." : "") + (a[2] ? a[2].charAt(0) + "." : "") : "—"; };
     var nowStr = function () { var d = new Date(); var p = function (n) { return (n < 10 ? "0" : "") + n; }; return p(d.getDate()) + "." + p(d.getMonth() + 1) + "." + d.getFullYear() + " " + p(d.getHours()) + ":" + p(d.getMinutes()); };
     var updPr = function (id, patch) { self.setState({ pr: self.state.pr.map(function (r) { return r.id === id ? Object.assign({}, r, patch) : r; }) }); };
     var prList = s.pr.map(function (r) {
@@ -11104,7 +11104,7 @@ class Component extends DCLogic {
         retry: function () { updPr(r.id, { err: "", sent: nowStr() }); self.flash("So'rov qayta yuborildi"); },
         download: function () { self.flash("Yakuniy hujjat yuklab olinmoqda"); },
         open: function () { self.setState({ igDet: "pr:" + r.id }); },
-        lastTxt: r.err ? "xatolik: " + r.err : r.final ? "yakuniy hujjat " + r.final : r.prok ? "prokuror biriktirildi " + r.prokDate : "yuborildi " + r.sent,
+        lastTxt: r.err ? "xatolik: " + r.err : r.final ? "Prokuror: " + igShort(r.prok) + " · yakuniy hujjat " + r.final : r.prok ? "Prokuror: " + igShort(r.prok) + " · biriktirildi " + r.prokDate : "yuborildi " + r.sent,
         rowCls: "pr-row" + (r.err ? " err" : "")
       });
     });
@@ -13897,7 +13897,7 @@ class Component extends DCLogic {
             hasWho: !!r.who, noWho: !r.who, ini: ini(r.who),
             progTxt: steps.filter(function (x) { return / done/.test(x.cls); }).length + " / " + steps.length + " bosqich",
             meta: [r.org, r.x, null].filter(Boolean).join(" · "),
-            lastTxt: r.err ? "xatolik: " + r.err : r.final ? C.steps[C.steps.length - 1][1].toLowerCase() + " " + r.final : r.who ? C.steps[1][1].toLowerCase() + " " + r.whoDate : "yuborildi " + r.sent,
+            lastTxt: r.err ? "xatolik: " + r.err : r.final ? C.t + ": " + igShort(r.who) + " · " + C.steps[C.steps.length - 1][1].toLowerCase() + " " + r.final : r.who ? C.t + ": " + igShort(r.who) + " · biriktirildi " + r.whoDate : "yuborildi " + r.sent,
             rowCls: "pr-row" + (r.err ? " err" : ""),
             copy: function () { try { navigator.clipboard.writeText(r.num); } catch (e) {} self.flash("So'rov raqami nusxalandi"); },
             retry: function () { upd({ err: "", sent: nowS() }); self.flash("So'rov qayta yuborildi"); },
@@ -13921,7 +13921,11 @@ class Component extends DCLogic {
         var mClose = function () { self.setState({ igNew: false, igF1: "", igF2: "", igNote: "", igErr: false, dxDd: "" }); };
         __out.igNewOpen = function () { self.setState({ igNew: true, igF1: "", igF2: "", igNote: "", igErr: false, dxDd: "" }); };
         var nMiss = (f1 ? 0 : 1) + (hasF2 && !f2 ? 1 : 0);
-        __out.igm = { title: M.title2 || M.title, sub: M.msub, icCls: "igm-ic ic-ig-" + M.ic, caseNum: s.caseNum || "—",
+        var asgR = tab === "pr" ? (s.pr || []).filter(function (r) { return r.prok && !r.err; })[0] : tab === "eks" ? (s.igEks || []).filter(function (r) { return r.who && !r.err; })[0] : null;
+        var asgN = asgR ? (tab === "pr" ? asgR.prok : asgR.who) : "";
+        __out.igm = { title: M.title2 || M.title, hasWarn: !!asgR,
+          warnT: asgR ? "Ishga " + (tab === "pr" ? "prokuror" : "ekspert") + " allaqachon biriktirilgan" : "",
+          warnS: asgR ? igShort(asgN) + " · " + asgR.num + ". Yana so'rov yuborsangiz, u qo'shimcha so'rov sifatida ketadi." : "", sub: M.msub, icCls: "igm-ic ic-ig-" + M.ic, caseNum: s.caseNum || "—",
           f1Lbl: M.f1Lbl, f2Lbl: M.f2Lbl || "", hasF2: hasF2,
           f1Hint: er && !f1 ? "Bu maydon majburiy — " + M.f1Lbl.toLowerCase() + "ni tanlang" : M.f1Hint, f1HintCls: "igm-hint" + (er && !f1 ? " err" : ""),
           f2Hint: er && hasF2 && !f2 ? "Bu maydon majburiy — " + String(M.f2Lbl || "").toLowerCase() + "ni tanlang" : (M.f2Hint || ""), f2HintCls: "igm-hint" + (er && hasF2 && !f2 ? " err" : ""),
