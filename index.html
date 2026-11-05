@@ -4185,10 +4185,10 @@ svg.ic-ed,svg.ic-del{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linec
 .qx4-i small svg{width:13px;height:13px;flex:none}
 .qx4-i .ak-role{height:22px;font-size:11.5px}
 /* Tomonlar / Qo'shimcha tomonlar: ikki ustun pastki chizig'i bir tekisda */
-#tomonlar > .g2,#qtomonlar > .g2{align-items:stretch !important}
-#tomonlar > .g2 > .card,#qtomonlar > .g2 > .card{display:flex;flex-direction:column;height:100%}
-#tomonlar > .g2 > .card > .tp-list,#qtomonlar > .g2 > .card > .tp-list{flex:1 1 auto;height:332px;max-height:332px !important}
-#tomonlar > .g2 > .card > .tp-list:has(.pc-v2),#qtomonlar > .g2 > .card > .tp-list:has(.pc-v2){justify-content:flex-start}
+#tomonlar .pt-pane > .g2{align-items:stretch !important}
+#tomonlar .pt-pane > .g2 > .card{display:flex;flex-direction:column;height:100%}
+#tomonlar .pt-pane > .g2 > .card > .tp-list{flex:1 1 auto;height:332px;max-height:332px !important}
+#tomonlar .pt-pane > .g2 > .card > .tp-list:has(.pc-v2){justify-content:flex-start}
 /* Qarshi da'vo — shikoyat bergan shaxs kartasi (qf5) */
 .qf5{position:relative;display:flex;align-items:stretch;gap:14px;padding:14px 16px 14px 18px;border:1px solid #e3e8f0;border-radius:14px;background:#fff;min-width:0;overflow:hidden;transition:border-color .15s,box-shadow .15s,transform .15s}
 .qf5::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--qf-c,#94a3b8)}
@@ -5102,6 +5102,26 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .smd .smd-k4 .d2-kc svg{width:13px;height:13px;stroke-width:2.2}
 .ic-shield::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%203l7%203v5c0%204.5-3%208.5-7%2010-4-1.5-7-5.5-7-10V6z%22/%3E%3Cpath%20d%3D%22M9%2012l2%202%204-4%22/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%203l7%203v5c0%204.5-3%208.5-7%2010-4-1.5-7-5.5-7-10V6z%22/%3E%3Cpath%20d%3D%22M9%2012l2%202%204-4%22/%3E%3C/svg%3E")}
 .ic-trend::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2017l6-6%204%204%208-8%22/%3E%3Cpath%20d%3D%22M14%207h7v7%22/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2017l6-6%204%204%208-8%22/%3E%3Cpath%20d%3D%22M14%207h7v7%22/%3E%3C/svg%3E")}
+.pt-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0 0 16px}
+.pt-tab{display:flex;align-items:center;gap:12px;min-height:64px;padding:10px 14px;border-radius:14px;border:1px solid #e6ebf2;background:#fff;cursor:pointer;text-align:left;font-family:inherit;transition:background .15s,border-color .15s,box-shadow .15s}
+.pt-tab:hover{border-color:#bfdbfe;background:#f8fbff}
+.pt-tab.on{border-color:#3073f1;background:#eff6ff;box-shadow:0 0 0 3px rgba(48,115,241,.10)}
+.pt-tab:focus-visible{outline:2px solid #93c5fd;outline-offset:2px}
+.pt-ic{width:38px;height:38px;border-radius:11px;flex:none;display:grid;place-items:center;background:#f1f5f9;color:#64748b}
+.pt-ic::before{content:"";width:19px;height:19px;background:currentColor;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-position:center;mask-position:center}
+.pt-tab.on .pt-ic{background:#3073f1;color:#fff}
+.pt-tl{gap:2px !important;flex:1;min-width:0}
+.pt-tl b{font-size:14.5px;font-weight:600;color:#0f172a}
+.pt-tl small{font-size:12.5px;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pt-tab.on .pt-tl b{color:#1e40af;color:#2563eb}
+.pt-n{flex:none;min-width:28px;height:24px;padding:0 8px;border-radius:999px;background:#eef1f5;color:#475569;font-size:12.5px;font-weight:700;display:grid;place-items:center;font-variant-numeric:tabular-nums}
+.pt-tab.on .pt-n{background:#3073f1;color:#fff}
+.pt-pane{animation:ptIn .25s ease-out}
+@keyframes ptIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (max-width:900px){.pt-tabs{grid-template-columns:minmax(0,1fr)}.pt-tab{min-height:54px}}
+.ic-pt-scale::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%203v18M7%2021h10%22/%3E%3Cpath%20d%3D%22M5%207h14%22/%3E%3Cpath%20d%3D%22M5%207l-3%206a3%203%200%200%200%206%200z%22/%3E%3Cpath%20d%3D%22M19%207l-3%206a3%203%200%200%200%206%200z%22/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%203v18M7%2021h10%22/%3E%3Cpath%20d%3D%22M5%207h14%22/%3E%3Cpath%20d%3D%22M5%207l-3%206a3%203%200%200%200%206%200z%22/%3E%3Cpath%20d%3D%22M19%207l-3%206a3%203%200%200%200%206%200z%22/%3E%3C/svg%3E")}
+.ic-pt-users::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%229%22%20cy%3D%228%22%20r%3D%223%22/%3E%3Ccircle%20cx%3D%2217%22%20cy%3D%229%22%20r%3D%222.5%22/%3E%3Cpath%20d%3D%22M3%2020a6%206%200%200%201%2012%200M14%2020a4.5%204.5%200%200%201%207-3.7%22/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%229%22%20cy%3D%228%22%20r%3D%223%22/%3E%3Ccircle%20cx%3D%2217%22%20cy%3D%229%22%20r%3D%222.5%22/%3E%3Cpath%20d%3D%22M3%2020a6%206%200%200%201%2012%200M14%2020a4.5%204.5%200%200%201%207-3.7%22/%3E%3C/svg%3E")}
+.ic-pt-user::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%228%22%20r%3D%224%22/%3E%3Cpath%20d%3D%22M4.5%2021a7.5%207.5%200%200%201%2015%200%22/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%228%22%20r%3D%224%22/%3E%3Cpath%20d%3D%22M4.5%2021a7.5%207.5%200%200%201%2015%200%22/%3E%3C/svg%3E")}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -6618,7 +6638,9 @@ html[data-theme="dark"] .ds-host img{filter:none}
   </section>
 
   <section class="sec" id="tomonlar">
-    <div class="sh"><div><h2>Tomonlar</h2><p>Da'vogar va javobgar</p></div></div>
+    <div class="sh pt-sh"><div><h2>Ishtirokchilar</h2><p>{{ptSub}}</p></div></div>
+    <div class="pt-tabs" role="tablist" aria-label="Ishtirokchilar guruhlari"><sc-for list="{{ptTabs}}" as="t" hint-placeholder-count="3"><button type="button" role="tab" aria-selected="{{t.sel}}" class="{{t.cls}}" onClick="{{t.pick}}"><span class="{{t.icCls}}" aria-hidden="true"></span><span class="kv pt-tl"><b>{{t.l}}</b><small>{{t.sub}}</small></span><span class="pt-n">{{t.n}}</span></button></sc-for></div>
+    <sc-if value="{{ptTm}}" hint-placeholder-val="{{ true }}"><div class="pt-pane pt-tm">
     <div class="g2" style="gap: 16px; align-items: start">
       <div class="card" style="overflow: hidden; background: #fbfcfe">
         <div class="between" style="padding: 14px 18px; background: #ffffff; border-bottom: 1px solid #eef1f5"><span class="row" style="gap: 8px"><b style="font-size: 16px">Da'vogar</b><span class="dx-cnt">{{tmDvCount}}</span></span><button class="btn sm" onClick="{{tmAddDv}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v8M8 12h8"></path></svg>Qo'shish</button></div>
@@ -6729,6 +6751,76 @@ html[data-theme="dark"] .ds-host img{filter:none}
         </div>
       </div>
     </div>
+    </div></sc-if>
+    <sc-if value="{{ptQt}}" hint-placeholder-val="{{ false }}"><div class="pt-pane pt-qt">
+    <div class="g2 qp-g2" style="gap: 16px; align-items: stretch">
+      <div class="card qp-card">
+        <div class="between" style="padding: 14px 18px; background: #ffffff; border-bottom: 1px solid #eef1f5"><span class="row" style="gap: 8px"><b style="font-size: 16px">Qo'shimcha javobgar</b><sc-if value="{{qtJvHas}}" hint-placeholder-val="{{ true }}"><span class="dx-cnt">{{qtJvCount}}</span></sc-if></span><button class="btn sm" onClick="{{qtJvAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v8M8 12h8"></path></svg>Qo'shish</button></div>
+        <sc-if value="{{qtJvHas}}" hint-placeholder-val="{{ true }}">
+        <div class="tp-list" tabindex="0" role="list">
+        <sc-for list="{{qtJv}}" as="p" hint-placeholder-count="1">
+          <div class="pc pc-v2 pc-click" role="listitem" tabindex="0" title="To'liq ma'lumotni ko'rish" aria-label="{{p.infoLbl}}" onClick="{{p.openInfo}}" onKeyDown="{{p.infoKey}}">
+            <button class="pc-phbtn" aria-label="{{p.name}} — rasmni kattalashtirish" title="Rasmni kattalashtirish" onClick="{{p.viewPhoto}}"><img class="pc-ph" src="{{p.photo}}" alt="{{p.name}}"><span class="pc-zoom"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4M11 8v6M8 11h6"></path></svg></span></button>
+            <div class="pc-main">
+              <div class="pc-top"><b class="pc-name">{{p.name}}</b>
+                <div class="pc-acts"><button class="ib pc-id" aria-label="Smart varaqa (ID-karta)" title="Smart varaqa (ID-karta)" onClick="{{p.doc}}"><svg class="i pc-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"></rect><circle cx="9" cy="11" r="2"></circle><path d="M6.17 15a3 3 0 0 1 5.66 0"></path><path d="M15 10h3"></path><path d="M15 14h3"></path></svg></button><button class="ib pc-fp" aria-label="Barmoq izini skanerlash" title="Barmoq izini skanerlash" onClick="{{p.finger}}"><svg class="i pc-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"></path><path d="M14 13.12c0 2.38 0 6.38-1 8.88"></path><path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"></path><path d="M2 12a10 10 0 0 1 18-6"></path><path d="M2 16h.01"></path><path d="M21.8 16c.2-2 .131-5.354 0-6"></path><path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2"></path><path d="M8.65 22c.21-.66.45-1.32.57-2"></path><path d="M9 6.8a6 6 0 0 1 9 5.2v2"></path></svg></button><span class="pc-sep"></span><button class="ib pc-ed" aria-label="{{p.name}} — tahrirlash" title="Tahrirlash" onClick="{{p.edit}}"><svg class="i pc-ic2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5z"></path><path d="m15 5 4 4"></path></svg></button><button class="ib pc-del" aria-label="{{p.name}} — o'chirish" title="O'chirish" onClick="{{p.remove}}"><svg class="i pc-ic2" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><path d="M10 11v6"></path><path d="M14 11v6"></path></svg></button></div>
+              </div>
+              <div class="pc-mi"><span><svg class="i pc-mic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="2"></rect><path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path></svg>{{p.birthUz}} <em>({{p.age}} yosh)</em></span><span class="pc-msep" aria-hidden="true"></span><span><svg class="i pc-mic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path></svg>{{p.gender}}</span></div>
+              <span class="pc-addr" title="{{p.manzil}} · {{p.tuman}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><span>{{p.manzil}}</span></span>
+            </div>
+          </div>
+          </sc-for>
+        </div>
+        </sc-if>
+        <sc-if value="{{qtJvEmpty}}" hint-placeholder-val="{{ false }}"><div class="dx-empty qp-empty"><button class="dx-plus" aria-label="Javobgar qo'shish" onClick="{{qtJvAdd}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button><b>Javobgar qo'shish</b><small>Jismoniy yoki yuridik shaxsni tanlang</small></div></sc-if>
+      </div>
+      <div class="card qp-card">
+        <div class="between" style="padding: 14px 18px; background: #ffffff; border-bottom: 1px solid #eef1f5"><span class="row" style="gap: 8px"><b style="font-size: 16px">Arizachi</b><sc-if value="{{qtArHas}}" hint-placeholder-val="{{ true }}"><span class="dx-cnt">{{qtArCount}}</span></sc-if></span><button class="btn sm" onClick="{{qtArAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v8M8 12h8"></path></svg>Qo'shish</button></div>
+        <sc-if value="{{qtArHas}}" hint-placeholder-val="{{ true }}">
+        <div class="tp-list" tabindex="0" role="list">
+        <sc-for list="{{qtAr}}" as="p" hint-placeholder-count="1">
+          <div class="pc pc-v2 pc-click" role="listitem" tabindex="0" title="To'liq ma'lumotni ko'rish" aria-label="{{p.infoLbl}}" onClick="{{p.openInfo}}" onKeyDown="{{p.infoKey}}">
+            <button class="pc-phbtn" aria-label="{{p.name}} — rasmni kattalashtirish" title="Rasmni kattalashtirish" onClick="{{p.viewPhoto}}"><img class="pc-ph" src="{{p.photo}}" alt="{{p.name}}"><span class="pc-zoom"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4M11 8v6M8 11h6"></path></svg></span></button>
+            <div class="pc-main">
+              <div class="pc-top"><b class="pc-name">{{p.name}}</b>
+                <div class="pc-acts"><button class="ib pc-id" aria-label="Smart varaqa (ID-karta)" title="Smart varaqa (ID-karta)" onClick="{{p.doc}}"><svg class="i pc-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"></rect><circle cx="9" cy="11" r="2"></circle><path d="M6.17 15a3 3 0 0 1 5.66 0"></path><path d="M15 10h3"></path><path d="M15 14h3"></path></svg></button><button class="ib pc-fp" aria-label="Barmoq izini skanerlash" title="Barmoq izini skanerlash" onClick="{{p.finger}}"><svg class="i pc-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"></path><path d="M14 13.12c0 2.38 0 6.38-1 8.88"></path><path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"></path><path d="M2 12a10 10 0 0 1 18-6"></path><path d="M2 16h.01"></path><path d="M21.8 16c.2-2 .131-5.354 0-6"></path><path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2"></path><path d="M8.65 22c.21-.66.45-1.32.57-2"></path><path d="M9 6.8a6 6 0 0 1 9 5.2v2"></path></svg></button><span class="pc-sep"></span><button class="ib pc-ed" aria-label="{{p.name}} — tahrirlash" title="Tahrirlash" onClick="{{p.edit}}"><svg class="i pc-ic2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5z"></path><path d="m15 5 4 4"></path></svg></button><button class="ib pc-del" aria-label="{{p.name}} — o'chirish" title="O'chirish" onClick="{{p.remove}}"><svg class="i pc-ic2" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><path d="M10 11v6"></path><path d="M14 11v6"></path></svg></button></div>
+              </div>
+              <div class="pc-mi"><span><svg class="i pc-mic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="2"></rect><path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path></svg>{{p.birthUz}} <em>({{p.age}} yosh)</em></span><span class="pc-msep" aria-hidden="true"></span><span><svg class="i pc-mic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path></svg>{{p.gender}}</span></div>
+              <span class="pc-addr" title="{{p.manzil}} · {{p.tuman}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><span>{{p.manzil}}</span></span>
+            </div>
+          </div>
+          </sc-for>
+        </div>
+        </sc-if>
+        <sc-if value="{{qtArEmpty}}" hint-placeholder-val="{{ false }}"><div class="dx-empty qp-empty"><button class="dx-plus" aria-label="Arizachi qo'shish" onClick="{{qtArAdd}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button><b>Arizachi qo'shish</b><small>Jismoniy yoki yuridik shaxsni tanlang</small></div></sc-if>
+      </div>
+    </div>
+
+    </div></sc-if>
+    <sc-if value="{{ptQs}}" hint-placeholder-val="{{ false }}"><div class="pt-pane pt-qs">
+    <sc-if value="{{qshDdOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{itkDdClose}}"></button></sc-if>
+      <div class="card qp-card">
+        <div class="between" style="padding: 14px 18px; background: #ffffff; border-bottom: 1px solid #eef1f5"><span class="row" style="gap: 8px"><b style="font-size: 16px">Ishtirokchilar</b><sc-if value="{{qshHas}}" hint-placeholder-val="{{ true }}"><span class="dx-cnt">{{qshCount}}</span></sc-if></span><button class="btn sm" onClick="{{qshAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v8M8 12h8"></path></svg>Qo'shish</button></div>
+        <sc-if value="{{qshHas}}" hint-placeholder-val="{{ true }}">
+        <div class="tp-list qp-open qpc-list" role="list">
+        <sc-for list="{{qsh}}" as="p" hint-placeholder-count="1">
+          <div class="qpc qpc-v2 pc-click" role="listitem" tabindex="0" title="To'liq ma'lumotni ko'rish" aria-label="{{p.infoLbl}}" onClick="{{p.openInfo}}" onKeyDown="{{p.infoKey}}">
+            <button class="pc-phbtn qpc-ph" aria-label="{{p.name}} — rasmni kattalashtirish" title="Rasmni kattalashtirish" onClick="{{p.viewPhoto}}"><img class="pc-ph" src="{{p.photo}}" alt="{{p.name}}"><span class="pc-zoom"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4M11 8v6M8 11h6"></path></svg></span></button>
+            <div class="qpc-main">
+              <div class="qpc-top"><b class="qpc-name">{{p.name}}</b><div class="pc-rolesel"><span class="{{p.rolDd.cls}}" id="{{p.rolDd.id}}" onKeyDown="{{p.rolDd.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{p.rolDd.exp}}" disabled="{{p.rolDd.dis}}" onClick="{{p.rolDd.toggle}}" style="border-color: {{p.rolDd.bc}}"><span class="{{p.rolDd.vcls}}">{{p.rolDd.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{p.rolDd.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{p.rolDd.stop}}"><sc-for list="{{p.rolDd.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></div><sc-if value="{{p.isVk}}" hint-placeholder-val="{{ false }}"><div class="pc-rolesel qpc-vksel"><span class="{{p.vkDd.cls}}" id="{{p.vkDd.id}}" onKeyDown="{{p.vkDd.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-label="{{p.vkAria}}" title="{{p.vkAria}}" aria-expanded="{{p.vkDd.exp}}" disabled="{{p.vkDd.dis}}" onClick="{{p.vkDd.toggle}}" style="border-color: {{p.vkDd.bc}}"><svg class="i s qpc-vki" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6z"></path><path d="M9 12l2 2 4-4"></path></svg><span class="{{p.vkDd.vcls}}">{{p.vkDd.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{p.vkDd.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{p.vkDd.stop}}"><sc-for list="{{p.vkDd.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></div></sc-if></div>
+              
+              <div class="pc-mi"><span><svg class="i pc-mic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="2"></rect><path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path></svg>{{p.birthUz}} <em>({{p.age}} yosh)</em></span><span class="pc-msep" aria-hidden="true"></span><span><svg class="i pc-mic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path></svg>{{p.gender}}</span></div>
+              <span class="qpc-addr" title="{{p.manzil}} · {{p.tuman}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><span>{{p.manzil}}</span></span>
+            </div>
+            <div class="qpc-acts"><button class="ib pc-id" aria-label="Smart varaqa (ID-karta)" title="Smart varaqa (ID-karta)" onClick="{{p.doc}}"><svg class="i pc-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"></rect><circle cx="9" cy="11" r="2"></circle><path d="M6.17 15a3 3 0 0 1 5.66 0"></path><path d="M15 10h3"></path><path d="M15 14h3"></path></svg></button><button class="ib pc-fp" aria-label="Barmoq izini skanerlash" title="Barmoq izini skanerlash" onClick="{{p.finger}}"><svg class="i pc-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"></path><path d="M14 13.12c0 2.38 0 6.38-1 8.88"></path><path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"></path><path d="M2 12a10 10 0 0 1 18-6"></path><path d="M2 16h.01"></path><path d="M21.8 16c.2-2 .131-5.354 0-6"></path><path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2"></path><path d="M8.65 22c.21-.66.45-1.32.57-2"></path><path d="M9 6.8a6 6 0 0 1 9 5.2v2"></path></svg></button><span class="qpc-sep"></span><button class="ib pc-ed" aria-label="{{p.name}} — tahrirlash" title="Tahrirlash" onClick="{{p.edit}}"><svg class="i pc-ic2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5z"></path><path d="m15 5 4 4"></path></svg></button><button class="ib pc-del" aria-label="{{p.name}} — o'chirish" title="O'chirish" onClick="{{p.remove}}"><svg class="i pc-ic2" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><path d="M10 11v6"></path><path d="M14 11v6"></path></svg></button></div>
+          </div>
+          </sc-for>
+        </div>
+        </sc-if>
+        <sc-if value="{{qshEmpty}}" hint-placeholder-val="{{ false }}"><div class="dx-empty qp-empty"><button class="dx-plus" aria-label="Qo'shimcha shaxs qo'shish" onClick="{{qshAdd}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button><b>Qo'shimcha shaxs qo'shish</b><small>Guvoh, ekspert, mutaxassis yoki tarjimonni tanlang va rolini belgilang</small></div></sc-if>
+      </div>
+
+    </div></sc-if>
   </section>
 
   <section class="sec" id="qarshi">
@@ -6872,82 +6964,6 @@ html[data-theme="dark"] .ds-host img{filter:none}
     <sc-if value="{{itkGrandHas}}" hint-placeholder-val="{{ true }}"><div class="dx-grand" style="margin-top: 12px"><span class="row" style="gap: 8px"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg>Umumiy da'vo summasi</span><b>{{itkGrand}}</b></div></sc-if>
   </section>
 
-</div>
-
-<!-- ================= ISHTIROKCHILAR ================= -->
-<div class="group">
-  <div class="group-h">Ishtirokchilar</div>
-
-  <section class="sec" id="qtomonlar">
-    <div class="sh"><div><h2>Qo'shimcha tomonlar</h2><p>Ishga keyinchalik jalb qilingan javobgar va arizachilar</p></div></div>
-    <div class="g2 qp-g2" style="gap: 16px; align-items: stretch">
-      <div class="card qp-card">
-        <div class="between" style="padding: 14px 18px; background: #ffffff; border-bottom: 1px solid #eef1f5"><span class="row" style="gap: 8px"><b style="font-size: 16px">Qo'shimcha javobgar</b><sc-if value="{{qtJvHas}}" hint-placeholder-val="{{ true }}"><span class="dx-cnt">{{qtJvCount}}</span></sc-if></span><button class="btn sm" onClick="{{qtJvAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v8M8 12h8"></path></svg>Qo'shish</button></div>
-        <sc-if value="{{qtJvHas}}" hint-placeholder-val="{{ true }}">
-        <div class="tp-list" tabindex="0" role="list">
-        <sc-for list="{{qtJv}}" as="p" hint-placeholder-count="1">
-          <div class="pc pc-v2 pc-click" role="listitem" tabindex="0" title="To'liq ma'lumotni ko'rish" aria-label="{{p.infoLbl}}" onClick="{{p.openInfo}}" onKeyDown="{{p.infoKey}}">
-            <button class="pc-phbtn" aria-label="{{p.name}} — rasmni kattalashtirish" title="Rasmni kattalashtirish" onClick="{{p.viewPhoto}}"><img class="pc-ph" src="{{p.photo}}" alt="{{p.name}}"><span class="pc-zoom"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4M11 8v6M8 11h6"></path></svg></span></button>
-            <div class="pc-main">
-              <div class="pc-top"><b class="pc-name">{{p.name}}</b>
-                <div class="pc-acts"><button class="ib pc-id" aria-label="Smart varaqa (ID-karta)" title="Smart varaqa (ID-karta)" onClick="{{p.doc}}"><svg class="i pc-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"></rect><circle cx="9" cy="11" r="2"></circle><path d="M6.17 15a3 3 0 0 1 5.66 0"></path><path d="M15 10h3"></path><path d="M15 14h3"></path></svg></button><button class="ib pc-fp" aria-label="Barmoq izini skanerlash" title="Barmoq izini skanerlash" onClick="{{p.finger}}"><svg class="i pc-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"></path><path d="M14 13.12c0 2.38 0 6.38-1 8.88"></path><path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"></path><path d="M2 12a10 10 0 0 1 18-6"></path><path d="M2 16h.01"></path><path d="M21.8 16c.2-2 .131-5.354 0-6"></path><path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2"></path><path d="M8.65 22c.21-.66.45-1.32.57-2"></path><path d="M9 6.8a6 6 0 0 1 9 5.2v2"></path></svg></button><span class="pc-sep"></span><button class="ib pc-ed" aria-label="{{p.name}} — tahrirlash" title="Tahrirlash" onClick="{{p.edit}}"><svg class="i pc-ic2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5z"></path><path d="m15 5 4 4"></path></svg></button><button class="ib pc-del" aria-label="{{p.name}} — o'chirish" title="O'chirish" onClick="{{p.remove}}"><svg class="i pc-ic2" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><path d="M10 11v6"></path><path d="M14 11v6"></path></svg></button></div>
-              </div>
-              <div class="pc-mi"><span><svg class="i pc-mic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="2"></rect><path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path></svg>{{p.birthUz}} <em>({{p.age}} yosh)</em></span><span class="pc-msep" aria-hidden="true"></span><span><svg class="i pc-mic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path></svg>{{p.gender}}</span></div>
-              <span class="pc-addr" title="{{p.manzil}} · {{p.tuman}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><span>{{p.manzil}}</span></span>
-            </div>
-          </div>
-          </sc-for>
-        </div>
-        </sc-if>
-        <sc-if value="{{qtJvEmpty}}" hint-placeholder-val="{{ false }}"><div class="dx-empty qp-empty"><button class="dx-plus" aria-label="Javobgar qo'shish" onClick="{{qtJvAdd}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button><b>Javobgar qo'shish</b><small>Jismoniy yoki yuridik shaxsni tanlang</small></div></sc-if>
-      </div>
-      <div class="card qp-card">
-        <div class="between" style="padding: 14px 18px; background: #ffffff; border-bottom: 1px solid #eef1f5"><span class="row" style="gap: 8px"><b style="font-size: 16px">Arizachi</b><sc-if value="{{qtArHas}}" hint-placeholder-val="{{ true }}"><span class="dx-cnt">{{qtArCount}}</span></sc-if></span><button class="btn sm" onClick="{{qtArAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v8M8 12h8"></path></svg>Qo'shish</button></div>
-        <sc-if value="{{qtArHas}}" hint-placeholder-val="{{ true }}">
-        <div class="tp-list" tabindex="0" role="list">
-        <sc-for list="{{qtAr}}" as="p" hint-placeholder-count="1">
-          <div class="pc pc-v2 pc-click" role="listitem" tabindex="0" title="To'liq ma'lumotni ko'rish" aria-label="{{p.infoLbl}}" onClick="{{p.openInfo}}" onKeyDown="{{p.infoKey}}">
-            <button class="pc-phbtn" aria-label="{{p.name}} — rasmni kattalashtirish" title="Rasmni kattalashtirish" onClick="{{p.viewPhoto}}"><img class="pc-ph" src="{{p.photo}}" alt="{{p.name}}"><span class="pc-zoom"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4M11 8v6M8 11h6"></path></svg></span></button>
-            <div class="pc-main">
-              <div class="pc-top"><b class="pc-name">{{p.name}}</b>
-                <div class="pc-acts"><button class="ib pc-id" aria-label="Smart varaqa (ID-karta)" title="Smart varaqa (ID-karta)" onClick="{{p.doc}}"><svg class="i pc-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"></rect><circle cx="9" cy="11" r="2"></circle><path d="M6.17 15a3 3 0 0 1 5.66 0"></path><path d="M15 10h3"></path><path d="M15 14h3"></path></svg></button><button class="ib pc-fp" aria-label="Barmoq izini skanerlash" title="Barmoq izini skanerlash" onClick="{{p.finger}}"><svg class="i pc-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"></path><path d="M14 13.12c0 2.38 0 6.38-1 8.88"></path><path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"></path><path d="M2 12a10 10 0 0 1 18-6"></path><path d="M2 16h.01"></path><path d="M21.8 16c.2-2 .131-5.354 0-6"></path><path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2"></path><path d="M8.65 22c.21-.66.45-1.32.57-2"></path><path d="M9 6.8a6 6 0 0 1 9 5.2v2"></path></svg></button><span class="pc-sep"></span><button class="ib pc-ed" aria-label="{{p.name}} — tahrirlash" title="Tahrirlash" onClick="{{p.edit}}"><svg class="i pc-ic2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5z"></path><path d="m15 5 4 4"></path></svg></button><button class="ib pc-del" aria-label="{{p.name}} — o'chirish" title="O'chirish" onClick="{{p.remove}}"><svg class="i pc-ic2" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><path d="M10 11v6"></path><path d="M14 11v6"></path></svg></button></div>
-              </div>
-              <div class="pc-mi"><span><svg class="i pc-mic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="2"></rect><path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path></svg>{{p.birthUz}} <em>({{p.age}} yosh)</em></span><span class="pc-msep" aria-hidden="true"></span><span><svg class="i pc-mic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path></svg>{{p.gender}}</span></div>
-              <span class="pc-addr" title="{{p.manzil}} · {{p.tuman}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><span>{{p.manzil}}</span></span>
-            </div>
-          </div>
-          </sc-for>
-        </div>
-        </sc-if>
-        <sc-if value="{{qtArEmpty}}" hint-placeholder-val="{{ false }}"><div class="dx-empty qp-empty"><button class="dx-plus" aria-label="Arizachi qo'shish" onClick="{{qtArAdd}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button><b>Arizachi qo'shish</b><small>Jismoniy yoki yuridik shaxsni tanlang</small></div></sc-if>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="qshaxslar">
-    <sc-if value="{{qshDdOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{itkDdClose}}"></button></sc-if>
-    <div class="sh"><div><h2>Qo'shimcha shaxslar</h2><p>Guvohlar, ekspertlar, tarjimonlar va boshqa ishtirokchilar</p></div></div>
-      <div class="card qp-card">
-        <div class="between" style="padding: 14px 18px; background: #ffffff; border-bottom: 1px solid #eef1f5"><span class="row" style="gap: 8px"><b style="font-size: 16px">Ishtirokchilar</b><sc-if value="{{qshHas}}" hint-placeholder-val="{{ true }}"><span class="dx-cnt">{{qshCount}}</span></sc-if></span><button class="btn sm" onClick="{{qshAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v8M8 12h8"></path></svg>Qo'shish</button></div>
-        <sc-if value="{{qshHas}}" hint-placeholder-val="{{ true }}">
-        <div class="tp-list qp-open qpc-list" role="list">
-        <sc-for list="{{qsh}}" as="p" hint-placeholder-count="1">
-          <div class="qpc qpc-v2 pc-click" role="listitem" tabindex="0" title="To'liq ma'lumotni ko'rish" aria-label="{{p.infoLbl}}" onClick="{{p.openInfo}}" onKeyDown="{{p.infoKey}}">
-            <button class="pc-phbtn qpc-ph" aria-label="{{p.name}} — rasmni kattalashtirish" title="Rasmni kattalashtirish" onClick="{{p.viewPhoto}}"><img class="pc-ph" src="{{p.photo}}" alt="{{p.name}}"><span class="pc-zoom"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4M11 8v6M8 11h6"></path></svg></span></button>
-            <div class="qpc-main">
-              <div class="qpc-top"><b class="qpc-name">{{p.name}}</b><div class="pc-rolesel"><span class="{{p.rolDd.cls}}" id="{{p.rolDd.id}}" onKeyDown="{{p.rolDd.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{p.rolDd.exp}}" disabled="{{p.rolDd.dis}}" onClick="{{p.rolDd.toggle}}" style="border-color: {{p.rolDd.bc}}"><span class="{{p.rolDd.vcls}}">{{p.rolDd.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{p.rolDd.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{p.rolDd.stop}}"><sc-for list="{{p.rolDd.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></div><sc-if value="{{p.isVk}}" hint-placeholder-val="{{ false }}"><div class="pc-rolesel qpc-vksel"><span class="{{p.vkDd.cls}}" id="{{p.vkDd.id}}" onKeyDown="{{p.vkDd.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-label="{{p.vkAria}}" title="{{p.vkAria}}" aria-expanded="{{p.vkDd.exp}}" disabled="{{p.vkDd.dis}}" onClick="{{p.vkDd.toggle}}" style="border-color: {{p.vkDd.bc}}"><svg class="i s qpc-vki" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6z"></path><path d="M9 12l2 2 4-4"></path></svg><span class="{{p.vkDd.vcls}}">{{p.vkDd.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{p.vkDd.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{p.vkDd.stop}}"><sc-for list="{{p.vkDd.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></div></sc-if></div>
-              
-              <div class="pc-mi"><span><svg class="i pc-mic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="2"></rect><path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path></svg>{{p.birthUz}} <em>({{p.age}} yosh)</em></span><span class="pc-msep" aria-hidden="true"></span><span><svg class="i pc-mic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path></svg>{{p.gender}}</span></div>
-              <span class="qpc-addr" title="{{p.manzil}} · {{p.tuman}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><span>{{p.manzil}}</span></span>
-            </div>
-            <div class="qpc-acts"><button class="ib pc-id" aria-label="Smart varaqa (ID-karta)" title="Smart varaqa (ID-karta)" onClick="{{p.doc}}"><svg class="i pc-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"></rect><circle cx="9" cy="11" r="2"></circle><path d="M6.17 15a3 3 0 0 1 5.66 0"></path><path d="M15 10h3"></path><path d="M15 14h3"></path></svg></button><button class="ib pc-fp" aria-label="Barmoq izini skanerlash" title="Barmoq izini skanerlash" onClick="{{p.finger}}"><svg class="i pc-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"></path><path d="M14 13.12c0 2.38 0 6.38-1 8.88"></path><path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"></path><path d="M2 12a10 10 0 0 1 18-6"></path><path d="M2 16h.01"></path><path d="M21.8 16c.2-2 .131-5.354 0-6"></path><path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2"></path><path d="M8.65 22c.21-.66.45-1.32.57-2"></path><path d="M9 6.8a6 6 0 0 1 9 5.2v2"></path></svg></button><span class="qpc-sep"></span><button class="ib pc-ed" aria-label="{{p.name}} — tahrirlash" title="Tahrirlash" onClick="{{p.edit}}"><svg class="i pc-ic2" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5z"></path><path d="m15 5 4 4"></path></svg></button><button class="ib pc-del" aria-label="{{p.name}} — o'chirish" title="O'chirish" onClick="{{p.remove}}"><svg class="i pc-ic2" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><path d="M10 11v6"></path><path d="M14 11v6"></path></svg></button></div>
-          </div>
-          </sc-for>
-        </div>
-        </sc-if>
-        <sc-if value="{{qshEmpty}}" hint-placeholder-val="{{ false }}"><div class="dx-empty qp-empty"><button class="dx-plus" aria-label="Qo'shimcha shaxs qo'shish" onClick="{{qshAdd}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button><b>Qo'shimcha shaxs qo'shish</b><small>Guvoh, ekspert, mutaxassis yoki tarjimonni tanlang va rolini belgilang</small></div></sc-if>
-      </div>
-  </section>
 </div>
 
 <!-- ================= HUJJATLAR ================= -->
@@ -8815,9 +8831,8 @@ html[data-theme="dark"] .ds-host img{filter:none}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1920,"height":1080}}'>
 var NAV = [
-  { t: "Birinchi instansiya", i: [["umumiy", "Umumiy"], ["tomonlar", "Tomonlar"], ["qarshi", "Qarshi da'volar"]] },
+  { t: "Birinchi instansiya", i: [["umumiy", "Umumiy"], ["tomonlar", "Ishtirokchilar"], ["qarshi", "Qarshi da'volar"]] },
   { t: "Ish mazmuni", i: [["bankrotlik", "Bankrotlik bo'yicha"], ["turkumlar", "Ish mazmuni va da'vo summasi"]] },
-  { t: "Ishtirokchilar", i: [["qtomonlar", "Qo'shimcha tomonlar"], ["qshaxslar", "Qo'shimcha shaxslar"]] },
   { t: "Hujjatlar", i: [["hujjatlar", "Ish hujjatlari"], ["jildlar", "Yig'ma jildlar"], ["loglar", "Loglar"], ["prokuratura", "Prokuratura"]] },
   { t: "Da'voni ta'minlash", i: [["notarius", "Notarius tizimidan"], ["mib", "MIB tizimidan"], ["tahujjat", "Da'voni ta'minlash hujjatlari"], ["tasir", "Ta'sir choralari"], ["ijrov", "Ijro varaqalari"]] },
   { t: "Yangi sud ekspertiza tizimi", i: [["y-sorov", "Ekspertiza so'rovi"], ["iltimosnoma", "Iltimosnoma"], ["kvitansiya", "Kvitansiyalar"]] },
@@ -13274,6 +13289,14 @@ class Component extends DCLogic {
           print: function () { self.flash("SMART varaqa chop etishga yuborildi"); }
         };
         setTimeout(function () { try { var m = document.querySelector(".smd"), b = m && m.querySelector(".smd-tab.on"); if (b && !m.contains(document.activeElement)) b.focus(); } catch (er) {} }, 0);
+      })();
+      // ---- Ishtirokchilar: tablar ----
+      (function () {
+        var k = s.ptab || "tm", L = function (a) { return (a || []).length; };
+        var T = [["tm", "Tomonlar", "Da'vogar va javobgar", L(s.tmDv) + L(s.tmJv), "scale"], ["qt", "Qo'shimcha tomonlar", "Qo'shimcha javobgar va arizachi", L(s.qtJv) + L(s.qtAr), "users"], ["qs", "Qo'shimcha shaxslar", "Guvoh, ekspert, vakil va boshqalar", L(s.qsh), "user"]];
+        __out.ptTabs = T.map(function (t) { var on = t[0] === k; return { l: t[1], sub: t[2], n: String(t[3]), sel: on ? "true" : "false", cls: "pt-tab" + (on ? " on" : ""), icCls: "pt-ic ic-pt-" + t[4], pick: function () { self.setState({ ptab: t[0], dxDd: "" }); } }; });
+        __out.ptTm = k === "tm"; __out.ptQt = k === "qt"; __out.ptQs = k === "qs";
+        __out.ptSub = "Jami " + (L(s.tmDv) + L(s.tmJv) + L(s.qtJv) + L(s.qtAr) + L(s.qsh)) + " ta ishtirokchi · tomonlar, qo'shimcha tomonlar va qo'shimcha shaxslar";
       })();
       // ---- Kalendar: sudyaning ishda bo'lmagan davri va band kunlar ----
       (function () {
