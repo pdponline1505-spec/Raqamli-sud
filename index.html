@@ -5308,6 +5308,16 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .qv.smd.igr{grid-template-columns:minmax(0,1fr) !important;width:min(1000px,100%) !important}
 .igr .smd-main{border-radius:18px}
 .qv.smd.igr:focus{outline:none}
+.igr-tag.wait{background:#f1f5f9;color:#475569}
+.igr-tag.err{background:#fef2f2;color:#b91c1c}
+.igr-empty{display:flex;align-items:center;gap:14px;padding:18px;border-radius:12px;border:1px dashed #d5dbe4;background:#fafbfc}
+.igr-empty b{font-size:14.5px;font-weight:600;color:#334155}
+.igr-empty small{font-size:13px;color:#64748b}
+.igr-emi{width:40px;height:40px;border-radius:12px;flex:none;display:grid;place-items:center;background:#f1f5f9;color:#64748b}
+.igr-err{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:14px;border:1px solid #fecaca;background:#fff5f5}
+.igr-err b{font-size:14.5px;font-weight:600;color:#991b1b}
+.igr-err small{font-size:13px;color:#b91c1c}
+.igr-erri{width:36px;height:36px;border-radius:10px;flex:none;display:grid;place-items:center;background:#fee2e2;color:#dc2626}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -8466,10 +8476,12 @@ html[data-theme="dark"] .ds-host img{filter:none}
   <button class="qv-bg" aria-label="Oynani yopish" onClick="{{igDetClose}}"></button>
   <div class="qv smd igr" role="dialog" aria-modal="true" aria-labelledby="igr-t" tabindex="-1" onKeyDown="{{igr.kd}}">
     <div class="smd-main">
-      <div class="smd-top"><div class="kv" style="gap: 2px; min-width: 0"><b id="igr-t" class="smd-h">{{igr.title}}</b><small class="smd-sub">{{igr.sub}}</small></div><span style="flex: 1"></span><span class="badge b-green igr-st">{{igr.status}}</span><button class="btn sm" onClick="{{igr.print}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6"></path><rect x="3" y="9" width="18" height="8" rx="2"></rect><path d="M7 14h10v7H7z"></path></svg>Chop etish</button><button class="btn sm pri igr-dl" title="{{igr.dlTitle}}" onClick="{{igr.download}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>{{igr.dlLbl}}</button><button class="ib" aria-label="Yopish" onClick="{{igDetClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+      <div class="smd-top"><div class="kv" style="gap: 2px; min-width: 0"><b id="igr-t" class="smd-h">{{igr.title}}</b><small class="smd-sub">{{igr.sub}}</small></div><span style="flex: 1"></span><span class="{{igr.stCls}}">{{igr.status}}</span><button class="btn sm" onClick="{{igr.print}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6"></path><rect x="3" y="9" width="18" height="8" rx="2"></rect><path d="M7 14h10v7H7z"></path></svg>Chop etish</button><sc-if value="{{igr.hasFinal}}" hint-placeholder-val="{{ true }}"><button class="btn sm pri igr-dl" title="{{igr.dlTitle}}" onClick="{{igr.download}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>{{igr.dlLbl}}</button></sc-if><button class="ib" aria-label="Yopish" onClick="{{igDetClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
       <div class="smd-scroll"><div class="smd-sec igr-sec">
+        <sc-if value="{{igr.hasErr}}" hint-placeholder-val="{{ false }}"><div class="igr-err"><span class="igr-erri" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6M12 16v.5"></path></svg></span><div class="kv" style="gap: 2px; min-width: 0; flex: 1"><b>So'rov yuborishda xatolik</b><small>{{igr.err}}</small></div><button class="btn sm" onClick="{{igr.retry}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"></path></svg>Qayta yuborish</button></div></sc-if>
         <sc-for list="{{igr.cards}}" as="g" hint-placeholder-count="2"><div class="smd-card"><span class="smd-ct"><span class="{{g.icCls}}" aria-hidden="true"></span>{{g.t}}<sc-if value="{{g.hasTag}}" hint-placeholder-val="{{ false }}"><span class="{{g.tagCls}}">{{g.tag}}</span></sc-if></span>
           <sc-if value="{{g.hasPhoto}}" hint-placeholder-val="{{ true }}"><div class="smd-idb"><img class="smd-ph" src="{{g.photo}}" alt="{{g.name}}"><dl class="smd-idg"><sc-for list="{{g.rows}}" as="r" hint-placeholder-count="6"><div class="{{r.cls}}"><dt>{{r.k}}</dt><dd class="{{r.vcls}}">{{r.v}}</dd></div></sc-for></dl></div></sc-if>
+          <sc-if value="{{g.isEmpty}}" hint-placeholder-val="{{ false }}"><div class="igr-empty"><span class="igr-emi" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span><div class="kv" style="gap: 2px; min-width: 0"><b>{{g.emptyT}}</b><small>{{g.emptyS}}</small></div></div></sc-if>
           <sc-if value="{{g.noPhoto}}" hint-placeholder-val="{{ false }}"><dl class="smd-idg"><sc-for list="{{g.rows}}" as="r" hint-placeholder-count="4"><div class="{{r.cls}}"><dt>{{r.k}}</dt><dd class="{{r.vcls}}">{{r.v}}</dd></div></sc-for></dl></sc-if>
         </div></sc-for>
         <sc-if value="{{igr.isSteps}}" hint-placeholder-val="{{ false }}"><div class="smd-card"><span class="smd-ct"><span class="smd-ni ic-trend" aria-hidden="true"></span>So'rov jarayoni<span class="igr-tag ok">{{igr.progTxt}}</span></span><div class="prd-steps igr-steps"><sc-for list="{{igr.steps}}" as="st" hint-placeholder-count="4"><div class="{{st.cls}}"><span class="prd-dot"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span><div class="kv" style="gap: 2px; min-width: 0; flex: 1"><b>{{st.label}}</b><sc-if value="{{st.hasSub}}" hint-placeholder-val="{{ false }}"><small>{{st.sub}}</small></sc-if></div><span class="prd-dt">{{st.value}}</span></div></sc-for></div></div></sc-if>
@@ -13846,7 +13858,7 @@ class Component extends DCLogic {
         __out.igDet = dr ? mapRow(DC, dr) : { steps: [] };
         if (dr && DC === IG.pr) { var prId = dr0.id; __out.igDet.retry = function () { self.setState({ pr: self.state.pr.map(function (r) { return r.id === prId ? Object.assign({}, r, { err: "", sent: nowS() }) : r; }) }); self.flash("So'rov qayta yuborildi"); }; }
         // yakunlangan so'rov: javob ma'lumotlari (prokuratura / advokat / ekspert)
-        if (dr && dr.final) (function () {
+        if (dr) (function () {
           var h = 0; String(dr.id + dr.num).split("").forEach(function (c) { h = (h * 31 + c.charCodeAt(0)) % 1000003; });
           var dg = function (k, m) { var v = String((h * (k * 7919 + 13)) % Math.pow(10, m)); while (v.length < m) v = "0" + v; return v; };
           var xs = dr.x || "", pk = /^Javobgar/.test(xs) ? "tmJv" : /^Qo'shimcha javobgar/.test(xs) ? "qtJv" : /^Arizachi/.test(xs) ? "qtAr" : DC === IG.eks ? "tmJv" : "tmDv";
@@ -13879,6 +13891,8 @@ class Component extends DCLogic {
           }
           var req = { t: "So'rov ma'lumotlari", icCls: "ign-ic ic-ign-doc", hasTag: false, hasPerson: false,
             rows: [row("So'rov raqami", dr.num, 0, "mono"), row("Instansiya", "Birinchi instansiya"), row("Sudya", "Tojiyev Zokirjon Xolboyevich"), row("Viloyat / tuman", reg || "—")].concat(extra) };
+          if (!dr.who) person = { t: person.t, hasTag: true, tag: dr.err ? "Xatolik" : "Kutilmoqda", tagCls: "ign-tag", hasPerson: false, rows: [], isEmpty: true,
+            emptyT: dr.err ? "So'rov yetkazilmadi" : "Hali biriktirilmagan", emptyS: dr.err ? "Xatolik tufayli javob olinmadi — so'rovni qayta yuboring" : DC.waitTxt + ". Javob kelgach ma'lumotlar shu yerda ko'rinadi" };
           var res = [party, person, req];
           var ttl = DC === IG.pr ? "Prokurorni jalb qilish so'roviga javob" : DC === IG.eks ? "Ekspertiza tayinlash so'roviga javob" : "Advokatni jalb qilish so'roviga javob";
           __out.igDet.hasRes = true; __out.igDet.noRes = false; __out.igDet.res = res; __out.igDet.qvCls = "qv prd ign-qv";
@@ -13893,23 +13907,23 @@ class Component extends DCLogic {
         // SMART uslubidagi javob oynasi
         (function () {
           var D = __out.igDet, open = !!dr && !!s.caseOpen;
-          __out.igrOpen = open && !!D.hasRes; __out.igDetOpen = open && !D.hasRes;
+          __out.igrOpen = open; __out.igDetOpen = false;
           if (!__out.igrOpen) { __out.igr = { secs: [], cards: [], steps: [], kd: function () {}, print: function () {}, download: function () {} }; return; }
           var res = D.res, gen = function (n) { return /(ovna|evna|qizi)$/i.test(String(n || "").trim()) ? "Ayol" : "Erkak"; };
           var kind = DC === IG.pr ? "pr" : DC === IG.eks ? "eks" : "adv";
           var PL = { pr: ["Prokuror", "ic-shield"], adv: ["Advokat", "ic-job"], eks: ["Ekspert", "ic-search"] }[kind];
           var cur = "ov";
           var SECS = [["ov", "Umumiy ko'rinish", "ic-dash", true], ["party", "Taraf ma'lumotlari", "ic-user"], ["who", PL[0] + " ma'lumotlari", PL[1]], ["req", "So'rov ma'lumotlari", "ic-id"], ["steps", "So'rov jarayoni", "ic-trend"]];
-          var mkCard = function (g) { var ph = g.hasPerson; return { t: g.t, icCls: "smd-ni " + (g === res[0] ? "ic-user" : g === res[1] ? PL[1] : "ic-id"), hasTag: !!g.hasTag, tag: g.tag, tagCls: "igr-tag" + (/ok/.test(g.tagCls || "") ? " ok" : ""),
-            hasPhoto: ph, noPhoto: !ph, photo: ph ? portrait(g.name, g === res[0] ? ((s.tmDv || []).concat(s.tmJv || []).filter(function (x) { return x.name === g.name; })[0] || {}).gender || gen(g.name) : gen(g.name)) : "", name: g.name || "",
+          var mkCard = function (g) { var ph = g.hasPerson, em = !!g.isEmpty; return { t: g.t, isEmpty: em, emptyT: g.emptyT || "", emptyS: g.emptyS || "", icCls: "smd-ni " + (g === res[0] ? "ic-user" : g === res[1] ? PL[1] : "ic-id"), hasTag: !!g.hasTag, tag: g.tag, tagCls: "igr-tag" + (/ok/.test(g.tagCls || "") ? " ok" : em ? (/Xato/.test(g.tag) ? " err" : " wait") : ""),
+            hasPhoto: ph, noPhoto: !ph && !em, photo: ph ? portrait(g.name, g === res[0] ? ((s.tmDv || []).concat(s.tmJv || []).filter(function (x) { return x.name === g.name; })[0] || {}).gender || gen(g.name) : gen(g.name)) : "", name: g.name || "",
             rows: (ph ? [{ k: "F.I.Sh.", v: g.name, cls: "w2", vcls: "" }, { k: "Roli", v: g.role.split(" · ")[0], cls: "", vcls: "" }] : []).concat(g.rows) }; };
           var cards = cur === "ov" ? res.map(mkCard) : cur === "party" ? [mkCard(res[0])] : cur === "who" ? [mkCard(res[1])] : cur === "req" ? [mkCard(res[2])] : [];
           var go = function (k) { return function () { self.setState({ igrTab: k }); }; };
           __out.igr = {
             brand: "So'rov javobi", logoCls: "smd-ni " + PL[1],
             secs: SECS.map(function (q) { var on = q[0] === cur; return { t: q[1], icCls: "smd-ni " + q[2], cls: "smd-tab" + (on ? " on" : ""), sel: on ? "true" : "false", sep: !!q[3], pick: go(q[0]) }; }),
-            title: "So'rov javobi", sub: D.num + " · " + D.org,
-            status: D.status, dlLbl: "Yuklab olish", dlTitle: D.dlLbl, print: D.print, download: D.download,
+            title: D.hasFinal ? "So'rov javobi" : "So'rov tafsilotlari", sub: D.num + " · " + D.org,
+            status: D.status, stCls: "badge " + D.badgeCls + " igr-st", hasFinal: !!D.hasFinal, hasErr: !!D.hasErr, err: D.err || "", retry: D.retry, dlLbl: "Yuklab olish", dlTitle: D.dlLbl, print: D.print, download: D.download,
             meName: res[1].name, meRole: "Biriktirilgan " + PL[0].toLowerCase(), mePhoto: portrait(res[1].name, gen(res[1].name)),
             cards: cards, isSteps: cur === "ov" || cur === "steps", steps: D.steps, progTxt: D.progTxt,
             kd: function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ igDet: "", igrTab: "ov" }); } else if ((e.key === "ArrowDown" || e.key === "ArrowUp") && e.target.closest && e.target.closest(".smd-nav")) { e.preventDefault(); var ks = SECS.map(function (q) { return q[0]; }), ix = (ks.indexOf(cur) + (e.key === "ArrowDown" ? 1 : -1) + ks.length) % ks.length; self.setState({ igrTab: ks[ix] }); setTimeout(function () { try { document.querySelectorAll(".igr .smd-tab")[ix].focus(); } catch (er) {} }, 0); } }
