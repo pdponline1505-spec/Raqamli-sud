@@ -5305,6 +5305,9 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .igr .smd-idb .smd-ph{min-height:150px}
 .igr-steps{margin:0}
 @media (max-width:900px){.igr .smd-top{flex-wrap:wrap}}
+.qv.smd.igr{grid-template-columns:minmax(0,1fr) !important;width:min(1000px,100%) !important}
+.igr .smd-main{border-radius:18px}
+.qv.smd.igr:focus{outline:none}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -8462,11 +8465,6 @@ html[data-theme="dark"] .ds-host img{filter:none}
 <div class="qv-wrap" style="z-index: 81">
   <button class="qv-bg" aria-label="Oynani yopish" onClick="{{igDetClose}}"></button>
   <div class="qv smd igr" role="dialog" aria-modal="true" aria-labelledby="igr-t" tabindex="-1" onKeyDown="{{igr.kd}}">
-    <aside class="smd-side">
-      <div class="smd-brand"><span class="smd-logo"><span class="{{igr.logoCls}}" aria-hidden="true"></span></span><b>{{igr.brand}}</b></div>
-      <nav class="smd-nav" role="tablist" aria-label="So'rov javobi bo'limlari"><sc-for list="{{igr.secs}}" as="t" hint-placeholder-count="5"><button type="button" role="tab" class="{{t.cls}}" aria-selected="{{t.sel}}" onClick="{{t.pick}}"><span class="{{t.icCls}}" aria-hidden="true"></span><span class="smd-nt">{{t.t}}</span></button><sc-if value="{{t.sep}}" hint-placeholder-val="{{ false }}"><hr class="smd-sep"></sc-if></sc-for></nav>
-      <div class="smd-me"><img src="{{igr.mePhoto}}" alt=""><span class="kv" style="gap: 1px; min-width: 0"><b>{{igr.meName}}</b><small>{{igr.meRole}}</small></span></div>
-    </aside>
     <div class="smd-main">
       <div class="smd-top"><div class="kv" style="gap: 2px; min-width: 0"><b id="igr-t" class="smd-h">{{igr.title}}</b><small class="smd-sub">{{igr.sub}}</small></div><span style="flex: 1"></span><span class="badge b-green igr-st">{{igr.status}}</span><button class="btn sm" onClick="{{igr.print}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6"></path><rect x="3" y="9" width="18" height="8" rx="2"></rect><path d="M7 14h10v7H7z"></path></svg>Chop etish</button><button class="btn sm pri igr-dl" title="{{igr.dlTitle}}" onClick="{{igr.download}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>{{igr.dlLbl}}</button><button class="ib" aria-label="Yopish" onClick="{{igDetClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
       <div class="smd-scroll"><div class="smd-sec igr-sec">
@@ -13900,7 +13898,7 @@ class Component extends DCLogic {
           var res = D.res, gen = function (n) { return /(ovna|evna|qizi)$/i.test(String(n || "").trim()) ? "Ayol" : "Erkak"; };
           var kind = DC === IG.pr ? "pr" : DC === IG.eks ? "eks" : "adv";
           var PL = { pr: ["Prokuror", "ic-shield"], adv: ["Advokat", "ic-job"], eks: ["Ekspert", "ic-search"] }[kind];
-          var cur = s.igrTab || "ov";
+          var cur = "ov";
           var SECS = [["ov", "Umumiy ko'rinish", "ic-dash", true], ["party", "Taraf ma'lumotlari", "ic-user"], ["who", PL[0] + " ma'lumotlari", PL[1]], ["req", "So'rov ma'lumotlari", "ic-id"], ["steps", "So'rov jarayoni", "ic-trend"]];
           var mkCard = function (g) { var ph = g.hasPerson; return { t: g.t, icCls: "smd-ni " + (g === res[0] ? "ic-user" : g === res[1] ? PL[1] : "ic-id"), hasTag: !!g.hasTag, tag: g.tag, tagCls: "igr-tag" + (/ok/.test(g.tagCls || "") ? " ok" : ""),
             hasPhoto: ph, noPhoto: !ph, photo: ph ? portrait(g.name, g === res[0] ? ((s.tmDv || []).concat(s.tmJv || []).filter(function (x) { return x.name === g.name; })[0] || {}).gender || gen(g.name) : gen(g.name)) : "", name: g.name || "",
@@ -13910,13 +13908,13 @@ class Component extends DCLogic {
           __out.igr = {
             brand: "So'rov javobi", logoCls: "smd-ni " + PL[1],
             secs: SECS.map(function (q) { var on = q[0] === cur; return { t: q[1], icCls: "smd-ni " + q[2], cls: "smd-tab" + (on ? " on" : ""), sel: on ? "true" : "false", sep: !!q[3], pick: go(q[0]) }; }),
-            title: cur === "ov" ? "Umumiy ko'rinish" : SECS.filter(function (q) { return q[0] === cur; })[0][1], sub: D.num + " · " + D.org,
+            title: "So'rov javobi", sub: D.num + " · " + D.org,
             status: D.status, dlLbl: "Yuklab olish", dlTitle: D.dlLbl, print: D.print, download: D.download,
             meName: res[1].name, meRole: "Biriktirilgan " + PL[0].toLowerCase(), mePhoto: portrait(res[1].name, gen(res[1].name)),
             cards: cards, isSteps: cur === "ov" || cur === "steps", steps: D.steps, progTxt: D.progTxt,
             kd: function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ igDet: "", igrTab: "ov" }); } else if ((e.key === "ArrowDown" || e.key === "ArrowUp") && e.target.closest && e.target.closest(".smd-nav")) { e.preventDefault(); var ks = SECS.map(function (q) { return q[0]; }), ix = (ks.indexOf(cur) + (e.key === "ArrowDown" ? 1 : -1) + ks.length) % ks.length; self.setState({ igrTab: ks[ix] }); setTimeout(function () { try { document.querySelectorAll(".igr .smd-tab")[ix].focus(); } catch (er) {} }, 0); } }
           };
-          setTimeout(function () { try { var m = document.querySelector(".igr"), b = m && m.querySelector(".smd-tab.on"); if (b && !m.contains(document.activeElement)) b.focus(); } catch (er) {} }, 0);
+          setTimeout(function () { try { var m = document.querySelector(".igr"); if (m && !m.contains(document.activeElement)) m.focus(); } catch (er) {} }, 0);
         })();
         __out.igDetClose = function () { self.setState({ igDet: "", igrTab: "ov" }); };
         __out.igDetKey = function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ igDet: "" }); } };
