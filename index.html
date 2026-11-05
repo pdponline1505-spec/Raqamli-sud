@@ -5095,6 +5095,13 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .smd .smd-k4 .d2-kv{flex-wrap:wrap;row-gap:6px;gap:8px}
 @media (max-width:1100px){.smd .smd-k4{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
 @media (max-width:560px){.smd .smd-k4{grid-template-columns:minmax(0,1fr) !important}}
+.smd-gic{width:30px;height:30px;border-radius:9px;display:inline-grid;place-items:center;flex:none;background:#eaf2ff;color:#2563eb}
+.smd-gic::before{content:"";width:16px;height:16px;background:currentColor;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-position:center;mask-position:center}
+.smd-gic.mid{background:#fff1d6;color:#d97706}.smd-gic.low{background:#fee2e2;color:#dc2626}
+.smd-gauge .smd-ct{gap:10px}
+.smd .smd-k4 .d2-kc svg{width:13px;height:13px;stroke-width:2.2}
+.ic-shield::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%203l7%203v5c0%204.5-3%208.5-7%2010-4-1.5-7-5.5-7-10V6z%22/%3E%3Cpath%20d%3D%22M9%2012l2%202%204-4%22/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%203l7%203v5c0%204.5-3%208.5-7%2010-4-1.5-7-5.5-7-10V6z%22/%3E%3Cpath%20d%3D%22M9%2012l2%202%204-4%22/%3E%3C/svg%3E")}
+.ic-trend::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2017l6-6%204%204%208-8%22/%3E%3Cpath%20d%3D%22M14%207h7v7%22/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2017l6-6%204%204%208-8%22/%3E%3Cpath%20d%3D%22M14%207h7v7%22/%3E%3C/svg%3E")}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -5563,7 +5570,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
       <sc-if value="{{sm.isOv}}" hint-placeholder-val="{{ true }}"><div class="smd-ov">
         <div class="smd-col">
           <div class="smd-stats smd-k4"><sc-for list="{{sm.stats}}" as="k" hint-placeholder-count="4"><button type="button" class="d2-k" onClick="{{k.go}}" aria-label="{{k.l}}: {{k.v}}"><span class="d2-kt"><b>{{k.l}}</b><span class="d2-ka" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></span><span class="d2-kv"><b class="d2-kn">{{k.v}}</b><span class="{{k.chipCls}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="{{k.chipIc}}"></path></svg>{{k.chip}}</span></span><span class="d2-kf">{{k.foot}}</span></button></sc-for></div>
-          <div class="smd-gauges"><sc-for list="{{sm.gauges}}" as="g" hint-placeholder-count="2"><div class="{{g.wcls}}"><div class="smd-gtx"><span class="smd-ct"><span class="smd-ni ic-gauge" aria-hidden="true"></span>{{g.t}}</span><small>{{g.d}}</small><span class="{{g.tagCls}}">{{g.lbl}}</span></div><div class="smd-gw"><svg viewBox="0 0 200 112" aria-hidden="true"><defs><linearGradient id="{{g.gid}}" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{{g.c1}}"></stop><stop offset="1" stop-color="{{g.c2}}"></stop></linearGradient></defs><path d="M20 100 A80 80 0 0 1 180 100" class="smd-ga0"></path><path d="M20 100 A80 80 0 0 1 180 100" class="smd-ga1" stroke="{{g.url}}" style="stroke-dashoffset: {{g.off}}"></path></svg><b>{{g.pct}}</b></div></div></sc-for></div>
+          <div class="smd-gauges"><sc-for list="{{sm.gauges}}" as="g" hint-placeholder-count="2"><div class="{{g.wcls}}"><div class="smd-gtx"><span class="smd-ct"><span class="{{g.icCls}}" aria-hidden="true"></span>{{g.t}}</span><small>{{g.d}}</small><span class="{{g.tagCls}}">{{g.lbl}}</span></div><div class="smd-gw"><svg viewBox="0 0 200 112" aria-hidden="true"><defs><linearGradient id="{{g.gid}}" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{{g.c1}}"></stop><stop offset="1" stop-color="{{g.c2}}"></stop></linearGradient></defs><path d="M20 100 A80 80 0 0 1 180 100" class="smd-ga0"></path><path d="M20 100 A80 80 0 0 1 180 100" class="smd-ga1" stroke="{{g.url}}" style="stroke-dashoffset: {{g.off}}"></path></svg><b>{{g.pct}}</b></div></div></sc-for></div>
           <div class="smd-card"><span class="smd-ct"><span class="smd-ni ic-user" aria-hidden="true"></span>Sud uchun fuqarolik varaqasi</span><div class="smd-idb"><img class="smd-ph" src="{{sm.photo}}" alt="{{sm.name}}"><dl class="smd-idg"><sc-for list="{{sm.idRows}}" as="r" hint-placeholder-count="9"><div class="{{r.wcls}}"><dt>{{r.k}}</dt><dd class="{{r.cls}}">{{r.v}}</dd></div></sc-for></dl></div></div>
         </div>
       </div></sc-if>
@@ -13233,7 +13240,7 @@ class Component extends DCLogic {
         var now = new Date(), z = function (v) { return (v < 10 ? "0" : "") + v; }, hm = z(now.getHours()) + ":" + z(now.getMinutes());
         var C = Math.PI * 80;
         var gauge = function (t, v, d, gid) { var tn = tone(v), col = { ok: ["#3073f1", "#60a5fa"], mid: ["#f59e0b", "#fbbf24"], low: ["#ef4444", "#f87171"] }[tn];
-          return { t: t, d: d, pct: v + "%", lbl: word(v), tagCls: "smd-tag " + tn, wcls: "smd-card smd-gauge " + tn, gid: gid, url: "url(#" + gid + ")", c1: col[0], c2: col[1], off: (C * (1 - v / 100)).toFixed(1) + "px" }; };
+          return { t: t, d: d, icCls: "smd-gic ic-" + (gid.indexOf("smg1") === 0 ? "shield" : "trend") + " " + tn, pct: v + "%", lbl: word(v), tagCls: "smd-tag " + tn, wcls: "smd-card smd-gauge " + tn, gid: gid, url: "url(#" + gid + ")", c1: col[0], c2: col[1], off: (C * (1 - v / 100)).toFixed(1) + "px" }; };
         var CH = [
           { f: "ok", t: "Sudlanganligi", d: "bo'yicha qayd topilmadi", src: "IIV axborot bazasi", at: "Bugun · " + hm, go: "med" },
           { f: tone(risk) === "ok" ? "ok" : "warn", t: "Ijtimoiy xavf darajasi", d: "— " + word(risk).toLowerCase() + " (" + risk + "%)", src: "Ijtimoiy reyestr", at: "Bugun · " + hm, go: "ov", dot: tone(risk) !== "ok" },
@@ -13251,10 +13258,10 @@ class Component extends DCLogic {
           isOv: isOv, isSec: !isOv,
           secs: tabs.map(function (q) { var on = q.k === curK; return { t: q.t, icCls: "smd-ni ic-" + q.ic, cls: "smd-tab" + (on ? " on" : ""), sel: on ? "true" : "false", sep: !!q.sep,
             cnt: multi[q.k] ? (q.c ? String(q.c) : "—") : "", cntCls: "smd-cnt" + (multi[q.k] ? (q.c ? "" : " none") : " hid"), pick: go(q.k) }; }),
-          stats: [{ v: String(orgs.length), l: "Ish joylari", chip: "Faol", cc: "ok", ic: "M5 12l5 5 9-10", f: "Soliq qo'mitasi ma'lumoti", k: "job" },
-                  { v: "8,45 mln", l: "Oylik daromad", chip: "Oxirgi oy", cc: "ok", ic: "M5 12l5 5 9-10", f: "Asosiy ish joyi bo'yicha, so'm", k: "job" },
-                  { v: "1", l: "Ko'chmas mulk", chip: "Turar joy", cc: "vio", ic: "M5 12h14", f: "Kadastr agentligi", k: "prop" },
-                  { v: "1", l: "Avtotransport", chip: car.split(" ")[0], cc: "warn", ic: "M12 7v6M12 17h.01", f: "IIV YHXB ro'yxatida", k: "car" }]
+          stats: [{ v: String(orgs.length), l: "Ish joylari", chip: "Faol", cc: "ok", ic: "M5 12l4 4 10-10", f: "Soliq qo'mitasi ma'lumoti", k: "job" },
+                  { v: "8,45 mln", l: "Oylik daromad", chip: "Oxirgi oy", cc: "ok", ic: "M4 6h16v14H4zM4 10h16M8 3v4M16 3v4", f: "Asosiy ish joyi bo'yicha, so'm", k: "job" },
+                  { v: "1", l: "Ko'chmas mulk", chip: "Turar joy", cc: "vio", ic: "M3 11l9-7 9 7M5 10v10h14V10M10 20v-5h4v5", f: "Kadastr agentligi", k: "prop" },
+                  { v: "1", l: "Avtotransport", chip: car.split(" ")[0], cc: "warn", ic: "M5 17h14v-5l-2-5H7l-2 5zM7 17v2M17 17v2M8 13.5h.01M16 13.5h.01", f: "IIV YHXB ro'yxatida", k: "car" }]
             .map(function (k) { return { v: k.v, l: k.l, chip: k.chip, chipCls: "d2-kc " + k.cc, chipIc: k.ic, foot: k.f, go: go(k.k) }; }),
           gauges: [gauge("Ijtimoiy xavf darajasi", risk, "Shaxsning ijtimoiy xavf ko'rsatkichi — idoralar ma'lumotlari asosida hisoblanadi.", "smg1-" + n), gauge("Ijtimoiy daraja", soc, "Ijtimoiy ta'minlanganlik va barqarorlik bo'yicha umumiy baho.", "smg2-" + n)],
           idRows: [["F.I.Sh.", x.name, "", 2], ["Jinsi", x.gender || "—"], ["Tug'ilgan sanasi", isoToUz(x.birth) + " · " + ageOf(x.birth) + " yosh"], ["JSHSHIR", x.jshshir || "—"], ["Pasport / ID-karta", "AD " + pad(n * 104729 % 10000000, 7)], ["Fuqaroligi", "O'zbekiston Respublikasi"], ["Tug'ilgan joyi", vil.replace(" viloyati", "") + " shahri"], ["Sudlanganligi", "Yo'q", "ok"], ["Doimiy manzili", x.manzil || vil, "", 3]].map(function (r) { return { k: r[0], v: r[1], cls: r[2] || "", wcls: r[3] === 2 ? "w2" : r[3] === 3 ? "w3" : "" }; }),
