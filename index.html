@@ -5166,6 +5166,10 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .smp-x{width:36px !important;height:36px !important}
 .smp-frame{flex:1;width:100%;border:0;background:#e9edf2;display:block}
 @media (max-width:760px){.smp-fmt{display:none}.smp-bar{flex-wrap:wrap}.smp-bar .kv{flex-basis:calc(100% - 100px) !important}}
+#tomonlar .pt-qs .qp-card .tp-list.qpc-list{max-height:452px !important;overflow-y:auto !important;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#cbd5e1 transparent;border-radius:0 0 14px 14px}
+#tomonlar .pt-qs .qpc-list::-webkit-scrollbar{width:8px}
+#tomonlar .pt-qs .qpc-list::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:8px;border:2px solid #fbfcfe}
+#tomonlar .pt-qs .qpc-list>*{flex:none}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -10092,7 +10096,7 @@ class Component extends DCLogic {
         Array.prototype.forEach.call(root.querySelectorAll(".smd-gw b"), function (el, k) { smCount(el, 200 + k * 120, 1100); }); };
       if (!window.__pbrPos) { window.__pbrPos = function () { try { var m = document.querySelector(".pbr-g .dx-sel.open .dx-menu, .dx-sel.fxm.open .dx-menu"); if (!m) return; var b = m.parentElement.querySelector(".dx-selbtn").getBoundingClientRect(), vh = window.innerHeight, below = vh - b.bottom - 12, above = b.top - 12;
               var h = Math.min(m.scrollHeight || 320, 360), up = below < Math.min(h, 220) && above > below, st = m.style;
-              st.setProperty("left", Math.round(b.left) + "px", "important"); st.setProperty("width", Math.round(b.width) + "px", "important"); st.setProperty("right", "auto", "important");
+              var mw = m.parentElement.classList.contains("rol") ? Math.max(b.width, 220) : b.width, vw = window.innerWidth, lx = b.left; lx = Math.max(8, Math.min(lx, vw - mw - 8)); st.setProperty("left", Math.round(lx) + "px", "important"); st.setProperty("width", Math.round(mw) + "px", "important"); st.setProperty("right", "auto", "important");
               if (up) { st.setProperty("top", "auto", "important"); st.setProperty("bottom", Math.round(vh - b.top + 6) + "px", "important"); st.setProperty("max-height", Math.round(above) + "px", "important"); }
               else { st.setProperty("bottom", "auto", "important"); st.setProperty("top", Math.round(b.bottom + 6) + "px", "important"); st.setProperty("max-height", Math.round(below) + "px", "important"); }
               m.setAttribute("data-pos", "1"); } catch (er) {} };
@@ -12370,9 +12374,9 @@ class Component extends DCLogic {
       var QSH_TAR = [].concat((s.tmDv || []).map(function (x) { return [x, "Da'vogar"]; }), (s.tmJv || []).map(function (x) { return [x, "Javobgar"]; }), (s.qtJv || []).map(function (x) { return [x, "Qo'shimcha javobgar"]; }), (s.qtAr || []).map(function (x) { return [x, "Arizachi"]; }))
         .map(function (t) { return { v: String(t[0].id), l: qshShort(t[0].name) + " · " + t[1], sub: t[0].name, rl: t[1], nm: t[0].name }; });
       __out.qsh = (__out.qsh || []).map(function (p) {
-        return Object.assign({}, p, { rolDd: dd("qsh-rol-" + p.id, QSH_ROL, p.rol || "", function (e) { var v = e.target.value; self.setState({ qsh: self.state.qsh.map(function (x) { return x.id === p.id ? Object.assign({}, x, { rol: v }, (v === "Vakil" || v === "Advokat") ? {} : { vk: "" }) : x; }) }); self.flash(p.name + " — " + v.toLowerCase() + " sifatida belgilandi" + ((v === "Vakil" || v === "Advokat") && !p.vk ? ". Endi qaysi tarafning " + (v === "Advokat" ? "advokati" : "vakili") + " ekanini tanlang" : "")); }, { ph: "Rolini tanlang", extra: "rol end" + (p.rol ? "" : " need") }),
+        return Object.assign({}, p, { rolDd: dd("qsh-rol-" + p.id, QSH_ROL, p.rol || "", function (e) { var v = e.target.value; self.setState({ qsh: self.state.qsh.map(function (x) { return x.id === p.id ? Object.assign({}, x, { rol: v }, (v === "Vakil" || v === "Advokat") ? {} : { vk: "" }) : x; }) }); self.flash(p.name + " — " + v.toLowerCase() + " sifatida belgilandi" + ((v === "Vakil" || v === "Advokat") && !p.vk ? ". Endi qaysi tarafning " + (v === "Advokat" ? "advokati" : "vakili") + " ekanini tanlang" : "")); }, { ph: "Rolini tanlang", extra: "rol end fxm" + (p.rol ? "" : " need") }),
           isVk: p.rol === "Vakil" || p.rol === "Advokat", vkAria: (p.rol === "Advokat" ? "Qaysi tarafning advokati" : "Qaysi tarafning vakili"), vkLbl: p.rol === "Advokat" ? "Advokati:" : "Vakili:",
-          vkDd: dd("qsh-vk-" + p.id, QSH_TAR.filter(function (t) { return t.nm !== p.name; }).map(function (t) { return { v: t.v, l: t.l, sub: t.rl === "Da'vogar" || t.rl === "Javobgar" ? t.nm : t.nm + " (" + t.rl.toLowerCase() + ")" }; }), p.vk || "", function (e) { var v = e.target.value, t = QSH_TAR.filter(function (x) { return x.v === v; })[0]; self.setState({ qsh: self.state.qsh.map(function (x) { return x.id === p.id ? Object.assign({}, x, { vk: v }) : x; }) }); if (t) self.flash(p.name + " — " + t.rl.toLowerCase() + " " + t.nm + "ning " + (p.rol === "Advokat" ? "advokati" : "vakili") + " sifatida belgilandi"); }, { ph: (p.rol === "Advokat" ? "Kimning advokati?" : "Kimning vakili?"), extra: "rol vk" + (p.vk ? "" : " need") }) });
+          vkDd: dd("qsh-vk-" + p.id, QSH_TAR.filter(function (t) { return t.nm !== p.name; }).map(function (t) { return { v: t.v, l: t.l, sub: t.rl === "Da'vogar" || t.rl === "Javobgar" ? t.nm : t.nm + " (" + t.rl.toLowerCase() + ")" }; }), p.vk || "", function (e) { var v = e.target.value, t = QSH_TAR.filter(function (x) { return x.v === v; })[0]; self.setState({ qsh: self.state.qsh.map(function (x) { return x.id === p.id ? Object.assign({}, x, { vk: v }) : x; }) }); if (t) self.flash(p.name + " — " + t.rl.toLowerCase() + " " + t.nm + "ning " + (p.rol === "Advokat" ? "advokati" : "vakili") + " sifatida belgilandi"); }, { ph: (p.rol === "Advokat" ? "Kimning advokati?" : "Kimning vakili?"), extra: "rol vk fxm" + (p.vk ? "" : " need") }) });
       });
       __out.qshDdOpen = (ddOpen.indexOf("qsh-rol-") === 0 || ddOpen.indexOf("qsh-vk-") === 0) && !!s.caseOpen;
       // ---- yig'ma jild: so'rov qo'shish oynasi ----
@@ -12629,7 +12633,7 @@ class Component extends DCLogic {
         if (ddOpen && ddOpen.indexOf("pb-") === 0 && f) {
           if (!window.__pbrPos) { window.__pbrPos = function () { try { var m = document.querySelector(".pbr-g .dx-sel.open .dx-menu, .dx-sel.fxm.open .dx-menu"); if (!m) return; var b = m.parentElement.querySelector(".dx-selbtn").getBoundingClientRect(), vh = window.innerHeight, below = vh - b.bottom - 12, above = b.top - 12;
               var h = Math.min(m.scrollHeight || 320, 360), up = below < Math.min(h, 220) && above > below, st = m.style;
-              st.setProperty("left", Math.round(b.left) + "px", "important"); st.setProperty("width", Math.round(b.width) + "px", "important"); st.setProperty("right", "auto", "important");
+              var mw = m.parentElement.classList.contains("rol") ? Math.max(b.width, 220) : b.width, vw = window.innerWidth, lx = b.left; lx = Math.max(8, Math.min(lx, vw - mw - 8)); st.setProperty("left", Math.round(lx) + "px", "important"); st.setProperty("width", Math.round(mw) + "px", "important"); st.setProperty("right", "auto", "important");
               if (up) { st.setProperty("top", "auto", "important"); st.setProperty("bottom", Math.round(vh - b.top + 6) + "px", "important"); st.setProperty("max-height", Math.round(above) + "px", "important"); }
               else { st.setProperty("bottom", "auto", "important"); st.setProperty("top", Math.round(b.bottom + 6) + "px", "important"); st.setProperty("max-height", Math.round(below) + "px", "important"); }
               m.setAttribute("data-pos", "1"); } catch (er) {} };
