@@ -13249,14 +13249,20 @@ class Component extends DCLogic {
         var orgs = [["\"Surxon Savdo Invest\" MChJ", "305 214 873", fem ? "Bosh hisobchi" : "Bosh muhandis", "2024 / 09", "8 450 000 so'm", "1 014 000 so'm"],
                     ["\"Termiz Qurilish\" AJ", "302 118 640", fem ? "Iqtisodchi" : "Loyiha rahbari", "2023 / 04", "6 200 000 so'm", "744 000 so'm"]];
         var car = ["Chevrolet", "BYD", "Kia", "Hyundai"][n % 4] + " " + ["Cobalt", "Song Plus", "K5", "Tucson"][n % 4];
+        var CARS = [["Chevrolet", "Cobalt"], ["BYD", "Song Plus"], ["Kia", "K5"], ["Hyundai", "Tucson"], ["Chevrolet", "Tracker"], ["Toyota", "Camry"]];
+        var nCar = 1 + (n + 1) % 3, nProp = 1 + n % 3;
+        var cars = []; for (var ci = 0; ci < nCar; ci++) { var cm = CARS[(n + ci * 2) % CARS.length]; cars.push({ mk: cm[0], md: cm[1], num: "75 " + String.fromCharCode(65 + (n + ci) % 20) + " " + pad((n * 41 + ci * 137) % 1000, 3) + " " + String.fromCharCode(65 + (n * 3 + ci) % 20) + String.fromCharCode(65 + (n * 5 + ci * 7) % 20), yr: 2015 + (n + ci * 3) % 10, reg: pad(3 + (n + ci * 5) % 25, 2) + ".0" + (1 + (n + ci) % 9) + "." + (2019 + (n + ci) % 6) }); }
+        car = cars[0].mk + " " + cars[0].md;
+        var PT = [["Turar joy (kvartira)", "Kvartira", "62,4 m²"], ["Turar joy (hovli uy)", "Hovli uy", "412 m²"], ["Noturar bino (do'kon)", "Do'kon", "38 m²"]];
+        var props = []; for (var pi2 = 0; pi2 < nProp; pi2++) { var pt = PT[(n + pi2) % PT.length]; props.push({ t: pt[0], sh: pt[1], ar: pt[2], kad: "17:12:0" + (3 + pi2) + ":01:" + pad((n * 37 + pi2 * 211) % 10000, 4), adr: pi2 === 0 ? (x.manzil || vil) : vil + ", " + ["Termiz shahri, Al-Hakim at-Termiziy ko'chasi, " + (10 + pi2 * 7) + "-uy", "Denov tumani, Navro'z ko'chasi, " + (4 + pi2) + "-uy"][pi2 % 2], reg: pad(1 + (n + pi2 * 9) % 27, 2) + "." + pad(1 + (n + pi2) % 12, 2) + "." + (2012 + (n + pi2 * 3) % 12), share: pi2 === 2 ? "1/2 ulush" : "To'liq" }); }
         var SEC = [
           ["addr", "Yashash manzili", "home", "Propiska ma'lumotlari · IIV", [F([["Ro'yxatga olingan", regD], ["Viloyat", vil], ["Tuman", x.tuman || "—"], ["Manzil", x.manzil || vil, 1]])]],
           ["fam", "Oilaviy holati", "fam", "FHDYO ma'lumotlari", [F(married ? [["Oilaviy holati", "Turmush qurgan"], ["Nikoh sanasi", pad(1 + n % 27, 2) + "." + pad(1 + (n * 5) % 12, 2) + "." + (2015 + n % 9)], ["Turmush o'rtog'i", spouse, 1]] : [["Oilaviy holati", "Turmush qurmagan"]])]],
           ["med", "Sog'liq va layoqat", "med", "Sog'liqni saqlash vazirligi", [F([["Narkologiya qaydi", "Mavjud emas"], ["Psixiatriya qaydi", "Mavjud emas"], ["Umumiy holat", "Sog'lom"], ["Nogironlik", "Mavjud emas"]])]],
           ["job", "Ish joyi va daromad", "job", "Soliq qo'mitasi · oxirgi 12 oy", orgs.map(function (o) { return F([["Tashkilot STIR", o[1]], ["Lavozimi", o[2]], ["Yil / Oy", o[3]], ["Oylik maoshi", o[4]], ["Soliq summasi", o[5]]], o[0]); })],
-          ["prop", "Ko'chmas mulk", "prop", "Kadastr agentligi", [F([["Mulk turi", "Turar joy (kvartira)"], ["Ro'yxatga olingan sana", regD], ["Kadastr raqami", "17:12:03:01:" + pad(n * 37 % 1000, 4)], ["Manzil", x.manzil || vil, 1]])]],
+          ["prop", "Ko'chmas mulk", "prop", "Kadastr agentligi", props.map(function (q, i) { return F([["Mulk turi", q.t], ["Maydoni", q.ar], ["Kadastr raqami", q.kad], ["Egalik ulushi", q.share], ["Ro'yxatga olingan sana", q.reg], ["Manzil", q.adr, 1]], (i + 1) + "-obyekt · " + q.sh); })],
           ["biz", "Tadbirkorlik", "biz", "Davlat xizmatlari markazi", hasBiz ? [F([["Faoliyat turi", "Yakka tartibdagi tadbirkor"], ["STIR", "4" + pad(n * 7919 % 100000000, 8)], ["Ro'yxatga olingan sana", regD]])] : []],
-          ["car", "Avtotransport", "car", "IIV YHXB", [F([["Davlat raqami", "75 " + String.fromCharCode(65 + n % 20) + " " + pad(n * 41 % 1000, 3) + " " + String.fromCharCode(65 + (n * 3) % 20) + String.fromCharCode(65 + (n * 5) % 20)], ["Markasi", car.split(" ")[0]], ["Modeli", car.split(" ").slice(1).join(" ")], ["Ro'yxatga olingan sana", pad(3 + n % 25, 2) + ".0" + (1 + n % 9) + "." + (2019 + n % 6)]])]]
+          ["car", "Avtotransport", "car", "IIV YHXB", cars.map(function (c, i) { return F([["Davlat raqami", c.num], ["Markasi", c.mk], ["Modeli", c.md], ["Ishlab chiqarilgan yili", String(c.yr)], ["Ro'yxatga olingan sana", c.reg]], (i + 1) + "-transport · " + c.mk + " " + c.md); })]
         ];
         var curK = s.smTab || "ov", isOv = curK === "ov", cur = SEC.filter(function (q) { return q[0] === curK; })[0];
         if (!isOv && !cur) { isOv = true; curK = "ov"; }
@@ -13273,7 +13279,7 @@ class Component extends DCLogic {
           { f: "ok", t: "Narkologiya va psixiatriya", d: "qaydlari mavjud emas", src: "Sog'liqni saqlash vazirligi", at: "Bugun · " + hm, go: "med" },
           { f: "ok", t: "Ish joyi", d: "— " + orgs.length + " ta tashkilotdan daromad qayd etilgan", src: "Soliq qo'mitasi", at: "Kecha · 18:40", go: "job" },
           { f: married ? "info" : "info", t: "Oilaviy holati", d: married ? "— turmush qurgan" : "— turmush qurmagan", src: "FHDYO", at: "Kecha · 18:40", go: "fam" },
-          { f: "info", t: "Avtotransport", d: "— " + car + " ro'yxatda turibdi", src: "IIV YHXB", at: "2 kun oldin · 11:05", go: "car" },
+          { f: "info", t: "Avtotransport", d: nCar > 1 ? "— " + nCar + " ta transport vositasi ro'yxatda" : "— " + car + " ro'yxatda turibdi", src: "IIV YHXB", at: "2 kun oldin · 11:05", go: "car" },
           { f: hasBiz ? "info" : "warn", t: "Tadbirkorlik faoliyati", d: hasBiz ? "— yakka tartibdagi tadbirkor" : "bo'yicha yozuv qaytmadi", src: "DXM", at: "2 kun oldin · 11:05", go: "biz", dot: !hasBiz }
         ];
         var flt = s.smFlt || "all", FL = [["all", "Barchasi"], ["ok", "Ijobiy"], ["warn", "Diqqat"], ["info", "Ma'lumot"]];
@@ -13286,8 +13292,8 @@ class Component extends DCLogic {
             cnt: multi[q.k] ? (q.c ? String(q.c) : "—") : "", cntCls: "smd-cnt" + (multi[q.k] ? (q.c ? "" : " none") : " hid"), pick: go(q.k) }; }),
           stats: [{ v: String(orgs.length), l: "Ish joylari", chip: "Faol", cc: "ok", ic: "M5 12l4 4 10-10", f: "Soliq qo'mitasi ma'lumoti", k: "job" },
                   { v: "8,45 mln", l: "Oylik daromad", chip: "Oxirgi oy", cc: "ok", ic: "M4 6h16v14H4zM4 10h16M8 3v4M16 3v4", f: "Asosiy ish joyi bo'yicha, so'm", k: "job" },
-                  { v: "1", l: "Ko'chmas mulk", chip: "Turar joy", cc: "vio", ic: "M3 11l9-7 9 7M5 10v10h14V10M10 20v-5h4v5", f: "Kadastr agentligi", k: "prop" },
-                  { v: "1", l: "Avtotransport", chip: car.split(" ")[0], cc: "warn", ic: "M5 17h14v-5l-2-5H7l-2 5zM7 17v2M17 17v2M8 13.5h.01M16 13.5h.01", f: "IIV YHXB ro'yxatida", k: "car" }]
+                  { v: String(nProp), l: "Ko'chmas mulk", chip: props[0].sh + (nProp > 1 ? " +" + (nProp - 1) : ""), cc: "vio", ic: "M3 11l9-7 9 7M5 10v10h14V10M10 20v-5h4v5", f: nProp > 1 ? props.map(function (q) { return q.sh; }).join(", ") : "Kadastr agentligi", k: "prop" },
+                  { v: String(nCar), l: "Avtotransport", chip: cars[0].mk + (nCar > 1 ? " +" + (nCar - 1) : ""), cc: "warn", ic: "M5 17h14v-5l-2-5H7l-2 5zM7 17v2M17 17v2M8 13.5h.01M16 13.5h.01", f: nCar > 1 ? cars.map(function (c) { return c.mk + " " + c.md; }).join(", ") : "IIV YHXB ro'yxatida", k: "car" }]
             .map(function (k) { return { v: k.v, l: k.l, chip: k.chip, chipCls: "d2-kc " + k.cc, chipIc: k.ic, foot: k.f, go: go(k.k) }; }),
           gauges: [gauge("Ijtimoiy xavf darajasi", risk, "Shaxsning ijtimoiy xavf ko'rsatkichi — idoralar ma'lumotlari asosida hisoblanadi.", "smg1-" + n), gauge("Ijtimoiy daraja", soc, "Ijtimoiy ta'minlanganlik va barqarorlik bo'yicha umumiy baho.", "smg2-" + n)],
           idRows: [["F.I.Sh.", x.name, "", 2], ["Jinsi", x.gender || "—"], ["Tug'ilgan sanasi", isoToUz(x.birth) + " · " + ageOf(x.birth) + " yosh"], ["JSHSHIR", x.jshshir || "—"], ["Pasport / ID-karta", "AD " + pad(n * 104729 % 10000000, 7)], ["Fuqaroligi", "O'zbekiston Respublikasi"], ["Tug'ilgan joyi", vil.replace(" viloyati", "") + " shahri"], ["Sudlanganligi", "Yo'q", "ok"], ["Doimiy manzili", x.manzil || vil, "", 3]].map(function (r) { return { k: r[0], v: r[1], cls: r[2] || "", wcls: r[3] === 2 ? "w2" : r[3] === 3 ? "w3" : "" }; }),
