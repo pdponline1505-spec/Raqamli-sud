@@ -7276,7 +7276,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
     <div class="pr-list">
       <sc-for list="{{ig.list}}" as="r" hint-placeholder-count="2">
       <div class="{{r.rowCls}}">
-        <div class="kv" style="gap: 3px; min-width: 0; flex: 1"><div class="row" style="gap: 8px; flex-wrap: wrap"><b class="pr-num">{{r.num}}</b><span class="badge {{r.badgeCls}}">{{r.status}}</span></div><span class="pr-meta">{{r.org}} · {{r.x}} · {{r.lastTxt}}</span></div>
+        <div class="kv" style="gap: 3px; min-width: 0; flex: 1"><div class="row" style="gap: 8px; flex-wrap: wrap"><b class="pr-num">{{r.num}}</b><span class="badge {{r.badgeCls}}">{{r.status}}</span></div><span class="pr-meta">{{r.meta}} · {{r.lastTxt}}</span></div>
         <div class="row" style="gap: 6px; flex: none">
           <sc-if value="{{r.hasErr}}" hint-placeholder-val="{{ false }}"><button class="btn sm" onClick="{{r.retry}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"></path></svg>Qayta yuborish</button></sc-if>
           <sc-if value="{{r.hasFinal}}" hint-placeholder-val="{{ false }}"><button class="ib" title="Yakuniy hujjat" aria-label="Yakuniy hujjatni yuklab olish" onClick="{{r.download}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg></button></sc-if>
@@ -8478,7 +8478,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
       </div>
       <sc-if value="{{igDet.noRes}}" hint-placeholder-val="{{ true }}">
       <div class="qv-two">
-        <div class="qv-sec"><span class="qv-lbl">{{igDet.orgLbl}}</span><div class="qv-card prd-kv"><b>{{igDet.org}}</b><small>{{igDet.x}} · yuborilgan: {{igDet.sent}}</small></div></div>
+        <div class="qv-sec"><span class="qv-lbl">{{igDet.orgLbl}}</span><div class="qv-card prd-kv"><b>{{igDet.org}}</b><small>Yuborilgan: {{igDet.sent}}</small></div></div>
         <div class="qv-sec"><span class="qv-lbl">{{igDet.whoLbl}}</span>
           <sc-if value="{{igDet.hasWho}}" hint-placeholder-val="{{ true }}"><div class="qv-card qv-judge"><span class="prd-av">{{igDet.ini}}</span><div class="kv" style="gap: 2px; min-width: 0"><b>{{igDet.who}}</b><small>{{igDet.whoDate}} dan</small></div></div></sc-if>
           <sc-if value="{{igDet.noWho}}" hint-placeholder-val="{{ false }}"><div class="qv-card prd-kv"><b style="color: #64748b; font-weight: 500">Hali biriktirilmagan</b><small>{{igDet.waitTxt}}</small></div></sc-if>
@@ -13742,6 +13742,7 @@ class Component extends DCLogic {
           return Object.assign({}, r, { status: st[0], badgeCls: st[1], steps: steps, hasErr: !!r.err, noErr: !r.err, hasFinal: !!r.final,
             hasWho: !!r.who, noWho: !r.who, ini: ini(r.who),
             progTxt: steps.filter(function (x) { return / done/.test(x.cls); }).length + " / " + steps.length + " bosqich",
+            meta: [r.org, r.x, null].filter(Boolean).join(" · "),
             lastTxt: r.err ? "xatolik: " + r.err : r.final ? C.steps[3][1].toLowerCase() + " " + r.final : r.mid ? C.steps[2][1].toLowerCase() + " " + r.mid : r.who ? C.steps[1][1].toLowerCase() + " " + r.whoDate : "yuborildi " + r.sent,
             rowCls: "pr-row" + (r.err ? " err" : ""),
             copy: function () { try { navigator.clipboard.writeText(r.num); } catch (e) {} self.flash("So'rov raqami nusxalandi"); },
@@ -13757,7 +13758,7 @@ class Component extends DCLogic {
           steps: ["So'rov yuborildi", "Prokuror biriktirildi", "Qoldirish haqida xabar", "Yakuniy hujjat yuborildi"], sendLbl: "So'rovni yuborish", notePh: "Masalan: ish bo'yicha prokuror xulosasi talab etiladi" };
         IG.adv.title2 = "Advokatlar palatasiga so'rov"; IG.adv.msub = "Tarafga advokat tayinlash uchun so'rov"; IG.adv.f1Hint = "Ish ko'rilayotgan hudud bo'yicha boshqarmani tanlang"; IG.adv.f2Hint = "Advokat aynan shu taraf manfaatini himoya qiladi"; IG.adv.notePh = "Masalan: taraf davlat hisobidan yuridik yordam so'ragan";
         IG.eks.title2 = "Ekspertiza tayinlash so'rovi"; IG.eks.msub = "Ekspertiza muassasasiga so'rov"; IG.eks.f1Hint = "So'rov muassasaning elektron tizimiga yuboriladi"; IG.eks.f2Hint = "Ekspertdan qaysi yo'nalishda xulosa kutilayotgani"; IG.eks.notePh = "Masalan: ekspert oldiga qo'yiladigan savollar";
-        var mOpen = !!s.igNew && !!s.caseOpen, M = tab === "pr" ? PRC : C, hasF2 = tab !== "pr";
+        var mOpen = !!s.igNew && !!s.caseOpen, M = tab === "pr" ? PRC : C, hasF2 = false;
         var f1 = s.igF1 || "", f2 = s.igF2 || "", ok = !!(f1 && (f2 || !hasF2)), note = s.igNote || "", er = !!s.igErr;
         __out.igF1 = dd("ig-f1", M.f1.map(function (v) { return { v: v, l: v }; }), f1, function (e) { self.setState({ igF1: e.target.value, igErr: false }); }, { ph: M.f1Ph, noSplit: true, extra: "fxm", bc: er && !f1 ? "#dc2626" : "" });
         __out.igF2 = dd("ig-f2", (M.f2 || []).map(function (v) { return { v: v, l: v }; }), f2, function (e) { self.setState({ igF2: e.target.value, igErr: false }); }, { ph: M.f2Ph || "Tanlang", noSplit: true, extra: "fxm", bc: er && !f2 ? "#dc2626" : "" });
