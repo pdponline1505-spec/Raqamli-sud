@@ -6921,7 +6921,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
           </sc-for>
         </div>
         </sc-if>
-        <sc-if value="{{qtAllEmpty}}" hint-placeholder-val="{{ false }}"><div class="dx-empty qp-empty"><button class="dx-plus" aria-label="Qo'shimcha tomon qo'shish" onClick="{{qtAddJv}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button><b>Qo'shimcha tomon qo'shish</b><small>Qo'shimcha javobgar yoki arizachini tanlang va rolini belgilang</small></div></sc-if>
+        <sc-if value="{{qtAllEmpty}}" hint-placeholder-val="{{ false }}"><div class="dx-empty qp-empty"><button class="dx-plus" aria-label="Qo'shimcha tomon qo'shish" onClick="{{qtAddJv}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button><b>Qo'shimcha tomon qo'shish</b><small>Prokuror, qonuniy vakil, advokat, himoyachi yoki mediatorni tanlang va rolini belgilang</small></div></sc-if>
       </div>
 
     </div></sc-if>
@@ -6945,7 +6945,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
           </sc-for>
         </div>
         </sc-if>
-        <sc-if value="{{qshEmpty}}" hint-placeholder-val="{{ false }}"><div class="dx-empty qp-empty"><button class="dx-plus" aria-label="Qo'shimcha shaxs qo'shish" onClick="{{qshAdd}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button><b>Qo'shimcha shaxs qo'shish</b><small>Guvoh, ekspert, mutaxassis yoki tarjimonni tanlang va rolini belgilang</small></div></sc-if>
+        <sc-if value="{{qshEmpty}}" hint-placeholder-val="{{ false }}"><div class="dx-empty qp-empty"><button class="dx-plus" aria-label="Qo'shimcha shaxs qo'shish" onClick="{{qshAdd}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button><b>Qo'shimcha shaxs qo'shish</b><small>Guvoh, ekspert, mutaxassis, tarjimon, dalillarni saqlovchi yoki xolisni tanlang va rolini belgilang</small></div></sc-if>
       </div>
 
     </div></sc-if>
@@ -11413,7 +11413,7 @@ class Component extends DCLogic {
         var o = { tmManual: {}, tmErr: "" }; o[key] = st[key].concat([person]); self.setState(o);
         self.flash(person.name + " qo'shildi");
       },
-      tmModal: !!s.tmModal, tmTitle: ({ tmJv: "Javobgar qo'shish", tmDv: "Da'vogar qo'shish", dxJv: "Javobgar qo'shish", dxDv: "Da'vogar qo'shish", qtJv: "Qo'shimcha javobgar qo'shish", qtAr: "Arizachi qo'shish", qsh: "Qo'shimcha shaxs qo'shish", apShk: "Shikoyat bergan shaxsni qo'shish", qdShkP: "Shikoyat bergan shaxsni qo'shish", qdShkPro: "Prokuror qo'shish", qdShk: (s.qdKind === "pro" ? "Prokuror qo'shish" : "Shikoyat bergan shaxsni qo'shish"), "bk:ishonchli": "Ishonchli shaxs", "bk:aybdor": "Aybdor shaxs", "bk:bosh": "Sud boshqaruvchisi" })[s.tmModal] || "Shaxs qo'shish",
+      tmModal: !!s.tmModal, tmTitle: ({ tmJv: "Javobgar qo'shish", tmDv: "Da'vogar qo'shish", dxJv: "Javobgar qo'shish", dxDv: "Da'vogar qo'shish", qtJv: "Qo'shimcha tomon qo'shish", qtAr: "Qo'shimcha tomon qo'shish", qsh: "Qo'shimcha shaxs qo'shish", apShk: "Shikoyat bergan shaxsni qo'shish", qdShkP: "Shikoyat bergan shaxsni qo'shish", qdShkPro: "Prokuror qo'shish", qdShk: (s.qdKind === "pro" ? "Prokuror qo'shish" : "Shikoyat bergan shaxsni qo'shish"), "bk:ishonchli": "Ishonchli shaxs", "bk:aybdor": "Aybdor shaxs", "bk:bosh": "Sud boshqaruvchisi" })[s.tmModal] || "Shaxs qo'shish",
       tmClose: function () { self.setState({ tmModal: "" }); },
       tmFuq: [["uz", "O'zbekiston fuqarosi"], ["chet", "Chet el fuqarosi"], ["yoq", "Fuqaroligi bo'lmagan shaxs"]].map(function (f) {
         return { label: f[1], cls: s.tmFuq === f[0] ? "on" : "", pick: function () { self.setState({ tmFuq: f[0], tmSearched: false, tmPicked: {} }); } }; }),
@@ -12524,7 +12524,7 @@ class Component extends DCLogic {
           self.flash(ff.mode === "edit" ? "Ish mazmuni saqlandi" : "Ish mazmuni qo'shildi");
         };
       })();
-      var QSH_ROL = ["Guvoh", "Ekspert", "Mutaxassis", "Tarjimon", "Vakil", "Advokat", "Boshqa"].map(function (r) { return { v: r, l: r }; });
+      var QSH_ROL = ["Guvoh", "Ekspert", "Mutaxassis", "Tarjimon", "Dalillarni saqlovchi", "Xolis"].map(function (r) { return { v: r, l: r }; });
       var qshShort = function (n) { var a = String(n || "").split(" "); return a[0] + (a[1] ? " " + a[1].charAt(0) + "." : "") + (a[2] ? a[2].charAt(0) + "." : ""); };
       var QSH_TAR = [].concat((s.tmDv || []).map(function (x) { return [x, "Da'vogar"]; }), (s.tmJv || []).map(function (x) { return [x, "Javobgar"]; }), (s.qtJv || []).map(function (x) { return [x, "Qo'shimcha javobgar"]; }), (s.qtAr || []).map(function (x) { return [x, "Arizachi"]; }))
         .map(function (t) { return { v: String(t[0].id), l: qshShort(t[0].name) + " · " + t[1], sub: t[0].name, rl: t[1], nm: t[0].name }; });
@@ -12535,13 +12535,16 @@ class Component extends DCLogic {
       });
       // ---- Qo'shimcha tomonlar: bitta ro'yxat + rol ----
       (function () {
+        var QT_ROL = ["Prokuror", "Qonuniy vakil", "Advokat", "Himoyachi", "Mediator"].map(function (r) { return { v: r, l: r }; });
+        var VK = { "Qonuniy vakil": ["qonuniy vakili", "Kimning qonuniy vakili?"], "Advokat": ["advokati", "Kimning advokati?"], "Himoyachi": ["himoyachisi", "Kimning himoyachisi?"] };
         var mk = function (key, side) { return function (p) {
+          var vk = VK[p.rol];
           var upd = function (patch) { var o = {}; o[key] = self.state[key].map(function (x) { return x.id === p.id ? Object.assign({}, x, patch) : x; }); o.dxDd = ""; self.setState(o); };
           var id = "qt-" + key + "-" + p.id;
           return Object.assign({}, p, { sideTag: side, sideCls: "qt-side " + (key === "qtJv" ? "jv" : "ar"),
-            qrDd: dd(id + "-rol", QSH_ROL, p.rol || "", function (e) { var v = e.target.value; upd(Object.assign({ rol: v }, (v === "Vakil" || v === "Advokat") ? {} : { vk: "" })); self.flash(p.name + " — " + v.toLowerCase() + " sifatida belgilandi" + ((v === "Vakil" || v === "Advokat") && !p.vk ? ". Endi qaysi tarafning " + (v === "Advokat" ? "advokati" : "vakili") + " ekanini tanlang" : "")); }, { ph: "Rolini tanlang", extra: "rol end fxm" + (p.rol ? "" : " need") }),
-            isVk: p.rol === "Vakil" || p.rol === "Advokat", vkAria: (p.rol === "Advokat" ? "Qaysi tarafning advokati" : "Qaysi tarafning vakili"),
-            qvDd: dd(id + "-vk", QSH_TAR.filter(function (t) { return t.nm !== p.name; }).map(function (t) { return { v: t.v, l: t.l, sub: t.rl === "Da'vogar" || t.rl === "Javobgar" ? t.nm : t.nm + " (" + t.rl.toLowerCase() + ")" }; }), p.vk || "", function (e) { var v = e.target.value, t = QSH_TAR.filter(function (x) { return x.v === v; })[0]; upd({ vk: v }); if (t) self.flash(p.name + " — " + t.rl.toLowerCase() + " " + t.nm + "ning " + (p.rol === "Advokat" ? "advokati" : "vakili") + " sifatida belgilandi"); }, { ph: (p.rol === "Advokat" ? "Kimning advokati?" : "Kimning vakili?"), extra: "rol vk fxm" + (p.vk ? "" : " need") }) });
+            qrDd: dd(id + "-rol", QT_ROL, p.rol || "", function (e) { var v = e.target.value; upd(Object.assign({ rol: v }, VK[v] ? {} : { vk: "" })); self.flash(p.name + " — " + v.toLowerCase() + " sifatida belgilandi" + (VK[v] && !p.vk ? ". Endi qaysi tarafning " + VK[v][0] + " ekanini tanlang" : "")); }, { ph: "Rolini tanlang", extra: "rol end fxm" + (p.rol ? "" : " need") }),
+            isVk: !!vk, vkAria: vk ? "Qaysi tarafning " + vk[0] : "",
+            qvDd: dd(id + "-vk", QSH_TAR.filter(function (t) { return t.nm !== p.name && (t.rl === "Da'vogar" || t.rl === "Javobgar"); }).map(function (t) { return { v: t.v, l: t.l, sub: t.nm }; }), p.vk || "", function (e) { var v = e.target.value, t = QSH_TAR.filter(function (x) { return x.v === v; })[0]; upd({ vk: v }); if (t && vk) self.flash(p.name + " — " + t.rl.toLowerCase() + " " + t.nm + "ning " + vk[0] + " sifatida belgilandi"); }, { ph: vk ? vk[1] : "Tarafni tanlang", extra: "rol vk fxm" + (p.vk ? "" : " need") }) });
         }; };
         __out.qtAll = [].concat((__out.qtJv || []).map(mk("qtJv", "Qo'shimcha javobgar")), (__out.qtAr || []).map(mk("qtAr", "Arizachi")));
         var nAll = __out.qtAll.length;
@@ -13457,7 +13460,7 @@ class Component extends DCLogic {
         __out.piOpen = !!x;
         if (!x) { __out.pi = { sections: [], reps: [] }; return; }
         var close = function () { self.setState({ pInfo: null }); };
-        var SIDE = { tmDv: "Da'vogar", tmJv: "Javobgar", dxDv: "Da'vogar", dxJv: "Javobgar", qtJv: "Qo'shimcha javobgar", qtAr: "Arizachi", qsh: x.rol || "Qo'shimcha shaxs" };
+        var SIDE = { tmDv: "Da'vogar", tmJv: "Javobgar", dxDv: "Da'vogar", dxJv: "Javobgar", qtJv: x.rol || "Qo'shimcha tomon", qtAr: x.rol || "Qo'shimcha tomon", qsh: x.rol || "Qo'shimcha shaxs" };
         var n = Number(String(x.id).replace(/\D/g, "")) || 7, org = !!x.isOrg || /MChJ|AJ\b|XK\b|QK\b|«|"/.test(x.name);
         var pad = function (v, k) { v = String(v); while (v.length < k) v = "0" + v; return v; };
         var tel = x.tel || ("+998 9" + (n % 10) + " " + pad((n * 137) % 1000, 3) + " " + pad((n * 31) % 100, 2) + " " + pad((n * 17) % 100, 2));
@@ -13660,7 +13663,7 @@ class Component extends DCLogic {
       // ---- Ishtirokchilar: tablar ----
       (function () {
         var k = s.ptab || "tm", L = function (a) { return (a || []).length; };
-        var T = [["tm", "Tomonlar", "Da'vogar va javobgar", L(s.tmDv) + L(s.tmJv), "scale"], ["qt", "Qo'shimcha tomonlar", "Qo'shimcha javobgar va arizachi", L(s.qtJv) + L(s.qtAr), "users"], ["qs", "Qo'shimcha shaxslar", "Guvoh, ekspert, vakil va boshqalar", L(s.qsh), "user"]];
+        var T = [["tm", "Tomonlar", "Da'vogar va javobgar", L(s.tmDv) + L(s.tmJv), "scale"], ["qt", "Qo'shimcha tomonlar", "Prokuror, advokat, vakil va boshqalar", L(s.qtJv) + L(s.qtAr), "users"], ["qs", "Qo'shimcha shaxslar", "Guvoh, ekspert, tarjimon va boshqalar", L(s.qsh), "user"]];
         __out.ptTabs = T.map(function (t) { var on = t[0] === k; return { l: t[1], sub: t[2], n: String(t[3]), sel: on ? "true" : "false", cls: "pt-tab" + (on ? " on" : ""), icCls: "pt-ic ic-pt-" + t[4], pick: function () { self.setState({ ptab: t[0], dxDd: "" }); } }; });
         __out.ptTm = k === "tm"; __out.ptQt = k === "qt"; __out.ptQs = k === "qs";
         __out.ptSub = "Jami " + (L(s.tmDv) + L(s.tmJv) + L(s.qtJv) + L(s.qtAr) + L(s.qsh)) + " ta ishtirokchi · tomonlar, qo'shimcha tomonlar va qo'shimcha shaxslar";
