@@ -5327,7 +5327,7 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .igs-prog{flex:none;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:#eff6ff;color:#2563eb}
 .igs-prog.ok{background:#ecfdf5;color:#047857}
 .igs-prog.err{background:#fef2f2;color:#b91c1c}
-.igs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.igs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
 .igs-s{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding:0 8px;min-width:0}
 .igs-s::before{content:"";position:absolute;top:17px;left:calc(-50% + 22px);right:calc(50% + 22px);height:2px;background:#e2e8f0;border-radius:2px}
 .igs-s:first-child::before{display:none}
@@ -9235,7 +9235,7 @@ function digits(v) { return String(v || "").replace(/\D/g, ""); }
 function group(v) { var d = digits(v); return d ? d.replace(/\B(?=(\d{3})+(?!\d))/g, " ") : ""; }
 function money(v) { var g = group(v); return g ? g + " so'm" : "—"; }
 function isoToUz(v) { if (!v) return "—"; var p = v.split("-"); return p.length === 3 ? p[2] + "." + p[1] + "." + p[0] : v; }
-var PR_STEPS = [["sent", "So'rov yuborildi"], ["prok", "Biriktirilgan prokuror"], ["qold", "Qoldirish haqida xabar"], ["final", "Yakuniy hujjat yuborildi"]];
+var PR_STEPS = [["sent", "So'rov yuborildi"], ["prok", "Biriktirilgan prokuror"], ["final", "Yakuniy hujjat yuborildi"]];
 var TC_TYPES = [["xususiy", "Xususiy ajrim", "Qonun buzilishi holatlari bo'yicha tashkilotga", "t1"], ["mamuriy", "Ma'muriy javobgarlikka tortish haqida ajrim", "Mansabdor shaxsga nisbatan", "t2"], ["jarima", "Jarima solish haqida ajrim", "Protsessual majburiyat bajarilmaganda", "t3"], ["taqdimnoma", "Taqdimnoma", "Sabab va shart-sharoitlarni bartaraf etish", "t4"]];
 var TC_KEYS = ["turi", "chiqSana", "yubSana", "natSana", "ishtirok", "asos", "nisbatan", "tashkilot", "ijro", "natija", "jarima", "sudya", "bekor", "sudga", "izoh", "fileAsos", "fileNatija"];
 var TC_REQ = [["chiqSana", "Ajrim chiqarilgan sana"], ["asos", "Ajrim chiqarish asosi"]];
@@ -11021,7 +11021,7 @@ class Component extends DCLogic {
     var nowStr = function () { var d = new Date(); var p = function (n) { return (n < 10 ? "0" : "") + n; }; return p(d.getDate()) + "." + p(d.getMonth() + 1) + "." + d.getFullYear() + " " + p(d.getHours()) + ":" + p(d.getMinutes()); };
     var updPr = function (id, patch) { self.setState({ pr: self.state.pr.map(function (r) { return r.id === id ? Object.assign({}, r, patch) : r; }) }); };
     var prList = s.pr.map(function (r) {
-      var st = r.err ? ["Xatolik", "b-red"] : r.final ? ["Yakunlandi", "b-green"] : r.qold ? ["Qoldirish haqida xabar berildi", "b-amber"] : r.prok ? ["Prokuror biriktirildi", "b-blue"] : ["Yuborildi", "b-gray"];
+      var st = r.err ? ["Xatolik", "b-red"] : r.final ? ["Yakunlandi", "b-green"] : r.prok ? ["Prokuror biriktirildi", "b-blue"] : ["Yuborildi", "b-gray"];
       var vals = { sent: [r.sent, ""], prok: [r.prok, r.prokDate], qold: [r.qold, ""], final: [r.final, ""] };
       var steps = PR_STEPS.map(function (x, i) {
         var v = vals[x[0]][0];
@@ -11037,7 +11037,7 @@ class Component extends DCLogic {
         retry: function () { updPr(r.id, { err: "", sent: nowStr() }); self.flash("So'rov qayta yuborildi"); },
         download: function () { self.flash("Yakuniy hujjat yuklab olinmoqda"); },
         open: function () { self.setState({ igDet: "pr:" + r.id }); },
-        lastTxt: r.err ? "xatolik: " + r.err : r.final ? "yakuniy hujjat " + r.final : r.qold ? "qoldirish xabari " + r.qold : r.prok ? "prokuror biriktirildi " + r.prokDate : "yuborildi " + r.sent,
+        lastTxt: r.err ? "xatolik: " + r.err : r.final ? "yakuniy hujjat " + r.final : r.prok ? "prokuror biriktirildi " + r.prokDate : "yuborildi " + r.sent,
         rowCls: "pr-row" + (r.err ? " err" : "")
       });
     });
@@ -11928,7 +11928,7 @@ class Component extends DCLogic {
           var r = pr[i]; if (r.err || r.final) continue;
           var n = nowStr();
           if (!r.prok) pr[i] = Object.assign({}, r, { prok: "Qodirov Sherzod Anvarovich", prokDate: n });
-          else if (!r.qold) pr[i] = Object.assign({}, r, { qold: n });
+          
           else pr[i] = Object.assign({}, r, { final: n });
           moved = true;
         }
@@ -13799,8 +13799,8 @@ class Component extends DCLogic {
             f1Lbl: "Advokatlar palatasi hududiy boshqarmasi", f1Ph: "Hududiy boshqarmani tanlang", f2Lbl: "Kimning manfaati uchun", f2Ph: "Tarafni tanlang",
             f1: ["Toshkent shahar advokatlar palatasi hududiy boshqarmasi", "Surxondaryo viloyati advokatlar palatasi hududiy boshqarmasi", "Buxoro viloyati advokatlar palatasi hududiy boshqarmasi", "Navoiy viloyati advokatlar palatasi hududiy boshqarmasi", "Samarqand viloyati advokatlar palatasi hududiy boshqarmasi"],
             f2: ["Da'vogar manfaati uchun", "Javobgar manfaati uchun", "Qo'shimcha javobgar manfaati uchun", "Arizachi manfaati uchun"],
-            steps: [["sent", "So'rov yuborildi"], ["who", "Advokat biriktirildi"], ["mid", "Order taqdim etildi"], ["final", "Ishga jalb qilindi"]],
-            st: { who: ["Advokat biriktirildi", "b-blue"], mid: ["Order taqdim etildi", "b-amber"], final: ["Jalb qilindi", "b-green"] },
+            steps: [["sent", "So'rov yuborildi"], ["who", "Advokat biriktirildi"], ["final", "Ishga jalb qilindi"]],
+            st: { who: ["Advokat biriktirildi", "b-blue"], final: ["Jalb qilindi", "b-green"] },
             whoLbl: "Biriktirilgan advokat", asgLbl: "Ishga biriktirilgan advokat", waitTxt: "Advokatlar palatasi javobi kutilmoqda", okTxt: "Xatolik mavjud emas — so'rov advokatlar palatasi tizimi tomonidan qabul qilingan",
             sendLbl: "Advokatni jalb qilish so'rovini yuborish", errTxt: "So'rov yuborish uchun hududiy boshqarma va tarafni tanlang", emptyT: "Advokatlar palatasiga yuborilgan so'rovlar mavjud emas", emptyS: "Tarafga advokat tayinlash uchun hududiy boshqarmani tanlab so'rov yuboring",
             dlLbl: "Orderni yuklab olish", demoWho: "Sobirov Aziz Rustamovich", sysTxt: "Advokatlar palatasi tizimidan yangi holat olindi" },
@@ -13808,8 +13808,8 @@ class Component extends DCLogic {
             f1Lbl: "Ekspertiza muassasasi", f1Ph: "Muassasani tanlang", f2Lbl: "Ekspertiza turi", f2Ph: "Ekspertiza turini tanlang",
             f1: ["X. Sulaymonova nomidagi Respublika sud ekspertizasi markazi", "Toshkent shahar sud ekspertizasi bo'limi", "Surxondaryo viloyati sud ekspertizasi bo'limi", "Buxoro viloyati sud ekspertizasi bo'limi", "Navoiy viloyati sud ekspertizasi bo'limi"],
             f2: ["Sud-buxgalteriya ekspertizasi", "Sud-iqtisodiy ekspertizasi", "Qurilish-texnik ekspertizasi", "Hujjatlarning texnik ekspertizasi", "Xatshunoslik ekspertizasi", "Baholash ekspertizasi"],
-            steps: [["sent", "So'rov yuborildi"], ["who", "Ekspert biriktirildi"], ["mid", "Ekspertiza o'tkazilmoqda"], ["final", "Ekspert xulosasi taqdim etildi"]],
-            st: { who: ["Ekspert biriktirildi", "b-blue"], mid: ["Jarayonda", "b-amber"], final: ["Xulosa olindi", "b-green"] },
+            steps: [["sent", "So'rov yuborildi"], ["who", "Ekspert biriktirildi"], ["final", "Ekspert xulosasi taqdim etildi"]],
+            st: { who: ["Ekspert biriktirildi", "b-blue"], final: ["Xulosa olindi", "b-green"] },
             whoLbl: "Biriktirilgan ekspert", asgLbl: "Ishga biriktirilgan ekspert", waitTxt: "Ekspertiza muassasasi javobi kutilmoqda", okTxt: "Xatolik mavjud emas — so'rov ekspertiza muassasasi tizimi tomonidan qabul qilingan",
             sendLbl: "Ekspertiza tayinlash so'rovini yuborish", errTxt: "So'rov yuborish uchun muassasa va ekspertiza turini tanlang", emptyT: "Ekspertiza muassasalariga yuborilgan so'rovlar mavjud emas", emptyS: "Ekspertiza tayinlash uchun muassasa va turini tanlab so'rov yuboring",
             dlLbl: "Ekspert xulosasini yuklab olish", demoWho: "Karimova Nilufar Akramovna", sysTxt: "Ekspertiza tizimidan yangi holat olindi" }
@@ -13822,7 +13822,7 @@ class Component extends DCLogic {
         var nowS = function () { var d = new Date(), z = function (n) { return (n < 10 ? "0" : "") + n; }; return z(d.getDate()) + "." + z(d.getMonth() + 1) + "." + d.getFullYear() + " " + z(d.getHours()) + ":" + z(d.getMinutes()); };
         var ini = function (n) { return String(n || "").split(" ").slice(0, 2).map(function (w) { return w.charAt(0); }).join(""); };
         var mapRow = function (C, r) {
-          var st = r.err ? ["Xatolik", "b-red"] : r.final ? C.st.final : r.mid ? C.st.mid : r.who ? C.st.who : ["Yuborildi", "b-gray"];
+          var st = r.err ? ["Xatolik", "b-red"] : r.final ? C.st.final : r.who ? C.st.who : ["Yuborildi", "b-gray"];
           var upd = function (patch) { var o = {}; o[C.key] = self.state[C.key].map(function (x) { return x.id === r.id ? Object.assign({}, x, patch) : x; }); self.setState(o); };
           var vals = { sent: r.sent, who: r.whoDate, mid: r.mid, final: r.final };
           var steps = C.steps.map(function (x, i) { var v = vals[x[0]], eh = r.err && i === 1; return { label: x[1], value: eh ? "Xatolik" : (v || "—"), sub: i === 1 && r.who ? r.who : "", hasSub: i === 1 && !!r.who, cls: "prd-st" + (v ? " done" : eh ? " err" : "") }; });
@@ -13830,7 +13830,7 @@ class Component extends DCLogic {
             hasWho: !!r.who, noWho: !r.who, ini: ini(r.who),
             progTxt: steps.filter(function (x) { return / done/.test(x.cls); }).length + " / " + steps.length + " bosqich",
             meta: [r.org, r.x, null].filter(Boolean).join(" · "),
-            lastTxt: r.err ? "xatolik: " + r.err : r.final ? C.steps[3][1].toLowerCase() + " " + r.final : r.mid ? C.steps[2][1].toLowerCase() + " " + r.mid : r.who ? C.steps[1][1].toLowerCase() + " " + r.whoDate : "yuborildi " + r.sent,
+            lastTxt: r.err ? "xatolik: " + r.err : r.final ? C.steps[C.steps.length - 1][1].toLowerCase() + " " + r.final : r.who ? C.steps[1][1].toLowerCase() + " " + r.whoDate : "yuborildi " + r.sent,
             rowCls: "pr-row" + (r.err ? " err" : ""),
             copy: function () { try { navigator.clipboard.writeText(r.num); } catch (e) {} self.flash("So'rov raqami nusxalandi"); },
             retry: function () { upd({ err: "", sent: nowS() }); self.flash("So'rov qayta yuborildi"); },
@@ -13842,7 +13842,7 @@ class Component extends DCLogic {
         var asg = (s[C.key] || []).filter(function (r) { return r.who; })[0];
         var PRC = { t: "Prokuratura", title: "Prokuraturaga so'rov yuborish", msub: "Prokurorni ishga jalb qilish uchun so'rov", ic: "shield", f1Lbl: "Prokuratura filiali", f1Ph: "Prokuratura filialini tanlang", f1Hint: "So'rov tanlangan filialning elektron tizimiga yuboriladi",
           f1: ["Toshkent shahar prokuraturasi", "Toshkent viloyati prokuraturasi", "Surxondaryo viloyati prokuraturasi", "Termiz shahar prokuraturasi", "Navoiy viloyati prokuraturasi", "Yunusobod tuman prokuraturasi", "Samarqand viloyati prokuraturasi"],
-          steps: ["So'rov yuborildi", "Prokuror biriktirildi", "Qoldirish haqida xabar", "Yakuniy hujjat yuborildi"], sendLbl: "So'rovni yuborish", notePh: "Masalan: ish bo'yicha prokuror xulosasi talab etiladi" };
+          steps: ["So'rov yuborildi", "Prokuror biriktirildi", "Yakuniy hujjat yuborildi"], sendLbl: "So'rovni yuborish", notePh: "Masalan: ish bo'yicha prokuror xulosasi talab etiladi" };
         IG.adv.title2 = "Advokatlar palatasiga so'rov"; IG.adv.msub = "Tarafga advokat tayinlash uchun so'rov"; IG.adv.f1Hint = "Ish ko'rilayotgan hudud bo'yicha boshqarmani tanlang"; IG.adv.f2Hint = "Advokat aynan shu taraf manfaatini himoya qiladi"; IG.adv.notePh = "Masalan: taraf davlat hisobidan yuridik yordam so'ragan";
         IG.eks.title2 = "Ekspertiza tayinlash so'rovi"; IG.eks.msub = "Ekspertiza muassasasiga so'rov"; IG.eks.f1Hint = "So'rov muassasaning elektron tizimiga yuboriladi"; IG.eks.f2Hint = "Ekspertdan qaysi yo'nalishda xulosa kutilayotgani"; IG.eks.notePh = "Masalan: ekspert oldiga qo'yiladigan savollar";
         var mOpen = !!s.igNew && !!s.caseOpen, M = tab === "pr" ? PRC : C, hasF2 = false;
@@ -13881,11 +13881,11 @@ class Component extends DCLogic {
             o.igNew = false; o.igF1 = ""; o.igF2 = ""; o.dxDd = ""; self.setState(o); self.flash("So'rov " + st.igF1 + "ga yuborildi"); },
           refresh: function () { var a = (self.state[C.key] || []).slice(), moved = false;
             for (var i = 0; i < a.length && !moved; i++) { var r = a[i]; if (r.err || r.final) continue; var n = nowS();
-              if (!r.who) a[i] = Object.assign({}, r, { who: C.demoWho, whoDate: n }); else if (!r.mid) a[i] = Object.assign({}, r, { mid: n }); else a[i] = Object.assign({}, r, { final: n }); moved = true; }
+              if (!r.who) a[i] = Object.assign({}, r, { who: C.demoWho, whoDate: n }); else a[i] = Object.assign({}, r, { final: n }); moved = true; }
             var o = {}; o[C.key] = a; self.setState(o); self.flash(moved ? C.sysTxt : "Yangi o'zgarish yo'q"); } };
         IG.pr = { key: "pr", eye: "Prokuraturaga so'rov", f1Lbl: "Prokuratura filiali", whoLbl: "Biriktirilgan prokuror", waitTxt: "Prokuratura javobi kutilmoqda", okTxt: "Xatolik mavjud emas — so'rov prokuratura tizimi tomonidan qabul qilingan", dlLbl: "Yakuniy hujjatni yuklab olish",
-          steps: [["sent", "So'rov yuborildi"], ["who", "Prokuror biriktirildi"], ["mid", "Qoldirish haqida xabar"], ["final", "Yakuniy hujjat yuborildi"]],
-          st: { who: ["Prokuror biriktirildi", "b-blue"], mid: ["Qoldirish haqida xabar berildi", "b-amber"], final: ["Yakunlandi", "b-green"] } };
+          steps: [["sent", "So'rov yuborildi"], ["who", "Prokuror biriktirildi"], ["final", "Yakuniy hujjat yuborildi"]],
+          st: { who: ["Prokuror biriktirildi", "b-blue"], final: ["Yakunlandi", "b-green"] } };
         var dk = String(s.igDet || "").split(":"), DC = dk[0] === "igAdv" ? IG.adv : dk[0] === "igEks" ? IG.eks : dk[0] === "pr" ? IG.pr : null;
         var dr0 = DC ? (s[DC.key] || []).filter(function (r) { return String(r.id) === dk[1]; })[0] : null;
         var dr = dr0 && DC === IG.pr ? { id: dr0.id, num: dr0.num, org: dr0.filial, x: "", sent: dr0.sent, who: dr0.prok, whoDate: dr0.prokDate, mid: dr0.qold, final: dr0.final, err: dr0.err } : dr0;
