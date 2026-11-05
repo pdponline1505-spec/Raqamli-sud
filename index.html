@@ -5351,6 +5351,44 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .igs-sub{font-size:12px;color:#64748b;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media (prefers-reduced-motion:reduce){.igs-s.cur .igs-dot{animation:none}.igs-bar i{transition:none}}
 @media (max-width:640px){.igs{grid-template-columns:minmax(0,1fr);gap:12px}.igs-s{flex-direction:row;flex-wrap:wrap;text-align:left;align-items:center;column-gap:10px}.igs-s::before{display:none}.igs-dot{margin:0}.igs-s b{flex:1}}
+.igt{border:1px solid #edf0f4;border-radius:16px;background:#fff;padding:14px;box-shadow:0 1px 2px rgba(15,23,42,.03)}
+.igt-hd{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:2px 4px 12px}
+.igt-ttl{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#0f172a}
+.igt-ttl .i{width:16px;height:16px;color:#334155}
+.igt-prog{font-size:12.5px;font-weight:600;color:#2563eb}
+.igt-prog.ok{color:#047857}
+.igt-prog.err{color:#b91c1c}
+.igt-l{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.igt-l>li{position:relative;display:flex;align-items:flex-start;gap:12px;padding:14px;border-radius:14px;border:1px dashed #d5dbe4;background:#fafbfc;min-width:0;transition:background .2s,border-color .2s}
+.igt-l>li:not(:last-child)::after{content:"";position:absolute;top:50%;right:-10px;width:8px;height:8px;border-top:2px solid #cbd5e1;border-right:2px solid #cbd5e1;transform:translateY(-50%) rotate(45deg);z-index:1}
+.igt-l>li.done{border-style:solid;border-color:#bbf7d0;background:#f0fdf4}
+.igt-l>li.done:not(:last-child)::after{border-color:#22c55e}
+.igt-l>li.cur{border-style:solid;border-color:#bfdbfe;background:#eff6ff;box-shadow:0 0 0 3px rgba(48,115,241,.08)}
+.igt-l>li.err{border-style:solid;border-color:#fecaca;background:#fef2f2}
+.igt-ic{position:relative;flex:none;width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:#eef1f5;color:#64748b}
+.igt-ic em{font-style:normal;font-size:13px;font-weight:700}
+.igt-ic .igs-ok,.igt-ic .igs-x{display:none;width:17px;height:17px;stroke-width:2.6}
+.igt-ic .igt-pulse{display:none}
+.done .igt-ic{background:#22c55e;color:#fff}
+.done .igt-ic em,.err .igt-ic em,.cur .igt-ic em{display:none}
+.done .igt-ic .igs-ok{display:block}
+.err .igt-ic{background:#ef4444;color:#fff}
+.err .igt-ic .igs-x{display:block}
+.cur .igt-ic{background:#3073f1}
+.cur .igt-ic .igt-pulse{display:block;width:10px;height:10px;border-radius:50%;background:#fff;animation:igtPulse 1.6s ease-in-out infinite}
+@keyframes igtPulse{0%,100%{transform:scale(.8);opacity:.75}50%{transform:scale(1.15);opacity:1}}
+.igt-tx{display:flex;flex-direction:column;gap:2px;min-width:0}
+.igt-k{font-size:11px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:#94a3b8}
+.done .igt-k{color:#16a34a}.cur .igt-k{color:#2563eb}.err .igt-k{color:#dc2626}
+.igt-tx b{font-size:14px;font-weight:600;color:#0f172a;line-height:1.3}
+.igt-l>li:not(.done):not(.cur):not(.err) .igt-tx b{color:#64748b}
+.igt-dt{font-size:12.5px;color:#475569;font-variant-numeric:tabular-nums}
+.cur .igt-dt{color:#2563eb;font-weight:500}.err .igt-dt{color:#b91c1c;font-weight:500}
+.igt-l>li:not(.done):not(.cur):not(.err) .igt-dt{color:#94a3b8}
+.igt-sub{display:inline-flex;align-items:center;gap:5px;margin-top:4px;padding:3px 8px;border-radius:8px;background:#fff;border:1px solid #dcfce7;font-size:12px;font-weight:500;color:#334155;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;align-self:flex-start}
+.igt-sub .i{width:12px;height:12px;flex:none;color:#16a34a}
+@media (prefers-reduced-motion:reduce){.cur .igt-ic .igt-pulse{animation:none}}
+@media (max-width:760px){.igt-l{grid-template-columns:minmax(0,1fr)}.igt-l>li:not(:last-child)::after{top:auto;bottom:-9px;right:auto;left:30px;transform:rotate(135deg)}}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -8511,9 +8549,9 @@ html[data-theme="dark"] .ds-host img{filter:none}
     <div class="smd-main">
       <div class="smd-top"><div class="kv" style="gap: 2px; min-width: 0"><b id="igr-t" class="smd-h">{{igr.title}}</b><small class="smd-sub">{{igr.sub}}</small></div><span style="flex: 1"></span><span class="{{igr.stCls}}">{{igr.status}}</span><button class="btn sm" onClick="{{igr.print}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6"></path><rect x="3" y="9" width="18" height="8" rx="2"></rect><path d="M7 14h10v7H7z"></path></svg>Chop etish</button><sc-if value="{{igr.hasFinal}}" hint-placeholder-val="{{ true }}"><button class="btn sm pri igr-dl" title="{{igr.dlTitle}}" onClick="{{igr.download}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>{{igr.dlLbl}}</button></sc-if><button class="ib" aria-label="Yopish" onClick="{{igDetClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
       <div class="smd-scroll"><div class="smd-sec igr-sec">
-        <div class="igs-card" role="list" aria-label="So'rov jarayoni"><div class="igs-hd"><span class="igs-ttl">So'rov jarayoni</span><span class="igs-bar" aria-hidden="true"><i style="width: {{igr.pct}}"></i></span><span class="{{igr.progCls}}">{{igr.progTxt}}</span></div>
-          <ol class="igs"><sc-for list="{{igr.steps2}}" as="st" hint-placeholder-count="4"><li class="{{st.cls}}" role="listitem" aria-current="{{st.cur}}"><span class="igs-dot" aria-hidden="true"><svg class="i s igs-ok" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"></path></svg><svg class="i s igs-x" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"></path></svg><em>{{st.n}}</em></span><b>{{st.label}}</b><small class="igs-dt">{{st.date}}</small><sc-if value="{{st.hasSub}}" hint-placeholder-val="{{ false }}"><small class="igs-sub">{{st.sub}}</small></sc-if></li></sc-for></ol>
-        </div>
+        <section class="igt" aria-label="So'rov jarayoni"><div class="igt-hd"><span class="igt-ttl"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"></path></svg>So'rov jarayoni</span><span class="{{igr.progCls}}">{{igr.progTxt}}</span></div>
+          <ol class="igt-l"><sc-for list="{{igr.steps2}}" as="st" hint-placeholder-count="3"><li class="{{st.cls}}" aria-current="{{st.cur}}"><span class="igt-ic" aria-hidden="true"><svg class="i s igs-ok" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"></path></svg><svg class="i s igs-x" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"></path></svg><i class="igt-pulse"></i><em>{{st.n}}</em></span><span class="igt-tx"><small class="igt-k">{{st.kicker}}</small><b>{{st.label}}</b><span class="igt-dt">{{st.date}}</span><sc-if value="{{st.hasSub}}" hint-placeholder-val="{{ false }}"><span class="igt-sub"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path></svg>{{st.sub}}</span></sc-if></span></li></sc-for></ol>
+        </section>
         <sc-if value="{{igr.hasErr}}" hint-placeholder-val="{{ false }}"><div class="igr-err"><span class="igr-erri" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6M12 16v.5"></path></svg></span><div class="kv" style="gap: 2px; min-width: 0; flex: 1"><b>So'rov yuborishda xatolik</b><small>{{igr.err}}</small></div><button class="btn sm" onClick="{{igr.retry}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"></path></svg>Qayta yuborish</button></div></sc-if>
         <sc-for list="{{igr.cards}}" as="g" hint-placeholder-count="2"><div class="smd-card"><span class="smd-ct"><span class="{{g.icCls}}" aria-hidden="true"></span>{{g.t}}<sc-if value="{{g.hasTag}}" hint-placeholder-val="{{ false }}"><span class="{{g.tagCls}}">{{g.tag}}</span></sc-if></span>
           <sc-if value="{{g.hasPhoto}}" hint-placeholder-val="{{ true }}"><div class="smd-idb"><img class="smd-ph" src="{{g.photo}}" alt="{{g.name}}"><dl class="smd-idg"><sc-for list="{{g.rows}}" as="r" hint-placeholder-count="6"><div class="{{r.cls}}"><dt>{{r.k}}</dt><dd class="{{r.vcls}}">{{r.v}}</dd></div></sc-for></dl></div></sc-if>
@@ -13960,12 +13998,12 @@ class Component extends DCLogic {
             title: D.hasFinal ? "So'rov javobi" : "So'rov tafsilotlari", sub: D.num + " · " + D.org,
             status: D.status, stCls: "badge " + D.badgeCls + " igr-st", hasFinal: !!D.hasFinal, hasErr: !!D.hasErr, err: D.err || "", retry: D.retry, dlLbl: "Yuklab olish", dlTitle: D.dlLbl, print: D.print, download: D.download,
             meName: res[1].name, meRole: "Biriktirilgan " + PL[0].toLowerCase(), mePhoto: portrait(res[1].name, gen(res[1].name)),
-            cards: cards, isSteps: false, steps: D.steps, progTxt: D.progTxt,
+            cards: cards, isSteps: false, steps: D.steps, progTxt: D.hasErr ? "Xatolik — qayta yuborish kerak" : D.hasFinal ? "Barcha bosqichlar yakunlandi" : D.steps.filter(function (x) { return / done/.test(x.cls); }).length + " / " + D.steps.length + " bosqich bajarildi",
             steps2: (function () { var firstOpen = -1; D.steps.forEach(function (x, i) { if (firstOpen < 0 && !/ done/.test(x.cls)) firstOpen = i; });
               return D.steps.map(function (x, i) { var done = / done/.test(x.cls), err = / err/.test(x.cls), cur = !done && !err && !D.hasErr && i === firstOpen;
-                return { n: String(i + 1), label: x.label, date: done ? x.value : err ? "Xatolik" : cur ? "Kutilmoqda" : "—", sub: x.sub, hasSub: !!x.hasSub, cur: cur ? "step" : "false", cls: "igs-s" + (done ? " done" : err ? " err" : cur ? " cur" : "") + (i < D.steps.length - 1 && done && D.steps[i + 1] && / done/.test(D.steps[i + 1].cls) ? " lnk" : "") }; }); })(),
+                return { n: String(i + 1), kicker: (i + 1) + "-bosqich" + (done ? " · bajarildi" : err ? " · xatolik" : cur ? " · joriy" : ""), label: x.label, date: done ? x.value : err ? "Javob olinmadi" : cur ? "Javob kutilmoqda" : "Navbatda", sub: x.sub, hasSub: !!x.hasSub, cur: cur ? "step" : "false", cls: "igt-s" + (done ? " done" : err ? " err" : cur ? " cur" : "") + (i < D.steps.length - 1 && done && D.steps[i + 1] && / done/.test(D.steps[i + 1].cls) ? " lnk" : "") }; }); })(),
             pct: Math.round(100 * D.steps.filter(function (x) { return / done/.test(x.cls); }).length / Math.max(1, D.steps.length)) + "%",
-            progCls: "igs-prog" + (D.hasErr ? " err" : D.hasFinal ? " ok" : ""),
+            progCls: "igt-prog" + (D.hasErr ? " err" : D.hasFinal ? " ok" : ""),
             kd: function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ igDet: "", igrTab: "ov" }); } else if ((e.key === "ArrowDown" || e.key === "ArrowUp") && e.target.closest && e.target.closest(".smd-nav")) { e.preventDefault(); var ks = SECS.map(function (q) { return q[0]; }), ix = (ks.indexOf(cur) + (e.key === "ArrowDown" ? 1 : -1) + ks.length) % ks.length; self.setState({ igrTab: ks[ix] }); setTimeout(function () { try { document.querySelectorAll(".igr .smd-tab")[ix].focus(); } catch (er) {} }, 0); } }
           };
           setTimeout(function () { try { var m = document.querySelector(".igr"); if (m && !m.contains(document.activeElement)) m.focus(); } catch (er) {} }, 0);
