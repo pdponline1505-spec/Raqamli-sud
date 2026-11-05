@@ -5146,6 +5146,26 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .qx-morebtn.on .i{transform:rotate(180deg)}
 @media (max-width:1100px){.qx-sumrow{grid-template-columns:repeat(2,minmax(0,1fr))}.qx-si:nth-child(3){border-left:0}.qx-si:nth-child(n+3){border-top:1px solid #eef1f5}}
 @media (max-width:560px){.qx-sumrow{grid-template-columns:minmax(0,1fr)}.qx-si+.qx-si{border-left:0;border-top:1px solid #eef1f5}}
+.dx-sel.fxm .dx-menu,.dx-sel.fxm .dx-menu.up{position:fixed !important;z-index:95 !important;margin:0 !important;min-width:0 !important;max-width:none !important;overflow:auto !important;box-shadow:0 12px 32px rgba(15,23,42,.16) !important;visibility:hidden}
+.dx-sel.fxm .dx-menu[data-pos]{visibility:visible}
+.tm-ed .dx-sel.fxm .dx-selbtn{height:44px;border-radius:10px}
+.tm-ed .dx-sel.fxm .dx-selbtn:disabled{background:#f6f8fb;cursor:not-allowed}
+.tme-hint:empty{display:none}
+.smp-wrap{padding:16px !important}
+.smp:focus{outline:none}
+.smp{position:relative;width:min(900px,100%);height:calc(100vh - 32px);display:flex;flex-direction:column;border-radius:18px;overflow:hidden;background:#e9edf2;box-shadow:0 24px 60px rgba(15,23,42,.35);animation:ptIn .22s ease-out}
+.smp-bar{display:flex;align-items:center;gap:10px;padding:12px 14px 12px 18px;background:#fff;border-bottom:1px solid #e2e8f0;flex:none}
+.smp-ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:#eff6ff;color:#3073f1;flex:none}
+.smp-bar b{font-size:15px;font-weight:600;color:#0f172a}
+.smp-bar small{font-size:12.5px;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.smp-fmt{display:flex;gap:4px;margin-right:4px}
+.smp-fmt span{font-size:11px;font-weight:700;letter-spacing:.04em;padding:3px 7px;border-radius:6px;background:#f1f5f9;color:#475569}
+.smp-fmt span+span{background:#eef2ff;color:#3b5bdb}
+.smp-bar .btn.pri{background:#3073f1 !important;border-color:#3073f1 !important;color:#fff !important}
+.smp-bar .btn.pri:hover{background:#2563eb !important}
+.smp-x{width:36px !important;height:36px !important}
+.smp-frame{flex:1;width:100%;border:0;background:#e9edf2;display:block}
+@media (max-width:760px){.smp-fmt{display:none}.smp-bar{flex-wrap:wrap}.smp-bar .kv{flex-basis:calc(100% - 100px) !important}}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -5624,6 +5644,21 @@ html[data-theme="dark"] .ds-host img{filter:none}
       </div></sc-if>
       </div>
     </div>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{smpOpen}}" hint-placeholder-val="{{ false }}">
+<div class="qv-wrap smp-wrap" style="z-index: 86">
+  <button class="qv-bg" aria-label="Chop etish ko'rinishini yopish" onClick="{{smp.close}}"></button>
+  <div class="smp" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="smp-t" onKeyDown="{{smp.kd}}">
+    <div class="smp-bar">
+      <span class="smp-ic" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24"><path d="M6 9V3h12v6"></path><rect x="3" y="9" width="18" height="8" rx="2"></rect><path d="M7 14h10v7H7z"></path></svg></span>
+      <span class="kv" style="gap: 2px; min-width: 0; flex: 1"><b id="smp-t">Chop etish ko'rinishi</b><small>{{smp.docNo}} · {{smp.name}} · A4</small></span>
+      <button type="button" class="btn sm" onClick="{{smp.word}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6"></path><path d="M8 13l1.5 5 2.5-4 2.5 4 1.5-5"></path></svg>Word (.doc)</button>
+      <button type="button" class="btn sm pri" onClick="{{smp.print}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6"></path><rect x="3" y="9" width="18" height="8" rx="2"></rect><path d="M7 14h10v7H7z"></path></svg>Chop etish / PDF</button>
+      <button class="ib smp-x" aria-label="Yopish" onClick="{{smp.close}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+    </div>
+    <iframe class="smp-frame" title="SMART varaqa — chop etish ko'rinishi" srcdoc="{{smp.html}}"></iframe>
   </div>
 </div>
 </sc-if>
@@ -7896,9 +7931,9 @@ html[data-theme="dark"] .ds-host img{filter:none}
 <sc-if value="{{tmEdOpen}}" hint-placeholder-val="{{ false }}">
 <div style="position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 24px">
   <button aria-label="Oynani yopish" onClick="{{tmEdClose}}" style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.45); border: 0; cursor: default"></button>
-  <div role="dialog" aria-modal="true" aria-label="{{tmEdTitle}}" class="card tm-ed" onKeyDown="{{tmEdKey}}"><sc-if value="{{tmEdCc.open}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg in" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{itkDdClose}}"></button></sc-if>
+  <div role="dialog" aria-modal="true" aria-label="{{tmEdTitle}}" class="card tm-ed" onKeyDown="{{tmEdKey}}"><sc-if value="{{tmEdDdOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg in" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{itkDdClose}}"></button></sc-if>
     <div class="tm-ed-h"><div class="kv" style="gap: 2px; min-width: 0"><b style="font-size: 17px">{{tmEdTitle}}</b><small class="muted">{{tmEdSub}}</small></div><button class="ib" aria-label="Yopish" onClick="{{tmEdClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
-    <div class="tm-ed-b"><sc-if value="{{tmEdLockNote}}" hint-placeholder-val="{{ true }}"><div class="tme-note"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg><span>F.I.Sh., tug'ilgan sana va jinsi <b>IIV pasport bazasidan</b> olingan — ularni tahrirlab bo'lmaydi</span></div></sc-if><div class="tm-ed-g"><sc-for list="{{tmEdFields}}" as="f" hint-placeholder-count="6"><div class="{{f.cls}}"><span class="tme-l">{{f.label}}<sc-if value="{{f.req}}" hint-placeholder-val="{{ false }}"> <b style="color: #b91c1c">*</b></sc-if></span><sc-if value="{{f.isInput}}" hint-placeholder-val="{{ true }}"><input type="{{f.type}}" value="{{f.val}}" aria-label="{{f.label}}" onChange="{{f.set}}" data-fmt="{{f.fmt}}"></sc-if><sc-if value="{{f.isSeg}}" hint-placeholder-val="{{ false }}"><span class="seg tm-ed-seg"><sc-for list="{{f.opts}}" as="o" hint-placeholder-count="2"><button type="button" class="{{o.cls}}" onClick="{{o.pick}}">{{o.l}}</button></sc-for></span></sc-if><sc-if value="{{f.isLock}}" hint-placeholder-val="{{ false }}"><div class="tme-lock" aria-disabled="true" aria-label="{{f.lockLbl}}" title="Pasport bazasidan olingan — o'zgartirib bo'lmaydi"><sc-if value="{{f.isDate}}" hint-placeholder-val="{{ false }}"><svg class="i s tme-li" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="2"></rect><path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path></svg></sc-if><sc-if value="{{f.isGen}}" hint-placeholder-val="{{ false }}"><svg class="i s tme-li" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path></svg></sc-if><span class="tme-lv">{{f.disp}}</span><sc-if value="{{f.hasAge}}" hint-placeholder-val="{{ false }}"><em class="tme-age">{{f.age}}</em></sc-if><svg class="i s tme-lk" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></div></sc-if><sc-if value="{{f.isTel}}" hint-placeholder-val="{{ false }}"><div class="{{f.telCls}}"><span class="{{tmEdCc.cls}} tme-cc" id="{{tmEdCc.id}}" onKeyDown="{{tmEdCc.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-label="Davlat kodi" aria-expanded="{{tmEdCc.exp}}" onClick="{{tmEdCc.toggle}}"><span class="tme-flag" aria-hidden="true">{{tmEdCcFlag}}</span><span class="dx-selv">{{tmEdCcCode}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{tmEdCc.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu tme-ccm" role="listbox" onClick="{{tmEdCc.stop}}"><sc-for list="{{tmEdCc.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span><input class="tme-num" type="tel" inputmode="numeric" autocomplete="tel-national" aria-label="Telefon raqami" placeholder="{{f.ph}}" value="{{f.val}}" onChange="{{f.set}}"></div><small class="{{f.hintCls}}">{{f.hint}}</small></sc-if><sc-if value="{{f.isMail}}" hint-placeholder-val="{{ false }}"><div class="{{f.mailCls}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg><input type="email" inputmode="email" autocomplete="email" spellcheck="false" autocapitalize="none" aria-label="E-pochta" placeholder="masalan: ism.familiya@mail.uz" value="{{f.val}}" onChange="{{f.set}}"><sc-if value="{{f.mailOk}}" hint-placeholder-val="{{ false }}"><svg class="i s tme-ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></div><sc-if value="{{f.hasSug}}" hint-placeholder-val="{{ false }}"><div class="tme-sug"><sc-for list="{{f.sugs}}" as="g" hint-placeholder-count="3"><button type="button" class="tme-sg" onClick="{{g.pick}}">{{g.l}}</button></sc-for></div></sc-if><small class="{{f.hintCls}}">{{f.hint}}</small></sc-if></div></sc-for></div>
+    <div class="tm-ed-b"><sc-if value="{{tmEdLockNote}}" hint-placeholder-val="{{ true }}"><div class="tme-note"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg><span>F.I.Sh., tug'ilgan sana va jinsi <b>IIV pasport bazasidan</b> olingan — ularni tahrirlab bo'lmaydi</span></div></sc-if><div class="tm-ed-g"><sc-for list="{{tmEdFields}}" as="f" hint-placeholder-count="6"><div class="{{f.cls}}"><span class="tme-l">{{f.label}}<sc-if value="{{f.req}}" hint-placeholder-val="{{ false }}"> <b style="color: #b91c1c">*</b></sc-if></span><sc-if value="{{f.isInput}}" hint-placeholder-val="{{ true }}"><input type="{{f.type}}" value="{{f.val}}" aria-label="{{f.label}}" onChange="{{f.set}}" data-fmt="{{f.fmt}}"></sc-if><sc-if value="{{f.isSeg}}" hint-placeholder-val="{{ false }}"><span class="seg tm-ed-seg"><sc-for list="{{f.opts}}" as="o" hint-placeholder-count="2"><button type="button" class="{{o.cls}}" onClick="{{o.pick}}">{{o.l}}</button></sc-for></span></sc-if><sc-if value="{{f.isVil}}" hint-placeholder-val="{{ false }}"><span class="{{tmEdVil.cls}}" id="{{tmEdVil.id}}" onKeyDown="{{tmEdVil.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{tmEdVil.exp}}" disabled="{{tmEdVil.dis}}" onClick="{{tmEdVil.toggle}}"><span class="{{tmEdVil.vcls}}">{{tmEdVil.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{tmEdVil.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{tmEdVil.stop}}"><sc-for list="{{tmEdVil.opts}}" as="o" hint-placeholder-count="4"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><span class="dx-olbl">{{o.name}}</span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></sc-if><sc-if value="{{f.isTum}}" hint-placeholder-val="{{ false }}"><span class="{{tmEdTum.cls}}" id="{{tmEdTum.id}}" onKeyDown="{{tmEdTum.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{tmEdTum.exp}}" disabled="{{tmEdTum.dis}}" onClick="{{tmEdTum.toggle}}"><span class="{{tmEdTum.vcls}}">{{tmEdTum.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{tmEdTum.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{tmEdTum.stop}}"><sc-for list="{{tmEdTum.opts}}" as="o" hint-placeholder-count="4"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><span class="dx-olbl">{{o.name}}</span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span><small class="tme-hint">{{tmEdTumHint}}</small></sc-if><sc-if value="{{f.isLock}}" hint-placeholder-val="{{ false }}"><div class="tme-lock" aria-disabled="true" aria-label="{{f.lockLbl}}" title="Pasport bazasidan olingan — o'zgartirib bo'lmaydi"><sc-if value="{{f.isDate}}" hint-placeholder-val="{{ false }}"><svg class="i s tme-li" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="2"></rect><path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path></svg></sc-if><sc-if value="{{f.isGen}}" hint-placeholder-val="{{ false }}"><svg class="i s tme-li" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path></svg></sc-if><span class="tme-lv">{{f.disp}}</span><sc-if value="{{f.hasAge}}" hint-placeholder-val="{{ false }}"><em class="tme-age">{{f.age}}</em></sc-if><svg class="i s tme-lk" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></div></sc-if><sc-if value="{{f.isTel}}" hint-placeholder-val="{{ false }}"><div class="{{f.telCls}}"><span class="{{tmEdCc.cls}} tme-cc" id="{{tmEdCc.id}}" onKeyDown="{{tmEdCc.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-label="Davlat kodi" aria-expanded="{{tmEdCc.exp}}" onClick="{{tmEdCc.toggle}}"><span class="tme-flag" aria-hidden="true">{{tmEdCcFlag}}</span><span class="dx-selv">{{tmEdCcCode}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{tmEdCc.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu tme-ccm" role="listbox" onClick="{{tmEdCc.stop}}"><sc-for list="{{tmEdCc.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span><input class="tme-num" type="tel" inputmode="numeric" autocomplete="tel-national" aria-label="Telefon raqami" placeholder="{{f.ph}}" value="{{f.val}}" onChange="{{f.set}}"></div><small class="{{f.hintCls}}">{{f.hint}}</small></sc-if><sc-if value="{{f.isMail}}" hint-placeholder-val="{{ false }}"><div class="{{f.mailCls}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg><input type="email" inputmode="email" autocomplete="email" spellcheck="false" autocapitalize="none" aria-label="E-pochta" placeholder="masalan: ism.familiya@mail.uz" value="{{f.val}}" onChange="{{f.set}}"><sc-if value="{{f.mailOk}}" hint-placeholder-val="{{ false }}"><svg class="i s tme-ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></div><sc-if value="{{f.hasSug}}" hint-placeholder-val="{{ false }}"><div class="tme-sug"><sc-for list="{{f.sugs}}" as="g" hint-placeholder-count="3"><button type="button" class="tme-sg" onClick="{{g.pick}}">{{g.l}}</button></sc-for></div></sc-if><small class="{{f.hintCls}}">{{f.hint}}</small></sc-if></div></sc-for></div>
       <sc-if value="{{tmEdErr}}" hint-placeholder-val="{{ false }}"><small class="dx-err" style="margin: 0">{{tmEdErrTxt}}</small></sc-if></div>
     <div class="tm-ed-f"><button class="btn" onClick="{{tmEdClose}}">Bekor qilish</button><button class="btn pri" onClick="{{tmEdSave}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h11l3 3v15H5z"></path><path d="M8 3v5h8M8 21v-7h8v7"></path></svg>Saqlash</button></div>
   </div>
@@ -8997,9 +9032,10 @@ var TM_RES = [
   { name: "Abdusattorova Malika Botirovna", birth: "1988-03-21", gender: "Ayol", jshshir: "4210 3880 1177 09", viloyat: "Samarqand viloyati", tuman: "Samarqand shahri", manzil: "Samarqand sh., Registon ko'chasi, 3-uy" }
 ];
 function ageOf(iso) { if (!iso) return "—"; var b = new Date(iso), n = new Date(2026, 9, 2); var a = n.getFullYear() - b.getFullYear(); if (n.getMonth() < b.getMonth() || (n.getMonth() === b.getMonth() && n.getDate() < b.getDate())) a--; return String(a); }
+var TME_REG = [["Qoraqalpog'iston Respublikasi", "Nukus shahri|Taxiatosh shahri|Amudaryo|Beruniy|Bo'zatov|Chimboy|Ellikqal'a|Kegeyli|Mo'ynoq|Nukus|Qanliko'l|Qo'ng'irot|Qorao'zak|Shumanay|Taxtako'pir|To'rtko'l|Xo'jayli"], ["Andijon viloyati", "Andijon shahri|Xonobod shahri|Andijon|Asaka|Baliqchi|Bo'z|Buloqboshi|Izboskan|Jalaquduq|Marhamat|Oltinko'l|Paxtaobod|Qo'rg'ontepa|Shahrixon|Ulug'nor|Xo'jaobod"], ["Buxoro viloyati", "Buxoro shahri|Kogon shahri|Buxoro|G'ijduvon|Jondor|Kogon|Olot|Peshku|Qorako'l|Qorovulbozor|Romitan|Shofirkon|Vobkent"], ["Farg'ona viloyati", "Farg'ona shahri|Marg'ilon shahri|Qo'qon shahri|Quvasoy shahri|Beshariq|Bog'dod|Buvayda|Dang'ara|Farg'ona|Furqat|Oltiariq|Qo'shtepa|Quva|Rishton|So'x|Toshloq|Uchko'prik|O'zbekiston|Yozyovon"], ["Jizzax viloyati", "Jizzax shahri|Arnasoy|Baxmal|Do'stlik|Forish|G'allaorol|Mirzacho'l|Paxtakor|Sharof Rashidov|Yangiobod|Zafarobod|Zarbdor|Zomin"], ["Xorazm viloyati", "Urganch shahri|Xiva shahri|Bog'ot|Gurlan|Hazorasp|Xiva|Xonqa|Qo'shko'pir|Shovot|Tuproqqal'a|Urganch|Yangiariq|Yangibozor"], ["Namangan viloyati", "Namangan shahri|Chortoq|Chust|Davlatobod|Kosonsoy|Mingbuloq|Namangan|Norin|Pop|To'raqo'rg'on|Uchqo'rg'on|Uychi|Yangiqo'rg'on"], ["Navoiy viloyati", "Navoiy shahri|Zarafshon shahri|G'ozg'on shahri|Karmana|Konimex|Navbahor|Nurota|Qiziltepa|Tomdi|Uchquduq|Xatirchi"], ["Qashqadaryo viloyati", "Qarshi shahri|Shahrisabz shahri|Chiroqchi|Dehqonobod|G'uzor|Kasbi|Kitob|Ko'kdala|Koson|Mirishkor|Muborak|Nishon|Qamashi|Qarshi|Shahrisabz|Yakkabog'"], ["Samarqand viloyati", "Samarqand shahri|Kattaqo'rg'on shahri|Bulung'ur|Ishtixon|Jomboy|Kattaqo'rg'on|Narpay|Nurobod|Oqdaryo|Pastdarg'om|Paxtachi|Payariq|Qo'shrabot|Samarqand|Toyloq|Urgut"], ["Sirdaryo viloyati", "Guliston shahri|Yangiyer shahri|Shirin shahri|Boyovut|Guliston|Mirzaobod|Oqoltin|Sardoba|Sayxunobod|Sirdaryo|Xovos"], ["Surxondaryo viloyati", "Termiz shahri|Angor|Bandixon|Boysun|Denov|Jarqo'rg'on|Muzrabot|Oltinsoy|Qiziriq|Qumqo'rg'on|Sariosiyo|Sherobod|Sho'rchi|Termiz|Uzun"], ["Toshkent viloyati", "Nurafshon shahri|Angren shahri|Bekobod shahri|Chirchiq shahri|Olmaliq shahri|Ohangaron shahri|Yangiyo'l shahri|Bekobod|Bo'ka|Bo'stonliq|Chinoz|Ohangaron|Oqqo'rg'on|Parkent|Piskent|Qibray|Quyichirchiq|O'rtachirchiq|Yangiyo'l|Yuqorichirchiq|Zangiota|Toshkent"], ["Toshkent shahri", "Bektemir|Chilonzor|Mirobod|Mirzo Ulug'bek|Olmazor|Sergeli|Shayxontohur|Uchtepa|Yakkasaroy|Yangihayot|Yashnobod|Yunusobod"]].map(function (r) { return { v: r[0], t: r[1].split("|").map(function (x) { return /shahri$/.test(x) ? x : x + " tumani"; }) }; });
 var TME_CC = [["+998", "🇺🇿", "90 123 45 67", [2, 3, 2, 2], "O'zbekiston"], ["+7", "🇰🇿", "701 123 45 67", [3, 3, 2, 2], "Qozog'iston"], ["+7 ", "🇷🇺", "912 345 67 89", [3, 3, 2, 2], "Rossiya"], ["+992", "🇹🇯", "90 123 4567", [2, 3, 4], "Tojikiston"], ["+996", "🇰🇬", "555 123 456", [3, 3, 3], "Qirg'iziston"], ["+993", "🇹🇲", "65 123456", [2, 6], "Turkmaniston"], ["+90", "🇹🇷", "532 123 45 67", [3, 3, 2, 2], "Turkiya"]];
 function TME_CC_OF(tel) { var t = String(tel || "").replace(/\s/g, ""); if (!t) return "+998"; var best = TME_CC.filter(function (c) { return t.indexOf(c[0].trim()) === 0; }).sort(function (a, b) { return b[0].trim().length - a[0].trim().length; })[0]; return best ? best[0] : "+998"; }
-function tmPerson(id, name, birth, gender) { return { id: id, name: name, birth: birth, gender: gender, jshshir: (function () { var d = String(51505012345600 + id * 1379).slice(0, 14); return d.slice(0, 4) + " " + d.slice(4, 8) + " " + d.slice(8, 12) + " " + d.slice(12); })(), viloyat: "Buxoro viloyati", tuman: "Mirzo Ulug'bek tumani", manzil: "Buxoro viloyati, Buxoro shahri, Navoiy ko'chasi, 12-uy" }; }
+function tmPerson(id, name, birth, gender) { return { id: id, name: name, birth: birth, gender: gender, jshshir: (function () { var d = String(51505012345600 + id * 1379).slice(0, 14); return d.slice(0, 4) + " " + d.slice(4, 8) + " " + d.slice(8, 12) + " " + d.slice(12); })(), viloyat: "Buxoro viloyati", tuman: "Buxoro shahri", manzil: "Buxoro viloyati, Buxoro shahri, Navoiy ko'chasi, 12-uy" }; }
 // ---- illustrated placeholder portraits (SVG, no external images) ----
 var AV_M = [
   { skin: "#f2c7a5", shade: "#e0ad8a", hair: "#2b2018", suit: "#1e293b", tie: "#b91c1c", bg: "#dbe4f0" },
@@ -10055,7 +10091,14 @@ class Component extends DCLogic {
       var smRun = function (root) { root.setAttribute("data-anim", "1"); if (umsRM()) return;
         Array.prototype.forEach.call(root.querySelectorAll(".smd-k4 .d2-kn"), function (el, k) { smCount(el, 120 + k * 80, 900); });
         Array.prototype.forEach.call(root.querySelectorAll(".smd-gw b"), function (el, k) { smCount(el, 200 + k * 120, 1100); }); };
-      var umsScan = function () { var r = document.querySelector(".casemodal:not(.quick) .ums:not([data-anim])"); if (r) umsRun(r); var r2 = document.querySelector(".smd .smd-ov:not([data-anim])"); if (r2) smRun(r2); };
+      if (!window.__pbrPos) { window.__pbrPos = function () { try { var m = document.querySelector(".pbr-g .dx-sel.open .dx-menu, .dx-sel.fxm.open .dx-menu"); if (!m) return; var b = m.parentElement.querySelector(".dx-selbtn").getBoundingClientRect(), vh = window.innerHeight, below = vh - b.bottom - 12, above = b.top - 12;
+              var h = Math.min(m.scrollHeight || 320, 360), up = below < Math.min(h, 220) && above > below, st = m.style;
+              st.setProperty("left", Math.round(b.left) + "px", "important"); st.setProperty("width", Math.round(b.width) + "px", "important"); st.setProperty("right", "auto", "important");
+              if (up) { st.setProperty("top", "auto", "important"); st.setProperty("bottom", Math.round(vh - b.top + 6) + "px", "important"); st.setProperty("max-height", Math.round(above) + "px", "important"); }
+              else { st.setProperty("bottom", "auto", "important"); st.setProperty("top", Math.round(b.bottom + 6) + "px", "important"); st.setProperty("max-height", Math.round(below) + "px", "important"); }
+              m.setAttribute("data-pos", "1"); } catch (er) {} };
+            window.addEventListener("scroll", window.__pbrPos, true); window.addEventListener("resize", window.__pbrPos); }
+      var umsScan = function () { var r = document.querySelector(".casemodal:not(.quick) .ums:not([data-anim])"); if (r) umsRun(r); var r2 = document.querySelector(".smd .smd-ov:not([data-anim])"); if (r2) smRun(r2); if (window.__pbrPos && document.querySelector(".dx-sel.fxm.open .dx-menu:not([data-pos])")) window.__pbrPos(); };
       try { new MutationObserver(umsScan).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["class"] }); } catch (er) {}
       setTimeout(umsScan, 0);
     }
@@ -10063,7 +10106,7 @@ class Component extends DCLogic {
     // ochiluvchi ro'yxat pastda sig'masa — yuqoriga ochiladi (oynalar va aylantiriladigan bloklar ichida)
     document.addEventListener("click", function (e) {
       var b = e.target && e.target.closest && e.target.closest(".dx-selbtn"); if (!b) return;
-      if (b.closest(".pbr-g")) { requestAnimationFrame(function () { requestAnimationFrame(function () { if (window.__pbrPos) window.__pbrPos(); }); }); return; }
+      if ((b.closest(".pbr-g") || b.closest(".dx-sel.fxm")) && window.__pbrPos) { requestAnimationFrame(function () { requestAnimationFrame(function () { if (window.__pbrPos) window.__pbrPos(); }); }); return; }
       var place = function () {
         var sel = b.parentElement, m = sel && sel.querySelector(".dx-menu"); if (!m) return;
         m.classList.remove("up"); m.style.maxHeight = "";
@@ -11289,7 +11332,7 @@ class Component extends DCLogic {
       tmEdFields: s.tmEd ? (function () { var e = s.tmEd, f = e.f;
         var set = function (k) { return function (ev) { var v = ev.target.value; self.setState(function (prev) { if (!prev.tmEd) return null; var ff = Object.assign({}, prev.tmEd.f); ff[k] = v; return { tmEd: Object.assign({}, prev.tmEd, { f: ff, err: "" }) }; }); }; };
         var F = e.org ? [["name", "Nomi", "text", 2], ["qisqa", "Qisqa nomi", "text", 1], ["stir", "STIR", "text", 1], ["viloyat", "Viloyat", "text", 1], ["manzil", "Manzil", "text", 1], ["rahbar", "Rahbar", "text", 1], ["rahbarJsh", "Rahbar JSHSHIR", "text", 1], ["tel", "Telefon", "tel", 1], ["hisob", "Hisob raqami", "text", 1], ["kichik", "Kichik biznes", "seg2", 1], ["ustav", "Ustav fondi", "text", 1], ["ishchi", "Ishchilar soni", "text", 1], ["okpo", "Yuridik shaxs kodi (OKPO)", "text", 1]]
-          : [["name", "F.I.Sh.", "lock", 2], ["birth", "Tug'ilgan sana", "lockdate", 1], ["gender", "Jinsi", "lockgen", 1], ["viloyat", "Viloyat", "text", 1], ["tuman", "Tuman (shahar)", "text", 1], ["manzil", "Manzil", "text", 2], ["tel", "Telefon", "tel", 1], ["email", "E-pochta", "email", 1]];
+          : [["name", "F.I.Sh.", "lock", 2], ["birth", "Tug'ilgan sana", "lockdate", 1], ["gender", "Jinsi", "lockgen", 1], ["viloyat", "Viloyat", "selvil", 1], ["tuman", "Tuman (shahar)", "seltum", 1], ["manzil", "Manzil", "text", 2], ["tel", "Telefon", "tel", 1], ["email", "E-pochta", "email", 1]];
         if (e.org) F.push(["email", "E-pochta", "email", 1]);
         var cc = f.telCode || TME_CC_OF(f.tel), ccM = TME_CC.filter(function (c) { return c[0] === cc; })[0] || TME_CC[0];
         var telDigits = f.telNum != null ? String(f.telNum).replace(/\D/g, "") : String(f.tel || "").replace(/\D/g, "").slice(String(ccM[0]).replace(/\D/g, "").length);
@@ -11306,7 +11349,7 @@ class Component extends DCLogic {
           var telHint = fe.tel ? fe.tel : telLen === 0 ? "Masalan: " + ccM[2] : telLen < telMax ? "Yana " + (telMax - telLen) + " ta raqam kiriting" : "Raqam to'liq kiritildi";
           var mailHint = fe.email ? fe.email : !mv ? "Ixtiyoriy · bildirishnomalar shu manzilga yuboriladi" : mailValid ? "To'g'ri formatda" : "Format: nom@domen.uz";
           return { k: x[0], label: x[1], val: isTel ? fmtNum(telDigits) : (f[x[0]] || ""), type: kind === "tel" ? "text" : kind, set: isTel ? telSet : isMail ? mailSet : set(x[0]),
-            isInput: !isLock && !isTel && !isMail && kind !== "seg" && kind !== "seg2", isSeg: kind === "seg" || kind === "seg2", isLock: isLock, isTel: isTel, isMail: isMail,
+            isInput: !isLock && !isTel && !isMail && kind !== "seg" && kind !== "seg2" && kind !== "selvil" && kind !== "seltum", isVil: kind === "selvil", isTum: kind === "seltum", isSeg: kind === "seg" || kind === "seg2", isLock: isLock, isTel: isTel, isMail: isMail,
             isDate: kind === "lockdate", isGen: kind === "lockgen", disp: kind === "lockdate" ? isoToUz(f.birth) : (f[x[0]] || "—"), hasAge: kind === "lockdate" && !!f.birth, age: f.birth ? ageOf(f.birth) + " yosh" : "", lockLbl: x[1] + ": " + (kind === "lockdate" ? isoToUz(f.birth) : (f[x[0]] || "—")) + " — o'zgartirib bo'lmaydi",
             ph: ccM[2], telCls: "tme-tel" + (fe.tel ? " err" : telLen === telMax ? " ok" : ""), mailCls: "tme-mail" + (fe.email ? " err" : mailValid ? " ok" : ""), mailOk: mailValid,
             hint: isTel ? telHint : isMail ? mailHint : "", hintCls: "tme-hint" + ((isTel && fe.tel) || (isMail && fe.email) ? " err" : (isTel && telLen === telMax) || (isMail && mailValid) ? " ok" : ""),
@@ -12585,7 +12628,7 @@ class Component extends DCLogic {
         __out.pbfRuxHa = rux === "ha"; __out.pbfRuxYoq = rux === "yoq"; __out.pbfRuxNone = !rux;
         __out.pbfGridCls = "itkm-g pbr-g" + (rux ? "" : " one");
         if (ddOpen && ddOpen.indexOf("pb-") === 0 && f) {
-          if (!window.__pbrPos) { window.__pbrPos = function () { try { var m = document.querySelector(".pbr-g .dx-sel.open .dx-menu"); if (!m) return; var b = m.parentElement.querySelector(".dx-selbtn").getBoundingClientRect(), vh = window.innerHeight, below = vh - b.bottom - 12, above = b.top - 12;
+          if (!window.__pbrPos) { window.__pbrPos = function () { try { var m = document.querySelector(".pbr-g .dx-sel.open .dx-menu, .dx-sel.fxm.open .dx-menu"); if (!m) return; var b = m.parentElement.querySelector(".dx-selbtn").getBoundingClientRect(), vh = window.innerHeight, below = vh - b.bottom - 12, above = b.top - 12;
               var h = Math.min(m.scrollHeight || 320, 360), up = below < Math.min(h, 220) && above > below, st = m.style;
               st.setProperty("left", Math.round(b.left) + "px", "important"); st.setProperty("width", Math.round(b.width) + "px", "important"); st.setProperty("right", "auto", "important");
               if (up) { st.setProperty("top", "auto", "important"); st.setProperty("bottom", Math.round(vh - b.top + 6) + "px", "important"); st.setProperty("max-height", Math.round(above) + "px", "important"); }
@@ -13269,7 +13312,16 @@ class Component extends DCLogic {
       (function () {
         var e = s.tmEd, f = e ? e.f : {}, cc = f.telCode || TME_CC_OF(f.tel), m = TME_CC.filter(function (c) { return c[0] === cc; })[0] || TME_CC[0];
         __out.tmEdCc = dd("tme-cc", TME_CC.map(function (c) { return { v: c[0], l: c[1] + "  " + c[0].trim(), sub: c[4] }; }), cc, function (ev) { var v = ev.target.value; self.setState(function (prev) { if (!prev.tmEd) return null; var ff = Object.assign({}, prev.tmEd.f, { telCode: v, telNum: "" }); return { tmEd: Object.assign({}, prev.tmEd, { f: ff }), dxDd: "" }; }); setTimeout(function () { try { var i = document.querySelector(".tm-ed .tme-num"); if (i) i.focus(); } catch (er) {} }, 30); }, { extra: "tme-ccs", noSplit: true });
+        __out.tmEdDdOpen = !!ddOpen && ddOpen.indexOf("tme-") === 0;
         __out.tmEdCcFlag = m[1]; __out.tmEdCcCode = m[0].trim();
+        var vil = f.viloyat || "", reg = TME_REG.filter(function (r) { return r.v === vil; })[0];
+        var vOpts = TME_REG.map(function (r) { return { v: r.v, l: r.v }; }); if (vil && !reg) vOpts.unshift({ v: vil, l: vil });
+        var setF2 = function (patch) { self.setState(function (prev) { if (!prev.tmEd) return null; return { tmEd: Object.assign({}, prev.tmEd, { f: Object.assign({}, prev.tmEd.f, patch) }), dxDd: "" }; }); };
+        __out.tmEdVil = dd("tme-vil", vOpts, vil, function (ev) { var v = ev.target.value; if (v === vil) return; setF2({ viloyat: v, tuman: "" }); setTimeout(function () { try { var b = document.querySelector("#dxdd-tme-tum .dx-selbtn"); if (b) b.focus(); } catch (er) {} }, 40); }, { ph: "Viloyatni tanlang", extra: "fxm", noSplit: true });
+        var tum = f.tuman || "", tOpts = reg ? reg.t.map(function (t) { return { v: t, l: t }; }) : [];
+        if (tum && reg && reg.t.indexOf(tum) < 0) tOpts.unshift({ v: tum, l: tum });
+        __out.tmEdTum = dd("tme-tum", tOpts, tum, function (ev) { setF2({ tuman: ev.target.value }); }, { ph: reg ? "Tuman yoki shaharni tanlang" : "Avval viloyatni tanlang", disabled: !reg, extra: "fxm", noSplit: true });
+        __out.tmEdTumHint = reg ? (tum && reg.t.indexOf(tum) < 0 ? "Bu qiymat tanlangan viloyat ro'yxatida yo'q — qayta tanlang" : "") : "";
       })();
       // ---- SMART varaqa ----
       (function () {
@@ -13277,7 +13329,7 @@ class Component extends DCLogic {
         __out.smOpenM = !!x;
         if (!x) { __out.sm = { secs: [], stats: [], gauges: [], idRows: [], flts: [], checks: [], cur: { groups: [] } }; return; }
         var n = Number(String(x.id).replace(/\D/g, "")) || 7, pad = function (v, k) { v = String(v); while (v.length < k) v = "0" + v; return v; };
-        var close = function () { self.setState({ smart: null }); };
+        var close = function () { self.setState({ smart: null, smPrint: false }); };
         var fem = x.gender === "Ayol", vil = x.viloyat || "Surxondaryo viloyati";
         var risk = 70 + (n * 7) % 31, soc = 60 + (n * 13) % 41;
         var tone = function (v) { return v >= 85 ? "ok" : v >= 70 ? "mid" : "low"; }, word = function (v) { return v >= 85 ? "Yaxshi holda" : v >= 70 ? "Qoniqarli" : "E'tibor talab etadi"; };
@@ -13342,9 +13394,90 @@ class Component extends DCLogic {
           cur: cur ? { groups: cur[4], empty: !cur[4].length } : { groups: [], empty: false },
           close: close,
           kd: function (e) { if (e.key === "Escape") { e.stopPropagation(); close(); } else if ((e.key === "ArrowDown" || e.key === "ArrowUp") && e.target.closest && e.target.closest(".smd-nav")) { e.preventDefault(); var ks = tabs.map(function (q) { return q.k; }), ix = ks.indexOf(curK) + (e.key === "ArrowDown" ? 1 : -1); ix = (ix + ks.length) % ks.length; self.setState({ smTab: ks[ix] }); setTimeout(function () { try { document.querySelectorAll(".smd-tab")[ix].focus(); } catch (er) {} }, 0); } },
-          print: function () { self.flash("SMART varaqa chop etishga yuborildi"); }
+          print: function () { self.setState({ smPrint: true }); }
         };
-        setTimeout(function () { try { var m = document.querySelector(".smd"), b = m && m.querySelector(".smd-tab.on"); if (b && !m.contains(document.activeElement)) b.focus(); } catch (er) {} }, 0);
+        // ---- SMART varaqa: chop etish shabloni (A4) ----
+        __out.smpOpen = !!s.smPrint;
+        if (s.smPrint) {
+          var E = function (v) { return String(v == null ? "" : v).replace(/&/g, "&amp;").replace(/[<]/g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); };
+          var dd2 = function (d) { return z(d.getDate()) + "." + z(d.getMonth() + 1) + "." + d.getFullYear(); };
+          var docNo = "SV-" + now.getFullYear() + "-" + pad(n * 7349 % 100000, 5), cNum = s.caseNum || "—";
+          var vcode = (pad(n * 48271 % 10000, 4) + "-" + pad(n * 16807 % 10000, 4) + "-" + pad(n * 69621 % 10000, 4));
+          var row2 = function (rows) { var h = "", i = 0; while (i < rows.length) { var a = rows[i]; if (a[2] || i === rows.length - 1) { h += "<tr><th>" + E(a[0]) + "<\/th><td colspan=\"3\">" + E(a[1] || "—") + "<\/td><\/tr>"; i++; } else { var b = rows[i + 1]; if (b[2]) { h += "<tr><th>" + E(a[0]) + "<\/th><td colspan=\"3\">" + E(a[1] || "—") + "<\/td><\/tr>"; i++; } else { h += "<tr><th>" + E(a[0]) + "<\/th><td>" + E(a[1] || "—") + "<\/td><th>" + E(b[0]) + "<\/th><td>" + E(b[1] || "—") + "<\/td><\/tr>"; i += 2; } } } return "<table class=\"kv\"><colgroup><col style=\"width:22%\"><col style=\"width:28%\"><col style=\"width:22%\"><col style=\"width:28%\"><\/colgroup>" + h + "<\/table>"; };
+          var build = function (isW) {
+            var idr = [["F.I.Sh.", x.name, 1], ["Jinsi", x.gender || "—"], ["Tug'ilgan sanasi", isoToUz(x.birth) + " (" + ageOf(x.birth) + " yosh)"], ["JSHSHIR", x.jshshir || "—"], ["Pasport / ID-karta", "AD " + pad(n * 104729 % 10000000, 7)], ["Fuqaroligi", "O'zbekiston Respublikasi"], ["Tug'ilgan joyi", vil.replace(" viloyati", "") + " shahri"], ["Sudlanganligi", "Yo'q"], ["Doimiy manzili", x.manzil || vil, 1]];
+            var photo = isW ? "<div class=\"ph ph0\">Foto<br>3×4<\/div>" : "<img class=\"ph\" src=\"" + E(__out.sm.photo) + "\" alt=\"\">";
+            var secN = 3, body = "";
+            SEC.forEach(function (q) {
+              body += "<h2><span>" + (secN++) + ".<\/span> " + E(q[1]) + " <em>Manba: " + E(q[3]) + "<\/em><\/h2>";
+              if (!q[4].length) { body += "<p class=\"none\">Integratsiya orqali bu bo'lim bo'yicha yozuv qaytmadi.<\/p>"; return; }
+              q[4].forEach(function (g) { if (g.title) body += "<h3>" + E(g.title) + "<\/h3>"; body += row2(g.rows.map(function (r) { return [r.k, r.v, r.cls === "w"]; })); });
+            });
+            var css = "@page{size:A4;margin:16mm 14mm 16mm 16mm}" +
+              "*{box-sizing:border-box}body{margin:0;font-family:'Times New Roman',Times,serif;font-size:11.5pt;line-height:1.35;color:#000;background:" + (isW ? "#fff" : "#e9edf2") + "}" +
+              ".pg{width:210mm;min-height:297mm;margin:" + (isW ? "0" : "18px auto") + ";padding:16mm 14mm 14mm 16mm;background:#fff;" + (isW ? "" : "box-shadow:0 2px 14px rgba(15,23,42,.14);") + "}" +
+              ".hd{text-align:center;border-bottom:2px solid #000;padding-bottom:8px;margin-bottom:4px}.hd .s1{font-size:10pt;letter-spacing:.06em;text-transform:uppercase}.hd .s2{font-size:13pt;font-weight:bold;margin-top:2px}.hd .s3{font-size:9.5pt;color:#333;margin-top:2px}" +
+              ".hd2{border-top:1px solid #000;margin-bottom:14px;height:2px}" +
+              "h1{text-align:center;font-size:15pt;margin:0 0 2px;letter-spacing:.12em}.sub{text-align:center;font-size:10.5pt;margin:0 0 12px;color:#222}" +
+              "table{width:100%;border-collapse:collapse;margin:0 0 8px;table-layout:fixed}th,td{border:1px solid #555;padding:4px 7px;vertical-align:top;text-align:left;font-size:10.5pt}th{background:#f1f1f1;font-weight:normal;color:#222}" +
+              "table.meta th{width:20%}table.meta td{width:30%}.smp:focus{outline:none}" +
+              "h2{font-size:11.5pt;margin:14px 0 6px;padding-bottom:3px;border-bottom:1px solid #000;page-break-after:avoid}h2 span{display:inline-block;min-width:16px}h2 em{float:right;font-style:italic;font-weight:normal;font-size:9.5pt;color:#333}" +
+              "h3{font-size:10.5pt;margin:8px 0 4px;font-weight:bold;font-style:italic}table.kv{page-break-inside:avoid}" +
+              ".idw{display:flex;gap:12px;align-items:flex-start}.idw table{flex:1;margin:0}.ph{width:30mm;height:40mm;border:1px solid #555;object-fit:cover;flex:none;background:#f5f5f5}.ph0{display:flex;align-items:center;justify-content:center;text-align:center;font-size:9pt;color:#666}" +
+              "table.gs th{width:auto;font-weight:bold;text-align:center}table.gs td.c{text-align:center}" +
+              ".none{margin:0 0 8px;padding:6px 8px;border:1px dashed #888;font-style:italic;font-size:10pt;color:#333}" +
+              ".note{margin-top:14px;font-size:9.5pt;color:#222;border:1px solid #999;padding:6px 8px}" +
+              ".sg{margin-top:22px;width:100%;border:0}.sg td{border:0;padding:3px 0;font-size:11pt;vertical-align:bottom}.sg .ln{border-bottom:1px solid #000;width:36%}" +
+              ".ft{margin-top:18px;padding-top:6px;border-top:1px solid #999;font-size:8.5pt;color:#444;display:flex;justify-content:space-between}" +
+              "@media print{body{background:#fff}.pg{margin:0;width:auto;min-height:0;padding:0;box-shadow:none}}";
+            var html = "<div class=\"pg\">" +
+              "<div class=\"hd\"><div class=\"s1\">O'zbekiston Respublikasi Oliy sudi<\/div><div class=\"s2\">Termiz tumanlararo iqtisodiy sudi<\/div><div class=\"s3\">Raqamli sud axborot tizimi · idoralararo integratsiya xizmati<\/div><\/div><div class=\"hd2\"><\/div>" +
+              "<h1>SMART VARAQA<\/h1><p class=\"sub\">shaxs to'g'risidagi idoralararo integratsiya ma'lumotlari<\/p>" +
+              "<table class=\"meta\"><tr><th>Hujjat raqami<\/th><td>" + docNo + "<\/td><th>Ish raqami<\/th><td>" + E(cNum) + "<\/td><\/tr><tr><th>Shakllantirilgan<\/th><td>" + dd2(now) + ", " + hm + "<\/td><th>So'rov asosi<\/th><td>Sud ishini ko'rish<\/td><\/tr><\/table>" +
+              "<h2><span>1.<\/span> Shaxsga oid ma'lumotlar <em>Manba: IIV pasport bazasi<\/em><\/h2><div class=\"idw\">" + photo + row2(idr) + "<\/div>" +
+              "<h2><span>2.<\/span> Baholash ko'rsatkichlari <em>Manba: Ijtimoiy reyestr<\/em><\/h2>" +
+              "<table class=\"gs\"><tr><th style=\"text-align:left\">Ko'rsatkich<\/th><th>Qiymat<\/th><th>Baho<\/th><\/tr><tr><td>Ijtimoiy xavf darajasi<\/td><td class=\"c\">" + risk + "%<\/td><td class=\"c\">" + word(risk) + "<\/td><\/tr><tr><td>Ijtimoiy daraja<\/td><td class=\"c\">" + soc + "%<\/td><td class=\"c\">" + word(soc) + "<\/td><\/tr><\/table>" +
+              body +
+              "<div class=\"note\">Ushbu varaqa davlat organlarining axborot tizimlaridan idoralararo integratsiya orqali avtomatik shakllantirilgan va faqat sud ishini ko'rish maqsadida foydalaniladi. Ma'lumotlarni uchinchi shaxslarga oshkor qilish taqiqlanadi.<\/div>" +
+              "<table class=\"sg\"><tr><td style=\"width:22%\">Sudya:<\/td><td class=\"ln\"><\/td><td style=\"width:6%\"><\/td><td>" + E(s.caseJudge || "Karimov A. A.") + "<\/td><\/tr><tr><td><\/td><td style=\"font-size:8.5pt;color:#555;text-align:center\">(imzo)<\/td><td><\/td><td><\/td><\/tr><tr><td>Sana:<\/td><td>" + dd2(now) + "<\/td><td><\/td><td><\/td><\/tr><\/table>" +
+              "<div class=\"ft\"><span>Tekshirish kodi: " + vcode + "<\/span><span>" + docNo + " · 1-bet<\/span><\/div>" +
+              "<\/div>";
+            if (isW) {
+              var R = function (a, b) { html = html.split(a).join(b); };
+              var BD = "border:1px solid #555;padding:4px 7px;vertical-align:top;font-family:'Times New Roman';font-size:10.5pt";
+              R("<div class=\"ph ph0\">Foto<br>3×4<\/div>", "");
+              R("<div class=\"idw\">", "<div>");
+              R("<table class=\"sg\">", "<table width=\"100%\" cellspacing=\"0\" cellpadding=\"3\" style=\"border:0;margin-top:22pt\">");
+              R("<td class=\"ln\">", "<td style=\"border-bottom:1px solid #000;width:36%\">");
+              R("<table", "<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" width=\"100%\" style=\"border-collapse:collapse;width:100%;margin-bottom:8pt\"");
+              R("<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" width=\"100%\" style=\"border-collapse:collapse;width:100%;margin-bottom:8pt\" width=\"100%\" cellspacing=\"0\" cellpadding=\"3\" style=\"border:0;margin-top:22pt\">", "<table border=\"0\" width=\"100%\" cellspacing=\"0\" cellpadding=\"3\" style=\"margin-top:22pt\">");
+              R("<th>", "<th align=\"left\" style=\"" + BD + ";background:#f1f1f1;font-weight:normal\">");
+              R("<th style=\"text-align:left\">", "<th align=\"left\" style=\"" + BD + ";background:#f1f1f1\">");
+              R("<td class=\"c\">", "<td align=\"center\" style=\"" + BD + "\">");
+              R("<td>", "<td style=\"" + BD + "\">"); R("<td colspan=\"3\">", "<td colspan=\"3\" style=\"" + BD + "\">");
+              R("<div class=\"hd\">", "<div align=\"center\" style=\"text-align:center\">");
+              R("<div class=\"s1\">", "<p align=\"center\" style=\"margin:0;font-size:10pt;text-transform:uppercase\">"); R("<div class=\"s2\">", "<p align=\"center\" style=\"margin:2pt 0 0;font-size:13pt;font-weight:bold\">"); R("<div class=\"s3\">", "<p align=\"center\" style=\"margin:2pt 0 0;font-size:9.5pt;color:#333;border-bottom:2px solid #000;padding-bottom:6pt\">");
+              R("<\/div><div class=\"s2\">", ""); html = html.replace(/<p align="center" style="margin:0;font-size:10pt;text-transform:uppercase">([^<]*)<\/div>/, "<p align=\"center\" style=\"margin:0;font-size:10pt;text-transform:uppercase\">$1<\/p>").replace(/(<p align="center" style="margin:2pt 0 0;font-size:1[0-9.]+pt[^"]*">[^<]*)<\/div>/g, "$1<\/p>");
+              R("<div class=\"hd2\"><\/div>", "");
+              R("<h1>", "<h1 align=\"center\" style=\"text-align:center;font-size:15pt;letter-spacing:2pt;margin:12pt 0 2pt\">"); R("<p class=\"sub\">", "<p align=\"center\" style=\"text-align:center;margin:0 0 10pt\">");
+              R("<h2>", "<h2 style=\"font-size:11.5pt;margin:12pt 0 5pt;border-bottom:1px solid #000;padding-bottom:2pt\">"); R(" <em>", " <span style=\"font-weight:normal;font-style:italic;font-size:9.5pt;color:#333\">— "); R("<\/em><\/h2>", "<\/span><\/h2>");
+              R("<h3>", "<h3 style=\"font-size:10.5pt;font-style:italic;margin:6pt 0 3pt\">");
+              R("<p class=\"none\">", "<p style=\"border:1px dashed #888;padding:5pt;font-style:italic\">"); R("<div class=\"note\">", "<p style=\"border:1px solid #999;padding:5pt;font-size:9.5pt;margin-top:12pt\">");
+              R("<div class=\"ft\"><span>", "<p style=\"margin-top:16pt;border-top:1px solid #999;padding-top:4pt;font-size:8.5pt;color:#444\">"); R("<\/span><span>", " &nbsp;·&nbsp; ");
+            }
+            var head = isW ? "<html xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:w=\"urn:schemas-microsoft-com:office:word\" xmlns=\"http://www.w3.org/TR/REC-html40\"><head><meta charset=\"utf-8\"><title>SMART varaqa<\/title><\!--[if gte mso 9]><xml><w:WordDocument><w:View>Print<\/w:View><w:Zoom>100<\/w:Zoom><\/w:WordDocument><\/xml><\![endif]--\>" : "<!doctype html><html lang=\"uz\"><head><meta charset=\"utf-8\"><title>SMART varaqa — " + E(x.name) + "<\/title>";
+            return head + "<style>" + css + "<\/style><\/head><body>" + html + "<\/body><\/html>";
+          };
+          var pClose = function () { self.setState({ smPrint: false }); };
+          var fname = "SMART_varaqa_" + String(x.name).split(" ").slice(0, 2).join("_").replace(/[^A-Za-z0-9_'\-]/g, "") + "_" + dd2(now).replace(/\./g, "-");
+          __out.smp = {
+            html: build(false), name: x.name, docNo: docNo, close: pClose,
+            kd: function (e) { if (e.key === "Escape") { e.stopPropagation(); pClose(); } },
+            print: function () { try { var f = document.querySelector(".smp-frame"); f.contentWindow.focus(); f.contentWindow.print(); } catch (er) { self.flash("Chop etish oynasini ochib bo'lmadi — brauzer ruxsatini tekshiring"); } },
+            word: function () { try { var blob = new Blob(["\ufeff", build(true)], { type: "application/msword" }), u = URL.createObjectURL(blob), a = document.createElement("a"); a.href = u; a.download = fname + ".doc"; document.body.appendChild(a); a.click(); setTimeout(function () { try { URL.revokeObjectURL(u); a.remove(); } catch (er) {} }, 800); self.flash("Word fayli yuklab olinmoqda: " + fname + ".doc"); } catch (er) { self.flash("Faylni yuklab olib bo'lmadi"); } }
+          };
+        } else __out.smp = { html: "", close: function () {}, kd: function () {}, print: function () {}, word: function () {} };
+        setTimeout(function () { try { var pm = document.querySelector(".smp"); if (pm) { if (!pm.contains(document.activeElement)) pm.focus(); return; } var m = document.querySelector(".smd"), b = m && m.querySelector(".smd-tab.on"); if (b && !m.contains(document.activeElement)) b.focus(); } catch (er) {} }, 0);
       })();
       // ---- Ishtirokchilar: tablar ----
       (function () {
