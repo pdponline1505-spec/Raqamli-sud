@@ -6863,9 +6863,8 @@ html[data-theme="dark"] .ds-host img{filter:none}
     </div></sc-if>
     <sc-if value="{{ptQt}}" hint-placeholder-val="{{ false }}"><div class="pt-pane pt-qt">
     <sc-if value="{{qtDdOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{itkDdClose}}"></button></sc-if>
-    <sc-if value="{{qtAddOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg" tabindex="-1" aria-label="Menyuni yopish" onClick="{{qtAddTog}}"></button></sc-if>
       <div class="card qp-card">
-        <div class="between" style="padding: 14px 18px; background: #ffffff; border-bottom: 1px solid #eef1f5"><span class="row" style="gap: 8px"><b style="font-size: 16px">Ishtirokchilar</b><sc-if value="{{qtAllHas}}" hint-placeholder-val="{{ true }}"><span class="dx-cnt">{{qtAllCount}}</span></sc-if></span><span class="qt-addw"><button class="btn sm" aria-haspopup="menu" aria-expanded="{{qtAddExp}}" onClick="{{qtAddTog}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v8M8 12h8"></path></svg>Qo'shish<svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{qtAddOpen}}" hint-placeholder-val="{{ false }}"><span class="qt-addm" role="menu"><button type="button" role="menuitem" onClick="{{qtAddJv}}"><span class="qt-st jv">QJ</span><span class="kv" style="gap: 1px"><b>Qo'shimcha javobgar</b><small>Ishga qo'shimcha javobgar sifatida jalb qilish</small></span></button><button type="button" role="menuitem" onClick="{{qtAddAr}}"><span class="qt-st ar">AR</span><span class="kv" style="gap: 1px"><b>Arizachi</b><small>Ariza bergan shaxs sifatida qo'shish</small></span></button></span></sc-if></span></div>
+        <div class="between" style="padding: 14px 18px; background: #ffffff; border-bottom: 1px solid #eef1f5"><span class="row" style="gap: 8px"><b style="font-size: 16px">Ishtirokchilar</b><sc-if value="{{qtAllHas}}" hint-placeholder-val="{{ true }}"><span class="dx-cnt">{{qtAllCount}}</span></sc-if></span><button class="btn sm" onClick="{{qtAddJv}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v8M8 12h8"></path></svg>Qo'shish</button></div>
         <sc-if value="{{qtAllHas}}" hint-placeholder-val="{{ true }}">
         <div class="tp-list qp-open qpc-list" role="list">
         <sc-for list="{{qtAll}}" as="p" hint-placeholder-count="2">
@@ -6882,7 +6881,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
           </sc-for>
         </div>
         </sc-if>
-        <sc-if value="{{qtAllEmpty}}" hint-placeholder-val="{{ false }}"><div class="dx-empty qp-empty"><button class="dx-plus" aria-label="Qo'shimcha tomon qo'shish" onClick="{{qtAddTog}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button><b>Qo'shimcha tomon qo'shish</b><small>Qo'shimcha javobgar yoki arizachini tanlang va rolini belgilang</small></div></sc-if>
+        <sc-if value="{{qtAllEmpty}}" hint-placeholder-val="{{ false }}"><div class="dx-empty qp-empty"><button class="dx-plus" aria-label="Qo'shimcha tomon qo'shish" onClick="{{qtAddJv}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button><b>Qo'shimcha tomon qo'shish</b><small>Qo'shimcha javobgar yoki arizachini tanlang va rolini belgilang</small></div></sc-if>
       </div>
 
     </div></sc-if>
