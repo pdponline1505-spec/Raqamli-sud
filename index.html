@@ -4942,7 +4942,7 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .smx-ni.ic-car::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M5%2017h14v-5l-2-5H7l-2%205z%22%3E%3C/path%3E%3Ccircle%20cx%3D%228%22%20cy%3D%2217%22%20r%3D%221.8%22%3E%3C/circle%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2217%22%20r%3D%221.8%22%3E%3C/circle%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M5%2017h14v-5l-2-5H7l-2%205z%22%3E%3C/path%3E%3Ccircle%20cx%3D%228%22%20cy%3D%2217%22%20r%3D%221.8%22%3E%3C/circle%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2217%22%20r%3D%221.8%22%3E%3C/circle%3E%3C/svg%3E")}
 @media (max-width:900px){.smx-hd{grid-template-columns:auto minmax(0,1fr);padding-right:56px}.smx-scores{grid-column:1 / -1;flex-direction:row}.smx-sc{flex:1}.smx-body{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}.smx-nav{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid #eef1f5}.smx-tab{width:auto;flex:none}.smx{height:calc(100vh - 32px)}}
 @media (max-width:560px){.smx-f{grid-template-columns:minmax(0,1fr)}.smx-f>div:nth-child(odd):not(.w){border-right:0}.smx-ph{width:64px;height:80px}}
-.smd{width:min(1180px,100%) !important;height:min(660px,calc(100vh - 32px));display:grid !important;grid-template-columns:232px minmax(0,1fr);padding:0 !important;overflow:hidden;background:#f6f7f9 !important}
+.smd{width:min(1180px,100%) !important;height:min(720px,calc(100vh - 32px));display:grid !important;grid-template-columns:232px minmax(0,1fr);padding:0 !important;overflow:hidden;background:#f6f7f9 !important}
 .smd-side{display:flex;flex-direction:column;gap:6px;padding:18px 12px;min-height:0}
 .smd-brand{display:flex;align-items:center;gap:10px;padding:2px 8px 14px}
 .smd-brand b{font-size:17px;font-weight:700;color:#0f172a;letter-spacing:-.01em}
@@ -5075,6 +5075,17 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .jf-dbtn{flex:none;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border-radius:10px;background:#fff;border:1px solid #dbe3ee;color:#3073f1;font-size:13px;font-weight:600;transition:background .15s,border-color .15s}
 .itkm-b .jf-drop:hover .jf-dbtn{background:#eff6ff;border-color:#bfdbfe}
 @media (max-width:520px){.jf-dbtn{display:none}}
+.smd-idb{align-items:stretch}
+.smd-idb .smd-ph{width:132px;height:auto;min-height:170px;align-self:stretch;border-radius:12px}
+.smd-idg{margin:0;flex:1;min-width:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.smd-idg>div{display:flex;flex-direction:column;gap:3px;padding:10px 12px;border-radius:10px;background:#f7f8fa;min-width:0}
+.smd-idg>div.w2{grid-column:span 2}
+.smd-idg>div.w3{grid-column:1 / -1}
+.smd-idg dt{margin:0;font-size:12px;color:#64748b}
+.smd-idg dd{margin:0;font-size:14px;font-weight:600;color:#0f172a;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.smd-idg dd.ok{color:#16a34a}
+@media (max-width:1100px){.smd-idg{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.smd-idg{grid-template-columns:minmax(0,1fr)}.smd-idg>div.w2,.smd-idg>div.w3{grid-column:auto}.smd-idb .smd-ph{width:100%;max-width:160px;min-height:0;height:190px}}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -5544,7 +5555,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
         <div class="smd-col">
           <div class="smd-stats"><sc-for list="{{sm.stats}}" as="k" hint-placeholder-count="4"><button type="button" class="smd-stat" onClick="{{k.go}}"><span class="kv" style="gap: 2px; min-width: 0"><b>{{k.v}}</b><small>{{k.l}}</small></span><span class="{{k.icCls}}" aria-hidden="true"></span></button></sc-for></div>
           <div class="smd-gauges"><sc-for list="{{sm.gauges}}" as="g" hint-placeholder-count="2"><div class="{{g.wcls}}"><div class="smd-gtx"><span class="smd-ct"><span class="smd-ni ic-gauge" aria-hidden="true"></span>{{g.t}}</span><small>{{g.d}}</small><span class="{{g.tagCls}}">{{g.lbl}}</span></div><div class="smd-gw"><svg viewBox="0 0 200 112" aria-hidden="true"><defs><linearGradient id="{{g.gid}}" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{{g.c1}}"></stop><stop offset="1" stop-color="{{g.c2}}"></stop></linearGradient></defs><path d="M20 100 A80 80 0 0 1 180 100" class="smd-ga0"></path><path d="M20 100 A80 80 0 0 1 180 100" class="smd-ga1" stroke="{{g.url}}" style="stroke-dashoffset: {{g.off}}"></path></svg><b>{{g.pct}}</b></div></div></sc-for></div>
-          <div class="smd-card"><span class="smd-ct"><span class="smd-ni ic-user" aria-hidden="true"></span>Sud uchun fuqarolik varaqasi</span><div class="smd-idb"><img class="smd-ph" src="{{sm.photo}}" alt="{{sm.name}}"><dl class="smd-kv"><sc-for list="{{sm.idRows}}" as="r" hint-placeholder-count="5"><div><dt>{{r.k}}</dt><dd class="{{r.cls}}">{{r.v}}</dd></div></sc-for></dl></div></div>
+          <div class="smd-card"><span class="smd-ct"><span class="smd-ni ic-user" aria-hidden="true"></span>Sud uchun fuqarolik varaqasi</span><div class="smd-idb"><img class="smd-ph" src="{{sm.photo}}" alt="{{sm.name}}"><dl class="smd-idg"><sc-for list="{{sm.idRows}}" as="r" hint-placeholder-count="9"><div class="{{r.wcls}}"><dt>{{r.k}}</dt><dd class="{{r.cls}}">{{r.v}}</dd></div></sc-for></dl></div></div>
         </div>
       </div></sc-if>
       <sc-if value="{{sm.isSec}}" hint-placeholder-val="{{ false }}"><div class="smd-sec">
@@ -13234,7 +13245,7 @@ class Component extends DCLogic {
           stats: [{ v: String(orgs.length), l: "Ish joylari", ic: "job", k: "job" }, { v: "8,45 mln", l: "Oylik daromad", ic: "money", k: "job" }, { v: "1", l: "Ko'chmas mulk", ic: "prop", k: "prop" }, { v: "1", l: "Avtotransport", ic: "car", k: "car" }]
             .map(function (k) { return { v: k.v, l: k.l, icCls: "smd-bic ic-" + k.ic, go: go(k.k) }; }),
           gauges: [gauge("Ijtimoiy xavf darajasi", risk, "Shaxsning ijtimoiy xavf ko'rsatkichi — idoralar ma'lumotlari asosida hisoblanadi.", "smg1-" + n), gauge("Ijtimoiy daraja", soc, "Ijtimoiy ta'minlanganlik va barqarorlik bo'yicha umumiy baho.", "smg2-" + n)],
-          idRows: [["F.I.Sh.", x.name], ["Tug'ilgan sanasi", isoToUz(x.birth) + " · " + ageOf(x.birth) + " yosh"], ["JSHSHIR", x.jshshir || "—"], ["Tug'ilgan joyi", vil.replace(" viloyati", "") + " shahri"], ["Sudlanganligi", "Yo'q", "ok"]].map(function (r) { return { k: r[0], v: r[1], cls: r[2] || "" }; }),
+          idRows: [["F.I.Sh.", x.name, "", 2], ["Jinsi", x.gender || "—"], ["Tug'ilgan sanasi", isoToUz(x.birth) + " · " + ageOf(x.birth) + " yosh"], ["JSHSHIR", x.jshshir || "—"], ["Pasport / ID-karta", "AD " + pad(n * 104729 % 10000000, 7)], ["Fuqaroligi", "O'zbekiston Respublikasi"], ["Tug'ilgan joyi", vil.replace(" viloyati", "") + " shahri"], ["Sudlanganligi", "Yo'q", "ok"], ["Doimiy manzili", x.manzil || vil, "", 3]].map(function (r) { return { k: r[0], v: r[1], cls: r[2] || "", wcls: r[3] === 2 ? "w2" : r[3] === 3 ? "w3" : "" }; }),
           chkN: CH.length + " ta",
           flts: FL.map(function (f) { var on = f[0] === flt, c = f[0] === "all" ? CH.length : CH.filter(function (q) { return q.f === f[0]; }).length; return { l: f[1] + (c ? " " + c : ""), cls: "smd-sg" + (on ? " on" : ""), sel: on ? "true" : "false", pick: function () { self.setState({ smFlt: f[0] }); } }; }),
           checks: shown.map(function (c) { return { t: c.t, d: c.d, src: c.src, at: c.at, icCls: "smd-ai " + c.f, dot: !!c.dot, go: go(c.go) }; }), noChk: !shown.length,
