@@ -9979,7 +9979,7 @@ class Component extends DCLogic {
         { id: "a2", num: "REQ-ADV-1b07d94e", org: "Toshkent shahar advokatlar palatasi hududiy boshqarmasi", x: "Javobgar manfaati uchun", sent: "12.08.2026 15:40", who: "Rasulov Bobur Akmalovich", whoDate: "13.08.2026 09:10", mid: "14.08.2026 11:30", final: "15.08.2026 16:45", err: "" }
       ],
       igEks: [
-        { id: "e1", num: "REQ-EKS-9a42c3f1", org: "Surxondaryo viloyati sud ekspertizasi bo'limi", x: "Sud-buxgalteriya ekspertizasi", sent: "18.09.2026 12:05", who: "Toshmatov Ulug'bek Rahimovich", whoDate: "19.09.2026 10:20", mid: "21.09.2026 09:00", final: "", err: "" },
+        { id: "e1", num: "REQ-EKS-9a42c3f1", org: "Surxondaryo viloyati sud ekspertizasi bo'limi", x: "Sud-buxgalteriya ekspertizasi", sent: "18.09.2026 12:05", who: "Toshmatov Ulug'bek Rahimovich", whoDate: "19.09.2026 10:20", mid: "21.09.2026 09:00", final: "02.10.2026 15:20", err: "" },
         { id: "e2", num: "REQ-EKS-4e6d0b28", org: "X. Sulaymonova nomidagi Respublika sud ekspertizasi markazi", x: "Baholash ekspertizasi", sent: "02.09.2026 17:30", who: "", whoDate: "", mid: "", final: "", err: "Ekspertiza markazi tizimi javob bermadi (timeout)" }
       ],
       pr: [
@@ -10958,7 +10958,7 @@ class Component extends DCLogic {
         copy: function () { try { navigator.clipboard.writeText(r.num); } catch (e) {} self.flash("So'rov raqami nusxalandi"); },
         retry: function () { updPr(r.id, { err: "", sent: nowStr() }); self.flash("So'rov qayta yuborildi"); },
         download: function () { self.flash("Yakuniy hujjat yuklab olinmoqda"); },
-        open: function () { self.setState({ prDet: r.id }); },
+        open: function () { self.setState({ igDet: "pr:" + r.id }); },
         lastTxt: r.err ? "xatolik: " + r.err : r.final ? "yakuniy hujjat " + r.final : r.qold ? "qoldirish xabari " + r.qold : r.prok ? "prokuror biriktirildi " + r.prokDate : "yuborildi " + r.sent,
         rowCls: "pr-row" + (r.err ? " err" : "")
       });
@@ -13805,34 +13805,56 @@ class Component extends DCLogic {
             for (var i = 0; i < a.length && !moved; i++) { var r = a[i]; if (r.err || r.final) continue; var n = nowS();
               if (!r.who) a[i] = Object.assign({}, r, { who: C.demoWho, whoDate: n }); else if (!r.mid) a[i] = Object.assign({}, r, { mid: n }); else a[i] = Object.assign({}, r, { final: n }); moved = true; }
             var o = {}; o[C.key] = a; self.setState(o); self.flash(moved ? C.sysTxt : "Yangi o'zgarish yo'q"); } };
-        var dk = String(s.igDet || "").split(":"), DC = dk[0] === "igAdv" ? IG.adv : dk[0] === "igEks" ? IG.eks : null;
-        var dr = DC ? (s[DC.key] || []).filter(function (r) { return r.id === dk[1]; })[0] : null;
+        IG.pr = { key: "pr", eye: "Prokuraturaga so'rov", f1Lbl: "Prokuratura filiali", whoLbl: "Biriktirilgan prokuror", waitTxt: "Prokuratura javobi kutilmoqda", okTxt: "Xatolik mavjud emas — so'rov prokuratura tizimi tomonidan qabul qilingan", dlLbl: "Yakuniy hujjatni yuklab olish",
+          steps: [["sent", "So'rov yuborildi"], ["who", "Prokuror biriktirildi"], ["mid", "Qoldirish haqida xabar"], ["final", "Yakuniy hujjat yuborildi"]],
+          st: { who: ["Prokuror biriktirildi", "b-blue"], mid: ["Qoldirish haqida xabar berildi", "b-amber"], final: ["Yakunlandi", "b-green"] } };
+        var dk = String(s.igDet || "").split(":"), DC = dk[0] === "igAdv" ? IG.adv : dk[0] === "igEks" ? IG.eks : dk[0] === "pr" ? IG.pr : null;
+        var dr0 = DC ? (s[DC.key] || []).filter(function (r) { return String(r.id) === dk[1]; })[0] : null;
+        var dr = dr0 && DC === IG.pr ? { id: dr0.id, num: dr0.num, org: dr0.filial, x: "", sent: dr0.sent, who: dr0.prok, whoDate: dr0.prokDate, mid: dr0.qold, final: dr0.final, err: dr0.err } : dr0;
         __out.igDetOpen = !!dr && !!s.caseOpen;
         __out.igDet = dr ? mapRow(DC, dr) : { steps: [] };
-        // yakunlangan advokat so'rovi: javob ma'lumotlari
-        if (dr && DC === IG.adv && dr.final) (function () {
+        if (dr && DC === IG.pr) { var prId = dr0.id; __out.igDet.retry = function () { self.setState({ pr: self.state.pr.map(function (r) { return r.id === prId ? Object.assign({}, r, { err: "", sent: nowS() }) : r; }) }); self.flash("So'rov qayta yuborildi"); }; }
+        // yakunlangan so'rov: javob ma'lumotlari (prokuratura / advokat / ekspert)
+        if (dr && dr.final) (function () {
           var h = 0; String(dr.id + dr.num).split("").forEach(function (c) { h = (h * 31 + c.charCodeAt(0)) % 1000003; });
           var dg = function (k, m) { var v = String((h * (k * 7919 + 13)) % Math.pow(10, m)); while (v.length < m) v = "0" + v; return v; };
-          var xs = dr.x || "", pk = /^Javobgar/.test(xs) ? "tmJv" : /^Qo'shimcha javobgar/.test(xs) ? "qtJv" : /^Arizachi/.test(xs) ? "qtAr" : "tmDv";
+          var xs = dr.x || "", pk = /^Javobgar/.test(xs) ? "tmJv" : /^Qo'shimcha javobgar/.test(xs) ? "qtJv" : /^Arizachi/.test(xs) ? "qtAr" : DC === IG.eks ? "tmJv" : "tmDv";
           var SN = { tmDv: "Da'vogar", tmJv: "Javobgar", qtJv: "Qo'shimcha javobgar", qtAr: "Arizachi" };
           var pp = (s[pk] || [])[0] || {}, pname = pp.name || "—";
-          var jsh = pp.jshshir || (dg(1, 7) + dg(2, 7)), fmtJ = function (v) { v = String(v).replace(/\D/g, ""); return v.replace(/(\d{4})(\d{4})(\d{4})(\d{2})/, "$1 $2 $3 $4"); };
+          var fmtJ = function (v) { v = String(v).replace(/\D/g, ""); return v.replace(/(\d{4})(\d{4})(\d{4})(\d{2})/, "$1 $2 $3 $4"); };
+          var jsh = pp.jshshir || (dg(1, 7) + dg(2, 7));
           var row = function (k, v, w, vc) { return { k: k, v: v || "—", cls: w ? "w" + w : "", vcls: vc || "" }; };
           var ini2 = function (n) { return String(n || "").split(" ").slice(0, 2).map(function (w) { return w.charAt(0); }).join(""); };
-          var adv = dr.who || "—", reg = (dr.org || "").replace(" advokatlar palatasi hududiy boshqarmasi", "");
-          var res = [
-            { t: "Taraf ma'lumotlari", icCls: "ign-ic ic-ign-user", hasTag: true, tag: SN[pk], tagCls: "ign-tag", hasPerson: true, avCls: "ign-av", ini: ini2(pname), name: pname, role: SN[pk] + " · yuridik yordam oluvchi",
-              rows: [row("Pasport turi", "O'zbekiston Respublikasi fuqarolik pasporti", 2), row("Pasport ma'lumotlari", "AB " + dg(3, 7), 0, "mono"), row("JSHSHIR", fmtJ(jsh), 0, "mono"), row("Tug'ilgan sana", pp.birth ? isoToUz(pp.birth) : "—"), row("Telefon raqami", pp.tel || "Ko'rsatilmagan", 0, pp.tel ? "" : "mut"), row("Manzil", pp.manzil || "—", 3)] },
-            { t: "Advokat ma'lumotlari", icCls: "ign-ic ic-ign-brief", hasTag: true, tag: "Litsenziya faol", tagCls: "ign-tag ok", hasPerson: true, avCls: "ign-av adv", ini: ini2(adv), name: adv, role: "Advokat · " + reg,
-              rows: [row("Litsenziya raqami", "L" + dg(4, 8), 0, "mono"), row("JSHSHIR", fmtJ(dg(5, 7) + dg(6, 7)), 0, "mono"), row("Telefon raqami", "+998 " + ["90", "91", "93", "94", "97", "99"][h % 6] + " " + dg(8, 3) + " " + dg(9, 2) + " " + dg(10, 2), 0, "mono"), row("Sertifikat raqami", dg(11, 6), 0, "mono"), row("Sertifikat berilgan sana", dg(12, 2).replace(/^(\d)(\d)$/, function (m, a2, b2) { return "1" + (Number(b2) % 9 + 0); }) + ".11.20" + (18 + Number(dg(13, 1)) % 7)), row("Biriktirilgan sana", (dr.whoDate || "").split(" ")[0])] },
-            { t: "So'rov ma'lumotlari", icCls: "ign-ic ic-ign-doc", hasTag: false, hasPerson: false,
-              rows: [row("So'rov raqami", dr.num, 0, "mono"), row("Instansiya", "Birinchi instansiya"), row("Sudya", "Tojiyev Zokirjon Xolboyevich"), row("Viloyat / tuman", reg ? reg.replace(" viloyati", " viloyati") : "—"), row("Yuridik yordam turi", "Davlat hisobidan yuridik yordam ko'rsatish — " + SN[pk].toLowerCase() + " manfaatini himoya qilish", 2)] }
-          ];
+          var tel = "+998 " + ["90", "91", "93", "94", "97", "99"][h % 6] + " " + dg(8, 3) + " " + dg(9, 2) + " " + dg(10, 2);
+          var who = dr.who || "—", reg = String(dr.org || "").replace(/ (advokatlar palatasi hududiy boshqarmasi|prokuraturasi|sud ekspertizasi bo'limi)$/, "");
+          if (/Respublika/.test(reg)) reg = "Toshkent shahri";
+          var cert = dg(12, 2), certD = (1 + Number(cert) % 27) + "." + (1 + Number(dg(14, 2)) % 12 < 10 ? "0" : "") + (1 + Number(dg(14, 2)) % 12) + ".20" + (16 + Number(dg(13, 1)) % 8);
+          var party = { t: DC === IG.eks ? "Ish bo'yicha taraf ma'lumotlari" : "Taraf ma'lumotlari", icCls: "ign-ic ic-ign-user", hasTag: true, tag: SN[pk], tagCls: "ign-tag", hasPerson: true, avCls: "ign-av", ini: ini2(pname), name: pname,
+            role: SN[pk] + (DC === IG.adv ? " · yuridik yordam oluvchi" : DC === IG.pr ? " · ish ishtirokchisi" : " · ekspertiza tayinlangan ish tarafi"),
+            rows: [row("Pasport turi", "O'zbekiston Respublikasi fuqarolik pasporti", 2), row("Pasport ma'lumotlari", "AB " + dg(3, 7), 0, "mono"), row("JSHSHIR", fmtJ(jsh), 0, "mono"), row("Tug'ilgan sana", pp.birth ? isoToUz(pp.birth) : "—"), row("Telefon raqami", pp.tel || "Ko'rsatilmagan", 0, pp.tel ? "" : "mut"), row("Manzil", pp.manzil || "—", 3)] };
+          var person, extra;
+          if (DC === IG.pr) {
+            person = { t: "Prokuror ma'lumotlari", icCls: "ign-ic ic-ig-shield", hasTag: true, tag: "Biriktirildi", tagCls: "ign-tag ok", hasPerson: true, avCls: "ign-av adv", ini: ini2(who), name: who, role: "Prokuror · " + (dr.org || ""),
+              rows: [row("Lavozimi", ["Prokuror yordamchisi", "Katta prokuror yordamchisi", "Prokuror bo'lim boshlig'i"][h % 3]), row("Klass unvoni", ["3-darajali yurist", "2-darajali yurist", "1-darajali yurist"][h % 3]), row("Xizmat guvohnomasi", "P-" + dg(4, 6), 0, "mono"), row("JSHSHIR", fmtJ(dg(5, 7) + dg(6, 7)), 0, "mono"), row("Telefon raqami", tel, 0, "mono"), row("Biriktirilgan sana", (dr.whoDate || "").split(" ")[0])] };
+            extra = [row("So'rov asosi", "Prokurorni ishga jalb qilish — ish yuzasidan xulosa berish uchun", 2)];
+          } else if (DC === IG.eks) {
+            person = { t: "Ekspert ma'lumotlari", icCls: "ign-ic ic-ig-flask", hasTag: true, tag: "Malaka sertifikati faol", tagCls: "ign-tag ok", hasPerson: true, avCls: "ign-av adv", ini: ini2(who), name: who, role: "Sud eksperti · " + (dr.org || ""),
+              rows: [row("Mutaxassisligi", dr.x || "Sud-buxgalteriya ekspertizasi"), row("Malaka sertifikati", "E-" + dg(4, 6), 0, "mono"), row("Sertifikat berilgan sana", certD), row("JSHSHIR", fmtJ(dg(5, 7) + dg(6, 7)), 0, "mono"), row("Telefon raqami", tel, 0, "mono"), row("Ish staji", (4 + h % 17) + " yil")] };
+            extra = [row("Ekspertiza turi", dr.x || "Sud-buxgalteriya ekspertizasi", 2)];
+          } else {
+            person = { t: "Advokat ma'lumotlari", icCls: "ign-ic ic-ign-brief", hasTag: true, tag: "Litsenziya faol", tagCls: "ign-tag ok", hasPerson: true, avCls: "ign-av adv", ini: ini2(who), name: who, role: "Advokat · " + reg,
+              rows: [row("Litsenziya raqami", "L" + dg(4, 8), 0, "mono"), row("JSHSHIR", fmtJ(dg(5, 7) + dg(6, 7)), 0, "mono"), row("Telefon raqami", tel, 0, "mono"), row("Sertifikat raqami", dg(11, 6), 0, "mono"), row("Sertifikat berilgan sana", certD), row("Biriktirilgan sana", (dr.whoDate || "").split(" ")[0])] };
+            extra = [row("Yuridik yordam turi", "Davlat hisobidan yuridik yordam ko'rsatish — " + SN[pk].toLowerCase() + " manfaatini himoya qilish", 2)];
+          }
+          var req = { t: "So'rov ma'lumotlari", icCls: "ign-ic ic-ign-doc", hasTag: false, hasPerson: false,
+            rows: [row("So'rov raqami", dr.num, 0, "mono"), row("Instansiya", "Birinchi instansiya"), row("Sudya", "Tojiyev Zokirjon Xolboyevich"), row("Viloyat / tuman", reg || "—")].concat(extra) };
+          var res = [party, person, req];
+          var ttl = DC === IG.pr ? "Prokurorni jalb qilish so'roviga javob" : DC === IG.eks ? "Ekspertiza tayinlash so'roviga javob" : "Advokatni jalb qilish so'roviga javob";
           __out.igDet.hasRes = true; __out.igDet.noRes = false; __out.igDet.res = res; __out.igDet.qvCls = "qv prd ign-qv";
           __out.igDet.print = function () {
             var E = function (v) { return String(v == null ? "" : v).replace(/&/g, "&amp;").replace(/[<]/g, "&lt;").replace(/>/g, "&gt;"); };
             var body = res.map(function (g) { return "<h2>" + E(g.t) + "<\/h2>" + (g.hasPerson ? "<p class=\"pn\"><b>" + E(g.name) + "<\/b> — " + E(g.role) + "<\/p>" : "") + "<table>" + g.rows.map(function (r) { return "<tr><th>" + E(r.k) + "<\/th><td>" + E(r.v) + "<\/td><\/tr>"; }).join("") + "<\/table>"; }).join("");
-            var html = "<!doctype html><html><head><meta charset=\"utf-8\"><title>" + E(dr.num) + "<\/title><style>@page{size:A4;margin:16mm}body{font-family:'Times New Roman',serif;font-size:11.5pt;color:#000}h1{font-size:14pt;text-align:center;margin:0 0 4px}.sub{text-align:center;margin:0 0 14px;font-size:10pt}h2{font-size:12pt;border-bottom:1px solid #000;padding-bottom:3px;margin:16px 0 6px}.pn{margin:0 0 6px}table{width:100%;border-collapse:collapse}th,td{border:1px solid #666;padding:4px 7px;text-align:left;vertical-align:top;font-size:10.5pt}th{width:34%;background:#f1f1f1;font-weight:normal}<\/style><\/head><body><h1>Advokatni jalb qilish so'roviga javob<\/h1><p class=\"sub\">So'rov raqami: " + E(dr.num) + " · " + E(dr.final) + "<\/p>" + body + "<\/body><\/html>";
+            var html = "<!doctype html><html><head><meta charset=\"utf-8\"><title>" + E(dr.num) + "<\/title><style>@page{size:A4;margin:16mm}body{font-family:'Times New Roman',serif;font-size:11.5pt;color:#000}h1{font-size:14pt;text-align:center;margin:0 0 4px}.sub{text-align:center;margin:0 0 14px;font-size:10pt}h2{font-size:12pt;border-bottom:1px solid #000;padding-bottom:3px;margin:16px 0 6px}.pn{margin:0 0 6px}table{width:100%;border-collapse:collapse}th,td{border:1px solid #666;padding:4px 7px;text-align:left;vertical-align:top;font-size:10.5pt}th{width:34%;background:#f1f1f1;font-weight:normal}<\/style><\/head><body><h1>" + E(ttl) + "<\/h1><p class=\"sub\">So'rov raqami: " + E(dr.num) + " · " + E(dr.final) + "<\/p>" + body + "<\/body><\/html>";
             try { var f = document.createElement("iframe"); f.style.cssText = "position:fixed;right:0;bottom:0;width:0;height:0;border:0"; document.body.appendChild(f); f.contentDocument.open(); f.contentDocument.write(html); f.contentDocument.close(); setTimeout(function () { try { f.contentWindow.focus(); f.contentWindow.print(); } catch (er) { self.flash("Chop etish oynasini ochib bo'lmadi"); } setTimeout(function () { try { f.remove(); } catch (er) {} }, 1500); }, 150); } catch (er) { self.flash("Chop etish oynasini ochib bo'lmadi"); }
           };
         })();
