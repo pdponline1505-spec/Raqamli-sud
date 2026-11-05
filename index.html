@@ -10013,7 +10013,18 @@ class Component extends DCLogic {
           setTimeout(function () { requestAnimationFrame(step); }, delay);
         });
       };
-      var umsScan = function () { var r = document.querySelector(".casemodal:not(.quick) .ums:not([data-anim])"); if (r) umsRun(r); };
+      var smCount = function (el, delay, dur) {
+        var tn = el.querySelector(".sc-interp") || el, fin = String(tn.textContent || "").trim(), m = fin.match(/^(\d+)(?:,(\d+))?(.*)$/);
+        if (!m) return; var dec = m[2] ? m[2].length : 0, to = parseFloat(m[1] + (m[2] ? "." + m[2] : "")), suf = m[3], t0 = 0;
+        var fmt = function (v) { var t = dec ? v.toFixed(dec).replace(".", ",") : String(Math.round(v)); return t + suf; };
+        tn.textContent = fmt(0);
+        var step = function (ts) { if (!t0) t0 = ts; var x = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - x, 3); tn.textContent = x < 1 ? fmt(to * e) : fin; if (x < 1) requestAnimationFrame(step); };
+        setTimeout(function () { requestAnimationFrame(step); }, delay);
+      };
+      var smRun = function (root) { root.setAttribute("data-anim", "1"); if (umsRM()) return;
+        Array.prototype.forEach.call(root.querySelectorAll(".smd-k4 .d2-kn"), function (el, k) { smCount(el, 120 + k * 80, 900); });
+        Array.prototype.forEach.call(root.querySelectorAll(".smd-gw b"), function (el, k) { smCount(el, 200 + k * 120, 1100); }); };
+      var umsScan = function () { var r = document.querySelector(".casemodal:not(.quick) .ums:not([data-anim])"); if (r) umsRun(r); var r2 = document.querySelector(".smd .smd-ov:not([data-anim])"); if (r2) smRun(r2); };
       try { new MutationObserver(umsScan).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["class"] }); } catch (er) {}
       setTimeout(umsScan, 0);
     }
