@@ -5058,6 +5058,19 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .smd-ai.ok::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M5%2012l5%205%209-10%22/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M5%2012l5%205%209-10%22/%3E%3C/svg%3E")}
 .smd-ai.warn::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%203l10%2018H2z%22/%3E%3Cpath%20d%3D%22M12%2010v4M12%2017.5v.01%22/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%203l10%2018H2z%22/%3E%3Cpath%20d%3D%22M12%2010v4M12%2017.5v.01%22/%3E%3C/svg%3E")}
 .smd-ai.info::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%229%22/%3E%3Cpath%20d%3D%22M12%2011v6M12%207.5v.01%22/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%229%22/%3E%3Cpath%20d%3D%22M12%2011v6M12%207.5v.01%22/%3E%3C/svg%3E")}
+.jf-up{gap:6px}
+.jf-up>span:first-child{font-size:13px;color:#475569}
+.itkm-b .jf-drop{display:flex !important;flex-direction:row !important;align-items:center !important;justify-content:flex-start !important;gap:12px !important;min-height:0 !important;height:auto !important;padding:12px 12px 12px 14px !important;border-radius:12px !important;text-align:left !important;border:1.5px dashed #cdd6e3;background:#fafbfd;cursor:pointer;transition:background .15s,border-color .15s}
+.itkm-b .jf-drop:hover,.itkm-b .jf-drop.over,.itkm-b .jf-drop.drag{background:#f3f8ff;border-color:#93c5fd !important}
+.itkm-b .jf-drop:focus-within{outline:2px solid #93c5fd;outline-offset:2px}
+.jf-dic{width:40px;height:40px;border-radius:10px;flex:none;display:grid;place-items:center;background:#eaf2ff;color:#3073f1}
+.jf-dic .i{width:20px;height:20px}
+.jf-dtx{gap:2px !important;flex:1;min-width:0}
+.jf-dtx b{font-size:14px;font-weight:600;color:#0f172a}
+.jf-dtx small{font-size:12.5px;color:#64748b}
+.jf-dbtn{flex:none;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border-radius:10px;background:#fff;border:1px solid #dbe3ee;color:#3073f1;font-size:13px;font-weight:600;transition:background .15s,border-color .15s}
+.itkm-b .jf-drop:hover .jf-dbtn{background:#eff6ff;border-color:#bfdbfe}
+@media (max-width:520px){.jf-dbtn{display:none}}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -8123,12 +8136,14 @@ html[data-theme="dark"] .ds-host img{filter:none}
         <label class="fld"><span>Hujjat turi <b class="dx-req">*</b></span><span class="{{jfS.turi.cls}}" id="{{jfS.turi.id}}" onKeyDown="{{jfS.turi.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{jfS.turi.exp}}" disabled="{{jfS.turi.dis}}" onClick="{{jfS.turi.toggle}}" style="border-color: {{jfS.turi.bc}}"><span class="{{jfS.turi.vcls}}">{{jfS.turi.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{jfS.turi.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{jfS.turi.stop}}"><sc-for list="{{jfS.turi.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
       </div>
       <sc-if value="{{jfNoFile}}" hint-placeholder-val="{{ true }}">
-      <label class="{{jfDropCls}}" onDragOver="{{jfDragOver}}" onDragLeave="{{jfDragLeave}}" onDrop="{{jfDrop}}" style="border-color: {{jfFileB}}">
+      <div class="fld jf-up"><span>Fayl <b class="dx-req">*</b></span>
+      <label class="{{jfDropCls}} jf-drop" onDragOver="{{jfDragOver}}" onDragLeave="{{jfDragLeave}}" onDrop="{{jfDrop}}" style="border-color: {{jfFileB}}">
         <input class="sr" type="file" accept=".pdf,.jpg,.jpeg,.png" onChange="{{jfPick}}">
-        <span class="dx-upic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4M7 9l5-5 5 5M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"></path></svg></span>
-        <b>Faylni tanlang yoki shu yerga tashlang</b>
-        <small>PDF, JPG, PNG · 10 MB gacha</small>
+        <span class="jf-dic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M12 18v-6M9.5 14.5L12 12l2.5 2.5"></path></svg></span>
+        <span class="kv jf-dtx"><b>Faylni shu yerga tashlang</b><small>PDF, JPG, PNG · 10 MB gacha</small></span>
+        <span class="jf-dbtn"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Fayl tanlash</span>
       </label>
+      </div>
       </sc-if>
       <sc-if value="{{jfHasFile}}" hint-placeholder-val="{{ false }}">
       <div class="jf-file">
