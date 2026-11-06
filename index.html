@@ -1582,15 +1582,17 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="{{t.cls}}">
 <div class="nt-h">
 <span class="nt-ic" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></span>
-<div class="kv" style="gap: 3px; min-width: 0; flex: 1"><div class="row" style="gap: 8px; flex-wrap: wrap"><b class="nt-title">{{t.turi}}</b><span class="nt-id">{{t.id}}</span><span class="{{t.stCls}}">{{t.status}}</span></div><span class="nt-meta">Ajrim sanasi: {{t.ajrimSana}}</span></div>
+<div class="kv" style="gap: 3px; min-width: 0; flex: 1"><div class="row" style="gap: 8px; flex-wrap: wrap"><b class="nt-title">{{t.turi}}</b><span class="nt-id">{{t.id}}</span><span class="{{t.stCls}}">{{t.status}}</span></div></div>
 <div class="row" style="gap: 6px; flex: none">
 <sc-if value="{{t.canLift}}" hint-placeholder-val="{{ true }}"><button class="btn sm nt-lift" onClick="{{t.askLift}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 7.5-2"></path></svg>Taqiqni bekor qilish</button></sc-if>
 </div>
 </div>
-<div class="nt-b">
-<div class="kv"><small>Mulkdor</small><b>{{t.mulkdor}}</b></div>
-<div class="kv"><small>{{t.idLabel}}</small><b class="nt-mono">{{t.idVal}}</b></div>
+<div class="nt-b nt-b6">
+<div class="kv"><small>Mulkdorning F.I.Sh. – Nomi</small><b>{{t.mulkdor}}</b></div>
+<div class="kv"><small>Kadastr</small><b class="{{t.kadCls}}">{{t.kadastr}}</b></div>
+<div class="kv"><small title="Avtotransport vositasining davlat raqami">Avto davlat raqami</small><b class="{{t.davCls}}">{{t.davRaqam}}</b></div>
 <div class="kv"><small>Taqiq sanasi</small><b>{{t.sana}}</b></div>
+<div class="kv"><small>Ajrim (qaror) sanasi</small><b>{{t.ajrimSana}}</b></div>
 <button class="nt-file" onClick="{{t.view}}"><span class="dx-ft" style="width: 28px; height: 32px; font-size: 8px">PDF</span><span class="kv" style="gap: 0; min-width: 0"><b>{{t.file}}</b><small>{{t.size}}</small></span></button>
 </div>
 </div>
@@ -1606,16 +1608,16 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="{{m.cls}}">
 <div class="nt-h">
 <span class="nt-ic" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></span>
-<div class="kv" style="gap: 3px; min-width: 0; flex: 1"><div class="row" style="gap: 8px; flex-wrap: wrap"><b class="nt-title">{{m.short}}</b><span class="nt-id">{{m.id}}</span><span class="{{m.stCls}}">{{m.status}}</span></div><span class="nt-meta">Ajrim sanasi: {{m.ajrimSana}}</span></div>
+<div class="kv" style="gap: 3px; min-width: 0; flex: 1"><div class="row" style="gap: 8px; flex-wrap: wrap"><b class="nt-title">{{m.short}}</b><span class="nt-id">{{m.id}}</span><span class="{{m.stCls}}">{{m.status}}</span></div></div>
 <div class="row" style="gap: 6px; flex: none">
 <sc-if value="{{m.canLift}}" hint-placeholder-val="{{ true }}"><button class="btn sm nt-lift" onClick="{{m.askLift}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 7.5-2"></path></svg>Taqiqni bekor qilish</button></sc-if>
 </div>
 </div>
-<div class="nt-b">
-<div class="kv"><small>Mulkdor</small><b>{{m.mulkdor}}</b></div>
+<div class="nt-b mb-b4">
+<div class="kv"><small>Javobgar</small><b>{{m.mulkdor}}</b></div>
 <div class="kv"><small>Asosi</small><b>{{m.asos}}</b></div>
+<div class="kv"><small>Ajrim (qaror) sanasi</small><b>{{m.ajrimSana}}</b></div>
 <div class="kv"><small>Kuchga kirish sanasi</small><b>{{m.kuch}}</b></div>
-<sc-if value="{{m.hasFile}}" hint-placeholder-val="{{ true }}"><button class="nt-file" onClick="{{m.view}}"><span class="dx-ft" style="width: 28px; height: 32px; font-size: 8px">PDF</span><span class="kv" style="gap: 0; min-width: 0"><b>{{m.file}}</b><small>{{m.size}}</small></span></button></sc-if>
 </div>
 </div>
 </sc-for>
@@ -2808,6 +2810,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <button type="button" class="nt-cb" role="checkbox" aria-checked="{{ntfYhxbStr}}" onClick="{{ntfToggleYhxb}}"><span class="{{ntfYhxbCls}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 12px; height: 12px; stroke-width: 3"><path d="M5 12l5 5 9-10"></path></svg></span>YHXB tizimida ro'yxatdan o'tgan</button>
 <div class="itkm-g">
 <label class="fld"><span>Rusumi</span><input value="{{ntForm.f.rusum}}" onChange="{{ntfF.rusum}}" placeholder="Masalan, Chevrolet Cobalt" style="border-color: {{ntfFB.rusum}}"></label>
+<label class="fld"><span>Davlat raqami <b class="dx-req">*</b></span><input value="{{ntForm.f.davRaqam}}" onChange="{{ntfF.davRaqam}}" placeholder="Masalan, 01 777 AAA" style="border-color: {{ntfFB.davRaqam}}"></label>
 <label class="fld"><span>Texnik hujjat seriyasi <b class="dx-req">*</b></span><input value="{{ntForm.f.texSeriya}}" onChange="{{ntfF.texSeriya}}" placeholder="Masalan, AAF" style="border-color: {{ntfFB.texSeriya}}"></label>
 <label class="fld"><span>Texnik hujjat raqami <b class="dx-req">*</b></span><input value="{{ntForm.f.texRaqam}}" onChange="{{ntfF.texRaqam}}" placeholder="Masalan, 0451287" style="border-color: {{ntfFB.texRaqam}}"></label>
 </div>
@@ -2889,9 +2892,9 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="smd-top"><div class="kv" style="gap: 2px; min-width: 0"><b id="mbf-title" class="smd-h">{{mbfTitle}}</b><small class="smd-sub">{{mbfSub}}</small></div><span style="flex: 1"></span><sc-if value="{{mbfView}}" hint-placeholder-val="{{ false }}"><span class="{{mbv.stCls}}">{{mbv.status}}</span></sc-if><button class="ib" aria-label="Yopish" onClick="{{mbfClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
 <div class="smd-scroll"><div class="smd-sec igr-sec">
 <sc-if value="{{mbfEdit}}" hint-placeholder-val="{{ true }}">
-<div class="smd-card ntx-card"><span class="smd-ct"><span class="smd-ni ic-user" aria-hidden="true"></span>Mulkdor va asos</span>
+<div class="smd-card ntx-card"><span class="smd-ct"><span class="smd-ni ic-user" aria-hidden="true"></span>Javobgar va asos</span>
 <div class="itkm-g">
-<label class="fld"><span>Mulkdorning F.I.Sh <b class="dx-req">*</b></span><span class="{{mbS.mulkdor.cls}}" id="{{mbS.mulkdor.id}}" onKeyDown="{{mbS.mulkdor.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{mbS.mulkdor.exp}}" disabled="{{mbS.mulkdor.dis}}" onClick="{{mbS.mulkdor.toggle}}" style="border-color: {{mbS.mulkdor.bc}}"><span class="{{mbS.mulkdor.vcls}}">{{mbS.mulkdor.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{mbS.mulkdor.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{mbS.mulkdor.stop}}"><sc-for list="{{mbS.mulkdor.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
+<label class="fld"><span>Javobgar <b class="dx-req">*</b></span><span class="{{mbS.mulkdor.cls}}" id="{{mbS.mulkdor.id}}" onKeyDown="{{mbS.mulkdor.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{mbS.mulkdor.exp}}" disabled="{{mbS.mulkdor.dis}}" onClick="{{mbS.mulkdor.toggle}}" style="border-color: {{mbS.mulkdor.bc}}"><span class="{{mbS.mulkdor.vcls}}">{{mbS.mulkdor.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{mbS.mulkdor.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{mbS.mulkdor.stop}}"><sc-for list="{{mbS.mulkdor.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
 <label class="fld"><span>Asosi <b class="dx-req">*</b></span><span class="{{mbS.asos.cls}}" id="{{mbS.asos.id}}" onKeyDown="{{mbS.asos.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{mbS.asos.exp}}" disabled="{{mbS.asos.dis}}" onClick="{{mbS.asos.toggle}}" style="border-color: {{mbS.asos.bc}}"><span class="{{mbS.asos.vcls}}">{{mbS.asos.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{mbS.asos.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{mbS.asos.stop}}"><sc-for list="{{mbS.asos.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
 </div></div>
 <div class="smd-card ntx-card"><span class="smd-ct"><span class="smd-ni ic-shield" aria-hidden="true"></span>Da'voni ta'minlash chorasi</span>
@@ -4397,7 +4400,7 @@ ex: [
 mb: [{ id: "MIB-40218", chora: 2, asos: "Sudyaning o'z tashabbusi", mulkdor: "\"Alpomish\" sport klubi", ajrim: "17.09.2026", kuch: "19.09.2026", file: "ajrim_0412.pdf", size: "96 KB", st: "amal" },
 { id: "MIB-39877", chora: 1, asos: "Da'vogarning arizasi", mulkdor: "«Toshkent suv ta'minoti» AJ", ajrim: "02.08.2026", kuch: "05.08.2026", file: "ajrim_0377.pdf", size: "88 KB", st: "amal" }],
 nt: [{ id: "NOT-2231", turi: "kochmas", mulkdor: "Yusupova Nodira Karimovna", fields: { kadastr: "10:08:04:03:1521", tuman: "Yunusobod tumani", tumanKod: "1726266", manzil: "Toshkent sh., Yunusobod t., 4-mavze", uy: "12", xonadon: "34" }, sana: "30.07.2026", ajrim: "118", ajrimSana: "21.07.2026", file: "ajrim_118.pdf", size: "84 KB", st: "amal" },
-{ id: "NOT-2254", turi: "avto", mulkdor: "«Toshkent suv ta'minoti» AJ", fields: { rusum: "Isuzu NPR 75", texSeriya: "AAF", texRaqam: "0451287", yhxb: true }, sana: "12.08.2026", ajrim: "0921", ajrimSana: "02.08.2026", file: "qaror_0921.pdf", size: "72 KB", st: "amal" }],
+{ id: "NOT-2254", turi: "avto", mulkdor: "«Toshkent suv ta'minoti» AJ", fields: { rusum: "Isuzu NPR 75", davRaqam: "01 777 AAA", texSeriya: "AAF", texRaqam: "0451287", yhxb: true }, sana: "12.08.2026", ajrim: "0921", ajrimSana: "02.08.2026", file: "qaror_0921.pdf", size: "72 KB", st: "amal" }],
 ntDel: "", ntForm: null,
 qtJv: [tmPerson(11, "Abdusattorova Asila Kamoliddinovna", "2000-10-10", "Ayol"), tmPerson(13, "Yusupov Akmal Ilhomovich", "1985-03-22", "Erkak"), tmPerson(14, "Ismoilov Nodir Bahodirovich", "1979-11-05", "Erkak"), tmPerson(15, "Qodirova Madina Rustamovna", "1992-07-14", "Ayol")], qtAr: [tmPerson(16, "Saidova Nilufar Akramovna", "1990-02-18", "Ayol"), tmPerson(17, "Tursunov Bekzod Olimovich", "1983-09-07", "Erkak")], qsh: [Object.assign(tmPerson(12, "Karimov Akmal Saidovich", "1988-04-12", "Erkak"), { rol: "Guvoh" })],
 tmJv: [tmPerson(3, "Rahimova Dilnoza Anvarovna", "2000-10-10", "Ayol"), tmPerson(4, "Normurodov Bekzod Azizovich", "2000-10-10", "Erkak"), tmPerson(5, "Rasulov Mansur Akbarovich", "1983-01-30", "Erkak"), tmPerson(6, "Toshmatova Gulnora Erkinovna", "1990-09-18", "Ayol")],
@@ -8562,14 +8565,14 @@ var mch = CH[(+v.chora || 0) - 1]; __out.mbfHasCh = !mbView && !!mch; __out.mbfC
 var mrec = mbView ? list.filter(function (x) { return x.id === f.view; })[0] : null;
 var vCard = function (t, ic, tag, rows, g2, file) { var o = { t: t, icCls: "smd-ni " + ic, hasTag: !!tag, tag: tag || "", tagCls: "igr-tag", hasPhoto: false, noPhoto: true, dlCls: "smd-idg" + (g2 ? " g2" : ""), rows: rows, hasFile: !!(file && file.name), file: file ? file.name : "", fileSub: file ? file.sub : "", openFile: file ? file.open : function () {} }; return o; };
 __out.mbv = { status: mrec ? ST[mrec.st][0] : "", stCls: (mrec ? ST[mrec.st][1] : "nt-st") + " igr-st", cards: !mrec ? [] : [
-vCard("Mulkdor va asos", "ic-user", "", [tile("Mulkdorning F.I.Sh", mrec.mulkdor), tile("Asosi", mrec.asos)], true),
+vCard("Javobgar va asos", "ic-user", "", [tile("Javobgar", mrec.mulkdor), tile("Asosi", mrec.asos)], true),
 vCard("Da'voni ta'minlash chorasi", "ic-shield", "", [tile("Da'voni ta'minlash choralari", mrec.chora + " – " + (CH[mrec.chora - 1] || CH[0])[0], "w3")], false),
-vCard("Ajrim ma'lumotlari", "ic-id", "", [tile("Ajrim sanasi", mrec.ajrim), tile("Kuchga kirish sanasi", mrec.kuch)], true, { name: mrec.file, sub: "Ajrim qarorining elektron shakli" + (mrec.size && mrec.size !== "—" ? " · " + mrec.size : ""), open: function () { self.flash("«" + mrec.file + "» ko'rish oynasida ochiladi"); } })] };
+vCard("Ajrim ma'lumotlari", "ic-id", "", [tile("Ajrim (qaror) sanasi", mrec.ajrim), tile("Kuchga kirish sanasi", mrec.kuch)], true, { name: mrec.file, sub: "Ajrim qarorining elektron shakli" + (mrec.size && mrec.size !== "—" ? " · " + mrec.size : ""), open: function () { self.flash("«" + mrec.file + "» ko'rish oynasida ochiladi"); } })] };
 __out.mbfTitle = mbView ? "Taqiqni bekor qilish" : "Taqiq qo'yish";
 __out.mbfSub = mbView ? "MIB tizimi · " + f.view + " · ma'lumotlar faqat ko'rish uchun" : "MIB tizimi · asosiy ish " + (s.caseNum || "");
 __out.mbfLift = function () { var w = self.state.mbForm; if (!w || !w.view) return; self.setState({ mbForm: null, dxDd: "", mb: self.state.mb.map(function (x) { return x.id === w.view ? Object.assign({}, x, { st: "bekor" }) : x; }) }); self.flash(w.view + " · taqiqdan olindi"); };
 __out.mbS = {
-mulkdor: dd("mb-mulk", [{ v: "", l: "Mulkdorni tanlang" }].concat(owners), v.mulkdor, setMF("mulkdor"), { extra: "fxm", ph: "Mulkdorni tanlang", noSplit: true, bc: errOn && !v.mulkdor ? RD : "" }),
+mulkdor: dd("mb-mulk", [{ v: "", l: "Javobgarni tanlang" }].concat(owners), v.mulkdor, setMF("mulkdor"), { extra: "fxm", ph: "Javobgarni tanlang", noSplit: true, bc: errOn && !v.mulkdor ? RD : "" }),
 chora: dd("mb-chora", [{ v: "", l: "Chorani tanlang" }].concat(CH.map(function (c, i) { return { v: String(i + 1), l: (i + 1) + " – " + c[0] }; })), v.chora, setMF("chora"), { extra: "fxm", ph: "Chorani tanlang", bc: errOn && !v.chora ? RD : "" }),
 asos: dd("mb-asos", [{ v: "", l: "Asosini tanlang" }].concat(ASOS.map(function (x) { return { v: x, l: x }; })), v.asos, setMF("asos"), { extra: "fxm", ph: "Asosini tanlang", noSplit: true, bc: errOn && !v.asos ? RD : "" })
 };
@@ -8585,7 +8588,7 @@ if (f) setTimeout(function () { if (window.__ntxCal) window.__ntxCal(); try { va
 __out.mbfSave = function () {
 var w = self.state.mbForm; if (!w) return;
 var miss = [];
-if (!w.mulkdor) miss.push("mulkdor"); if (!w.chora) miss.push("chora"); if (!w.asos) miss.push("asosi"); if (!w.ajrim) miss.push("ajrim sanasi"); if (!w.kuch) miss.push("kuchga kirish sanasi"); if (!w.file) miss.push("ajrim qarorining elektron shakli");
+if (!w.mulkdor) miss.push("javobgar"); if (!w.chora) miss.push("chora"); if (!w.asos) miss.push("asosi"); if (!w.ajrim) miss.push("ajrim sanasi"); if (!w.kuch) miss.push("kuchga kirish sanasi"); if (!w.file) miss.push("ajrim qarorining elektron shakli");
 if (miss.length) { self.setState({ mbForm: Object.assign({}, w, { err: "To'ldirilmagan: " + miss.join(", ") }) }); return; }
 if (w.kuch < w.ajrim) { self.setState({ mbForm: Object.assign({}, w, { err: "Kuchga kirish sanasi ajrim sanasidan oldin bo'lishi mumkin emas" }) }); return; }
 var id = "MIB-" + (40300 + Math.floor(Math.random() * 600));
@@ -8604,7 +8607,8 @@ var upd = function (id, patch) { self.setState({ ntDel: "", nt: self.state.nt.ma
 __out.nt = list.map(function (t) {
 var ty = TYPES[t.turi] || TYPES.kochmas, cd = s.ntDel === t.id;
 var idVal = t.turi === "avto" ? ((t.fields.texSeriya || "") + " " + (t.fields.texRaqam || "")).trim() : (t.fields.kadastr || "—");
-return { id: t.id, turi: ty[0].replace(/^\d+\s*–\s*/, ""), mulkdor: t.mulkdor, idLabel: ty[2], idVal: idVal || "—", sana: t.sana, ajrim: t.ajrim, ajrimSana: t.ajrimSana, file: t.file, size: t.size,
+var kad = t.turi === "kochmas" && (t.fields || {}).kadastr, dav = t.turi === "avto" && (t.fields || {}).davRaqam;
+return { kadastr: kad || "—", kadCls: "nt-mono" + (kad ? "" : " mut"), davRaqam: dav || "—", davCls: "nt-mono" + (dav ? "" : " mut"), id: t.id, turi: ty[0].replace(/^\d+\s*–\s*/, ""), mulkdor: t.mulkdor, idLabel: ty[2], idVal: idVal || "—", sana: t.sana, ajrim: t.ajrim, ajrimSana: t.ajrimSana, file: t.file, size: t.size,
 status: ST[t.st][0], stCls: ST[t.st][1], cls: "nt" + (t.st === "bekor" ? " off" : "") + (cd ? " del" : ""),
 canLift: t.st !== "bekor",
 askLift: function () { var fl = t.fields || {}, blank = {}; (t.turi === "avto" ? ["rusum", "texSeriya", "texRaqam"] : ["tuman", "tumanKod", "manzil", "uy", "xonadon"]).forEach(function (k) { blank[k] = "—"; }); var nf = Object.assign(blank, ownerInfo(t.mulkdor)); Object.keys(fl).forEach(function (k) { if (fl[k] !== "" && fl[k] != null) nf[k] = fl[k]; }); self.setState({ dxDd: "", ntForm: { turi: t.turi, mulkdor: t.mulkdor, f: nf, yhxb: !!fl.yhxb, found: t.turi === "kochmas" && !!fl.kadastr, ajrimSana: u2i(t.ajrimSana), file: t.file, err: "", view: t.id } }); },
@@ -8643,9 +8647,9 @@ var nfx = nrec ? (nrec.fields || {}) : {}, nAv = nrec && nrec.turi === "avto";
 __out.ntv = { status: nrec ? ST[nrec.st][0] : "", stCls: (nrec ? ST[nrec.st][1] : "nt-st") + " igr-st", cards: !nrec ? [] : [
 vCard("Mol-mulk va mulkdor", "ic-prop", "", [tile("Mol-mulk turi", (TYPES[nrec.turi] || TYPES.kochmas)[0]), tile("Mulkdorning F.I.Sh", nrec.mulkdor)], true),
 vCard("Mol-mulk ma'lumotlari", nAv ? "ic-car" : "ic-home", nAv ? "Avtotransport" : "Ko'chmas mulk", nAv
-? [tile("YHXB tizimida ro'yxatdan o'tgan", nfx.yhxb ? "Ha" : "Yo'q", "w3"), tile("Rusumi", nfx.rusum), tile("Texnik hujjat seriyasi", nfx.texSeriya), tile("Texnik hujjat raqami", nfx.texRaqam)]
+? [tile("YHXB tizimida ro'yxatdan o'tgan", nfx.yhxb ? "Ha" : "Yo'q", "w3"), tile("Rusumi", nfx.rusum, "w2"), tile("Davlat raqami", nfx.davRaqam), tile("Texnik hujjat seriyasi", nfx.texSeriya), tile("Texnik hujjat raqami", nfx.texRaqam)]
 : [tile("Kadastr raqami", nfx.kadastr, "w2"), tile("Tuman kodi", nfx.tumanKod), tile("Tuman", nfx.tuman), tile("Uy", nfx.uy), tile("Xonadon", nfx.xonadon), tile("Manzil", nfx.manzil, "w3")], false),
-vCard("Ajrim ma'lumotlari", "ic-id", "", [tile("Ajrim sanasi", nrec.ajrimSana)], true, { name: nrec.file, sub: "Ajrim qarorining elektron shakli" + (nrec.size && nrec.size !== "—" ? " · " + nrec.size : ""), open: function () { self.flash("«" + nrec.file + "» ko'rish oynasida ochiladi"); } })] };
+vCard("Ajrim ma'lumotlari", "ic-id", "", [tile("Ajrim (qaror) sanasi", nrec.ajrimSana)], true, { name: nrec.file, sub: "Ajrim qarorining elektron shakli" + (nrec.size && nrec.size !== "—" ? " · " + nrec.size : ""), open: function () { self.flash("«" + nrec.file + "» ko'rish oynasida ochiladi"); } })] };
 __out.ntfTitle = ntView ? "Taqiqni bekor qilish" : "Taqiq qo'yish";
 __out.ntfSub = ntView ? "Notarius tizimi · " + f.view + " · ma'lumotlar faqat ko'rish uchun" : "Notarius tizimi · asosiy ish " + (s.caseNum || "");
 __out.ntfLift = function () { var w = self.state.ntForm; if (!w || !w.view) return; self.setState({ ntForm: null, dxDd: "", nt: self.state.nt.map(function (x) { return x.id === w.view ? Object.assign({}, x, { st: "bekor" }) : x; }) }); self.flash(w.view + " · taqiqdan olindi"); };
@@ -8655,9 +8659,9 @@ mulkdor: dd("nt-mulk", [{ v: "", l: "Mulkdorni tanlang" }].concat(owners), v.mul
 };
 __out.ntfHasType = !!TYPES[v.turi]; __out.ntfNoType = !TYPES[v.turi];
 __out.ntfIsAvto = v.turi === "avto"; __out.ntfIsKochmas = v.turi === "kochmas";
-var REQ = { avto: ["texSeriya", "texRaqam"], kochmas: ["kadastr"] };
+var REQ = { avto: ["davRaqam", "texSeriya", "texRaqam"], kochmas: ["kadastr"] };
 __out.ntfF = {}; __out.ntfFB = {};
-["rusum", "texSeriya", "texRaqam", "stir", "tashkilot", "kadastr", "tuman", "tumanKod", "manzil", "uy", "xonadon"].forEach(function (k) {
+["rusum", "davRaqam", "texSeriya", "texRaqam", "stir", "tashkilot", "kadastr", "tuman", "tumanKod", "manzil", "uy", "xonadon"].forEach(function (k) {
 __out.ntfF[k] = function (e) { var o = {}; o[k] = e.target.value; if (k === "kadastr") { self.setState(function (prev) { return prev.ntForm ? { ntForm: Object.assign({}, prev.ntForm, { found: false }) } : null; }); } setFF(o); };
 __out.ntfFB[k] = errOn && (REQ[v.turi] || []).indexOf(k) >= 0 && !(v.f[k] || "").trim() ? RD : "";
 });
@@ -8700,7 +8704,7 @@ var miss = [];
 if (!TYPES[w.turi]) miss.push("mol-mulk turi");
 else {
 if (!w.mulkdor) miss.push("mulkdor");
-if (w.turi === "avto") { if (!(w.f.texSeriya || "").trim()) miss.push("texnik hujjat seriyasi"); if (!(w.f.texRaqam || "").trim()) miss.push("texnik hujjat raqami"); }
+if (w.turi === "avto") { if (!(w.f.davRaqam || "").trim()) miss.push("davlat raqami"); if (!(w.f.texSeriya || "").trim()) miss.push("texnik hujjat seriyasi"); if (!(w.f.texRaqam || "").trim()) miss.push("texnik hujjat raqami"); }
 if (w.turi === "kochmas" && !(w.f.kadastr || "").trim()) miss.push("kadastr raqami");
 if (!w.ajrimSana) miss.push("ajrim sanasi"); if (!w.file) miss.push("ajrim qarorining elektron shakli");
 }
