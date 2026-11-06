@@ -6068,3 +6068,4 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .nt-lift{gap:6px}
 /* Loglar — "Yana ko'rsatish" tugmasi jadval bilan bir chiziqda */
 #loglar .lx-more{width:calc(100% - 40px) !important;margin:4px 20px 0 !important}
+.cw-wrap{grid-template-columns:minmax(0,1fr)}

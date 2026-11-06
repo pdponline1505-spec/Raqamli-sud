@@ -4946,7 +4946,8 @@ var r = c.getBoundingClientRect(); c.style.setProperty("--mouse-x", (ev.clientX 
 }
 
 // asosiy sarlavha (l-top) balandligini o'lchab, to'liq ish sahifasini uning ostidan boshlaymiz
-this._measureTop = function () { try { var el = document.querySelector(".l-top"); if (!el) return; var h = Math.round(el.getBoundingClientRect().bottom + (self._cwOff || 0)); if (h > 0 && Math.abs(h - (self.state.ltH || 0)) > 1) self.setState({ ltH: h }); } catch (x) {} };
+this._measureTop = function () { try { var el = document.querySelector(".l-top"); if (!el) return; var ty = 0; try { var tf = getComputedStyle(el).transform; if (tf && tf !== "none") ty = new DOMMatrixReadOnly(tf).m42; } catch (e2) { ty = -(self._cwOff || 0); } var h = Math.round(el.getBoundingClientRect().bottom - ty); if (h > 0 && Math.abs(h - (self.state.ltH || 0)) > 1) self.setState({ ltH: h }); } catch (x) {} };
+try { if (window.ResizeObserver && !this._topRO) { this._topRO = new ResizeObserver(function () { if (self._measureTop) self._measureTop(); }); var lt0 = document.querySelector(".l-top"); if (lt0) this._topRO.observe(lt0); } } catch (x) {}
 requestAnimationFrame(this._measureTop);
 window.addEventListener("resize", this._measureTop);
 this._onScroll = function (ev) {
@@ -4992,6 +4993,7 @@ try { if (this._exitObs) this._exitObs.disconnect(); } catch (x) {}
 try { document.removeEventListener("scroll", this._onD3Scroll, true); } catch (x) {}
 try { window.removeEventListener("scroll", this._onNavScroll, true); } catch (x) {}
 try { window.removeEventListener("resize", this._measureTop); } catch (x) {}
+try { if (this._topRO) this._topRO.disconnect(); } catch (x) {}
 try { window.removeEventListener("keydown", this._onKeyLf); } catch (x) {}
 window.removeEventListener("scroll", this._onScroll, true);
 clearTimeout(this._t); clearTimeout(this._lt);
@@ -8442,6 +8444,14 @@ isSt: tab === "st", isEx: tab === "ex", isMt: tab === "mt", st: cut("st", stRows
 stMore: mkMore("st", stRows.length, "hodisani"), exMore: mkMore("ex", exOut.length, "so'rovni"),
 mt: mtOut.map(function (g, gi) { var k = "mt" + gi; return Object.assign({}, g, { items: cut(k, g.items), more: mkMore(k, g.items.length, gi ? "shikoyatni" : "materialni") }); })
 };
+})();
+// ---- to'liq ish sahifasi: header siljishi (--cw-off) va o'lchamni har renderdan keyin haqiqiy scroll bilan moslash ----
+(function () {
+try {
+var pgOn = !!(s.caseOpen && s.openMode === "page");
+if (!pgOn && self._cwOff) { self._cwOff = 0; document.documentElement.style.setProperty("--cw-off", "0px"); }
+if (pgOn && !self._cwSyncQ) { self._cwSyncQ = true; requestAnimationFrame(function () { self._cwSyncQ = false; try { if (self._measureTop) self._measureTop(); if (self._onScroll) self._onScroll(); } catch (e) {} }); }
+} catch (x) {}
 })();
 // ---- Kalendar: sudyaning ishda bo'lmagan davri va band kunlar ----
 (function () {
