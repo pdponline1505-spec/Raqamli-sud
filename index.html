@@ -1609,8 +1609,8 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <span class="mb-ic" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg></span>
 <div class="kv" style="gap: 3px; min-width: 0; flex: 1"><div class="row" style="gap: 8px; flex-wrap: wrap"><b class="nt-title">{{m.short}}</b><span class="{{m.stCls}}">{{m.status}}</span></div><span class="nt-meta">{{m.id}} · ajrim {{m.ajrimSana}}</span></div>
 <div class="row" style="gap: 6px; flex: none">
-<sc-if value="{{m.canLift}}" hint-placeholder-val="{{ true }}"><button class="btn sm nt-lift" onClick="{{m.askLift}}">Bekor qilish</button></sc-if>
-<sc-if value="{{m.confirm}}" hint-placeholder-val="{{ false }}"><span class="dx-ask">Chora bekor qilinsinmi?</span><button class="btn sm" onClick="{{m.cancelLift}}">Yo'q</button><button class="btn sm dx-danger" onClick="{{m.lift}}">Ha</button></sc-if>
+<sc-if value="{{m.canLift}}" hint-placeholder-val="{{ true }}"><button class="btn sm nt-lift" onClick="{{m.askLift}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 7.5-2"></path></svg>Taqiqni bekor qilish</button></sc-if>
+<sc-if value="{{m.confirm}}" hint-placeholder-val="{{ false }}"><span class="dx-ask">Taqiq bekor qilinsinmi?</span><button class="btn sm" onClick="{{m.cancelLift}}">Yo'q</button><button class="btn sm dx-danger" onClick="{{m.lift}}">Ha, bekor qilish</button></sc-if>
 </div>
 </div>
 <div class="mb-body">
@@ -8483,7 +8483,7 @@ descCls: "mb-desc" + (op ? " open" : ""), openStr: op ? "true" : "false", moreLb
 toggle: function () { self.setState({ mbOpenId: self.state.mbOpenId === m.id ? "" : m.id }); },
 canLift: m.st !== "bekor" && !cd, confirm: cd,
 askLift: function () { self.setState({ mbDel: m.id }); }, cancelLift: function () { self.setState({ mbDel: "" }); },
-lift: function () { self.setState({ mbDel: "", mb: self.state.mb.map(function (x) { return x.id === m.id ? Object.assign({}, x, { st: "bekor" }) : x; }) }); self.flash(m.id + " chorasi bekor qilindi"); } };
+lift: function () { self.setState({ mbDel: "", mb: self.state.mb.map(function (x) { return x.id === m.id ? Object.assign({}, x, { st: "bekor" }) : x; }) }); self.flash(m.id + " taqiqi bekor qilindi"); } };
 });
 var act = list.filter(function (x) { return x.st === "amal"; }).length;
 __out.mbEmpty = !list.length; __out.mbLast = s.mbLast;
