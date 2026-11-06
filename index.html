@@ -1600,31 +1600,26 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </section>
 
 <section class="sec" id="mib">
-<div class="sh"><div><h2>MIB tizimidan</h2><p>{{mbSub}}</p></div><div class="tools"><button class="btn pri" onClick="{{mbAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path></svg>Taqiq qo'yish</button></div></div>
+<div class="sh"><div><h2>MIB tizimidan</h2><p>{{mbSub}}</p></div><div class="tools"><button class="btn pri" onClick="{{mbAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>Taqiq qo'yish</button></div></div>
 <div class="nt-list">
 <sc-for list="{{mb}}" as="m" hint-placeholder-count="2">
 <div class="{{m.cls}}">
 <div class="nt-h">
-<span class="mb-ic" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg></span>
-<div class="kv" style="gap: 3px; min-width: 0; flex: 1"><div class="row" style="gap: 8px; flex-wrap: wrap"><b class="nt-title">{{m.short}}</b><span class="{{m.stCls}}">{{m.status}}</span></div><span class="nt-meta">{{m.id}} · ajrim {{m.ajrimSana}}</span></div>
+<span class="nt-ic" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></span>
+<div class="kv" style="gap: 3px; min-width: 0; flex: 1"><div class="row" style="gap: 8px; flex-wrap: wrap"><b class="nt-title">{{m.short}}</b><span class="nt-id">{{m.id}}</span><span class="{{m.stCls}}">{{m.status}}</span></div><span class="nt-meta">Ajrim sanasi: {{m.ajrimSana}}</span></div>
 <div class="row" style="gap: 6px; flex: none">
 <sc-if value="{{m.canLift}}" hint-placeholder-val="{{ true }}"><button class="btn sm nt-lift" onClick="{{m.askLift}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 7.5-2"></path></svg>Taqiqni bekor qilish</button></sc-if>
 </div>
 </div>
-<div class="mb-body">
-<div class="{{m.descCls}}">{{m.desc}}</div>
-<button class="mb-more" aria-expanded="{{m.openStr}}" onClick="{{m.toggle}}">{{m.moreLbl}}<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
-<div class="mb-g">
+<div class="nt-b">
 <div class="kv"><small>Mulkdor</small><b>{{m.mulkdor}}</b></div>
 <div class="kv"><small>Asosi</small><b>{{m.asos}}</b></div>
-<div class="kv"><small>Ajrim sanasi</small><b>{{m.ajrimSana}}</b></div>
 <div class="kv"><small>Kuchga kirish sanasi</small><b>{{m.kuch}}</b></div>
-</div>
+<sc-if value="{{m.hasFile}}" hint-placeholder-val="{{ true }}"><button class="nt-file" onClick="{{m.view}}"><span class="dx-ft" style="width: 28px; height: 32px; font-size: 8px">PDF</span><span class="kv" style="gap: 0; min-width: 0"><b>{{m.file}}</b><small>{{m.size}}</small></span></button></sc-if>
 </div>
 </div>
 </sc-for>
-<sc-if value="{{mbEmpty}}" hint-placeholder-val="{{ false }}"><div class="pr-empty" style="border: 1px solid #e6ebf3; border-radius: 16px; background: #fff"><b>MIB orqali qo'llangan choralar yo'q</b><small>Da'voni ta'minlash chorasini qo'llash uchun «Taqiq qo'yish»ni bosing</small></div></sc-if>
-<div class="mb-sync"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.9-3.9M4 5v4h4M4 13a8 8 0 0 0 14.9 3.9M20 19v-4h-4"></path></svg><span>Ro'yxat MIB tizimi bilan avtomatik sinxronlanadi · oxirgi sinxronlash: {{mbLast}}</span></div>
+<sc-if value="{{mbEmpty}}" hint-placeholder-val="{{ false }}"><div class="pr-empty" style="border: 1px solid #e6ebf3; border-radius: 16px; background: #fff"><b>MIB orqali qo'yilgan taqiqlar yo'q</b><small>Da'voni ta'minlash uchun mol-mulkka taqiq qo'yish mumkin</small><button class="btn pri" onClick="{{mbAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>Taqiq qo'yish</button></div></sc-if>
 </div>
 </section>
 
@@ -2908,6 +2903,9 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="itkm-g">
 <label class="fld"><span>Ajrim sanasi <b class="dx-req">*</b></span><span class="cal-dd gcal"><button type="button" class="cal-btn" aria-haspopup="dialog" aria-expanded="{{gcal.mbForm_ajrim.exp}}" style="border-color: {{mbfB.ajrim}}" onClick="{{gcal.mbForm_ajrim.toggle}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg><span class="{{gcal.mbForm_ajrim.lblCls}}">{{gcal.mbForm_ajrim.label}}</span></button><sc-if value="{{gcal.mbForm_ajrim.open}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg in" tabindex="-1" aria-label="Kalendarni yopish" onClick="{{calClose}}"></button><span class="{{gcal.mbForm_ajrim.popCls}}" role="dialog" aria-label="Sanani tanlash" onKeyDown="{{gcal.mbForm_ajrim.key}}" onClick="{{gcal.mbForm_ajrim.stop}}"><span class="cal-h"><button type="button" class="ib" aria-label="Oldingi" onClick="{{gcal.mbForm_ajrim.prev}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button><button type="button" class="cal-title" aria-label="Oy va yilni tanlash" onClick="{{gcal.mbForm_ajrim.title}}">{{gcal.mbForm_ajrim.month}}<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><button type="button" class="ib" aria-label="Keyingi" onClick="{{gcal.mbForm_ajrim.next}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></span><sc-if value="{{gcal.mbForm_ajrim.isD}}" hint-placeholder-val="{{ true }}"><span class="cal-wd"><span>Du</span><span>Se</span><span>Ch</span><span>Pa</span><span>Ju</span><span>Sh</span><span>Ya</span></span><span class="cal-grid"><sc-for list="{{gcal.mbForm_ajrim.days}}" as="d" hint-placeholder-count="35"><button type="button" class="{{d.cls}}" title="{{d.title}}" aria-label="{{d.aria}}" disabled="{{d.dis}}" onClick="{{d.pick}}">{{d.n}}</button></sc-for></span></sc-if><sc-if value="{{gcal.mbForm_ajrim.isM}}" hint-placeholder-val="{{ false }}"><span class="cal-mgrid"><sc-for list="{{gcal.mbForm_ajrim.months}}" as="o" hint-placeholder-count="12"><button type="button" class="{{o.cls}}" onClick="{{o.pick}}">{{o.label}}</button></sc-for></span></sc-if><sc-if value="{{gcal.mbForm_ajrim.hasTime}}" hint-placeholder-val="{{ false }}"><span class="cal-time"><span>Vaqt</span><input type="text" inputmode="numeric" placeholder="SS:dd" maxlength="5" aria-label="Vaqt, soat va daqiqa" value="{{gcal.mbForm_ajrim.time}}" onChange="{{gcal.mbForm_ajrim.setTime}}"></span></sc-if><span class="cal-ft"><button type="button" class="cal-lnk" onClick="{{gcal.mbForm_ajrim.clear}}">Tozalash</button><button type="button" class="cal-lnk pri" onClick="{{gcal.mbForm_ajrim.today}}">Bugun</button></span></span></sc-if></span></label>
 <label class="fld"><span>Kuchga kirish sanasi <b class="dx-req">*</b></span><span class="cal-dd gcal"><button type="button" class="cal-btn" aria-haspopup="dialog" aria-expanded="{{gcal.mbForm_kuch.exp}}" style="border-color: {{mbfB.kuch}}" onClick="{{gcal.mbForm_kuch.toggle}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg><span class="{{gcal.mbForm_kuch.lblCls}}">{{gcal.mbForm_kuch.label}}</span></button><sc-if value="{{gcal.mbForm_kuch.open}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg in" tabindex="-1" aria-label="Kalendarni yopish" onClick="{{calClose}}"></button><span class="{{gcal.mbForm_kuch.popCls}}" role="dialog" aria-label="Sanani tanlash" onKeyDown="{{gcal.mbForm_kuch.key}}" onClick="{{gcal.mbForm_kuch.stop}}"><span class="cal-h"><button type="button" class="ib" aria-label="Oldingi" onClick="{{gcal.mbForm_kuch.prev}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button><button type="button" class="cal-title" aria-label="Oy va yilni tanlash" onClick="{{gcal.mbForm_kuch.title}}">{{gcal.mbForm_kuch.month}}<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><button type="button" class="ib" aria-label="Keyingi" onClick="{{gcal.mbForm_kuch.next}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></span><sc-if value="{{gcal.mbForm_kuch.isD}}" hint-placeholder-val="{{ true }}"><span class="cal-wd"><span>Du</span><span>Se</span><span>Ch</span><span>Pa</span><span>Ju</span><span>Sh</span><span>Ya</span></span><span class="cal-grid"><sc-for list="{{gcal.mbForm_kuch.days}}" as="d" hint-placeholder-count="35"><button type="button" class="{{d.cls}}" title="{{d.title}}" aria-label="{{d.aria}}" disabled="{{d.dis}}" onClick="{{d.pick}}">{{d.n}}</button></sc-for></span></sc-if><sc-if value="{{gcal.mbForm_kuch.isM}}" hint-placeholder-val="{{ false }}"><span class="cal-mgrid"><sc-for list="{{gcal.mbForm_kuch.months}}" as="o" hint-placeholder-count="12"><button type="button" class="{{o.cls}}" onClick="{{o.pick}}">{{o.label}}</button></sc-for></span></sc-if><sc-if value="{{gcal.mbForm_kuch.hasTime}}" hint-placeholder-val="{{ false }}"><span class="cal-time"><span>Vaqt</span><input type="text" inputmode="numeric" placeholder="SS:dd" maxlength="5" aria-label="Vaqt, soat va daqiqa" value="{{gcal.mbForm_kuch.time}}" onChange="{{gcal.mbForm_kuch.setTime}}"></span></sc-if><span class="cal-ft"><button type="button" class="cal-lnk" onClick="{{gcal.mbForm_kuch.clear}}">Tozalash</button><button type="button" class="cal-lnk pri" onClick="{{gcal.mbForm_kuch.today}}">Bugun</button></span></span></sc-if></span></label>
+</div>
+<div class="kv" style="gap: 8px; min-width: 0"><span class="nt-lbl">Ajrim qarorining elektron shakli <b class="dx-req">*</b></span>
+<div class="ntd" style="border-color: {{mbfB.file}}"><div class="ntd-hd"><span class="ntd-srch"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><input type="search" aria-label="Ish hujjatlaridan qidirish" placeholder="Ish hujjatlaridan qidirish" value="{{mbfDq}}" onChange="{{mbfDqSet}}"></span><span class="ntd-cnt">{{mbfDocCnt}}</span></div><div class="ntd-list" role="radiogroup" aria-label="Ish hujjatlari"><sc-for list="{{mbfDocs}}" as="d" hint-placeholder-count="3"><button type="button" role="radio" aria-checked="{{d.sel}}" class="{{d.cls}}" onClick="{{d.pick}}"><span class="ntd-rd" aria-hidden="true"></span><span class="dx-ft" style="width: 26px; height: 30px; font-size: 7px">{{d.ext}}</span><span class="kv" style="gap: 1px; min-width: 0; flex: 1"><b>{{d.title}}</b><small>{{d.sub}}</small></span><sc-if value="{{d.isAj}}" hint-placeholder-val="{{ false }}"><span class="igr-tag">Ajrim</span></sc-if></button></sc-for><sc-if value="{{mbfDocNone}}" hint-placeholder-val="{{ false }}"><div class="ntd-empty">So'rov bo'yicha hujjat topilmadi</div></sc-if></div></div>
 </div></div>
 <sc-if value="{{mbfErr}}" hint-placeholder-val="{{ false }}"><small class="dx-err" style="margin: 0">{{mbfErrText}}</small></sc-if>
 </sc-if>
@@ -3494,6 +3492,16 @@ boshP: { name: "Rahimov Alisher Tohirovich", birth: "1984-04-12", gender: "Erkak
 function digits(v) { return String(v || "").replace(/\D/g, ""); }
 function group(v) { var d = digits(v); return d ? d.replace(/\B(?=(\d{3})+(?!\d))/g, " ") : ""; }
 function money(v) { var g = group(v); return g ? g + " so'm" : "—"; }
+function docPickOut(self, s, v, key, dateKey, out, P) {
+var dq = (v.dq || "").trim().toLowerCase(), isAjT = function (t) { return /ajrim/i.test(t || ""); };
+var dl = (s.docs || []).slice().sort(function (a, b) { var x = isAjT(b.title) - isAjT(a.title); return x || String(b.date || "").localeCompare(String(a.date || "")); });
+var dlf = dl.filter(function (d) { return !dq || (d.title + " " + (d.type || "")).toLowerCase().indexOf(dq) >= 0; });
+out[P + "Dq"] = v.dq || "";
+out[P + "DqSet"] = function (e) { var q = e.target.value; self.setState(function (prev) { if (!prev[key]) return null; var o = {}; o[key] = Object.assign({}, prev[key], { dq: q }); return o; }); };
+out[P + "DocCnt"] = dlf.length + " ta hujjat"; out[P + "DocNone"] = !dlf.length;
+out[P + "Docs"] = dlf.map(function (d) { var on = v.docId === d.id; return { title: d.title, sub: (d.type || "Hujjat") + " · " + isoToUz(d.date), ext: (d.files && d.files[0]) || "PDF", isAj: isAjT(d.title), sel: on ? "true" : "false", cls: "ntd-row" + (on ? " on" : ""),
+pick: function () { self.setState(function (prev) { if (!prev[key]) return null; var w = prev[key], patch = { docId: d.id, file: d.title + ".pdf", err: "" }; if (!w[dateKey]) patch[dateKey] = d.date || ""; var o = {}; o[key] = Object.assign({}, w, patch); return o; }); } }; });
+}
 function isoToUz(v) { if (!v) return "—"; var p = v.split("-"); return p.length === 3 ? p[2] + "." + p[1] + "." + p[0] : v; }
 var PR_STEPS = [["sent", "So'rov yuborildi"], ["prok", "Biriktirilgan prokuror"], ["final", "Yakuniy hujjat yuborildi"]];
 var TC_TYPES = [["xususiy", "Xususiy ajrim", "Qonun buzilishi holatlari bo'yicha tashkilotga", "t1"], ["mamuriy", "Ma'muriy javobgarlikka tortish haqida ajrim", "Mansabdor shaxsga nisbatan", "t2"], ["jarima", "Jarima solish haqida ajrim", "Protsessual majburiyat bajarilmaganda", "t3"], ["taqdimnoma", "Taqdimnoma", "Sabab va shart-sharoitlarni bartaraf etish", "t4"]];
@@ -4386,8 +4394,8 @@ ex: [
 { id: "x2", num: "EKS-2026-0037", turi: "Oddiy ekspertiza", st: "rahbar", date: "21.09.2026 15:05", file: "Yetkazib berish shartnomasi.pdf", parts: ["tsuv"], items: [{ tash: "Surxondaryo viloyati sud ekspertizasi bo'limi", mut: "Tovarshunos ekspert", main: true }] },
 { id: "x3", num: "EKS-2026-0029", turi: "Kompleks ekspertiza", st: "xulosa", date: "02.09.2026 09:40", file: "Solishtirma dalolatnoma.pdf", parts: ["tsuv", "durable", "karimov"], items: [{ tash: "Respublika sud ekspertiza markazi", mut: "Iqtisodchi ekspert", main: true }, { tash: "Toshkent shahar sud ekspertizasi bo'limi", mut: "Hujjatlarni texnik tekshirish eksperti" }] }
 ], mbForm: null, mbDel: "", mbOpenId: "", mbLast: "bugun, 09:30",
-mb: [{ id: "MIB-40218", chora: 2, asos: "Sudyaning o'z tashabbusi", mulkdor: "\"Alpomish\" sport klubi", ajrim: "17.09.2026", kuch: "19.09.2026", st: "amal" },
-{ id: "MIB-39877", chora: 1, asos: "Da'vogarning arizasi", mulkdor: "«Toshkent suv ta'minoti» AJ", ajrim: "02.08.2026", kuch: "05.08.2026", st: "amal" }],
+mb: [{ id: "MIB-40218", chora: 2, asos: "Sudyaning o'z tashabbusi", mulkdor: "\"Alpomish\" sport klubi", ajrim: "17.09.2026", kuch: "19.09.2026", file: "ajrim_0412.pdf", size: "96 KB", st: "amal" },
+{ id: "MIB-39877", chora: 1, asos: "Da'vogarning arizasi", mulkdor: "«Toshkent suv ta'minoti» AJ", ajrim: "02.08.2026", kuch: "05.08.2026", file: "ajrim_0377.pdf", size: "88 KB", st: "amal" }],
 nt: [{ id: "NOT-2231", turi: "kochmas", mulkdor: "Yusupova Nodira Karimovna", fields: { kadastr: "10:08:04:03:1521", tuman: "Yunusobod tumani", tumanKod: "1726266", manzil: "Toshkent sh., Yunusobod t., 4-mavze", uy: "12", xonadon: "34" }, sana: "30.07.2026", ajrim: "118", ajrimSana: "21.07.2026", file: "ajrim_118.pdf", size: "84 KB", st: "amal" },
 { id: "NOT-2254", turi: "avto", mulkdor: "«Toshkent suv ta'minoti» AJ", fields: { rusum: "Isuzu NPR 75", texSeriya: "AAF", texRaqam: "0451287", yhxb: true }, sana: "12.08.2026", ajrim: "0921", ajrimSana: "02.08.2026", file: "qaror_0921.pdf", size: "72 KB", st: "amal" }],
 ntDel: "", ntForm: null,
@@ -8520,7 +8528,7 @@ var u2i = function (v) { var q = String(v || "").split("."); return q.length ===
 __out.mb = list.map(function (m) {
 var c = CH[m.chora - 1] || CH[0], cd = s.mbDel === m.id, op = s.mbOpenId === m.id;
 return { id: m.id, code: m.chora, short: c[0], desc: c[1], mulkdor: m.mulkdor, asos: m.asos, ajrimSana: m.ajrim, kuch: m.kuch,
-status: ST[m.st][0], stCls: ST[m.st][1], cls: "nt" + (m.st === "bekor" ? " off" : "") + (cd ? " del" : ""),
+status: ST[m.st][0], stCls: ST[m.st][1], cls: "nt" + (m.st === "bekor" ? " off" : ""), hasFile: !!m.file, file: m.file || "", size: m.size || "—", view: function () { self.flash("«" + m.file + "» ko'rish oynasida ochiladi"); },
 descCls: "mb-desc" + (op ? " open" : ""), openStr: op ? "true" : "false", moreLbl: op ? "Yig'ish" : "To'liq matn",
 toggle: function () { self.setState({ mbOpenId: self.state.mbOpenId === m.id ? "" : m.id }); },
 canLift: m.st !== "bekor",
@@ -8530,7 +8538,7 @@ var act = list.filter(function (x) { return x.st === "amal"; }).length;
 __out.mbEmpty = !list.length; __out.mbLast = s.mbLast;
 __out.mbSub = "Majburiy ijro byurosi orqali qo'llangan da'voni ta'minlash choralari" + (list.length ? " · " + act + " tasi amalda" : "");
 __out.mbSync = function () { self.setState({ mbLast: "hozirgina", mb: self.state.mb.map(function (x) { return x.st === "yuborildi" ? Object.assign({}, x, { st: "amal" }) : x; }) }); self.flash("MIB tizimidan yangi holatlar olindi"); };
-__out.mbAdd = function () { self.setState({ dxDd: "", mbForm: { mulkdor: "", chora: "", asos: "", ajrim: "", kuch: "", err: "" } }); };
+__out.mbAdd = function () { self.setState({ dxDd: "", mbForm: { mulkdor: "", chora: "", asos: "", ajrim: "", kuch: "", file: "", docId: "", dq: "", err: "" } }); };
 var f = s.mbForm, errOn = !!(f && f.err), RD = "#dc2626";
 var v = f || { mulkdor: "", chora: "", asos: "", ajrim: "", kuch: "" };
 var setMF = function (k) { return function (e) { var val = e.target.value; self.setState(function (prev) { if (!prev.mbForm || prev.mbForm.view) return null; var o = Object.assign({}, prev.mbForm, { err: "" }); o[k] = val; return { mbForm: o }; }); }; };
@@ -8554,9 +8562,9 @@ var mch = CH[(+v.chora || 0) - 1]; __out.mbfHasCh = !mbView && !!mch; __out.mbfC
 var mrec = mbView ? list.filter(function (x) { return x.id === f.view; })[0] : null;
 __out.mbv = { status: mrec ? ST[mrec.st][0] : "", stCls: (mrec ? ST[mrec.st][1] : "nt-st") + " igr-st", cards: !mrec ? [] : [ownerCard(mrec.mulkdor, ""),
 { t: "Da'voni ta'minlash chorasi", icCls: "smd-ni ic-shield", hasTag: true, tag: mrec.chora + "-chora", tagCls: "igr-tag", hasPhoto: false, noPhoto: true, hasFile: false, rows: [tile("Chora", (CH[mrec.chora - 1] || CH[0])[0], "w3"), tile("Mazmuni", (CH[mrec.chora - 1] || CH[0])[1], "w3 rg"), tile("Asosi", mrec.asos, "w3")] },
-{ t: "Ajrim ma'lumotlari", icCls: "smd-ni ic-id", hasTag: false, hasPhoto: false, noPhoto: true, hasFile: false, rows: [tile("MIB raqami", mrec.id), tile("Ajrim sanasi", mrec.ajrim), tile("Kuchga kirish sanasi", mrec.kuch)] }] };
-__out.mbfTitle = mbView ? "Taqiqni bekor qilish · MIB" : "Taqiq qo'yish · MIB";
-__out.mbfSub = mbView ? f.view + " · ma'lumotlar faqat ko'rish uchun" : "Da'voni ta'minlash chorasi Majburiy ijro byurosiga yuboriladi";
+{ t: "Ajrim ma'lumotlari", icCls: "smd-ni ic-id", hasTag: false, hasPhoto: false, noPhoto: true, rows: [tile("MIB raqami", mrec.id), tile("Ajrim sanasi", mrec.ajrim), tile("Kuchga kirish sanasi", mrec.kuch)], hasFile: !!mrec.file, file: mrec.file || "", fileSub: "Ajrim qarorining elektron shakli" + (mrec.size && mrec.size !== "—" ? " · " + mrec.size : ""), openFile: function () { self.flash("«" + mrec.file + "» ko'rish oynasida ochiladi"); } }] };
+__out.mbfTitle = mbView ? "Taqiqni bekor qilish" : "Taqiq qo'yish";
+__out.mbfSub = mbView ? "MIB tizimi · " + f.view + " · ma'lumotlar faqat ko'rish uchun" : "MIB tizimi · asosiy ish " + (s.caseNum || "");
 __out.mbfLift = function () { var w = self.state.mbForm; if (!w || !w.view) return; self.setState({ mbForm: null, dxDd: "", mb: self.state.mb.map(function (x) { return x.id === w.view ? Object.assign({}, x, { st: "bekor" }) : x; }) }); self.flash(w.view + " · taqiqdan olindi"); };
 __out.mbS = {
 mulkdor: dd("mb-mulk", [{ v: "", l: "Mulkdorni tanlang" }].concat(owners), v.mulkdor, setMF("mulkdor"), { extra: "fxm", ph: "Mulkdorni tanlang", noSplit: true, bc: errOn && !v.mulkdor ? RD : "" }),
@@ -8564,7 +8572,8 @@ chora: dd("mb-chora", [{ v: "", l: "Chorani tanlang" }].concat(CH.map(function (
 asos: dd("mb-asos", [{ v: "", l: "Asosini tanlang" }].concat(ASOS.map(function (x) { return { v: x, l: x }; })), v.asos, setMF("asos"), { extra: "fxm", ph: "Asosini tanlang", noSplit: true, bc: errOn && !v.asos ? RD : "" })
 };
 __out.mbfSet = { ajrim: setMF("ajrim"), kuch: setMF("kuch") };
-__out.mbfB = { ajrim: errOn && !v.ajrim ? RD : "", kuch: errOn && (!v.kuch || (v.ajrim && v.kuch < v.ajrim)) ? RD : "" };
+docPickOut(self, s, v, "mbForm", "ajrim", __out, "mbf");
+__out.mbfB = { file: errOn && !v.file ? RD : "", ajrim: errOn && !v.ajrim ? RD : "", kuch: errOn && (!v.kuch || (v.ajrim && v.kuch < v.ajrim)) ? RD : "" };
 __out.mbfErr = errOn; __out.mbfErrText = f ? f.err : "";
 __out.mbfDdOpen = !!ddOpen && ddOpen.indexOf("mb-") === 0;
 var close = function () { self.setState({ mbForm: null, dxDd: "" }); };
@@ -8574,11 +8583,11 @@ if (f) setTimeout(function () { if (window.__ntxCal) window.__ntxCal(); try { va
 __out.mbfSave = function () {
 var w = self.state.mbForm; if (!w) return;
 var miss = [];
-if (!w.mulkdor) miss.push("mulkdor"); if (!w.chora) miss.push("chora"); if (!w.asos) miss.push("asosi"); if (!w.ajrim) miss.push("ajrim sanasi"); if (!w.kuch) miss.push("kuchga kirish sanasi");
+if (!w.mulkdor) miss.push("mulkdor"); if (!w.chora) miss.push("chora"); if (!w.asos) miss.push("asosi"); if (!w.ajrim) miss.push("ajrim sanasi"); if (!w.kuch) miss.push("kuchga kirish sanasi"); if (!w.file) miss.push("ajrim qarorining elektron shakli");
 if (miss.length) { self.setState({ mbForm: Object.assign({}, w, { err: "To'ldirilmagan: " + miss.join(", ") }) }); return; }
 if (w.kuch < w.ajrim) { self.setState({ mbForm: Object.assign({}, w, { err: "Kuchga kirish sanasi ajrim sanasidan oldin bo'lishi mumkin emas" }) }); return; }
 var id = "MIB-" + (40300 + Math.floor(Math.random() * 600));
-self.setState({ mbForm: null, dxDd: "", mb: [{ id: id, chora: +w.chora, asos: w.asos, mulkdor: w.mulkdor, ajrim: isoToUz(w.ajrim), kuch: isoToUz(w.kuch), st: "yuborildi" }].concat(self.state.mb) });
+self.setState({ mbForm: null, dxDd: "", mb: [{ id: id, chora: +w.chora, asos: w.asos, mulkdor: w.mulkdor, ajrim: isoToUz(w.ajrim), kuch: isoToUz(w.kuch), file: w.file, size: "—", st: "yuborildi" }].concat(self.state.mb) });
 self.flash("Chora MIB tizimiga yuborildi · " + id);
 };
 })();
@@ -8634,7 +8643,7 @@ rows: nrec.turi === "avto" ? [tile("Rusumi", nf.rusum, "w3"), tile("Texnik hujja
 { t: "Ajrim ma'lumotlari", icCls: "smd-ni ic-id", hasTag: false, hasPhoto: false, noPhoto: true, rows: [tile("Ajrim raqami", nrec.ajrim), tile("Ajrim sanasi", nrec.ajrimSana), tile("Taqiq qo'yilgan sana", nrec.sana)],
 hasFile: !!nrec.file, file: nrec.file || "", fileSub: "Ajrim qarorining elektron shakli" + (nrec.size && nrec.size !== "—" ? " · " + nrec.size : ""), openFile: function () { self.flash("«" + nrec.file + "» ko'rish oynasida ochiladi"); } }] };
 __out.ntfTitle = ntView ? "Taqiqni bekor qilish" : "Taqiq qo'yish";
-__out.ntfSub = ntView ? f.view + " · ma'lumotlar faqat ko'rish uchun" : "Da'voni ta'minlash · asosiy ish " + (s.caseNum || (s.cur && s.cur.num) || "");
+__out.ntfSub = ntView ? "Notarius tizimi · " + f.view + " · ma'lumotlar faqat ko'rish uchun" : "Notarius tizimi · asosiy ish " + (s.caseNum || "");
 __out.ntfLift = function () { var w = self.state.ntForm; if (!w || !w.view) return; self.setState({ ntForm: null, dxDd: "", nt: self.state.nt.map(function (x) { return x.id === w.view ? Object.assign({}, x, { st: "bekor" }) : x; }) }); self.flash(w.view + " · taqiqdan olindi"); };
 __out.ntS = {
 turi: dd("nt-turi", [{ v: "", l: "Mol-mulk turini tanlang" }].concat(Object.keys(TYPES).map(function (k) { return { v: k, l: TYPES[k][0] }; })), v.turi, function (e) { setNF({ turi: e.target.value, f: v.mulkdor ? ownerInfo(v.mulkdor) : {}, found: false }); }, { extra: "fxm", ph: "Mol-mulk turini tanlang", bc: errOn && !v.turi ? RD : "" }),
@@ -8661,13 +8670,7 @@ self.flash("Kadastr ma'lumotlari topildi");
 __out.ntfSet = { ajrimSana: function (e) { setNF({ ajrimSana: e.target.value }); } };
 __out.ntfB = { ajrimSana: errOn && !v.ajrimSana ? RD : "", file: errOn && !v.file ? RD : "" };
 __out.ntfHasFile = !!v.file; __out.ntfNoFile = !v.file;
-var dq = (v.dq || "").trim().toLowerCase(), isAjT = function (t) { return /ajrim/i.test(t || ""); };
-var dl = (s.docs || []).slice().sort(function (a, b) { var x = isAjT(b.title) - isAjT(a.title); return x || String(b.date || "").localeCompare(String(a.date || "")); });
-var dlf = dl.filter(function (d) { return !dq || (d.title + " " + (d.type || "")).toLowerCase().indexOf(dq) >= 0; });
-__out.ntfDq = v.dq || ""; __out.ntfDqSet = function (e) { var q = e.target.value; self.setState(function (prev) { return prev.ntForm ? { ntForm: Object.assign({}, prev.ntForm, { dq: q }) } : null; }); };
-__out.ntfDocCnt = dlf.length + " ta hujjat"; __out.ntfDocNone = !dlf.length;
-__out.ntfDocs = dlf.map(function (d) { var on = v.docId === d.id; return { title: d.title, sub: (d.type || "Hujjat") + " · " + isoToUz(d.date), ext: (d.files && d.files[0]) || "PDF", isAj: isAjT(d.title), sel: on ? "true" : "false", cls: "ntd-row" + (on ? " on" : ""),
-pick: function () { self.setState(function (prev) { if (!prev.ntForm) return null; var w = prev.ntForm; return { ntForm: Object.assign({}, w, { docId: d.id, file: d.title + ".pdf", ajrimSana: w.ajrimSana || d.date || "", err: "" }) }; }); } }; });
+docPickOut(self, s, v, "ntForm", "ajrimSana", __out, "ntf");
 __out.ntfPick = function (e) { var fl = e.target.files && e.target.files[0]; if (fl) setNF({ file: fl.name }); try { e.target.value = ""; } catch (x) {} };
 __out.ntfRmFile = function () { setNF({ file: "" }); };
 __out.ntfErr = errOn; __out.ntfErrText = f ? f.err : "";
