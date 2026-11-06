@@ -6061,3 +6061,4 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .ntx-g4 .ntx-w2{grid-column:span 2}
 .ntx-g4 .fld,.ntx-g4 .cal-dd{min-width:0}
 @media (max-width:760px){.ntx-g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.nt-list .nt-more{margin:4px 0 0 !important}

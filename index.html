@@ -1597,6 +1597,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 </div>
 </sc-for>
+<sc-if value="{{ntMore.has}}" hint-placeholder-val="{{ false }}"><button type="button" class="{{ntMore.cls}}" aria-expanded="{{ntMore.exp}}" onClick="{{ntMore.toggle}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>{{ntMore.lbl}}</button></sc-if>
 <sc-if value="{{ntEmpty}}" hint-placeholder-val="{{ false }}"><div class="pr-empty" style="border: 1px solid #e6ebf3; border-radius: 16px; background: #fff"><b>Notarius orqali qo'yilgan taqiqlar yo'q</b><small>Da'voni ta'minlash uchun mol-mulkka taqiq qo'yish mumkin</small><button class="btn pri" onClick="{{ntAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>Taqiq qo'yish</button></div></sc-if>
 </div>
 </section>
@@ -1621,6 +1622,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 </div>
 </sc-for>
+<sc-if value="{{mbMore.has}}" hint-placeholder-val="{{ false }}"><button type="button" class="{{mbMore.cls}}" aria-expanded="{{mbMore.exp}}" onClick="{{mbMore.toggle}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>{{mbMore.lbl}}</button></sc-if>
 <sc-if value="{{mbEmpty}}" hint-placeholder-val="{{ false }}"><div class="pr-empty" style="border: 1px solid #e6ebf3; border-radius: 16px; background: #fff"><b>MIB orqali qo'yilgan taqiqlar yo'q</b><small>Da'voni ta'minlash uchun mol-mulkka taqiq qo'yish mumkin</small><button class="btn pri" onClick="{{mbAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>Taqiq qo'yish</button></div></sc-if>
 </div>
 </section>
@@ -4424,9 +4426,15 @@ ex: [
 { id: "x3", num: "EKS-2026-0029", turi: "Kompleks ekspertiza", st: "xulosa", date: "02.09.2026 09:40", file: "Solishtirma dalolatnoma.pdf", parts: ["tsuv", "durable", "karimov"], items: [{ tash: "Respublika sud ekspertiza markazi", mut: "Iqtisodchi ekspert", main: true }, { tash: "Toshkent shahar sud ekspertizasi bo'limi", mut: "Hujjatlarni texnik tekshirish eksperti" }] }
 ], mbForm: null, mbDel: "", mbOpenId: "", mbLast: "bugun, 09:30",
 mb: [{ id: "MIB-40218", chora: 2, asos: "Sudyaning o'z tashabbusi", mulkdor: "\"Alpomish\" sport klubi", ajrim: "17.09.2026", kuch: "19.09.2026", file: "ajrim_0412.pdf", size: "96 KB", st: "amal" },
-{ id: "MIB-39877", chora: 1, asos: "Da'vogarning arizasi", mulkdor: "«Toshkent suv ta'minoti» AJ", ajrim: "02.08.2026", kuch: "05.08.2026", file: "ajrim_0377.pdf", size: "88 KB", st: "amal" }],
+{ id: "MIB-39877", chora: 1, asos: "Da'vogarning arizasi", mulkdor: "«Toshkent suv ta'minoti» AJ", ajrim: "02.08.2026", kuch: "05.08.2026", file: "ajrim_0377.pdf", size: "88 KB", st: "amal" },
+{ id: "MIB-40102", chora: 4, asos: "Ishda ishtirok etuvchi shaxsning arizasi", mulkdor: "Rahimova Dilnoza Anvarovna", ajrim: "28.08.2026", kuch: "31.08.2026", file: "ajrim_0402.pdf", size: "80 KB", st: "amal" },
+{ id: "MIB-40355", chora: 5, asos: "Da'vogarning arizasi", mulkdor: "Normurodov Bekzod Azizovich", ajrim: "03.10.2026", kuch: "06.10.2026", file: "ajrim_0455.pdf", size: "77 KB", st: "yuborildi" },
+{ id: "MIB-39610", chora: 3, asos: "Sudyaning o'z tashabbusi", mulkdor: "\"Durable Slate Industry\" MChJ", ajrim: "15.07.2026", kuch: "18.07.2026", file: "ajrim_0361.pdf", size: "69 KB", st: "bekor" }],
 nt: [{ id: "NOT-2231", turi: "kochmas", mulkdor: "Yusupova Nodira Karimovna", fields: { oKind: "fiz", pinfl: "41203087221045", pSeriya: "AB", pRaqam: "1234567", pBirth: "1987-03-12", hujjatTuri: "1 – O'zbekiston Respublikasi fuqarosining pasporti", pBerSana: "2017-04-10", pBerKim: "Yunusobod tumani IIB", kadastr: "10:08:04:03:1521", tuman: "Yunusobod tumani", tumanKod: "1726266", manzil: "Toshkent sh., Yunusobod t., 4-mavze", uy: "12", xonadon: "34" }, sana: "30.07.2026", ajrim: "118", ajrimSana: "21.07.2026", file: "ajrim_118.pdf", size: "84 KB", st: "amal" },
-{ id: "NOT-2254", turi: "avto", mulkdor: "«Toshkent suv ta'minoti» AJ", fields: { oKind: "org", stir: "201577953", tashkilot: "«Toshkent suv ta'minoti» AJ", rusum: "Isuzu NPR 75", davRaqam: "01 777 AAA", texSeriya: "AAF", texRaqam: "0451287", yhxb: true }, sana: "12.08.2026", ajrim: "0921", ajrimSana: "02.08.2026", file: "qaror_0921.pdf", size: "72 KB", st: "amal" }],
+{ id: "NOT-2254", turi: "avto", mulkdor: "«Toshkent suv ta'minoti» AJ", fields: { oKind: "org", stir: "201577953", tashkilot: "«Toshkent suv ta'minoti» AJ", rusum: "Isuzu NPR 75", davRaqam: "01 777 AAA", texSeriya: "AAF", texRaqam: "0451287", yhxb: true }, sana: "12.08.2026", ajrim: "0921", ajrimSana: "02.08.2026", file: "qaror_0921.pdf", size: "72 KB", st: "amal" },
+{ id: "NOT-2262", turi: "avto", mulkdor: "Rahimova Dilnoza Anvarovna", fields: { oKind: "fiz", pinfl: "51505012349737", pSeriya: "AD", pRaqam: "4713728", pBirth: "2000-10-10", hujjatTuri: "1 – O'zbekiston Respublikasi fuqarosining pasporti", pBerSana: "2018-11-02", pBerKim: "Buxoro shahar IIB", yhxb: true, davRaqam: "80 A 512 BA", texSeriya: "AAG", texRaqam: "0718244" }, sana: "18.08.2026", ajrim: "0954", ajrimSana: "14.08.2026", file: "ajrim_0954.pdf", size: "64 KB", st: "amal" },
+{ id: "NOT-2270", turi: "kochmas", mulkdor: "\"Durable Slate Industry\" MChJ", fields: { oKind: "org", stir: "306694399", tashkilot: "\"Durable Slate Industry\" MChJ", kadastr: "10:09:12:01:0874", tuman: "Mirzo Ulug'bek tumani", tumanKod: "1726269", manzil: "Toshkent sh., Mirzo Ulug'bek t., Buyuk Ipak yo'li ko'chasi", uy: "112", xonadon: "—" }, sana: "25.08.2026", ajrim: "0977", ajrimSana: "22.08.2026", file: "ajrim_0977.pdf", size: "91 KB", st: "yuborildi" },
+{ id: "NOT-2198", turi: "avto", mulkdor: "Normurodov Bekzod Azizovich", fields: { oKind: "fiz", pinfl: "51505012352495", pSeriya: "AC", pRaqam: "2290415", pBirth: "1979-11-02", hujjatTuri: "2 – O'zbekiston Respublikasi fuqarosining ID-kartasi", pBerSana: "2021-06-15", pBerKim: "Termiz shahar IIB", yhxb: false, rusum: "Chevrolet Malibu", texSeriya: "AAE", texRaqam: "0392716" }, sana: "10.07.2026", ajrim: "0811", ajrimSana: "05.07.2026", file: "ajrim_0811.pdf", size: "70 KB", st: "bekor" }],
 ntDel: "", ntForm: null,
 qtJv: [tmPerson(11, "Abdusattorova Asila Kamoliddinovna", "2000-10-10", "Ayol"), tmPerson(13, "Yusupov Akmal Ilhomovich", "1985-03-22", "Erkak"), tmPerson(14, "Ismoilov Nodir Bahodirovich", "1979-11-05", "Erkak"), tmPerson(15, "Qodirova Madina Rustamovna", "1992-07-14", "Ayol")], qtAr: [tmPerson(16, "Saidova Nilufar Akramovna", "1990-02-18", "Ayol"), tmPerson(17, "Tursunov Bekzod Olimovich", "1983-09-07", "Erkak")], qsh: [Object.assign(tmPerson(12, "Karimov Akmal Saidovich", "1988-04-12", "Erkak"), { rol: "Guvoh" })],
 tmJv: [tmPerson(3, "Rahimova Dilnoza Anvarovna", "2000-10-10", "Ayol"), tmPerson(4, "Normurodov Bekzod Azizovich", "2000-10-10", "Erkak"), tmPerson(5, "Rasulov Mansur Akbarovich", "1983-01-30", "Erkak"), tmPerson(6, "Toshmatova Gulnora Erkinovna", "1990-09-18", "Ayol")],
@@ -8564,6 +8572,9 @@ canLift: m.st !== "bekor",
 askLift: function () { self.setState({ dxDd: "", mbForm: { mulkdor: m.mulkdor, chora: String(m.chora), asos: m.asos, ajrim: u2i(m.ajrim), kuch: u2i(m.kuch), err: "", view: m.id } }); } };
 });
 var act = list.filter(function (x) { return x.st === "amal"; }).length;
+var mbLIM = 3, mbAllOn = !!s.mbAll, mbTot = __out.mb.length;
+__out.mbMore = { has: mbTot > mbLIM, cls: "qx-morebtn lx-more nt-more" + (mbAllOn ? " on" : ""), exp: mbAllOn ? "true" : "false", lbl: mbAllOn ? "Kamroq ko'rsatish" : "Yana " + (mbTot - mbLIM) + " ta taqiqni ko'rsatish", toggle: function () { self.setState({ mbAll: !self.state.mbAll }); } };
+if (!mbAllOn) __out.mb = __out.mb.slice(0, mbLIM);
 __out.mbEmpty = !list.length; __out.mbLast = s.mbLast;
 __out.mbSub = "Majburiy ijro byurosi orqali qo'llangan da'voni ta'minlash choralari" + (list.length ? " · " + act + " tasi amalda" : "");
 __out.mbSync = function () { self.setState({ mbLast: "hozirgina", mb: self.state.mb.map(function (x) { return x.st === "yuborildi" ? Object.assign({}, x, { st: "amal" }) : x; }) }); self.flash("MIB tizimidan yangi holatlar olindi"); };
@@ -8641,6 +8652,9 @@ askLift: function () { var fl = t.fields || {}, blank = {}; (t.turi === "avto" ?
 view: function () { self.flash("«" + t.file + "» ko'rish oynasida ochiladi"); } };
 });
 var act = list.filter(function (x) { return x.st === "amal"; }).length, wait = list.filter(function (x) { return x.st === "yuborildi"; }).length;
+var ntLIM = 3, ntAllOn = !!s.ntAll, ntTot = __out.nt.length;
+__out.ntMore = { has: ntTot > ntLIM, cls: "qx-morebtn lx-more nt-more" + (ntAllOn ? " on" : ""), exp: ntAllOn ? "true" : "false", lbl: ntAllOn ? "Kamroq ko'rsatish" : "Yana " + (ntTot - ntLIM) + " ta taqiqni ko'rsatish", toggle: function () { self.setState({ ntAll: !self.state.ntAll }); } };
+if (!ntAllOn) __out.nt = __out.nt.slice(0, ntLIM);
 __out.ntEmpty = !list.length;
 __out.ntSub = list.length ? "Notarial idoralar orqali qo'yilgan taqiqlar · " + act + " tasi amalda" + (wait ? " · " + wait + " tasi notariusga yuborilgan" : "") : "Notarial idoralar orqali qo'yilgan taqiqlar";
 __out.ntAdd = function () { self.setState({ dxDd: "", ntForm: { turi: "", mulkdor: "", f: {}, yhxb: false, found: false, ajrimSana: "", file: "", err: "" } }); };
