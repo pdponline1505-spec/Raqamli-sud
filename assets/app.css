@@ -6143,3 +6143,19 @@ html[data-theme="dark"] .ds-host img{filter:none}
 @media (min-width:701px){.igl-acts{min-width:236px;justify-content:flex-end}}
 @media (min-width:701px){.igl-acts{min-width:0}}
 .lx-r,.lx-r.err,.lx-r.warn{border-radius:0 !important;box-shadow:none !important}
+/* Da'voni ta'minlash hujjatlari — MIB + Notarius jamlanmasi */
+.ta-list{margin-top:4px}
+.nt-ic.ta-ic.mib{background:#eff6ff;color:#2563eb;border-color:#bfdbfe}
+.nt-ic.ta-ic.nt{background:#fff4e2;color:#b45309;border-color:#fde3b5}
+.ta-src{flex:none;height:22px;padding:0 8px;border-radius:6px;font-size:12px;font-weight:600;display:inline-flex;align-items:center}
+.ta-src.mib{background:#eff6ff;color:#1d4ed8}
+.ta-src.nt{background:#fff4e2;color:#b45309}
+.nt.ta-nt.rej{border-color:#fde2e2}
+.nt.ta-nt.rej>.nt-h{background:linear-gradient(180deg,#fffafa 0%,#fff5f5 100%)}
+.nt.ta-nt.stop>.nt-h{background:linear-gradient(180deg,#fffdf7 0%,#fffaf0 100%)}
+.nt.ta-nt .ij-st{flex:none}
+.igr-err.ta-warn{border-color:#fde68a;background:#fffbeb}
+.igr-err.ta-warn b{color:#92400e}.igr-err.ta-warn small{color:#b45309}
+.igr-err.ta-warn .igr-erri{background:#fef3c7;color:#d97706}
+.nt-h .ta-src.mib{background:#eff6ff !important;color:#1d4ed8 !important}.nt-h .ta-src.nt{background:#fff4e2 !important;color:#b45309 !important}
+.nt-h .ta-src *,.nt-h .ij-st *{color:inherit !important;font-weight:inherit !important;font-size:inherit !important}

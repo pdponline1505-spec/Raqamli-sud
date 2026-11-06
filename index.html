@@ -1618,26 +1618,25 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </section>
 
 <section class="sec" id="tahujjat">
-<div class="sh"><div><h2>Da'voni ta'minlash hujjatlari</h2><p>{{taSub}}</p></div><div class="tools"><button class="ib pr-ref" title="MIB bilan sinxronlash" aria-label="MIB bilan sinxronlash" onClick="{{taSync}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.9-3.9M4 5v4h4M4 13a8 8 0 0 0 14.9 3.9M20 19v-4h-4"></path></svg></button></div></div>
+<div class="sh"><div><h2>Da'voni ta'minlash hujjatlari</h2><p>{{taSub}}</p></div><div class="tools"><button class="ib pr-ref" title="MIB va Notarius bilan sinxronlash" aria-label="MIB va Notarius bilan sinxronlash" onClick="{{taSync}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.9-3.9M4 5v4h4M4 13a8 8 0 0 0 14.9 3.9M20 19v-4h-4"></path></svg></button></div></div>
 <div class="ij-legend" aria-label="Ijro holatlari"><sc-for list="{{ijLegend}}" as="l" hint-placeholder-count="4"><span class="{{l.cls}}">{{l.label}}<b>{{l.n}}</b></span></sc-for></div>
-<div class="ta-card">
-<div class="ta-head"><span>Mulkdor va chora</span><span>MIB bo'limi va asosi</span><span>Buyurtma va bajarilish</span><span>Holat va ijro varaqasi</span></div>
-<sc-for list="{{ta}}" as="r" hint-placeholder-count="4">
+<div class="nt-list ta-list">
+<sc-for list="{{ta}}" as="r" hint-placeholder-count="3">
 <div class="{{r.cls}}">
-<div class="ta-c1"><span class="prd-av" style="width: 38px; height: 38px; font-size: 12px">{{r.ini}}</span><div class="kv" style="gap: 2px; min-width: 0"><b>{{r.mulkdor}}</b><small>{{r.chora}}</small></div></div>
-<div class="kv ta-c2" style="gap: 2px; min-width: 0"><b>{{r.mib}}</b><small>{{r.asos}}</small></div>
-<div class="ta-c3"><span class="ta-t"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg><span>Buyurtma</span><b>{{r.order}}</b></span><span class="{{r.doneCls}}"><sc-if value="{{r.hasDone}}" hint-placeholder-val="{{ true }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M8 12l3 3 5-6"></path></svg></sc-if><sc-if value="{{r.noDone}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></sc-if><span>{{r.doneLbl}}</span><b>{{r.done}}</b></span></div>
-<div class="ta-c4">
-<span class="{{r.stCls}}">{{r.status}}</span>
-<sc-if value="{{r.hasFile}}" hint-placeholder-val="{{ true }}"><button class="ta-file" title="Ijro varaqasini yuklab olish" onClick="{{r.dl}}"><span class="dx-ft" style="width: 22px; height: 26px; font-size: 7px">PDF</span>{{r.file}}<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg></button></sc-if>
-<sc-if value="{{r.isRej}}" hint-placeholder-val="{{ false }}"><button class="btn sm" onClick="{{r.retry}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"></path></svg>Qayta yuborish</button></sc-if>
-<sc-if value="{{r.noFileTxt}}" hint-placeholder-val="{{ false }}"><small class="muted">Ijro varaqasi hali yo'q</small></sc-if>
+<div class="nt-h">
+<span class="{{r.icCls}}" aria-hidden="true"><sc-if value="{{r.isMib}}" hint-placeholder-val="{{ true }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg></sc-if><sc-if value="{{r.isNt}}" hint-placeholder-val="{{ false }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6"></path><circle cx="12" cy="15" r="2.5"></circle></svg></sc-if></span>
+<div class="kv" style="gap: 3px; min-width: 0; flex: 1"><div class="row" style="gap: 8px; flex-wrap: nowrap; min-width: 0"><b class="nt-title">{{r.mulkdor}}</b><span class="{{r.srcCls}}">{{r.srcLbl}}</span><span class="{{r.stCls}}">{{r.status}}</span></div><span class="nt-meta nt-sum" title="{{r.sum}}">{{r.sum}}</span></div>
+<div class="row" style="gap: 8px; flex: none">
+<sc-if value="{{r.isRej}}" hint-placeholder-val="{{ false }}"><button class="btn sm igl-retry" onClick="{{r.retry}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"></path></svg>Qayta yuborish</button></sc-if>
+<sc-if value="{{r.isStop}}" hint-placeholder-val="{{ false }}"><button class="btn sm" onClick="{{r.resume}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>Davom ettirish</button></sc-if>
+<sc-if value="{{r.hasFile}}" hint-placeholder-val="{{ false }}"><button class="btn sm igl-dl" title="{{r.file}}" onClick="{{r.dl}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>Ijro varaqasi</button></sc-if>
+<button class="btn sm nt-det" onClick="{{r.open}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path></svg>Batafsil</button>
 </div>
-<sc-if value="{{r.isRej}}" hint-placeholder-val="{{ false }}"><div class="ta-rej">Rad etish sababi: {{r.reason}}</div></sc-if><sc-if value="{{r.isStop}}" hint-placeholder-val="{{ false }}"><div class="ta-stop"><span>To'xtatilish sababi: {{r.reason}}</span><button class="btn sm" onClick="{{r.resume}}">Ijroni davom ettirish</button></div></sc-if>
+</div>
 </div>
 </sc-for>
-<sc-if value="{{taEmpty}}" hint-placeholder-val="{{ false }}"><div class="pr-empty"><b>Da'voni ta'minlash hujjatlari yo'q</b><small>MIBga yuborilgan ijro buyurtmalari shu yerda ko'rinadi</small></div></sc-if>
-<div class="ta-foot"><span>{{taCount}}</span><span class="row" style="gap: 6px"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.9-3.9M4 5v4h4M4 13a8 8 0 0 0 14.9 3.9M20 19v-4h-4"></path></svg>Oxirgi sinxronlash: {{taLast}}</span></div>
+<sc-if value="{{taMore.has}}" hint-placeholder-val="{{ false }}"><button type="button" class="{{taMore.cls}}" aria-expanded="{{taMore.exp}}" onClick="{{taMore.toggle}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>{{taMore.lbl}}</button></sc-if>
+<sc-if value="{{taEmpty}}" hint-placeholder-val="{{ false }}"><div class="pr-empty" style="border: 1px solid #e6ebf3; border-radius: 16px; background: #fff"><b>Da'voni ta'minlash hujjatlari yo'q</b><small>MIB va Notarius tizimlaridan kelgan ijro hujjatlari shu yerda ko'rinadi</small></div></sc-if>
 </div>
 </section>
 
@@ -2943,6 +2942,28 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <button class="btn qv-close" onClick="{{mbfClose}}">Bekor qilish</button>
 <button class="btn pri" onClick="{{mbfSave}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Saqlash</button>
 </div></sc-if>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{taDetOpen}}" hint-placeholder-val="{{ false }}">
+<div class="qv-wrap">
+<button class="qv-bg" aria-label="Oynani yopish" onClick="{{taDetClose}}"></button>
+<div class="qv smd igr ntx view" role="dialog" aria-modal="true" aria-labelledby="tad-title" tabindex="-1" onKeyDown="{{taDetKey}}">
+<div class="smd-main">
+<div class="smd-top"><div class="kv" style="gap: 2px; min-width: 0"><b id="tad-title" class="smd-h">Ijro hujjati tafsilotlari</b><small class="smd-sub">{{taDet.sub}}</small></div><span style="flex: 1"></span><span class="{{taDet.stCls}}">{{taDet.status}}</span><button class="ib" aria-label="Yopish" onClick="{{taDetClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+<div class="smd-scroll"><div class="smd-sec igr-sec">
+<sc-if value="{{taDet.hasReason}}" hint-placeholder-val="{{ false }}"><div class="{{taDet.reasonCls}}"><span class="igr-erri" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6M12 16v.5"></path></svg></span><div class="kv" style="gap: 2px; min-width: 0; flex: 1"><b>{{taDet.reasonT}}</b><small>{{taDet.reason}}</small></div></div></sc-if>
+<sc-for list="{{taDet.cards}}" as="g" hint-placeholder-count="3"><div class="smd-card ntx-card"><span class="smd-ct"><span class="{{g.icCls}}" aria-hidden="true"></span>{{g.t}}<sc-if value="{{g.hasTag}}" hint-placeholder-val="{{ true }}"><span class="{{g.tagCls}}">{{g.tag}}</span></sc-if></span>
+<sc-if value="{{g.hasPhoto}}" hint-placeholder-val="{{ true }}"><div class="smd-idb"><img class="smd-ph" src="{{g.photo}}" alt="{{g.name}}"><dl class="smd-idg"><sc-for list="{{g.rows}}" as="r" hint-placeholder-count="4"><div class="{{r.cls}}"><dt>{{r.k}}</dt><dd class="{{r.vcls}}">{{r.v}}</dd></div></sc-for></dl></div></sc-if>
+<sc-if value="{{g.noPhoto}}" hint-placeholder-val="{{ false }}"><dl class="{{g.dlCls}}"><sc-for list="{{g.rows}}" as="r" hint-placeholder-count="4"><div class="{{r.cls}}"><dt>{{r.k}}</dt><dd class="{{r.vcls}}">{{r.v}}</dd></div></sc-for></dl></sc-if>
+<sc-if value="{{g.hasFile}}" hint-placeholder-val="{{ false }}"><button type="button" class="ntx-file" onClick="{{g.openFile}}"><span class="dx-ft" style="width: 30px; height: 36px; font-size: 8px">PDF</span><span class="kv" style="gap: 1px; min-width: 0; flex: 1"><b>{{g.file}}</b><small>{{g.fileSub}}</small></span><span class="ntx-fo">Ko'rish<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></span></button></sc-if>
+</div></sc-for>
+</div></div>
+<div class="ntx-f"><span style="flex: 1"></span><button class="btn qv-close" onClick="{{taDetClose}}">Yopish</button>
+<sc-if value="{{taDet.isRej}}" hint-placeholder-val="{{ false }}"><button class="btn pri" onClick="{{taDet.retry}}">Qayta yuborish</button></sc-if>
+<sc-if value="{{taDet.isStop}}" hint-placeholder-val="{{ false }}"><button class="btn pri" onClick="{{taDet.resume}}">Ijroni davom ettirish</button></sc-if>
+</div>
 </div>
 </div>
 </div>
@@ -4405,7 +4426,9 @@ ta: [
 { id: "t2", mulkdor: "«Toshkent suv ta'minoti» AJ", chora: 3, asos: "Sudyaning o'z tashabbusi", mib: "Toshkent shahar MIB boshqarmasi", st: "boshlandi", order: "05.10.2026 11:15", done: "", file: "" },
 { id: "t3", mulkdor: "Abdullayev Sardor Ilhomovich", chora: 1, asos: "Sudyaning o'z tashabbusi", mib: "Yunusobod tumani MIB bo'limi", st: "bajarildi", order: "02.08.2026 09:05", done: "05.08.2026 16:40", file: "ijro_varaqa_3381.pdf" },
 { id: "t4", mulkdor: "\"Alpomish\" sport klubi", chora: 2, asos: "Da'vogarning arizasi", mib: "Termiz shahar MIB bo'limi", st: "rad", order: "20.07.2026 14:00", done: "22.07.2026 10:10", file: "", reason: "Mulkdorning yuridik manzili bo'yicha ma'lumot topilmadi" },
-{ id: "t5", mulkdor: "Rahimova Dilnoza Anvarovna", chora: 4, asos: "Javobgarning arizasi", mib: "Termiz shahar MIB bo'limi", st: "toxtatildi", order: "11.09.2026 15:30", done: "19.09.2026 12:00", file: "", reason: "Qarzdor ijro hujjati ustidan sudda nizolashmoqda — nizo hal bo'lguncha ijro to'xtatildi" }
+{ id: "t5", mulkdor: "Rahimova Dilnoza Anvarovna", chora: 4, asos: "Javobgarning arizasi", mib: "Termiz shahar MIB bo'limi", st: "toxtatildi", order: "11.09.2026 15:30", done: "19.09.2026 12:00", file: "", reason: "Qarzdor ijro hujjati ustidan sudda nizolashmoqda — nizo hal bo'lguncha ijro to'xtatildi" },
+{ id: "n1", src: "nt", mulkdor: "Yusupova Nodira Karimovna", choraTxt: "Ko'chmas mulkni taqiqlash (kadastr 10:08:04:03:1521)", asos: "Da'vogarning arizasi", mib: "Toshkent shahar Yunusobod tumani 2-son davlat notarial idorasi", st: "bajarildi", order: "22.07.2026 11:40", done: "30.07.2026 15:10", file: "taqiq_xati_NOT-2231.pdf" },
+{ id: "n2", src: "nt", mulkdor: "«Toshkent suv ta'minoti» AJ", choraTxt: "Avtotransport vositasini taqiqlash (01 777 AAA)", asos: "Sudyaning o'z tashabbusi", mib: "Toshkent shahar 3-son davlat notarial idorasi", st: "davom", order: "03.08.2026 09:30", done: "", file: "" }
 ], taLast: "bugun, 09:30",
 bsy: null, tcMenu: false, ivTab: "all", ivQ: "", ivAll: true, ivcId: "", ivVer: false, ivr: null, iva: null,
 iv: [
@@ -9423,23 +9446,48 @@ var list = s.ta || [];
 var ini = function (n) { var w = String(n).replace(/[«»"']/g, "").split(/\s+/).filter(function (x) { return x.length > 1; }); return ((w[0] || "").charAt(0) + (w[1] || "").charAt(0)).toUpperCase(); };
 Object.assign(__out, {
 ta: list.map(function (r) {
-var hasDone = !!r.done, sk = stOf(r), stop = sk === "toxtatildi";
+var hasDone = !!r.done, sk = stOf(r), stop = sk === "toxtatildi", nt = r.src === "nt";
 return { mulkdor: r.mulkdor, ini: ini(r.mulkdor), code: r.chora, chora: CHS[r.chora - 1] || "", asos: r.asos, mib: r.mib, order: r.order,
 hasDone: hasDone && sk === "bajarildi", noDone: !(hasDone && sk === "bajarildi"), done: hasDone ? r.done : "kutilmoqda", doneLbl: sk === "rad" ? "Rad etildi" : stop ? "To'xtatildi" : hasDone ? "Bajarildi" : "Bajarilish",
 doneCls: "ta-t" + (sk === "bajarildi" ? " ok" : sk === "rad" ? " bad" : stop ? " stop" : " wait"),
 status: ST[sk][0], stCls: ST[sk][1], hasFile: !!r.file, file: r.file, isRej: sk === "rad", isStop: stop, reason: r.reason || "",
-noFileTxt: !r.file && sk !== "rad" && !stop, cls: "ta-row" + (sk === "rad" ? " rej" : stop ? " stop" : ""),
+noFileTxt: !r.file && sk !== "rad" && !stop, cls: "nt ta-nt" + (sk === "rad" ? " rej" : stop ? " stop" : ""),
 resume: function () { self.setState({ ta: self.state.ta.map(function (x) { return x.id === r.id ? Object.assign({}, x, { st: "davom", done: "", reason: "" }) : x; }) }); self.flash("Ijro davom ettirildi"); },
 dl: function () { self.flash("«" + r.file + "» yuklab olinmoqda"); },
-retry: function () { self.setState({ ta: self.state.ta.map(function (x) { return x.id === r.id ? Object.assign({}, x, { st: "boshlandi", order: now(), done: "", reason: "" }) : x; }) }); self.flash("Buyurtma MIBga qayta yuborildi"); } };
+retry: function () { self.setState({ ta: self.state.ta.map(function (x) { return x.id === r.id ? Object.assign({}, x, { st: "boshlandi", order: now(), done: "", reason: "" }) : x; }) }); self.flash(nt ? "So'rov notariusga qayta yuborildi" : "Buyurtma MIBga qayta yuborildi"); },
+isMib: !nt, isNt: nt, srcLbl: nt ? "Notarius" : "MIB", srcCls: "ta-src " + (nt ? "nt" : "mib"), icCls: "nt-ic ta-ic " + (nt ? "nt" : "mib"),
+sum: (r.choraTxt || CHS[r.chora - 1] || "") + " · " + r.asos + " · " + r.mib + " · Buyurtma: " + r.order + (hasDone && sk === "bajarildi" ? " · Bajarildi: " + r.done : ""),
+open: function () { self.setState({ taDet: r.id }); } };
 }),
 taEmpty: !list.length,
-taCount: list.length + " ta buyurtma",
-taSub: list.length ? "MIBga yuborilgan ijro buyurtmalari · " + list.length + " ta · ijro holati rang va belgi bilan ko'rsatiladi" : "MIBga yuborilgan ijro buyurtmalari",
+taCount: list.length + " ta hujjat",
+taSub: list.length ? "MIB va Notarius tizimlaridan · " + list.length + " ta hujjat (" + list.filter(function (x) { return x.src !== "nt"; }).length + " ta MIB, " + list.filter(function (x) { return x.src === "nt"; }).length + " ta Notarius) · oxirgi sinxronlash: " + s.taLast : "MIB va Notarius tizimlaridan kelgan ijro hujjatlari",
 taLast: s.taLast,
 ijLegend: [["boshlandi", "Ijro boshlandi", "b"], ["davom", "Davom etmoqda", "d"], ["toxtatildi", "To'xtatilgan", "t"], ["bajarildi", "Bajarildi", "ok"]].map(function (x) { var n = list.filter(function (r) { return stOf(r) === x[0]; }).length; return { label: x[1], n: n, cls: "ij-st " + x[2] + (n ? "" : " zero") }; }),
-taSync: function () { self.setState({ taLast: "hozirgina", ta: self.state.ta.map(function (x) { return (x.st === "buyurtma" || x.st === "boshlandi") ? Object.assign({}, x, { st: "davom" }) : x; }) }); self.flash("MIB tizimidan yangi holatlar olindi"); }
+taSync: function () { self.setState({ taLast: "hozirgina", ta: self.state.ta.map(function (x) { return (x.st === "buyurtma" || x.st === "boshlandi") ? Object.assign({}, x, { st: "davom" }) : x; }) }); self.flash("MIB va Notarius tizimlaridan yangi holatlar olindi"); }
 });
+(function () {
+var LIM = 3, all = __out.ta, on = !!s.taAll;
+__out.taMore = { has: all.length > LIM, cls: "qx-morebtn lx-more nt-more" + (on ? " on" : ""), exp: on ? "true" : "false", lbl: on ? "Kamroq ko'rsatish" : "Yana " + (all.length - LIM) + " ta hujjatni ko'rsatish", toggle: function () { self.setState({ taAll: !self.state.taAll }); } };
+var rec = list.filter(function (x) { return x.id === s.taDet; })[0], row = all[list.indexOf(rec)];
+if (!on) __out.ta = all.slice(0, LIM);
+__out.taDetOpen = !!(rec && s.caseOpen);
+var close = function () { self.setState({ taDet: "" }); };
+__out.taDetClose = close; __out.taDetKey = function (e) { if (e.key === "Escape") { e.stopPropagation(); close(); } };
+var tl = function (k, v, w) { var e = v == null || v === "" || v === "—"; return { k: k, v: e ? "Ko'rsatilmagan" : v, cls: w || "", vcls: e ? "mut" : "" }; };
+var card = function (t, ic, rows, g2, file) { return { t: t, icCls: "smd-ni " + ic, hasTag: false, tag: "", tagCls: "igr-tag", hasPhoto: false, noPhoto: true, dlCls: "smd-idg" + (g2 ? " g2" : ""), rows: rows, hasFile: !!(file && file.name), file: file ? file.name : "", fileSub: file ? file.sub : "", openFile: file ? file.open : function () {} }; };
+if (rec) {
+var sk = stOf(rec), nt = rec.src === "nt";
+__out.taDet = { sub: (nt ? "Notarius tizimi" : "MIB tizimi") + " · " + rec.mib, status: ST[sk][0], stCls: ST[sk][1] + " igr-st", isRej: sk === "rad", isStop: sk === "toxtatildi",
+hasReason: !!rec.reason, reasonT: sk === "rad" ? "Rad etish sababi" : "To'xtatilish sababi", reason: rec.reason || "", reasonCls: sk === "rad" ? "igr-err" : "igr-err ta-warn",
+retry: function () { row.retry(); close(); }, resume: function () { row.resume(); close(); },
+cards: [card("Mulkdor va chora", "ic-user", [tile0("Mulkdorning F.I.Sh", rec.mulkdor), tile0("Asosi", rec.asos), tile0("Da'voni ta'minlash choralari", rec.choraTxt || ((rec.chora ? rec.chora + " – " : "") + (CHS[rec.chora - 1] || "")), "w2")], true),
+card("Ijro ma'lumotlari", "ic-shield", [tile0(nt ? "Notarial idora nomi" : "MIB nomi", rec.mib, "w2"), tile0("Holati", ST[sk][0]), tile0("Manba", nt ? "Notarius tizimi" : "MIB tizimi"), tile0("Buyurtma vaqti", rec.order), tile0("Bajarilgan vaqt", sk === "bajarildi" ? rec.done : "")], true),
+card("Ijro varaqa fayli", "ic-id", rec.file ? [] : [{ k: "Ijro varaqa fayli", v: "Ijro varaqasi hali yo'q", cls: "w2", vcls: "mut" }], true, rec.file ? { name: rec.file, sub: nt ? "Notarial taqiq xati" : "MIB ijro varaqasi", open: function () { self.flash("«" + rec.file + "» ko'rish oynasida ochiladi"); } } : null)] };
+setTimeout(function () { try { var d = document.querySelector(".ntx"); if (d && !d.contains(document.activeElement)) d.focus(); } catch (er) {} }, 0);
+} else __out.taDet = { sub: "", status: "", stCls: "", isRej: false, isStop: false, hasReason: false, cards: [], retry: function () {}, resume: function () {} };
+function tile0(k, v, w) { return tl(k, v, w); }
+})();
 })();
 
 // ---------- o'zgarishlar tarixi (ish oynasi) ----------
