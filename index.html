@@ -2840,7 +2840,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <sc-if value="{{ntfView}}" hint-placeholder-val="{{ false }}">
 <sc-for list="{{ntv.cards}}" as="g" hint-placeholder-count="3"><div class="smd-card ntx-card"><span class="smd-ct"><span class="{{g.icCls}}" aria-hidden="true"></span>{{g.t}}<sc-if value="{{g.hasTag}}" hint-placeholder-val="{{ true }}"><span class="{{g.tagCls}}">{{g.tag}}</span></sc-if></span>
 <sc-if value="{{g.hasPhoto}}" hint-placeholder-val="{{ true }}"><div class="smd-idb"><img class="smd-ph" src="{{g.photo}}" alt="{{g.name}}"><dl class="smd-idg"><sc-for list="{{g.rows}}" as="r" hint-placeholder-count="4"><div class="{{r.cls}}"><dt>{{r.k}}</dt><dd class="{{r.vcls}}">{{r.v}}</dd></div></sc-for></dl></div></sc-if>
-<sc-if value="{{g.noPhoto}}" hint-placeholder-val="{{ false }}"><dl class="smd-idg"><sc-for list="{{g.rows}}" as="r" hint-placeholder-count="4"><div class="{{r.cls}}"><dt>{{r.k}}</dt><dd class="{{r.vcls}}">{{r.v}}</dd></div></sc-for></dl></sc-if>
+<sc-if value="{{g.noPhoto}}" hint-placeholder-val="{{ false }}"><dl class="{{g.dlCls}}"><sc-for list="{{g.rows}}" as="r" hint-placeholder-count="4"><div class="{{r.cls}}"><dt>{{r.k}}</dt><dd class="{{r.vcls}}">{{r.v}}</dd></div></sc-for></dl></sc-if>
 <sc-if value="{{g.hasFile}}" hint-placeholder-val="{{ false }}"><button type="button" class="ntx-file" onClick="{{g.openFile}}"><span class="dx-ft" style="width: 30px; height: 36px; font-size: 8px">PDF</span><span class="kv" style="gap: 1px; min-width: 0; flex: 1"><b>{{g.file}}</b><small>{{g.fileSub}}</small></span><span class="ntx-fo">Ko'rish<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></span></button></sc-if>
 </div></sc-for>
 </sc-if>
@@ -2912,7 +2912,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <sc-if value="{{mbfView}}" hint-placeholder-val="{{ false }}">
 <sc-for list="{{mbv.cards}}" as="g" hint-placeholder-count="3"><div class="smd-card ntx-card"><span class="smd-ct"><span class="{{g.icCls}}" aria-hidden="true"></span>{{g.t}}<sc-if value="{{g.hasTag}}" hint-placeholder-val="{{ true }}"><span class="{{g.tagCls}}">{{g.tag}}</span></sc-if></span>
 <sc-if value="{{g.hasPhoto}}" hint-placeholder-val="{{ true }}"><div class="smd-idb"><img class="smd-ph" src="{{g.photo}}" alt="{{g.name}}"><dl class="smd-idg"><sc-for list="{{g.rows}}" as="r" hint-placeholder-count="4"><div class="{{r.cls}}"><dt>{{r.k}}</dt><dd class="{{r.vcls}}">{{r.v}}</dd></div></sc-for></dl></div></sc-if>
-<sc-if value="{{g.noPhoto}}" hint-placeholder-val="{{ false }}"><dl class="smd-idg"><sc-for list="{{g.rows}}" as="r" hint-placeholder-count="4"><div class="{{r.cls}}"><dt>{{r.k}}</dt><dd class="{{r.vcls}}">{{r.v}}</dd></div></sc-for></dl></sc-if>
+<sc-if value="{{g.noPhoto}}" hint-placeholder-val="{{ false }}"><dl class="{{g.dlCls}}"><sc-for list="{{g.rows}}" as="r" hint-placeholder-count="4"><div class="{{r.cls}}"><dt>{{r.k}}</dt><dd class="{{r.vcls}}">{{r.v}}</dd></div></sc-for></dl></sc-if>
 <sc-if value="{{g.hasFile}}" hint-placeholder-val="{{ false }}"><button type="button" class="ntx-file" onClick="{{g.openFile}}"><span class="dx-ft" style="width: 30px; height: 36px; font-size: 8px">PDF</span><span class="kv" style="gap: 1px; min-width: 0; flex: 1"><b>{{g.file}}</b><small>{{g.fileSub}}</small></span><span class="ntx-fo">Ko'rish<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></span></button></sc-if>
 </div></sc-for>
 </sc-if>
@@ -8560,9 +8560,11 @@ if (mbView && v.mulkdor && !owners.some(function (o) { return o.v === v.mulkdor;
 __out.mbfView = mbView; __out.mbfEdit = !mbView; __out.mbfCls = "qv smd igr ntx" + (mbView ? " view" : "");
 var mch = CH[(+v.chora || 0) - 1]; __out.mbfHasCh = !mbView && !!mch; __out.mbfChDesc = mch ? mch[1] : "";
 var mrec = mbView ? list.filter(function (x) { return x.id === f.view; })[0] : null;
-__out.mbv = { status: mrec ? ST[mrec.st][0] : "", stCls: (mrec ? ST[mrec.st][1] : "nt-st") + " igr-st", cards: !mrec ? [] : [ownerCard(mrec.mulkdor, ""),
-{ t: "Da'voni ta'minlash chorasi", icCls: "smd-ni ic-shield", hasTag: true, tag: mrec.chora + "-chora", tagCls: "igr-tag", hasPhoto: false, noPhoto: true, hasFile: false, rows: [tile("Chora", (CH[mrec.chora - 1] || CH[0])[0], "w3"), tile("Mazmuni", (CH[mrec.chora - 1] || CH[0])[1], "w3 rg"), tile("Asosi", mrec.asos, "w3")] },
-{ t: "Ajrim ma'lumotlari", icCls: "smd-ni ic-id", hasTag: false, hasPhoto: false, noPhoto: true, rows: [tile("MIB raqami", mrec.id), tile("Ajrim sanasi", mrec.ajrim), tile("Kuchga kirish sanasi", mrec.kuch)], hasFile: !!mrec.file, file: mrec.file || "", fileSub: "Ajrim qarorining elektron shakli" + (mrec.size && mrec.size !== "—" ? " · " + mrec.size : ""), openFile: function () { self.flash("«" + mrec.file + "» ko'rish oynasida ochiladi"); } }] };
+var vCard = function (t, ic, tag, rows, g2, file) { var o = { t: t, icCls: "smd-ni " + ic, hasTag: !!tag, tag: tag || "", tagCls: "igr-tag", hasPhoto: false, noPhoto: true, dlCls: "smd-idg" + (g2 ? " g2" : ""), rows: rows, hasFile: !!(file && file.name), file: file ? file.name : "", fileSub: file ? file.sub : "", openFile: file ? file.open : function () {} }; return o; };
+__out.mbv = { status: mrec ? ST[mrec.st][0] : "", stCls: (mrec ? ST[mrec.st][1] : "nt-st") + " igr-st", cards: !mrec ? [] : [
+vCard("Mulkdor va asos", "ic-user", "", [tile("Mulkdorning F.I.Sh", mrec.mulkdor), tile("Asosi", mrec.asos)], true),
+vCard("Da'voni ta'minlash chorasi", "ic-shield", "", [tile("Da'voni ta'minlash choralari", mrec.chora + " – " + (CH[mrec.chora - 1] || CH[0])[0], "w3")], false),
+vCard("Ajrim ma'lumotlari", "ic-id", "", [tile("Ajrim sanasi", mrec.ajrim), tile("Kuchga kirish sanasi", mrec.kuch)], true, { name: mrec.file, sub: "Ajrim qarorining elektron shakli" + (mrec.size && mrec.size !== "—" ? " · " + mrec.size : ""), open: function () { self.flash("«" + mrec.file + "» ko'rish oynasida ochiladi"); } })] };
 __out.mbfTitle = mbView ? "Taqiqni bekor qilish" : "Taqiq qo'yish";
 __out.mbfSub = mbView ? "MIB tizimi · " + f.view + " · ma'lumotlar faqat ko'rish uchun" : "MIB tizimi · asosiy ish " + (s.caseNum || "");
 __out.mbfLift = function () { var w = self.state.mbForm; if (!w || !w.view) return; self.setState({ mbForm: null, dxDd: "", mb: self.state.mb.map(function (x) { return x.id === w.view ? Object.assign({}, x, { st: "bekor" }) : x; }) }); self.flash(w.view + " · taqiqdan olindi"); };
@@ -8636,12 +8638,14 @@ if (ntView && v.mulkdor && !owners.some(function (o) { return o.v === v.mulkdor;
 __out.ntfView = ntView; __out.ntfEdit = !ntView; __out.ntfCls = "qv smd igr ntx" + (ntView ? " view" : "");
 var isAv = v.turi === "avto"; __out.ntfTyIc = "smd-ni " + (isAv ? "ic-car" : "ic-home"); __out.ntfTyTitle = "Mol-mulk ma'lumotlari"; __out.ntfTyTag = isAv ? "Avtotransport" : "Ko'chmas mulk";
 var nrec = ntView ? list.filter(function (x) { return x.id === f.view; })[0] : null, nf = nrec ? Object.assign({}, nrec.fields || {}) : {};
-__out.ntv = { status: nrec ? ST[nrec.st][0] : "", stCls: (nrec ? ST[nrec.st][1] : "nt-st") + " igr-st", cards: !nrec ? [] : [ownerCard(nrec.mulkdor, ownerInfo(nrec.mulkdor).stir),
-{ t: "Mol-mulk ma'lumotlari", icCls: "smd-ni " + (nrec.turi === "avto" ? "ic-car" : "ic-home"), hasTag: true, tag: nrec.turi === "avto" ? "Avtotransport" : "Ko'chmas mulk", tagCls: "igr-tag", hasPhoto: false, noPhoto: true, hasFile: false,
-rows: nrec.turi === "avto" ? [tile("Rusumi", nf.rusum, "w3"), tile("Texnik hujjat seriyasi", nf.texSeriya), tile("Texnik hujjat raqami", nf.texRaqam), tile("YHXB orqali", nf.yhxb ? "Tekshirilgan" : "Tekshirilmagan")]
-: [tile("Kadastr raqami", nf.kadastr, "w2"), tile("Tuman kodi", nf.tumanKod), tile("Tuman", nf.tuman), tile("Uy", nf.uy), tile("Xonadon", nf.xonadon), tile("Manzil", nf.manzil, "w3")] },
-{ t: "Ajrim ma'lumotlari", icCls: "smd-ni ic-id", hasTag: false, hasPhoto: false, noPhoto: true, rows: [tile("Ajrim raqami", nrec.ajrim), tile("Ajrim sanasi", nrec.ajrimSana), tile("Taqiq qo'yilgan sana", nrec.sana)],
-hasFile: !!nrec.file, file: nrec.file || "", fileSub: "Ajrim qarorining elektron shakli" + (nrec.size && nrec.size !== "—" ? " · " + nrec.size : ""), openFile: function () { self.flash("«" + nrec.file + "» ko'rish oynasida ochiladi"); } }] };
+var vCard = function (t, ic, tag, rows, g2, file) { var o = { t: t, icCls: "smd-ni " + ic, hasTag: !!tag, tag: tag || "", tagCls: "igr-tag", hasPhoto: false, noPhoto: true, dlCls: "smd-idg" + (g2 ? " g2" : ""), rows: rows, hasFile: !!(file && file.name), file: file ? file.name : "", fileSub: file ? file.sub : "", openFile: file ? file.open : function () {} }; return o; };
+var nfx = nrec ? (nrec.fields || {}) : {}, nAv = nrec && nrec.turi === "avto";
+__out.ntv = { status: nrec ? ST[nrec.st][0] : "", stCls: (nrec ? ST[nrec.st][1] : "nt-st") + " igr-st", cards: !nrec ? [] : [
+vCard("Mol-mulk va mulkdor", "ic-prop", "", [tile("Mol-mulk turi", (TYPES[nrec.turi] || TYPES.kochmas)[0]), tile("Mulkdorning F.I.Sh", nrec.mulkdor)], true),
+vCard("Mol-mulk ma'lumotlari", nAv ? "ic-car" : "ic-home", nAv ? "Avtotransport" : "Ko'chmas mulk", nAv
+? [tile("YHXB tizimida ro'yxatdan o'tgan", nfx.yhxb ? "Ha" : "Yo'q", "w3"), tile("Rusumi", nfx.rusum), tile("Texnik hujjat seriyasi", nfx.texSeriya), tile("Texnik hujjat raqami", nfx.texRaqam)]
+: [tile("Kadastr raqami", nfx.kadastr, "w2"), tile("Tuman kodi", nfx.tumanKod), tile("Tuman", nfx.tuman), tile("Uy", nfx.uy), tile("Xonadon", nfx.xonadon), tile("Manzil", nfx.manzil, "w3")], false),
+vCard("Ajrim ma'lumotlari", "ic-id", "", [tile("Ajrim sanasi", nrec.ajrimSana)], true, { name: nrec.file, sub: "Ajrim qarorining elektron shakli" + (nrec.size && nrec.size !== "—" ? " · " + nrec.size : ""), open: function () { self.flash("«" + nrec.file + "» ko'rish oynasida ochiladi"); } })] };
 __out.ntfTitle = ntView ? "Taqiqni bekor qilish" : "Taqiq qo'yish";
 __out.ntfSub = ntView ? "Notarius tizimi · " + f.view + " · ma'lumotlar faqat ko'rish uchun" : "Notarius tizimi · asosiy ish " + (s.caseNum || "");
 __out.ntfLift = function () { var w = self.state.ntForm; if (!w || !w.view) return; self.setState({ ntForm: null, dxDd: "", nt: self.state.nt.map(function (x) { return x.id === w.view ? Object.assign({}, x, { st: "bekor" }) : x; }) }); self.flash(w.view + " · taqiqdan olindi"); };
