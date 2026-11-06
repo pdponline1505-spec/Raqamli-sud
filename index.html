@@ -1527,7 +1527,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </sc-for>
 <sc-if value="{{lx.empty}}" hint-placeholder-val="{{ false }}"><div class="hx-empty"><b>Mos yozuv topilmadi</b><small>Filtr yoki qidiruv so'zini o'zgartiring</small><button class="btn sm" onClick="{{lx.reset}}">Filtrni tozalash</button></div></sc-if>
 </div>
-<sc-if value="{{lx.hasMore}}" hint-placeholder-val="{{ false }}"><button class="hx-more" onClick="{{lx.more}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>Yana {{lx.moreN}} ta ko'rsatish</button></sc-if>
+<sc-if value="{{lx.hasMore}}" hint-placeholder-val="{{ false }}"><button type="button" class="{{lx.moreCls}}" aria-expanded="{{lx.moreExp}}" onClick="{{lx.more}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>{{lx.moreLbl}}</button></sc-if>
 </section>
 
 <section class="sec" id="integratsiya">
@@ -4193,6 +4193,30 @@ try { window.RSDS = api; } catch (e) {}
 return api;
 })();
 
+// ===== Brauzer manzili (URL) bilan sinxronlash: har bir sahifa o'z havolasiga ega, "Ortga" tugmasi ishlaydi =====
+var RT_PAGE = { dash: "bosh-sahifa", list: "ishlar", devon: "devonxona", ds: "dizayn-tizimi" };
+var RT_ROLES = ["sudya", "yordamchi", "devon", "operator"];
+var rtEnc = function (v) { return encodeURIComponent(String(v)); };
+function rtBuild(s, noNav) {
+var q = [], path;
+if (s.caseOpen && s.caseNum) { path = "/ish/" + rtEnc(s.caseNum); if (s.openMode === "modal") q.push("korinish=tezkor"); if (!noNav && s.nav && s.nav !== "umumiy") q.push("bolim=" + rtEnc(s.nav)); }
+else { path = "/" + (RT_PAGE[s.page] || "bosh-sahifa"); if (s.page === "list") { if (s.lInst) q.push("instansiya=" + rtEnc(s.lInst)); if (s.lTab) q.push("tab=" + rtEnc(s.lTab)); } }
+if (s.role) q.push("rol=" + rtEnc(s.role));
+return "#" + path + (q.length ? "?" + q.join("&") : "");
+}
+function rtParse(h) {
+try {
+h = String(h || "").replace(/^#/, ""); if (h.charAt(0) !== "/") return null;
+var qi = h.indexOf("?"), path = qi < 0 ? h : h.slice(0, qi), qs = qi < 0 ? "" : h.slice(qi + 1), p = {};
+qs.split("&").forEach(function (kv) { if (!kv) return; var i = kv.indexOf("="); if (i < 0) return; p[decodeURIComponent(kv.slice(0, i))] = decodeURIComponent(kv.slice(i + 1)); });
+var o = {}, m = path.match(/^\/ish\/(.+)$/);
+if (m) { o.caseOpen = true; o.caseNum = decodeURIComponent(m[1]); o.openMode = p.korinish === "tezkor" ? "modal" : "page"; o.nav = p.bolim || "umumiy"; o.page = "list"; }
+else { var pg = Object.keys(RT_PAGE).filter(function (k) { return "/" + RT_PAGE[k] === path; })[0]; if (!pg) return null; o.page = pg; o.caseOpen = false; if (p.instansiya) o.lInst = p.instansiya; if (p.tab) o.lTab = p.tab; }
+if (p.rol && RT_ROLES.indexOf(p.rol) >= 0) o.role = p.rol;
+return o;
+} catch (e) { return null; }
+}
+var rtOn = function () { try { return window.top === window && !!window.history && !!window.history.pushState; } catch (e) { return false; } };
 class Component extends DCLogic {
 constructor(...args) {
 super(...args);
@@ -4351,6 +4375,7 @@ var NAVK = ["page", "caseOpen", "openMode", "caseNum", "nav", "lTab", "lInst", "
 var sv = JSON.parse(window.localStorage.getItem("adolat.nav") || "null");
 if (sv && typeof sv === "object") { var st0 = this.state; NAVK.forEach(function (k) { if (sv[k] !== undefined && sv[k] !== null) st0[k] = sv[k]; }); }
 if (this.state.caseOpen && !this.state.caseNum) this.state.caseOpen = false;
+if (rtOn() && /^#\//.test(window.location.hash)) { var rt0 = rtParse(window.location.hash); if (rt0) Object.assign(this.state, rt0); }
 if (["dash", "list", "devon", "ds"].indexOf(this.state.page) < 0) this.state.page = "dash";
 this._navScroll = JSON.parse(window.localStorage.getItem("adolat.navScroll") || "null");
 } catch (e) {}
@@ -4376,6 +4401,20 @@ return Object.assign({}, load || {}, { caseCtx: target });
 }
 componentDidMount() {
 var self = this;
+try {
+if (rtOn()) {
+this._rtOn = true;
+var h0 = rtBuild(this.state); this._rtKey = rtBuild(this.state, true);
+if (window.location.hash !== h0) window.history.replaceState(null, "", h0);
+this._onPop = function () {
+var r = rtParse(window.location.hash); if (!r) return;
+self._rtPop = true;
+if (r.caseOpen) { var row = (self.state.lRows || []).filter(function (x) { return x.num === r.caseNum; })[0]; if (row) Object.assign(r, self._loadCase(row)); else if (!self.state.caseNum) r.caseOpen = false; }
+self.setState(Object.assign({ dxDd: "", subView: "", lMenu: 0 }, r));
+};
+window.addEventListener("popstate", this._onPop);
+}
+} catch (x) {}
 // ===== Design System sahifasi: React kutubxonasini #ds-host ga o'rnatish / olib tashlash =====
 try {
 var dsRec = null;
@@ -4851,6 +4890,7 @@ window.addEventListener("scroll", this._onScroll, true);
 }
 
 componentWillUnmount() {
+try { if (this._onPop) window.removeEventListener("popstate", this._onPop); } catch (x) {}
 try { if (this._dsObs) this._dsObs.disconnect(); } catch (x) {}
 try { if (this._fitObs) this._fitObs.disconnect(); } catch (x) {}
 try { if (this._exitObs) this._exitObs.disconnect(); } catch (x) {}
@@ -8218,21 +8258,22 @@ return Object.assign({}, l, { code: "LG-" + l.date.replace(/-/g, "").slice(2) + 
 }).sort(function (a, b) { return (b.date + b.time) < (a.date + a.time) ? -1 : 1; });
 var f = s.lxF || "all", sv = s.lxSv || "", q = String(s.lxQ || "").trim().toLowerCase();
 var list = all.filter(function (l) { return (f === "all" || l.st === f) && (!sv || l.sv === sv) && (!q || (l.code + " " + l.title + " " + l.who + " " + l.area).toLowerCase().indexOf(q) >= 0); });
-var lim = s.lxShow || 10, shown = list.slice(0, lim);
+var LX_LIM = 6, lxAll = !!s.lxAll, shown = lxAll ? list : list.slice(0, LX_LIM);
 var STL = { ok: ["Muvaffaqiyatli", "badge b-green"], warn: ["Ogohlantirish", "badge b-amber"], err: ["Xatolik", "badge b-red"] };
 var sh = function (n) { var p = String(n || "").split(/\s+/); return p[0] + (p[1] ? " " + p[1].charAt(0) + "." : ""); };
 var ini = function (n) { return n === "Tizim" ? "⚙" : String(n || "").split(/\s+/).slice(0, 2).map(function (w) { return w.charAt(0); }).join(""); };
 var cnt = function (k) { return all.filter(function (l) { return k === "all" || l.st === k; }).length; };
 var errN = cnt("err"), warnN = cnt("warn");
-__out.lxSvc = dd("lx-svc", [{ v: "", l: "Barcha xizmatlar" }].concat(Object.keys(SV).map(function (k) { return { v: k, l: SV[k][0] }; })), sv, function (e) { self.setState({ lxSv: e.target.value, lxShow: 10 }); }, { ph: "Barcha xizmatlar", noSplit: true });
+__out.lxSvc = dd("lx-svc", [{ v: "", l: "Barcha xizmatlar" }].concat(Object.keys(SV).map(function (k) { return { v: k, l: SV[k][0] }; })), sv, function (e) { self.setState({ lxSv: e.target.value, lxAll: false }); }, { ph: "Barcha xizmatlar", noSplit: true });
 __out.lxDdOpen = ddOpen.indexOf("lx-") === 0;
 __out.lx = {
 sub: "Tizimdagi amallar, xatolar va nosozliklar jurnali · " + all.length + " ta yozuv" + (errN ? " · " + errN + " ta xatolik" : "") + (warnN ? " · " + warnN + " ta ogohlantirish" : ""),
-chips: [["all", "Barchasi", ""], ["ok", "Muvaffaqiyatli", "ok"], ["warn", "Ogohlantirish", "warn"], ["err", "Xatolik", "err"]].map(function (c) { var on = f === c[0]; return { l: c[1], n: String(cnt(c[0])), sel: on ? "true" : "false", cls: "lx-chip" + (on ? " on" : ""), dotCls: "lx-dot" + (c[2] ? " d-" + c[2] : ""), pick: function () { self.setState({ lxF: c[0], lxShow: 10 }); } }; }),
-q: s.lxQ || "", setQ: function (e) { self.setState({ lxQ: e.target.value, lxShow: 10 }); },
+chips: [["all", "Barchasi", ""], ["ok", "Muvaffaqiyatli", "ok"], ["warn", "Ogohlantirish", "warn"], ["err", "Xatolik", "err"]].map(function (c) { var on = f === c[0]; return { l: c[1], n: String(cnt(c[0])), sel: on ? "true" : "false", cls: "lx-chip" + (on ? " on" : ""), dotCls: "lx-dot" + (c[2] ? " d-" + c[2] : ""), pick: function () { self.setState({ lxF: c[0], lxAll: false }); } }; }),
+q: s.lxQ || "", setQ: function (e) { self.setState({ lxQ: e.target.value, lxAll: false }); },
 rows: shown.map(function (l) { var dt = l.date.split("-"); return { code: l.code, d: dt[2] + "." + dt[1] + "." + dt[0], t: l.time + "." + l.ms, svc: SV[l.sv][0].replace(" xizmati", ""), svIc: SV[l.sv][1], title: l.title, area: l.area, whoS: l.who === "Tizim" ? "Tizim" : sh(l.who), role: ROLE[l.who] || "Xodim", ini: ini(l.who), st: STL[l.st][0], stCls: STL[l.st][1], cls: "lx-r" + (l.st === "err" ? " err" : l.st === "warn" ? " warn" : ""), open: function () { self.setState({ lxDet: l.id }); } }; }),
-empty: !list.length, hasMore: list.length > shown.length, moreN: String(Math.min(10, list.length - shown.length)),
-more: function () { self.setState({ lxShow: lim + 10 }); }, reset: function () { self.setState({ lxF: "all", lxSv: "", lxQ: "", lxShow: 10 }); }
+empty: !list.length, hasMore: list.length > LX_LIM, moreCls: "qx-morebtn lx-more" + (lxAll ? " on" : ""), moreExp: lxAll ? "true" : "false",
+moreLbl: lxAll ? "Kamroq ko'rsatish" : "Yana " + (list.length - LX_LIM) + " ta yozuvni ko'rsatish",
+more: function () { self.setState({ lxAll: !self.state.lxAll }); }, reset: function () { self.setState({ lxF: "all", lxSv: "", lxQ: "", lxAll: false }); }
 };
 var D = all.filter(function (l) { return l.id === s.lxDet; })[0];
 __out.lxOpen = !!D && !!s.caseOpen;
@@ -9454,6 +9495,11 @@ try {
 var snap = JSON.stringify({ page: s.page, caseOpen: !!s.caseOpen, openMode: s.openMode, caseNum: s.caseNum, nav: s.nav, lTab: s.lTab, lInst: s.lInst, role: s.role, dbDay2: s.dbDay2, subCollapsed: !!s.subCollapsed });
 if (snap !== this._navSaved) { this._navSaved = snap; window.localStorage.setItem("adolat.nav", snap); }
 } catch (e) {}
+if (this._rtOn) { try {
+var rtH = rtBuild(s), rtK = rtBuild(s, true);
+if (window.location.hash !== rtH) { if (this._rtPop || rtK === this._rtKey) window.history.replaceState(null, "", rtH); else window.history.pushState(null, "", rtH); }
+this._rtKey = rtK; this._rtPop = false;
+} catch (e) {} }
 
 return __out;
 }
