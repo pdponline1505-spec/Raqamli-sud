@@ -1842,6 +1842,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </li>
 </sc-for>
 </ol>
+<sc-if value="{{it.stMore.has}}" hint-placeholder-val="{{ false }}"><button type="button" class="{{it.stMore.cls}}" aria-expanded="{{it.stMore.exp}}" onClick="{{it.stMore.tog}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>{{it.stMore.lbl}}</button></sc-if>
 </div></sc-if>
 <sc-if value="{{it.isEx}}" hint-placeholder-val="{{ false }}"><div class="pt-pane">
 <div class="it-ex">
@@ -1856,6 +1857,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 </sc-for>
 </div>
+<sc-if value="{{it.exMore.has}}" hint-placeholder-val="{{ false }}"><button type="button" class="{{it.exMore.cls}}" aria-expanded="{{it.exMore.exp}}" onClick="{{it.exMore.tog}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>{{it.exMore.lbl}}</button></sc-if>
 </div></sc-if>
 <sc-if value="{{it.isMt}}" hint-placeholder-val="{{ false }}"><div class="pt-pane">
 <sc-for list="{{it.mt}}" as="g" hint-placeholder-count="2">
@@ -1865,6 +1867,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="it-mi"><span class="{{m.icCls}}">{{m.ic}}</span><span class="kv" style="gap: 2px; min-width: 0; flex: 1"><b>{{m.t}}</b><small>{{m.meta}}</small></span><span class="it-md"><b>{{m.d}}</b><small>{{m.by}}</small></span><span class="{{m.stCls}}">{{m.st}}</span></div>
 </sc-for>
 </div>
+<sc-if value="{{g.more.has}}" hint-placeholder-val="{{ false }}"><button type="button" class="{{g.more.cls}}" aria-expanded="{{g.more.exp}}" onClick="{{g.more.tog}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>{{g.more.lbl}}</button></sc-if>
 </div>
 </sc-for>
 </div></sc-if>
@@ -8336,11 +8339,16 @@ var MT = [
 var MS = { ok: "badge b-green", b: "badge b-blue", a: "badge b-amber", g: "badge b-gray", err: "badge b-red" };
 var mtOut = MT.map(function (g) { return { t: g.t, n: g.items.length + " ta", items: g.items.map(function (m) { return { ic: m[0], icCls: "it-mic m-" + m[0].toLowerCase(), t: m[1], meta: m[2], d: m[3], by: m[4], st: m[5], stCls: MS[m[6]] }; }) }; });
 var mtN = MT.reduce(function (a, g) { return a + g.items.length; }, 0);
+var IT_LIM = 5, itAll = s.itAll || {}, limOf = function (k) { return /^mt/.test(k) ? 3 : IT_LIM; };
+var mkMore = function (k, n, noun) { var on = !!itAll[k]; return { has: n > limOf(k), cls: "qx-morebtn it-more" + (on ? " on" : ""), exp: on ? "true" : "false", lbl: on ? "Kamroq ko'rsatish" : "Yana " + (n - limOf(k)) + " ta " + noun + " ko'rsatish", tog: function () { var o = Object.assign({}, self.state.itAll || {}); o[k] = !o[k]; self.setState({ itAll: o }); } }; };
+var cut = function (k, arr) { return itAll[k] ? arr : arr.slice(0, limOf(k)); };
 var TB = [["st", "Holatlar", "Ish holati o'zgarishlari vaqt tartibida", stRows.length, "clock"], ["ex", "Tashqi so'rovlar", "So'rovlar va ularga javoblar", exOut.length, "swap"], ["mt", "Materiallar va shikoyatlar", "Ishga tegishli hujjatlar", mtN, "doc"]];
 __out.it = {
 sub: "Ishning butun tarixi · " + (stRows.length + exOut.length + mtN) + " ta yozuv · 2 ta sud",
 tabs: TB.map(function (t) { var on = t[0] === tab; return { l: t[1], sub: t[2], n: String(t[3]), sel: on ? "true" : "false", cls: "pt-tab" + (on ? " on" : ""), icCls: "pt-ic ic-it-" + t[4], pick: function () { self.setState({ itTab: t[0] }); } }; }),
-isSt: tab === "st", isEx: tab === "ex", isMt: tab === "mt", st: stRows, ex: exOut, mt: mtOut
+isSt: tab === "st", isEx: tab === "ex", isMt: tab === "mt", st: cut("st", stRows), ex: cut("ex", exOut),
+stMore: mkMore("st", stRows.length, "hodisani"), exMore: mkMore("ex", exOut.length, "so'rovni"),
+mt: mtOut.map(function (g, gi) { var k = "mt" + gi; return Object.assign({}, g, { items: cut(k, g.items), more: mkMore(k, g.items.length, gi ? "shikoyatni" : "materialni") }); })
 };
 })();
 // ---- Kalendar: sudyaning ishda bo'lmagan davri va band kunlar ----
