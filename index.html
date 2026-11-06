@@ -5422,6 +5422,127 @@ nav.nav a .dot{display:inline-block;flex:none;width:7px;height:7px;margin-right:
 .igm-warn b{font-size:13.5px;font-weight:600;color:#92400e}
 .igm-warn small{font-size:12.5px;color:#a16207;line-height:1.4}
 .igm-wi{width:30px;height:30px;border-radius:9px;flex:none;display:grid;place-items:center;background:#fef3c7;color:#d97706}
+.lx-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px}
+.lx-chips{display:flex;gap:6px;flex-wrap:wrap}
+.lx-chip{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 10px;border-radius:10px;border:1px solid #e2e8f0;background:#fff;font:500 13px inherit;font-family:inherit;color:#334155;cursor:pointer;transition:all .15s}
+.lx-chip .lx-cn{font-style:normal;font-size:12px;font-weight:700;color:#64748b;background:#f1f5f9;border-radius:999px;padding:1px 7px}
+.lx-chip:hover{border-color:#bfdbfe}
+.lx-chip.on{border-color:#3073f1;background:#eff6ff;color:#1d4ed8}
+.lx-chip.on .lx-cn{background:#3073f1;color:#fff}
+.lx-dot{width:8px;height:8px;border-radius:50%;background:#94a3b8;flex:none}
+.lx-dot.d-ok{background:#22c55e}.lx-dot.d-warn{background:#f59e0b}.lx-dot.d-err{background:#ef4444}
+.lx-svc .dx-sel{width:210px}
+.lx-svc .dx-selbtn{height:36px}
+.lx-q{display:flex;align-items:center;gap:8px;height:36px;padding:0 12px;border:1px solid #e2e8f0;border-radius:10px;background:#fff;flex:1 1 220px;min-width:200px;max-width:340px;color:#94a3b8;box-sizing:border-box}
+.lx-q:focus-within{border-color:#3073f1;box-shadow:0 0 0 3px rgba(48,115,241,.12)}
+.lx-q input{border:0;outline:0;flex:1;min-width:0;font:inherit;font-size:13px;color:#0f172a;background:transparent}
+.lx-tbl{border:1px solid #e8edf3;border-radius:14px;overflow:hidden;background:#fff}
+.lx-hr,.lx-r{display:grid;grid-template-columns:186px 108px 128px minmax(0,1.7fr) minmax(0,1fr) 124px 18px;align-items:center;gap:12px;padding:0 16px}
+.lx-hr{height:40px;background:#f8fafc;border-bottom:1px solid #eef1f5;font-size:12px;font-weight:600;color:#64748b}
+.lx-r{width:100%;min-height:62px;padding-top:8px;padding-bottom:8px;border:0;border-bottom:1px solid #f1f5f9;background:#fff;text-align:left;font-family:inherit;color:inherit;cursor:pointer;transition:background .12s}
+.lx-r:last-of-type{border-bottom:0}
+.lx-r:hover{background:#f8fbff}
+.lx-r:focus-visible{outline:2px solid #93c5fd;outline-offset:-2px}
+.lx-r.err{box-shadow:inset 3px 0 0 #ef4444}
+.lx-r.warn{box-shadow:inset 3px 0 0 #f59e0b}
+.lx-code{font:600 12px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#334155;letter-spacing:.01em}
+.lx-ts{display:flex;flex-direction:column;gap:1px;font-variant-numeric:tabular-nums}
+.lx-ts b{font-size:13px;font-weight:600;color:#0f172a}
+.lx-ts small{font-size:12px;color:#64748b}
+.lx-sv{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:#334155;min-width:0}
+.lx-si{width:8px;height:8px;border-radius:3px;flex:none;background:#94a3b8}
+.lx-si.c{background:#3073f1}.lx-si.p{background:#8b5cf6}.lx-si.d{background:#0ea5e9}.lx-si.i{background:#4f46e5}.lx-si.a{background:#14b8a6}.lx-si.n{background:#f59e0b}
+.lx-ac{display:flex;flex-direction:column;gap:2px;min-width:0}
+.lx-ac b{font-size:13.5px;font-weight:600;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lx-ac small{font-size:12px;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lx-who{display:flex;align-items:center;gap:8px;min-width:0}
+.lx-who b{font-size:13px;font-weight:600;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lx-who small{font-size:11.5px;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lx-av{width:30px;height:30px;border-radius:9px;flex:none;display:grid;place-items:center;background:#eef2ff;color:#4338ca;font-size:11px;font-weight:700}
+.lx-go{color:#cbd5e1;display:grid;place-items:center}
+.lx-r:hover .lx-go{color:#3073f1}
+@media (max-width:1200px){.lx-hr{display:none}.lx-r{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"ac st" "code ts" "who sv";row-gap:6px}.lx-r>.lx-ac{grid-area:ac}.lx-r>.lx-code{grid-area:code}.lx-r>.lx-ts{grid-area:ts;flex-direction:row;gap:6px;justify-self:end}.lx-r>.lx-sv{grid-area:sv;justify-self:end}.lx-r>.lx-who{grid-area:who}.lx-r>span[role=cell]:nth-child(6){grid-area:st;justify-self:end}.lx-go{display:none}}
+.lxd{width:min(720px,100%) !important;padding:0 !important;display:flex !important;flex-direction:column;max-height:calc(100vh - 32px);overflow:hidden}
+.lxd:focus{outline:none}
+.lxd-h{display:flex;align-items:center;gap:12px;padding:18px 20px 16px;border-bottom:1px solid #eef1f5;flex:none}
+.lxd-h>.kv b{font-size:16.5px;font-weight:600;color:#0f172a}
+.lxd-h>.kv small{font-size:12.5px;color:#64748b}
+.lxd-ic{width:40px;height:40px;border-radius:12px;flex:none;background:#ecfdf5;position:relative}
+.lxd-ic::after{content:"";position:absolute;inset:13px;border-radius:50%;background:#22c55e}
+.lxd-ic.warn{background:#fffbeb}.lxd-ic.warn::after{background:#f59e0b}
+.lxd-ic.err{background:#fef2f2}.lxd-ic.err::after{background:#ef4444}
+.lxd-b{padding:18px 20px;display:flex;flex-direction:column;gap:14px;overflow-y:auto;flex:1;min-height:0}
+.lxd-err{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border-radius:12px;border:1px solid #fecaca;background:#fff5f5}
+.lxd-err b{font-size:14px;color:#991b1b}.lxd-err small{font-size:13px;color:#b91c1c}
+.lxd-err code{margin-top:4px;font:600 12px ui-monospace,Menlo,Consolas,monospace;color:#7f1d1d}
+.lxd-err.warn{border-color:#fde68a;background:#fffbeb}.lxd-err.warn b{color:#92400e}.lxd-err.warn small{color:#a16207}.lxd-err.warn code{color:#78350f}
+.lxd-m{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.lxd-m>div{padding:9px 12px;border-radius:10px;background:#f6f7f9;min-width:0}
+.lxd-m>div.w2{grid-column:1 / -1}
+.lxd-m dt{font-size:11.5px;color:#64748b;margin:0 0 2px}
+.lxd-m dd{margin:0;font-size:13.5px;font-weight:600;color:#0f172a;word-break:break-word}
+.lxd-dh{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:4px}
+.lxd-dh b{font-size:14px;font-weight:600;color:#0f172a}.lxd-dh small{font-size:12.5px;color:#64748b}
+.lxd-t{border:1px solid #e8edf3;border-radius:12px;overflow:hidden}
+.lxd-tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:12px;padding:10px 14px;border-top:1px solid #f1f5f9;font-size:13px;color:#0f172a}
+.lxd-tr.hd{border-top:0;background:#f8fafc;font-size:12px;font-weight:600;color:#64748b}
+.lxd-tr .o{color:#b91c1c;background:#fef2f2;border-radius:6px;padding:2px 6px;justify-self:start}
+.lxd-tr .n{color:#047857;background:#ecfdf5;border-radius:6px;padding:2px 6px;justify-self:start;font-weight:600}
+.lxd-tr.same .o,.lxd-tr.same .n{background:#f1f5f9;color:#475569}
+.lxd-nd{padding:14px;border-radius:12px;border:1px dashed #d5dbe4;background:#fafbfc;font-size:13px;color:#64748b}
+.it-tabs{margin-bottom:16px}
+.it-tl{list-style:none;margin:0;padding:0 0 0 6px;position:relative}
+.it-tl::before{content:"";position:absolute;left:13px;top:10px;bottom:10px;width:2px;background:#e2e8f0;border-radius:2px}
+.it-e{position:relative;padding:0 0 14px 34px}
+.it-node{position:absolute;left:1px;top:16px;width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid #94a3b8;box-sizing:border-box}
+.it-e.cur .it-node{border-color:#3073f1;box-shadow:0 0 0 4px rgba(48,115,241,.15)}
+.it-c{border:1px solid #e8edf3;border-radius:14px;background:#fff;padding:12px 16px;display:flex;flex-direction:column;gap:8px}
+.it-e.cur .it-c{border-color:#bfdbfe}
+.it-h{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.it-dt{display:flex;align-items:baseline;gap:6px;font-variant-numeric:tabular-nums}
+.it-dt b{font-size:13.5px;font-weight:600;color:#0f172a}.it-dt small{font-size:12.5px;color:#64748b}
+.it-tr{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}
+.it-sf{font-size:12.5px;color:#64748b;padding:3px 9px;border-radius:999px;background:#f1f5f9;text-decoration:line-through;text-decoration-color:#cbd5e1}
+.it-ar{width:14px;height:14px;color:#94a3b8}
+.it-st{font-size:12.5px;font-weight:600;padding:3px 10px;border-radius:999px;background:#eff6ff;color:#1d4ed8}
+.it-st.g{background:#f1f5f9;color:#334155}.it-st.a{background:#fffbeb;color:#b45309}.it-st.v{background:#f5f3ff;color:#6d28d9}.it-st.ok{background:#ecfdf5;color:#047857}
+.it-inst{margin-left:auto;font-size:12px;font-weight:600;color:#475569;padding:3px 10px;border-radius:8px;border:1px solid #e2e8f0}
+.it-n{margin:0;font-size:13.5px;color:#334155;line-height:1.45}
+.it-f{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.it-f b{font-size:13px;font-weight:600;color:#0f172a}.it-f small{font-size:12px;color:#64748b}
+.it-doc{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 10px 0 6px;border:1px solid #e2e8f0;border-radius:9px;background:#fff;font:500 12.5px inherit;font-family:inherit;color:#334155;cursor:pointer}
+.it-doc:hover{border-color:#bfdbfe;color:#2563eb}
+.it-ex{display:flex;flex-direction:column;gap:10px}
+.it-xc{border:1px solid #e8edf3;border-radius:14px;background:#fff;padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.it-xh{display:flex;align-items:center;gap:12px}
+.it-xh b{font-size:14.5px;font-weight:600;color:#0f172a}.it-xh small{font-size:12.5px;color:#64748b}
+.it-xi{width:36px;height:36px;border-radius:10px;flex:none;display:grid;place-items:center;background:#eef2ff;color:#4f46e5}
+.it-xi::before{content:"";width:18px;height:18px;background:currentColor;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-position:center;mask-position:center}
+.it-xi.id{background:#ecfeff;color:#0e7490}.it-xi.sc{background:#fff7ed;color:#c2410c}
+.it-xb{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);align-items:stretch;gap:6px}
+.it-xq,.it-xr{display:flex;flex-direction:column;gap:2px;padding:9px 12px;border-radius:10px;background:#f6f7f9;min-width:0}
+.it-xq small,.it-xr small{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.03em}
+.it-xq small .i,.it-xr small .i{width:12px;height:12px}
+.it-xq b,.it-xr b{font-size:13px;font-weight:600;color:#0f172a;font-variant-numeric:tabular-nums}
+.it-xq span,.it-xr span{font-size:12.5px;color:#475569;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.it-xr.ok{background:#f0fdf4}.it-xr.err{background:#fef2f2}.it-xr.err span{color:#b91c1c}.it-xr.b{background:#eff6ff}
+.it-xarr{display:grid;place-items:center;color:#94a3b8}
+.it-mg{margin-bottom:16px}
+.it-mgh{display:flex;align-items:center;gap:8px;margin:0 0 8px}
+.it-mgh b{font-size:14.5px;font-weight:600;color:#0f172a}
+.it-ml{border:1px solid #e8edf3;border-radius:14px;overflow:hidden;background:#fff}
+.it-mi{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid #f1f5f9}
+.it-mi:first-child{border-top:0}
+.it-mi b{font-size:13.5px;font-weight:600;color:#0f172a}.it-mi small{font-size:12.5px;color:#64748b}
+.it-mic{width:34px;height:38px;border-radius:7px;flex:none;display:grid;place-items:center;font-size:10px;font-weight:700;background:#fef2f2;color:#dc2626}
+.it-mic.m-doc{background:#eff6ff;color:#2563eb}.it-mic.m-qd{background:#fffbeb;color:#b45309}.it-mic.m-sh{background:#f5f3ff;color:#6d28d9}
+.it-md{display:flex;flex-direction:column;align-items:flex-end;gap:1px;flex:none;min-width:110px}
+.it-md b{font-size:13px;font-variant-numeric:tabular-nums}.it-md small{font-size:12px}
+@media (max-width:760px){.it-xb{grid-template-columns:minmax(0,1fr)}.it-xarr{transform:rotate(90deg)}.it-md{display:none}.lxd-m{grid-template-columns:minmax(0,1fr)}}
+.ic-it-clock::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%229%22/%3E%3Cpath%20d%3D%22M12%207v5l3%202%22/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%229%22/%3E%3Cpath%20d%3D%22M12%207v5l3%202%22/%3E%3C/svg%3E")}
+.ic-it-swap::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M4%208h13l-3-3M20%2016H7l3%203%22/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M4%208h13l-3-3M20%2016H7l3%203%22/%3E%3C/svg%3E")}
+.ic-it-doc::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M14%203H6a2%202%200%200%200-2%202v14a2%202%200%200%200%202%202h12a2%202%200%200%200%202-2V9z%22/%3E%3Cpath%20d%3D%22M14%203v6h6M8%2013h8M8%2017h5%22/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M14%203H6a2%202%200%200%200-2%202v14a2%202%200%200%200%202%202h12a2%202%200%200%200%202-2V9z%22/%3E%3Cpath%20d%3D%22M14%203v6h6M8%2013h8M8%2017h5%22/%3E%3C/svg%3E")}
+.ic-ig-doc::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M14%203H6a2%202%200%200%200-2%202v14a2%202%200%200%200%202%202h12a2%202%200%200%200%202-2V9z%22/%3E%3Cpath%20d%3D%22M14%203v6h6M8%2013h8M8%2017h5%22/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M14%203H6a2%202%200%200%200-2%202v14a2%202%200%200%200%202%202h12a2%202%200%200%200%202-2V9z%22/%3E%3Cpath%20d%3D%22M14%203v6h6M8%2013h8M8%2017h5%22/%3E%3C/svg%3E")}
 /* ================= Raqamli sud — Design System (tokenlar + komponentlar) ================= */
 .ds-root{
   /* Ranglar — asosiy identitet (mavjud tizimdan) */
@@ -7348,28 +7469,33 @@ html[data-theme="dark"] .ds-host img{filter:none}
 
   <section class="sec" id="loglar">
     <sc-if value="{{lgMenuOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg" tabindex="-1" aria-label="Menyuni yopish" onClick="{{lgMenuClose}}"></button></sc-if>
-    <div class="sh"><div><h2>Loglar</h2><p>{{lgSub}}</p></div>
+    <sc-if value="{{lxDdOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{itkDdClose}}"></button></sc-if>
+    <div class="sh"><div><h2>Loglar</h2><p>{{lx.sub}}</p></div>
       <div class="tools"><div class="hx-exp"><button class="btn" aria-haspopup="menu" aria-expanded="{{lgMenuStr}}" onClick="{{lgMenuToggle}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>Eksport<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
         <sc-if value="{{lgMenuOpen}}" hint-placeholder-val="{{ false }}"><div class="hx-menu" role="menu"><button role="menuitem" class="dx-opt" onClick="{{lgExpPdf}}"><span class="dx-ft" style="width: 26px; height: 30px; font-size: 8px">PDF</span><span class="dx-olbl">PDF hujjat<small class="dx-osub">Chop etish uchun</small></span></button><button role="menuitem" class="dx-opt" onClick="{{lgExpXls}}"><span class="dx-ft x" style="width: 26px; height: 30px; font-size: 8px">XLS</span><span class="dx-olbl">Excel jadval<small class="dx-osub">Saralash va filtrlash uchun</small></span></button></div></sc-if>
       </div></div></div>
-    <div class="hx-card">
-      <sc-for list="{{lgGroups}}" as="g" hint-placeholder-count="2">
-      <div class="hx-day"><span>{{g.day}}</span></div>
-      <sc-for list="{{g.items}}" as="l" hint-placeholder-count="2">
-      <div class="{{l.cls}}">
-        <span class="hx-ic" aria-hidden="true"><sc-if value="{{l.isAdd}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></sc-if><sc-if value="{{l.isEdit}}" hint-placeholder-val="{{ true }}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg></sc-if><sc-if value="{{l.isDel}}" hint-placeholder-val="{{ false }}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></sc-if></span>
-        <div class="hx-main">
-          <div class="row" style="gap: 8px; flex-wrap: wrap"><b class="hx-title">{{l.title}}</b><span class="hx-area">{{l.area}}</span></div>
-          <sc-if value="{{l.hasDiff}}" hint-placeholder-val="{{ false }}"><div class="hx-diff"><span class="hx-old">{{l.from}}</span><span class="hx-arr">→</span><span class="hx-new">{{l.to}}</span></div></sc-if>
-          <span class="hx-who"><span class="hx-av">{{l.ini}}</span>{{l.who}}<span class="hx-dot">·</span>{{l.typeLabel}}</span>
-        </div>
-        <span class="hx-time">{{l.time}}</span>
-      </div>
-      </sc-for>
-      </sc-for>
-      <sc-if value="{{lgEmpty}}" hint-placeholder-val="{{ false }}"><div class="hx-empty"><b>{{lgEmptyT}}</b><small>{{lgEmptyS}}</small><sc-if value="{{lgFiltered}}" hint-placeholder-val="{{ false }}"><button class="btn sm" onClick="{{lgReset}}">Filtrni tozalash</button></sc-if></div></sc-if>
-      <sc-if value="{{lgHasMore}}" hint-placeholder-val="{{ true }}"><button class="hx-more" onClick="{{lgMore}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>Yana {{lgMoreN}} ta ko'rsatish</button></sc-if>
+    <div class="lx-bar">
+      <div class="lx-chips" role="tablist" aria-label="Holat bo'yicha filtr"><sc-for list="{{lx.chips}}" as="c" hint-placeholder-count="4"><button type="button" role="tab" aria-selected="{{c.sel}}" class="{{c.cls}}" onClick="{{c.pick}}"><span class="{{c.dotCls}}" aria-hidden="true"></span><span class="lx-cl">{{c.l}}</span><em class="lx-cn">{{c.n}}</em></button></sc-for></div>
+      <span style="flex: 1 1 0"></span>
+      <div class="lx-svc"><span class="{{lxSvc.cls}}" id="{{lxSvc.id}}" onKeyDown="{{lxSvc.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{lxSvc.exp}}" onClick="{{lxSvc.toggle}}"><span class="{{lxSvc.vcls}}">{{lxSvc.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{lxSvc.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{lxSvc.stop}}"><sc-for list="{{lxSvc.opts}}" as="o" hint-placeholder-count="4"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><span class="dx-olbl">{{o.name}}</span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></div>
+      <label class="lx-q"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><input type="search" placeholder="Kod, amal yoki shaxs bo'yicha qidirish" value="{{lx.q}}" onInput="{{lx.setQ}}" aria-label="Loglardan qidirish"></label>
     </div>
+    <div class="lx-tbl" role="table" aria-label="Loglar">
+      <div class="lx-hr" role="row"><span role="columnheader">Vaqt kodi</span><span role="columnheader">Sana va vaqt</span><span role="columnheader">Xizmat</span><span role="columnheader">Amal</span><span role="columnheader">Bajaruvchi</span><span role="columnheader">Holat</span><span></span></div>
+      <sc-for list="{{lx.rows}}" as="r" hint-placeholder-count="5">
+      <button type="button" class="{{r.cls}}" role="row" onClick="{{r.open}}">
+        <span class="lx-code" role="cell">{{r.code}}</span>
+        <span class="lx-ts" role="cell"><b>{{r.d}}</b><small>{{r.t}}</small></span>
+        <span class="lx-sv" role="cell"><i class="{{r.svIc}}" aria-hidden="true"></i>{{r.svc}}</span>
+        <span class="lx-ac" role="cell"><b>{{r.title}}</b><small>{{r.area}}</small></span>
+        <span class="lx-who" role="cell"><span class="lx-av">{{r.ini}}</span><span class="kv" style="gap: 1px; min-width: 0"><b>{{r.whoS}}</b><small>{{r.role}}</small></span></span>
+        <span role="cell"><span class="{{r.stCls}}">{{r.st}}</span></span>
+        <span class="lx-go" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></span>
+      </button>
+      </sc-for>
+      <sc-if value="{{lx.empty}}" hint-placeholder-val="{{ false }}"><div class="hx-empty"><b>Mos yozuv topilmadi</b><small>Filtr yoki qidiruv so'zini o'zgartiring</small><button class="btn sm" onClick="{{lx.reset}}">Filtrni tozalash</button></div></sc-if>
+    </div>
+    <sc-if value="{{lx.hasMore}}" hint-placeholder-val="{{ false }}"><button class="hx-more" onClick="{{lx.more}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>Yana {{lx.moreN}} ta ko'rsatish</button></sc-if>
   </section>
 
   <section class="sec" id="integratsiya">
@@ -7670,26 +7796,46 @@ html[data-theme="dark"] .ds-host img{filter:none}
   <div class="group-h">Qo'shimcha</div>
 
   <section class="sec" id="tarix">
-    <div class="sh"><div><h2>Ish tarixi</h2><p>Ish qaysi sudlarda, qaysi instansiyada va qanday natija bilan ko'rilgani · {{ihCount}}</p></div><div class="tools"><button class="btn" onClick="{{soon}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>Yuklab olish</button></div></div>
-    <div class="ih-list">
-      <sc-for list="{{ihRows}}" as="r" hint-placeholder-count="3">
-      <div class="{{r.itemCls}}">
-        <div class="ih-rail" aria-hidden="true"><span class="ih-node">{{r.n}}</span></div>
-        <div class="ih-card">
-          <div class="ih-ch">
-            <div class="kv" style="gap: 3px; min-width: 0; flex: 1"><div class="row" style="gap: 8px; flex-wrap: wrap"><b class="ih-sud">{{r.sud}}</b><span class="nt-id">{{r.num}}</span><sc-if value="{{r.current}}" hint-placeholder-val="{{ false }}"><span class="ih-now">Joriy ish</span></sc-if></div><span class="ih-meta">{{r.instansiya}} · {{r.murojaat}} · sudya {{r.sudya}}</span></div>
-            <span class="{{r.stCls}}">{{r.natija}}</span>
+    <div class="sh"><div><h2>Ish tarixi</h2><p>{{it.sub}}</p></div></div>
+    <div class="pt-tabs it-tabs" role="tablist" aria-label="Ish tarixi bo'limlari"><sc-for list="{{it.tabs}}" as="t" hint-placeholder-count="3"><button type="button" role="tab" aria-selected="{{t.sel}}" class="{{t.cls}}" onClick="{{t.pick}}"><span class="{{t.icCls}}" aria-hidden="true"></span><span class="kv pt-tl"><b>{{t.l}}</b><small>{{t.sub}}</small></span><span class="pt-n">{{t.n}}</span></button></sc-for></div>
+    <sc-if value="{{it.isSt}}" hint-placeholder-val="{{ true }}"><div class="pt-pane">
+      <ol class="it-tl">
+        <sc-for list="{{it.st}}" as="e" hint-placeholder-count="4">
+        <li class="{{e.cls}}"><span class="it-node" aria-hidden="true"></span>
+          <div class="it-c">
+            <div class="it-h"><span class="it-dt"><b>{{e.d}}</b><small>{{e.t}}</small></span><span class="it-tr"><sc-if value="{{e.hasFrom}}" hint-placeholder-val="{{ true }}"><span class="it-sf">{{e.from}}</span><svg class="i s it-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></sc-if><span class="{{e.toCls}}">{{e.to}}</span></span><sc-if value="{{e.hasInst}}" hint-placeholder-val="{{ false }}"><span class="it-inst">{{e.inst}}</span></sc-if></div>
+            <p class="it-n">{{e.note}}</p>
+            <div class="it-f"><span class="lx-av">{{e.ini}}</span><span class="kv" style="gap: 1px; min-width: 0"><b>{{e.who}}</b><small>{{e.role}}</small></span><sc-if value="{{e.hasDoc}}" hint-placeholder-val="{{ false }}"><button type="button" class="it-doc" onClick="{{e.openDoc}}"><span class="dx-ft" style="width: 22px; height: 26px; font-size: 7px">PDF</span>{{e.doc}}</button></sc-if></div>
           </div>
-          <div class="ih-cb">
-            <span class="ih-per"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>{{r.davr}}</span>
-            <span style="flex: 1"></span>
-            <button class="btn sm" onClick="{{r.history}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5M12 7v5l3 2"></path></svg>Tarix</button>
-            <button class="btn sm pri" onClick="{{r.view}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg>Ishni ko'rish</button>
+        </li>
+        </sc-for>
+      </ol>
+    </div></sc-if>
+    <sc-if value="{{it.isEx}}" hint-placeholder-val="{{ false }}"><div class="pt-pane">
+      <div class="it-ex">
+        <sc-for list="{{it.ex}}" as="x" hint-placeholder-count="3">
+        <div class="it-xc">
+          <div class="it-xh"><span class="{{x.icCls}}" aria-hidden="true"></span><span class="kv" style="gap: 2px; min-width: 0; flex: 1"><b>{{x.sys}}</b><small>{{x.num}} · {{x.purpose}}</small></span><span class="{{x.stCls}}">{{x.st}}</span><sc-if value="{{x.hasOpen}}" hint-placeholder-val="{{ false }}"><button class="btn sm qx-more" onClick="{{x.open}}">Batafsil<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></sc-if></div>
+          <div class="it-xb">
+            <div class="it-xq"><small><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2-7z"></path></svg>So'rov</small><b>{{x.reqAt}}</b><span>{{x.reqBy}}</span></div>
+            <span class="it-xarr" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+            <div class="{{x.resCls}}"><small><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12l-16 8 6-16 2 7z"></path></svg>Javob</small><b>{{x.resAt}}</b><span>{{x.res}}</span></div>
           </div>
+        </div>
+        </sc-for>
+      </div>
+    </div></sc-if>
+    <sc-if value="{{it.isMt}}" hint-placeholder-val="{{ false }}"><div class="pt-pane">
+      <sc-for list="{{it.mt}}" as="g" hint-placeholder-count="2">
+      <div class="it-mg"><div class="it-mgh"><b>{{g.t}}</b><span class="dx-cnt">{{g.n}}</span></div>
+        <div class="it-ml">
+          <sc-for list="{{g.items}}" as="m" hint-placeholder-count="3">
+          <div class="it-mi"><span class="{{m.icCls}}">{{m.ic}}</span><span class="kv" style="gap: 2px; min-width: 0; flex: 1"><b>{{m.t}}</b><small>{{m.meta}}</small></span><span class="it-md"><b>{{m.d}}</b><small>{{m.by}}</small></span><span class="{{m.stCls}}">{{m.st}}</span></div>
+          </sc-for>
         </div>
       </div>
       </sc-for>
-    </div>
+    </div></sc-if>
   </section>
 
   <section class="sec" id="publ">
@@ -8567,6 +8713,22 @@ html[data-theme="dark"] .ds-host img{filter:none}
       <sc-if value="{{igm.hasF2}}" hint-placeholder-val="{{ true }}"><div class="igm-f"><span class="igm-l">{{igm.f2Lbl}} <b>*</b></span><span class="{{igF2.cls}}" id="{{igF2.id}}" onKeyDown="{{igF2.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{igF2.exp}}" disabled="{{igF2.dis}}" onClick="{{igF2.toggle}}" style="border-color: {{igF2.bc}}"><span class="{{igF2.vcls}}">{{igF2.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{igF2.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{igF2.stop}}"><sc-for list="{{igF2.opts}}" as="o" hint-placeholder-count="4"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span><small class="{{igm.f2HintCls}}">{{igm.f2Hint}}</small></div></sc-if>
     </div>
     <div class="igm-ft"><button type="button" class="btn igm-cancel" onClick="{{igm.close}}">Bekor qilish</button><button class="{{igm.sendCls}}" aria-disabled="{{igm.sendDis}}" onClick="{{igm.send}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2-7z"></path></svg>{{igm.sendLbl}}</button></div>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{lxOpen}}" hint-placeholder-val="{{ false }}">
+<div class="qv-wrap" style="z-index: 82">
+  <button class="qv-bg" aria-label="Oynani yopish" onClick="{{lxd.close}}"></button>
+  <div class="qv lxd" role="dialog" aria-modal="true" aria-labelledby="lxd-t" tabindex="-1" onKeyDown="{{lxd.kd}}">
+    <div class="lxd-h"><span class="{{lxd.icCls}}" aria-hidden="true"></span><div class="kv" style="gap: 3px; min-width: 0; flex: 1"><b id="lxd-t">{{lxd.title}}</b><small><span class="lx-code">{{lxd.code}}</span> · {{lxd.svc}}</small></div><span class="{{lxd.stCls}}">{{lxd.st}}</span><button class="ib qv-x" aria-label="Yopish" onClick="{{lxd.close}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+    <div class="lxd-b">
+      <sc-if value="{{lxd.hasErr}}" hint-placeholder-val="{{ false }}"><div class="{{lxd.errCls}}"><b>{{lxd.errT}}</b><small>{{lxd.errM}}</small><code>{{lxd.errC}}</code></div></sc-if>
+      <dl class="lxd-m"><sc-for list="{{lxd.meta}}" as="m" hint-placeholder-count="6"><div class="{{m.cls}}"><dt>{{m.k}}</dt><dd>{{m.v}}</dd></div></sc-for></dl>
+      <div class="lxd-dh"><b>Amaldan oldingi va keyingi holat</b><small>{{lxd.diffSub}}</small></div>
+      <sc-if value="{{lxd.hasDiff}}" hint-placeholder-val="{{ true }}"><div class="lxd-t" role="table"><div class="lxd-tr hd" role="row"><span role="columnheader">Maydon</span><span role="columnheader">Oldin</span><span role="columnheader">Keyin</span></div><sc-for list="{{lxd.diff}}" as="r" hint-placeholder-count="2"><div class="{{r.cls}}" role="row"><span role="cell">{{r.f}}</span><span role="cell" class="o">{{r.o}}</span><span role="cell" class="n">{{r.n}}</span></div></sc-for></div></sc-if>
+      <sc-if value="{{lxd.noDiff}}" hint-placeholder-val="{{ false }}"><div class="lxd-nd">{{lxd.noDiffT}}</div></sc-if>
+    </div>
+    <div class="igm-ft"><button type="button" class="btn igm-cancel" onClick="{{lxd.copy}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>Kodni nusxalash</button><button type="button" class="btn pri" onClick="{{lxd.close}}">Yopish</button></div>
   </div>
 </div>
 </sc-if>
@@ -14044,6 +14206,117 @@ class Component extends DCLogic {
         __out.igDetClose = function () { self.setState({ igDet: "", igrTab: "ov" }); };
         __out.igDetKey = function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ igDet: "" }); } };
         if (__out.igDetOpen) setTimeout(function () { try { var t = document.getElementById("igd-title"), d = t && t.closest("[role=dialog]"); if (d && !d.contains(document.activeElement)) { d.setAttribute("tabindex", "-1"); d.focus(); } } catch (er) {} }, 0);
+      })();
+      // ---- Loglar: texnik va audit jurnali ----
+      (function () {
+        var SV = { card: ["Ish kartochkasi xizmati", "lx-si c"], party: ["Ishtirokchilar xizmati", "lx-si p"], doc: ["Hujjatlar xizmati", "lx-si d"], integ: ["Integratsiya xizmati", "lx-si i"], auth: ["Autentifikatsiya xizmati", "lx-si a"], notif: ["Xabarnoma xizmati", "lx-si n"] };
+        var areaSv = function (a) { return /Ishtirok|Tomon|shaxs/i.test(a || "") ? "party" : /hujjat/i.test(a || "") ? "doc" : "card"; };
+        var ROLE = { "Abdullayev Sardor Akmalovich": "Sud kotibi", "Eshnazarov Aziz Bahromovich": "Sudya yordamchisi", "Karimov Javohir Anvarovich": "Devonxona xodimi", "Usmonova Dilnoza Baxtiyorovna": "Sud kotibi", "Tojiyev Zokirjon Xolboyevich": "Sudya", "Tizim": "Avtomatik jarayon" };
+        var base = (s.lg || []).map(function (l, i) {
+          var dfl = l.type === "edit" ? [[l.title.replace(/ o'zgartirildi$/, ""), l.from || "—", l.to || "—"]] : l.type === "add" ? [["Yozuv", "Mavjud emas", l.title.replace(/^.*?: /, "")]] : [["Yozuv", l.title.replace(/^.*?: /, "").replace(/ hujjati o'chirildi$/, "").replace(/ olib tashlandi$/, ""), "O'chirilgan"]];
+          return { id: "u" + l.id, date: l.date, time: l.time + ":" + ("0" + (11 + i * 7) % 60).slice(-2), sv: areaSv(l.area), title: l.title, area: l.area || "", who: l.who, st: "ok", diff: dfl, kind: l.type };
+        });
+        var SYS = [
+          { id: "s1", date: "2026-09-29", time: "18:00:12", sv: "integ", title: "Prokuraturaga so'rov yuborildi", area: "Integratsiyalar · REQ-ADOLAT-99f00e93", who: "Tojiyev Zokirjon Xolboyevich", st: "ok", diff: [["So'rov holati", "—", "Yuborildi"], ["Prokuratura filiali", "—", "Navoiy viloyati prokuraturasi"]] },
+          { id: "s2", date: "2026-09-29", time: "18:00:13", sv: "integ", title: "Prokuratura tizimi so'rovni qabul qildi", area: "Integratsiyalar · javob 202 Accepted", who: "Tizim", st: "ok", diff: [] },
+          { id: "s3", date: "2026-09-26", time: "10:15:41", sv: "integ", title: "Advokatlar palatasiga so'rov yuborildi", area: "Integratsiyalar · REQ-ADV-5c81e2a7", who: "Tojiyev Zokirjon Xolboyevich", st: "ok", diff: [["So'rov holati", "—", "Yuborildi"]] },
+          { id: "s4", date: "2026-09-21", time: "09:00:07", sv: "notif", title: "Javobgarga SMS-xabarnoma yuborilmadi", area: "Xabarnomalar · +998 90 *** ** 12", who: "Tizim", st: "warn", ecode: "SMS-429", msg: "Operator limiti oshib ketdi, xabarnoma 5 daqiqadan so'ng qayta yuboriladi", diff: [["Xabarnoma holati", "Navbatda", "Qayta urinish kutilmoqda"]] },
+          { id: "s5", date: "2026-09-02", time: "17:30:22", sv: "integ", title: "Ekspertiza markaziga so'rov yetkazilmadi", area: "Integratsiyalar · REQ-EKS-4e6d0b28", who: "Tizim", st: "err", ecode: "INT-504 Gateway Timeout", msg: "Ekspertiza markazi tizimi 30 soniya ichida javob bermadi", diff: [["So'rov holati", "Yuborilmoqda", "Xatolik"]] },
+          { id: "s6", date: "2026-08-20", time: "11:40:55", sv: "integ", title: "Prokuratura tizimi javob bermadi", area: "Integratsiyalar · REQ-ADOLAT-3e5b19d2", who: "Tizim", st: "err", ecode: "INT-504 Gateway Timeout", msg: "Prokuratura tizimi javob bermadi (timeout)", diff: [["So'rov holati", "Yuborilmoqda", "Xatolik"]] },
+          { id: "s7", date: "2026-08-20", time: "08:51:03", sv: "auth", title: "ERI kaliti bilan tizimga kirish", area: "Autentifikatsiya · ERI #7F31A2", who: "Tojiyev Zokirjon Xolboyevich", st: "ok", diff: [] },
+          { id: "s8", date: "2026-08-14", time: "16:02:18", sv: "doc", title: "Hujjatni ERI bilan imzolash rad etildi", area: "Ish hujjatlari · Ajrim loyihasi", who: "Eshnazarov Aziz Bahromovich", st: "warn", ecode: "ERI-401", msg: "ERI sertifikat muddati tugagan, imzo qo'yilmadi", diff: [["Hujjat holati", "Imzoga tayyor", "Imzoga tayyor"]] },
+          { id: "s9", date: "2026-07-17", time: "14:30:00", sv: "card", title: "Ish holati o'zgartirildi", area: "Umumiy", who: "Tojiyev Zokirjon Xolboyevich", st: "ok", diff: [["Ish holati", "Ish yuritishga qabul qilindi", "Ko'rib chiqilmoqda"]] }
+        ];
+        var all = base.concat(SYS).map(function (l) {
+          var h = 0; String(l.id + l.date + l.time).split("").forEach(function (c) { h = (h * 33 + c.charCodeAt(0)) % 65536; });
+          var hx = ("000" + h.toString(16).toUpperCase()).slice(-4);
+          return Object.assign({}, l, { code: "LG-" + l.date.replace(/-/g, "").slice(2) + "-" + l.time.replace(/:/g, "") + "-" + hx, ms: String(100 + h % 900), ip: "10.12." + (h % 40 + 10) + "." + (h % 200 + 20) });
+        }).sort(function (a, b) { return (b.date + b.time) < (a.date + a.time) ? -1 : 1; });
+        var f = s.lxF || "all", sv = s.lxSv || "", q = String(s.lxQ || "").trim().toLowerCase();
+        var list = all.filter(function (l) { return (f === "all" || l.st === f) && (!sv || l.sv === sv) && (!q || (l.code + " " + l.title + " " + l.who + " " + l.area).toLowerCase().indexOf(q) >= 0); });
+        var lim = s.lxShow || 10, shown = list.slice(0, lim);
+        var STL = { ok: ["Muvaffaqiyatli", "badge b-green"], warn: ["Ogohlantirish", "badge b-amber"], err: ["Xatolik", "badge b-red"] };
+        var sh = function (n) { var p = String(n || "").split(/\s+/); return p[0] + (p[1] ? " " + p[1].charAt(0) + "." : ""); };
+        var ini = function (n) { return n === "Tizim" ? "⚙" : String(n || "").split(/\s+/).slice(0, 2).map(function (w) { return w.charAt(0); }).join(""); };
+        var cnt = function (k) { return all.filter(function (l) { return k === "all" || l.st === k; }).length; };
+        var errN = cnt("err"), warnN = cnt("warn");
+        __out.lxSvc = dd("lx-svc", [{ v: "", l: "Barcha xizmatlar" }].concat(Object.keys(SV).map(function (k) { return { v: k, l: SV[k][0] }; })), sv, function (e) { self.setState({ lxSv: e.target.value, lxShow: 10 }); }, { ph: "Barcha xizmatlar", noSplit: true });
+        __out.lxDdOpen = ddOpen.indexOf("lx-") === 0;
+        __out.lx = {
+          sub: "Tizimdagi amallar, xatolar va nosozliklar jurnali · " + all.length + " ta yozuv" + (errN ? " · " + errN + " ta xatolik" : "") + (warnN ? " · " + warnN + " ta ogohlantirish" : ""),
+          chips: [["all", "Barchasi", ""], ["ok", "Muvaffaqiyatli", "ok"], ["warn", "Ogohlantirish", "warn"], ["err", "Xatolik", "err"]].map(function (c) { var on = f === c[0]; return { l: c[1], n: String(cnt(c[0])), sel: on ? "true" : "false", cls: "lx-chip" + (on ? " on" : ""), dotCls: "lx-dot" + (c[2] ? " d-" + c[2] : ""), pick: function () { self.setState({ lxF: c[0], lxShow: 10 }); } }; }),
+          q: s.lxQ || "", setQ: function (e) { self.setState({ lxQ: e.target.value, lxShow: 10 }); },
+          rows: shown.map(function (l) { var dt = l.date.split("-"); return { code: l.code, d: dt[2] + "." + dt[1] + "." + dt[0], t: l.time + "." + l.ms, svc: SV[l.sv][0].replace(" xizmati", ""), svIc: SV[l.sv][1], title: l.title, area: l.area, whoS: l.who === "Tizim" ? "Tizim" : sh(l.who), role: ROLE[l.who] || "Xodim", ini: ini(l.who), st: STL[l.st][0], stCls: STL[l.st][1], cls: "lx-r" + (l.st === "err" ? " err" : l.st === "warn" ? " warn" : ""), open: function () { self.setState({ lxDet: l.id }); } }; }),
+          empty: !list.length, hasMore: list.length > shown.length, moreN: String(Math.min(10, list.length - shown.length)),
+          more: function () { self.setState({ lxShow: lim + 10 }); }, reset: function () { self.setState({ lxF: "all", lxSv: "", lxQ: "", lxShow: 10 }); }
+        };
+        var D = all.filter(function (l) { return l.id === s.lxDet; })[0];
+        __out.lxOpen = !!D && !!s.caseOpen;
+        var close = function () { self.setState({ lxDet: "" }); };
+        if (D) {
+          var dt = D.date.split("-");
+          __out.lxd = { title: D.title, code: D.code, svc: SV[D.sv][0], st: STL[D.st][0], stCls: STL[D.st][1], icCls: "lxd-ic " + D.st,
+            hasErr: D.st !== "ok", errCls: "lxd-err " + D.st, errT: D.st === "err" ? "Xatolik tafsilotlari" : "Ogohlantirish tafsilotlari", errM: D.msg || "", errC: D.ecode ? "Xatolik kodi: " + D.ecode : "",
+            meta: [["Vaqt kodi", D.code, 2], ["Sana va vaqt", dt[2] + "." + dt[1] + "." + dt[0] + ", " + D.time + "." + D.ms], ["Xizmat", SV[D.sv][0]], ["Bajaruvchi", D.who === "Tizim" ? "Tizim (avtomatik)" : D.who], ["Lavozimi", ROLE[D.who] || "Xodim"], ["IP manzil", D.ip], ["Bo'lim / obyekt", D.area || "—"]].map(function (m) { return { k: m[0], v: m[1], cls: m[2] ? "w2" : "" }; }),
+            hasDiff: D.diff.length > 0, noDiff: !D.diff.length, noDiffT: "Bu amal ma'lumotlarni o'zgartirmagan — faqat qayd etilgan (kirish, so'rov qabul qilinishi va hokazo).",
+            diffSub: D.diff.length ? D.diff.length + " ta maydon o'zgargan" : "O'zgarish yo'q",
+            diff: D.diff.map(function (r) { return { f: r[0], o: r[1], n: r[2], cls: "lxd-tr" + (r[1] === r[2] ? " same" : "") }; }),
+            close: close, kd: function (e) { if (e.key === "Escape") { e.stopPropagation(); close(); } },
+            copy: function () { try { navigator.clipboard.writeText(D.code); } catch (er) {} self.flash("Vaqt kodi nusxalandi: " + D.code); } };
+          setTimeout(function () { try { var m = document.querySelector(".lxd"); if (m && !m.contains(document.activeElement)) m.focus(); } catch (er) {} }, 0);
+        } else __out.lxd = { meta: [], diff: [], close: close, kd: function () {}, copy: function () {} };
+      })();
+      // ---- Ish tarixi: holatlar, tashqi so'rovlar, materiallar va shikoyatlar ----
+      (function () {
+        var tab = s.itTab || "st";
+        var SC = { "Ro'yxatga olindi": "g", "Sudyaga taqsimlandi": "b", "Ish yuritishga qabul qilindi": "b", "Ko'rib chiqilmoqda": "b", "Boshqa sudga yuborildi": "a", "Sud majlisi tayinlandi": "v", "Ish yuritish to'xtatildi": "a", "Tiklandi": "b", "Hal qiluv qarori qabul qilindi": "ok" };
+        var ST = [
+          ["17.07.2026", "14:30", "Ish yuritishga qabul qilindi", "Ko'rib chiqilmoqda", "Tojiyev Zokirjon Xolboyevich", "Sudya", "Ish ko'rib chiqish jarayoni boshlandi, tomonlarga xabarnoma yuborildi.", "", "Toshkent viloyat sudi"],
+          ["27.06.2026", "11:20", "Sudyaga taqsimlandi", "Ish yuritishga qabul qilindi", "Tojiyev Zokirjon Xolboyevich", "Sudya", "Da'vo arizasi ish yuritishga qabul qilindi.", "ishni_qabul_qilish_ajrimi.pdf", "Toshkent viloyat sudi"],
+          ["23.06.2026", "10:12", "Ro'yxatga olindi", "Sudyaga taqsimlandi", "Avtomatik taqsimlash tizimi", "Tizim", "Ish sudya Tojiyev Z. X.ga avtomatik taqsimlandi.", "", "Toshkent viloyat sudi"],
+          ["22.06.2026", "08:54", "Boshqa sudga yuborildi", "Ro'yxatga olindi", "Karimov Javohir Anvarovich", "Devonxona xodimi", "Ish Toshkent shahar sudidan kelib tushdi va ro'yxatga olindi · 4-11-2405/44.", "", "Toshkent viloyat sudi"],
+          ["20.06.2026", "16:05", "Ko'rib chiqilmoqda", "Boshqa sudga yuborildi", "Karimov Akmal Anvarovich", "Sudya", "Ish sudlovga taalluqlilik bo'yicha Toshkent viloyat sudiga yuborildi.", "ajrim_1254.pdf", "Toshkent shahar sudi"],
+          ["02.03.2026", "11:00", "Ish yuritishga qabul qilindi", "Ko'rib chiqilmoqda", "Karimov Akmal Anvarovich", "Sudya", "Ish ko'rib chiqish jarayoni boshlandi.", "", "Toshkent shahar sudi"],
+          ["01.03.2026", "09:30", "Ro'yxatga olindi", "Sudyaga taqsimlandi", "Avtomatik taqsimlash tizimi", "Tizim", "Ish sudya Karimov A. A.ga taqsimlandi.", "", "Toshkent shahar sudi"],
+          ["28.02.2026", "15:20", "", "Ro'yxatga olindi", "Usmonova Dilnoza Baxtiyorovna", "Devonxona xodimi", "Da'vo arizasi elektron shaklda kelib tushdi va ro'yxatga olindi.", "da'vo_arizasi.pdf", "Toshkent shahar sudi"]
+        ];
+        var key = function (d, t) { var p = d.split("."); return p[2] + p[1] + p[0] + t; };
+        ST.sort(function (a, b) { return key(b[0], b[1]) < key(a[0], a[1]) ? -1 : 1; });
+        var ini = function (n) { return /tizim/i.test(n) ? "⚙" : String(n || "").split(/\s+/).slice(0, 2).map(function (w) { return w.charAt(0); }).join(""); };
+        var prevInst = "";
+        var stRows = ST.map(function (e, i) { var showInst = e[8] !== prevInst; prevInst = e[8]; return { d: e[0], t: e[1], from: e[2], hasFrom: !!e[2], to: e[3], toCls: "it-st " + (SC[e[3]] || "b"), who: e[4], role: e[5], note: e[6], ini: ini(e[4]), hasDoc: !!e[7], doc: e[7], openDoc: function () { self.flash("«" + e[7] + "» ochilmoqda"); }, inst: e[8], hasInst: showInst, cls: "it-e" + (i === 0 ? " cur" : "") }; });
+        var nm = function (x) { return x || "—"; };
+        var exRows = [];
+        (s.pr || []).forEach(function (r) { exRows.push({ k: key(r.sent.split(" ")[0], r.sent.split(" ")[1] || ""), sys: "Prokuratura axborot tizimi", ic: "shield", num: r.num, purpose: "Prokurorni ishga jalb qilish", reqAt: r.sent, reqBy: r.filial, resAt: r.err ? "—" : r.final || r.prokDate || "—", res: r.err ? r.err : r.final ? "Yakuniy hujjat · prokuror " + nm(r.prok) : r.prok ? "Prokuror biriktirildi: " + r.prok : "Javob kutilmoqda", st: r.err ? "Xatolik" : r.final ? "Yakunlandi" : r.prok ? "Biriktirildi" : "Yuborildi", stk: r.err ? "err" : r.final ? "ok" : r.prok ? "b" : "g", open: function () { self.setState({ igDet: "pr:" + r.id }); } }); });
+        (s.igAdv || []).forEach(function (r) { exRows.push({ k: key(r.sent.split(" ")[0], r.sent.split(" ")[1] || ""), sys: "Advokatlar palatasi tizimi", ic: "brief", num: r.num, purpose: "Advokatni jalb qilish", reqAt: r.sent, reqBy: r.org, resAt: r.err ? "—" : r.final || r.whoDate || "—", res: r.err ? r.err : r.final ? "Advokat ishga jalb qilindi: " + nm(r.who) : r.who ? "Advokat biriktirildi: " + r.who : "Javob kutilmoqda", st: r.err ? "Xatolik" : r.final ? "Jalb qilindi" : r.who ? "Biriktirildi" : "Yuborildi", stk: r.err ? "err" : r.final ? "ok" : r.who ? "b" : "g", open: function () { self.setState({ igDet: "igAdv:" + r.id }); } }); });
+        (s.igEks || []).forEach(function (r) { exRows.push({ k: key(r.sent.split(" ")[0], r.sent.split(" ")[1] || ""), sys: "Sud ekspertizasi tizimi", ic: "flask", num: r.num, purpose: "Ekspertiza tayinlash", reqAt: r.sent, reqBy: r.org, resAt: r.err ? "—" : r.final || r.whoDate || "—", res: r.err ? r.err : r.final ? "Ekspert xulosasi taqdim etildi · " + nm(r.who) : r.who ? "Ekspert biriktirildi: " + r.who : "Javob kutilmoqda", st: r.err ? "Xatolik" : r.final ? "Xulosa olindi" : r.who ? "Biriktirildi" : "Yuborildi", stk: r.err ? "err" : r.final ? "ok" : r.who ? "b" : "g", open: function () { self.setState({ igDet: "igEks:" + r.id }); } }); });
+        [["IIV pasport-viza tizimi (SMART)", "id", "SMT-7718203", "Taraf shaxsini tasdiqlash", "22.06.2026 09:02", "Tizim", "22.06.2026 09:02", "Shaxs ma'lumotlari tasdiqlandi · 2 ta taraf", "Javob olindi", "ok"],
+         ["Notarius axborot tizimi", "doc", "NTR-2206-118", "Ishonchnoma haqiqiyligini tekshirish", "24.06.2026 15:40", "Karimov Javohir Anvarovich", "24.06.2026 15:41", "Ishonchnoma haqiqiy · №1182-2026", "Javob olindi", "ok"],
+         ["Majburiy ijro byurosi (MIB)", "scale", "MIB-260718-042", "Da'voni ta'minlash ijro buyurtmasi", "18.07.2026 11:10", "Tojiyev Zokirjon Xolboyevich", "19.07.2026 10:05", "Ijro boshlandi · ijrochi biriktirildi", "Javob olindi", "ok"]].forEach(function (x) { exRows.push({ k: key(x[4].split(" ")[0], x[4].split(" ")[1]), sys: x[0], ic: x[1], num: x[2], purpose: x[3], reqAt: x[4], reqBy: x[5], resAt: x[6], res: x[7], st: x[8], stk: x[9], open: null }); });
+        exRows.sort(function (a, b) { return b.k < a.k ? -1 : 1; });
+        var SK = { ok: "badge b-green", b: "badge b-blue", g: "badge b-gray", err: "badge b-red" };
+        var exOut = exRows.map(function (x) { return Object.assign({}, x, { icCls: "it-xi ic-ig-" + (x.ic === "shield" || x.ic === "brief" || x.ic === "flask" ? x.ic : "doc") + (x.ic === "id" ? " id" : x.ic === "scale" ? " sc" : ""), stCls: SK[x.stk], resCls: "it-xr " + x.stk, hasOpen: !!x.open, open: x.open || function () {} }); });
+        var MT = [
+          { t: "Ishga tegishli materiallar", items: [
+            ["PDF", "Da'vo arizasi", "Da'vogar · 12 varaq · 2.4 MB", "28.02.2026", "Usmonova D. B.", "Qabul qilindi", "ok"],
+            ["PDF", "Ilova hujjatlar to'plami", "Shartnoma, dalolatnoma, to'lov topshiriqnomasi · 3 ta fayl", "28.02.2026", "Usmonova D. B.", "Qabul qilindi", "ok"],
+            ["PDF", "Sudlovga taalluqlilik to'g'risidagi ajrim", "Toshkent shahar sudi · 1 varaq", "20.06.2026", "Karimov A. A.", "Kuchga kirgan", "ok"],
+            ["PDF", "Ishni ish yuritishga qabul qilish ajrimi", "Toshkent viloyat sudi · 2 varaq", "27.06.2026", "Tojiyev Z. X.", "Imzolangan", "ok"],
+            ["DOC", "Ekspert xulosasi", "Surxondaryo viloyati sud ekspertizasi bo'limi", "02.10.2026", "Toshmatov U. R.", "Kelib tushdi", "b"]] },
+          { t: "Shikoyatlar va qarshi da'volar", items: [
+            ["QD", "Qarshi da'vo № R4-2001-2609/245", "Prokuror Aliyeva N. R. · talab summasi 1 000 000 UZS", "29.09.2026", "Aliyeva N. R.", "Yangi", "a"],
+            ["QD", "Qarshi da'vo № R4-2001-2575/098", "Advokat Sobirov A. R. · talab summasi 2 450 000 UZS", "18.09.2026", "Sobirov A. R.", "Ko'rildi", "g"],
+            ["SH", "Xususiy shikoyat", "Javobgar · ishni boshqa sudga yuborish ajrimi ustidan", "05.07.2026", "Normurodov B.", "Rad etildi", "err"]] }
+        ];
+        var MS = { ok: "badge b-green", b: "badge b-blue", a: "badge b-amber", g: "badge b-gray", err: "badge b-red" };
+        var mtOut = MT.map(function (g) { return { t: g.t, n: g.items.length + " ta", items: g.items.map(function (m) { return { ic: m[0], icCls: "it-mic m-" + m[0].toLowerCase(), t: m[1], meta: m[2], d: m[3], by: m[4], st: m[5], stCls: MS[m[6]] }; }) }; });
+        var mtN = MT.reduce(function (a, g) { return a + g.items.length; }, 0);
+        var TB = [["st", "Holatlar", "Ish holati o'zgarishlari vaqt tartibida", stRows.length, "clock"], ["ex", "Tashqi so'rovlar", "So'rovlar va ularga javoblar", exOut.length, "swap"], ["mt", "Materiallar va shikoyatlar", "Ishga tegishli hujjatlar", mtN, "doc"]];
+        __out.it = {
+          sub: "Ishning butun tarixi · " + (stRows.length + exOut.length + mtN) + " ta yozuv · 2 ta sud",
+          tabs: TB.map(function (t) { var on = t[0] === tab; return { l: t[1], sub: t[2], n: String(t[3]), sel: on ? "true" : "false", cls: "pt-tab" + (on ? " on" : ""), icCls: "pt-ic ic-it-" + t[4], pick: function () { self.setState({ itTab: t[0] }); } }; }),
+          isSt: tab === "st", isEx: tab === "ex", isMt: tab === "mt", st: stRows, ex: exOut, mt: mtOut
+        };
       })();
       // ---- Kalendar: sudyaning ishda bo'lmagan davri va band kunlar ----
       (function () {
