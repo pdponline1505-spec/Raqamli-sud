@@ -5974,3 +5974,11 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .it-tl+.it-more{margin-top:4px}
 .it-more,.lx-more{width:100% !important;margin:12px 0 0 !important}
 .it-mg .it-more{margin-top:8px !important}
+/* taqiqni bekor qilish — faqat ko'rish rejimi */
+.itkm.view .qv-b > *{pointer-events:none}
+.itkm.view .dx-req,.itkm.view .dx-chev,.itkm.view .nt-find,.itkm.view .nt-filechip .ib,.itkm.view .nt-hint{display:none !important}
+.itkm.view .dx-selbtn,.itkm.view .cal-btn,.itkm.view input,.itkm.view .nt-filechip{background:#f8fafc !important;border-color:#e6ebf3 !important;color:#0f172a}
+.itkm.view .nt-ro{color:#0f172a}
+.itkm-conf{display:flex;align-items:center;gap:8px;flex:1;min-width:0;color:#b91c1c;font-weight:600;font-size:14px;line-height:1.35}
+.itkm-conf .i{flex:none;color:#dc2626}
+.itkm.view .qv-b{overflow-y:auto !important;overscroll-behavior:contain}

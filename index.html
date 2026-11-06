@@ -1585,7 +1585,6 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="kv" style="gap: 3px; min-width: 0; flex: 1"><div class="row" style="gap: 8px; flex-wrap: wrap"><b class="nt-title">{{t.turi}}</b><span class="nt-id">{{t.id}}</span><span class="{{t.stCls}}">{{t.status}}</span></div><span class="nt-meta">Ajrim sanasi: {{t.ajrimSana}}</span></div>
 <div class="row" style="gap: 6px; flex: none">
 <sc-if value="{{t.canLift}}" hint-placeholder-val="{{ true }}"><button class="btn sm nt-lift" onClick="{{t.askLift}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 7.5-2"></path></svg>Taqiqni bekor qilish</button></sc-if>
-<sc-if value="{{t.confirm}}" hint-placeholder-val="{{ false }}"><span class="dx-ask">Taqiq bekor qilinsinmi?</span><button class="btn sm" onClick="{{t.cancelLift}}">Yo'q</button><button class="btn sm dx-danger" onClick="{{t.lift}}">Ha, bekor qilish</button></sc-if>
 </div>
 </div>
 <div class="nt-b">
@@ -1610,7 +1609,6 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="kv" style="gap: 3px; min-width: 0; flex: 1"><div class="row" style="gap: 8px; flex-wrap: wrap"><b class="nt-title">{{m.short}}</b><span class="{{m.stCls}}">{{m.status}}</span></div><span class="nt-meta">{{m.id}} · ajrim {{m.ajrimSana}}</span></div>
 <div class="row" style="gap: 6px; flex: none">
 <sc-if value="{{m.canLift}}" hint-placeholder-val="{{ true }}"><button class="btn sm nt-lift" onClick="{{m.askLift}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 7.5-2"></path></svg>Taqiqni bekor qilish</button></sc-if>
-<sc-if value="{{m.confirm}}" hint-placeholder-val="{{ false }}"><span class="dx-ask">Taqiq bekor qilinsinmi?</span><button class="btn sm" onClick="{{m.cancelLift}}">Yo'q</button><button class="btn sm dx-danger" onClick="{{m.lift}}">Ha, bekor qilish</button></sc-if>
 </div>
 </div>
 <div class="mb-body">
@@ -2796,10 +2794,10 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <sc-if value="{{ntfOpen}}" hint-placeholder-val="{{ false }}">
 <div class="qv-wrap">
 <button class="qv-bg" aria-label="Oynani yopish" onClick="{{ntfClose}}"></button>
-<div class="qv itkm" role="dialog" aria-modal="true" aria-labelledby="ntf-title" onKeyDown="{{ntfKey}}">
+<div class="{{ntfCls}}" role="dialog" aria-modal="true" aria-labelledby="ntf-title" onKeyDown="{{ntfKey}}">
 <sc-if value="{{ntfDdOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg in" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{itkDdClose}}"></button></sc-if>
 <div class="qv-h">
-<div class="kv" style="gap: 4px; min-width: 0"><b id="ntf-title" class="qv-title" style="font-size: 20px">Taqiq qo'yish</b><span class="qv-sub">Da'voni ta'minlash · asosiy ish <b>{{caseNum}}</b></span></div>
+<div class="kv" style="gap: 4px; min-width: 0"><b id="ntf-title" class="qv-title" style="font-size: 20px">{{ntfTitle}}</b><sc-if value="{{ntfEdit}}" hint-placeholder-val="{{ true }}"><span class="qv-sub">Da'voni ta'minlash · asosiy ish <b>{{caseNum}}</b></span></sc-if><sc-if value="{{ntfView}}" hint-placeholder-val="{{ false }}"><span class="qv-sub">{{ntfSub}}</span></sc-if></div>
 <button class="ib qv-x" aria-label="Yopish" onClick="{{ntfClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
 </div>
 <div class="qv-b itkm-b">
@@ -2838,12 +2836,17 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </sc-if>
 <sc-if value="{{ntfErr}}" hint-placeholder-val="{{ false }}"><small class="dx-err" style="margin: 0">{{ntfErrText}}</small></sc-if>
 </div>
-<div class="qv-f itkm-f">
+<sc-if value="{{ntfView}}" hint-placeholder-val="{{ false }}"><div class="qv-f itkm-f">
+<div class="itkm-conf" role="alert"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l10 18H2z"></path><path d="M12 10v5M12 18h.01"></path></svg><span>Haqiqatan ham taqiqni olishni istaysizmi?</span></div>
+<button class="btn qv-close" onClick="{{ntfClose}}">Yo'q</button>
+<button class="btn dx-danger" onClick="{{ntfLift}}">Ha, taqiqni olish</button>
+</div></sc-if>
+<sc-if value="{{ntfEdit}}" hint-placeholder-val="{{ true }}"><div class="qv-f itkm-f">
 <button class="btn nt-other" onClick="{{ntfOther}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-4-6"></path></svg>Boshqa sudyaga yuklash</button>
 <span style="flex: 1"></span>
 <button class="btn qv-close" onClick="{{ntfClose}}">Bekor qilish</button>
 <button class="btn pri" onClick="{{ntfSave}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Saqlash</button>
-</div>
+</div></sc-if>
 </div>
 </div>
 </sc-if>
@@ -2870,10 +2873,10 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <sc-if value="{{mbfOpen}}" hint-placeholder-val="{{ false }}">
 <div class="qv-wrap">
 <button class="qv-bg" aria-label="Oynani yopish" onClick="{{mbfClose}}"></button>
-<div class="qv itkm" role="dialog" aria-modal="true" aria-labelledby="mbf-title" onKeyDown="{{mbfKey}}">
+<div class="{{mbfCls}}" role="dialog" aria-modal="true" aria-labelledby="mbf-title" onKeyDown="{{mbfKey}}">
 <sc-if value="{{mbfDdOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg in" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{itkDdClose}}"></button></sc-if>
 <div class="qv-h">
-<div class="kv" style="gap: 4px; min-width: 0"><b id="mbf-title" class="qv-title" style="font-size: 20px">Taqiq qo'yish · MIB</b><span class="qv-sub">Da'voni ta'minlash chorasi Majburiy ijro byurosiga yuboriladi</span></div>
+<div class="kv" style="gap: 4px; min-width: 0"><b id="mbf-title" class="qv-title" style="font-size: 20px">{{mbfTitle}}</b><span class="qv-sub">{{mbfSub}}</span></div>
 <button class="ib qv-x" aria-label="Yopish" onClick="{{mbfClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
 </div>
 <div class="qv-b itkm-b">
@@ -2886,10 +2889,15 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 <sc-if value="{{mbfErr}}" hint-placeholder-val="{{ false }}"><small class="dx-err" style="margin: 0">{{mbfErrText}}</small></sc-if>
 </div>
-<div class="qv-f itkm-f">
+<sc-if value="{{mbfView}}" hint-placeholder-val="{{ false }}"><div class="qv-f itkm-f">
+<div class="itkm-conf" role="alert"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l10 18H2z"></path><path d="M12 10v5M12 18h.01"></path></svg><span>Haqiqatan ham taqiqni olishni istaysizmi?</span></div>
+<button class="btn qv-close" onClick="{{mbfClose}}">Yo'q</button>
+<button class="btn dx-danger" onClick="{{mbfLift}}">Ha, taqiqni olish</button>
+</div></sc-if>
+<sc-if value="{{mbfEdit}}" hint-placeholder-val="{{ true }}"><div class="qv-f itkm-f">
 <button class="btn qv-close" onClick="{{mbfClose}}">Bekor qilish</button>
 <button class="btn pri" onClick="{{mbfSave}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Saqlash</button>
-</div>
+</div></sc-if>
 </div>
 </div>
 </sc-if>
@@ -4349,7 +4357,7 @@ ex: [
 ], mbForm: null, mbDel: "", mbOpenId: "", mbLast: "bugun, 09:30",
 mb: [{ id: "MIB-40218", chora: 2, asos: "Sudyaning o'z tashabbusi", mulkdor: "\"Alpomish\" sport klubi", ajrim: "17.09.2026", kuch: "19.09.2026", st: "amal" },
 { id: "MIB-39877", chora: 1, asos: "Da'vogarning arizasi", mulkdor: "«Toshkent suv ta'minoti» AJ", ajrim: "02.08.2026", kuch: "05.08.2026", st: "amal" }],
-nt: [{ id: "NOT-2231", turi: "kochmas", mulkdor: "Yusupova Nodira Karimovna", fields: { kadastr: "10:08:04:03:1521", manzil: "Toshkent sh., Yunusobod t., 4-mavze, 12-uy" }, sana: "30.07.2026", ajrim: "118", ajrimSana: "21.07.2026", file: "ajrim_118.pdf", size: "84 KB", st: "amal" },
+nt: [{ id: "NOT-2231", turi: "kochmas", mulkdor: "Yusupova Nodira Karimovna", fields: { kadastr: "10:08:04:03:1521", tuman: "Yunusobod tumani", tumanKod: "1726266", manzil: "Toshkent sh., Yunusobod t., 4-mavze", uy: "12", xonadon: "34" }, sana: "30.07.2026", ajrim: "118", ajrimSana: "21.07.2026", file: "ajrim_118.pdf", size: "84 KB", st: "amal" },
 { id: "NOT-2254", turi: "avto", mulkdor: "«Toshkent suv ta'minoti» AJ", fields: { rusum: "Isuzu NPR 75", texSeriya: "AAF", texRaqam: "0451287", yhxb: true }, sana: "12.08.2026", ajrim: "0921", ajrimSana: "02.08.2026", file: "qaror_0921.pdf", size: "72 KB", st: "amal" }],
 ntDel: "", ntForm: null,
 qtJv: [tmPerson(11, "Abdusattorova Asila Kamoliddinovna", "2000-10-10", "Ayol"), tmPerson(13, "Yusupov Akmal Ilhomovich", "1985-03-22", "Erkak"), tmPerson(14, "Ismoilov Nodir Bahodirovich", "1979-11-05", "Erkak"), tmPerson(15, "Qodirova Madina Rustamovna", "1992-07-14", "Ayol")], qtAr: [tmPerson(16, "Saidova Nilufar Akramovna", "1990-02-18", "Ayol"), tmPerson(17, "Tursunov Bekzod Olimovich", "1983-09-07", "Erkak")], qsh: [Object.assign(tmPerson(12, "Karimov Akmal Saidovich", "1988-04-12", "Erkak"), { rol: "Guvoh" })],
@@ -8473,17 +8481,17 @@ var CH = [
 ["Nizoli mol-mulkni saqlovchiga topshirish", "Nizoli mol-mulkni saqlash uchun da'vogarga yoki uchinchi shaxsga (saqlovchiga) topshirish."]
 ];
 var ASOS = ["Da'vogarning arizasi", "Sudyaning o'z tashabbusi", "Ishda ishtirok etuvchi shaxsning arizasi"];
-var ST = { amal: ["Amalda", "nt-st on"], yuborildi: ["MIBga yuborildi", "nt-st wait"], bekor: ["Bekor qilingan", "nt-st off"] };
+var ST = { amal: ["Amalda", "nt-st on"], yuborildi: ["MIBga yuborildi", "nt-st wait"], bekor: ["Taqiqdan olingan", "nt-st off"] };
 var list = s.mb || [];
+var u2i = function (v) { var q = String(v || "").split("."); return q.length === 3 ? q[2] + "-" + q[1] + "-" + q[0] : ""; };
 __out.mb = list.map(function (m) {
 var c = CH[m.chora - 1] || CH[0], cd = s.mbDel === m.id, op = s.mbOpenId === m.id;
 return { id: m.id, code: m.chora, short: c[0], desc: c[1], mulkdor: m.mulkdor, asos: m.asos, ajrimSana: m.ajrim, kuch: m.kuch,
 status: ST[m.st][0], stCls: ST[m.st][1], cls: "nt" + (m.st === "bekor" ? " off" : "") + (cd ? " del" : ""),
 descCls: "mb-desc" + (op ? " open" : ""), openStr: op ? "true" : "false", moreLbl: op ? "Yig'ish" : "To'liq matn",
 toggle: function () { self.setState({ mbOpenId: self.state.mbOpenId === m.id ? "" : m.id }); },
-canLift: m.st !== "bekor" && !cd, confirm: cd,
-askLift: function () { self.setState({ mbDel: m.id }); }, cancelLift: function () { self.setState({ mbDel: "" }); },
-lift: function () { self.setState({ mbDel: "", mb: self.state.mb.map(function (x) { return x.id === m.id ? Object.assign({}, x, { st: "bekor" }) : x; }) }); self.flash(m.id + " taqiqi bekor qilindi"); } };
+canLift: m.st !== "bekor",
+askLift: function () { self.setState({ dxDd: "", mbForm: { mulkdor: m.mulkdor, chora: String(m.chora), asos: m.asos, ajrim: u2i(m.ajrim), kuch: u2i(m.kuch), err: "", view: m.id } }); } };
 });
 var act = list.filter(function (x) { return x.st === "amal"; }).length;
 __out.mbEmpty = !list.length; __out.mbLast = s.mbLast;
@@ -8492,10 +8500,16 @@ __out.mbSync = function () { self.setState({ mbLast: "hozirgina", mb: self.state
 __out.mbAdd = function () { self.setState({ dxDd: "", mbForm: { mulkdor: "", chora: "", asos: "", ajrim: "", kuch: "", err: "" } }); };
 var f = s.mbForm, errOn = !!(f && f.err), RD = "#dc2626";
 var v = f || { mulkdor: "", chora: "", asos: "", ajrim: "", kuch: "" };
-var setMF = function (k) { return function (e) { var val = e.target.value; self.setState(function (prev) { if (!prev.mbForm) return null; var o = Object.assign({}, prev.mbForm, { err: "" }); o[k] = val; return { mbForm: o }; }); }; };
+var setMF = function (k) { return function (e) { var val = e.target.value; self.setState(function (prev) { if (!prev.mbForm || prev.mbForm.view) return null; var o = Object.assign({}, prev.mbForm, { err: "" }); o[k] = val; return { mbForm: o }; }); }; };
 var owners = [["\"Alpomish\" sport klubi", "Yuridik shaxs"], ["«Toshkent suv ta'minoti» AJ", "Yuridik shaxs"]].map(function (o) { return { v: o[0], l: o[0], sub: o[1] }; })
 .concat((s.tmJv || []).concat(s.qtJv || []).map(function (p) { return { v: p.name, l: p.name, sub: "Jismoniy shaxs · javobgar" }; }));
 __out.mbfOpen = !!f && !!s.caseOpen; __out.mbForm = v;
+var mbView = !!(f && f.view);
+if (mbView && v.mulkdor && !owners.some(function (o) { return o.v === v.mulkdor; })) owners = owners.concat([{ v: v.mulkdor, l: v.mulkdor }]);
+__out.mbfView = mbView; __out.mbfEdit = !mbView; __out.mbfCls = "qv itkm" + (mbView ? " view" : "");
+__out.mbfTitle = mbView ? "Taqiqni bekor qilish · MIB" : "Taqiq qo'yish · MIB";
+__out.mbfSub = mbView ? f.view + " · ma'lumotlar faqat ko'rish uchun" : "Da'voni ta'minlash chorasi Majburiy ijro byurosiga yuboriladi";
+__out.mbfLift = function () { var w = self.state.mbForm; if (!w || !w.view) return; self.setState({ mbForm: null, dxDd: "", mb: self.state.mb.map(function (x) { return x.id === w.view ? Object.assign({}, x, { st: "bekor" }) : x; }) }); self.flash(w.view + " · taqiqdan olindi"); };
 __out.mbS = {
 mulkdor: dd("mb-mulk", [{ v: "", l: "Mulkdorni tanlang" }].concat(owners), v.mulkdor, setMF("mulkdor"), { ph: "Mulkdorni tanlang", noSplit: true, bc: errOn && !v.mulkdor ? RD : "" }),
 chora: dd("mb-chora", [{ v: "", l: "Chorani tanlang" }].concat(CH.map(function (c, i) { return { v: String(i + 1), l: (i + 1) + " – " + c[0] }; })), v.chora, setMF("chora"), { ph: "Chorani tanlang", bc: errOn && !v.chora ? RD : "" }),
@@ -8522,18 +8536,18 @@ self.flash("Chora MIB tizimiga yuborildi · " + id);
 // ---- notarius: taqiq qo'yish ----
 (function () {
 var TYPES = { avto: ["1 – Avtomototransport vositasi", "texSeriya", "Texnik hujjat"], kochmas: ["2 – Ko'chmas mulk", "kadastr", "Kadastr raqami"] };
-var ST = { amal: ["Amalda", "nt-st on"], yuborildi: ["Notariusga yuborildi", "nt-st wait"], bekor: ["Bekor qilingan", "nt-st off"] };
+var ST = { amal: ["Amalda", "nt-st on"], yuborildi: ["Notariusga yuborildi", "nt-st wait"], bekor: ["Taqiqdan olingan", "nt-st off"] };
 var ORGS = [["«Toshkent suv ta'minoti» AJ", "201577953"], ["\"Durable Slate Industry\" MChJ", "306694399"]];
 var list = s.nt || [];
+var u2i = function (v) { var q = String(v || "").split("."); return q.length === 3 ? q[2] + "-" + q[1] + "-" + q[0] : ""; };
 var upd = function (id, patch) { self.setState({ ntDel: "", nt: self.state.nt.map(function (x) { return x.id === id ? Object.assign({}, x, patch) : x; }) }); };
 __out.nt = list.map(function (t) {
 var ty = TYPES[t.turi] || TYPES.kochmas, cd = s.ntDel === t.id;
 var idVal = t.turi === "avto" ? ((t.fields.texSeriya || "") + " " + (t.fields.texRaqam || "")).trim() : (t.fields.kadastr || "—");
 return { id: t.id, turi: ty[0].replace(/^\d+\s*–\s*/, ""), mulkdor: t.mulkdor, idLabel: ty[2], idVal: idVal || "—", sana: t.sana, ajrim: t.ajrim, ajrimSana: t.ajrimSana, file: t.file, size: t.size,
 status: ST[t.st][0], stCls: ST[t.st][1], cls: "nt" + (t.st === "bekor" ? " off" : "") + (cd ? " del" : ""),
-canLift: t.st !== "bekor" && !cd, confirm: cd,
-askLift: function () { self.setState({ ntDel: t.id }); }, cancelLift: function () { self.setState({ ntDel: "" }); },
-lift: function () { upd(t.id, { st: "bekor" }); self.flash(t.id + " taqiqi bekor qilindi"); },
+canLift: t.st !== "bekor",
+askLift: function () { var fl = t.fields || {}, blank = {}; (t.turi === "avto" ? ["rusum", "texSeriya", "texRaqam"] : ["tuman", "tumanKod", "manzil", "uy", "xonadon"]).forEach(function (k) { blank[k] = "—"; }); var nf = Object.assign(blank, ownerInfo(t.mulkdor)); Object.keys(fl).forEach(function (k) { if (fl[k] !== "" && fl[k] != null) nf[k] = fl[k]; }); self.setState({ dxDd: "", ntForm: { turi: t.turi, mulkdor: t.mulkdor, f: nf, yhxb: !!fl.yhxb, found: t.turi === "kochmas" && !!fl.kadastr, ajrimSana: u2i(t.ajrimSana), file: t.file, err: "", view: t.id } }); },
 view: function () { self.flash("«" + t.file + "» ko'rish oynasida ochiladi"); } };
 });
 var act = list.filter(function (x) { return x.st === "amal"; }).length, wait = list.filter(function (x) { return x.st === "yuborildi"; }).length;
@@ -8541,14 +8555,20 @@ __out.ntEmpty = !list.length;
 __out.ntSub = list.length ? "Notarial idoralar orqali qo'yilgan taqiqlar · " + act + " tasi amalda" + (wait ? " · " + wait + " tasi notariusga yuborilgan" : "") : "Notarial idoralar orqali qo'yilgan taqiqlar";
 __out.ntAdd = function () { self.setState({ dxDd: "", ntForm: { turi: "", mulkdor: "", f: {}, yhxb: false, found: false, ajrimSana: "", file: "", err: "" } }); };
 var f = s.ntForm, errOn = !!(f && f.err), RD = "#dc2626";
-var setNF = function (patch) { self.setState(function (prev) { return prev.ntForm ? { ntForm: Object.assign({}, prev.ntForm, patch, { err: "" }) } : null; }); };
-var setFF = function (patch) { self.setState(function (prev) { return prev.ntForm ? { ntForm: Object.assign({}, prev.ntForm, { f: Object.assign({}, prev.ntForm.f, patch), err: "" }) } : null; }); };
+var setNF = function (patch) { self.setState(function (prev) { return prev.ntForm && !prev.ntForm.view ? { ntForm: Object.assign({}, prev.ntForm, patch, { err: "" }) } : null; }); };
+var setFF = function (patch) { self.setState(function (prev) { return prev.ntForm && !prev.ntForm.view ? { ntForm: Object.assign({}, prev.ntForm, { f: Object.assign({}, prev.ntForm.f, patch), err: "" }) } : null; }); };
 var v = f || { turi: "", mulkdor: "", f: {}, yhxb: false, found: false, ajrimSana: "", file: "" };
 var owners = ORGS.map(function (o) { return { v: o[0], l: o[0], sub: "Yuridik shaxs · STIR " + o[1] }; })
 .concat((s.tmJv || []).concat(s.qtJv || []).map(function (p) { return { v: p.name, l: p.name, sub: "Jismoniy shaxs · javobgar" }; }));
-var ownerInfo = function (name) { var o = ORGS.filter(function (x) { return x[0] === name; })[0]; return o ? { stir: o[1], tashkilot: o[0] } : { stir: "—", tashkilot: name }; };
+function ownerInfo(name) { var o = ORGS.filter(function (x) { return x[0] === name; })[0]; return o ? { stir: o[1], tashkilot: o[0] } : { stir: "—", tashkilot: name }; }
 __out.ntfOpen = !!f && !!s.caseOpen;
 __out.ntForm = v;
+var ntView = !!(f && f.view);
+if (ntView && v.mulkdor && !owners.some(function (o) { return o.v === v.mulkdor; })) owners = owners.concat([{ v: v.mulkdor, l: v.mulkdor }]);
+__out.ntfView = ntView; __out.ntfEdit = !ntView; __out.ntfCls = "qv itkm" + (ntView ? " view" : "");
+__out.ntfTitle = ntView ? "Taqiqni bekor qilish" : "Taqiq qo'yish";
+__out.ntfSub = ntView ? f.view + " · ma'lumotlar faqat ko'rish uchun" : "";
+__out.ntfLift = function () { var w = self.state.ntForm; if (!w || !w.view) return; self.setState({ ntForm: null, dxDd: "", nt: self.state.nt.map(function (x) { return x.id === w.view ? Object.assign({}, x, { st: "bekor" }) : x; }) }); self.flash(w.view + " · taqiqdan olindi"); };
 __out.ntS = {
 turi: dd("nt-turi", [{ v: "", l: "Mol-mulk turini tanlang" }].concat(Object.keys(TYPES).map(function (k) { return { v: k, l: TYPES[k][0] }; })), v.turi, function (e) { setNF({ turi: e.target.value, f: v.mulkdor ? ownerInfo(v.mulkdor) : {}, found: false }); }, { ph: "Mol-mulk turini tanlang", bc: errOn && !v.turi ? RD : "" }),
 mulkdor: dd("nt-mulk", [{ v: "", l: "Mulkdorni tanlang" }].concat(owners), v.mulkdor, function (e) { var nm = e.target.value; self.setState(function (prev) { if (!prev.ntForm) return null; return { ntForm: Object.assign({}, prev.ntForm, { mulkdor: nm, f: Object.assign({}, prev.ntForm.f, ownerInfo(nm)), err: "" }) }; }); }, { ph: "Mulkdorni tanlang", noSplit: true, bc: errOn && !v.mulkdor ? RD : "" })
