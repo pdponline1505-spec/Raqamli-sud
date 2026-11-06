@@ -6006,3 +6006,26 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .ntx .cal-pop[data-pos]{visibility:visible}
 .ntx:focus{outline:none}
 @media (max-width:640px){.ntx-f{flex-wrap:wrap;padding:12px 16px}.ntx-f .itkm-conf{flex-basis:100%}}
+/* Taqiq qo'yish — ajrimni ish hujjatlaridan tanlash */
+.ntx-card .nt-ajr{flex-direction:column;align-items:stretch;gap:14px}
+.ntx-card .nt-ajr>.fld{width:min(260px,100%) !important}
+.ntd{border:1px solid #e6ebf3;border-radius:12px;background:#fff;overflow:hidden}
+.ntd-hd{display:flex;align-items:center;gap:10px;padding:8px 10px;border-bottom:1px solid #eef1f5;background:#fafbfc}
+.ntd-srch{flex:1;display:flex;align-items:center;gap:8px;height:36px;padding:0 10px;border:1px solid #e6ebf3;border-radius:9px;background:#fff;color:#94a3b8}
+.ntd-srch:focus-within{border-color:#93c5fd;box-shadow:0 0 0 3px rgba(59,130,246,.12)}
+.ntd-srch input{flex:1;min-width:0;border:0 !important;outline:0;background:transparent !important;height:34px;padding:0 !important;font:inherit;font-size:13.5px;color:#0f172a;box-shadow:none !important}
+.ntd-cnt{flex:none;font-size:12px;color:#64748b;font-variant-numeric:tabular-nums}
+.ntd-list{max-height:248px;overflow:auto;padding:6px;display:flex;flex-direction:column;gap:2px;overscroll-behavior:contain}
+.ntd-row{display:flex;align-items:center;gap:12px;width:100%;padding:9px 10px;border:1px solid transparent;border-radius:10px;background:transparent;font-family:inherit;text-align:left;cursor:pointer;transition:background .12s,border-color .12s}
+.ntd-row:hover{background:#f6f8fb}
+.ntd-row:focus-visible{outline:2px solid #93c5fd;outline-offset:-1px}
+.ntd-row.on{background:#eff6ff;border-color:#bfdbfe}
+.ntd-row b{font-size:13.5px;font-weight:600;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ntd-row small{font-size:12px;color:#64748b}
+.ntd-row .igr-tag{margin-left:0;flex:none}
+.ntd-rd{width:18px;height:18px;flex:none;border-radius:50%;border:1.5px solid #cbd5e1;background:#fff;transition:border-color .12s,box-shadow .12s}
+.ntd-row.on .ntd-rd{border-color:#2563eb;box-shadow:inset 0 0 0 4px #2563eb}
+.ntd-empty{padding:18px;text-align:center;font-size:13px;color:#64748b}
+.ntd-row .dx-ft{width:26px !important;height:30px !important;font-size:7px !important;line-height:1 !important;flex:none}
+.ntd-row .igr-tag{background:#eff6ff !important;color:#2563eb !important;font-size:11.5px !important;font-weight:600 !important;padding:2px 9px !important;border-radius:999px}
+.ntd-row .dx-ft,.ntd-row .dx-ft *{color:#fff !important;font-size:7px !important;font-weight:700 !important}
