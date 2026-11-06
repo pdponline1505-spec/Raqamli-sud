@@ -6113,3 +6113,31 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .lx-r>.lx-who .kv{min-width:0;overflow:hidden}
 .lx-r>.lx-sv{white-space:nowrap}
 }
+/* Integratsiyalar — so'rovlar ro'yxati (ixcham kartalar) */
+.pr-list{border:0 !important;background:transparent !important;overflow:visible !important;border-radius:0 !important;display:flex;flex-direction:column;gap:10px}
+.pr-row.igl-row{display:flex;align-items:center;gap:14px;padding:12px 16px;border:1px solid #e6ebf3 !important;border-radius:14px;background:linear-gradient(180deg,#fbfcfe 0%,#f6f8fc 100%);transition:border-color .15s,box-shadow .15s}
+.pr-row.igl-row:hover{border-color:#d5deea !important;box-shadow:0 4px 14px rgba(15,23,42,.05);background:linear-gradient(180deg,#fbfcfe 0%,#f6f8fc 100%)}
+.pr-row.igl-row.err{background:linear-gradient(180deg,#fffafa 0%,#fff5f5 100%);border-color:#fde2e2 !important}
+.igl-ic{width:36px;height:36px;border-radius:10px;flex:none;display:grid;place-items:center;border:1px solid transparent}
+.igl-ic .i{width:18px;height:18px;stroke-width:1.9}
+.igl-ic.sent{background:#f1f5f9;color:#64748b;border-color:#e2e8f0}
+.igl-ic.who{background:#eff6ff;color:#2563eb;border-color:#bfdbfe}
+.igl-ic.ok{background:#ecfdf5;color:#059669;border-color:#bbf7d0}
+.igl-ic.err{background:#fef2f2;color:#dc2626;border-color:#fecaca}
+.igl-main .pr-num{white-space:nowrap}
+.kv .pr-meta.igl-meta{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.igl-prog{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:5px;width:150px}
+.igl-segs{display:flex;gap:4px;width:100%}
+.igl-seg{flex:1;height:5px;border-radius:999px;background:#e5e9f0;font-style:normal}
+.igl-seg.done{background:#22c55e}
+.igl-seg.cur{background:linear-gradient(90deg,#3b82f6 0%,#3b82f6 55%,#dbeafe 55%)}
+.igl-seg.err{background:#ef4444}
+.igl-pt{font-size:12px;color:#64748b;font-variant-numeric:tabular-nums;white-space:nowrap}
+.igl-pt.ok{color:#059669}.igl-pt.err{color:#dc2626}.igl-pt.who{color:#2563eb}
+.btn.sm.igl-retry{background:#fff;color:#b91c1c;border-color:#fecaca;gap:6px}
+.btn.sm.igl-retry:hover{background:#fef2f2}
+.btn.sm.igl-dl{background:#fff;color:#047857;border-color:#bbf7d0;gap:6px}
+.btn.sm.igl-dl:hover{background:#ecfdf5}
+@media (max-width:900px){.igl-prog{display:none}}
+@media (max-width:700px){.pr-row.igl-row{flex-wrap:wrap}.igl-acts{width:100%;justify-content:flex-end}}
+@media (min-width:701px){.igl-acts{min-width:236px;justify-content:flex-end}}

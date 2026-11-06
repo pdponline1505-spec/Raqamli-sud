@@ -1541,11 +1541,13 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="pr-list">
 <sc-for list="{{prList}}" as="r" hint-placeholder-count="3">
 <div class="{{r.rowCls}}">
-<div class="kv" style="gap: 3px; min-width: 0; flex: 1"><div class="row" style="gap: 8px; flex-wrap: wrap"><b class="pr-num">{{r.num}}</b><span class="badge {{r.badgeCls}}">{{r.status}}</span></div><span class="pr-meta">{{r.filial}} · {{r.lastTxt}}</span></div>
-<div class="row" style="gap: 6px; flex: none">
-<sc-if value="{{r.hasErr}}" hint-placeholder-val="{{ false }}"><button class="btn sm" onClick="{{r.retry}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"></path></svg>Qayta yuborish</button></sc-if>
-<sc-if value="{{r.hasFinal}}" hint-placeholder-val="{{ false }}"><button class="ib" title="Yakuniy hujjat" aria-label="Yakuniy hujjatni yuklab olish" onClick="{{r.download}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg></button></sc-if>
-<button class="btn qx-more" onClick="{{r.open}}">Batafsil<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
+<span class="{{r.icCls}}" aria-hidden="true"><sc-if value="{{r.kSent}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4z"></path></svg></sc-if><sc-if value="{{r.kWho}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 11l2 2 4-4"></path></svg></sc-if><sc-if value="{{r.kOk}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6"></path><path d="M9 15l2 2 4-4"></path></svg></sc-if><sc-if value="{{r.kErr}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6M12 16v.5"></path></svg></sc-if></span>
+<div class="kv igl-main" style="gap: 3px; min-width: 0; flex: 1"><div class="row" style="gap: 8px; flex-wrap: nowrap; min-width: 0"><b class="pr-num">{{r.num}}</b><span class="badge {{r.badgeCls}}">{{r.status}}</span></div><span class="pr-meta igl-meta" title="{{r.filial}} · {{r.lastTxt}}">{{r.filial}} · {{r.lastTxt}}</span></div>
+<div class="igl-prog" aria-label="So'rov jarayoni: {{r.progTxt2}}"><span class="igl-segs"><sc-for list="{{r.segs}}" as="g" hint-placeholder-count="3"><i class="{{g.cls}}" title="{{g.t}}"></i></sc-for></span><small class="{{r.progCls}}">{{r.progTxt2}}</small></div>
+<div class="row igl-acts" style="gap: 8px; flex: none">
+<sc-if value="{{r.hasErr}}" hint-placeholder-val="{{ false }}"><button class="btn sm igl-retry" onClick="{{r.retry}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"></path></svg>Qayta yuborish</button></sc-if>
+<sc-if value="{{r.hasFinal}}" hint-placeholder-val="{{ false }}"><button class="btn sm igl-dl" title="Yakuniy hujjatni yuklab olish" onClick="{{r.download}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>Hujjat</button></sc-if>
+<button class="btn sm nt-det" onClick="{{r.open}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path></svg>Batafsil</button>
 </div>
 </div>
 </sc-for>
@@ -1557,11 +1559,13 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="pr-list">
 <sc-for list="{{ig.list}}" as="r" hint-placeholder-count="2">
 <div class="{{r.rowCls}}">
-<div class="kv" style="gap: 3px; min-width: 0; flex: 1"><div class="row" style="gap: 8px; flex-wrap: wrap"><b class="pr-num">{{r.num}}</b><span class="badge {{r.badgeCls}}">{{r.status}}</span></div><span class="pr-meta">{{r.meta}} · {{r.lastTxt}}</span></div>
-<div class="row" style="gap: 6px; flex: none">
-<sc-if value="{{r.hasErr}}" hint-placeholder-val="{{ false }}"><button class="btn sm" onClick="{{r.retry}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"></path></svg>Qayta yuborish</button></sc-if>
-<sc-if value="{{r.hasFinal}}" hint-placeholder-val="{{ false }}"><button class="ib" title="Yakuniy hujjat" aria-label="Yakuniy hujjatni yuklab olish" onClick="{{r.download}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg></button></sc-if>
-<button class="btn qx-more" onClick="{{r.open}}">Batafsil<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
+<span class="{{r.icCls}}" aria-hidden="true"><sc-if value="{{r.kSent}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4z"></path></svg></sc-if><sc-if value="{{r.kWho}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 11l2 2 4-4"></path></svg></sc-if><sc-if value="{{r.kOk}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6"></path><path d="M9 15l2 2 4-4"></path></svg></sc-if><sc-if value="{{r.kErr}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6M12 16v.5"></path></svg></sc-if></span>
+<div class="kv igl-main" style="gap: 3px; min-width: 0; flex: 1"><div class="row" style="gap: 8px; flex-wrap: nowrap; min-width: 0"><b class="pr-num">{{r.num}}</b><span class="badge {{r.badgeCls}}">{{r.status}}</span></div><span class="pr-meta igl-meta" title="{{r.meta}} · {{r.lastTxt}}">{{r.meta}} · {{r.lastTxt}}</span></div>
+<div class="igl-prog" aria-label="So'rov jarayoni: {{r.progTxt2}}"><span class="igl-segs"><sc-for list="{{r.segs}}" as="g" hint-placeholder-count="3"><i class="{{g.cls}}" title="{{g.t}}"></i></sc-for></span><small class="{{r.progCls}}">{{r.progTxt2}}</small></div>
+<div class="row igl-acts" style="gap: 8px; flex: none">
+<sc-if value="{{r.hasErr}}" hint-placeholder-val="{{ false }}"><button class="btn sm igl-retry" onClick="{{r.retry}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"></path></svg>Qayta yuborish</button></sc-if>
+<sc-if value="{{r.hasFinal}}" hint-placeholder-val="{{ false }}"><button class="btn sm igl-dl" title="Yakuniy hujjatni yuklab olish" onClick="{{r.download}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>Hujjat</button></sc-if>
+<button class="btn sm nt-det" onClick="{{r.open}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path></svg>Batafsil</button>
 </div>
 </div>
 </sc-for>
@@ -3507,6 +3511,10 @@ boshP: { name: "Rahimov Alisher Tohirovich", birth: "1984-04-12", gender: "Erkak
 function digits(v) { return String(v || "").replace(/\D/g, ""); }
 function group(v) { var d = digits(v); return d ? d.replace(/\B(?=(\d{3})+(?!\d))/g, " ") : ""; }
 function money(v) { var g = group(v); return g ? g + " so'm" : "—"; }
+function igUi(r) { var st = r.steps || [], done = st.filter(function (x) { return / done/.test(x.cls); }).length, k = r.hasErr ? "err" : r.hasFinal ? "ok" : done >= 2 ? "who" : "sent";
+return Object.assign({}, r, { kErr: k === "err", kOk: k === "ok", kWho: k === "who", kSent: k === "sent", icCls: "igl-ic " + k,
+segs: st.map(function (x, i) { var d = / done/.test(x.cls), e = / err/.test(x.cls); return { cls: "igl-seg" + (d ? " done" : e ? " err" : (!r.hasErr && i === done ? " cur" : "")), t: x.label + (d ? " — bajarildi" : e ? " — xatolik" : i === done ? " — kutilmoqda" : " — navbatda") }; }),
+progTxt2: r.hasErr ? "Javob olinmadi" : r.hasFinal ? "Yakunlandi" : done + " / " + st.length + " bosqich", progCls: "igl-pt " + k, rowCls: (r.rowCls || "pr-row") + " igl-row " + k }); }
 function docPickOut(self, s, v, key, dateKey, out, P) {
 var dq = (v.dq || "").trim().toLowerCase(), isAjT = function (t) { return /ajrim/i.test(t || ""); };
 var dl = (s.docs || []).slice().sort(function (a, b) { var x = isAjT(b.title) - isAjT(a.title); return x || String(b.date || "").localeCompare(String(a.date || "")); });
@@ -6251,7 +6259,7 @@ self.setState({ tc: [Object.assign({}, clean, { id: next })].concat(self.state.t
 self.flash("Ta'sir chorasi qo'shildi");
 }
 },
-prList: prList, prEmpty: s.pr.length === 0, prSendCls: "btn pri" + (s.prFilial ? "" : " dx-dis"), prSendDis: s.prFilial ? "false" : "true", prSub: s.pr.length ? s.pr.length + " ta so'rov · " + s.pr.filter(function (x) { return x.final; }).length + " tasi yakunlangan" + (s.pr.some(function (x) { return x.err; }) ? " · " + s.pr.filter(function (x) { return x.err; }).length + " tasida xatolik" : "") : "Hali so'rov yuborilmagan", prNewIsOpen: !!s.prNew, prNewClosed: !s.prNew, prNewOpen: function () { self.setState({ prNew: true, prFilialErr: false }); }, prNewClose: function () { self.setState({ prNew: false, prFilial: "", prFilialErr: false }); }, prDetOpen: !!prDetRaw && !!s.caseOpen, prDet: prDetView, prDetClose: function () { self.setState({ prDet: "" }); }, prDetKey: function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ prDet: "" }); } }, prHasAssigned: !!assigned, prAssigned: prAssigned,
+prList: prList.map(igUi), prEmpty: s.pr.length === 0, prSendCls: "btn pri" + (s.prFilial ? "" : " dx-dis"), prSendDis: s.prFilial ? "false" : "true", prSub: s.pr.length ? s.pr.length + " ta so'rov · " + s.pr.filter(function (x) { return x.final; }).length + " tasi yakunlangan" + (s.pr.some(function (x) { return x.err; }) ? " · " + s.pr.filter(function (x) { return x.err; }).length + " tasida xatolik" : "") : "Hali so'rov yuborilmagan", prNewIsOpen: !!s.prNew, prNewClosed: !s.prNew, prNewOpen: function () { self.setState({ prNew: true, prFilialErr: false }); }, prNewClose: function () { self.setState({ prNew: false, prFilial: "", prFilialErr: false }); }, prDetOpen: !!prDetRaw && !!s.caseOpen, prDet: prDetView, prDetClose: function () { self.setState({ prDet: "" }); }, prDetKey: function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ prDet: "" }); } }, prHasAssigned: !!assigned, prAssigned: prAssigned,
 prFilial: s.prFilial, prFilialErr: s.prFilialErr, prFilialErrStr: s.prFilialErr ? "true" : "false",
 prSelBorder: s.prFilialErr ? "#dc2626" : "#d5dbe4",
 prSetFilial: function (e) { self.setState({ prFilial: e.target.value, prFilialErr: false }); },
@@ -8215,7 +8223,7 @@ else o[C.key] = [{ id: "n" + Date.now(), num: C.pre + hex, org: st.igF1, x: st.i
 self.setState(o); self.flash("So'rov " + st.igF1 + "ga yuborildi"); } };
 if (mOpen) setTimeout(function () { try { var d = document.querySelector(".igm"); if (d && !d.contains(document.activeElement)) { var b = d.querySelector(".dx-selbtn"); (b || d).focus(); } } catch (er2) {} }, 0);
 __out.ig = { title: C.title, sub: list.length ? list.length + " ta so'rov · " + list.filter(function (x) { return x.final; }).length + " tasi yakunlangan" + (list.some(function (x) { return x.err; }) ? " · " + list.filter(function (x) { return x.err; }).length + " tasida xatolik" : "") : "Hali so'rov yuborilmagan",
-list: list, empty: !list.length, emptyT: C.emptyT, emptyS: C.emptyS, f1Lbl: C.f1Lbl, f2Lbl: C.f2Lbl, sendLbl: C.sendLbl, err: !!s.igErr, errTxt: C.errTxt,
+list: list.map(igUi), empty: !list.length, emptyT: C.emptyT, emptyS: C.emptyS, f1Lbl: C.f1Lbl, f2Lbl: C.f2Lbl, sendLbl: C.sendLbl, err: !!s.igErr, errTxt: C.errTxt,
 newIsOpen: !!s.igNew, newClosed: !s.igNew, sendCls: "btn pri" + (ok ? "" : " dx-dis"), sendDis: ok ? "false" : "true",
 hasAsg: !!asg, asgLbl: C.asgLbl, asg: asg ? { name: asg.who, ini: ini(asg.who), org: asg.org, date: asg.whoDate.split(" ")[0] } : { name: "", ini: "", org: "", date: "" },
 newOpen: function () { self.setState({ igNew: true, igErr: false }); },
