@@ -1654,6 +1654,12 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 </section>
 
+</div>
+
+<!-- ================= IJRO VA TA'SIR CHORALARI ================= -->
+<div class="group">
+<div class="group-h">Ijro va ta'sir choralari</div>
+
 <section class="sec" id="tasir">
 <sc-if value="{{tcMenuOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg" tabindex="-1" aria-label="Menyuni yopish" onClick="{{tcMenuClose}}"></button></sc-if>
 <div class="sh"><div><h2>Ta'sir choralari</h2><p>Xususiy ajrimlar, taqdimnomalar va ularning ijrosi</p></div>
@@ -1691,10 +1697,6 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 </sc-if>
 </section>
-</div>
-
-<!-- ================= YANGI SUD EKSPERTIZA TIZIMI ================= -->
-<div class="group">
 
 <section class="sec" id="ijrov">
 <div class="sh"><div><h2>Ijro varaqalari</h2><p>{{ivSub}}</p></div><div class="tools"><button class="btn" onClick="{{ivToggleAll}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg>{{ivAllLbl}}</button><button class="btn pri" onClick="{{ivAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Shakllantirish</button></div></div>
@@ -1712,7 +1714,10 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <sc-if value="{{ivEmpty}}" hint-placeholder-val="{{ false }}"><div class="qm-empty"><b>Ijro varaqalari yo'q</b><small>Hal qiluv qarori qonuniy kuchga kirgach «Shakllantirish» orqali ijro varaqasi tuziladi</small></div></sc-if>
 <div class="iv-note"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8v.5"></path></svg>To'liq to'langan undiruvlarga ijro varaqasi shakllanmaydi · qonuniy kuchga kirgunga qadar MIBga yuborilmaydi</div>
 </section>
+</div>
 
+<!-- ================= YANGI SUD EKSPERTIZA TIZIMI ================= -->
+<div class="group">
 <div class="group-h">Yangi sud ekspertiza tizimi</div>
 
 <section class="sec" id="y-sorov">
@@ -3375,7 +3380,8 @@ var NAV = [
 { t: "Birinchi instansiya", i: [["umumiy", "Umumiy"], ["tomonlar", "Ishtirokchilar"], ["qarshi", "Qarshi da'volar"]] },
 { t: "Ish mazmuni", i: [["bankrotlik", "Bankrotlik bo'yicha"], ["turkumlar", "Ish mazmuni va da'vo summasi"]] },
 { t: "Hujjatlar", i: [["hujjatlar", "Ish hujjatlari"], ["loglar", "Loglar"], ["integratsiya", "Integratsiyalar"]] },
-{ t: "Da'voni ta'minlash", i: [["notarius", "Notarius tizimidan"], ["mib", "MIB tizimidan"], ["tahujjat", "Da'voni ta'minlash hujjatlari"], ["tasir", "Ta'sir choralari"], ["ijrov", "Ijro varaqalari"]] },
+{ t: "Da'voni ta'minlash", i: [["notarius", "Notarius tizimidan"], ["mib", "MIB tizimidan"], ["tahujjat", "Da'voni ta'minlash hujjatlari"]] },
+{ t: "Ijro va ta'sir choralari", i: [["tasir", "Ta'sir choralari"], ["ijrov", "Ijro varaqalari"]] },
 { t: "Yangi sud ekspertiza tizimi", i: [["y-sorov", "Ekspertiza so'rovi"], ["iltimosnoma", "Iltimosnoma"], ["kvitansiya", "Kvitansiyalar"]] },
 { t: "Sud ekspertiza tizimi", i: [["ekspert", "Ekspert so'rovi"], ["e-sorov", "Ekspertiza so'rovlari"], ["kirim", "Kirim hujjatlar"], ["javob", "Javob berilishi lozim bo'lgan hujjatlar"]] },
 { t: "Qo'shimcha", i: [["tarix", "Ish tarixi"], ["publ", "Publikatsiyalar"], ["qmalumot", "Qo'shimcha ma'lumotlar"], ["xarajat", "Sud xarajatlari"], ["uzaytirish", "Uzaytirish so'rovlari"]] }
