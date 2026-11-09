@@ -7848,9 +7848,9 @@ __out.nxDocName = docR ? ((TPL[v.res] ? TPL[v.res][1] : docR[1].replace(/\s+/g, 
 __out.nxDocSub = docR ? "Shakllantirildi · " + (TPL[v.res] ? TPL[v.res][0].replace(" (namuna)", "") : docR[1]) + " · DOCX" : "Natija tanlangach ajrim loyihasi shablon asosida avtomatik shakllanadi";
 __out.nxDocDl = function () { if (docR) self.flash("«" + __out.nxDocName + "» yuklab olinmoqda"); };
 __out.nxDoc = function () { var w = self.state.nx; var Rw = w && RES.filter(function (r) { return r[0] === w.res; })[0]; if (!Rw) { self.flash("Avval natijani tanlang — hujjat shabloni natijaga qarab ochiladi"); return; } self.flash("«" + (TPL[w.res] ? TPL[w.res][0] : Rw[1]) + "» hujjati ochilmoqda"); };
-var mk = function (k, opts, ph, extra) { return dd("nx-" + k, [{ v: "", l: ph }].concat(opts), v[k] || "", setK(k), Object.assign({ ph: ph, noSplit: true }, extra || {})); };
+var mk = function (k, opts, ph, extra) { return dd("nx-" + k, [{ v: "", l: ph }].concat(opts), v[k] || "", setK(k), Object.assign({ ph: ph, noSplit: true, extra: "fxm" }, extra || {})); };
 __out.nxS = {
-res: dd("nx-res", [{ v: "", l: "Natijani tanlang" }].concat(RES.map(function (r) { return { v: r[0], l: r[1], sub: "→ " + r[3] + (r[4] ? " · " + r[4] : "") }; })), v.res, setK("res"), { ph: "Natijani tanlang", noSplit: true, bc: errOn && !v.res ? RD : "" }),
+res: dd("nx-res", [{ v: "", l: "Natijani tanlang" }].concat(RES.map(function (r) { return { v: r[0], l: r[1], sub: "→ " + r[3] + (r[4] ? " · " + r[4] : "") }; })), v.res, setK("res"), { ph: "Natijani tanlang", noSplit: true, extra: "fxm", bc: errOn && !v.res ? RD : "" }),
 joy: mk("joy", JOY.map(function (x) { return { v: x, l: x }; }), "Tanlang", { extra: "fxm" }),
 sayM: mk("sayM", ["Mahalliy hokimiyat binosida", "Mahalliy fuqarolar yig'ini binosida", "O'quv muassasalari binosida", "Boshqa tashkilot va muassasalar binosida"].map(function (x) { return { v: x, l: x }; }), "Tanlang", { extra: "fxm", bc: errOn && v.joy === JOY[2] && !v.sayM ? RD : "" }),
 yord: mk("yord", yList.map(function (x) { return { v: x, l: x }; }), "Tanlang", { extra: "fxm", bc: errOn && qol && !v.yord ? RD : "" }),
@@ -7860,7 +7860,7 @@ farq: mk("farq", ["Farqi yo'q", "Farqi bor"].map(function (x) { return { v: x, l
 manzil: mk("manzil", ["3-zal · Termiz sh., Al-Hakim at-Termiziy ko'chasi, 12", "5-zal · Termiz sh., Al-Hakim at-Termiziy ko'chasi, 12", "VKA xonasi · 2-qavat"].map(function (x) { return { v: x, l: x }; }), "Tanlang"),
 asos: curKey === "korib" ? dd("nx-asos", [{ v: "", l: "Asosni tanlang" }].concat(K_ASOS.map(function (x) { return { v: x, l: x }; })), v.asos || "", setK("asos"), { ph: "Asosni tanlang", extra: "fxm nx-asosdd", bc: errOn && !v.asos && v.res === "rad" ? RD : "" }) : mk("asos", ((ASOS[v.res]) || []).map(function (x) { return { v: x, l: x }; }), "Asosni tanlang", { extra: "fxm", bc: errOn && !v.asos && (curKey !== "korib" || v.res === "rad") ? RD : "" }),
 tpl: mk("tpl", R && TPL[v.res] ? [{ v: TPL[v.res][0], l: TPL[v.res][0] }, { v: TPL[v.res][0].replace("(namuna)", "(qisqa shakl)"), l: TPL[v.res][0].replace("(namuna)", "(qisqa shakl)") }] : [], "Shablonni tanlang"),
-talab: dd("nx-talab", [{ v: "", l: "Talab turini tanlang" }].concat(TALAB.filter(function (t) { return (v.talab || []).indexOf(t) < 0; }).map(function (x) { return { v: x, l: x }; })), v.talabPick || "", setK("talabPick"), { ph: "Talab turini tanlang", noSplit: true })
+talab: dd("nx-talab", [{ v: "", l: "Talab turini tanlang" }].concat(TALAB.filter(function (t) { return (v.talab || []).indexOf(t) < 0; }).map(function (x) { return { v: x, l: x }; })), v.talabPick || "", setK("talabPick"), { ph: "Talab turini tanlang", noSplit: true, extra: "fxm" })
 };
 if (R && TPL[v.res] && !v.tpl) __out.nxS.tpl.label = TPL[v.res][0];
 var sbN = (v.sabab || []).length; if (sbN > 1) __out.nxS.sabab.label = sbN + " ta sabab tanlandi";
