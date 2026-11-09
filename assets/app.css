@@ -6297,3 +6297,8 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .l-tag.res.k-ax-qaytarish{background:#ffedd5;color:#c2410c}
 .l-ijo.k-yuborish .l-subdot{background:#0284c7}.l-ijo.k-yuborilgan .l-subdot{background:#16a34a}.l-ijo.k-olish .l-subdot{background:#7c3aed}
 .l-ijo.k-olishrad .l-subdot{background:#dc2626}.l-ijo.k-qaytarish .l-subdot{background:#ea580c}
+/* Filtrlar tugmasi: har qanday kenglikda faqat ikonka */
+.l-tabrow>.lf-btn2{width:48px !important;padding:0 !important;justify-content:center;position:relative;gap:0 !important}
+.l-tabrow>.lf-btn2 .lf-lbl,.l-tabrow>.lf-btn2 .lf-fchev{display:none !important}
+.l-tabrow>.lf-btn2 .lf-n{position:absolute;top:-6px;right:-6px}
+.l-tabrow>.lf-btn2 svg{width:18px;height:18px}
