@@ -6410,3 +6410,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .nt-tgls{align-items:center}
 .nxm-nat .nx-cg .nx-asosf{order:9;grid-column:1/-1}
 .tb-nmore .ihmenu{min-width:264px}.tb-nmore .ihitem{white-space:nowrap}
+.nxm.nxm-main{transition:width 360ms cubic-bezier(.22,1,.36,1)}
+.nt-wait{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1px dashed #cbd5e1;border-radius:12px;background:#f8fafc;color:#475569;font-size:12.5px;line-height:1.45}
+.nt-wait svg{flex:none;margin-top:1px;color:#3073f1}
+.nxm-nat .nx-cg .nx-yordf{order:-1}
