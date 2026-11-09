@@ -6264,3 +6264,13 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .l-ijo.k-kutish .l-subdot{background:#0ea5e9;box-shadow:0 0 0 3px rgba(14,165,233,.16)}
 .l-ijo.on .l-subn{background:#dbe6fb;color:#1d4ed8}
 @media (prefers-reduced-motion:reduce){.l-ijmenu[data-pos]{animation:none}}
+/* Ijro tuzish: qatorlarda ish natijasi va qaror sanasi */
+.l-tag.res{white-space:nowrap;font-weight:500}
+.l-tag.res.k-tug{background:#eef1f5;color:#475569}
+.l-tag.res.k-qisman{background:#fef9c3;color:#a16207}
+.l-tag.res.k-toliq{background:#dcfce7;color:#15803d}
+.l-datec{display:flex !important;flex-direction:column;align-items:flex-start;gap:5px}
+.l-qaror{font-size:11.5px;color:#64748b;white-space:nowrap;font-variant-numeric:tabular-nums}
+@media (min-width:1400px){.l-row .l-numlink{white-space:nowrap}}
+.l-tag.res{gap:6px}
+.l-tag.res i{width:6px;height:6px;border-radius:50%;background:currentColor;flex:none;opacity:.85}
