@@ -6248,3 +6248,19 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .l-tag.ij i{width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
 .l-tag.ij.tasdiq{background:#fff7e6;color:#b45309}
 .l-tag.ij.kutish{background:#ecfeff;color:#0e7490}
+/* Ijro tuzish: asosiy tabdagi holatlar menyusi (C variant) */
+.seg-tabs .k-ijro .l-tabchev{margin-left:-2px;opacity:.85;transition:transform 240ms cubic-bezier(.22,1,.36,1)}
+.seg-tabs .k-ijro.open .l-tabchev{transform:rotate(180deg)}
+.l-ijmenu{position:fixed;z-index:60;min-width:270px;padding:6px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 18px 40px rgba(15,23,42,.14),0 2px 6px rgba(15,23,42,.06);visibility:hidden}
+.l-ijmenu[data-pos]{visibility:visible;animation:ijIn 260ms cubic-bezier(.22,1,.36,1)}
+@keyframes ijIn{from{opacity:0;transform:translateY(-6px) scale(.97);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+.l-ijo{display:flex;align-items:center;gap:10px;width:100%;height:40px;padding:0 10px;border:0;border-radius:8px;background:none;font:inherit;font-size:13.5px;color:#0f172a;cursor:pointer;text-align:left;transition:background-color 140ms}
+.l-ijo:hover{background:#f1f5f9}
+.l-ijo:focus-visible{outline:2px solid #3073f1;outline-offset:-2px}
+.l-ijo.on{background:#eff6ff;color:#1d4ed8;font-weight:600}
+.l-ijo .l-ijl{flex:1}
+.l-ijo.k-all .l-subdot{background:#94a3b8}
+.l-ijo.k-tasdiq .l-subdot{background:#f59e0b;box-shadow:0 0 0 3px rgba(245,158,11,.16)}
+.l-ijo.k-kutish .l-subdot{background:#0ea5e9;box-shadow:0 0 0 3px rgba(14,165,233,.16)}
+.l-ijo.on .l-subn{background:#dbe6fb;color:#1d4ed8}
+@media (prefers-reduced-motion:reduce){.l-ijmenu[data-pos]{animation:none}}
