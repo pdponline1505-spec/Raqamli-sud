@@ -6164,3 +6164,8 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .dx-msrch .inp{border:0 !important;box-shadow:none !important;padding:4px 0 !important;height:auto !important;min-height:0 !important;background:transparent !important;font-size:14px;flex:1;outline:none}
 .dx-mnone{display:block;padding:10px 12px;font-size:13px;color:#94a3b8}
 .nxm .dx-sel.multi .dx-menu .dx-olbl{white-space:normal;line-height:1.35}
+/* Modallar ichidagi kalendar va dropdownlar modal chegarasidan chiqib to'liq ko'rinadi */
+.qv .cal-pop{position:fixed !important;z-index:96 !important;bottom:auto !important;right:auto !important;margin:0 !important;visibility:hidden}
+.qv .cal-pop[data-pos]{visibility:visible}
+.qv .dx-sel .dx-menu,.qv .dx-sel .dx-menu.up{position:fixed !important;z-index:95 !important;margin:0 !important;min-width:0 !important;max-width:none !important;overflow:auto !important;box-shadow:0 12px 32px rgba(15,23,42,.16) !important;visibility:hidden}
+.qv .dx-sel .dx-menu[data-pos]{visibility:visible}

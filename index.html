@@ -4736,13 +4736,17 @@ Array.prototype.forEach.call(root.querySelectorAll(".smd-k4 .d2-kn"), function (
 Array.prototype.forEach.call(root.querySelectorAll(".smd-gw b"), function (el, k) { smCount(el, 200 + k * 120, 1100); }); };
 if (!window.__ntxCal) { window.__ntxCal = function () { try { var p = document.querySelector(".ntx .cal-pop"); if (!p) return; var b = p.parentElement.querySelector(".cal-btn").getBoundingClientRect(), h = p.offsetHeight, w = p.offsetWidth, vh = window.innerHeight, vw = window.innerWidth; var top = vh - b.bottom >= h + 12 ? b.bottom + 6 : Math.max(8, b.top - 6 - h); p.style.left = Math.max(8, Math.min(b.left, vw - w - 8)) + "px"; p.style.top = top + "px"; p.setAttribute("data-pos", "1"); } catch (er) {} };
 window.addEventListener("scroll", function () { if (window.__ntxCal) window.__ntxCal(); }, true); window.addEventListener("resize", function () { if (window.__ntxCal) window.__ntxCal(); }); }
-if (!window.__pbrPos) { window.__pbrPos = function () { try { var m = document.querySelector(".pbr-g .dx-sel.open .dx-menu, .dx-sel.fxm.open .dx-menu"); if (!m) return; var b = m.parentElement.querySelector(".dx-selbtn").getBoundingClientRect(), vh = window.innerHeight, below = vh - b.bottom - 12, above = b.top - 12;
+if (!window.__pbrPos) { window.__pbrPos = function () { try { var m = document.querySelector(".pbr-g .dx-sel.open .dx-menu, .dx-sel.fxm.open .dx-menu, .qv .dx-sel.open .dx-menu"); if (!m) return; var b = m.parentElement.querySelector(".dx-selbtn").getBoundingClientRect(), vh = window.innerHeight, below = vh - b.bottom - 12, above = b.top - 12;
 var h = Math.min(m.scrollHeight || 320, 360), up = below < Math.min(h, 220) && above > below, st = m.style;
 var mw = m.parentElement.classList.contains("vk") ? Math.max(b.width, 320) : m.parentElement.classList.contains("rol") ? Math.max(b.width, 220) : b.width, vw = window.innerWidth, lx = b.left; lx = Math.max(8, Math.min(lx, vw - mw - 8)); st.setProperty("left", Math.round(lx) + "px", "important"); st.setProperty("width", Math.round(mw) + "px", "important"); st.setProperty("right", "auto", "important");
 if (up) { st.setProperty("top", "auto", "important"); st.setProperty("bottom", Math.round(vh - b.top + 6) + "px", "important"); st.setProperty("max-height", Math.round(above) + "px", "important"); }
 else { st.setProperty("bottom", "auto", "important"); st.setProperty("top", Math.round(b.bottom + 6) + "px", "important"); st.setProperty("max-height", Math.round(below) + "px", "important"); }
 m.setAttribute("data-pos", "1"); } catch (er) {} };
 window.addEventListener("scroll", window.__pbrPos, true); window.addEventListener("resize", window.__pbrPos); }
+if (!window.__qvPop) { window.__qvPop = function () { try { var ps = document.querySelectorAll(".qv .cal-pop, .ntx .cal-pop"); for (var i = 0; i < ps.length; i++) { var p = ps[i], dd = p.closest(".cal-dd"), bt = dd && dd.querySelector(".cal-btn"); if (!bt) continue; var b = bt.getBoundingClientRect(), h = p.offsetHeight, w = p.offsetWidth, vh = window.innerHeight, vw = window.innerWidth; var top = vh - b.bottom >= h + 12 ? b.bottom + 6 : (b.top - 6 - h >= 8 ? b.top - 6 - h : Math.max(8, vh - h - 8)); p.style.setProperty("left", Math.round(Math.max(8, Math.min(b.left, vw - w - 8))) + "px", "important"); p.style.setProperty("top", Math.round(top) + "px", "important"); p.setAttribute("data-pos", "1"); } } catch (er) {} };
+var __qvTick = 0; var __qvRun = function () { if (__qvTick) return; __qvTick = requestAnimationFrame(function () { __qvTick = 0; window.__qvPop(); if (window.__pbrPos) window.__pbrPos(); }); };
+try { new MutationObserver(function (ms) { for (var i = 0; i < ms.length; i++) { var a = ms[i].addedNodes; for (var j = 0; j < a.length; j++) { var n = a[j]; if (n.nodeType === 1 && n.matches && (n.matches(".cal-pop, .dx-menu") || n.querySelector(".cal-pop, .dx-menu"))) { __qvRun(); return; } } } }).observe(document.body, { childList: true, subtree: true }); } catch (er) {}
+window.addEventListener("scroll", __qvRun, true); window.addEventListener("resize", __qvRun); }
 var umsScan = function () { var r = document.querySelector(".casemodal:not(.quick) .ums:not([data-anim])"); if (r) umsRun(r); var r2 = document.querySelector(".smd .smd-ov:not([data-anim])"); if (r2) smRun(r2); if (window.__pbrPos && document.querySelector(".dx-sel.fxm.open .dx-menu:not([data-pos])")) window.__pbrPos(); };
 try { new MutationObserver(umsScan).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["class"] }); } catch (er) {}
 setTimeout(umsScan, 0);
@@ -4751,7 +4755,7 @@ setTimeout(umsScan, 0);
 // ochiluvchi ro'yxat pastda sig'masa — yuqoriga ochiladi (oynalar va aylantiriladigan bloklar ichida)
 document.addEventListener("click", function (e) {
 var b = e.target && e.target.closest && e.target.closest(".dx-selbtn"); if (!b) return;
-if ((b.closest(".pbr-g") || b.closest(".dx-sel.fxm")) && window.__pbrPos) { requestAnimationFrame(function () { requestAnimationFrame(function () { if (window.__pbrPos) window.__pbrPos(); }); }); return; }
+if ((b.closest(".pbr-g") || b.closest(".dx-sel.fxm") || b.closest(".qv")) && window.__pbrPos) { requestAnimationFrame(function () { requestAnimationFrame(function () { if (window.__pbrPos) window.__pbrPos(); }); }); return; }
 var place = function () {
 var sel = b.parentElement, m = sel && sel.querySelector(".dx-menu"); if (!m) return;
 m.classList.remove("up"); m.style.maxHeight = "";
@@ -7310,7 +7314,7 @@ __out.pbS.sabab = dd("pb-sabab", SAB, v.reason || "", function (e) { setF({ reas
 __out.pbfRuxHa = rux === "ha"; __out.pbfRuxYoq = rux === "yoq"; __out.pbfRuxNone = !rux;
 __out.pbfGridCls = "itkm-g pbr-g" + (rux ? "" : " one");
 if (ddOpen && ddOpen.indexOf("pb-") === 0 && f) {
-if (!window.__pbrPos) { window.__pbrPos = function () { try { var m = document.querySelector(".pbr-g .dx-sel.open .dx-menu, .dx-sel.fxm.open .dx-menu"); if (!m) return; var b = m.parentElement.querySelector(".dx-selbtn").getBoundingClientRect(), vh = window.innerHeight, below = vh - b.bottom - 12, above = b.top - 12;
+if (!window.__pbrPos) { window.__pbrPos = function () { try { var m = document.querySelector(".pbr-g .dx-sel.open .dx-menu, .dx-sel.fxm.open .dx-menu, .qv .dx-sel.open .dx-menu"); if (!m) return; var b = m.parentElement.querySelector(".dx-selbtn").getBoundingClientRect(), vh = window.innerHeight, below = vh - b.bottom - 12, above = b.top - 12;
 var h = Math.min(m.scrollHeight || 320, 360), up = below < Math.min(h, 220) && above > below, st = m.style;
 var mw = m.parentElement.classList.contains("vk") ? Math.max(b.width, 320) : m.parentElement.classList.contains("rol") ? Math.max(b.width, 220) : b.width, vw = window.innerWidth, lx = b.left; lx = Math.max(8, Math.min(lx, vw - mw - 8)); st.setProperty("left", Math.round(lx) + "px", "important"); st.setProperty("width", Math.round(mw) + "px", "important"); st.setProperty("right", "auto", "important");
 if (up) { st.setProperty("top", "auto", "important"); st.setProperty("bottom", Math.round(vh - b.top + 6) + "px", "important"); st.setProperty("max-height", Math.round(above) + "px", "important"); }
