@@ -6217,3 +6217,15 @@ html[data-theme="dark"] .ds-host img{filter:none}
 /* Barcha modallar: ochilish animatsiyasi JS (Web Animations) orqali */
 .qv-js .qv[aria-modal="true"]{animation:none !important}
 .qv-js .qv[aria-modal="true"] .dx-menu,.qv-js .qv[aria-modal="true"] .cal-pop{animation:none !important;transform-origin:top center}
+/* Natija qo'yish: filtrdagi "Saralash" kaliti — yoqilganda ishlarni belgilash ustuni chiqadi */
+.lf-saral{gap:9px !important;padding:0 14px 0 10px !important}
+.lf-saral .lf-sw{position:relative;width:30px;height:18px;border-radius:999px;background:#cbd5e1;flex:none;transition:background-color 220ms cubic-bezier(.22,1,.36,1)}
+.lf-saral .lf-sw i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(15,23,42,.25);transition:transform 240ms cubic-bezier(.34,1.4,.64,1)}
+.lf-saral.on{border-color:#bfd3fb !important;background:#f3f7ff !important;color:#1d4ed8 !important}
+.lf-saral.on .lf-sw{background:#3073f1}
+.lf-saral.on .lf-sw i{transform:translateX(12px)}
+@media (min-width:1025px){
+.l-table.nosel .l-row{grid-template-columns:1.2fr 1.6fr 1.6fr 1.6fr 140px 84px !important}
+.l-table.nosel .l-row.l-head>span:first-child,.l-table.nosel .l-row>.l-chk{display:none !important}
+}
+@media (max-width:1024px){.l-table.nosel .l-row>.l-chk,.l-table.nosel .l-row.l-head{display:none !important}}
