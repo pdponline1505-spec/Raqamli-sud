@@ -3594,7 +3594,8 @@ arxiv: [["all", "Barchasi"], ["yuborish", "Arxivga yuborish"], ["yuborilgan", "A
 var defSub = function (tab) { var l = SUBT[tab]; return l && l[0] ? l[0][0] : "all"; };
 var subOf = function (r) { return r.sub || r.ijSub || ""; };
 // "Qabul qilish va tayinlash"dan keyin ish bir vaqtda "Natija qo'yish" va "Ishni keyinga qoldirish" tablarida turadi
-var inStage = function (r, key) { return r.stage === key || (key === "qoldir" && r.stage === "natija" && !!r.alsoQol); };
+var QN = ["natija", "qoldir"];
+var inStage = function (r, key) { return r.stage === key || (QN.indexOf(key) >= 0 && QN.indexOf(r.stage) >= 0); };
 var subLbl = function (tab, k) { var x = (SUBT[tab] || []).filter(function (y) { return y[0] === k; })[0]; return x ? x[1] : ""; };
 var L_TABS = [["korib", "Ko'rib chiqish"], ["majlis", "Sudgacha majlis"], ["qoldir", "Ishni keyinga qoldirish"], ["natija", "Natija qo'yish"], ["tiklash", "Ish yuritishni tiklash"], ["ijro", "Ijro tuzish"], ["yakun", "Yakunlangan"], ["arxiv", "Arxiv"]];
 var L_AVC = [["#dbeafe", "#1e40af"], ["#fde68a", "#92400e"], ["#bbf7d0", "#166534"]];
