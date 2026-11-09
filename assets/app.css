@@ -6214,3 +6214,6 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .nx-apply-ch{display:flex;flex-wrap:wrap;gap:6px}
 .nx-apply-num{display:inline-flex;align-items:center;height:24px;padding:0 9px;border-radius:7px;background:#fff;border:1px solid #d6e2fa;font-size:12px;font-weight:600;color:#334155;font-variant-numeric:tabular-nums}
 .nx-apply-num.more{color:#3073f1;border-style:dashed}
+/* Barcha modallar: ochilish animatsiyasi JS (Web Animations) orqali */
+.qv-js .qv[aria-modal="true"]{animation:none !important}
+.qv-js .qv[aria-modal="true"] .dx-menu,.qv-js .qv[aria-modal="true"] .cal-pop{animation:none !important;transform-origin:top center}
