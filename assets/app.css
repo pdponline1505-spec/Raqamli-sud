@@ -6348,7 +6348,10 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .tb-yordo.on{background:#eff6ff;color:#1d4ed8;font-weight:600}
 .tb-natija{animation:natIn 360ms cubic-bezier(.22,1,.36,1)}
 @keyframes natIn{from{opacity:0;transform:translateX(-6px) scale(.96);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
-@container (max-width:1240px){.tb-nb .tbl,.tb-nmore .tbl{display:none}.tb-nb,.tb-nmore>.btn{padding-left:10px !important;padding-right:10px !important}}
+.tb-nmore .nmix{display:none}
+@container (max-width:1180px){.tbrow .nb-sodda{display:none}.tb-nmore .nmix-sodda{display:flex}}
+@container (max-width:930px){.tbrow .nb-sud{display:none}.tb-nmore .nmix-sud{display:flex}}
+@container (max-width:780px){.tbrow .nb-toxt{display:none}.tb-nmore .nmix-toxt{display:flex}}
 /* ---- Natija qo'yish: to'liq natija oynasi ---- */
 .nxm.nxm-nat{width:min(1120px,100%)}
 .nxm-nat .nx-cg{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -6406,3 +6409,4 @@ html[data-theme="dark"] .ds-host img{filter:none}
 @media (max-width:900px){.nt-clc{grid-template-columns:minmax(0,1fr)}}
 .nt-tgls{align-items:center}
 .nxm-nat .nx-cg .nx-asosf{order:9;grid-column:1/-1}
+.tb-nmore .ihmenu{min-width:264px}.tb-nmore .ihitem{white-space:nowrap}
