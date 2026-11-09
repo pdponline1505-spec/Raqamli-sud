@@ -6229,3 +6229,22 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .l-table.nosel .l-row.l-head>span:first-child,.l-table.nosel .l-row>.l-chk{display:none !important}
 }
 @media (max-width:1024px){.l-table.nosel .l-row>.l-chk,.l-table.nosel .l-row.l-head{display:none !important}}
+/* Ijro tuzish: ichki holat tablari (Barchasi / Tasdiqlash / Kutish jarayonida) */
+.l-subtabs{display:flex;align-items:center;gap:2px;padding:0 6px;border-bottom:1px solid #e6e9ef;overflow-x:auto;scrollbar-width:none;animation:pgIn 420ms cubic-bezier(.22,1,.36,1) backwards}
+.l-subtabs::-webkit-scrollbar{display:none}
+.l-subtab{position:relative;display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 14px;border:0;background:none;font:inherit;font-size:14px;font-weight:500;color:#64748b;cursor:pointer;white-space:nowrap;flex:none;transition:color 180ms cubic-bezier(.22,1,.36,1)}
+.l-subtab:hover{color:#0f172a}
+.l-subtab:focus-visible{outline:2px solid #3073f1;outline-offset:-4px;border-radius:8px}
+.l-subtab::after{content:"";position:absolute;left:12px;right:12px;bottom:-1px;height:2px;border-radius:2px 2px 0 0;background:#3073f1;transform:scaleX(0);transition:transform 280ms cubic-bezier(.22,1,.36,1)}
+.l-subtab.on{color:#0f172a;font-weight:600}
+.l-subtab.on::after{transform:scaleX(1)}
+.l-subdot{width:7px;height:7px;border-radius:50%;flex:none;background:#94a3b8}
+.l-subtab.k-all .l-subdot{display:none}
+.l-subtab.k-tasdiq .l-subdot{background:#f59e0b;box-shadow:0 0 0 3px rgba(245,158,11,.16)}
+.l-subtab.k-kutish .l-subdot{background:#0ea5e9;box-shadow:0 0 0 3px rgba(14,165,233,.16)}
+.l-subn{min-width:22px;height:20px;padding:0 7px;border-radius:999px;background:#eef1f5;color:#475569;font-size:12px;font-weight:600;display:inline-grid;place-items:center;font-variant-numeric:tabular-nums;transition:background-color 180ms,color 180ms}
+.l-subtab.on .l-subn{background:#e0eaff;color:#1d4ed8}
+.l-tag.ij{gap:6px;white-space:nowrap}
+.l-tag.ij i{width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
+.l-tag.ij.tasdiq{background:#fff7e6;color:#b45309}
+.l-tag.ij.kutish{background:#ecfeff;color:#0e7490}

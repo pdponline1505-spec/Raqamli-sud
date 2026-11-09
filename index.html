@@ -248,7 +248,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <sc-if value="{{isDs}}" hint-placeholder-val="{{ false }}"><div class="ds-host" id="ds-host"></div></sc-if>
 <sc-if value="{{isListPage}}" hint-placeholder-val="{{ true }}">
 <div class="l-tabrow"><div class="l-tabwrap"><button type="button" class="tab-ar l" tabindex="-1" aria-label="Oldingi tablar" onClick="{{lTabPrev}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button><div class="l-tabs seg-tabs" role="tablist"><sc-for list="{{lTabs}}" as="t" hint-placeholder-count="8"><button class="{{t.cls}}" role="tab" aria-selected="{{t.sel}}" onClick="{{t.pick}}">{{t.label}}<sc-if value="{{t.hasN}}" hint-placeholder-val="{{ false }}"><span class="l-tabn">{{t.n}}</span></sc-if></button></sc-for></div><button type="button" class="tab-ar r" tabindex="-1" aria-label="Keyingi tablar" onClick="{{lTabNext}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></div><button type="button" class="{{lfF2Cls}}" aria-expanded="{{lfFStr}}" aria-controls="lf-panel" aria-label="Filtrlar" title="Filtrlar" onClick="{{lfFToggle}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M7 12h10M10 17h4"></path></svg><span class="lf-lbl">Filtrlar</span><sc-if value="{{lfFHasN}}" hint-placeholder-val="{{ false }}"><span class="lf-n">{{lfFN}}</span></sc-if><svg class="i s lf-fchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button></div>
-<div class="l-card">
+<sc-if value="{{lIjShow}}" hint-placeholder-val="{{ false }}"><div class="l-subtabs" role="tablist" aria-label="Ijro tuzish holatlari"><sc-for list="{{lIjSubs}}" as="t" hint-placeholder-count="3"><button type="button" class="{{t.cls}}" role="tab" aria-selected="{{t.sel}}" onClick="{{t.pick}}"><i class="l-subdot" aria-hidden="true"></i>{{t.label}}<span class="l-subn">{{t.n}}</span></button></sc-for></div></sc-if><div class="l-card">
 <sc-if value="{{lfOpenAny}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{lfClose}}"></button></sc-if>
 
 <div class="l-fbox">
@@ -276,7 +276,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="l-row" style="background: {{r.bg}}">
 <button class="l-rowbtn" aria-label="{{r.num}} ishini ochish" onClick="{{r.open}}"></button>
 <button class="{{r.chkCls}}" role="checkbox" aria-checked="{{r.selStr}}" aria-label="{{r.num}} ni tanlash" onClick="{{r.toggle}}"><sc-if value="{{r.sel}}" hint-placeholder-val="{{ false }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 12px; height: 12px; stroke-width: 3"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button>
-<div class="kv l-pe" style="gap: 6px"><button class="l-numlink" title="To'liq oynada ochish" onClick="{{r.openFull}}">{{r.num}}</button><sc-if value="{{r.isDub}}" hint-placeholder-val="{{ false }}"><span class="l-tag dub"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg>Dublikat</span></sc-if><sc-if value="{{r.hasPend}}" hint-placeholder-val="{{ false }}"><span class="l-tag pend" title="{{r.pendTitle}}">{{r.pendTxt}}</span></sc-if><sc-if value="{{r.isQd}}" hint-placeholder-val="{{ false }}"><span class="l-tag qd"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"></path><path d="M9 14h6M13 12l2 2-2 2"></path></svg>Qarshi da'vo</span></sc-if></div>
+<div class="kv l-pe" style="gap: 6px"><button class="l-numlink" title="To'liq oynada ochish" onClick="{{r.openFull}}">{{r.num}}</button><sc-if value="{{r.isDub}}" hint-placeholder-val="{{ false }}"><span class="l-tag dub"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg>Dublikat</span></sc-if><sc-if value="{{r.hasIj}}" hint-placeholder-val="{{ false }}"><span class="{{r.ijCls}}"><i></i>{{r.ijTxt}}</span></sc-if><sc-if value="{{r.hasPend}}" hint-placeholder-val="{{ false }}"><span class="l-tag pend" title="{{r.pendTitle}}">{{r.pendTxt}}</span></sc-if><sc-if value="{{r.isQd}}" hint-placeholder-val="{{ false }}"><span class="l-tag qd"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"></path><path d="M9 14h6M13 12l2 2-2 2"></path></svg>Qarshi da'vo</span></sc-if></div>
 <div class="l-pe"><div class="row" style="gap: 10px; min-width: 0"><sc-if value="{{r.arizMany}}" hint-placeholder-val="{{ false }}"><span class="l-stack"><sc-for list="{{r.arizAv}}" as="a" hint-placeholder-count="3"><img class="l-av" src="{{a.photo}}" alt=""></sc-for></span></sc-if><span class="kv" style="min-width: 0"><span class="l-name">{{r.arizName}}</span><sc-if value="{{r.arizMany}}" hint-placeholder-val="{{ false }}"><small>{{r.arizCount}}</small></sc-if></span></div></div>
 <div class="l-pe"><div class="row" style="gap: 10px; min-width: 0"><sc-if value="{{r.javMany}}" hint-placeholder-val="{{ false }}"><span class="l-stack"><sc-for list="{{r.javAv}}" as="a" hint-placeholder-count="3"><img class="l-av" src="{{a.photo}}" alt=""></sc-for></span></sc-if><span class="kv" style="min-width: 0"><span class="l-name">{{r.javName}}</span><sc-if value="{{r.javMany}}" hint-placeholder-val="{{ false }}"><small>{{r.javCount}}</small></sc-if></span></div></div>
 <span class="l-pe l-clamp">{{r.sud}}</span>
@@ -3610,8 +3610,10 @@ var L_DATA = [
 { id: 15, num: "R4-1901-2603/4254", tag: "", stage: "natija", ariz: P_ARALOV, jav: ["Shaymonov Ilhom Norboy o'g'li"], sud: "Yuridik ahamiyatga ega bo'lgan faktlarni aniqlash yuzasidan", sana: "28.07.2026" },
 { id: 16, num: "R4-1901-2603/4255", tag: "", stage: "tiklash", ariz: ["Karimov Akmal Saidovich"], jav: ["Normurodov Bekzod Azizovich"], sud: "Shartnoma majburiyatlarini bajarish yuzasidan", sana: "22.07.2026" },
 { id: 17, num: "R4-1901-2603/4256", tag: "", stage: "tiklash", ariz: P_ARALOV, jav: ["Shaymonov Ilhom Norboy o'g'li"], sud: "Yuridik ahamiyatga ega bo'lgan faktlarni aniqlash yuzasidan", sana: "28.07.2026" },
-{ id: 18, num: "R4-1901-2603/4257", tag: "", stage: "ijro", ariz: ["Karimov Akmal Saidovich"], jav: ["Normurodov Bekzod Azizovich"], sud: "Shartnoma majburiyatlarini bajarish yuzasidan", sana: "22.07.2026" },
-{ id: 19, num: "R4-1901-2603/4258", tag: "", stage: "ijro", ariz: P_ARALOV, jav: ["Shaymonov Ilhom Norboy o'g'li"], sud: "Yuridik ahamiyatga ega bo'lgan faktlarni aniqlash yuzasidan", sana: "28.07.2026" }
+{ id: 18, num: "R4-1901-2603/4257", tag: "", stage: "ijro", ijSub: "tasdiq", ariz: ["Karimov Akmal Saidovich"], jav: ["Normurodov Bekzod Azizovich"], sud: "Shartnoma majburiyatlarini bajarish yuzasidan", sana: "22.07.2026" },
+{ id: 19, num: "R4-1901-2603/4258", tag: "", stage: "ijro", ijSub: "kutish", ariz: P_ARALOV, jav: ["Shaymonov Ilhom Norboy o'g'li"], sud: "Yuridik ahamiyatga ega bo'lgan faktlarni aniqlash yuzasidan", sana: "28.07.2026" },
+{ id: 20, num: "R4-1901-2603/4259", tag: "", stage: "ijro", ijSub: "tasdiq", ariz: ["Karimov Akmal Saidovich"], jav: ["Normurodov Bekzod Azizovich"], sud: "Haq evaziga xizmat ko'rsatish shartnomasi yuzasidan", sana: "02.08.2026" },
+{ id: 21, num: "R4-1901-2603/4260", tag: "", stage: "ijro", ijSub: "tasdiq", ariz: P_ARALOV, jav: ["Shaymonov Ilhom Norboy o'g'li"], sud: "Shartnoma majburiyatlarini bajarish yuzasidan", sana: "05.08.2026" }
 ].map(function (r) { return Object.assign({ stage: "korib" }, r); });
 var TM_AVC = [["#fde2e4", "#9f1239"], ["#dbeafe", "#1e40af"], ["#dcfce7", "#166534"], ["#fef3c7", "#92400e"]];
 var TM_RES = [
@@ -5721,7 +5723,9 @@ if (lfDate && skip !== "date" && !dateOk(r, lfDate)) return false;
 if (lfPer.length && skip !== "per") { var pool = lfPerRole === "ariz" ? r.ariz : lfPerRole === "jav" ? r.jav : (r.ariz || []).concat(r.jav || []); if (!lfPer.some(function (n) { return pool.indexOf(n) >= 0; })) return false; }
 return true; };
 var stageRows = s.lRows.filter(function (r) { return r.stage === s.lTab; });
-var visible = stageRows.filter(function (r) { return lfMatch(r); });
+var IJ_SUBS = [["all", "Barchasi"], ["tasdiq", "Tasdiqlash"], ["kutish", "Kutish jarayonida"]], ijSub = s.lIjSub || "all", isIj = s.lTab === "ijro";
+var ijCnt = function (k) { return stageRows.filter(function (r) { return (k === "all" || r.ijSub === k) && lfMatch(r); }).length; };
+var visible = stageRows.filter(function (r) { return lfMatch(r) && (!isIj || ijSub === "all" || r.ijSub === ijSub); });
 var selIds = stageRows.filter(function (r) { return s.lSel[r.id]; }).map(function (r) { return r.id; });
 var visSel = visible.filter(function (r) { return s.lSel[r.id]; }).length;
 var byIds = function (ids) { return s.lRows.filter(function (r) { return ids.indexOf(r.id) >= 0; }); };
@@ -5750,6 +5754,7 @@ var one = function (fn) { return function () { self.setState({ lMenu: 0 }); fn([
 return { num: r.num, sud: r.sud, sana: r.sana, isDub: r.tag === "dub", isQd: r.tag === "qd",
 arizName: r.ariz[0], arizMany: r.ariz.length > 1, arizCount: r.ariz.length + " ta", arizAv: avs(r.ariz),
 javName: r.jav[0], javMany: r.jav.length > 1, javCount: r.jav.length + " ta", javAv: avs(r.jav),
+hasIj: isIj && !!r.ijSub, ijCls: "l-tag ij " + (r.ijSub || ""), ijTxt: r.ijSub === "tasdiq" ? "Tasdiqlashda" : "Kutishda",
 sel: sel, selStr: sel ? "true" : "false", chkCls: sel ? "l-chk on" : "l-chk", bg: sel ? "#eff6ff" : (menuOpen ? "#f8fafc" : "#ffffff"),
 menuOpen: menuOpen, menuZ: menuOpen ? "40" : "2", menuStr: menuOpen ? "true" : "false", menuBorder: menuOpen ? "#93c5fd" : "transparent", menuBg: menuOpen ? "#eff6ff" : "transparent",
 toggle: function () { var m = Object.assign({}, self.state.lSel); m[r.id] = !m[r.id]; self.setState({ lSel: m }); },
@@ -6165,7 +6170,8 @@ lfChips: [].concat(lfQ ? [{ label: "«" + s.lfQ.trim() + "»", remove: function 
 .concat(lfPer.map(function (n) { var q = n.split(" "); return { label: "Shaxs: " + q[0] + " " + (q[1] ? q[1].charAt(0) + "." : "") + (lfPerRole === "ariz" ? " (arizachi)" : lfPerRole === "jav" ? " (javobgar)" : ""), remove: function () { self.setState({ lfPer: self.state.lfPer.filter(function (x) { return x !== n; }) }); } }; }))
 .concat(lfTag.map(function (t) { return { label: "Belgi: " + (LF_TAGS.filter(function (x) { return x[0] === t; })[0] || ["", t])[1], remove: function () { self.setState({ lfTag: self.state.lfTag.filter(function (x) { return x !== t; }) }); } }; })),
 lSelCount: selIds.length, lAny: selIds.length > 0, lNone: selIds.length === 0,
-lSaralShow: s.lTab === "natija", lSaralStr: s.lSaral ? "true" : "false", lSaralCls: "lf-btn lf-saral" + (s.lSaral ? " on" : ""),
+lSaralShow: s.lTab === "natija",
+lIjShow: isIj, lIjSubs: IJ_SUBS.map(function (t) { var on = ijSub === t[0], n = ijCnt(t[0]); return { label: t[1], n: n, hasN: true, cls: "l-subtab k-" + t[0] + (on ? " on" : ""), sel: on ? "true" : "false", pick: function () { self.setState({ lIjSub: t[0] }); } }; }), lSaralStr: s.lSaral ? "true" : "false", lSaralCls: "lf-btn lf-saral" + (s.lSaral ? " on" : ""),
 lTblCls: "l-table",
 lSaralToggle: function () { self.setState({ lSaral: !self.state.lSaral }); }, // vazifasi keyinroq aniqlanadi — hozircha faqat holat
 lAllOn: allOn, lSomeOn: visSel > 0 && !allOn, lAllStr: allOn ? "true" : (visSel ? "mixed" : "false"),
