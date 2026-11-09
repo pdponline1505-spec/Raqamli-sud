@@ -7874,9 +7874,10 @@ korib: [["tayinlash", "Qabul qilish va tayinlash", "natija", "Natija qo'yish", "
 var NXK = "korib";
 var qol = curKey === "qoldir"; // "Ishni keyinga qoldirish" — o'z maydonlari, dizayn umumiy
 var nat = curKey === "natija"; // "Natija qo'yish" — yakuniy natija, asos va yordamchi
-var maj = curKey === "majlis"; // "Sudgacha majlis" — natija tanlanmaydi, ish sud muhokamasiga tayinlanadi
+var tik = curKey === "tiklash"; // "Ish yuritishni tiklash" — maydonlari Sudgacha majlis bilan bir xil
+var maj = curKey === "majlis" || tik; // "Sudgacha majlis" — natija tanlanmaydi, ish sud muhokamasiga tayinlanadi
 if (qol) RES = [["qoldirish", "Ishni keyinga qoldirish", "natija", "Natija qo'yish", ""]];
-else if (maj) RES = [["tayinlash", "Ishni sud muhokamasiga tayinlash", "natija", "Natija qo'yish", ""]];
+else if (maj) RES = [["tayinlash", tik ? "Ish yuritishni tiklash" : "Ishni sud muhokamasiga tayinlash", "natija", "Natija qo'yish", ""]];
 else if (curKey === "natija") RES = [["t_full", "1 - To'liq qanoatlantirilgan", "ijro", "Ijro tuzish", ""], ["t_part", "2 - Qisman qanoatlantirilgan", "ijro", "Ijro tuzish", ""], ["t_rad", "3 - Rad etilgan", "yakun", "Yakunlangan", ""], ["t_kor", "4 - Ko'rmasdan qoldirilgan", "yakun", "Yakunlangan", ""], ["t_tug", "5 - Ish tugatilgan", "yakun", "Yakunlangan", ""]];
 else RES = RES_BY[NXK];
 if (qol && n) v = Object.assign({}, v, { res: "qoldirish" });
@@ -7921,8 +7922,8 @@ __out.nxShowSayM = sayOn; __out.nxManCls = sayOn ? "fld" : "fld nx-cg-res";
 __out.nxShowYord = qol || nat || !korib; __out.nxShowDoc = !korib;
 __out.nxShowSayIsh = qol && v.joy === JOY[2];
 __out.nxShowRes = !maj;
-__out.nxHTitle = qol ? "Ishni keyinga qoldirish" : maj ? "Sudgacha majlis" : nat ? "Natija qo'yish" : "Natija va sanalar";
-__out.nxHSub = qol ? "Qoldirish sababi, yangi sana va sud majlisi joyi" : maj ? "Ishni sud muhokamasiga tayinlash · sanalar va sud majlisi joyi" : nat ? "Ish bo'yicha yakuniy natija, asos va yordamchi" : "Ko'rib chiqish natijasi, sanalar va sud majlisi joyi";
+__out.nxHTitle = qol ? "Ishni keyinga qoldirish" : maj ? (tik ? "Ish yuritishni tiklash" : "Sudgacha majlis") : nat ? "Natija qo'yish" : "Natija va sanalar";
+__out.nxHSub = qol ? "Qoldirish sababi, yangi sana va sud majlisi joyi" : maj ? (tik ? "Ish yuritish tiklanadi · sanalar va sud majlisi joyi" : "Ishni sud muhokamasiga tayinlash · sanalar va sud majlisi joyi") : nat ? "Ish bo'yicha yakuniy natija, asos va yordamchi" : "Ko'rib chiqish natijasi, sanalar va sud majlisi joyi";
 var yq = String(v.yq || "").trim().toLowerCase(), yList = YORD.filter(function (x) { return !yq || x.toLowerCase().indexOf(yq) >= 0; });
 __out.nxYq = v.yq || ""; __out.nxYqNone = !yList.length;
 __out.nxYqSet = function (e) { var val = e.target.value; setN(function () { return { yq: val }; }); }; __out.nxSanaReq = !qol && !nat && !(R && R[2] === "yakun");
