@@ -6205,3 +6205,12 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .nx-sw i{position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(15,23,42,.25);transition:transform 260ms cubic-bezier(.34,1.4,.64,1)}
 .nx-swrow.on .nx-sw{background:#3073f1}
 .nx-swrow.on .nx-sw i{transform:translateX(16px)}
+/* Keyingi bosqich oynasi: ma'lumotlar qaysi ishlarga qo'llanilishi */
+.nx-apply{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;margin-bottom:14px;border:1px solid #dbe6fb;border-radius:12px;background:#f5f8ff;margin-bottom:2px !important}
+.nx-apply-ic{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;background:#e3ecff;color:#3073f1;flex:none}
+.nx-apply-ic .i{width:17px;height:17px}
+.nx-apply-t{display:flex;flex-direction:column;gap:7px;min-width:0}
+.nx-apply-t b{font-size:13.5px;font-weight:600;color:#1e3a8a;line-height:1.35}
+.nx-apply-ch{display:flex;flex-wrap:wrap;gap:6px}
+.nx-apply-num{display:inline-flex;align-items:center;height:24px;padding:0 9px;border-radius:7px;background:#fff;border:1px solid #d6e2fa;font-size:12px;font-weight:600;color:#334155;font-variant-numeric:tabular-nums}
+.nx-apply-num.more{color:#3073f1;border-style:dashed}
