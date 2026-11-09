@@ -7938,7 +7938,7 @@ var maj = curKey === "majlis" || tik; // "Sudgacha majlis" — natija tanlanmayd
 if (qol) RES = [["qoldirish", "Ishni keyinga qoldirish", "natija", "Natija qo'yish", ""]];
 else if (arx) RES = [["arxiv_y", axOl ? "Arxivdan olish" : axSub === "qaytarish" ? "Arxivga qaytarish" : "Arxivga yuborish", "arxiv", axOl ? "Arxivga qaytarish" : "Arxivga yuborilgan", ""]];
 else if (maj) RES = [["tayinlash", tik ? "Ish yuritishni tiklash" : "Ishni sud muhokamasiga tayinlash", "natija", "Natija qo'yish", ""]];
-else if (curKey === "natija") RES = [["t_tug", "5 - Ish tugatilgan", "yakun", "Yakunlangan", ""], ["t_full", "1 - To'liq qanoatlantirilgan", "ijro", "Ijro tuzish", ""], ["t_part", "2 - Qisman qanoatlantirilgan", "ijro", "Ijro tuzish", ""], ["t_rad", "3 - Rad etilgan", "yakun", "Yakunlangan", ""], ["t_kor", "4 - Ko'rmasdan qoldirilgan", "yakun", "Yakunlangan", ""]];
+else if (curKey === "natija") RES = [["t_full", "1 - To'liq qanoatlantirilgan", "ijro", "Ijro tuzish", ""], ["t_part", "2 - Qisman qanoatlantirilgan", "ijro", "Ijro tuzish", ""], ["t_rad", "3 - Rad etilgan", "yakun", "Yakunlangan", ""], ["t_kor", "4 - Ko'rmasdan qoldirilgan", "yakun", "Yakunlangan", ""], ["t_tug", "5 - Ish tugatilgan", "yakun", "Yakunlangan", ""]];
 else RES = RES_BY[NXK];
 if (qol && n) v = Object.assign({}, v, { res: "qoldirish" });
 if (maj && n) v = Object.assign({}, v, { res: "tayinlash" });
