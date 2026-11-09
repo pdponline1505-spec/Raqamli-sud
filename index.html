@@ -3590,7 +3590,7 @@ events: [
 ];
 var SUBT = { ijro: [["all", "Barchasi"], ["tasdiq", "Tasdiqlash"], ["kutish", "Kutish jarayonida"]],
 yakun: [["all", "Barchasi"], ["qanoat", "Qanoatlantirilgan"], ["qisman", "Qisman qanoatlantirilgan"], ["rad", "Rad etilgan"], ["birl", "Birlashtirilgan"], ["korm", "Ko'rmasdan qoldirilgan"], ["tug", "Ish tugatilgan"], ["boshqa", "Boshqa sudga yuborilgan"], ["qabrad", "Qabul qilish rad etilgan"], ["qayt", "Qaytarilgan"]],
-arxiv: [["yuborish", "Arxivga yuborish"], ["yuborilgan", "Arxivga yuborilgan"], ["olish", "Arxivdan olish"], ["olishrad", "Arxivdan olish rad etilgan"], ["qaytarish", "Arxivga qaytarish"]] };
+arxiv: [["all", "Barchasi"], ["yuborish", "Arxivga yuborish"], ["yuborilgan", "Arxivga yuborilgan"], ["olish", "Arxivdan olish"], ["olishrad", "Arxivdan olish rad etilgan"], ["qaytarish", "Arxivga qaytarish"]] };
 var defSub = function (tab) { var l = SUBT[tab]; return l && l[0] ? l[0][0] : "all"; };
 var subOf = function (r) { return r.sub || r.ijSub || ""; };
 var subLbl = function (tab, k) { var x = (SUBT[tab] || []).filter(function (y) { return y[0] === k; })[0]; return x ? x[1] : ""; };
@@ -6238,7 +6238,10 @@ lMoreOpen: s.lMore, lMoreStr: s.lMore ? "true" : "false", lMoreToggle: function 
 hMoreOpen: s.dd === "hmore", hMoreStr: s.dd === "hmore" ? "true" : "false", hMoreToggle: function () { self.setState({ dd: self.state.dd === "hmore" ? "" : "hmore" }); },
 selDub: selDubAll, selDel: selDubAll && !isYord, selJD: selDubAll && !isYord, caseJD: caseIsDub && !isYord, hqMoreCls: "hq-more", tbRowCls: selDubAll ? "" : "nodub", caseIsDub: caseIsDub, caseDel: caseIsDub && !isYord,
 tbOpacity: "1", tbDisabled: selIds.length ? "false" : "true",
-canNext: ["ijro", "yakun"].indexOf(s.lTab) < 0 && (s.lTab !== "arxiv" || ["yuborish", "olish", "qaytarish"].indexOf(((s.lSubs || {}).arxiv) || "yuborish") >= 0),
+canNext: ["ijro", "yakun"].indexOf(s.lTab) < 0 && (s.lTab !== "arxiv" || (function () { var cs = ((s.lSubs || {}).arxiv) || "all";
+if (cs !== "all") return ["yuborish", "olish", "qaytarish"].indexOf(cs) >= 0;
+var ss = stageRows.filter(function (r) { return s.lSel[r.id]; }).map(function (r) { return r.sub; }).filter(function (x, i, a) { return a.indexOf(x) === i; });
+return !ss.length || (ss.length === 1 && ["yuborish", "olish", "qaytarish"].indexOf(ss[0]) >= 0); })()),
 pgCanNext: (function () { var rr = (s.lRows || []).filter(function (x) { return x.num === s.caseNum; })[0]; return !rr || (["ijro", "yakun"].indexOf(rr.stage) < 0 && (rr.stage !== "arxiv" || ["yuborish", "olish", "qaytarish"].indexOf(rr.sub) >= 0)); })(), canJudge: !isYord, isYord: isYord, nextLbl: isYord ? "Sudyaga yuborish" : "Keyingi bosqichga o'tkazish",
 tbCls: selIds.length ? "" : "off", tbTitle: selIds.length ? "" : "Avval ish(lar)ni tanlang",
 bSodda: needSel(soonFor("Soddalashtirilganga o'tkazish")), bSud: needSel(soonFor("Boshqa sudga")), bQayta: needSel(soonFor("Qayta taqsimlash")),
@@ -7922,7 +7925,8 @@ var NXK = "korib";
 var qol = curKey === "qoldir"; // "Ishni keyinga qoldirish" — o'z maydonlari, dizayn umumiy
 var nat = curKey === "natija"; // "Natija qo'yish" — yakuniy natija, asos va yordamchi
 var arx = curKey === "arxiv"; // Arxiv: yuborish / olish / qaytarish
-var axSub = arx ? ((n && n.bulk) ? (((s.lSubs || {}).arxiv) || "yuborish") : ((row && row.sub) || "yuborish")) : "";
+var axSub = "";
+if (arx) { if (n && n.bulk) { axSub = ((s.lSubs || {}).arxiv) || "all"; if (axSub === "all") { var axR = (s.lRows || []).filter(function (r) { return (n.ids || []).indexOf(r.id) >= 0; })[0]; axSub = (axR && axR.sub) || "yuborish"; } } else axSub = (row && row.sub) || "yuborish"; }
 var axOl = axSub === "olish", axTo = axOl ? "qaytarish" : "yuborilgan";
 var AX_SABAB = ["Apellyatsiya shikoyati kelib tushganligi munosabati bilan", "Kassatsiya shikoyati kelib tushganligi munosabati bilan", "Yangi ochilgan holatlar bo'yicha qayta ko'rish uchun", "Ijro hujjatini berish uchun", "Prokuratura so'rovi asosida", "Boshqa sabab"];
 var tik = curKey === "tiklash"; // "Ish yuritishni tiklash" — maydonlari Sudgacha majlis bilan bir xil
