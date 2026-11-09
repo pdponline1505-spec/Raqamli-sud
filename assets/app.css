@@ -6422,3 +6422,11 @@ html[data-theme="dark"] .ds-host img{filter:none}
 @container (max-width:1260px){.tbrow .nb-birl{display:none}.tb-nmore.q{display:block}.tb-nmore.q .nmq-birl{display:flex}}
 @container (max-width:1050px){.tbrow .nb-qayta{display:none}.tb-nmore.q .nmq-qayta{display:flex}}
 @container (max-width:880px){.tbrow .nb-uzay{display:none}.tb-nmore.q .nmq-uzay{display:flex}}
+/* Natija qo'yish paneli: eski tizim tartibi, sig'maganlar "Boshqalar"ga */
+.tb-nmore .nmq-sudlov{display:none}
+@container (max-width:1660px){.tbrow:has(.tb-nmore.n) .nb-birl{display:none}.tb-nmore.q.n{display:block}.tb-nmore.q.n .nmq-birl{display:flex}}
+@container (max-width:1560px){.tbrow:has(.tb-nmore.n) .nb-qayta{display:none}.tb-nmore.q.n .nmq-qayta{display:flex}}
+@container (max-width:1400px){.tbrow:has(.tb-nmore.n) .nb-uzay{display:none}.tb-nmore.q.n .nmq-uzay{display:flex}}
+@container (max-width:1290px){.tbrow:has(.tb-nmore.n) .nb-sodda{display:none}.tb-nmore.q.n .nmix-sodda{display:flex}}
+@container (max-width:1060px){.tbrow:has(.tb-nmore.n) .nb-sudlov{display:none}.tb-nmore.q.n .nmq-sudlov{display:flex}}
+@container (max-width:930px){.tbrow:has(.tb-nmore.n) .nb-sud{display:none}.tb-nmore.q.n .nmix-sud{display:flex}}
