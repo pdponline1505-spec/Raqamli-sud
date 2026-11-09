@@ -3592,10 +3592,10 @@ var SUBT = { ijro: [["all", "Barchasi"], ["tasdiq", "Tasdiqlash"], ["kutish", "K
 yakun: [["all", "Barchasi"], ["qanoat", "Qanoatlantirilgan"], ["qisman", "Qisman qanoatlantirilgan"], ["rad", "Rad etilgan"], ["birl", "Birlashtirilgan"], ["korm", "Ko'rmasdan qoldirilgan"], ["tug", "Ish tugatilgan"], ["boshqa", "Boshqa sudga yuborilgan"], ["qabrad", "Qabul qilish rad etilgan"], ["qayt", "Qaytarilgan"]],
 arxiv: [["all", "Barchasi"], ["yuborish", "Arxivga yuborish"], ["yuborilgan", "Arxivga yuborilgan"], ["olish", "Arxivdan olish"], ["olishrad", "Arxivdan olish rad etilgan"], ["qaytarish", "Arxivga qaytarish"]] };
 var defSub = function (tab) { var l = SUBT[tab]; return l && l[0] ? l[0][0] : "all"; };
-var subOf = function (r) { return r.sub || r.ijSub || ""; };
+var subOf = function (r, tab) { return tab === "ijro" ? (r.ijSub || "") : (r.sub || r.ijSub || ""); };
 // "Qabul qilish va tayinlash"dan keyin ish bir vaqtda "Natija qo'yish" va "Ishni keyinga qoldirish" tablarida turadi
 var QN = ["natija", "qoldir"];
-var inStage = function (r, key) { return r.stage === key || (QN.indexOf(key) >= 0 && QN.indexOf(r.stage) >= 0); };
+var inStage = function (r, key) { return r.stage === key || (QN.indexOf(key) >= 0 && QN.indexOf(r.stage) >= 0) || (key === "ijro" && r.stage === "yakun" && !!r.alsoIjro); };
 var subLbl = function (tab, k) { var x = (SUBT[tab] || []).filter(function (y) { return y[0] === k; })[0]; return x ? x[1] : ""; };
 var L_TABS = [["korib", "Ko'rib chiqish"], ["majlis", "Sudgacha majlis"], ["qoldir", "Ishni keyinga qoldirish"], ["natija", "Natija qo'yish"], ["tiklash", "Ish yuritishni tiklash"], ["ijro", "Ijro tuzish"], ["yakun", "Yakunlangan"], ["arxiv", "Arxiv"]];
 var L_AVC = [["#dbeafe", "#1e40af"], ["#fde68a", "#92400e"], ["#bbf7d0", "#166534"]];
@@ -5731,8 +5731,8 @@ if (lfPer.length && skip !== "per") { var pool = lfPerRole === "ariz" ? r.ariz :
 return true; };
 var stageRows = s.lRows.filter(function (r) { return inStage(r, s.lTab); });
 var IJ_SUBS = SUBT[s.lTab] || [], ijSub = ((s.lSubs || {})[s.lTab]) || defSub(s.lTab), isIj = !!SUBT[s.lTab];
-var ijCnt = function (k) { return stageRows.filter(function (r) { return (k === "all" || subOf(r) === k) && lfMatch(r); }).length; };
-var visible = stageRows.filter(function (r) { return lfMatch(r) && (!isIj || ijSub === "all" || subOf(r) === ijSub); });
+var ijCnt = function (k) { return stageRows.filter(function (r) { return (k === "all" || subOf(r, s.lTab) === k) && lfMatch(r); }).length; };
+var visible = stageRows.filter(function (r) { return lfMatch(r) && (!isIj || ijSub === "all" || subOf(r, s.lTab) === ijSub); });
 var selIds = stageRows.filter(function (r) { return s.lSel[r.id]; }).map(function (r) { return r.id; });
 var visSel = visible.filter(function (r) { return s.lSel[r.id]; }).length;
 var byIds = function (ids) { return s.lRows.filter(function (r) { return ids.indexOf(r.id) >= 0; }); };
@@ -5787,7 +5787,7 @@ var revealTab = function (el) { try { var c = el.closest(".seg-tabs"); if (!c) r
 if (r > x + c.clientWidth - pad) x = r - c.clientWidth + pad; else if (l < x + pad) x = Math.max(0, l - pad); c.scrollTo({ left: x, behavior: "smooth" }); } catch (er) {} };
 var lTabs = L_TABS.map(function (t) {
 var isIjT = !!SUBT[t[0]], ijOn = isIjT && s.lTab === t[0], ijSubCur = lSubsS[t[0]] || defSub(t[0]);
-var n = s.lRows.filter(function (r) { return inStage(r, t[0]) && lfMatch(r) && (!ijOn || ijSubCur === "all" || subOf(r) === ijSubCur); }).length;
+var n = s.lRows.filter(function (r) { return inStage(r, t[0]) && lfMatch(r) && (!ijOn || ijSubCur === "all" || subOf(r, t[0]) === ijSubCur); }).length;
 if (isIjT) return { label: ijOn && ijSubCur !== "all" ? t[1] + " · " + subLbl(t[0], ijSubCur) : t[1], n: n, hasN: lfAny ? true : n > 0, chev: true, pop: "menu", exp: ijOn && s.lIjOpen ? "true" : "false",
 cls: "k-sub k-" + t[0] + (s.lTab === t[0] ? " on" : "") + (ijOn && s.lIjOpen ? " open" : ""), sel: s.lTab === t[0] ? "true" : "false", icCls: "lt-ic k-" + t[0],
 pick: function (e) { var el = e && e.currentTarget; if (self.state.lTab === t[0]) { self.setState({ lIjOpen: !self.state.lIjOpen }); return; } self.setState({ lTab: t[0], lMenu: 0, lIjOpen: true }); if (el) setTimeout(function () { revealTab(el); }, 0); } };
@@ -8065,13 +8065,16 @@ var p2 = function (x) { return (x < 10 ? "0" : "") + x; }, nowD = new Date(), to
 var patch = { stage: Rw[2], alsoQol: Rw[2] === "natija", moved: Date.now(), movedFrom: curLbl, majSana: f.sana || "", ajrimSana: f.ajrim || "", joyTxt: w.joy || "" };
 if (arx) patch.sub = axTo;
 var RESMAP = { t_full: ["ijro", "tasdiq", "toliq"], t_part: ["ijro", "tasdiq", "qisman"], t_rad: ["yakun", "rad"], t_kor: ["yakun", "korm"], t_tug: ["yakun", "tug"], rad: ["yakun", "qabrad"], qaytarish: ["yakun", "qayt"] };
+patch.alsoIjro = false;
 var rmp = RESMAP[w.res]; if (rmp) { if (rmp[0] === "ijro") { patch.ijSub = rmp[1]; patch.res = rmp[2]; patch.sub = ""; } else { patch.sub = rmp[1]; patch.res = ""; } patch.qaror = todayUz; }
+// "Qaytarish": ish "Yakunlangan" bilan birga "Ijro tuzish"ga ham tushadi
+if (w.res === "qaytarish" && NXK === "korib") { patch.alsoIjro = true; patch.ijSub = "tasdiq"; }
 var goAct = function (idsGo) { var key = Rw[2]; return { label: "«" + (L_TABS.filter(function (t) { return t[0] === key; })[0] || ["", Rw[3]])[1] + "» ga o'tish", fn: function () { var o = Object.assign({}, self.state.lSubs || {}); if (SUBT[key]) o[key] = "all"; self.setState({ page: "list", caseOpen: false, lTab: key, lSubs: o, lIjOpen: false, lSel: {}, lHi: { ids: idsGo, at: Date.now() } }); try { window.scrollTo(0, 0); } catch (er) {} setTimeout(function () { try { var el = document.querySelector(".l-row.hi"); if (el) el.scrollIntoView({ behavior: "smooth", block: "center" }); } catch (er) {} }, 120); } }; };
 if (w.bulk) { var ids = w.ids || []; self.setState({ nx: null, dxDd: "", calKey: "", lSel: {}, lOnlySel: false, lRows: (self.state.lRows || []).map(function (r) { return ids.indexOf(r.id) >= 0 ? Object.assign({}, r, patch) : r; }) });
-self.flash(ids.length + " ta ish «" + Rw[3] + "»" + (Rw[2] === "natija" ? " va «Ishni keyinga qoldirish»" : "") + " bosqichiga o'tkazildi" + (w.cb && w.cb.topshiriq ? " · yordamchiga topshiriq yuborildi" : "") + (w.res === "tayinlash" && w.cb && (w.cb.sms || w.cb.email) ? " · taraflarga xabarnoma yuborildi" : ""), goAct(ids)); return; }
+self.flash(ids.length + " ta ish «" + Rw[3] + "»" + (Rw[2] === "natija" ? " va «Ishni keyinga qoldirish»" : patch.alsoIjro ? " va «Ijro tuzish»" : "") + " bosqichiga o'tkazildi" + (w.cb && w.cb.topshiriq ? " · yordamchiga topshiriq yuborildi" : "") + (w.res === "tayinlash" && w.cb && (w.cb.sms || w.cb.email) ? " · taraflarga xabarnoma yuborildi" : ""), goAct(ids)); return; }
 self.setState({ nx: null, dxDd: "", calKey: "", lRows: (self.state.lRows || []).map(function (r) { return r.num === self.state.caseNum ? Object.assign({}, r, patch) : r; }) });
 var oneId = ((self.state.lRows || []).filter(function (r) { return r.num === self.state.caseNum; })[0] || {}).id;
-self.flash("Ish «" + Rw[3] + "»" + (Rw[2] === "natija" ? " va «Ishni keyinga qoldirish»" : "") + " bosqichiga o'tkazildi" + (w.cb && w.cb.topshiriq ? " · yordamchiga topshiriq yuborildi" : "") + (w.res === "tayinlash" && w.cb && (w.cb.sms || w.cb.email) ? " · taraflarga xabarnoma yuborildi" : ""), goAct(oneId ? [oneId] : []));
+self.flash("Ish «" + Rw[3] + "»" + (Rw[2] === "natija" ? " va «Ishni keyinga qoldirish»" : patch.alsoIjro ? " va «Ijro tuzish»" : "") + " bosqichiga o'tkazildi" + (w.cb && w.cb.topshiriq ? " · yordamchiga topshiriq yuborildi" : "") + (w.res === "tayinlash" && w.cb && (w.cb.sms || w.cb.email) ? " · taraflarga xabarnoma yuborildi" : ""), goAct(oneId ? [oneId] : []));
 };
 // ---- Tajriba: "Keyingi bosqichga o'tkazish" oynasi animatsiyalari (kirish, maydon ochilishi, dropdown, chiqish) ----
 var f0 = v.f || {}, jOk = !v.joy || ((v.joy !== JOY[2] || !!v.sayM) && (!manNeed(v.joy) || !!String(f0.manzilTxt || "").trim()));
