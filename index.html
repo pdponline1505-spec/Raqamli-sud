@@ -3593,6 +3593,8 @@ yakun: [["all", "Barchasi"], ["qanoat", "Qanoatlantirilgan"], ["qisman", "Qisman
 arxiv: [["all", "Barchasi"], ["yuborish", "Arxivga yuborish"], ["yuborilgan", "Arxivga yuborilgan"], ["olish", "Arxivdan olish"], ["olishrad", "Arxivdan olish rad etilgan"], ["qaytarish", "Arxivga qaytarish"]] };
 var defSub = function (tab) { var l = SUBT[tab]; return l && l[0] ? l[0][0] : "all"; };
 var subOf = function (r) { return r.sub || r.ijSub || ""; };
+// "Qabul qilish va tayinlash"dan keyin ish bir vaqtda "Natija qo'yish" va "Ishni keyinga qoldirish" tablarida turadi
+var inStage = function (r, key) { return r.stage === key || (key === "qoldir" && r.stage === "natija" && !!r.alsoQol); };
 var subLbl = function (tab, k) { var x = (SUBT[tab] || []).filter(function (y) { return y[0] === k; })[0]; return x ? x[1] : ""; };
 var L_TABS = [["korib", "Ko'rib chiqish"], ["majlis", "Sudgacha majlis"], ["qoldir", "Ishni keyinga qoldirish"], ["natija", "Natija qo'yish"], ["tiklash", "Ish yuritishni tiklash"], ["ijro", "Ijro tuzish"], ["yakun", "Yakunlangan"], ["arxiv", "Arxiv"]];
 var L_AVC = [["#dbeafe", "#1e40af"], ["#fde68a", "#92400e"], ["#bbf7d0", "#166534"]];
@@ -3612,8 +3614,8 @@ var L_DATA = [
 { id: 11, num: "R4-1901-2603/4251", tag: "", stage: "majlis", ariz: P_ARALOV, jav: ["Shaymonov Ilhom Norboy o'g'li"], sud: "Yuridik ahamiyatga ega bo'lgan faktlarni aniqlash yuzasidan", sana: "28.07.2026" },
 { id: 12, num: "R4-1901-2603/4220", tag: "", stage: "qoldir", ariz: ["Karimov Akmal Saidovich"], jav: ["Normurodov Bekzod Azizovich"], sud: "Shartnoma majburiyatlarini bajarish yuzasidan", sana: "22.07.2026" },
 { id: 13, num: "R4-1901-2603/4252", tag: "", stage: "qoldir", ariz: P_ARALOV, jav: ["Shaymonov Ilhom Norboy o'g'li"], sud: "Yuridik ahamiyatga ega bo'lgan faktlarni aniqlash yuzasidan", sana: "28.07.2026" },
-{ id: 14, num: "R4-1901-2603/4253", tag: "", stage: "natija", ariz: ["Karimov Akmal Saidovich"], jav: ["Normurodov Bekzod Azizovich"], sud: "Shartnoma majburiyatlarini bajarish yuzasidan", sana: "22.07.2026" },
-{ id: 15, num: "R4-1901-2603/4254", tag: "", stage: "natija", ariz: P_ARALOV, jav: ["Shaymonov Ilhom Norboy o'g'li"], sud: "Yuridik ahamiyatga ega bo'lgan faktlarni aniqlash yuzasidan", sana: "28.07.2026" },
+{ id: 14, num: "R4-1901-2603/4253", tag: "", stage: "natija", alsoQol: true, ariz: ["Karimov Akmal Saidovich"], jav: ["Normurodov Bekzod Azizovich"], sud: "Shartnoma majburiyatlarini bajarish yuzasidan", sana: "22.07.2026" },
+{ id: 15, num: "R4-1901-2603/4254", tag: "", stage: "natija", alsoQol: true, ariz: P_ARALOV, jav: ["Shaymonov Ilhom Norboy o'g'li"], sud: "Yuridik ahamiyatga ega bo'lgan faktlarni aniqlash yuzasidan", sana: "28.07.2026" },
 { id: 16, num: "R4-1901-2603/4255", tag: "", stage: "tiklash", ariz: ["Karimov Akmal Saidovich"], jav: ["Normurodov Bekzod Azizovich"], sud: "Shartnoma majburiyatlarini bajarish yuzasidan", sana: "22.07.2026" },
 { id: 17, num: "R4-1901-2603/4256", tag: "", stage: "tiklash", ariz: P_ARALOV, jav: ["Shaymonov Ilhom Norboy o'g'li"], sud: "Yuridik ahamiyatga ega bo'lgan faktlarni aniqlash yuzasidan", sana: "28.07.2026" },
 { id: 18, num: "4-1901-2606/3246", tag: "", stage: "ijro", ijSub: "tasdiq", ariz: ["«Agro Invest Servis» MChJ"], jav: ["«Durable Slate Industry» MChJ"], sud: "Haq evaziga xizmat ko'rsatish shartnomasi yuzasidan", sana: "06.02.2026", qaror: "25.02.2026 10:45", res: "tug" },
@@ -5747,7 +5749,7 @@ if (lfTag.length && skip !== "tag" && lfTag.indexOf(r.tag) < 0) return false;
 if (lfDate && skip !== "date" && !dateOk(r, lfDate)) return false;
 if (lfPer.length && skip !== "per") { var pool = lfPerRole === "ariz" ? r.ariz : lfPerRole === "jav" ? r.jav : (r.ariz || []).concat(r.jav || []); if (!lfPer.some(function (n) { return pool.indexOf(n) >= 0; })) return false; }
 return true; };
-var stageRows = s.lRows.filter(function (r) { return r.stage === s.lTab; });
+var stageRows = s.lRows.filter(function (r) { return inStage(r, s.lTab); });
 var IJ_SUBS = SUBT[s.lTab] || [], ijSub = ((s.lSubs || {})[s.lTab]) || defSub(s.lTab), isIj = !!SUBT[s.lTab];
 var ijCnt = function (k) { return stageRows.filter(function (r) { return (k === "all" || subOf(r) === k) && lfMatch(r); }).length; };
 var visible = stageRows.filter(function (r) { return lfMatch(r) && (!isIj || ijSub === "all" || subOf(r) === ijSub); });
@@ -5805,7 +5807,7 @@ var revealTab = function (el) { try { var c = el.closest(".seg-tabs"); if (!c) r
 if (r > x + c.clientWidth - pad) x = r - c.clientWidth + pad; else if (l < x + pad) x = Math.max(0, l - pad); c.scrollTo({ left: x, behavior: "smooth" }); } catch (er) {} };
 var lTabs = L_TABS.map(function (t) {
 var isIjT = !!SUBT[t[0]], ijOn = isIjT && s.lTab === t[0], ijSubCur = lSubsS[t[0]] || defSub(t[0]);
-var n = s.lRows.filter(function (r) { return r.stage === t[0] && lfMatch(r) && (!ijOn || ijSubCur === "all" || subOf(r) === ijSubCur); }).length;
+var n = s.lRows.filter(function (r) { return inStage(r, t[0]) && lfMatch(r) && (!ijOn || ijSubCur === "all" || subOf(r) === ijSubCur); }).length;
 if (isIjT) return { label: ijOn && ijSubCur !== "all" ? t[1] + " · " + subLbl(t[0], ijSubCur) : t[1], n: n, hasN: lfAny ? true : n > 0, chev: true, pop: "menu", exp: ijOn && s.lIjOpen ? "true" : "false",
 cls: "k-sub k-" + t[0] + (s.lTab === t[0] ? " on" : "") + (ijOn && s.lIjOpen ? " open" : ""), sel: s.lTab === t[0] ? "true" : "false", icCls: "lt-ic k-" + t[0],
 pick: function (e) { var el = e && e.currentTarget; if (self.state.lTab === t[0]) { self.setState({ lIjOpen: !self.state.lIjOpen }); return; } self.setState({ lTab: t[0], lMenu: 0, lIjOpen: true }); if (el) setTimeout(function () { revealTab(el); }, 0); } };
@@ -7649,7 +7651,7 @@ __out.dbDate = now.getDate() + "-" + MON[now.getMonth()] + ", " + WD[now.getDay(
 __out.dbHello = (hr < 11 ? "Xayrli tong" : hr < 18 ? "Xayrli kun" : "Xayrli kech") + ", " + me[3] + "!";
 __out.dbRoleTxt = role === "yordamchi" ? "Sudya Tojiyev Z. X. ga biriktirilgan · Termiz tumanlararo iqtisodiy sudi" : role === "sudya" ? "Termiz tumanlararo iqtisodiy sudi · biriktirilgan yordamchi: Ergashev J. A." : role === "devon" ? "Devonxona mudiri · Termiz tumanlararo iqtisodiy sudi" : "Operator · Termiz tumanlararo iqtisodiy sudi";
 __out.dbCabinet = me[1] + " kabineti"; __out.dbUserLine = me[0];
-var rows = s.lRows || [], cnt = function (st) { return rows.filter(function (r) { return r.stage === st; }).length; };
+var rows = s.lRows || [], cnt = function (st) { return rows.filter(function (r) { return inStage(r, st); }).length; };
 var go = function (tab) { return function () { self.setState({ page: "list", lTab: tab, caseOpen: false, listSrc: self.state.listSrc || "main" }); try { window.scrollTo(0, 0); } catch (e) {} }; };
 var ICO = {
 a: '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4M12 13v3M12 18.5v.5"></path></svg>',
@@ -8069,16 +8071,16 @@ if (yord) { var pend = { res: Rw[1], to: Rw[3], toKey: Rw[2], from: "Ergashev J.
 self.setState({ nx: null, dxDd: "", calKey: "", lSel: w.bulk ? {} : self.state.lSel, lRows: (self.state.lRows || []).map(function (r) { return (tIds ? tIds.indexOf(r.id) >= 0 : r.num === self.state.caseNum) ? Object.assign({}, r, { pend: pend }) : r; }) });
 self.flash((tIds ? tIds.length + " ta ish" : "Ish") + " sudyaga yuborildi · «" + Rw[1] + "» taklifi tasdiqlash kutilmoqda"); return; }
 var p2 = function (x) { return (x < 10 ? "0" : "") + x; }, nowD = new Date(), todayUz = p2(nowD.getDate()) + "." + p2(nowD.getMonth() + 1) + "." + nowD.getFullYear() + " " + p2(nowD.getHours()) + ":" + p2(nowD.getMinutes());
-var patch = { stage: Rw[2], moved: Date.now(), movedFrom: curLbl, majSana: f.sana || "", ajrimSana: f.ajrim || "", joyTxt: w.joy || "" };
+var patch = { stage: Rw[2], alsoQol: Rw[2] === "natija", moved: Date.now(), movedFrom: curLbl, majSana: f.sana || "", ajrimSana: f.ajrim || "", joyTxt: w.joy || "" };
 if (arx) patch.sub = axTo;
 var RESMAP = { t_full: ["ijro", "tasdiq", "toliq"], t_part: ["ijro", "tasdiq", "qisman"], t_rad: ["yakun", "rad"], t_kor: ["yakun", "korm"], t_tug: ["yakun", "tug"], rad: ["yakun", "qabrad"], qaytarish: ["yakun", "qayt"] };
 var rmp = RESMAP[w.res]; if (rmp) { if (rmp[0] === "ijro") { patch.ijSub = rmp[1]; patch.res = rmp[2]; patch.sub = ""; } else { patch.sub = rmp[1]; patch.res = ""; } patch.qaror = todayUz; }
 var goAct = function (idsGo) { var key = Rw[2]; return { label: "«" + (L_TABS.filter(function (t) { return t[0] === key; })[0] || ["", Rw[3]])[1] + "» ga o'tish", fn: function () { var o = Object.assign({}, self.state.lSubs || {}); if (SUBT[key]) o[key] = "all"; self.setState({ page: "list", caseOpen: false, lTab: key, lSubs: o, lIjOpen: false, lSel: {}, lHi: { ids: idsGo, at: Date.now() } }); try { window.scrollTo(0, 0); } catch (er) {} setTimeout(function () { try { var el = document.querySelector(".l-row.hi"); if (el) el.scrollIntoView({ behavior: "smooth", block: "center" }); } catch (er) {} }, 120); } }; };
 if (w.bulk) { var ids = w.ids || []; self.setState({ nx: null, dxDd: "", calKey: "", lSel: {}, lOnlySel: false, lRows: (self.state.lRows || []).map(function (r) { return ids.indexOf(r.id) >= 0 ? Object.assign({}, r, patch) : r; }) });
-self.flash(ids.length + " ta ish «" + Rw[3] + "» bosqichiga o'tkazildi" + (w.cb && w.cb.topshiriq ? " · yordamchiga topshiriq yuborildi" : "") + (w.res === "tayinlash" && w.cb && (w.cb.sms || w.cb.email) ? " · taraflarga xabarnoma yuborildi" : ""), goAct(ids)); return; }
+self.flash(ids.length + " ta ish «" + Rw[3] + "»" + (Rw[2] === "natija" ? " va «Ishni keyinga qoldirish»" : "") + " bosqichiga o'tkazildi" + (w.cb && w.cb.topshiriq ? " · yordamchiga topshiriq yuborildi" : "") + (w.res === "tayinlash" && w.cb && (w.cb.sms || w.cb.email) ? " · taraflarga xabarnoma yuborildi" : ""), goAct(ids)); return; }
 self.setState({ nx: null, dxDd: "", calKey: "", lRows: (self.state.lRows || []).map(function (r) { return r.num === self.state.caseNum ? Object.assign({}, r, patch) : r; }) });
 var oneId = ((self.state.lRows || []).filter(function (r) { return r.num === self.state.caseNum; })[0] || {}).id;
-self.flash("Ish «" + Rw[3] + "» bosqichiga o'tkazildi" + (w.cb && w.cb.topshiriq ? " · yordamchiga topshiriq yuborildi" : "") + (w.res === "tayinlash" && w.cb && (w.cb.sms || w.cb.email) ? " · taraflarga xabarnoma yuborildi" : ""), goAct(oneId ? [oneId] : []));
+self.flash("Ish «" + Rw[3] + "»" + (Rw[2] === "natija" ? " va «Ishni keyinga qoldirish»" : "") + " bosqichiga o'tkazildi" + (w.cb && w.cb.topshiriq ? " · yordamchiga topshiriq yuborildi" : "") + (w.res === "tayinlash" && w.cb && (w.cb.sms || w.cb.email) ? " · taraflarga xabarnoma yuborildi" : ""), goAct(oneId ? [oneId] : []));
 };
 // ---- Tajriba: "Keyingi bosqichga o'tkazish" oynasi animatsiyalari (kirish, maydon ochilishi, dropdown, chiqish) ----
 var f0 = v.f || {}, jOk = !v.joy || ((v.joy !== JOY[2] || !!v.sayM) && (!manNeed(v.joy) || !!String(f0.manzilTxt || "").trim()));
