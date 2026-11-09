@@ -6416,3 +6416,9 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .nxm-nat .nx-cg .nt-hqf{order:1}
 .nxm-natw .nx-cg>.nx-cg-res{grid-column:auto}
 @media (max-width:640px){.nxm-natw .nx-cg>.nx-cg-res{grid-column:1/-1}}
+/* Ishni keyinga qoldirish paneli: sig'maganlar "Boshqalar"ga */
+.tb-nmore.q{display:none}
+.tb-nmore.q .nmq{display:none}
+@container (max-width:1260px){.tbrow .nb-birl{display:none}.tb-nmore.q{display:block}.tb-nmore.q .nmq-birl{display:flex}}
+@container (max-width:1050px){.tbrow .nb-qayta{display:none}.tb-nmore.q .nmq-qayta{display:flex}}
+@container (max-width:880px){.tbrow .nb-uzay{display:none}.tb-nmore.q .nmq-uzay{display:flex}}
