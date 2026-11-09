@@ -6274,3 +6274,18 @@ html[data-theme="dark"] .ds-host img{filter:none}
 @media (min-width:1400px){.l-row .l-numlink{white-space:nowrap}}
 .l-tag.res{gap:6px}
 .l-tag.res i{width:6px;height:6px;border-radius:50%;background:currentColor;flex:none;opacity:.85}
+/* Ichki holat menyusi — barcha tablarga umumiy (Ijro tuzish, Yakunlangan) */
+.seg-tabs .k-sub .l-tabchev{margin-left:-2px;opacity:.85;transition:transform 240ms cubic-bezier(.22,1,.36,1)}
+.seg-tabs .k-sub.open .l-tabchev{transform:rotate(180deg)}
+.l-ijmenu{max-height:min(440px,calc(100vh - 120px));overflow:auto}
+.l-ijo.k-qanoat .l-subdot{background:#16a34a}.l-ijo.k-qisman .l-subdot{background:#eab308}.l-ijo.k-rad .l-subdot{background:#dc2626}
+.l-ijo.k-birl .l-subdot{background:#7c3aed}.l-ijo.k-korm .l-subdot{background:#64748b}.l-ijo.k-tug .l-subdot{background:#94a3b8}
+.l-ijo.k-boshqa .l-subdot{background:#2563eb}.l-ijo.k-qabrad .l-subdot{background:#ea580c}.l-ijo.k-qayt .l-subdot{background:#db2777}
+.l-tag.res.k-qanoat{background:#dcfce7;color:#15803d}
+.l-tag.res.k-rad{background:#fee2e2;color:#b91c1c}
+.l-tag.res.k-birl{background:#ede9fe;color:#6d28d9}
+.l-tag.res.k-korm{background:#f1f5f9;color:#334155}
+.l-tag.res.k-boshqa{background:#dbeafe;color:#1d4ed8}
+.l-tag.res.k-qabrad{background:#ffedd5;color:#c2410c}
+.l-tag.res.k-qayt{background:#fce7f3;color:#be185d}
+.l-tag.res{max-width:100%;overflow:hidden;text-overflow:ellipsis}
