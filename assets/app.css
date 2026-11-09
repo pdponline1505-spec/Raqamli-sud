@@ -6302,3 +6302,13 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .l-tabrow>.lf-btn2 .lf-lbl,.l-tabrow>.lf-btn2 .lf-fchev{display:none !important}
 .l-tabrow>.lf-btn2 .lf-n{position:absolute;top:-6px;right:-6px}
 .l-tabrow>.lf-btn2 svg{width:18px;height:18px}
+/* Ish bosqichlari orasida o'tkazish: toast amali, "Yangi" belgisi, qator yoritilishi */
+.toast-act{margin-left:8px;display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px 0 12px;border:0;border-radius:7px;background:rgba(255,255,255,.14);color:#fff;font:inherit;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background-color 150ms}
+.toast-act:hover{background:rgba(255,255,255,.26)}
+.toast-act:focus-visible{outline:2px solid #93c5fd;outline-offset:2px}
+.l-tag.new{background:#e0eaff;color:#1d4ed8;gap:6px;white-space:nowrap}
+.l-tag.new i{width:6px;height:6px;border-radius:50%;background:#3073f1;flex:none;animation:newPulse 1.6s ease-in-out infinite}
+@keyframes newPulse{0%,100%{box-shadow:0 0 0 0 rgba(48,115,241,.45)}50%{box-shadow:0 0 0 4px rgba(48,115,241,0)}}
+@keyframes rowHi{0%{background-color:#dbeafe;box-shadow:inset 3px 0 0 #3073f1}70%{background-color:#eef4ff;box-shadow:inset 3px 0 0 #3073f1}100%{background-color:rgba(238,244,255,0);box-shadow:inset 3px 0 0 rgba(48,115,241,0)}}
+.l-row.hi{animation:rowHi 3s cubic-bezier(.22,1,.36,1)}
+@media (prefers-reduced-motion:reduce){.l-row.hi,.l-tag.new i{animation:none}}

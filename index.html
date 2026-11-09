@@ -273,14 +273,14 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="{{lTblCls}}">
 <div class="l-row l-head"><span><button class="{{lAllCls}}" role="checkbox" aria-checked="{{lAllStr}}" aria-label="Barchasini tanlash" onClick="{{lToggleAll}}"><sc-if value="{{lAllOn}}" hint-placeholder-val="{{ false }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 12px; height: 12px; stroke-width: 3"><path d="M5 12l5 5 9-10"></path></svg></sc-if><sc-if value="{{lSomeOn}}" hint-placeholder-val="{{ false }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 12px; height: 12px; stroke-width: 3"><path d="M6 12h12"></path></svg></sc-if></button></span><span class="row" style="gap: 6px">Ish raqami<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 9l4-4 4 4M8 15l4 4 4-4"></path></svg></span><span class="row" style="gap: 6px">Arizachi<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 9l4-4 4 4M8 15l4 4 4-4"></path></svg></span><span class="row" style="gap: 6px">Javobgar<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 9l4-4 4 4M8 15l4 4 4-4"></path></svg></span><span class="row" style="gap: 6px">Ish turkumi<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 9l4-4 4 4M8 15l4 4 4-4"></path></svg></span><span class="row" style="gap: 6px">Sana<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 9l4-4 4 4M8 15l4 4 4-4"></path></svg></span><span></span></div>
 <sc-for list="{{lRows}}" as="r" hint-placeholder-count="9">
-<div class="l-row" style="background: {{r.bg}}">
+<div class="{{r.rowCls}}" style="background: {{r.bg}}">
 <button class="l-rowbtn" aria-label="{{r.num}} ishini ochish" onClick="{{r.open}}"></button>
 <button class="{{r.chkCls}}" role="checkbox" aria-checked="{{r.selStr}}" aria-label="{{r.num}} ni tanlash" onClick="{{r.toggle}}"><sc-if value="{{r.sel}}" hint-placeholder-val="{{ false }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 12px; height: 12px; stroke-width: 3"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button>
-<div class="kv l-pe" style="gap: 6px"><button class="l-numlink" title="To'liq oynada ochish" onClick="{{r.openFull}}">{{r.num}}</button><sc-if value="{{r.isDub}}" hint-placeholder-val="{{ false }}"><span class="l-tag dub"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg>Dublikat</span></sc-if><sc-if value="{{r.hasRes}}" hint-placeholder-val="{{ false }}"><span class="{{r.resCls}}" title="{{r.resTitle}}"><i></i>{{r.resTxt}}</span></sc-if><sc-if value="{{r.hasPend}}" hint-placeholder-val="{{ false }}"><span class="l-tag pend" title="{{r.pendTitle}}">{{r.pendTxt}}</span></sc-if><sc-if value="{{r.isQd}}" hint-placeholder-val="{{ false }}"><span class="l-tag qd"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"></path><path d="M9 14h6M13 12l2 2-2 2"></path></svg>Qarshi da'vo</span></sc-if></div>
+<div class="kv l-pe" style="gap: 6px"><button class="l-numlink" title="To'liq oynada ochish" onClick="{{r.openFull}}">{{r.num}}</button><sc-if value="{{r.isDub}}" hint-placeholder-val="{{ false }}"><span class="l-tag dub"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg>Dublikat</span></sc-if><sc-if value="{{r.isNew}}" hint-placeholder-val="{{ false }}"><span class="l-tag new" title="{{r.newTitle}}"><i></i>Yangi</span></sc-if><sc-if value="{{r.hasRes}}" hint-placeholder-val="{{ false }}"><span class="{{r.resCls}}" title="{{r.resTitle}}"><i></i>{{r.resTxt}}</span></sc-if><sc-if value="{{r.hasPend}}" hint-placeholder-val="{{ false }}"><span class="l-tag pend" title="{{r.pendTitle}}">{{r.pendTxt}}</span></sc-if><sc-if value="{{r.isQd}}" hint-placeholder-val="{{ false }}"><span class="l-tag qd"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"></path><path d="M9 14h6M13 12l2 2-2 2"></path></svg>Qarshi da'vo</span></sc-if></div>
 <div class="l-pe"><div class="row" style="gap: 10px; min-width: 0"><sc-if value="{{r.arizMany}}" hint-placeholder-val="{{ false }}"><span class="l-stack"><sc-for list="{{r.arizAv}}" as="a" hint-placeholder-count="3"><img class="l-av" src="{{a.photo}}" alt=""></sc-for></span></sc-if><span class="kv" style="min-width: 0"><span class="l-name">{{r.arizName}}</span><sc-if value="{{r.arizMany}}" hint-placeholder-val="{{ false }}"><small>{{r.arizCount}}</small></sc-if></span></div></div>
 <div class="l-pe"><div class="row" style="gap: 10px; min-width: 0"><sc-if value="{{r.javMany}}" hint-placeholder-val="{{ false }}"><span class="l-stack"><sc-for list="{{r.javAv}}" as="a" hint-placeholder-count="3"><img class="l-av" src="{{a.photo}}" alt=""></sc-for></span></sc-if><span class="kv" style="min-width: 0"><span class="l-name">{{r.javName}}</span><sc-if value="{{r.javMany}}" hint-placeholder-val="{{ false }}"><small>{{r.javCount}}</small></sc-if></span></div></div>
 <span class="l-pe l-clamp">{{r.sud}}</span>
-<span class="l-pe l-datec"><span class="l-date">{{r.sana}}</span><sc-if value="{{r.hasQaror}}" hint-placeholder-val="{{ false }}"><small class="l-qaror" title="{{r.qarorFull}}">Qaror: {{r.qaror}}</small></sc-if></span>
+<span class="l-pe l-datec"><span class="l-date">{{r.sana}}</span><sc-if value="{{r.hasQaror}}" hint-placeholder-val="{{ false }}"><small class="l-qaror" title="{{r.qarorFull}}">{{r.dLine}}</small></sc-if></span>
 <div class="row" style="gap: 2px; justify-self: end; position: relative; z-index: {{r.menuZ}}"><button class="ib l-hoverbtn" title="To'liq oynada ochish" aria-label="{{r.num}} ni to'liq oynada ochish" onClick="{{r.openFull}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"></path></svg></button>
 <div style="position: relative">
 <button class="ib" style="border: 1px solid {{r.menuBorder}}; background: {{r.menuBg}}" aria-label="Amallar" aria-expanded="{{r.menuStr}}" onClick="{{r.toggleMenu}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg></button>
@@ -3433,7 +3433,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 </div>
 </sc-if>
-<sc-if value="{{hasToast}}" hint-placeholder-val="{{ false }}"><div role="status" style="position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); z-index: 60; background: #0f172a; color: #ffffff; padding: 11px 18px; border-radius: 10px; font-size: 14px; box-shadow: 0 12px 32px rgba(15, 23, 42, 0.3); display: flex; gap: 8px; align-items: center"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>{{toast}}</div></sc-if>
+<sc-if value="{{hasToast}}" hint-placeholder-val="{{ false }}"><div role="status" style="position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); z-index: 60; background: #0f172a; color: #ffffff; padding: 11px 18px; border-radius: 10px; font-size: 14px; box-shadow: 0 12px 32px rgba(15, 23, 42, 0.3); display: flex; gap: 8px; align-items: center"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>{{toast}}<sc-if value="{{hasToastAct}}" hint-placeholder-val="{{ false }}"><button type="button" class="toast-act" onClick="{{toastActFn}}">{{toastActLbl}}<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button></sc-if></div></sc-if>
 <sc-if value="{{lgShow}}" hint-placeholder-val="{{ false }}">
 <div class="lg-wrap">
 <div class="lg-card {{lgShake}}" role="dialog" aria-modal="true" aria-label="Tizimga kirish">
@@ -5115,11 +5115,11 @@ clearTimeout(this._t); clearTimeout(this._lt);
 this.dxStopTimers();
 }
 
-flash(msg) {
+flash(msg, act) {
 var self = this;
 clearTimeout(this._t);
-this.setState({ toast: msg });
-this._t = setTimeout(function () { self.setState({ toast: "" }); }, 2600);
+this.setState({ toast: msg, toastAct: act || null });
+this._t = setTimeout(function () { self.setState({ toast: "", toastAct: null }); }, act ? 6000 : 2600);
 }
 
 dxUpload(kind, files, turi) {
@@ -5781,7 +5781,10 @@ arizName: r.ariz[0], arizMany: r.ariz.length > 1, arizCount: r.ariz.length + " t
 javName: r.jav[0], javMany: r.jav.length > 1, javCount: r.jav.length + " ta", javAv: avs(r.jav),
 hasIj: false, ijCls: "", ijTxt: "",
 hasRes: !!r.res || ((r.stage === "yakun" || r.stage === "arxiv") && !!r.sub), resCls: "l-tag res k-" + (r.stage === "arxiv" ? "ax-" : "") + (r.res || r.sub || ""), resTxt: r.stage === "arxiv" && r.sub ? ({ yuborish: "Yuborishga", yuborilgan: "Yuborilgan", olish: "Olish so'rovi", olishrad: "Olish rad etilgan", qaytarish: "Qaytarish" })[r.sub] : r.stage === "yakun" && r.sub ? ({ qanoat: "To'liq", qisman: "Qisman", rad: "Rad etilgan", birl: "Birlashtirilgan", korm: "Ko'rmasdan", tug: "Tugatilgan", boshqa: "Boshqa sudga", qabrad: "Qabul rad", qayt: "Qaytarilgan" })[r.sub] : r.res === "tug" ? "Tugatilgan" : r.res === "qisman" ? "Qisman" : r.res === "toliq" ? "To'liq" : "", resTitle: r.stage === "arxiv" && r.sub ? subLbl("arxiv", r.sub) : r.stage === "yakun" && r.sub ? subLbl("yakun", r.sub) : r.res === "tug" ? "Ish tugatilgan" : r.res === "qisman" ? "Qisman qanoatlantirilgan" : r.res === "toliq" ? "To'liq qanoatlantirilgan" : "",
-hasQaror: !!r.qaror, qaror: String(r.qaror || "").split(" ")[0], qarorFull: r.qaror ? "Qaror: " + r.qaror : "",
+hasQaror: !!r.qaror || (!!r.majSana && ["majlis", "natija", "qoldir", "tiklash"].indexOf(r.stage) >= 0), qaror: String(r.qaror || "").split(" ")[0], qarorFull: r.qaror ? "Qaror: " + r.qaror : (r.majSana ? "Ish ko'riladigan sana: " + isoToUz(r.majSana) + (r.joyTxt ? " · " + r.joyTxt : "") : ""),
+dLine: r.qaror && !(r.majSana && ["majlis", "natija", "qoldir", "tiklash"].indexOf(r.stage) >= 0) ? "Qaror: " + String(r.qaror).split(" ")[0] : (r.majSana ? "Majlis: " + isoToUz(r.majSana) : ""),
+isNew: !!r.moved && Date.now() - r.moved < 30 * 60 * 1000, newTitle: r.movedFrom ? "«" + r.movedFrom + "» bosqichidan o'tkazildi" : "Yangi o'tkazilgan",
+rowCls: "l-row" + (s.lHi && Date.now() - s.lHi.at < 4000 && (s.lHi.ids || []).indexOf(r.id) >= 0 ? " hi" : ""),
 sel: sel, selStr: sel ? "true" : "false", chkCls: sel ? "l-chk on" : "l-chk", bg: sel ? "#eff6ff" : (menuOpen ? "#f8fafc" : "#ffffff"),
 menuOpen: menuOpen, menuZ: menuOpen ? "40" : "2", menuStr: menuOpen ? "true" : "false", menuBorder: menuOpen ? "#93c5fd" : "transparent", menuBg: menuOpen ? "#eff6ff" : "transparent",
 toggle: function () { var m = Object.assign({}, self.state.lSel); m[r.id] = !m[r.id]; self.setState({ lSel: m }); },
@@ -6481,7 +6484,7 @@ try { navigator.clipboard.writeText(self.state.caseNum); } catch (e) {}
 self.flash("Ish raqami nusxalandi");
 },
 soon: function () { self.flash("Bu amal prototipda ko'rsatilmagan"); },
-toast: s.toast, hasToast: !!s.toast,
+toast: s.toast, hasToast: !!s.toast, hasToastAct: !!(s.toast && s.toastAct), toastActLbl: s.toastAct ? s.toastAct.label : "", toastActFn: function () { var a = self.state.toastAct; clearTimeout(self._t); self.setState({ toast: "", toastAct: null }); if (a && a.fn) a.fn(); },
 
 qarshi: qarshi, qarshiCount: qCase.length, qxMore: qCase.length > QX_LIM, qxMoreLbl: qxShowAll ? "Kamroq ko'rsatish" : "Yana " + (qCase.length - QX_LIM) + " ta qarshi da'voni ko'rsatish", qxMoreCls: "qx-morebtn" + (qxShowAll ? " on" : ""),
 qxMoreTog: function () { self.setState({ qxAll: !self.state.qxAll }); }, qxAllOpen: function () { var o = {}; qCase.forEach(function (q) { o[q.id] = true; }); self.setState({ qxOpen: o, qxAll: true }); }, qxAllClose: function () { var o = {}; qCase.forEach(function (q) { o[q.id] = false; }); self.setState({ qxOpen: o }); },
@@ -8065,10 +8068,17 @@ if (!qol && !nat && !arx && badDay(f.ajrim)) { self.setState({ nx: Object.assign
 if (yord) { var pend = { res: Rw[1], to: Rw[3], toKey: Rw[2], from: "Ergashev J. A." }, tIds = w.bulk ? (w.ids || []) : null;
 self.setState({ nx: null, dxDd: "", calKey: "", lSel: w.bulk ? {} : self.state.lSel, lRows: (self.state.lRows || []).map(function (r) { return (tIds ? tIds.indexOf(r.id) >= 0 : r.num === self.state.caseNum) ? Object.assign({}, r, { pend: pend }) : r; }) });
 self.flash((tIds ? tIds.length + " ta ish" : "Ish") + " sudyaga yuborildi · «" + Rw[1] + "» taklifi tasdiqlash kutilmoqda"); return; }
-if (w.bulk) { var ids = w.ids || []; self.setState({ nx: null, dxDd: "", calKey: "", lSel: {}, lOnlySel: false, lRows: (self.state.lRows || []).map(function (r) { return ids.indexOf(r.id) >= 0 ? Object.assign({}, r, Object.assign({ stage: Rw[2] }, arx ? { sub: axTo } : {})) : r; }) });
-self.flash(ids.length + " ta ish «" + Rw[3] + "» bosqichiga o'tkazildi" + (w.cb && w.cb.topshiriq ? " · yordamchiga topshiriq yuborildi" : "") + (w.res === "tayinlash" && w.cb && (w.cb.sms || w.cb.email) ? " · taraflarga xabarnoma yuborildi" : "")); return; }
-self.setState({ nx: null, dxDd: "", calKey: "", lRows: (self.state.lRows || []).map(function (r) { return r.num === self.state.caseNum ? Object.assign({}, r, Object.assign({ stage: Rw[2] }, arx ? { sub: axTo } : {})) : r; }) });
-self.flash("Ish «" + Rw[3] + "» bosqichiga o'tkazildi" + (w.cb && w.cb.topshiriq ? " · yordamchiga topshiriq yuborildi" : "") + (w.res === "tayinlash" && w.cb && (w.cb.sms || w.cb.email) ? " · taraflarga xabarnoma yuborildi" : ""));
+var p2 = function (x) { return (x < 10 ? "0" : "") + x; }, nowD = new Date(), todayUz = p2(nowD.getDate()) + "." + p2(nowD.getMonth() + 1) + "." + nowD.getFullYear() + " " + p2(nowD.getHours()) + ":" + p2(nowD.getMinutes());
+var patch = { stage: Rw[2], moved: Date.now(), movedFrom: curLbl, majSana: f.sana || "", ajrimSana: f.ajrim || "", joyTxt: w.joy || "" };
+if (arx) patch.sub = axTo;
+var RESMAP = { t_full: ["ijro", "tasdiq", "toliq"], t_part: ["ijro", "tasdiq", "qisman"], t_rad: ["yakun", "rad"], t_kor: ["yakun", "korm"], t_tug: ["yakun", "tug"], rad: ["yakun", "qabrad"], qaytarish: ["yakun", "qayt"] };
+var rmp = RESMAP[w.res]; if (rmp) { if (rmp[0] === "ijro") { patch.ijSub = rmp[1]; patch.res = rmp[2]; patch.sub = ""; } else { patch.sub = rmp[1]; patch.res = ""; } patch.qaror = todayUz; }
+var goAct = function (idsGo) { var key = Rw[2]; return { label: "«" + (L_TABS.filter(function (t) { return t[0] === key; })[0] || ["", Rw[3]])[1] + "» ga o'tish", fn: function () { var o = Object.assign({}, self.state.lSubs || {}); if (SUBT[key]) o[key] = "all"; self.setState({ page: "list", caseOpen: false, lTab: key, lSubs: o, lIjOpen: false, lSel: {}, lHi: { ids: idsGo, at: Date.now() } }); try { window.scrollTo(0, 0); } catch (er) {} setTimeout(function () { try { var el = document.querySelector(".l-row.hi"); if (el) el.scrollIntoView({ behavior: "smooth", block: "center" }); } catch (er) {} }, 120); } }; };
+if (w.bulk) { var ids = w.ids || []; self.setState({ nx: null, dxDd: "", calKey: "", lSel: {}, lOnlySel: false, lRows: (self.state.lRows || []).map(function (r) { return ids.indexOf(r.id) >= 0 ? Object.assign({}, r, patch) : r; }) });
+self.flash(ids.length + " ta ish «" + Rw[3] + "» bosqichiga o'tkazildi" + (w.cb && w.cb.topshiriq ? " · yordamchiga topshiriq yuborildi" : "") + (w.res === "tayinlash" && w.cb && (w.cb.sms || w.cb.email) ? " · taraflarga xabarnoma yuborildi" : ""), goAct(ids)); return; }
+self.setState({ nx: null, dxDd: "", calKey: "", lRows: (self.state.lRows || []).map(function (r) { return r.num === self.state.caseNum ? Object.assign({}, r, patch) : r; }) });
+var oneId = ((self.state.lRows || []).filter(function (r) { return r.num === self.state.caseNum; })[0] || {}).id;
+self.flash("Ish «" + Rw[3] + "» bosqichiga o'tkazildi" + (w.cb && w.cb.topshiriq ? " · yordamchiga topshiriq yuborildi" : "") + (w.res === "tayinlash" && w.cb && (w.cb.sms || w.cb.email) ? " · taraflarga xabarnoma yuborildi" : ""), goAct(oneId ? [oneId] : []));
 };
 // ---- Tajriba: "Keyingi bosqichga o'tkazish" oynasi animatsiyalari (kirish, maydon ochilishi, dropdown, chiqish) ----
 var f0 = v.f || {}, jOk = !v.joy || ((v.joy !== JOY[2] || !!v.sayM) && (!manNeed(v.joy) || !!String(f0.manzilTxt || "").trim()));
