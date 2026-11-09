@@ -6159,3 +6159,8 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .igr-err.ta-warn .igr-erri{background:#fef3c7;color:#d97706}
 .nt-h .ta-src.mib{background:#eff6ff !important;color:#1d4ed8 !important}.nt-h .ta-src.nt{background:#fff4e2 !important;color:#b45309 !important}
 .nt-h .ta-src *,.nt-h .ij-st *{color:inherit !important;font-weight:inherit !important;font-size:inherit !important}
+/* dropdown ichidagi qidiruv */
+.dx-msrch{position:sticky;top:-6px;z-index:2;display:flex;align-items:center;gap:8px;margin:-6px -6px 4px;padding:8px 10px;background:#fff;border-bottom:1px solid #eef1f5;border-radius:12px 12px 0 0;color:#94a3b8}
+.dx-msrch .inp{border:0 !important;box-shadow:none !important;padding:4px 0 !important;height:auto !important;min-height:0 !important;background:transparent !important;font-size:14px;flex:1;outline:none}
+.dx-mnone{display:block;padding:10px 12px;font-size:13px;color:#94a3b8}
+.nxm .dx-sel.multi .dx-menu .dx-olbl{white-space:normal;line-height:1.35}
