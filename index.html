@@ -7813,7 +7813,7 @@ korib: [["tayinlash", "Qabul qilish va tayinlash", "natija", "Natija qo'yish", "
 };
 // Barcha tablarda bir xil oyna — "Ko'rib chiqish" ko'rinishi
 var NXK = "korib";
-var qol = false;
+var qol = curKey === "qoldir"; // "Ishni keyinga qoldirish" — o'z maydonlari, dizayn umumiy
 if (qol) RES = [["qoldirish", "Ishni keyinga qoldirish", "natija", "Natija qo'yish", ""]];
 else RES = RES_BY[NXK];
 if (qol && n) v = Object.assign({}, v, { res: "qoldirish" });
@@ -7844,7 +7844,7 @@ __out.nxShowJoy = showJoy; __out.nxShowSana = showSana; __out.nxShowFarq = showF
 __out.nxShowAsosIn = korib && kYak; __out.nxAsosReq = kRes === "rad";
 __out.nxModeQol = qol; __out.nxModeRes = !qol; __out.nxShowZal = !qol && !korib; __out.nxShowMan = (qol || korib) ? manReq : true; __out.nxYordReq = qol;
 __out.nxShowSayM = sayOn; __out.nxManCls = sayOn ? "fld" : "fld nx-cg-res";
-__out.nxShowYord = !korib; __out.nxShowDoc = !korib;
+__out.nxShowYord = qol || !korib; __out.nxShowDoc = !korib;
 __out.nxShowSayIsh = qol && v.joy === JOY[2];
 __out.nxHTitle = qol ? "Ishni keyinga qoldirish" : "Natija va sanalar";
 __out.nxHSub = qol ? "Qoldirish sababi, yangi sana va sud majlisi joyi" : "Ko'rib chiqish natijasi, sanalar va sud majlisi joyi";
