@@ -7811,9 +7811,11 @@ var curKey = (n && n.bulk) ? (s.lTab || "korib") : (row ? row.stage : "korib"), 
 var RES_BY = {
 korib: [["tayinlash", "Qabul qilish va tayinlash", "natija", "Natija qo'yish", ""], ["qozgatish", "Qabul qilish va sudgacha majlis tayinlash", "majlis", "Sudgacha majlis", ""], ["rad", "Qabul qilishni rad etish", "yakun", "Yakunlangan", "ajrim"], ["qaytarish", "Qaytarish", "yakun", "Yakunlangan", "ajrim"]]
 };
-var qol = curKey === "qoldir";
+// Barcha tablarda bir xil oyna — "Ko'rib chiqish" ko'rinishi
+var NXK = "korib";
+var qol = false;
 if (qol) RES = [["qoldirish", "Ishni keyinga qoldirish", "natija", "Natija qo'yish", ""]];
-else if (RES_BY[curKey]) RES = RES_BY[curKey];
+else RES = RES_BY[NXK];
 if (qol && n) v = Object.assign({}, v, { res: "qoldirish" });
 var JOY = qol ? ["Sud binosida", "Boshqa sud binosida", "Sayyor sud majlisida", "Jazo ijro etish joyida", "Boshqa joyda"] : ["1 - Sud binosida", "2 - Boshqa sud binosida", "3 - Sayyor sud majlisida", "4 - Jazo ijro etish joyida", "5 - Boshqa joyda"];
 var SABAB = ["Ish bo'yicha tarjimon chaqirish maqsadida ish qoldirilganlik uchun", "Bankrot ishlari uchun", "To'xtatilgan ishlar uchun", "Ikkinchi javobgarni jalb qilish maqsadida ish qoldirilganlik uchun", "Qo'shimcha hujjatlarni talab qilish maqsadida ish qoldirilganlik uchun", "Ish bo'yicha guvoh chaqirish maqsadida ish qoldirilganlik uchun", "Javobgar yoki da'vogarga ajrim nusxasi yetib bormaganligi sababli ish qoldirilganlik uchun", "Ekspertiza tayinlash maqsadida ish qoldirilganlik uchun", "Taraflardan birining sud majlisiga kelmaganligi sababli ish qoldirilganlik uchun"];
@@ -7832,7 +7834,7 @@ __out.nxNextCls = "nx-next" + (R ? " on" : "");
 __out.nxF = v.f || {};
 __out.nxSet = { sayIsh: setF("sayIsh"), ajrim: setF("ajrim"), sana: setF("sana"), sayyorAddr: setF("sayyorAddr"), farq: setF("farq"), manzilTxt: setF("manzilTxt") };
 var manReq = manNeed(v.joy);
-var korib = curKey === "korib";
+var korib = NXK === "korib";
 var K_ASOS = ["131 – IPKning 140-moddasi 1-qismi – IPKning 154-moddasida nazarda tutilgan asoslar bo'yicha, shuningdek agar bildirilgan talab IPKning 135-moddasi talablariga muvofiq bo'lmasa", "142 – IPKning 154-moddasi 1-qismi 1-bandi – nizo sudga taalluqli bo'lmasa", "143 – IPKning 154-moddasi 1-qismi 2-bandi – ayni bir shaxslar, predmet, asoslar bo'yicha iqtisodiy sudning kuchga kirgan hal qiluv qarori yoki ishni yuritishni tugatish to'g'risidagi ajrimi mavjud bo'lsa", "144 – IPKning 154-moddasi 1-qismi 3-bandi – iqtisodiy, fuqarolik, hakamlik sudining ish yuritishida ayni bir shaxslar, predmet, asoslar bo'yicha nizo mavjud bo'lsa", "146 – IPKning 154-moddasi 1-qismi 5-bandi – ayni bir shaxslar, predmet, asoslar bo'yicha nizo yuzasidan hakamlik muhokamasini tugatish to'g'risida chiqarilgan ajrim mavjud bo'lsa", "150 – IPKning 154-moddasi 1-qismi 4/1-bandi – ayni bir shaxslar o'rtasidagi, ayni bir predmet to'g'risidagi va ayni bir asoslar bo'yicha nizo yuzasidan sudning kuchga kirgan qarori mavjud bo'lsa", "151 – IPKning 154-moddasi 1-qismi 5/1-bandi – ayni bir shaxslar o'rtasidagi, ayni bir predmet to'g'risidagi va ayni bir asoslar bo'yicha nizo yuzasidan hakamlik sudining qarori mavjud bo'lsa"];
 var kRes = korib ? v.res : "", kYak = kRes === "rad" || kRes === "qaytarish";
 var showJoy = !kYak, showSana = !kYak, showFarq = !(kYak || kRes === "qozgatish");
@@ -7867,7 +7869,7 @@ sabab: ddMulti("nx-sabab", SABAB.map(function (x) { return { v: x, l: x }; }), v
 zal: mk("zal", ["1-zal", "3-zal", "5-zal", "Kichik majlislar zali", "VKA xonasi"].map(function (x) { return { v: x, l: x }; }), "Tanlang"),
 farq: mk("farq", ["Farqi yo'q", "Farqi bor"].map(function (x) { return { v: x, l: x }; }), "Tanlang"),
 manzil: mk("manzil", ["3-zal · Termiz sh., Al-Hakim at-Termiziy ko'chasi, 12", "5-zal · Termiz sh., Al-Hakim at-Termiziy ko'chasi, 12", "VKA xonasi · 2-qavat"].map(function (x) { return { v: x, l: x }; }), "Tanlang"),
-asos: curKey === "korib" ? dd("nx-asos", [{ v: "", l: "Asosni tanlang" }].concat(K_ASOS.map(function (x) { return { v: x, l: x }; })), v.asos || "", setK("asos"), { ph: "Asosni tanlang", extra: "fxm nx-asosdd", bc: errOn && !v.asos && v.res === "rad" ? RD : "" }) : mk("asos", ((ASOS[v.res]) || []).map(function (x) { return { v: x, l: x }; }), "Asosni tanlang", { extra: "fxm", bc: errOn && !v.asos && (curKey !== "korib" || v.res === "rad") ? RD : "" }),
+asos: NXK === "korib" ? dd("nx-asos", [{ v: "", l: "Asosni tanlang" }].concat(K_ASOS.map(function (x) { return { v: x, l: x }; })), v.asos || "", setK("asos"), { ph: "Asosni tanlang", extra: "fxm nx-asosdd", bc: errOn && !v.asos && v.res === "rad" ? RD : "" }) : mk("asos", ((ASOS[v.res]) || []).map(function (x) { return { v: x, l: x }; }), "Asosni tanlang", { extra: "fxm", bc: errOn && !v.asos && (NXK !== "korib" || v.res === "rad") ? RD : "" }),
 tpl: mk("tpl", R && TPL[v.res] ? [{ v: TPL[v.res][0], l: TPL[v.res][0] }, { v: TPL[v.res][0].replace("(namuna)", "(qisqa shakl)"), l: TPL[v.res][0].replace("(namuna)", "(qisqa shakl)") }] : [], "Shablonni tanlang"),
 talab: dd("nx-talab", [{ v: "", l: "Talab turini tanlang" }].concat(TALAB.filter(function (t) { return (v.talab || []).indexOf(t) < 0; }).map(function (x) { return { v: x, l: x }; })), v.talabPick || "", setK("talabPick"), { ph: "Talab turini tanlang", noSplit: true, extra: "fxm" })
 };
@@ -7922,8 +7924,8 @@ var Rw = RES.filter(function (r) { return r[0] === w.res; })[0], f = w.f || {}, 
 if (qol) { if (!(w.sabab || []).length) miss.push("qoldirish sababi"); if (!w.yord) miss.push("yordamchi"); }
 if (!Rw) { self.setState({ nx: Object.assign({}, w, { err: "Natijani tanlang" }) }); return; }
 if (!f.ajrim && !qol) miss.push("ajrim sanasi");
-if (!f.sana && Rw[2] !== "yakun" && !qol) miss.push("ish ko'riladigan sana"); var wYak = curKey === "korib" && (w.res === "rad" || w.res === "qaytarish");
-if (curKey === "korib" && w.res === "rad" && !w.asos) miss.push("asos");
+if (!f.sana && Rw[2] !== "yakun" && !qol) miss.push("ish ko'riladigan sana"); var wYak = NXK === "korib" && (w.res === "rad" || w.res === "qaytarish");
+if (NXK === "korib" && w.res === "rad" && !w.asos) miss.push("asos");
 if (!wYak && w.joy === JOY[2] && !w.sayM) miss.push("sayyor sud manzili"); if (!wYak && manNeed(w.joy) && !(f.manzilTxt || "").trim()) miss.push("sud majlisi manzili");
 if (miss.length) { self.setState({ nx: Object.assign({}, w, { err: "To'ldirilmagan: " + miss.join(", ") }) }); return; }
 if (!qol && badDay(f.ajrim)) { self.setState({ nx: Object.assign({}, w, { err: "Ajrim sanasi: o'tgan sana yoki dam olish kunini tanlab bo'lmaydi" }) }); return; }
