@@ -6312,3 +6312,24 @@ html[data-theme="dark"] .ds-host img{filter:none}
 @keyframes rowHi{0%{background-color:#dbeafe;box-shadow:inset 3px 0 0 #3073f1}70%{background-color:#eef4ff;box-shadow:inset 3px 0 0 #3073f1}100%{background-color:rgba(238,244,255,0);box-shadow:inset 3px 0 0 rgba(48,115,241,0)}}
 .l-row.hi{animation:rowHi 3s cubic-bezier(.22,1,.36,1)}
 @media (prefers-reduced-motion:reduce){.l-row.hi,.l-tag.new i{animation:none}}
+/* Keyingi bosqich oynasi: o'tkazilayotgan ishlar ro'yxati */
+.nx-cases{border:1px solid #e6e9ef;border-radius:12px;background:#f8fafc;margin-bottom:4px;overflow:hidden}
+.nx-cases-h{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid #eef1f5;background:#fff}
+.nx-cases-ic{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;background:#eff6ff;color:#3073f1;flex:none}
+.nx-cases-ic .i{width:15px;height:15px}
+.nx-cases-t{font-size:13.5px;font-weight:600;color:#0f172a}
+.nx-cases-n{height:20px;padding:0 8px;border-radius:999px;background:#e0eaff;color:#1d4ed8;font-size:12px;font-weight:600;display:inline-grid;place-items:center;font-variant-numeric:tabular-nums}
+.nx-cases-from{margin-left:auto;font-size:12.5px;color:#64748b;white-space:nowrap}
+.nx-cases-l{max-height:232px;overflow:auto;overscroll-behavior:contain}
+.nx-case{display:grid;grid-template-columns:150px minmax(0,1fr);align-items:center;gap:12px;padding:9px 14px;border-top:1px solid #eef1f5;font-size:13px}
+.nx-case:first-child{border-top:0}
+.nx-case b{font-weight:600;color:#0f172a;white-space:nowrap;font-variant-numeric:tabular-nums}
+.nx-case-p{display:flex;align-items:center;gap:6px;min-width:0;color:#475569}
+.nx-case-p>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.nx-case-p .i{color:#94a3b8;flex:none}
+.nx-cases-more{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;height:36px;border:0;border-top:1px solid #eef1f5;background:#fff;color:#3073f1;font:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:background-color 150ms}
+.nx-cases-more:hover{background:#f5f8ff}
+.nx-cases-more:focus-visible{outline:2px solid #3073f1;outline-offset:-2px}
+.nx-cases-chev{transition:transform 240ms cubic-bezier(.22,1,.36,1)}
+.nx-cases-chev.up{transform:rotate(180deg)}
+@media (max-width:640px){.nx-case{grid-template-columns:minmax(0,1fr)}.nx-cases-from{display:none}}
