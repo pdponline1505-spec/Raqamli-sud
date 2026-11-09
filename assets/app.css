@@ -6169,3 +6169,15 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .qv .cal-pop[data-pos]{visibility:visible}
 .qv .dx-sel .dx-menu,.qv .dx-sel .dx-menu.up{position:fixed !important;z-index:95 !important;margin:0 !important;min-width:0 !important;max-width:none !important;overflow:auto !important;box-shadow:0 12px 32px rgba(15,23,42,.16) !important;visibility:hidden}
 .qv .dx-sel .dx-menu[data-pos]{visibility:visible}
+/* Ish bosqichlari tablari: sig'maganda strelkalar va chekka soya */
+.l-tabwrap{position:relative;flex:0 1 auto;min-width:0;max-width:100%;display:flex}
+.l-tabwrap>.seg-tabs{flex:0 1 auto !important;min-width:0 !important;width:max-content !important;max-width:100% !important;margin:0 !important;scroll-behavior:smooth}
+.l-tabwrap::before,.l-tabwrap::after{content:"";position:absolute;top:1px;bottom:1px;width:84px;pointer-events:none;opacity:0;transition:opacity 160ms ease;z-index:1}
+.l-tabwrap::before{left:1px;border-radius:14px 0 0 14px;background:linear-gradient(90deg,#fff 45%,rgba(255,255,255,0))}
+.l-tabwrap::after{right:1px;border-radius:0 14px 14px 0;background:linear-gradient(270deg,#fff 45%,rgba(255,255,255,0))}
+.l-tabwrap.can-l::before,.l-tabwrap.can-r::after{opacity:1}
+.l-tabwrap .tab-ar{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:30px;height:30px;border-radius:9px;border:1px solid #e2e8f0;background:#fff;color:#334155;display:none;place-items:center;cursor:pointer;box-shadow:0 1px 3px rgba(15,23,42,.08);padding:0}
+.l-tabwrap .tab-ar:hover{background:#f1f5f9;color:#0f172a}
+.l-tabwrap .tab-ar.l{left:8px}.l-tabwrap .tab-ar.r{right:8px}
+.l-tabwrap.can-l .tab-ar.l,.l-tabwrap.can-r .tab-ar.r{display:grid}
+@media (max-width:1600px){.seg-tabs{gap:2px !important}.seg-tabs button{padding:0 11px !important}}

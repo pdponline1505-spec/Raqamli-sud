@@ -247,7 +247,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 <sc-if value="{{isDs}}" hint-placeholder-val="{{ false }}"><div class="ds-host" id="ds-host"></div></sc-if>
 <sc-if value="{{isListPage}}" hint-placeholder-val="{{ true }}">
-<div class="l-tabrow"><div class="l-tabs seg-tabs" role="tablist"><sc-for list="{{lTabs}}" as="t" hint-placeholder-count="8"><button class="{{t.cls}}" role="tab" aria-selected="{{t.sel}}" onClick="{{t.pick}}">{{t.label}}<sc-if value="{{t.hasN}}" hint-placeholder-val="{{ false }}"><span class="l-tabn">{{t.n}}</span></sc-if></button></sc-for></div><button type="button" class="{{lfF2Cls}}" aria-expanded="{{lfFStr}}" aria-controls="lf-panel" aria-label="Filtrlar" title="Filtrlar" onClick="{{lfFToggle}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M7 12h10M10 17h4"></path></svg><span class="lf-lbl">Filtrlar</span><sc-if value="{{lfFHasN}}" hint-placeholder-val="{{ false }}"><span class="lf-n">{{lfFN}}</span></sc-if><svg class="i s lf-fchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button></div>
+<div class="l-tabrow"><div class="l-tabwrap"><button type="button" class="tab-ar l" tabindex="-1" aria-label="Oldingi tablar" onClick="{{lTabPrev}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button><div class="l-tabs seg-tabs" role="tablist"><sc-for list="{{lTabs}}" as="t" hint-placeholder-count="8"><button class="{{t.cls}}" role="tab" aria-selected="{{t.sel}}" onClick="{{t.pick}}">{{t.label}}<sc-if value="{{t.hasN}}" hint-placeholder-val="{{ false }}"><span class="l-tabn">{{t.n}}</span></sc-if></button></sc-for></div><button type="button" class="tab-ar r" tabindex="-1" aria-label="Keyingi tablar" onClick="{{lTabNext}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></div><button type="button" class="{{lfF2Cls}}" aria-expanded="{{lfFStr}}" aria-controls="lf-panel" aria-label="Filtrlar" title="Filtrlar" onClick="{{lfFToggle}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M7 12h10M10 17h4"></path></svg><span class="lf-lbl">Filtrlar</span><sc-if value="{{lfFHasN}}" hint-placeholder-val="{{ false }}"><span class="lf-n">{{lfFN}}</span></sc-if><svg class="i s lf-fchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button></div>
 <div class="l-card">
 <sc-if value="{{lfOpenAny}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{lfClose}}"></button></sc-if>
 
@@ -5711,8 +5711,13 @@ mReject: function () { self.setState({ lMenu: 0, lRows: self.state.lRows.map(fun
 var allOn = visible.length > 0 && visSel === visible.length;
 var lTabs = L_TABS.map(function (t) {
 var n = s.lRows.filter(function (r) { return r.stage === t[0] && lfMatch(r); }).length;
-return { label: t[1], n: n, hasN: lfAny ? true : (n > 0 && t[0] !== "korib"), cls: s.lTab === t[0] ? "on" : "", sel: s.lTab === t[0] ? "true" : "false", icCls: "lt-ic k-" + t[0], pick: function () { self.setState({ lTab: t[0], lMenu: 0 }); } };
+return { label: t[1], n: n, hasN: lfAny ? true : (n > 0 && t[0] !== "korib"), cls: s.lTab === t[0] ? "on" : "", sel: s.lTab === t[0] ? "true" : "false", icCls: "lt-ic k-" + t[0], pick: function (e) { var el = e && e.currentTarget; self.setState({ lTab: t[0], lMenu: 0 }); if (el && el.scrollIntoView) setTimeout(function () { try { el.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" }); } catch (er) {} }, 0); } };
 });
+var tabScroll = function (dir) { return function (e) { var w = e && e.currentTarget && e.currentTarget.parentElement, t = w && w.querySelector(".seg-tabs"); if (t) t.scrollBy({ left: dir * Math.max(200, t.clientWidth * 0.6), behavior: "smooth" }); }; };
+if (!window.__tabEdge) { window.__tabEdge = function () { try { var ws = document.querySelectorAll(".l-tabwrap"); for (var i = 0; i < ws.length; i++) { var t = ws[i].querySelector(".seg-tabs"); if (!t) continue; var l = t.scrollLeft > 2, r = t.scrollLeft + t.clientWidth < t.scrollWidth - 2; ws[i].classList.toggle("can-l", l); ws[i].classList.toggle("can-r", r); } } catch (er) {} };
+window.addEventListener("scroll", function (e) { if (e.target && e.target.classList && e.target.classList.contains("seg-tabs")) window.__tabEdge(); }, true); window.addEventListener("resize", window.__tabEdge);
+try { new ResizeObserver(function () { window.__tabEdge(); }).observe(document.body); } catch (er) {} }
+setTimeout(window.__tabEdge, 0);
 var BS_REQ = [["natija", "Natija"], ["ajrim", "Ajrim sanasi"], ["sana", "Ish ko'riladigan sana"]];
 var bsSet = {}, bsBorder = {};
 ["natija", "ajrim", "sana", "farq", "joy", "yordamchi"].forEach(function (k) {
@@ -6062,7 +6067,7 @@ self.flash("Umumiy ma'lumotlar saqlandi");
 },
 caseOpen: s.caseOpen, caseNum: s.caseNum,
 caseClose: function () { self._cwOff = 0; document.documentElement.style.setProperty("--cw-off", "0px"); self.setState({ hdrCompact: false, caseOpen: false, subView: "", cf: null, bkFormOpen: false, tmModal: "", umModal: false, ihMode: "", nsModal: false, ekModal: false, tcModal: false, modal: false, drawer: "", bkDetail: "", dd: "", delModal: false }); },
-lTabs: lTabs, lTabName: (L_TABS.filter(function (t) { return t[0] === s.lTab; })[0] || ["", ""])[1], lTotTxt: lRows.length + " ta ish", lTotN: lRows.length, lRows: lRows, lEmpty: lRows.length === 0,
+lTabs: lTabs, lTabPrev: tabScroll(-1), lTabNext: tabScroll(1), lTabName: (L_TABS.filter(function (t) { return t[0] === s.lTab; })[0] || ["", ""])[1], lTotTxt: lRows.length + " ta ish", lTotN: lRows.length, lRows: lRows, lEmpty: lRows.length === 0,
 lEmptyT: lfAny && stageRows.length ? "Filtr bo'yicha ish topilmadi" : "Bu bosqichda ishlar yo'q",
 lEmptyS: lfAny && stageRows.length ? "Qidiruv so'zini yoki filtrlarni o'zgartiring" : "Ishlar keyingi bosqichga o'tkazilganda shu yerda ko'rinadi",
 lfPerQ: s.lfPerQ || "", lfSetPerQ: function (e) { self.setState({ lfPerQ: e.target.value }); },
