@@ -6189,3 +6189,19 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .nxa .nx-save:not(.ready):hover{background:#e2e7ef !important}
 .nxa .nx-save.ready{box-shadow:0 1px 2px rgba(48,115,241,.2),0 6px 16px rgba(48,115,241,.22)}
 .nxa .qv-b{overflow-anchor:none}
+/* Natija qo'yish: "Saralash" — kalit (switch) ko'rinishidagi variant */
+.nx-saral{margin-top:2px}
+.nx-swrow{width:100%;display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid #e2e8f0;border-radius:12px;background:#fff;cursor:pointer;text-align:left;font:inherit;color:inherit;transition:border-color 200ms cubic-bezier(.22,1,.36,1),background-color 200ms cubic-bezier(.22,1,.36,1),box-shadow 200ms cubic-bezier(.22,1,.36,1)}
+.nx-swrow:hover{border-color:#cbd5e1;background:#f8fafc}
+.nx-swrow:focus-visible{outline:2px solid #3073f1;outline-offset:2px}
+.nx-swrow.on{border-color:#bfd3fb;background:#f3f7ff}
+.nx-sw-ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:#f1f5f9;color:#64748b;flex:none;transition:background-color 200ms,color 200ms}
+.nx-swrow.on .nx-sw-ic{background:#e0eaff;color:#3073f1}
+.nx-sw-ic .i{width:18px;height:18px}
+.nx-sw-t{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.nx-sw-t b{font-size:14px;font-weight:600;color:#0f172a}
+.nx-sw-t small{font-size:12.5px;color:#64748b}
+.nx-sw{position:relative;width:38px;height:22px;border-radius:999px;background:#cbd5e1;flex:none;transition:background-color 220ms cubic-bezier(.22,1,.36,1)}
+.nx-sw i{position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(15,23,42,.25);transition:transform 260ms cubic-bezier(.34,1.4,.64,1)}
+.nx-swrow.on .nx-sw{background:#3073f1}
+.nx-swrow.on .nx-sw i{transform:translateX(16px)}
