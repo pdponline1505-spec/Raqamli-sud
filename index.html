@@ -3353,7 +3353,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <sc-if value="{{nxOpen}}" hint-placeholder-val="{{ false }}">
 <div class="qv-wrap">
 <button class="qv-bg" aria-label="Oynani yopish" onClick="{{nxClose}}"></button>
-<div class="qv nxm nxm-main" role="dialog" aria-modal="true" aria-labelledby="nx-title" onKeyDown="{{nxKey}}">
+<div class="qv nxm nxm-main nxa" role="dialog" aria-modal="true" aria-labelledby="nx-title" onKeyDown="{{nxKey}}">
 <sc-if value="{{nxDdOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg in" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{itkDdClose}}"></button></sc-if>
 <div class="qv-h"><div class="nx-hh"><span class="nx-si"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 20px; height: 20px; stroke-width: 1.9"><rect x="3" y="4.5" width="18" height="16.5" rx="2.5"></rect><path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path><path d="M9 15l2 2 4-4"></path></svg></span><div class="kv" style="gap: 2px"><b id="nx-title" class="qv-title">{{nxHTitle}}</b><small>{{nxHSub}}</small></div></div><button class="ib qv-x" aria-label="Yopish" onClick="{{nxClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
 <div class="qv-b nxm-b">
@@ -3391,7 +3391,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="nx-file"><span class="dx-ft" style="width: 30px; height: 36px; font-size: 8px">PDF</span><div class="kv" style="gap: 1px; min-width: 0; flex: 1"><b>{{nxFile}}</b><small>Shablondan avtomatik yaratildi · kalit so'zlar to'ldirildi</small></div><button class="btn sm" onClick="{{nxDocView}}">Ko'rish</button><button class="btn sm" onClick="{{nxDocEdit}}">Tahrirlash</button><button class="btn sm" onClick="{{nxDocPdf}}">PDF</button></div></div></sc-if>
 <sc-if value="{{nxErr}}" hint-placeholder-val="{{ false }}"><small class="dx-err" style="margin: 0">{{nxErrText}}</small></sc-if>
 </div>
-<div class="qv-f"><button class="btn qv-close" style="margin-left: auto" onClick="{{nxClose}}">Bekor qilish</button><button class="btn pri" onClick="{{nxSave}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h11l3 3v15H5z"></path><path d="M8 3v5h8M8 21v-7h8v7"></path></svg>{{nxSaveLbl}}</button></div>
+<div class="qv-f"><button class="btn qv-close" style="margin-left: auto" onClick="{{nxClose}}">Bekor qilish</button><button class="{{nxSaveCls}}" onClick="{{nxSave}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h11l3 3v15H5z"></path><path d="M8 3v5h8M8 21v-7h8v7"></path></svg>{{nxSaveLbl}}</button></div>
 </div>
 </div>
 </sc-if>
@@ -7927,7 +7927,7 @@ __out.nxHelpers = HLP.map(function (h) { var on = (v.helpers || []).indexOf(h) >
 __out.nxErr = errOn; __out.nxErrText = n ? n.err : "";
 __out.nxDdOpen = !!ddOpen && ddOpen.indexOf("nx-") === 0;
 var close = function () { self.setState({ nx: null, dxDd: "", calKey: "" }); };
-__out.nxClose = close; __out.nxKey = function (e) { if (e.key === "Escape") { e.stopPropagation(); close(); } };
+__out.nxClose = close; __out.nxKey = function (e) { if (e.key === "Escape") { e.stopPropagation(); __out.nxClose(); } };
 var badDay = function (iso) { if (!iso) return false; var d = new Date(iso + "T00:00:00"), t = new Date(); t.setHours(0, 0, 0, 0); return d < t || d.getDay() === 0 || d.getDay() === 6; };
 __out.nxSave = function () {
 var w = self.state.nx; if (!w) return;
@@ -7949,6 +7949,60 @@ self.flash(ids.length + " ta ish «" + Rw[3] + "» bosqichiga o'tkazildi" + (w.c
 self.setState({ nx: null, dxDd: "", calKey: "", lRows: (self.state.lRows || []).map(function (r) { return r.num === self.state.caseNum ? Object.assign({}, r, { stage: Rw[2] }) : r; }) });
 self.flash("Ish «" + Rw[3] + "» bosqichiga o'tkazildi" + (w.cb && w.cb.topshiriq ? " · yordamchiga topshiriq yuborildi" : "") + (w.res === "tayinlash" && w.cb && (w.cb.sms || w.cb.email) ? " · taraflarga xabarnoma yuborildi" : ""));
 };
+// ---- Tajriba: "Keyingi bosqichga o'tkazish" oynasi animatsiyalari (kirish, maydon ochilishi, dropdown, chiqish) ----
+var f0 = v.f || {}, jOk = !v.joy || ((v.joy !== JOY[2] || !!v.sayM) && (!manNeed(v.joy) || !!String(f0.manzilTxt || "").trim()));
+var nxReady;
+if (qol) nxReady = !!(v.sabab || []).length && !!v.yord && jOk;
+else if (nat) nxReady = !!v.res;
+else if (maj) nxReady = !!f0.ajrim && !!f0.sana && jOk;
+else { var yk0 = v.res === "rad" || v.res === "qaytarish"; nxReady = !!R && !!f0.ajrim && (yk0 ? (v.res !== "rad" || !!v.asos) : (!!f0.sana && jOk)); }
+__out.nxSaveCls = "btn pri nx-save" + (nxReady ? " ready" : "");
+var rawSave = __out.nxSave, rawClose = __out.nxClose;
+__out.nxSave = function (e) { var m = document.querySelector(".nxa"); if (!nxReady || !m || !window.__nxAnimOut) { rawSave(e); if (!nxReady && m && window.__nxShake) window.__nxShake(m); return; } window.__nxAnimOut(m, function () { rawSave(e); }); };
+__out.nxClose = function (e) { var m = document.querySelector(".nxa"); if (!m || !window.__nxAnimOut) { rawClose(e); return; } window.__nxAnimOut(m, function () { rawClose(e); }); };
+if (!window.__nxAnim) { window.__nxAnim = 1; (function () {
+var E = "cubic-bezier(.22,1,.36,1)", RM = false; try { RM = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (er) {}
+var lastH = 0, enterAt = 0, openSel = null;
+var BLUR_IN = function (y, b) { return [{ opacity: 0, transform: "translateY(" + y + "px)", filter: "blur(" + b + "px)" }, { opacity: 1, transform: "translateY(0)", filter: "blur(0px)" }]; };
+var inA = function (el, d, dur, kf) { try { el.animate(kf || BLUR_IN(8, 6), { duration: dur || 380, delay: d || 0, easing: E, fill: "backwards" }); } catch (er) {} };
+var parts = function (m) { return m.querySelectorAll(".qv-h .nx-si, .qv-h .qv-title, .qv-h small, .nxm-b .fld, .qv-f .btn"); };
+var enter = function (m) { enterAt = Date.now(); var bg = m.parentElement && m.parentElement.querySelector(".qv-bg");
+if (bg) inA(bg, 0, 260, [{ opacity: 0 }, { opacity: 1 }]);
+inA(m, 0, 480, [{ opacity: 0, transform: "translateY(18px) scale(.965)", filter: "blur(10px)" }, { opacity: 1, transform: "translateY(0) scale(1)", filter: "blur(0px)" }]);
+var ps = parts(m); for (var i = 0; i < ps.length; i++) inA(ps[i], 110 + i * 45, 440, BLUR_IN(10, 6));
+lastH = m.getBoundingClientRect().height; };
+var flip = function (m) { if (Date.now() - enterAt < 350) { lastH = m.getBoundingClientRect().height; return; }
+var cur = m.getBoundingClientRect().height; (m.getAnimations ? m.getAnimations() : []).forEach(function (a) { if (a.__h) a.cancel(); });
+var h = m.getBoundingClientRect().height; var from = lastH && Math.abs(cur - h) > 2 ? cur : lastH;
+if (from && Math.abs(h - from) > 2) { try { var a = m.animate([{ height: from + "px" }, { height: h + "px" }], { duration: 360, easing: E }); a.__h = 1; } catch (er) {} } lastH = h; };
+var menuIn = function (mn) { inA(mn, 0, 280, [{ opacity: 0, transform: "translateY(-6px) scale(.97)", filter: "blur(6px)" }, { opacity: 1, transform: "translateY(0) scale(1)", filter: "blur(0px)" }]);
+var os = mn.querySelectorAll(".dx-opt, .dx-msrch, .cal-h, .cal-wd, .cal-grid, .cal-lg, .cal-abs, .cal-ft"); for (var i = 0; i < os.length && i < 14; i++) inA(os[i], 40 + i * 28, 300, BLUR_IN(-4, 4)); };
+var settle = function (sel) { var t = sel && sel.querySelector(".dx-selv, .cal-btn > span"); if (t) inA(t, 0, 320, [{ opacity: .2, transform: "translateY(4px)", filter: "blur(4px)" }, { opacity: 1, transform: "translateY(0)", filter: "blur(0px)" }]); };
+window.__nxShake = function (m) { if (RM) return; try { m.animate([{ transform: "translateX(0)" }, { transform: "translateX(-7px)" }, { transform: "translateX(6px)" }, { transform: "translateX(-4px)" }, { transform: "translateX(2px)" }, { transform: "translateX(0)" }], { duration: 380, easing: "ease-out" }); } catch (er) {} };
+window.__nxAnimOut = function (m, done) { if (RM || m.__out) { if (!m.__out) done(); return; } m.__out = 1;
+var ps = parts(m), all = []; for (var i = ps.length - 1, k = 0; i >= 0; i--, k++) all.push(ps[i].animate([{ opacity: 1, filter: "blur(0px)", transform: "translateY(0)" }, { opacity: 0, filter: "blur(6px)", transform: "translateY(-6px)" }], { duration: 200, delay: k * 16, easing: "ease-in", fill: "forwards" }));
+var bg = m.parentElement && m.parentElement.querySelector(".qv-bg"); if (bg) all.push(bg.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, delay: 120, easing: "ease-in", fill: "forwards" }));
+var a = m.animate([{ opacity: 1, transform: "translateY(0) scale(1)", filter: "blur(0px)" }, { opacity: 0, transform: "translateY(10px) scale(.965)", filter: "blur(10px)" }], { duration: 300, delay: 140, easing: "cubic-bezier(.4,0,1,1)", fill: "forwards" }); all.push(a);
+var fin = false, go = function () { if (fin) return; fin = true; done(); setTimeout(function () { if (m.isConnected) { m.__out = 0; all.forEach(function (x) { try { x.cancel(); } catch (er) {} }); } }, 30); };
+a.onfinish = go; setTimeout(go, 600); };
+var inNx = function (n) { return n.nodeType === 1 && n.closest && n.closest(".nxa"); };
+try { new MutationObserver(function (ms) { if (RM) return; var m = document.querySelector(".nxa"); if (!m) { lastH = 0; return; }
+var revealed = [], doFlip = false;
+for (var i = 0; i < ms.length; i++) { var r = ms[i];
+for (var j = 0; j < r.addedNodes.length; j++) { var n = r.addedNodes[j]; if (n.nodeType !== 1) continue;
+if (n.contains(m)) { enter(m); return; }
+if (!inNx(n)) continue;
+var mn = n.matches(".dx-menu, .cal-pop") ? n : n.querySelector(".dx-menu, .cal-pop");
+if (mn) { openSel = mn.closest(".dx-sel, .cal-dd"); menuIn(mn); continue; }
+if (n.closest(".dx-menu, .cal-pop")) continue;
+var fs = n.matches(".fld, .nx-err, .nx-saral") ? [n] : n.querySelectorAll(".fld, .nx-err, .nx-saral"); for (var q = 0; q < fs.length; q++) revealed.push(fs[q]); doFlip = true; }
+for (var j2 = 0; j2 < r.removedNodes.length; j2++) { var o = r.removedNodes[j2]; if (o.nodeType !== 1) continue;
+if (o.matches(".dx-menu, .cal-pop") || o.querySelector(".dx-menu, .cal-pop")) { if (openSel && openSel.isConnected) settle(openSel); openSel = null; }
+else doFlip = true; } }
+if (doFlip) flip(m);
+for (var z = 0; z < revealed.length; z++) inA(revealed[z], 60 + z * 50, 400, BLUR_IN(10, 6));
+}).observe(document.body, { childList: true, subtree: true }); } catch (er) {}
+})(); }
 })();
 // ---- Ish hujjatlari: "Hujjat tuzish" oynasi ----
 (function () {

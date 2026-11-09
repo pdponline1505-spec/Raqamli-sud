@@ -6181,3 +6181,11 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .l-tabwrap .tab-ar.l{left:8px}.l-tabwrap .tab-ar.r{right:8px}
 .l-tabwrap.can-l .tab-ar.l,.l-tabwrap.can-r .tab-ar.r{display:grid}
 @media (max-width:1600px){.seg-tabs{gap:2px !important}.seg-tabs button{padding:0 11px !important}}
+/* Tajriba: keyingi bosqich oynasi animatsiyalari (JS Web Animations bilan) */
+.nxa{animation:none !important}
+.nxa .dx-menu,.nxa .cal-pop{animation:none !important;transform-origin:top center}
+.nxa .nx-save{transition:background-color 320ms cubic-bezier(.22,1,.36,1),color 320ms cubic-bezier(.22,1,.36,1),box-shadow 320ms cubic-bezier(.22,1,.36,1)}
+.nxa .nx-save:not(.ready){background:#e9edf3 !important;color:#94a3b8 !important;box-shadow:none !important;border-color:transparent !important}
+.nxa .nx-save:not(.ready):hover{background:#e2e7ef !important}
+.nxa .nx-save.ready{box-shadow:0 1px 2px rgba(48,115,241,.2),0 6px 16px rgba(48,115,241,.22)}
+.nxa .qv-b{overflow-anchor:none}
