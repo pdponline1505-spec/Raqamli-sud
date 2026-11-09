@@ -6335,3 +6335,17 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .nx-cases-l::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:8px;border:2px solid #f8fafc}
 .nx-cases-l::-webkit-scrollbar-thumb:hover{background:#94a3b8}
 .nx-cases{flex:none !important}
+/* Natija qo'yish: tanlangan ish amallari (Yordamchi → Natija) */
+.tb-yord,.tb-nmore{position:relative;flex:none}
+.tb-yordbtn .tb-chev{opacity:.7;transition:transform 220ms cubic-bezier(.22,1,.36,1)}
+.tb-yordbtn.open .tb-chev{transform:rotate(180deg)}
+.tb-yordbtn.set{background:#f3f7ff !important;border-color:#bfd3fb !important;color:#1d4ed8 !important}
+.tb-yordl{max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tb-yordm{min-width:300px;right:auto;left:0;max-height:340px;overflow:auto;z-index:46}
+.tb-nmore .ihmenu{z-index:46}
+.tb-yordh{display:block;padding:6px 10px 8px;font-size:12px;font-weight:600;color:#64748b}
+.tb-yordo{justify-content:space-between}
+.tb-yordo.on{background:#eff6ff;color:#1d4ed8;font-weight:600}
+.tb-natija{animation:natIn 360ms cubic-bezier(.22,1,.36,1)}
+@keyframes natIn{from{opacity:0;transform:translateX(-6px) scale(.96);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+@container (max-width:1240px){.tb-nb .tbl,.tb-nmore .tbl{display:none}.tb-nb,.tb-nmore>.btn{padding-left:10px !important;padding-right:10px !important}}
