@@ -6667,3 +6667,20 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .ntv-vkaw{display:flex;align-items:center;gap:8px;font-size:12.5px;padding:8px 12px;border-radius:9px;background:#fef2f2;color:#b91c1c}
 .ntv-vkaw .i{width:14px;height:14px;flex:none}
 @media (max-width:640px){.ntv-vkan{grid-template-columns:minmax(0,1fr)}}
+/* Natija: taqsimot qatorlari — "Yangi da'vo summasi" uslubida */
+.ntv-alr{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,320px) 44px;grid-template-areas:"t amt x" "p p p";align-items:center;gap:12px;padding:14px 0;border-top:1px dashed #e2e8f0;animation:ntAlIn 260ms cubic-bezier(.22,1,.36,1)}
+.ntv-alr-t{grid-area:t;display:flex;align-items:center;gap:16px;flex-wrap:wrap;min-width:0}
+.ntv-alr-t .dx-tlbl{font-size:14px;cursor:default}
+.ntv-alr .ntv-alamt{grid-area:amt;height:44px}
+.ntv-alr .ntv-alamt input{font-size:15px}
+.ntv-alr>.dx-tx{grid-area:x}
+.ntv-alr-p{grid-area:p;display:grid;grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr);align-items:end;gap:10px}
+.ntv-alr-arr{height:44px;display:grid;place-items:center;color:#94a3b8}
+.ntv-alr-arr .i{width:16px;height:16px}
+.ntv-alr .nt-sol{height:32px;padding:0 10px;border:1px solid #e2e8f0;border-radius:999px;background:#fff;font-size:12.5px}
+.ntv-alr .nt-sol.on{border-color:#93c5fd;background:#eff6ff;color:#1d4ed8}
+.ntv-pill{align-self:flex-start;margin-top:2px;min-height:38px;padding:0 16px;font-size:13px}
+.ntv-pill .i{width:14px;height:14px}
+.ntv-cost>.ntv-pill,.ntv-sec>.ntv-pill{align-self:flex-start}
+.ntv .ntv-qrow>.dx-tx{grid-area:rm;grid-column:auto;grid-row:auto;align-self:end}
+@media (max-width:760px){.ntv-alr{grid-template-columns:minmax(0,1fr) 44px;grid-template-areas:"t x" "amt amt" "p p"}.ntv-alr-p{grid-template-columns:minmax(0,1fr)}.ntv-alr-arr{display:none}}
