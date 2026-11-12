@@ -6733,3 +6733,4 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .ntv-mode:not(:has(.ntv-simple)) .ntv-fullf .ntv-mseg{height:auto}
 .ntv-ch .ntv-segs{flex:none}
 .ntv-ch .ntv-segs .ntv-seg{height:32px}
+.ntv-bozout{max-width:640px;padding:12px 14px;border:1px solid #edf1f7;border-radius:12px;background:#fbfcfe}
