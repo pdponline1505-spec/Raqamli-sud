@@ -6767,9 +6767,8 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .ntv .ntv-qrow>label.fld:nth-of-type(3){margin-right:0}
 .ntv .ntv-qrow>.ntv-qdone{grid-area:done;align-self:end;height:44px;margin:0}
 @media (max-width:640px){.ntv .ntv-qrow{grid-template-areas:"turi rm" "from from" "to to" "done done"}.ntv-alv-p{display:none}}
-/* Bo'lim sarlavhasi orqali yig'ish (2- va 3-bo'lim) */
-.ntv-shacc{gap:8px}
-.ntv-secbtn{padding:2px 6px 2px 0;margin-left:-2px;gap:12px}
-.ntv-secbtn b{font-size:15px;font-weight:600;color:#0f172a}
-.ntv-secbtn .ntv-chev{margin-left:auto}
-.ntv-secbody{display:flex;flex-direction:column;gap:12px;animation:ntAlIn 220ms cubic-bezier(.22,1,.36,1)}
+/* Taqsimot: "Tayyor" tugmasi pastki qatorda, o'ngda */
+.ntv-alr-p{grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr) auto}
+.ntv-aldone2{height:44px;padding:0 16px;gap:6px;align-self:end;white-space:nowrap}
+.ntv-aldone2 .i{width:14px;height:14px}
+@media (max-width:760px){.ntv-alr-p{grid-template-columns:minmax(0,1fr)}.ntv-aldone2{justify-self:end}}
