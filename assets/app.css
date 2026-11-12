@@ -6529,3 +6529,21 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .ums-c.wf{grid-column:1/-1}
 .ums-go .ums-c:nth-child(7){animation-delay:.38s}
 .ums-go .ums-c:nth-child(7) .ums-v{animation-delay:.52s}
+/* Natija qo'yish — legacy moslashuvi: belgilar tepada, undirish taqsimoti, VKA */
+.nxm-nat .nt-tgls{margin-bottom:14px}
+.nxm-nat .nx-cg{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:760px){.nxm-nat .nx-cg{grid-template-columns:minmax(0,1fr)}}
+.nt-und{max-width:420px;margin-top:2px}
+.nt-al{display:grid;grid-template-columns:180px auto minmax(0,1fr) minmax(0,1fr) 150px 36px;align-items:end;gap:10px 12px;padding:12px 14px;border:1px solid #e6ebf3;border-radius:10px;background:#fff;animation:ntAlIn 260ms cubic-bezier(.22,1,.36,1)}
+@keyframes ntAlIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.nt-al .nt-inp.sm{width:100%}
+.nt-al .nt-inp.sm input{height:40px}
+.nt-al .nt-rm{height:40px}
+.nt-sol{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 4px;border:0;background:none;font:inherit;font-size:13px;color:#334155;cursor:pointer;white-space:nowrap}
+.nt-sol:focus-visible{outline:2px solid #3073f1;outline-offset:2px;border-radius:6px}
+.nt-cbx{width:18px;height:18px;border-radius:5px;border:1.5px solid #94a3b8;background:#fff;display:grid;place-items:center;color:transparent;transition:background-color 150ms,border-color 150ms}
+.nt-cbx svg{width:12px;height:12px;stroke-width:3}
+.nt-sol.on .nt-cbx{background:#3073f1;border-color:#3073f1;color:#fff}
+@media (max-width:1100px){.nt-al{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 36px}.nt-al .nt-alsum{grid-column:1}.nt-al .nt-sol{grid-column:2}.nt-al .nt-rm{grid-column:3;grid-row:1}}
+.nt-boz .dx-selv{white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important;min-width:0;display:block}
+.nt-boz .dx-menu{left:auto;right:0;width:min(560px,90vw);max-width:none}
