@@ -6641,3 +6641,11 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .ntv-yop .ntv-sw{height:42px}
 @media (max-width:900px){.ntv-g3{grid-template-columns:minmax(0,1fr)}}
 .ntv-g3 .ntv-segs{box-sizing:border-box;height:44px;align-items:center}.ntv-g3 .ntv-seg{height:36px}.ntv-yop .ntv-sw{height:44px}
+/* Nomulkiy talab qatori — taqsimot qatorlari bilan bir xil */
+.ntv .ntv-qrow{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 36px;grid-template-areas:"turi turi rm" "from to to";background:#fff;padding:12px 14px;border-radius:10px;animation:ntAlIn 260ms cubic-bezier(.22,1,.36,1)}
+.ntv .ntv-qrow>label.fld{grid-column:auto}
+.ntv .ntv-qrow>label.fld:nth-of-type(1){grid-area:turi}.ntv .ntv-qrow>label.fld:nth-of-type(2){grid-area:from}.ntv .ntv-qrow>label.fld:nth-of-type(3){grid-area:to}
+.ntv .ntv-qrow>.nt-rm{grid-area:rm;grid-column:auto;grid-row:auto}
+.ntv .ntv-qrow>label.fld:nth-of-type(3){margin-right:48px}
+.ntv-qadd{display:flex;justify-content:flex-end}
+@media (max-width:640px){.ntv .ntv-qrow{grid-template-columns:minmax(0,1fr) 36px;grid-template-areas:"turi rm" "from from" "to to"}.ntv .ntv-qrow>label.fld:nth-of-type(3){margin-right:0}}
