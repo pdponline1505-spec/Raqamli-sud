@@ -6548,11 +6548,11 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .nt-boz .dx-selv{white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important;min-width:0;display:block}
 .nt-boz .dx-menu{left:auto;right:0;width:min(560px,90vw);max-width:none}
 /* ===== Natija oynasi v2 (yangi ko'rinish) ===== */
-.nxm-v2{width:min(1240px,100%)}
-.nxm-v2 .nx-cases,.nxm-v2 .nx-core{display:none}
+
+.nxm-v2 .nx-core{display:none}
 .ntv-vt{margin-left:auto;margin-right:6px;gap:6px;color:#475569}
 .ntv-vt .i{width:14px;height:14px}
-.ntv{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;align-items:start}
+.ntv{display:block}
 .ntv-main{display:flex;flex-direction:column;gap:16px;min-width:0}
 .ntv-sec{border:1px solid #e6ebf3;border-radius:14px;background:#fff;padding:16px 18px 18px;display:flex;flex-direction:column;gap:14px}
 .ntv-sh{display:flex;align-items:center;gap:12px}
@@ -6633,38 +6633,3 @@ html[data-theme="dark"] .ds-host img{filter:none}
 @media (max-width:640px){.ntv .nt-al{grid-template-columns:minmax(0,1fr) 36px;grid-template-areas:"sum rm" "sol sol" "from from" "to to" "cur cur"}}
 .ntv-dnote{font-size:12px;color:#64748b;line-height:1.4}
 .ntv-sb>small.ntv-dnote{text-transform:none;letter-spacing:0;font-weight:400;font-size:12px;color:#64748b;margin-top:-2px}
-/* ===== Natija v2 — UX takomillashtirish (v3) ===== */
-.ntv-claim{border:0;background:none;padding:0;gap:10px}
-.ntv-claim+.ntv-claim{padding-top:14px;border-top:1px dashed #e2e8f0}
-.ntv-claim.err{background:none}
-.ntv-chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px}
-.ntv-chip{height:auto;min-height:58px;padding:10px 12px;align-items:flex-start;flex-direction:column;justify-content:center;gap:6px;text-align:left;white-space:normal;line-height:1.25;border-radius:12px}
-.ntv-chip i{width:10px;height:10px}
-.ntv-claim.err .ntv-chip:not(.on){border-color:#fecaca}
-.ntv-cerr{font-size:12px;color:#b91c1c}
-.ntv-lock{display:flex;align-items:center;gap:14px;padding:18px 20px;border:1.5px dashed #dbe2ec;border-radius:14px;background:#fafbfd;color:#94a3b8}
-.ntv-lock .i{width:20px;height:20px;flex:none}
-.ntv-lock b{font-size:14px;font-weight:600;color:#475569}
-.ntv-lock small{font-size:12.5px;color:#94a3b8}
-.ntv-cb{align-items:flex-start;gap:12px 32px}
-.ntv-amt{display:flex;flex-direction:column;gap:6px}
-.ntv-ix{font-size:11.5px;color:#94a3b8;font-variant-numeric:tabular-nums}
-.ntv-undk{padding-top:24px}
-.ntv-undk b{font-size:18px}
-.ntv-cb .ntv-add{margin-top:24px}
-.ntv-add:disabled{opacity:.45;cursor:not-allowed}
-.ntv-alw{display:flex;align-items:center;gap:8px;font-size:12.5px;padding:8px 12px;border-radius:9px}
-.ntv-alw .i{width:14px;height:14px;flex:none}
-.ntv-alw.ok{background:#ecfdf5;color:#047857}
-.ntv-alw.warn{background:#fffbeb;color:#92400e}
-.ntv-ph{margin:0;font-size:12.5px;line-height:1.45;color:#94a3b8}
-.ntv-dest{align-items:center;gap:10px;margin-top:4px;padding:10px 12px}
-.ntv-dest .i{width:16px;height:16px;margin:0}
-.ntv-dest b{font-size:13.5px;font-weight:600}
-.ntv-dl{font-size:11px;font-weight:500;opacity:.75}
-.ntv-foot{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ntv-foot i{width:8px;height:8px;border-radius:50%;flex:none}
-.ntv-foot.warn{color:#92400e}.ntv-foot.warn i{background:#f59e0b}
-.ntv-foot.ok{color:#047857}.ntv-foot.ok i{background:#10b981}
-@media (max-width:640px){.ntv-foot{display:none}}
-.qv-f .ntv-foot{padding:7px 12px;border-radius:9px;margin:0;align-self:center;max-width:60%}.qv-f .ntv-foot.warn{background:#fffbeb}.qv-f .ntv-foot.ok{background:#ecfdf5}
