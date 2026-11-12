@@ -6497,3 +6497,9 @@ html[data-theme="dark"] .ds-host img{filter:none}
 @container (max-width:955px){.tbrow:not(:has(.tbx-zz)) .tb-more{display:block}}
 @container (max-width:880px){.tbrow:has(.tb-yord) .tbx-sud{display:none}.mix-sud{display:flex}}
 @container (max-width:735px){.tbrow:has(.tb-yord) .tbx-sodda{display:none}.mix-sodda{display:flex}}
+/* Farq: vaqt oralig'i (bir nechta ish tanlanganda) */
+.inp-tm{position:relative;display:flex;align-items:center}
+.inp-tm>.i{position:absolute;left:14px;color:#64748b;pointer-events:none}
+.inp-tm>.inp{padding-left:40px;padding-right:72px;width:100%}
+.inp-tm-s{position:absolute;right:14px;font-size:13.5px;color:#64748b;pointer-events:none}
+.inp-tm-h{font-size:12px;color:#64748b;margin-top:2px}
