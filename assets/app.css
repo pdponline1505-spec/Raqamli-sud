@@ -6734,3 +6734,36 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .ntv-ch .ntv-segs{flex:none}
 .ntv-ch .ntv-segs .ntv-seg{height:32px}
 .ntv-bozout{max-width:640px;padding:12px 14px;border:1px solid #edf1f7;border-radius:12px;background:#fbfcfe}
+/* Natija: akkordeon kartochkalar va ixcham qatorlar */
+.ntv-acc{gap:0;padding:0;overflow:hidden;transition:border-color 200ms,box-shadow 200ms}
+.ntv-acc>.ntv-ch{padding:10px 12px 10px 6px}
+.ntv-acc.open{border-color:#dbe4f3;box-shadow:0 1px 0 rgba(15,23,42,.02)}
+.ntv-chbtn{flex:1;min-width:0;display:flex;align-items:center;gap:10px;padding:4px 6px;border:0;background:none;font:inherit;text-align:left;cursor:pointer;border-radius:8px}
+.ntv-chbtn:hover{background:#f1f5f9}
+.ntv-chbtn:focus-visible{outline:2px solid #3073f1;outline-offset:1px}
+.ntv-chbtn b{font-size:13.5px;font-weight:600;color:#1e293b}
+.ntv-chbtn small{font-size:12px;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ntv-chbtn .ntv-csum{color:#334155;font-variant-numeric:tabular-nums}
+.ntv-chev{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;color:#64748b;background:#fff;border:1px solid #e2e8f0;flex:none;transition:transform 220ms cubic-bezier(.22,1,.36,1)}
+.ntv-chev .i{width:14px;height:14px}
+.ntv-chev:not(.on){transform:rotate(-90deg)}
+.ntv-cbody{display:flex;flex-direction:column;gap:12px;padding:4px 14px 14px;border-top:1px solid #eef2f7;padding-top:14px;animation:ntAlIn 220ms cubic-bezier(.22,1,.36,1)}
+.ntv-alv{display:flex;align-items:center;gap:6px;padding:4px;border:1px solid #e6ebf3;border-radius:10px;background:#fff;animation:ntAlIn 200ms cubic-bezier(.22,1,.36,1)}
+.ntv-alv+.ntv-alv,.ntv-alr+.ntv-alv,.ntv-alv+.ntv-alr{margin-top:0}
+.ntv-alv-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:6px 8px;border:0;background:none;font:inherit;text-align:left;cursor:pointer;border-radius:7px}
+.ntv-alv-main:hover{background:#f8fafc}
+.ntv-alv-n{width:22px;height:22px;border-radius:50%;background:#eef4ff;color:#2563eb;font-size:11.5px;font-weight:700;display:grid;place-items:center;flex:none}
+.ntv-alv-amt{font-size:14px;font-weight:600;color:#0f172a;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ntv-alv-amt.ntv-qturi{font-weight:600;max-width:40%;overflow:hidden;text-overflow:ellipsis}
+.ntv-alv-p{display:inline-flex;align-items:center;gap:6px;min-width:0;font-size:12.5px;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ntv-alv-arr .i{width:12px;height:12px;color:#94a3b8}
+.ntv-alv-tag{font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;background:#eff6ff;color:#1d4ed8;flex:none}
+.ntv-alv-ed,.ntv-alv-x{width:32px !important;height:32px !important;flex:none}
+.ntv-alv-x{color:#dc2626 !important}
+.ntv-alv-x:hover{background:#fef2f2 !important}
+.ntv-aldone{margin-left:auto;height:30px}
+.ntv-alr{border:1px solid #c9dafc;border-radius:12px;padding:12px 14px;background:#fbfdff;border-top-style:solid}
+.ntv .ntv-qrow{grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;grid-template-areas:"turi turi rm" "from to done"}
+.ntv .ntv-qrow>label.fld:nth-of-type(3){margin-right:0}
+.ntv .ntv-qrow>.ntv-qdone{grid-area:done;align-self:end;height:44px;margin:0}
+@media (max-width:640px){.ntv .ntv-qrow{grid-template-areas:"turi rm" "from from" "to to" "done done"}.ntv-alv-p{display:none}}
