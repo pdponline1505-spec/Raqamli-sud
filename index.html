@@ -8175,7 +8175,7 @@ if (t.full) { o.clPrev = o.cl || clFb(w.res); var c = {}; clOrd.forEach(function
 var r = resOf(o.cl); return { nt: o, res: r, asos: r === w.res ? w.asos : "", und: r === w.res ? w.und : "" }; }); return; }
 setNt(function (o) { var t = Object.assign({}, o.tg || {}); t[k] = !t[k]; o.tg = t;
 if (k === "qn" && t.qn && !(o.qn || [{}]).length) o.qn = [{}];
-if ((k === "vka" || k === "boj" || k === "qarz") && t[k]) { var al = Object.assign({}, o.al || {}); if (!(al[k] || []).length) al[k] = [{ sum: o[k] != null ? o[k] : NT_DEF[k], cur: CUR[0] }]; o.al = al; } }); } }; };
+if ((k === "vka" || k === "boj" || k === "qarz") && t[k] && !ntIsV2) { var al = Object.assign({}, o.al || {}); if (!(al[k] || []).length) al[k] = [{ sum: o[k] != null ? o[k] : NT_DEF[k], cur: CUR[0] }]; o.al = al; } }); } }; };
 __out.ntT = { full: tgl("full"), vka: tgl("vka"), boj: tgl("boj"), poch: tgl("poch"), qarz: tgl("qarz"), qn: tgl("qn"), yopiq: tgl("yopiq") };
 __out.ntHq = { hqq: dd("nx-nthqq", [{ v: "", l: "Tanlang" }].concat(["Taraflar ishtirokida chiqarildi", "Sirtdan chiqarildi", "Javobgar ishtirokisiz chiqarildi"].map(function (x) { return { v: x, l: x }; })), nt.hqq || "", function (e) { var val = e.target.value; setNt(function (o) { o.hqq = val; }); }, { ph: "Hal qiluv qarori", noSplit: true, extra: "fxm" }) };
 var NT_DEF = { qarz: "", poch: "41200", vka: "103000", boj: "4944000" }, CUR = ["UZS", "USD", "EUR", "RUB"], NCUR = [{ v: "UZS", l: "UZS", sub: "O'zbek so'mi" }, { v: "USD", l: "USD", sub: "AQSh dollari" }, { v: "EUR", l: "EUR", sub: "Yevro" }, { v: "RUB", l: "RUB", sub: "Rossiya rubli" }], NSYM = { UZS: "so'm", USD: "$", EUR: "€", RUB: "₽" };
