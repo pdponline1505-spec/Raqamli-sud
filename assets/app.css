@@ -6716,3 +6716,20 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .ntv-sbtn .i{width:14px;height:14px}
 .ntv-vkan2+.ntv-vkaw,.ntv-vkan2+sc-if{margin-top:-4px}
 @media (max-width:900px){.ntv-vkan2{flex-direction:column}.ntv-cnt-op{width:auto;height:22px;border:0;border-top:1px solid #eef2f7;border-bottom:1px solid #eef2f7}}
+/* Toggle o'rniga: tanlov, checkbox va qo'shish chiplari */
+.ntv-cbk{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 14px;border:1px solid #e2e8f0;border-radius:10px;background:#fff;font:inherit;font-size:13.5px;font-weight:500;color:#334155;cursor:pointer;white-space:nowrap;transition:border-color 150ms,background-color 150ms,color 150ms}
+.ntv-cbk:hover{border-color:#cbd5e1}
+.ntv-cbk.on{border-color:#93c5fd;background:#eff6ff;color:#1d4ed8}
+.ntv-cbk.on .nt-cbx{background:#3073f1;border-color:#3073f1;color:#fff}
+.ntv-sh>.ntv-cbk{height:36px;font-size:13px}
+.ntv-x{width:36px;height:36px;border-radius:9px;flex:none}
+.ntv-addone{align-self:flex-start}
+.ntv-addrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding-top:4px}
+.ntv-addrow>small{font-size:12.5px;color:#64748b}
+.ntv-mseg{padding:3px}
+.ntv-mseg .ntv-seg{height:34px;padding:0 16px}
+.ntv-fullf{gap:6px}
+.ntv-mode .ntv-fullf .ntv-mseg{height:44px;box-sizing:border-box;align-items:center}
+.ntv-mode:not(:has(.ntv-simple)) .ntv-fullf .ntv-mseg{height:auto}
+.ntv-ch .ntv-segs{flex:none}
+.ntv-ch .ntv-segs .ntv-seg{height:32px}
