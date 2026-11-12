@@ -6772,3 +6772,28 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .ntv-aldone2{height:44px;padding:0 16px;gap:6px;align-self:end;white-space:nowrap}
 .ntv-aldone2 .i{width:14px;height:14px}
 @media (max-width:760px){.ntv-alr-p{grid-template-columns:minmax(0,1fr)}.ntv-aldone2{justify-self:end}}
+/* Devonxona: nomulkiy tusdagi talablar */
+.dx-slist.dx-nmlist{margin-top:6px;padding-top:14px;border-top:1px dashed #e2e8f0}
+.dx-pend.dx-nmlist{margin-top:10px}
+.dx-srow.nm{border-color:#ede9fe;background:#f7f5ff}
+.dx-srow.nm .dx-sic{color:#7c3aed;border-color:#ede9fe}
+.dx-srow.nm.ed{border-color:#a78bfa;box-shadow:0 0 0 3px #f5f3ff}
+.dx-srow.nm.del{border-color:#fecaca;background:#fff7f7}
+.dx-srow.nm .dx-sinfo b{white-space:normal}
+.dx-srow.nm .dx-sinfo small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dx-pill.nm{border-color:#c4b5fd;color:#6d28d9}
+.dx-pill.nm:hover{background:#f5f3ff;border-color:#7c3aed}
+.dx-cta.nm{background:linear-gradient(135deg,#f7f5ff 0%,#f8fafc 100%);border-color:#ede9fe;margin-top:10px}
+.dx-cta.nm:hover{border-color:#c4b5fd;box-shadow:0 6px 18px rgba(124,58,237,.10)}
+.dx-cta.nm .dx-cta-ic{color:#7c3aed;border-color:#ede9fe}
+.dx-cta.nm .dx-cta-plus{background:#7c3aed;box-shadow:0 4px 12px rgba(124,58,237,.25)}
+.dx-nmopts{display:flex;flex-direction:column;gap:8px}
+.dx-nmopt{display:flex;align-items:center;gap:12px;min-height:48px;padding:10px 14px;border:1px solid #e2e8f0;border-radius:12px;background:#fff;font:inherit;font-size:14px;color:#0f172a;text-align:left;cursor:pointer;transition:border-color var(--t-fast) var(--ease-out),background-color var(--t-fast) var(--ease-out)}
+.dx-nmopt:hover{border-color:#93c5fd;background:#f8fbff}
+.dx-nmopt:focus-visible{outline:2px solid #3073f1;outline-offset:2px}
+.dx-nmopt.on{border-color:#3073f1;background:#eff6ff;font-weight:500}
+.dx-nmopt.err{border-color:#fca5a5}
+.dx-nmrad{width:18px;height:18px;border-radius:50%;border:2px solid #cbd5e1;flex:none;display:grid;place-items:center;background:#fff;transition:border-color var(--t-fast) var(--ease-out)}
+.dx-nmopt.on .dx-nmrad{border-color:#3073f1}
+.dx-nmopt.on .dx-nmrad::after{content:"";width:8px;height:8px;border-radius:50%;background:#3073f1}
+.dx-nmol{flex:1;min-width:0}
