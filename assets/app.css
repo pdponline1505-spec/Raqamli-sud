@@ -6684,3 +6684,18 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .ntv-cost>.ntv-pill,.ntv-sec>.ntv-pill{align-self:flex-start}
 .ntv .ntv-qrow>.dx-tx{grid-area:rm;grid-column:auto;grid-row:auto;align-self:end}
 @media (max-width:760px){.ntv-alr{grid-template-columns:minmax(0,1fr) 44px;grid-template-areas:"t x" "amt amt" "p p"}.ntv-alr-p{grid-template-columns:minmax(0,1fr)}.ntv-alr-arr{display:none}}
+/* Natija: summa + ko'rsatkichlar qatori */
+.ntv-cb2{display:grid;grid-template-columns:minmax(220px,300px) minmax(0,1fr);align-items:end;gap:12px 16px}
+.ntv-amt2 .dx-tgrp{height:44px}
+.ntv-amt2 .dx-tgrp input{font-size:15px}
+.ntv-cur{font-size:13px;font-weight:600;color:#0f172a;padding:0 10px 0 2px}
+.ntv-stats{display:flex;align-items:stretch;justify-self:end;min-height:44px;border:1px solid #e6ebf3;border-radius:10px;background:#fff;overflow:hidden}
+.ntv-st{display:flex;flex-direction:column;justify-content:center;gap:2px;padding:6px 16px;min-width:150px;text-align:right}
+.ntv-st+.ntv-st{border-left:1px solid #eef2f7}
+.ntv-st small{font-size:11.5px;color:#64748b;white-space:nowrap}
+.ntv-st b{font-size:15px;font-weight:600;color:#0f172a;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ntv-st.und{background:#fff7f7}
+.ntv-st.und b{color:#b42318}
+.ntv-cost>.ntv-pill{margin-top:6px}
+@media (max-width:760px){.ntv-cb2{grid-template-columns:minmax(0,1fr)}.ntv-stats{justify-self:stretch}.ntv-st{flex:1;min-width:0}}
+.ntv-vkan .nt-inp input{height:44px;border-color:#d5dbe4;border-radius:10px;font-size:15px}
