@@ -6649,3 +6649,15 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .ntv .ntv-qrow>label.fld:nth-of-type(3){margin-right:48px}
 .ntv-qadd{display:flex;justify-content:flex-end}
 @media (max-width:640px){.ntv .ntv-qrow{grid-template-columns:minmax(0,1fr) 36px;grid-template-areas:"turi rm" "from from" "to to"}.ntv .ntv-qrow>label.fld:nth-of-type(3){margin-right:0}}
+/* Natija: qisqa ko'rinish + "To'liq ko'rsatish" */
+.ntv-mode{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;padding:16px 18px;border:1px solid #e6ebf3;border-radius:14px;background:#fff;margin-bottom:16px}
+.ntv-simple{flex:1;min-width:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.ntv-fullf{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.ntv-fullf small{font-size:11.5px;color:#94a3b8}
+.ntv-fullf .ntv-sw{height:44px}
+
+@media (max-width:760px){.ntv-simple{grid-template-columns:minmax(0,1fr)}.ntv-fullf{margin-left:0;align-items:flex-start}}
+.ntv-mode{margin-bottom:0}
+.ntv-mode:not(:has(.ntv-simple)){padding:0;border:0;background:none;justify-content:flex-end}
+.ntv-mode:not(:has(.ntv-simple)) .ntv-fullf{flex-direction:row;align-items:center;gap:12px}
+.ntv-mode:not(:has(.ntv-simple)) .ntv-fullf .ntv-sw{height:36px}
