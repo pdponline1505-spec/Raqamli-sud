@@ -6525,3 +6525,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .lb-wrap.on .lb-bar{opacity:1;transform:none}
 .lb-wrap:not(.on){pointer-events:none}
 @media (prefers-reduced-motion:reduce){.lb-wrap,.lb-wrap .lb-bar{transition:none}.lb-wrap.on .lb-clip{animation:none}}
+/* Umumiy: sudya + yordamchi bir qatorda, idora to'liq kenglikda */
+.ums-c.wf{grid-column:1/-1}
+.ums-go .ums-c:nth-child(7){animation-delay:.38s}
+.ums-go .ums-c:nth-child(7) .ums-v{animation-delay:.52s}
