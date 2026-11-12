@@ -8219,7 +8219,12 @@ raw: raw, ixN: ix }; };
 __out.ntM = { qarz: money("qarz"), poch: money("poch"), vka: money("vka"), boj: money("boj") };
 var vkaN = nt.vkaN || {}, vkaJ = vkaN.jami != null ? vkaN.jami : String(PARTY.length || ""), vkaB = vkaN.budjet || "", vkaD = vkaN.davlat || "";
 var vkaBad = (Number(vkaB) || 0) + (Number(vkaD) || 0) > (Number(vkaJ) || 0);
-var vkaSet = function (f) { return function (e) { var val = String(e.target.value || "").replace(/[^0-9]/g, "").slice(0, 3); setNt(function (o) { var x = Object.assign({ jami: vkaJ }, o.vkaN || {}); x[f] = val; o.vkaN = x; }); }; };
+var vkaSet = function (f) { return function (e) { var val = String(e.target.value || "").replace(/[^0-9]/g, "").slice(0, 3); setNt(function (o) { var x = Object.assign({ jami: vkaJ }, o.vkaN || {}); x[f] = val;
+var J = Number(x.jami) || 0, other = function (k) { return k === "budjet" ? "davlat" : "budjet"; };
+// bittasi kiritilsa, ikkinchisi umumiy sondan qolganini avtomatik oladi
+if (f === "budjet" || f === "davlat") { x.last = f; x[other(f)] = val === "" ? "" : String(Math.max(0, J - (Number(val) || 0))); }
+else if (f === "jami" && x.last) { x[other(x.last)] = x[x.last] === "" ? "" : String(Math.max(0, J - (Number(x[x.last]) || 0))); }
+o.vkaN = x; }); }; };
 __out.ntVkaN = { jami: vkaJ, budjet: vkaB, davlat: vkaD, set_jami: vkaSet("jami"), set_budjet: vkaSet("budjet"), set_davlat: vkaSet("davlat"), warn: vkaBad, bc: vkaBad ? RD : "",
 warnTxt: "Budjet tashkilotlari va davlat organlari soni (" + ((Number(vkaB) || 0) + (Number(vkaD) || 0)) + ") umumiy taraflar sonidan (" + (Number(vkaJ) || 0) + ") oshmasligi kerak" };
 __out.ntVkaOn = vkaOn; __out.ntBojOn = bojOn; __out.ntPochOn = pochOn; __out.ntPochOff = !pochOn; __out.ntQarzOn = qarzOn; __out.ntQarzOff = !qarzOn; __out.ntQnOn = ntIsV2 ? !!ntT0.qn : true; __out.ntBojOff = !bojOn; __out.ntBozOn = !bojOn;
