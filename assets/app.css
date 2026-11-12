@@ -6700,3 +6700,19 @@ html[data-theme="dark"] .ds-host img{filter:none}
 @media (max-width:760px){.ntv-cb2{grid-template-columns:minmax(0,1fr)}.ntv-stats{justify-self:stretch}.ntv-st{flex:1;min-width:0}}
 .ntv-vkan .nt-inp input{height:44px;border-color:#d5dbe4;border-radius:10px;font-size:15px}
 .ntv .dx-tsel .dx-sel.cur .dx-menu{overflow-x:hidden !important}.ntv .dx-tsel .dx-sel.cur .dx-olbl{white-space:nowrap}
+/* VKA: taraflar soni — stepperli guruh */
+.ntv-vkan2{display:flex;align-items:stretch;border:1px solid #e2e8f0;border-radius:12px;background:#fff;overflow:hidden;transition:border-color 200ms}
+.ntv-cnt{flex:1;min-width:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px}
+.ntv-cnt-l{display:flex;flex-direction:column;gap:1px;min-width:0}
+.ntv-cnt-l b{font-size:13px;font-weight:600;color:#1e293b;white-space:nowrap}
+.ntv-cnt-l small{font-size:11.5px;color:#94a3b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ntv-cnt-op{display:grid;place-items:center;width:28px;flex:none;background:#f8fafc;border-left:1px solid #eef2f7;border-right:1px solid #eef2f7;color:#94a3b8;font-size:15px;font-weight:600}
+.ntv-step{display:flex;align-items:center;gap:2px;padding:3px;border-radius:10px;background:#f1f5f9;flex:none}
+.ntv-step input{width:40px;height:30px;border:0;background:transparent;text-align:center;font:inherit;font-size:16px;font-weight:600;color:#0f172a;font-variant-numeric:tabular-nums;outline:0;border-radius:6px}
+.ntv-step input:focus{background:#fff;box-shadow:0 0 0 2px #bfdbfe}
+.ntv-sbtn{width:30px;height:30px;border:0;border-radius:8px;background:#fff;color:#475569;display:grid;place-items:center;cursor:pointer;box-shadow:0 1px 2px rgba(15,23,42,.08);transition:background-color 150ms,color 150ms}
+.ntv-sbtn:hover{color:#2563eb;background:#eff6ff}
+.ntv-sbtn:focus-visible{outline:2px solid #3073f1;outline-offset:1px}
+.ntv-sbtn .i{width:14px;height:14px}
+.ntv-vkan2+.ntv-vkaw,.ntv-vkan2+sc-if{margin-top:-4px}
+@media (max-width:900px){.ntv-vkan2{flex-direction:column}.ntv-cnt-op{width:auto;height:22px;border:0;border-top:1px solid #eef2f7;border-bottom:1px solid #eef2f7}}
