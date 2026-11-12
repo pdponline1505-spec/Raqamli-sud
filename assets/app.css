@@ -6699,3 +6699,4 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .ntv-cost>.ntv-pill{margin-top:6px}
 @media (max-width:760px){.ntv-cb2{grid-template-columns:minmax(0,1fr)}.ntv-stats{justify-self:stretch}.ntv-st{flex:1;min-width:0}}
 .ntv-vkan .nt-inp input{height:44px;border-color:#d5dbe4;border-radius:10px;font-size:15px}
+.ntv .dx-tsel .dx-sel.cur .dx-menu{overflow-x:hidden !important}.ntv .dx-tsel .dx-sel.cur .dx-olbl{white-space:nowrap}

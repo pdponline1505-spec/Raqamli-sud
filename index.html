@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=b72e65225ac3">
+<link rel="stylesheet" href="assets/app.css?v=00b9cfcc60be">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -4833,7 +4833,7 @@ if (!window.__ntxCal) { window.__ntxCal = function () { try { var p = document.q
 window.addEventListener("scroll", function () { if (window.__ntxCal) window.__ntxCal(); }, true); window.addEventListener("resize", function () { if (window.__ntxCal) window.__ntxCal(); }); }
 if (!window.__pbrPos) { window.__pbrPos = function () { try { var m = document.querySelector(".pbr-g .dx-sel.open .dx-menu, .dx-sel.fxm.open .dx-menu, .qv .dx-sel.open .dx-menu"); if (!m) return; var b = m.parentElement.querySelector(".dx-selbtn").getBoundingClientRect(), vh = window.innerHeight, below = vh - b.bottom - 12, above = b.top - 12;
 var h = Math.min(m.scrollHeight || 320, 360), up = below < Math.min(h, 220) && above > below, st = m.style;
-var mw = m.parentElement.classList.contains("vk") ? Math.max(b.width, 320) : m.parentElement.classList.contains("rol") ? Math.max(b.width, 220) : b.width, vw = window.innerWidth, lx = b.left; lx = Math.max(8, Math.min(lx, vw - mw - 8)); st.setProperty("left", Math.round(lx) + "px", "important"); st.setProperty("width", Math.round(mw) + "px", "important"); st.setProperty("right", "auto", "important");
+var mw = m.parentElement.classList.contains("vk") ? Math.max(b.width, 320) : m.parentElement.classList.contains("rol") ? Math.max(b.width, 220) : b.width, vw = window.innerWidth, lx = b.left; if (m.parentElement.classList.contains("cur")) { mw = Math.max(b.width, 220); lx = b.right - mw; } lx = Math.max(8, Math.min(lx, vw - mw - 8)); st.setProperty("left", Math.round(lx) + "px", "important"); st.setProperty("width", Math.round(mw) + "px", "important"); st.setProperty("right", "auto", "important");
 if (up) { st.setProperty("top", "auto", "important"); st.setProperty("bottom", Math.round(vh - b.top + 6) + "px", "important"); st.setProperty("max-height", Math.round(above) + "px", "important"); }
 else { st.setProperty("bottom", "auto", "important"); st.setProperty("top", Math.round(b.bottom + 6) + "px", "important"); st.setProperty("max-height", Math.round(below) + "px", "important"); }
 m.setAttribute("data-pos", "1"); } catch (er) {} };
@@ -7515,7 +7515,7 @@ __out.pbfGridCls = "itkm-g pbr-g" + (rux ? "" : " one");
 if (ddOpen && ddOpen.indexOf("pb-") === 0 && f) {
 if (!window.__pbrPos) { window.__pbrPos = function () { try { var m = document.querySelector(".pbr-g .dx-sel.open .dx-menu, .dx-sel.fxm.open .dx-menu, .qv .dx-sel.open .dx-menu"); if (!m) return; var b = m.parentElement.querySelector(".dx-selbtn").getBoundingClientRect(), vh = window.innerHeight, below = vh - b.bottom - 12, above = b.top - 12;
 var h = Math.min(m.scrollHeight || 320, 360), up = below < Math.min(h, 220) && above > below, st = m.style;
-var mw = m.parentElement.classList.contains("vk") ? Math.max(b.width, 320) : m.parentElement.classList.contains("rol") ? Math.max(b.width, 220) : b.width, vw = window.innerWidth, lx = b.left; lx = Math.max(8, Math.min(lx, vw - mw - 8)); st.setProperty("left", Math.round(lx) + "px", "important"); st.setProperty("width", Math.round(mw) + "px", "important"); st.setProperty("right", "auto", "important");
+var mw = m.parentElement.classList.contains("vk") ? Math.max(b.width, 320) : m.parentElement.classList.contains("rol") ? Math.max(b.width, 220) : b.width, vw = window.innerWidth, lx = b.left; if (m.parentElement.classList.contains("cur")) { mw = Math.max(b.width, 220); lx = b.right - mw; } lx = Math.max(8, Math.min(lx, vw - mw - 8)); st.setProperty("left", Math.round(lx) + "px", "important"); st.setProperty("width", Math.round(mw) + "px", "important"); st.setProperty("right", "auto", "important");
 if (up) { st.setProperty("top", "auto", "important"); st.setProperty("bottom", Math.round(vh - b.top + 6) + "px", "important"); st.setProperty("max-height", Math.round(above) + "px", "important"); }
 else { st.setProperty("bottom", "auto", "important"); st.setProperty("top", Math.round(b.bottom + 6) + "px", "important"); st.setProperty("max-height", Math.round(below) + "px", "important"); }
 m.setAttribute("data-pos", "1"); } catch (er) {} };
