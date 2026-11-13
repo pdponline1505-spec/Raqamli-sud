@@ -3913,6 +3913,30 @@ var d = DEMO_CASES[row.demo]; if (d) Object.keys(d).forEach(function (k) { o[k] 
 return o;
 }
 
+// ---------- Namuna qarshi da'volar: ro'yxatdagi ishlarning ko'pchiligiga (javobgar tomonidan) ----------
+function qdGen() {
+var out = [], skip = { "R4-1901-2603/4234": 1, "R4-1901-2611/5103": 1, "R4-1901-2611/5101": 1, "R4-1901-2611/5102": 1 };
+var g = function (n) { return /ovna|evna|qizi|Nigora|Dilfuza|Madina|Malika/i.test(n || "") ? "Ayol" : "Erkak"; };
+var org = function (n) { return /MChJ|AJ\b|ATB|XK\b|QK\b|«|"/.test(n || ""); };
+var PRO = [["Aliyeva Nodira Rustamovna", "Ayol", "Termiz shahar prokuraturasi"], ["Qodirov Sherzod Anvarovich", "Erkak", "Surxondaryo viloyati prokuraturasi"], ["Yusupova Madina Olimovna", "Ayol", "Termiz tumani prokuraturasi"]];
+var VIA = ["Elektron shaklda", "Qog'oz shaklda"], SUMS = ["1 250 000 UZS", "3 400 000 UZS", "780 000 UZS", "5 600 000 UZS", "2 150 000 UZS", "960 000 UZS", "12 300 000 UZS"];
+var p2 = function (x) { return (x < 10 ? "0" : "") + x; };
+(typeof L_DATA !== "undefined" ? L_DATA : []).forEach(function (r) {
+if (skip[r.num] || r.id % 5 === 4) return; // har beshinchi ish qarshi da'vosiz qoladi
+var n = 1 + (r.id % 3 === 0 ? 1 : 0);
+for (var k = 0; k < n; k++) {
+var seed = r.id * 7 + k * 3, jv = (r.jav || [])[k] || (r.jav || [])[0] || "Javobgar", f;
+if (k === 1 && r.id % 2 === 0) { var pr = PRO[seed % PRO.length]; f = { name: pr[0], gender: pr[1], kind: "pro", role: "Prokuror", org: pr[2], side: "Prokuror" }; }
+else f = { name: jv, gender: org(jv) ? "Erkak" : g(jv), kind: "boshqa", role: "Javobgar", org: org(jv) ? "Yuridik shaxs" : "Ish bo'yicha javobgar", side: "Javobgar", isOrg: org(jv) };
+var d = 1 + (seed % 28), m = 9 + (seed % 2), hh = 9 + (seed % 8), mi = (seed * 7) % 60, kir = 4000 + ((r.id * 37 + k * 11) % 1900);
+out.push({ id: "g" + r.id + "_" + k, ofNum: r.num, filers: [f], num: "R4-2001-26" + p2(m) + "/" + String(300 + ((r.id * 13 + k * 7) % 600)).padStart(3, "0"),
+st: (seed % 3 === 0) ? "yangi" : (seed % 3 === 1 ? "korildi" : "korib"), kirim: String(kir), kirimDate: p2(d) + "." + p2(m) + ".2026 " + p2(hh) + ":" + p2(mi), key: "2026-" + p2(m) + "-" + p2(d) + " " + p2(hh) + ":" + p2(mi),
+via: VIA[seed % 2], sum: SUMS[seed % SUMS.length], auto: true });
+}
+});
+return out;
+}
+
 // ---------- Hujjat versiyalari va AI tahlil (namuna ma'lumotlar) ----------
 var DOC_VERS = {"Sud majlisi bayonnomasi": {"chg": [{"who": "Aliyeva N. (sud kotibi)", "when": "13.07.2026 10:20", "what": "Guvoh ko'rsatmasi aniqlashtirildi", "why": "Audio yozuv bilan solishtirildi"}, {"who": "Tojiyev Z. X. (sudya)", "when": "13.07.2026 16:05", "what": "Majlis tugash vaqti tuzatildi", "why": "Tomonlar e'tirozi asosida"}], "v": [{"n": "1-versiya", "who": "Aliyeva N. (sud kotibi)", "when": "12.07.2026 17:40", "t": "Sud majlisi 12.07.2026 soat 10:00 da boshlandi. Majlisda da'vogar vakili va javobgar vakili ishtirok etdi. Guvoh Karimov A. S. yetkazib berilgan tovar sifatsiz bo'lganini ko'rsatdi. Javobgar vakili qo'shimcha hujjatlar taqdim etish uchun muddat so'radi. Sud majlisi soat 11:30 da yakunlandi."}, {"n": "2-versiya", "who": "Aliyeva N. (sud kotibi)", "when": "13.07.2026 10:20", "t": "Sud majlisi 12.07.2026 soat 10:00 da boshlandi. Majlisda da'vogar vakili va javobgar vakili ishtirok etdi. Guvoh Karimov A. S. yetkazib berilgan tovarning bir qismi sifatsiz bo'lganini va dalolatnoma tuzilganini ko'rsatdi. Javobgar vakili qo'shimcha hujjatlar taqdim etish uchun muddat so'radi. Sud majlisi soat 11:30 da yakunlandi."}, {"n": "3-versiya", "who": "Tojiyev Z. X. (sudya)", "when": "13.07.2026 16:05", "t": "Sud majlisi 12.07.2026 soat 10:00 da boshlandi. Majlisda da'vogar vakili va javobgar vakili ishtirok etdi. Guvoh Karimov A. S. yetkazib berilgan tovarning bir qismi sifatsiz bo'lganini va dalolatnoma tuzilganini ko'rsatdi. Javobgar vakili qo'shimcha hujjatlar taqdim etish uchun 10 kunlik muddat so'radi. Sud majlisi soat 11:45 da yakunlandi."}]}, "Hal qiluv qarori": {"chg": null, "v": [{"n": "Loyiha", "who": "Qodirov Sh. (sudya yordamchisi)", "when": "16.07.2026 12:10", "t": "Da'vo talabi qisman qanoatlantirilsin. Javobgardan da'vogar foydasiga 1 100 000 so'm asosiy qarz undirilsin. Neustoyka undirish talabi rad etilsin. Sud xarajatlari javobgar zimmasiga yuklansin."}, {"n": "Tahrirlangan", "who": "Tojiyev Z. X. (sudya)", "when": "17.07.2026 09:30", "t": "Da'vo talabi qisman qanoatlantirilsin. Javobgardan da'vogar foydasiga 1 100 000 so'm asosiy qarz va 150 000 so'm neustoyka undirilsin. Sud xarajatlari taraflarga qanoatlantirilgan talablarga mutanosib ravishda yuklansin."}]}};
 var AI_DATA = {"Da'vo arizasi": {"facts": [["ok", "Taraflar o'rtasida 14.02.2026 dagi yetkazib berish shartnomasi tuzilgan", "Da'vo arizasi, 1-bet · Shartnoma ilovasi"], ["ok", "Da'vogar tovarni 3 qismda yetkazib bergan, hisob-fakturalar mavjud", "Hisob-fakturalar reyestri"], ["ok", "Javobgar 1 100 000 so'm qarzni to'lamagan", "Solishtirma dalolatnoma"], ["warn", "Tovar sifatsizligi haqidagi javobgar e'tirozi hujjat bilan tasdiqlanmagan", "Javobgar izohi — dalil ilova qilinmagan"]], "law": [["FK 236-modda", "Majburiyatlar shartnoma shartlariga muvofiq lozim darajada bajarilishi kerak", "mos"], ["FK 333-modda", "Majburiyatni buzganlik uchun javobgarlik", "mos"], ["FK 260-modda", "Neustoyka (jarima, penya) undirish", "qisman"], ["IPK 68-modda", "Har bir taraf o'z talab va e'tirozlarini isbotlashi kerak", "mos"]], "sum": "Da'vo talabining asosiy qismi (1 100 000 so'm qarz) hujjatlar bilan tasdiqlangan. Neustoyka miqdori shartnomadagi foiz bilan qayta hisoblanishi tavsiya etiladi. Javobgarning sifat bo'yicha e'tirozi uchun ekspertiza tayinlash masalasini ko'rib chiqish mumkin.", "score": 78, "bars": [["Hujjatlar bilan tasdiqlangan", 82], ["Huquqiy asoslar mosligi", 75], ["Hisob-kitob aniqligi", 64]]}, "Hal qiluv qarori": {"facts": [["ok", "Qaror xulosasi da'vo talablariga mos keladi", "Qaror loyihasi, 3-bet"], ["ok", "Undiriladigan summa solishtirma dalolatnomaga mos", "1 100 000 so'm"], ["warn", "Sud xarajatlarini taqsimlash bo'yicha hisob-kitob keltirilmagan", "Qarorning yakuniy qismi"]], "law": [["IPK 118-modda", "Sud xarajatlarini taraflar o'rtasida taqsimlash", "qisman"], ["IPK 176-modda", "Hal qiluv qarorining mazmuni", "mos"]], "sum": "Qaror tuzilmasi talablarga mos. Sud xarajatlari taqsimotini aniq summalar bilan ko'rsatish tavsiya etiladi.", "score": 84, "bars": [["Tuzilma to'liqligi", 90], ["Huquqiy asoslar mosligi", 82], ["Hisob-kitob aniqligi", 70]]}};
@@ -4819,7 +4843,7 @@ qarshi: [
 { id: "d", ofNum: "R4-1901-2603/4234", filers: [{ name: "Sobirov Aziz Rustamovich", gender: "Erkak", kind: "boshqa", role: "Advokat", org: "\"Ishonch\" advokatlik firmasi", side: "Advokat" }, { name: "Karimova Dilnoza Akramovna", gender: "Ayol", kind: "boshqa", role: "Ishonchli vakil", org: "Ishonchnoma asosida", side: "Ishonchli vakil" }], num: "R4-2001-2575/098", st: "korildi", kirim: "4811", kirimDate: "18.09.2026 15:10", key: "2026-09-18 15:10", via: "Elektron shaklda", sum: "2 450 000 UZS", auto: true },
 { id: "e", ofNum: "R4-1901-2603/4234", filers: [{ name: "Yusupova Madina Olimovna", gender: "Ayol", kind: "pro", role: "Prokuror", org: "Termiz tumani prokuraturasi", side: "Prokuror" }], num: "R4-2001-2561/071", st: "korildi", kirim: "4702", kirimDate: "12.09.2026 10:05", key: "2026-09-12 10:05", via: "Qog'oz shaklda", sum: "780 000 UZS", auto: true },
 { id: "f", ofNum: "R4-1901-2603/4234", filers: [{ name: "Rahimov Bekzod Olimovich", gender: "Erkak", kind: "boshqa", role: "Advokat", org: "Surxondaryo hududiy advokatlar palatasi", side: "Advokat" }], num: "R4-2001-2549/052", st: "korildi", kirim: "4630", kirimDate: "05.09.2026 11:48", key: "2026-09-05 11:48", via: "Elektron shaklda", sum: "5 000 000 UZS", auto: true }
-],
+].concat(qdGen()),
 qSortDesc: true,
 drawer: "",
 notifs: [
