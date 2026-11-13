@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=44621f5c16f8">
+<link rel="stylesheet" href="assets/app.css?v=81aa8123ca24">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -1643,9 +1643,11 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <sc-for list="{{itk}}" as="t" hint-placeholder-count="2">
 <div class="{{t.cls}}" role="listitem">
 <div class="dx-ch">
-<div class="row" style="gap: 10px; flex-wrap: wrap; min-width: 0">
+<button type="button" class="dx-actog" aria-expanded="{{t.openStr}}" aria-label="{{t.togLbl}}" title="{{t.togLbl}}" onClick="{{t.toggle}}"><svg class="i s dx-acchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
+<div class="dx-chm" onClick="{{t.toggle}}"><div class="row" style="gap: 10px; flex-wrap: wrap; min-width: 0">
 <span class="dx-code">{{t.code}}</span><b class="dx-cname">{{t.name}}</b>
 </div>
+<sc-if value="{{t.closed}}" hint-placeholder-val="{{ false }}"><div class="dx-acsum"><sc-for list="{{t.sumTags}}" as="g" hint-placeholder-count="2"><span class="{{g.cls}}">{{g.t}}</span></sc-for></div></sc-if></div>
 <div class="dx-eacts">
 <sc-if value="{{t.notConfirm}}" hint-placeholder-val="{{ true }}">
 <sc-if value="{{t.isMain}}" hint-placeholder-val="{{ true }}"><span class="pc-mt on itk-mt" title="Asosiy talab"><svg class="pc-st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6-5.4-3.1-5.4 3.1 1.2-6L3.3 9.3l6.1-.7z"></path></svg>Asosiy talab</span></sc-if><sc-if value="{{t.canMain}}" hint-placeholder-val="{{ false }}"><button type="button" class="pc-mt itk-mt itk-main" title="Shu turkumni asosiy talab qilish" onClick="{{t.makeMain}}"><svg class="pc-st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6-5.4-3.1-5.4 3.1 1.2-6L3.3 9.3l6.1-.7z"></path></svg>Asosiy qilish</button></sc-if>
@@ -1655,7 +1657,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <sc-if value="{{t.confirmDel}}" hint-placeholder-val="{{ false }}"><span class="dx-ask">{{t.askText}}</span><button class="btn sm" onClick="{{t.cancelDel}}">Yo'q</button><button class="btn sm dx-danger" onClick="{{t.del}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg>Ha, o'chirish</button></sc-if>
 </div>
 </div>
-<div class="dx-cbody">
+<sc-if value="{{t.open}}" hint-placeholder-val="{{ true }}"><div class="dx-cbody">
 <div class="dx-dgrid">
 <div class="kv"><small>Qo'shimcha ish turkumi</small><sc-if value="{{t.qHas}}" hint-placeholder-val="{{ true }}"><span class="dx-dv dx-dvc"><span class="dx-code sm">{{t.qCode}}</span>{{t.qName}}</span></sc-if><sc-if value="{{t.qNone}}" hint-placeholder-val="{{ false }}"><span class="dx-dv none">Tanlanmagan</span></sc-if></div>
 <div class="kv"><small>Ikkilamchi ish turkumi</small><sc-if value="{{t.iHas}}" hint-placeholder-val="{{ false }}"><span class="dx-dv dx-dvc"><span class="dx-code sm">{{t.iCode}}</span>{{t.iName}}</span></sc-if><sc-if value="{{t.iNone}}" hint-placeholder-val="{{ true }}"><span class="dx-dv none">Tanlanmagan</span></sc-if></div>
@@ -1719,7 +1721,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </sc-for>
 <sc-if value="{{t.canAddNm}}" hint-placeholder-val="{{ true }}"><button type="button" class="dx-pill nm" onClick="{{t.addNm}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>{{t.addNmLabel}}</button></sc-if>
 </div>
-</div>
+</div></sc-if>
 </div>
 </sc-for>
 </div>
@@ -7696,7 +7698,7 @@ var sig = function (x) { return [x.turkum, x.qturkum || "", x.iturkum || "", (x.
 if (st.itk.some(function (x) { return x.id !== ff.id && sig(x) === sig(ff); })) { self.setState({ itkForm: Object.assign({}, ff, { err: "Aynan shunday ish turkumi allaqachon qo'shilgan" }) }); return; }
 var item = { turkum: ff.turkum, qturkum: ff.qturkum, iturkum: ff.iturkum, javs: (ff.javs || []).slice() };
 if (ff.mode === "edit") self.setState({ itkForm: null, dxDd: "", itk: st.itk.map(function (x) { return x.id === ff.id ? Object.assign({}, x, item) : x; }) });
-else self.setState({ itkForm: null, dxDd: "", itk: st.itk.concat([Object.assign({ id: "t" + Date.now(), ok: false, sums: [] }, item)]) });
+else { var nid = "t" + Date.now(); self.setState({ itkForm: null, dxDd: "", itkOpen: nid, itk: st.itk.concat([Object.assign({ id: nid, ok: false, sums: [] }, item)]) }); }
 self.flash(ff.mode === "edit" ? "Ish mazmuni saqlandi" : "Ish mazmuni qo'shildi");
 };
 })();
@@ -10685,6 +10687,7 @@ dsAdd: function () { self.flash("Da'vo summasi qo'shish oynasi prototipda chizil
 var sc = function (t) { var m2 = /^([\d.]+)\s*–\s*(.*)$/.exec(t || ""); return m2 ? { code: m2[1], name: m2[2] } : { code: "", name: t || "" }; };
 var list = s.itk || [];
 var okN = list.filter(function (x) { return x.ok; }).length;
+var itkOpenId = s.itkOpen === undefined ? (list[0] ? list[0].id : "") : s.itkOpen;
 Object.assign(__out, {
 itk: list.map(function (t, i) {
 var a = sc(t.turkum), q = sc(t.qturkum), k = sc(t.iturkum), cd = s.itkDel === t.id;
@@ -10704,7 +10707,14 @@ sums: __out._itkSums(t), hasSums: (t.sums || []).length > 0, sumCount: (t.sums |
 sumEmpty: !(t.sums || []).length, addSum: __out._itkAddSum(t), addSumLabel: (t.sums || []).length ? "Yana da'vo summasi qo'shish" : "Da'vo summasi qo'shish",
 nms: __out._itkNms(t), hasNm: (t.nm || []).length > 0, nmCount: (t.nm || []).length + " ta", addNm: __out._itkAddNm(t), canAddNm: __out._nmTurN(t) < __out._NM_N,
 addNmLabel: (t.nm || []).length ? "Yana nomulkiy talab qo'shish" : "Nomulkiy talab qo'shish",
-cls: "dx-entry itk2" + (cd ? " del" : ""), confirmDel: cd, notConfirm: !cd,
+cls: "dx-entry itk2" + (cd ? " del" : "") + (itkOpenId === t.id ? " open" : " shut"),
+open: itkOpenId === t.id, closed: itkOpenId !== t.id, openStr: itkOpenId === t.id ? "true" : "false", togLbl: itkOpenId === t.id ? "Yashirish" : "To'liq ko'rsatish",
+toggle: function (e) { var tg = e && e.target; if (tg && tg.closest && tg.closest(".dx-eacts")) return; self.setState({ itkOpen: itkOpenId === t.id ? "" : t.id }); },
+sumTags: (function () { var g = [], sl = (t.sums || []).length, nl = (t.nm || []).length;
+g.push(sl ? { t: "Da'vo summasi: " + __out._byCur(t.sums || []), cls: "dx-actag sum" } : { t: "Da'vo summasi yo'q", cls: "dx-actag none" });
+if (nl) g.push({ t: nl + " ta nomulkiy talab", cls: "dx-actag nm" });
+if ((t.javs || []).length) g.push({ t: "Javobgar: " + (t.javs.length === 1 ? t.javs[0] : t.javs.length + " ta"), cls: "dx-actag" });
+return g; })(), confirmDel: cd, notConfirm: !cd,
 confirm: function () { self.setState({ itk: self.state.itk.map(function (x) { return x.id === t.id ? Object.assign({}, x, { ok: true }) : x; }) }); self.flash("Ish turkumi tasdiqlandi"); },
 edit: function () { self.setState({ itkDel: "", dxDd: "", itkForm: { mode: "edit", id: t.id, turkum: t.turkum, qturkum: t.qturkum || "", iturkum: t.iturkum || "", javs: (t.javs || []).slice(), err: "" } }); },
 askDel: function () { self.setState({ itkDel: t.id }); }, askText: ((t.sums || []).length || (t.nm || []).length) ? "O'chirilsinmi? " + [(t.sums || []).length ? t.sums.length + " ta da'vo summasi" : "", (t.nm || []).length ? t.nm.length + " ta nomulkiy talab" : ""].filter(Boolean).join(" va ") + " ham o'chadi." : "O'chirilsinmi?",
