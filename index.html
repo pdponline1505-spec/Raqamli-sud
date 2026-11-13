@@ -6937,7 +6937,7 @@ var editing = i === edIdx, conf = dx.imDel === r.id, sums = r.sums || [];
 allSums = allSums.concat(sums);
 var tk = splitCode(r.turkum), q = splitCode(r.qturkum), ik = splitCode(r.iturkum), javs = [];
 sums.forEach(function (m) { (m.jav || []).forEach(function (n) { if (javs.indexOf(n) < 0) javs.push(n); }); });
-return { n: i + 1, code: tk.code, hasCode: !!tk.code, name: tk.name, isMain: i === 0, canMain: i > 0,
+return { n: i + 1, code: tk.code, hasCode: !!tk.code, name: tk.name, isMain: false, canMain: false, /* asosiy talab belgisi hozircha olib qo'yilgan */
 tartib: r.tartib || "—", ariza: r.ariza || "—",
 nizo: r.nizo || "Tanlanmagan", nizoCls: r.nizo ? "dx-dv" : "dx-dv none",
 qHas: !!r.qturkum, qNone: !r.qturkum, qCode: q.code, qName: q.name,
