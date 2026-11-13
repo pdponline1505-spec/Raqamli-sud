@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=4a7709af5304">
+<link rel="stylesheet" href="assets/app.css?v=a4bd8c7d48f3">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -792,8 +792,8 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 </div>
 <sc-if value="{{m.det}}" hint-placeholder-val="{{ false }}"><div class="{{m.detCls}}">
-<div class="dx-sdet-l"><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-tdot" aria-hidden="true"></span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
-<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="kv"><small>{{x.k}}</small><span>{{x.v}}</span></div></sc-for></div>
+<div class="dx-sdet-l"><span class="dx-sdh">{{m.detLinesH}}</span><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-sdl-n">{{l.n}}</span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
+<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="{{x.cls}}"><span class="dx-sdh">{{x.k}}</span><sc-if value="{{x.hasPeople}}" hint-placeholder-val="{{ true }}"><div class="dx-sdps"><sc-for list="{{x.people}}" as="q" hint-placeholder-count="1"><span class="dx-sdp"><sc-if value="{{q.hasPhoto}}" hint-placeholder-val="{{ true }}"><img src="{{q.photo}}" alt=""></sc-if><sc-if value="{{q.noPhoto}}" hint-placeholder-val="{{ false }}"><span class="dx-sdp-i" aria-hidden="true">{{q.ini}}</span></sc-if><span class="dx-sdp-t"><b>{{q.name}}</b><sc-if value="{{q.hasRole}}" hint-placeholder-val="{{ true }}"><small>{{q.role}}</small></sc-if></span></span></sc-for></div></sc-if><sc-if value="{{x.hasV}}" hint-placeholder-val="{{ false }}"><span class="dx-sdv">{{x.v}}</span></sc-if></div></sc-for></div>
 </div></sc-if>
 
 </sc-for>
@@ -824,8 +824,8 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 </div>
 <sc-if value="{{m.det}}" hint-placeholder-val="{{ false }}"><div class="{{m.detCls}}">
-<div class="dx-sdet-l"><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-tdot" aria-hidden="true"></span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
-<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="kv"><small>{{x.k}}</small><span>{{x.v}}</span></div></sc-for></div>
+<div class="dx-sdet-l"><span class="dx-sdh">{{m.detLinesH}}</span><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-sdl-n">{{l.n}}</span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
+<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="{{x.cls}}"><span class="dx-sdh">{{x.k}}</span><sc-if value="{{x.hasPeople}}" hint-placeholder-val="{{ true }}"><div class="dx-sdps"><sc-for list="{{x.people}}" as="q" hint-placeholder-count="1"><span class="dx-sdp"><sc-if value="{{q.hasPhoto}}" hint-placeholder-val="{{ true }}"><img src="{{q.photo}}" alt=""></sc-if><sc-if value="{{q.noPhoto}}" hint-placeholder-val="{{ false }}"><span class="dx-sdp-i" aria-hidden="true">{{q.ini}}</span></sc-if><span class="dx-sdp-t"><b>{{q.name}}</b><sc-if value="{{q.hasRole}}" hint-placeholder-val="{{ true }}"><small>{{q.role}}</small></sc-if></span></span></sc-for></div></sc-if><sc-if value="{{x.hasV}}" hint-placeholder-val="{{ false }}"><span class="dx-sdv">{{x.v}}</span></sc-if></div></sc-for></div>
 </div></sc-if>
 
 </sc-for>
@@ -877,8 +877,8 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 </div>
 <sc-if value="{{m.det}}" hint-placeholder-val="{{ false }}"><div class="{{m.detCls}}">
-<div class="dx-sdet-l"><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-tdot" aria-hidden="true"></span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
-<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="kv"><small>{{x.k}}</small><span>{{x.v}}</span></div></sc-for></div>
+<div class="dx-sdet-l"><span class="dx-sdh">{{m.detLinesH}}</span><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-sdl-n">{{l.n}}</span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
+<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="{{x.cls}}"><span class="dx-sdh">{{x.k}}</span><sc-if value="{{x.hasPeople}}" hint-placeholder-val="{{ true }}"><div class="dx-sdps"><sc-for list="{{x.people}}" as="q" hint-placeholder-count="1"><span class="dx-sdp"><sc-if value="{{q.hasPhoto}}" hint-placeholder-val="{{ true }}"><img src="{{q.photo}}" alt=""></sc-if><sc-if value="{{q.noPhoto}}" hint-placeholder-val="{{ false }}"><span class="dx-sdp-i" aria-hidden="true">{{q.ini}}</span></sc-if><span class="dx-sdp-t"><b>{{q.name}}</b><sc-if value="{{q.hasRole}}" hint-placeholder-val="{{ true }}"><small>{{q.role}}</small></sc-if></span></span></sc-for></div></sc-if><sc-if value="{{x.hasV}}" hint-placeholder-val="{{ false }}"><span class="dx-sdv">{{x.v}}</span></sc-if></div></sc-for></div>
 </div></sc-if>
 
 </sc-for>
@@ -906,8 +906,8 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 </div>
 <sc-if value="{{m.det}}" hint-placeholder-val="{{ false }}"><div class="{{m.detCls}}">
-<div class="dx-sdet-l"><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-tdot" aria-hidden="true"></span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
-<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="kv"><small>{{x.k}}</small><span>{{x.v}}</span></div></sc-for></div>
+<div class="dx-sdet-l"><span class="dx-sdh">{{m.detLinesH}}</span><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-sdl-n">{{l.n}}</span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
+<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="{{x.cls}}"><span class="dx-sdh">{{x.k}}</span><sc-if value="{{x.hasPeople}}" hint-placeholder-val="{{ true }}"><div class="dx-sdps"><sc-for list="{{x.people}}" as="q" hint-placeholder-count="1"><span class="dx-sdp"><sc-if value="{{q.hasPhoto}}" hint-placeholder-val="{{ true }}"><img src="{{q.photo}}" alt=""></sc-if><sc-if value="{{q.noPhoto}}" hint-placeholder-val="{{ false }}"><span class="dx-sdp-i" aria-hidden="true">{{q.ini}}</span></sc-if><span class="dx-sdp-t"><b>{{q.name}}</b><sc-if value="{{q.hasRole}}" hint-placeholder-val="{{ true }}"><small>{{q.role}}</small></sc-if></span></span></sc-for></div></sc-if><sc-if value="{{x.hasV}}" hint-placeholder-val="{{ false }}"><span class="dx-sdv">{{x.v}}</span></sc-if></div></sc-for></div>
 </div></sc-if>
 
 </sc-for>
@@ -956,8 +956,8 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 </div>
 <sc-if value="{{m.det}}" hint-placeholder-val="{{ false }}"><div class="{{m.detCls}}">
-<div class="dx-sdet-l"><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-tdot" aria-hidden="true"></span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
-<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="kv"><small>{{x.k}}</small><span>{{x.v}}</span></div></sc-for></div>
+<div class="dx-sdet-l"><span class="dx-sdh">{{m.detLinesH}}</span><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-sdl-n">{{l.n}}</span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
+<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="{{x.cls}}"><span class="dx-sdh">{{x.k}}</span><sc-if value="{{x.hasPeople}}" hint-placeholder-val="{{ true }}"><div class="dx-sdps"><sc-for list="{{x.people}}" as="q" hint-placeholder-count="1"><span class="dx-sdp"><sc-if value="{{q.hasPhoto}}" hint-placeholder-val="{{ true }}"><img src="{{q.photo}}" alt=""></sc-if><sc-if value="{{q.noPhoto}}" hint-placeholder-val="{{ false }}"><span class="dx-sdp-i" aria-hidden="true">{{q.ini}}</span></sc-if><span class="dx-sdp-t"><b>{{q.name}}</b><sc-if value="{{q.hasRole}}" hint-placeholder-val="{{ true }}"><small>{{q.role}}</small></sc-if></span></span></sc-for></div></sc-if><sc-if value="{{x.hasV}}" hint-placeholder-val="{{ false }}"><span class="dx-sdv">{{x.v}}</span></sc-if></div></sc-for></div>
 </div></sc-if>
 
 </sc-for>
@@ -988,8 +988,8 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 </div>
 <sc-if value="{{m.det}}" hint-placeholder-val="{{ false }}"><div class="{{m.detCls}}">
-<div class="dx-sdet-l"><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-tdot" aria-hidden="true"></span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
-<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="kv"><small>{{x.k}}</small><span>{{x.v}}</span></div></sc-for></div>
+<div class="dx-sdet-l"><span class="dx-sdh">{{m.detLinesH}}</span><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-sdl-n">{{l.n}}</span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
+<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="{{x.cls}}"><span class="dx-sdh">{{x.k}}</span><sc-if value="{{x.hasPeople}}" hint-placeholder-val="{{ true }}"><div class="dx-sdps"><sc-for list="{{x.people}}" as="q" hint-placeholder-count="1"><span class="dx-sdp"><sc-if value="{{q.hasPhoto}}" hint-placeholder-val="{{ true }}"><img src="{{q.photo}}" alt=""></sc-if><sc-if value="{{q.noPhoto}}" hint-placeholder-val="{{ false }}"><span class="dx-sdp-i" aria-hidden="true">{{q.ini}}</span></sc-if><span class="dx-sdp-t"><b>{{q.name}}</b><sc-if value="{{q.hasRole}}" hint-placeholder-val="{{ true }}"><small>{{q.role}}</small></sc-if></span></span></sc-for></div></sc-if><sc-if value="{{x.hasV}}" hint-placeholder-val="{{ false }}"><span class="dx-sdv">{{x.v}}</span></sc-if></div></sc-for></div>
 </div></sc-if>
 
 </sc-for>
@@ -1683,8 +1683,8 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 </div>
 <sc-if value="{{m.det}}" hint-placeholder-val="{{ false }}"><div class="{{m.detCls}}">
-<div class="dx-sdet-l"><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-tdot" aria-hidden="true"></span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
-<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="kv"><small>{{x.k}}</small><span>{{x.v}}</span></div></sc-for></div>
+<div class="dx-sdet-l"><span class="dx-sdh">{{m.detLinesH}}</span><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-sdl-n">{{l.n}}</span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
+<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="{{x.cls}}"><span class="dx-sdh">{{x.k}}</span><sc-if value="{{x.hasPeople}}" hint-placeholder-val="{{ true }}"><div class="dx-sdps"><sc-for list="{{x.people}}" as="q" hint-placeholder-count="1"><span class="dx-sdp"><sc-if value="{{q.hasPhoto}}" hint-placeholder-val="{{ true }}"><img src="{{q.photo}}" alt=""></sc-if><sc-if value="{{q.noPhoto}}" hint-placeholder-val="{{ false }}"><span class="dx-sdp-i" aria-hidden="true">{{q.ini}}</span></sc-if><span class="dx-sdp-t"><b>{{q.name}}</b><sc-if value="{{q.hasRole}}" hint-placeholder-val="{{ true }}"><small>{{q.role}}</small></sc-if></span></span></sc-for></div></sc-if><sc-if value="{{x.hasV}}" hint-placeholder-val="{{ false }}"><span class="dx-sdv">{{x.v}}</span></sc-if></div></sc-for></div>
 </div></sc-if>
 
 </sc-for>
@@ -6981,18 +6981,23 @@ var edIdx = ed && ed.mode === "edit" ? dx.im.map(function (x) { return x.id; }).
 // da'vo summasi qatori (kartochkada ham, kiritish formasida ham bir xil ko'rinish)
 var detOn = function (id) { return !!(dx.rowDet || {})[id]; };
 var detTog = function (id) { return function (e) { var t = e && e.target; if (t && t.closest && t.closest(".dx-sact") && !t.closest(".dx-detb")) return; var o = Object.assign({}, self.state.dx.rowDet || {}); if (o[id]) delete o[id]; else o[id] = true; setDx({ rowDet: o }); }; };
+var detPeople = function (k, list) { var ps = list.map(function (q) { return { name: q.name, role: q.role || "", hasRole: !!q.role, photo: q.photo || "", hasPhoto: !!q.photo, noPhoto: !q.photo, ini: initials(q.name) }; });
+return { k: k, people: ps, hasPeople: ps.length > 0, v: "Belgilanmagan", hasV: ps.length === 0, cls: "dx-sdm" }; };
 var detFields = function (id, base) { var on = detOn(id); return { det: on, detStr: on ? "true" : "false", detLbl: on ? "Batafsil ma'lumotni yashirish" : "Batafsil ko'rish", toggleDet: detTog(id), detCls: "dx-sdet " + base }; };
 var sumRow = function (m, j, target) {
 var mc = dx.smDel === m.id, me = !!(dw && dw.mode === "edit" && dw.id === m.id);
 var ls = linesOf(m).filter(function (l) { return num(l.amt) > 0; }), nz = curTotals(ls, isNeus), jv = m.jav || [];
 var sDet = detFields(m.id, "sum");
 return Object.assign(sDet, { n: j + 1, amts: curTotals(ls),
-detLines: ls.map(function (l) { return { t: SM_LBL[l.type] || l.type, amt: group(String(num(l.amt))), cur: l.cur, hasAmt: true }; }),
-detMeta: [{ k: "Javobgarlar", v: jv.length ? jv.join(", ") : "Belgilanmagan" }].concat(nz.length ? [{ k: "Shundan neustoyka (penya + jarima)", v: totTxt(nz) }] : []).concat([{ k: "Jami", v: totTxt(curTotals(ls)) }]),
+detLinesH: "Talablar · " + ls.length + " ta",
+detLines: ls.map(function (l, k) { return { n: k + 1, t: SM_LBL[l.type] || l.type, amt: group(String(num(l.amt))), cur: l.cur, hasAmt: true }; }),
+detMeta: [detPeople("Javobgarlar", jv.map(function (n) { return { name: n, role: "Javobgar", photo: portrait(n, genderOf(n)) }; }))]
+.concat(nz.length ? [{ k: "Shundan neustoyka (penya + jarima)", v: totTxt(nz), hasV: true, hasPeople: false, people: [], cls: "dx-sdm" }] : [])
+.concat([{ k: "Jami", v: totTxt(curTotals(ls)), hasV: true, hasPeople: false, people: [], cls: "dx-sdm tot" }]),
 rowsText: ls.length + " ta talab · " + typesTxt(ls) + (nz.length ? " · neustoyka " + totTxt(nz) : ""),
 hasJav: jv.length > 0, javAv: jv.slice(0, 3).map(function (n) { return { photo: portrait(n, genderOf(n)), name: n }; }),
 javShort: jv.length === 1 ? initialName(jv[0]) : jv.length + " javobgar", javTitle: jv.join(", "),
-cls: me ? "dx-srow ed" : (mc ? "dx-srow del" : "dx-srow"), confirm: mc, notConfirm: !mc,
+cls: (me ? "dx-srow ed" : (mc ? "dx-srow del" : "dx-srow")) + (sDet.det ? " det" : ""), confirm: mc, notConfirm: !mc,
 edit: function () { openDwWith("edit", m, target); },
 askDel: function () { setDx({ smDel: m.id }); },
 cancelDel: function () { setDx({ smDel: "" }); },
@@ -7045,16 +7050,17 @@ var mc = dx.nmDel === m.id, me = !!(nmw && nmw.mode === "edit" && nmw.id === m.i
 var nmNm = function (v) { var p = nmParties(s).filter(function (x) { return x.v === v; })[0]; return p ? (p.org ? p.name : initialName(p.name)) : ""; };
 var fT = nmNm(m.from), tT = nmNm(m.to), tl = nmTurOf(m);
 var nmPh = function (v) { var p = nmParties(s).filter(function (x) { return x.v === v; })[0]; return p && p.photo ? p.photo : ""; };
-var nmFull = function (v) { var p = nmParties(s).filter(function (x) { return x.v === v; })[0]; return p ? p.name + " (" + p.sub + ")" : "Belgilanmagan"; };
+var nmPer = function (v) { var p = nmParties(s).filter(function (x) { return x.v === v; })[0]; return p ? [{ name: p.name, role: p.sub, photo: p.photo }] : []; };
 var nDet = detFields(m.id, "nm");
 return Object.assign(nDet, { n: j + 1, title: tl.length === 1 ? (NM_L[tl[0]] || tl[0]) : "Nomulkiy talab",
-detLines: tl.map(function (v) { return { t: NM_L[v] || v, amt: "", cur: "", hasAmt: false }; }),
-detMeta: [{ k: "Talab qo'yiladigan shaxs", v: nmFull(m.from) }, { k: "Kimning hisobiga", v: nmFull(m.to) }],
+detLinesH: "Talab turlari · " + tl.length + " ta",
+detLines: tl.map(function (v, k) { return { n: k + 1, t: NM_L[v] || v, amt: "", cur: "", hasAmt: false }; }),
+detMeta: [detPeople("Talab qo'yiladigan shaxs", nmPer(m.from)), detPeople("Kimning hisobiga", nmPer(m.to))],
 hasFt: !!(fT || tT), fT: fT || "—", tT: tT || "—", fPhoto: nmPh(m.from), tPhoto: nmPh(m.to), fPh: !!nmPh(m.from), tPh: !!nmPh(m.to), ftTitle: "Talab qo'yiladigan shaxs: " + (fT || "—") + " → kimning hisobiga: " + (tT || "—"),
 sub: tl.length > 1 ? tl.length + " ta talab · " + tl.map(function (v) { return NM_L[v] || v; }).join(", ") : "Nomulkiy tusdagi talab", hasSub: true,
 hasJav: jv.length > 0, javAv: jv.slice(0, 3).map(function (n) { return { photo: portrait(n, genderOf(n)), name: n }; }),
 javShort: jv.length === 1 ? initialName(jv[0]) : jv.length + " javobgar", javTitle: jv.join(", "),
-cls: me ? "dx-srow nm ed" : (mc ? "dx-srow nm del" : "dx-srow nm"), confirm: mc, notConfirm: !mc,
+cls: (me ? "dx-srow nm ed" : (mc ? "dx-srow nm del" : "dx-srow nm")) + (nDet.det ? " det" : ""), confirm: mc, notConfirm: !mc,
 edit: function () { openNm("edit", m, target); },
 askDel: function () { setDx({ nmDel: m.id }); },
 cancelDel: function () { setDx({ nmDel: "" }); },
