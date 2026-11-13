@@ -6917,3 +6917,17 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .ntv-alv-ed .i,.ntv-alv-x .i{width:20px;height:20px;stroke-width:1.9}
 .ntv-alv-ed:hover{background:#f1f5f9 !important;color:#0f172a !important}
 .ntv-alv-x:hover{background:#fef2f2 !important;color:#dc2626 !important}
+/* ro'yxat tanlov paneli: "N ta ish tanlandi" va "Bekor qilish" olib tashlandi; tugmalar chapdan, asosiy tugma o'ngda */
+.lb-bar>.lb-info,.lb-bar>.lb-x{display:none !important}
+.lb-bar .tbrow{justify-content:flex-start !important}
+.lb-bar .tbrow .tbspacer{flex:1 1 auto}
+/* tanlov paneli: tugmalar chapdan to'ldiriladi, sig'maganlari o'ngdan boshlab «Boshqalar» ichiga o'tadi */
+.lb-bar .tbrow .nb-sodda,.lb-bar .tbrow .nb-toxt,.lb-bar .tbrow .nb-sud,.lb-bar .tbrow .nb-uzay,.lb-bar .tbrow .nb-qayta,.lb-bar .tbrow .nb-birl{display:inline-flex !important}
+.lb-bar .tb-nmore .nmix,.lb-bar .tb-nmore .nmq{display:none !important}
+.lb-bar .tb-nmore.q{display:none !important}
+@container (max-width:1239px){.lb-bar .tbrow .nb-birl{display:none !important}.lb-bar .tb-nmore.q{display:block !important}.lb-bar .tb-nmore .nmq-birl{display:flex !important}}
+@container (max-width:1159px){.lb-bar .tbrow .nb-qayta{display:none !important}.lb-bar .tb-nmore .nmq-qayta{display:flex !important}}
+@container (max-width:994px){.lb-bar .tbrow .nb-uzay{display:none !important}.lb-bar .tb-nmore .nmq-uzay{display:flex !important}}
+@container (max-width:874px){.lb-bar .tbrow .nb-sud{display:none !important}.lb-bar .tb-nmore .nmix-sud{display:flex !important}}
+@container (max-width:729px){.lb-bar .tbrow .nb-toxt{display:none !important}.lb-bar .tb-nmore .nmix-toxt{display:flex !important}}
+@container (max-width:609px){.lb-bar .tbrow .nb-sodda{display:none !important}.lb-bar .tb-nmore .nmix-sodda{display:flex !important}}
