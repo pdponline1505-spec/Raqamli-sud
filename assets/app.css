@@ -6816,3 +6816,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .dx-nmp img{width:24px;height:24px;border-radius:50%;object-fit:cover;object-position:center 20%;flex:none}
 .dx-nmar{color:#94a3b8;flex:none}
 @media (max-width:720px){.dx-nmft{display:none}}
+.dx-addchip.nmt{text-align:left}
+.dx-addchip.nmt.on{border-color:#3073f1;background:#eff6ff;color:#1d4ed8;font-weight:600}
+.dx-addchip.nmt.on svg{color:#3073f1}
+.dx-addchip.nmt.err{border-color:#fca5a5}

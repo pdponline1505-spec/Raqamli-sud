@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=64c11bbccdc6">
+<link rel="stylesheet" href="assets/app.css?v=dbda7a2883a5">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -1080,8 +1080,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 <div class="dx-dw-b" style="gap: 24px">
 <div class="{{dxNmTotCls}}" aria-live="polite">
-<div class="kv" style="gap: 3px; min-width: 0"><b>Nomulkiy talab</b><small>{{dxNmTotSub}}</small></div>
-<span class="dx-totv">{{dxNmTotN}}</span>
+<div class="kv" style="gap: 3px; min-width: 0"><b>{{dxNmTotTitle}}</b><small>{{dxNmTotSub}}</small></div>
 </div>
 
 <div class="dx-dw-sec" style="gap: 10px">
@@ -1109,25 +1108,14 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 </sc-if>
 
-<div class="dx-dw-sec" style="gap: 0">
-<div class="dx-trh"><span class="dx-lbl">Talablar <b class="dx-req">*</b></span><small class="muted">Bir nechta talab turini qo'shish mumkin</small></div>
-<sc-for list="{{dxNmRows}}" as="t" hint-placeholder-count="1">
-<div class="dx-trow nm">
-<span class="dx-tlbl"><span class="dx-tdot" aria-hidden="true"></span>{{t.label}}</span>
-<button class="dx-tx" aria-label="{{t.label}} talabini olib tashlash" onClick="{{t.remove}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
-</div>
-</sc-for>
-<sc-if value="{{dxNmNoRows}}" hint-placeholder-val="{{ false }}"><div class="{{dxNmNoRowsCls}}" style="margin-top: 12px">Talab qo'shilmagan — pastdan talab turini tanlang.</div></sc-if>
-<sc-if value="{{dxNmHasMore}}" hint-placeholder-val="{{ true }}">
-<div class="dx-more">
-<small>{{dxNmMoreLbl}}</small>
-<div class="dx-chips end">
-<sc-for list="{{dxNmMore}}" as="a" hint-placeholder-count="5">
-<button class="dx-addchip" onClick="{{a.add}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>{{a.label}}</button>
+<div class="dx-dw-sec" style="gap: 10px">
+<span class="dx-lbl">Talab turi <b class="dx-req">*</b></span>
+<div class="dx-chips" role="radiogroup" aria-label="Nomulkiy tusdagi talab turi">
+<sc-for list="{{dxNmTur}}" as="o" hint-placeholder-count="5">
+<button type="button" role="radio" aria-checked="{{o.str}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.on}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if><sc-if value="{{o.off}}" hint-placeholder-val="{{ true }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></sc-if>{{o.label}}</button>
 </sc-for>
 </div>
-</div>
-</sc-if>
+<small class="{{dxNmTurHint}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8v.5"></path></svg>Bitta talab turi tanlanadi — boshqa talab uchun alohida nomulkiy talab qo'shing</small>
 </div>
 <sc-if value="{{dxNmErr}}" hint-placeholder-val="{{ false }}"><small class="dx-err" style="margin: 0">{{dxNmErrText}}</small></sc-if>
 </div>
@@ -6903,7 +6891,7 @@ var NM_TUR = [
 var NM_L = {}; NM_TUR.forEach(function (o) { NM_L[o.v] = o.l; });
 var nmw = dx.nmw;
 var nmSnap = function (w) { return JSON.stringify([w.turlar, w.from, w.to]); };
-var nmTurOf = function (m) { return m.turlar ? m.turlar.slice() : (m.turi ? [m.turi] : []); };
+var nmTurOf = function (m) { return (m.turlar ? m.turlar.slice() : (m.turi ? [m.turi] : [])).slice(0, 1); };
 // taraflar: da'vogarlar, javobgarlar va manfaatida idora
 var nmParties = function (st) {
 var out = [];
@@ -6932,9 +6920,9 @@ var mc = dx.nmDel === m.id, me = !!(nmw && nmw.mode === "edit" && nmw.id === m.i
 var nmNm = function (v) { var p = nmParties(s).filter(function (x) { return x.v === v; })[0]; return p ? (p.org ? p.name : initialName(p.name)) : ""; };
 var fT = nmNm(m.from), tT = nmNm(m.to), tl = nmTurOf(m);
 var nmPh = function (v) { var p = nmParties(s).filter(function (x) { return x.v === v; })[0]; return p && p.photo ? p.photo : ""; };
-return { n: j + 1, title: "Nomulkiy talab",
+return { n: j + 1, title: tl.length ? (NM_L[tl[0]] || tl[0]) : "Nomulkiy talab",
 hasFt: !!(fT || tT), fT: fT || "—", tT: tT || "—", fPhoto: nmPh(m.from), tPhoto: nmPh(m.to), fPh: !!nmPh(m.from), tPh: !!nmPh(m.to), ftTitle: (fT || "—") + " hisobidan → " + (tT || "—") + " hisobiga",
-sub: tl.length + " ta talab · " + tl.map(function (v) { return NM_L[v] || v; }).join(", "), hasSub: tl.length > 0,
+sub: "Nomulkiy tusdagi talab", hasSub: true,
 hasJav: jv.length > 0, javAv: jv.slice(0, 3).map(function (n) { return { photo: portrait(n, genderOf(n)), name: n }; }),
 javShort: jv.length === 1 ? initialName(jv[0]) : jv.length + " javobgar", javTitle: jv.join(", "),
 cls: me ? "dx-srow nm ed" : (mc ? "dx-srow nm del" : "dx-srow nm"), confirm: mc, notConfirm: !mc,
@@ -7106,14 +7094,14 @@ var reqCloseNm = function () { var d = self.state.dx; if (!d.nmw) return; if (nm
 var saveNm = function () {
 var st = self.state, w = st.dx.nmw; if (!w) return;
 var hasP = nmParties(st).length > 0;
-if (!w.turlar.length) { setNmw(function () { return { err: "Kamida bitta nomulkiy talab turini qo'shing" }; }); return; }
+if (!w.turlar.length) { setNmw(function () { return { err: "Nomulkiy tusdagi talab turini tanlang" }; }); return; }
 if (hasP && !w.from) { setNmw(function () { return { err: "Kimning hisobidan ekanini tanlang" }; }); return; }
 if (hasP && !w.to) { setNmw(function () { return { err: "Kimning hisobiga ekanini tanlang" }; }); return; }
 if (w.from && w.from === w.to) { setNmw(function () { return { err: "«Kimning hisobidan» va «Kimning hisobiga» bir xil bo'lishi mumkin emas" }; }); return; }
-var item = { id: w.id, turlar: w.turlar.slice(), from: w.from, to: w.to };
+var item = { id: w.id, turlar: w.turlar.slice(0, 1), from: w.from, to: w.to };
 var p = nmPut(w.target, function (a) { return w.mode === "edit" ? a.map(function (y) { return y.id === w.id ? item : y; }) : a.concat([item]); });
 if (!p) return; p.nmw = null; setDx(p);
-self.flash("Nomulkiy talab " + (w.mode === "edit" ? "saqlandi" : "qo'shildi") + " · " + w.turlar.length + " ta talab");
+self.flash("Nomulkiy talab " + (w.mode === "edit" ? "saqlandi" : "qo'shildi") + " · " + (NM_L[w.turlar[0]] || ""));
 };
 var nmPend = ed && ed.mode === "new" ? (ed.nm || []) : [];
 Object.assign(__out, {
@@ -7136,12 +7124,11 @@ pick: function () { setNmw(function () { return { to: p.v, err: "", ask: false }
 dxNmFromHint: "dx-hint" + (nmw && nmw.err && (!nmw.from || nmSame) ? " err" : ""),
 dxNmToHint: "dx-hint" + (nmw && nmw.err && (!nmw.to || nmSame) ? " err" : ""),
 dxNmHasP: nmHasP,
-dxNmRows: (nmw ? nmw.turlar : []).map(function (v) { return { label: NM_L[v] || v, remove: function () { setNmw(function (w) { return { turlar: w.turlar.filter(function (x) { return x !== v; }), err: "", ask: false }; }); } }; }),
-dxNmNoRows: !!nmw && nmw.turlar.length === 0,
-dxNmNoRowsCls: "note" + (nmw && nmw.err && !nmw.turlar.length ? " dx-noteerr" : ""),
-dxNmMore: NM_TUR.filter(function (o) { return !(nmw && nmw.turlar.indexOf(o.v) >= 0); }).map(function (o) { return { label: o.l, add: function () { setNmw(function (w) { return w.turlar.indexOf(o.v) >= 0 ? {} : { turlar: w.turlar.concat([o.v]), err: "", ask: false }; }); } }; }),
-dxNmHasMore: !nmw || nmw.turlar.length < NM_TUR.length,
-dxNmMoreLbl: nmw && nmw.turlar.length ? "Yana talab qo'shish" : "Talab turini tanlang",
+dxNmTur: NM_TUR.map(function (o) { var on = !!(nmw && nmw.turlar[0] === o.v); return { label: o.l, on: on, off: !on, str: on ? "true" : "false",
+cls: "dx-addchip nmt" + (on ? " on" : "") + (nmw && nmw.err && !nmw.turlar.length ? " err" : ""),
+pick: function () { setNmw(function () { return { turlar: [o.v], err: "", ask: false }; }); } }; }),
+dxNmTurHint: "dx-hint" + (nmw && nmw.err && !nmw.turlar.length ? " err" : ""),
+dxNmTotTitle: nmw && nmw.turlar.length ? (NM_L[nmw.turlar[0]] || "Nomulkiy talab") : "Nomulkiy talab",
 dxNmNoParty: !nmHasP,
 dxNmErr: !!(nmw && nmw.err), dxNmErrText: nmw ? nmw.err : "",
 dxNmSaveCls: "btn pri" + (nmValid ? "" : " dx-dis"), dxNmSaveDis: nmValid ? "false" : "true",
