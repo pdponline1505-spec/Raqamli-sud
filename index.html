@@ -3917,14 +3917,14 @@ return o;
 
 // ---------- Namuna qarshi da'volar: ro'yxatdagi ishlarning ko'pchiligiga (javobgar tomonidan) ----------
 function qdGen() {
-var out = [], skip = { "R4-1901-2603/4234": 1, "R4-1901-2611/5103": 1, "R4-1901-2611/5101": 1, "R4-1901-2611/5102": 1 };
+var out = [], skip = { "R4-1901-2603/4234": 1, "R4-1901-2611/5103": 1 }; // bu ikkisining o'z qarshi da'volari bor
 var g = function (n) { return /ovna|evna|qizi|Nigora|Dilfuza|Madina|Malika/i.test(n || "") ? "Ayol" : "Erkak"; };
 var org = function (n) { return /MChJ|AJ\b|ATB|XK\b|QK\b|«|"/.test(n || ""); };
 var PRO = [["Aliyeva Nodira Rustamovna", "Ayol", "Termiz shahar prokuraturasi"], ["Qodirov Sherzod Anvarovich", "Erkak", "Surxondaryo viloyati prokuraturasi"], ["Yusupova Madina Olimovna", "Ayol", "Termiz tumani prokuraturasi"]];
 var VIA = ["Elektron shaklda", "Qog'oz shaklda"], SUMS = ["1 250 000 UZS", "3 400 000 UZS", "780 000 UZS", "5 600 000 UZS", "2 150 000 UZS", "960 000 UZS", "12 300 000 UZS"];
 var p2 = function (x) { return (x < 10 ? "0" : "") + x; };
 (typeof L_DATA !== "undefined" ? L_DATA : []).forEach(function (r) {
-if (skip[r.num] || r.id % 5 === 4) return; // har beshinchi ish qarshi da'vosiz qoladi
+if (skip[r.num]) return;
 var n = 1 + (r.id % 3 === 0 ? 1 : 0);
 for (var k = 0; k < n; k++) {
 var seed = r.id * 7 + k * 3, jv = (r.jav || [])[k] || (r.jav || [])[0] || "Javobgar", f;
