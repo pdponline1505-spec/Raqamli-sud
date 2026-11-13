@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=81aa8123ca24">
+<link rel="stylesheet" href="assets/app.css?v=3d15639c8bb2">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -315,7 +315,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="{{r.rowCls}}" style="background: {{r.bg}}">
 <button class="l-rowbtn" aria-label="{{r.num}} ishini ochish" onClick="{{r.open}}"></button>
 <button class="{{r.chkCls}}" role="checkbox" aria-checked="{{r.selStr}}" aria-label="{{r.num}} ni tanlash" onClick="{{r.toggle}}"><sc-if value="{{r.sel}}" hint-placeholder-val="{{ false }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 12px; height: 12px; stroke-width: 3"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button>
-<div class="kv l-pe" style="gap: 6px"><button class="l-numlink" title="To'liq oynada ochish" onClick="{{r.openFull}}">{{r.num}}</button><sc-if value="{{r.isDub}}" hint-placeholder-val="{{ false }}"><span class="l-tag dub"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg>Dublikat</span></sc-if><sc-if value="{{r.isNew}}" hint-placeholder-val="{{ false }}"><span class="l-tag new" title="{{r.newTitle}}"><i></i>Yangi</span></sc-if><sc-if value="{{r.hasRes}}" hint-placeholder-val="{{ false }}"><span class="{{r.resCls}}" title="{{r.resTitle}}"><i></i>{{r.resTxt}}</span></sc-if><sc-if value="{{r.hasPend}}" hint-placeholder-val="{{ false }}"><span class="l-tag pend" title="{{r.pendTitle}}">{{r.pendTxt}}</span></sc-if><sc-if value="{{r.isQd}}" hint-placeholder-val="{{ false }}"><span class="l-tag qd"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"></path><path d="M9 14h6M13 12l2 2-2 2"></path></svg>Qarshi da'vo</span></sc-if><sc-if value="{{r.yForeign}}" hint-placeholder-val="{{ false }}"><span class="l-tag yfor" title="{{r.yForTitle}}">Boshqa yordamchi</span></sc-if></div>
+<div class="kv l-pe" style="gap: 6px"><button class="l-numlink" title="To'liq oynada ochish" onClick="{{r.openFull}}">{{r.num}}</button><sc-if value="{{r.isDub}}" hint-placeholder-val="{{ false }}"><span class="l-tag dub"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg>Dublikat</span></sc-if><sc-if value="{{r.isNew}}" hint-placeholder-val="{{ false }}"><span class="l-tag new" title="{{r.newTitle}}"><i></i>Yangi</span></sc-if><sc-if value="{{r.hasRes}}" hint-placeholder-val="{{ false }}"><span class="{{r.resCls}}" title="{{r.resTitle}}"><i></i>{{r.resTxt}}</span></sc-if><sc-if value="{{r.hasPend}}" hint-placeholder-val="{{ false }}"><span class="l-tag pend" title="{{r.pendTitle}}">{{r.pendTxt}}</span></sc-if><sc-if value="{{r.hasDemo}}" hint-placeholder-val="{{ false }}"><span class="{{r.demoCls}}">{{r.demoTxt}}</span></sc-if><sc-if value="{{r.isQd}}" hint-placeholder-val="{{ false }}"><span class="l-tag qd"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"></path><path d="M9 14h6M13 12l2 2-2 2"></path></svg>Qarshi da'vo</span></sc-if><sc-if value="{{r.yForeign}}" hint-placeholder-val="{{ false }}"><span class="l-tag yfor" title="{{r.yForTitle}}">Boshqa yordamchi</span></sc-if></div>
 <div class="l-pe"><div class="row" style="gap: 10px; min-width: 0"><sc-if value="{{r.arizMany}}" hint-placeholder-val="{{ false }}"><span class="l-stack"><sc-for list="{{r.arizAv}}" as="a" hint-placeholder-count="3"><img class="l-av" src="{{a.photo}}" alt=""></sc-for></span></sc-if><span class="kv" style="min-width: 0"><span class="l-name">{{r.arizName}}</span><sc-if value="{{r.arizMany}}" hint-placeholder-val="{{ false }}"><small>{{r.arizCount}}</small></sc-if></span></div></div>
 <div class="l-pe"><div class="row" style="gap: 10px; min-width: 0"><sc-if value="{{r.javMany}}" hint-placeholder-val="{{ false }}"><span class="l-stack"><sc-for list="{{r.javAv}}" as="a" hint-placeholder-count="3"><img class="l-av" src="{{a.photo}}" alt=""></sc-for></span></sc-if><span class="kv" style="min-width: 0"><span class="l-name">{{r.javName}}</span><sc-if value="{{r.javMany}}" hint-placeholder-val="{{ false }}"><small>{{r.javCount}}</small></sc-if></span></div></div>
 <span class="l-pe l-clamp">{{r.sud}}</span>
@@ -1639,13 +1639,14 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 
 <section class="sec" id="turkumlar">
 <div class="sh"><div><h2>Ish mazmuni va da'vo summasi</h2><p>{{itkSub}}</p></div><div class="tools itk-tools"><button class="btn" onClick="{{itkAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Ish mazmuni qo'shish</button></div></div>
+<sc-if value="{{birlHas}}" hint-placeholder-val="{{ false }}"><div class="itk-birl"><span class="itk-birl-ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7h8M8 12h8M8 17h5"></path><rect x="4" y="3" width="16" height="18" rx="2.5"></rect></svg></span><div class="kv" style="gap: 2px; min-width: 0"><b>{{birlTitle}}</b><small>Birlashtirilgan ishlarning ish mazmuni, da'vo summalari va taraflari shu ishga ko'chirilgan</small></div><div class="itk-birl-l"><sc-for list="{{birlList}}" as="b" hint-placeholder-count="2"><span class="itk-birl-c" title="{{b.title}}"><b>{{b.num}}</b><small>{{b.sub}}</small></span></sc-for></div></div></sc-if>
 <div class="dx-entries" role="list" aria-label="Ish turkumlari va ularning da'vo summalari">
 <sc-for list="{{itk}}" as="t" hint-placeholder-count="2">
 <div class="{{t.cls}}" role="listitem">
 <div class="dx-ch">
 <button type="button" class="dx-actog" aria-expanded="{{t.openStr}}" aria-label="{{t.togLbl}}" title="{{t.togLbl}}" onClick="{{t.toggle}}"><svg class="i s dx-acchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
 <div class="dx-chm" onClick="{{t.toggle}}"><div class="row" style="gap: 10px; flex-wrap: wrap; min-width: 0">
-<span class="dx-code">{{t.code}}</span><b class="dx-cname">{{t.name}}</b>
+<span class="dx-code">{{t.code}}</span><b class="dx-cname">{{t.name}}</b><sc-if value="{{t.hasBirl}}" hint-placeholder-val="{{ false }}"><span class="dx-tag birl" title="{{t.birlTitle}}">{{t.birlTxt}}</span></sc-if>
 </div>
 <sc-if value="{{t.closed}}" hint-placeholder-val="{{ false }}"><div class="dx-acsum"><sc-for list="{{t.sumTags}}" as="g" hint-placeholder-count="2"><span class="{{g.cls}}">{{g.t}}</span></sc-for></div></sc-if></div>
 <div class="dx-eacts">
@@ -3834,7 +3835,7 @@ var NAV = [
 var NAV_REVIEWED = ["umumiy", "tomonlar", "qarshi", "turkumlar", "qtomonlar", "qshaxslar", "hujjatlar"];
 
 // ---------- Ro'yxatga olish › Da'vo tartibida: alohida ro'yxat va bo'sh ish kartochkalari ----------
-var CASE_KEYS = ["qarshi", "docs", "es", "kirim", "javob", "pb", "uz", "xr", "pr", "tc", "ek", "ta", "ex", "mb", "nt", "qtJv", "qtAr", "qsh", "tmDv", "tmJv", "lg", "jl", "itk", "bk"];
+var CASE_KEYS = ["birlFrom", "qarshi", "docs", "es", "kirim", "javob", "pb", "uz", "xr", "pr", "tc", "ek", "ta", "ex", "mb", "nt", "qtJv", "qtAr", "qsh", "tmDv", "tmJv", "lg", "jl", "itk", "bk"];
 var LIST_KEYS = ["lRows", "lTab", "lSel", "lMenu", "lfQ", "lfSud", "lfTag", "lfDate", "lfPer", "lfPerRole", "lfPerQ", "lfOpen", "lOnlySel"];
 var REG_ROWS = [
 { id: 9101, num: "R4-1901-2610/5012", tag: "", stage: "korib", ariz: ["Yusupov Akmal Ilhomovich"], jav: ["Mirzayev Doston Alisherovich"], sud: "Shartnoma majburiyatlarini bajarish yuzasidan", sana: "08.10.2026" },
@@ -3852,6 +3853,56 @@ var o = {}; CASE_KEYS.forEach(function (k) { o[k] = k === "bk" ? null : []; });
 var g = function (n) { return /ovna|evna|qizi|Nigora|Dilfuza/i.test(n) ? "Ayol" : "Erkak"; };
 o.tmDv = (row ? row.ariz : []).map(function (n, i) { return tmPerson(800 + i, n, "1988-04-1" + (i % 9), g(n)); });
 o.tmJv = (row ? row.jav : []).map(function (n, i) { return tmPerson(850 + i, n, "1991-09-2" + (i % 9), g(n)); });
+return o;
+}
+
+// ---------- Namuna ishlar: 3 talabli, birlashtirilgan va qarshi da'vosi bor ish ----------
+var DEMO_ORG = function (id, name) { var p = tmPerson(id, name, "2015-03-01", "Erkak"); p.isOrg = true; return p; };
+var DEMO_CASES = {
+uch: {
+tmDv: [tmPerson(901, "Abdusattorova Asila Kamoliddinovna", "1990-05-12", "Ayol")],
+tmJv: [tmPerson(902, "Normurodov Bekzod Azizovich", "1987-03-21", "Erkak"), tmPerson(903, "Rahimova Dilnoza Anvarovna", "1992-08-02", "Ayol"), DEMO_ORG(904, "«Surxon Savdo» MChJ")],
+birlFrom: [],
+itk: [
+{ id: "u1", turkum: "1 – Oldi-sotdi shartnomasi yuzasidan", qturkum: "1.1 – Chakana oldi-sotdi shartnomasi yuzasidan", iturkum: "", javs: ["Normurodov Bekzod Azizovich"], ok: true,
+sums: [{ id: "us1", jav: ["Normurodov Bekzod Azizovich"], lines: [{ id: "us1a", type: "asosiy", amt: "12500000", cur: "UZS" }, { id: "us1b", type: "penya", amt: "1250000", cur: "UZS" }] }], nm: [] },
+{ id: "u2", turkum: "2 – Mulk ijarasiga doir (uy-joy ijarasi bundan mustasno)", qturkum: "2.1 – Avtotransport vositasi ijarasiga doir", iturkum: "", javs: ["Rahimova Dilnoza Anvarovna"], ok: true,
+sums: [{ id: "us2", jav: ["Rahimova Dilnoza Anvarovna"], lines: [{ id: "us2a", type: "asosiy", amt: "4800000", cur: "UZS" }, { id: "us2b", type: "moddiy", amt: "600000", cur: "UZS" }] }],
+nm: [{ id: "un1", turlar: ["majb"], from: ["jv:Rahimova Dilnoza Anvarovna"], to: ["dv:Abdusattorova Asila Kamoliddinovna"] }] },
+{ id: "u3", turkum: "3 – Shartnoma majburiyatlarini bajarish yuzasidan", qturkum: "", iturkum: "59 – Javobgarga majburiyat yuklash", javs: ["«Surxon Savdo» MChJ"], ok: false,
+sums: [{ id: "us3", jav: ["«Surxon Savdo» MChJ"], lines: [{ id: "us3a", type: "asosiy", amt: "7300000", cur: "UZS" }, { id: "us3b", type: "jarima", amt: "730000", cur: "UZS" }, { id: "us3c", type: "asosiy", amt: "1500", cur: "USD" }] }],
+nm: [{ id: "un2", turlar: ["taminlash"], from: ["jv:«Surxon Savdo» MChJ"], to: ["dv:Abdusattorova Asila Kamoliddinovna"] }] }
+]
+},
+birl: {
+tmDv: [tmPerson(911, "Karimov Akmal Saidovich", "1985-11-04", "Erkak"), tmPerson(912, "Yusupov Akmal Ilhomovich", "1989-02-17", "Erkak")],
+tmJv: [DEMO_ORG(913, "«Termiz Qurilish» AJ"), tmPerson(914, "Saidov Jasur Rustamovich", "1991-06-30", "Erkak")],
+birlFrom: [
+{ num: "R4-1901-2611/5104", sana: "28.10.2026", ariz: "Karimov Akmal Saidovich", jav: "Saidov Jasur Rustamovich", sud: "Oldi-sotdi shartnomasi yuzasidan" },
+{ num: "R4-1901-2611/5105", sana: "28.10.2026", ariz: "Yusupov Akmal Ilhomovich", jav: "«Termiz Qurilish» AJ", sud: "Mulk ijarasiga doir nizo yuzasidan" }],
+itk: [
+{ id: "b1", turkum: "3 – Shartnoma majburiyatlarini bajarish yuzasidan", qturkum: "", iturkum: "", javs: ["«Termiz Qurilish» AJ"], ok: true,
+sums: [{ id: "bs1", jav: ["«Termiz Qurilish» AJ"], lines: [{ id: "bs1a", type: "asosiy", amt: "25000000", cur: "UZS" }, { id: "bs1b", type: "penya", amt: "2500000", cur: "UZS" }] }], nm: [] },
+{ id: "b2", birl: "R4-1901-2611/5104", turkum: "1 – Oldi-sotdi shartnomasi yuzasidan", qturkum: "1.2 – Ulgurji oldi-sotdi shartnomasi yuzasidan", iturkum: "", javs: ["Saidov Jasur Rustamovich"], ok: true,
+sums: [{ id: "bs2", jav: ["Saidov Jasur Rustamovich"], lines: [{ id: "bs2a", type: "asosiy", amt: "9400000", cur: "UZS" }, { id: "bs2b", type: "boy", amt: "1100000", cur: "UZS" }] }], nm: [] },
+{ id: "b3", birl: "R4-1901-2611/5105", turkum: "2 – Mulk ijarasiga doir (uy-joy ijarasi bundan mustasno)", qturkum: "", iturkum: "", javs: ["«Termiz Qurilish» AJ"], ok: false,
+sums: [{ id: "bs3", jav: ["«Termiz Qurilish» AJ"], lines: [{ id: "bs3a", type: "asosiy", amt: "6200000", cur: "UZS" }] }],
+nm: [{ id: "bn1", turlar: ["yer"], from: ["jv:«Termiz Qurilish» AJ"], to: ["dv:Yusupov Akmal Ilhomovich"] }] }
+]
+},
+qd: {
+tmDv: [DEMO_ORG(921, "«Agro Invest Group» MChJ")],
+tmJv: [tmPerson(922, "Mirzayev Doston Alisherovich", "1986-09-09", "Erkak")],
+birlFrom: [],
+itk: [
+{ id: "q1", turkum: "1 – Oldi-sotdi shartnomasi yuzasidan", qturkum: "1.2 – Ulgurji oldi-sotdi shartnomasi yuzasidan", iturkum: "", javs: ["Mirzayev Doston Alisherovich"], ok: true,
+sums: [{ id: "qs1", jav: ["Mirzayev Doston Alisherovich"], lines: [{ id: "qs1a", type: "asosiy", amt: "18000000", cur: "UZS" }, { id: "qs1b", type: "penya", amt: "900000", cur: "UZS" }] }], nm: [] }
+]
+}
+};
+function demoCase(row, base) {
+var o = {}; CASE_KEYS.forEach(function (k) { o[k] = base && base[k] !== undefined ? base[k] : (k === "bk" ? null : []); });
+var d = DEMO_CASES[row.demo]; if (d) Object.keys(d).forEach(function (k) { o[k] = JSON.parse(JSON.stringify(d[k])); });
 return o;
 }
 
@@ -3974,6 +4025,9 @@ var L_AVC = [["#dbeafe", "#1e40af"], ["#fde68a", "#92400e"], ["#bbf7d0", "#16653
 var P_ARALOV = ["Aralov Yunus Bazarovich", "Xolmatov Dilshod Rustamovich", "Ergasheva Malika Anvarovna"];
 var P_SHAYM = ["Shaymonov Ilhom Norboy o'g'li", "Rasulov Bobur Akmalovich", "Tursunova Zarina Olimovna"];
 var L_DATA = [
+{ id: 83, num: "R4-1901-2611/5101", tag: "", demo: "uch", ariz: ["Abdusattorova Asila Kamoliddinovna"], jav: ["Normurodov Bekzod Azizovich", "Rahimova Dilnoza Anvarovna", "«Surxon Savdo» MChJ"], sud: "Oldi-sotdi, ijara va shartnoma majburiyatlari yuzasidan (3 talab)", sana: "02.11.2026" },
+{ id: 84, num: "R4-1901-2611/5102", tag: "", demo: "birl", ariz: ["Karimov Akmal Saidovich", "Yusupov Akmal Ilhomovich"], jav: ["«Termiz Qurilish» AJ", "Saidov Jasur Rustamovich"], sud: "Shartnoma majburiyatlarini bajarish yuzasidan (birlashtirilgan ish)", sana: "28.10.2026" },
+{ id: 85, num: "R4-1901-2611/5103", tag: "", demo: "qd", ariz: ["«Agro Invest Group» MChJ"], jav: ["Mirzayev Doston Alisherovich"], sud: "Mahsulot yetkazib berish shartnomasi yuzasidan (qarshi da'vo bor)", sana: "30.10.2026" },
 { id: 1, num: "R4-1901-2603/4234", tag: "dub", ariz: ["Aralov Yunus Bazarovich"], jav: P_SHAYM, sud: "Korporativ nizolar yuzasidan", sana: "15.06.2026" },
 { id: 2, num: "R4-1901-2603/4235", tag: "", ariz: ["Karimov Akmal Saidovich"], jav: ["Normurodov Bekzod Azizovich"], sud: "Shartnoma majburiyatlarini bajarish yuzasidan", sana: "20.06.2026" },
 { id: 3, num: "R4-1901-2603/4236", tag: "dub", ariz: ["Karimov Akmal Saidovich"], jav: ["Normurodov Bekzod Azizovich"], sud: "Shartnoma majburiyatlarini bajarish yuzasidan", sana: "20.06.2026" },
@@ -4014,6 +4068,8 @@ var L_DATA = [
 { id: 80, num: "R4-1901-2603/4290", tag: "", stage: "yakun", sub: "qabrad", res: "", yord: "Ergashev Jahongir Alisherovich", ariz: ["YaTT Rahmonov Sherzod"], jav: ["«Denov Avto» MChJ"], sud: "Avtomobil ta'mirlash xizmati uchun haq undirish yuzasidan", sana: "01.09.2026", ajrimSana: "2026-09-01", qaror: "03.09.2026 09:30", movedFrom: "Ko'rib chiqish", joyTxt: "1 - Sud binosida" },
 { id: 81, num: "R4-1901-2603/4291", tag: "", stage: "yakun", sub: "qayt", res: "", yord: "Ergashev Jahongir Alisherovich", ariz: ["«Boysun Tog' Turizm» MChJ"], jav: ["«Surxon Mehmonxona» MChJ"], sud: "Xizmat ko'rsatish shartnomasi bo'yicha qarz yuzasidan", sana: "03.09.2026", ajrimSana: "2026-09-03", qaror: "05.09.2026 14:00", movedFrom: "Ko'rib chiqish", joyTxt: "1 - Sud binosida" },
 { id: 82, num: "R4-1901-2603/4292", tag: "", stage: "yakun", sub: "qayt", res: "", yord: "Ergashev Jahongir Alisherovich", ariz: ["«Sariosiyo Ko'mir» MChJ"], jav: ["«Termiz Issiqlik» AJ"], sud: "Ko'mir yetkazib berish shartnomasi yuzasidan", sana: "08.09.2026", ajrimSana: "2026-09-08", qaror: "10.09.2026 10:20", movedFrom: "Ko'rib chiqish", joyTxt: "1 - Sud binosida" },
+{ id: 86, num: "R4-1901-2611/5104", tag: "", stage: "yakun", sub: "birl", res: "", yord: "Ergashev Jahongir Alisherovich", ariz: ["Karimov Akmal Saidovich"], jav: ["Saidov Jasur Rustamovich"], sud: "Oldi-sotdi shartnomasi yuzasidan", sana: "21.10.2026", ajrimSana: "2026-10-28", qaror: "28.10.2026 11:00", movedFrom: "Ko'rib chiqish", joyTxt: "1 - Sud binosida", birlTo: "R4-1901-2611/5102" },
+{ id: 87, num: "R4-1901-2611/5105", tag: "", stage: "yakun", sub: "birl", res: "", yord: "Ergashev Jahongir Alisherovich", ariz: ["Yusupov Akmal Ilhomovich"], jav: ["«Termiz Qurilish» AJ"], sud: "Mulk ijarasiga doir nizo yuzasidan", sana: "23.10.2026", ajrimSana: "2026-10-28", qaror: "28.10.2026 11:00", movedFrom: "Ko'rib chiqish", joyTxt: "1 - Sud binosida", birlTo: "R4-1901-2611/5102" },
 { id: 16, num: "R4-1901-2603/4255", tag: "", stage: "tiklash", ariz: ["Karimov Akmal Saidovich"], jav: ["Normurodov Bekzod Azizovich"], sud: "Shartnoma majburiyatlarini bajarish yuzasidan", sana: "22.07.2026" },
 { id: 17, num: "R4-1901-2603/4256", tag: "", stage: "tiklash", ariz: P_ARALOV, jav: ["Shaymonov Ilhom Norboy o'g'li"], sud: "Yuridik ahamiyatga ega bo'lgan faktlarni aniqlash yuzasidan", sana: "28.07.2026" },
 { id: 33, num: "4-1901-2604/2702", tag: "", stage: "arxiv", sub: "yuborish", ariz: ["«Hamkorbank» ATB"], jav: ["«Denov Meva Sabzavot» MChJ"], sud: "Kredit shartnomasi yuzasidan", sana: "12.12.2025", qaror: "26.12.2025 10:00" },
@@ -4749,6 +4805,7 @@ this.state = {
 nav: "umumiy",
 toast: "",
 qarshi: [
+{ id: "q5103", ofNum: "R4-1901-2611/5103", filers: [{ name: "Mirzayev Doston Alisherovich", gender: "Erkak", kind: "boshqa", role: "Javobgar", org: "Ish bo'yicha javobgar", side: "Javobgar" }], num: "R4-2001-2611/318", st: "yangi", kirim: "5512", kirimDate: "04.11.2026 10:20", key: "2026-11-04 10:20", via: "Elektron shaklda", sum: "3 200 000 UZS", auto: true },
 { id: "a", ofNum: "R4-1901-2603/4234", filers: [{ name: "Aliyeva Nodira Rustamovna", gender: "Ayol", kind: "pro", role: "Prokuror", org: "Termiz shahar prokuraturasi", side: "Prokuror" }], num: "R4-2001-2609/245", st: "yangi", kirim: "5341", kirimDate: "29.09.2026 13:35", key: "2026-09-29 13:35", via: "Elektron shaklda", sum: "1 000 000 UZS", auto: true },
 { id: "b", ofNum: "R4-1901-2603/4234", filers: [{ name: "Rasulov Bobur Akmalovich", gender: "Erkak", kind: "boshqa", role: "Advokat", org: "\"Adolat himoyasi\" advokatlik firmasi", side: "Advokat" }, { name: "Tursunova Zarina Olimovna", gender: "Ayol", kind: "boshqa", role: "Ishonchli vakil", org: "Ishonchnoma asosida", side: "Ishonchli vakil" }, { name: "Ergashev Javlon Baxtiyorovich", gender: "Erkak", kind: "pro", role: "Prokuror", org: "Termiz tumani prokuraturasi", side: "Prokuror" }, { name: "Saidova Malika Anvarovna", gender: "Ayol", kind: "boshqa", role: "Advokat", org: "\"Huquq va adolat\" advokatlik byurosi", side: "Advokat" }, { name: "Hamroyev Sardor Olimovich", gender: "Erkak", kind: "boshqa", role: "Ishonchli vakil", org: "Ishonchnoma asosida", side: "Ishonchli vakil" }, { name: "Nurmatova Dilfuza Karimovna", gender: "Ayol", kind: "boshqa", role: "Advokat", org: "Surxondaryo hududiy advokatlar palatasi", side: "Advokat" }, { name: "Xolmatov Ulug'bek Rustamovich", gender: "Erkak", kind: "pro", role: "Prokuror", org: "Surxondaryo viloyati prokuraturasi", side: "Prokuror" }, { name: "Abdullayeva Nigora Sobirovna", gender: "Ayol", kind: "boshqa", role: "Ishonchli vakil", org: "Ishonchnoma asosida", side: "Ishonchli vakil" }, { name: "Rahmonov Otabek Ilhomovich", gender: "Erkak", kind: "boshqa", role: "Advokat", org: "\"Ishonch\" advokatlik firmasi", side: "Advokat" }, { name: "Yo'ldosheva Kamola Akmalovna", gender: "Ayol", kind: "boshqa", role: "Ishonchli vakil", org: "Ishonchnoma asosida", side: "Ishonchli vakil" }], num: "R4-2001-2607/189", st: "korib", kirim: "5123", kirimDate: "27.09.2026 11:29", key: "2026-09-27 11:29", via: "Elektron shaklda", sum: "1 000 000 UZS", auto: true },
 { id: "c", ofNum: "R4-1901-2603/4234", filers: [{ name: "Qodirov Sherzod Anvarovich", gender: "Erkak", kind: "pro", role: "Prokuror", org: "Surxondaryo viloyati prokuraturasi", side: "Prokuror" }], num: "R4-2001-2588/114", st: "korildi", kirim: "4987", kirimDate: "22.09.2026 09:40", key: "2026-09-22 09:40", via: "Qog'oz shaklda", sum: "1 000 000 UZS", auto: true },
@@ -4897,7 +4954,7 @@ lg: [
 ], lgF: "all", lgQ: "", lgShow: 5, lgMenu: false,
 jl: [{ id: "j1", num: "01-2458/26", ariza: "2458", org: "O'zbekiston Respublikasi Adliya vazirligi", sent: "2026-08-12", file: "ariza_2458.pdf", size: "120 KB", reply: { file: "javob_2458.pdf", size: "84 KB", date: "2026-08-20" } }, { id: "j2", num: "02-1387/26", ariza: "1387", org: "Toshkent shahar hokimligi", sent: "2026-09-24", file: "ariza_1387.pdf", size: "96 KB", reply: null }, { id: "j3", num: "03-0921/26", ariza: "0921", org: "Bosh prokuratura", sent: "2026-07-30", file: "ariza_0921.pdf", size: "60 KB", reply: { file: "javob_0921.pdf", size: "72 KB", date: "2026-08-06" } }], jlDel: "",
 ds: [{ id: "s1", jav: "Rahimova Dilnoza Anvarovna", lines: [{ type: "asosiy", amt: "1000000", cur: "UZS" }, { type: "manaviy", amt: "100000", cur: "UZS" }, { type: "moddiy", amt: "150000", cur: "UZS" }] }, { id: "s2", jav: "Normurodov Bekzod Azizovich", lines: [{ type: "asosiy", amt: "1000000", cur: "UZS" }, { type: "penya", amt: "150000", cur: "UZS" }, { type: "jarima", amt: "100000", cur: "UZS" }] }], dsDel: "",
-itk: [{ id: "t1", turkum: "2 – Mulk ijarasiga doir (uy-joy ijarasi bundan mustasno)", qturkum: "2.1 – Avtotransport vositasi ijarasiga doir", iturkum: "60 – Notarial harakatlarni haqiqiy emas deb topish", javs: ["Rahimova Dilnoza Anvarovna"], ok: true, sums: [{ id: "s1", jav: ["Rahimova Dilnoza Anvarovna"], lines: [{ id: "s1a", type: "asosiy", amt: "1000000", cur: "UZS" }, { id: "s1b", type: "manaviy", amt: "100000", cur: "UZS" }, { id: "s1c", type: "moddiy", amt: "150000", cur: "UZS" }] }] }, { id: "t2", turkum: "1 – Oldi-sotdi shartnomasi yuzasidan", qturkum: "1.1 – Chakana oldi-sotdi shartnomasi yuzasidan", iturkum: "", javs: ["Normurodov Bekzod Azizovich"], ok: false, sums: [{ id: "s2", jav: ["Normurodov Bekzod Azizovich"], lines: [{ id: "s2a", type: "asosiy", amt: "1000000", cur: "UZS" }, { id: "s2b", type: "penya", amt: "150000", cur: "UZS" }, { id: "s2c", type: "jarima", amt: "100000", cur: "UZS" }] }] }], itkDel: "", itkForm: null,
+itk: [{ id: "t1", turkum: "2 – Mulk ijarasiga doir (uy-joy ijarasi bundan mustasno)", qturkum: "2.1 – Avtotransport vositasi ijarasiga doir", iturkum: "60 – Notarial harakatlarni haqiqiy emas deb topish", javs: ["Rahimova Dilnoza Anvarovna"], ok: true, sums: [{ id: "s1", jav: ["Rahimova Dilnoza Anvarovna"], lines: [{ id: "s1a", type: "asosiy", amt: "1000000", cur: "UZS" }, { id: "s1b", type: "manaviy", amt: "100000", cur: "UZS" }, { id: "s1c", type: "moddiy", amt: "150000", cur: "UZS" }] }] }, { id: "t2", turkum: "1 – Oldi-sotdi shartnomasi yuzasidan", qturkum: "1.1 – Chakana oldi-sotdi shartnomasi yuzasidan", iturkum: "", javs: ["Normurodov Bekzod Azizovich"], ok: false, sums: [{ id: "s2", jav: ["Normurodov Bekzod Azizovich"], lines: [{ id: "s2a", type: "asosiy", amt: "1000000", cur: "UZS" }, { id: "s2b", type: "penya", amt: "150000", cur: "UZS" }, { id: "s2c", type: "jarima", amt: "100000", cur: "UZS" }] }] }], itkDel: "", itkForm: null, birlFrom: [],
 bk: BK_DEMO, bkFormOpen: false, bkForm: bkBlank(), bkEditing: false, bkStep: "umumiy", bkErr: false, bkErrSteps: {},
 bkOpen: true, bkConfirmDel: false, bkDetail: "",
 bkDone: { turi: "", sana: "", natija: "", izoh: "", saved: false }, bkDoneErr: false
@@ -4924,12 +4981,12 @@ return Object.assign({}, load || {}, { listSrc: target });
 }
 _loadCase(row) {
 var reg = (this.state.listSrc || "main") === "reg";
-var target = reg ? "reg:" + row.num : "main";
+var target = reg ? "reg:" + row.num : (row && row.demo ? "demo:" + row.num : "main");
 var cur = this.state.caseCtx || "main";
 if (cur === target) return {};
 this._cases = this._cases || {};
 var save = {}; var st = this.state; CASE_KEYS.forEach(function (k) { save[k] = st[k]; }); this._cases[cur] = save;
-var load = this._cases[target] || (reg ? regCaseBlank(row) : null);
+var load = this._cases[target] || (reg ? regCaseBlank(row) : (row && row.demo ? demoCase(row, this._cases.main || save) : null));
 return Object.assign({}, load || {}, { caseCtx: target });
 }
 componentDidMount() {
@@ -6161,7 +6218,7 @@ var caseIsDub = (s.lRows || []).some(function (x) { return x.num === s.caseNum &
 var lRows = visible.map(function (r) {
 var sel = !!s.lSel[r.id], menuOpen = s.lMenu === r.id;
 var one = function (fn) { return function () { self.setState({ lMenu: 0 }); fn([r.id]); }; };
-return { num: r.num, sud: r.sud, sana: r.sana, isDub: r.tag === "dub", isQd: r.tag === "qd", yForeign: !!r.yord && r.yord !== "Ergashev Jahongir Alisherovich" && ["korib", "majlis", "natija", "qoldir", "tiklash"].indexOf(r.stage) >= 0, yForTitle: r.yord ? "Biriktirilgan yordamchi: " + r.yord + (r.fromJudge ? " · ish " + r.fromJudge + " dan qayta taqsimlangan" : "") + " · o'zgartirish «Keyingi bosqichga o'tkazish» oynasida" : "",
+return { num: r.num, sud: r.sud, sana: r.sana, isDub: r.tag === "dub", isQd: r.tag === "qd", hasDemo: !!r.demo, demoTxt: r.demo === "uch" ? "3 ta talab" : r.demo === "birl" ? "Birlashtirilgan ish" : r.demo === "qd" ? "Qarshi da'vo bor" : "", demoCls: "l-tag demo " + (r.demo || ""), yForeign: !!r.yord && r.yord !== "Ergashev Jahongir Alisherovich" && ["korib", "majlis", "natija", "qoldir", "tiklash"].indexOf(r.stage) >= 0, yForTitle: r.yord ? "Biriktirilgan yordamchi: " + r.yord + (r.fromJudge ? " · ish " + r.fromJudge + " dan qayta taqsimlangan" : "") + " · o'zgartirish «Keyingi bosqichga o'tkazish» oynasida" : "",
 arizName: r.ariz[0], arizMany: r.ariz.length > 1, arizCount: r.ariz.length + " ta", arizAv: avs(r.ariz),
 javName: r.jav[0], javMany: r.jav.length > 1, javCount: r.jav.length + " ta", javAv: avs(r.jav),
 hasIj: false, ijCls: "", ijTxt: "",
@@ -10691,7 +10748,7 @@ var itkOpenId = s.itkOpen === undefined ? (list[0] ? list[0].id : "") : s.itkOpe
 Object.assign(__out, {
 itk: list.map(function (t, i) {
 var a = sc(t.turkum), q = sc(t.qturkum), k = sc(t.iturkum), cd = s.itkDel === t.id;
-return { code: a.code || String(i + 1), name: a.name, isMain: i === 0, ok: !!t.ok, notOk: !t.ok,
+return { code: a.code || String(i + 1), name: a.name, isMain: i === 0, ok: !!t.ok, notOk: !t.ok, hasBirl: !!t.birl, birlTxt: t.birl ? t.birl.split("/").pop() + "-ishdan" : "", birlTitle: t.birl ? t.birl + " ishidan birlashtirish orqali qo'shilgan" : "",
 canMain: i > 0,
 makeMain: function () {
 var main0 = sc((self.state.itk[0] || {}).turkum).name || "—";
@@ -10727,6 +10784,8 @@ itkSumAdd: function () { var l = self.state.itk || []; if (!l.length) return; if
 itkSumClose: function () { self.setState({ itkSumMenu: false }); },
 itkSumOpts: list.map(function (t, i) { var a = sc(t.turkum); return { code: a.code || String(i + 1), name: a.name, isMain: i === 0, pick: function () { self.setState({ itkSumMenu: false }); __out._itkAddSum(t)(); } }; }),
 itkSub: list.length ? list.length + " ta ish mazmuni · da'vo summalari bilan" : "Ish mazmuni va unga tegishli da'vo summalari",
+birlHas: (s.birlFrom || []).length > 0, birlTitle: "Bu ishga " + (s.birlFrom || []).length + " ta ish birlashtirilgan",
+birlList: (s.birlFrom || []).map(function (b) { return { num: b.num, sub: b.sana + " · " + b.ariz + " → " + b.jav, title: b.sud }; }),
 itkGrandHas: list.some(function (x) { return (x.sums || []).length; }), itkGrand: __out._byCur([].concat.apply([], list.map(function (x) { return x.sums || []; }))),
 itkAdd: function () { self.setState({ itkDel: "", dxDd: "", itkForm: { mode: "new", id: "", turkum: "", qturkum: "", iturkum: "", javs: [], err: "" } }); }
 });
