@@ -1383,6 +1383,203 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 </section>
 
+<section class="sec" id="turkumlar">
+<div class="sh"><div><h2>Ish mazmuni va da'vo summasi</h2><p>{{itkSub}}</p></div><div class="tools itk-tools"><button class="btn" onClick="{{itkAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Ish mazmuni qo'shish</button></div></div>
+<sc-if value="{{birlHas}}" hint-placeholder-val="{{ false }}"><div class="itk-birl"><span class="itk-birl-ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7h8M8 12h8M8 17h5"></path><rect x="4" y="3" width="16" height="18" rx="2.5"></rect></svg></span><div class="kv" style="gap: 2px; min-width: 0"><b>{{birlTitle}}</b><small>Birlashtirilgan ishlarning ish mazmuni, da'vo summalari va taraflari shu ishga ko'chirilgan</small></div><div class="itk-birl-l"><sc-for list="{{birlList}}" as="b" hint-placeholder-count="2"><span class="itk-birl-c" title="{{b.title}}"><b>{{b.num}}</b><small>{{b.sub}}</small></span></sc-for></div></div></sc-if>
+<div class="dx-entries" role="list" aria-label="Ish turkumlari va ularning da'vo summalari">
+<sc-for list="{{itk}}" as="t" hint-placeholder-count="2">
+<div class="{{t.cls}}" role="listitem">
+<div class="dx-ch">
+<button type="button" class="dx-actog" aria-expanded="{{t.openStr}}" aria-label="{{t.togLbl}}" title="{{t.togLbl}}" onClick="{{t.toggle}}"><svg class="i s dx-acchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
+<div class="dx-chm" onClick="{{t.toggle}}"><div class="row" style="gap: 10px; flex-wrap: wrap; min-width: 0">
+<span class="dx-code">{{t.code}}</span><b class="dx-cname">{{t.name}}</b><sc-if value="{{t.hasBirl}}" hint-placeholder-val="{{ false }}"><span class="dx-tag birl" title="{{t.birlTitle}}">{{t.birlTxt}}</span></sc-if>
+</div>
+<sc-if value="{{t.closed}}" hint-placeholder-val="{{ false }}"><div class="dx-acsum"><sc-for list="{{t.sumTags}}" as="g" hint-placeholder-count="2"><span class="{{g.cls}}">{{g.t}}</span></sc-for></div></sc-if></div>
+<div class="dx-eacts">
+<sc-if value="{{t.notConfirm}}" hint-placeholder-val="{{ true }}">
+<sc-if value="{{t.isMain}}" hint-placeholder-val="{{ true }}"><span class="pc-mt on itk-mt" title="Asosiy talab"><svg class="pc-st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6-5.4-3.1-5.4 3.1 1.2-6L3.3 9.3l6.1-.7z"></path></svg>Asosiy talab</span></sc-if><sc-if value="{{t.canMain}}" hint-placeholder-val="{{ false }}"><button type="button" class="pc-mt itk-mt itk-main" title="Shu turkumni asosiy talab qilish" onClick="{{t.makeMain}}"><svg class="pc-st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6-5.4-3.1-5.4 3.1 1.2-6L3.3 9.3l6.1-.7z"></path></svg>Asosiy qilish</button></sc-if>
+<button class="ib" title="Turkumni tahrirlash" aria-label="Turkumni tahrirlash" onClick="{{t.edit}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg></button>
+<button class="ib" title="O'chirish" aria-label="Turkumni o'chirish" style="color: #dc2626" onClick="{{t.askDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button>
+</sc-if>
+<sc-if value="{{t.confirmDel}}" hint-placeholder-val="{{ false }}"><span class="dx-ask">{{t.askText}}</span><button class="btn sm" onClick="{{t.cancelDel}}">Yo'q</button><button class="btn sm dx-danger" onClick="{{t.del}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg>Ha, o'chirish</button></sc-if>
+</div>
+</div>
+<sc-if value="{{t.open}}" hint-placeholder-val="{{ true }}"><div class="dx-cbody">
+<div class="dx-dgrid">
+<div class="kv"><small>Qo'shimcha ish turkumi</small><sc-if value="{{t.qHas}}" hint-placeholder-val="{{ true }}"><span class="dx-dv dx-dvc"><span class="dx-code sm">{{t.qCode}}</span>{{t.qName}}</span></sc-if><sc-if value="{{t.qNone}}" hint-placeholder-val="{{ false }}"><span class="dx-dv none">Tanlanmagan</span></sc-if></div>
+<div class="kv"><small>Ikkilamchi ish turkumi</small><sc-if value="{{t.iHas}}" hint-placeholder-val="{{ false }}"><span class="dx-dv dx-dvc"><span class="dx-code sm">{{t.iCode}}</span>{{t.iName}}</span></sc-if><sc-if value="{{t.iNone}}" hint-placeholder-val="{{ true }}"><span class="dx-dv none">Tanlanmagan</span></sc-if></div>
+<div class="kv"><small>Javobgarlar</small><sc-if value="{{t.jHas}}" hint-placeholder-val="{{ true }}"><span class="dx-dv dx-dvjv"><span class="dx-avs"><sc-for list="{{t.jv}}" as="a" hint-placeholder-count="1"><img src="{{a.photo}}" alt=""></sc-for></span><span>{{t.javTxt}}</span></span></sc-if><sc-if value="{{t.jNone}}" hint-placeholder-val="{{ false }}"><span class="dx-dv none">Tanlanmagan</span></sc-if></div>
+</div>
+<div class="dx-slist">
+<div class="dx-sums-h"><span class="dx-sumlbl">Da'vo summalari<sc-if value="{{t.hasSums}}" hint-placeholder-val="{{ true }}"><span class="dx-cnt">{{t.sumCount}}</span></sc-if></span><span class="itk-sr"><sc-if value="{{t.hasSums}}" hint-placeholder-val="{{ true }}"><span class="dx-sumtot">Jami: <b>{{t.sumTotal}}</b></span></sc-if><button type="button" class="btn sm itk-addsum" onClick="{{t.addSum}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Da'vo summasi qo'shish</button></span></div>
+<sc-for list="{{t.sums}}" as="m" hint-placeholder-count="1">
+<div class="{{m.cls}}">
+<span class="dx-sic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg></span>
+<div class="kv dx-sinfo dx-clk" onClick="{{m.toggleDet}}"><b>Da'vo summasi</b><small>{{m.rowsText}}</small></div>
+<sc-if value="{{m.hasJav}}" hint-placeholder-val="{{ false }}"><span class="dx-sjv" title="{{m.javTitle}}"><span class="dx-avs"><sc-for list="{{m.javAv}}" as="a" hint-placeholder-count="1"><img src="{{a.photo}}" alt=""></sc-for></span><span>{{m.javShort}}</span></span></sc-if>
+<span class="dx-samts"><sc-for list="{{m.amts}}" as="t" hint-placeholder-count="1"><span class="dx-samt">{{t.amt}}<small>{{t.code}}</small></span></sc-for></span>
+<div class="dx-sact">
+<button type="button" class="ib dx-detb" aria-expanded="{{m.detStr}}" title="{{m.detLbl}}" aria-label="{{m.detLbl}}" onClick="{{m.toggleDet}}"><svg class="i s dx-detchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
+<sc-if value="{{m.notConfirm}}" hint-placeholder-val="{{ true }}">
+<button class="ib" title="Tahrirlash" aria-label="{{m.n}}-da'vo summasini tahrirlash" onClick="{{m.edit}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg></button>
+<button class="ib" style="color: #dc2626" title="O'chirish" aria-label="{{m.n}}-da'vo summasini o'chirish" onClick="{{m.askDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button>
+</sc-if>
+<sc-if value="{{m.confirm}}" hint-placeholder-val="{{ false }}">
+<span class="dx-ask">O'chirilsinmi?</span>
+<button class="btn sm" onClick="{{m.cancelDel}}">Yo'q</button>
+<button class="btn sm dx-danger" onClick="{{m.del}}">Ha</button>
+</sc-if>
+</div>
+</div>
+<sc-if value="{{m.det}}" hint-placeholder-val="{{ false }}"><div class="{{m.detCls}}">
+<div class="dx-sdet-l"><span class="dx-sdh">{{m.detLinesH}}</span><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-sdl-n">{{l.n}}</span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
+<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="{{x.cls}}"><span class="dx-sdh">{{x.k}}</span><sc-if value="{{x.hasPeople}}" hint-placeholder-val="{{ true }}"><div class="dx-sdps"><sc-for list="{{x.people}}" as="q" hint-placeholder-count="1"><span class="dx-sdp"><sc-if value="{{q.hasPhoto}}" hint-placeholder-val="{{ true }}"><img src="{{q.photo}}" alt=""></sc-if><sc-if value="{{q.noPhoto}}" hint-placeholder-val="{{ false }}"><span class="dx-sdp-i" aria-hidden="true">{{q.ini}}</span></sc-if><span class="dx-sdp-t"><b>{{q.name}}</b><sc-if value="{{q.hasRole}}" hint-placeholder-val="{{ true }}"><small>{{q.role}}</small></sc-if></span></span></sc-for></div></sc-if><sc-if value="{{x.hasV}}" hint-placeholder-val="{{ false }}"><span class="dx-sdv">{{x.v}}</span></sc-if></div></sc-for></div>
+</div></sc-if>
+
+</sc-for>
+<sc-if value="{{t.sumEmpty}}" hint-placeholder-val="{{ false }}"><small class="muted">Bu turkumga da'vo summasi hali biriktirilmagan · «Da'vo summasi qo'shish» orqali qo'shing</small></sc-if>
+</div>
+<div class="dx-slist dx-nmlist">
+<div class="dx-sums-h"><span class="dx-sumlbl">Nomulkiy talablar<sc-if value="{{t.hasNm}}" hint-placeholder-val="{{ false }}"><span class="dx-cnt">{{t.nmCount}}</span></sc-if></span></div>
+<sc-for list="{{t.nms}}" as="m" hint-placeholder-count="1">
+<div class="{{m.cls}}">
+<span class="dx-sic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5M10 13h6M10 17h4"></path></svg></span>
+<div class="kv dx-sinfo dx-clk" onClick="{{m.toggleDet}}"><b>{{m.title}}</b><sc-if value="{{m.hasSub}}" hint-placeholder-val="{{ false }}"><small>{{m.sub}}</small></sc-if></div>
+<sc-if value="{{m.hasFt}}" hint-placeholder-val="{{ false }}"><span class="dx-nmft" title="{{m.ftTitle}}"><span class="dx-nmp"><sc-if value="{{m.fPh}}" hint-placeholder-val="{{ true }}"><img src="{{m.fPhoto}}" alt=""></sc-if>{{m.fT}}</span><span class="dx-nmar" aria-hidden="true">→</span><span class="dx-nmp"><sc-if value="{{m.tPh}}" hint-placeholder-val="{{ true }}"><img src="{{m.tPhoto}}" alt=""></sc-if>{{m.tT}}</span></span></sc-if>
+<sc-if value="{{m.hasJav}}" hint-placeholder-val="{{ false }}"><span class="dx-sjv" title="{{m.javTitle}}"><span class="dx-avs"><sc-for list="{{m.javAv}}" as="a" hint-placeholder-count="1"><img src="{{a.photo}}" alt=""></sc-for></span><span>{{m.javShort}}</span></span></sc-if>
+<div class="dx-sact">
+<button type="button" class="ib dx-detb" aria-expanded="{{m.detStr}}" title="{{m.detLbl}}" aria-label="{{m.detLbl}}" onClick="{{m.toggleDet}}"><svg class="i s dx-detchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
+<sc-if value="{{m.notConfirm}}" hint-placeholder-val="{{ true }}">
+<button class="ib" title="Tahrirlash" aria-label="{{m.n}}-nomulkiy talabni tahrirlash" onClick="{{m.edit}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg></button>
+<button class="ib" style="color: #dc2626" title="O'chirish" aria-label="{{m.n}}-nomulkiy talabni o'chirish" onClick="{{m.askDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button>
+</sc-if>
+<sc-if value="{{m.confirm}}" hint-placeholder-val="{{ false }}">
+<span class="dx-ask">O'chirilsinmi?</span>
+<button class="btn sm" onClick="{{m.cancelDel}}">Yo'q</button>
+<button class="btn sm dx-danger" onClick="{{m.del}}">Ha</button>
+</sc-if>
+</div>
+</div>
+<sc-if value="{{m.det}}" hint-placeholder-val="{{ false }}"><div class="{{m.detCls}}">
+<div class="dx-sdet-l"><span class="dx-sdh">{{m.detLinesH}}</span><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-sdl-n">{{l.n}}</span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
+<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="{{x.cls}}"><span class="dx-sdh">{{x.k}}</span><sc-if value="{{x.hasPeople}}" hint-placeholder-val="{{ true }}"><div class="dx-sdps"><sc-for list="{{x.people}}" as="q" hint-placeholder-count="1"><span class="dx-sdp"><sc-if value="{{q.hasPhoto}}" hint-placeholder-val="{{ true }}"><img src="{{q.photo}}" alt=""></sc-if><sc-if value="{{q.noPhoto}}" hint-placeholder-val="{{ false }}"><span class="dx-sdp-i" aria-hidden="true">{{q.ini}}</span></sc-if><span class="dx-sdp-t"><b>{{q.name}}</b><sc-if value="{{q.hasRole}}" hint-placeholder-val="{{ true }}"><small>{{q.role}}</small></sc-if></span></span></sc-for></div></sc-if><sc-if value="{{x.hasV}}" hint-placeholder-val="{{ false }}"><span class="dx-sdv">{{x.v}}</span></sc-if></div></sc-for></div>
+</div></sc-if>
+
+</sc-for>
+<sc-if value="{{t.canAddNm}}" hint-placeholder-val="{{ true }}"><button type="button" class="dx-pill nm" onClick="{{t.addNm}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>{{t.addNmLabel}}</button></sc-if>
+</div>
+</div></sc-if>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{itkEmpty}}" hint-placeholder-val="{{ false }}"><div class="bk2-empty"><b>Ish mazmuni kiritilmagan</b><small>«Ish mazmuni qo'shish» orqali ish turkumini tanlang, so'ng unga da'vo summalarini biriktiring</small><button class="btn pri" onClick="{{itkAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Ish mazmuni qo'shish</button></div></sc-if>
+<sc-if value="{{itkGrandHas}}" hint-placeholder-val="{{ true }}"><div class="dx-grand" style="margin-top: 12px"><span class="row" style="gap: 8px"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg>Umumiy da'vo summasi</span><b>{{itkGrand}}</b></div></sc-if>
+</section>
+
+<section class="sec" id="hujjatlar">
+<div class="sh"><div><h2>Ish hujjatlari</h2><p>Qarorlar, ajrimlar va bayonnomalar — imzolash va tasdiqlash holati bilan</p></div>
+<div class="tools"><button class="btn pri" onClick="{{docAttach}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Hujjat biriktirish</button><button class="btn soft" onClick="{{docCompose}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6M12 12v6M9 15h6"></path></svg>Hujjat yaratish</button></div></div>
+<div class="row" style="flex-wrap: wrap; gap: 8px; position: relative; z-index: 20">
+<div style="position: relative">
+<button class="{{typeBtnCls}}" aria-expanded="{{ddTypeStr}}" onClick="{{toggleType}}">Hujjat turi: {{docType}}<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
+<sc-if value="{{ddType}}" hint-placeholder-val="{{ false }}">
+<div class="dd" role="listbox" aria-label="Hujjat turi">
+<sc-for list="{{typeOpts}}" as="o" hint-placeholder-count="5"><button class="{{o.cls}}" role="option" aria-selected="{{o.selStr}}" onClick="{{o.pick}}"><span class="{{o.radioCls}}"></span>{{o.label}}</button></sc-for>
+</div>
+</sc-if>
+</div>
+<div style="position: relative">
+<button class="{{instBtnCls}}" aria-expanded="{{ddInstStr}}" onClick="{{toggleInst}}">{{instLabel}}<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
+<sc-if value="{{ddInst}}" hint-placeholder-val="{{ false }}">
+<div class="dd" aria-label="Instansiyalar">
+<sc-for list="{{instOpts}}" as="o" hint-placeholder-count="7"><button class="{{o.cls}}" role="checkbox" aria-checked="{{o.selStr}}" onClick="{{o.pick}}"><span class="{{o.boxCls}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 12px; height: 12px; stroke-width: 3"><path d="M5 12l5 5 9-10"></path></svg></span>{{o.label}}</button></sc-for>
+<div class="between" style="border-top: 1px solid #eef1f5; margin-top: 4px; padding: 8px 6px 2px"><button class="btn sm ghost" style="color: #475569" onClick="{{instAll}}">Hammasini tanlash</button><button class="btn sm pri" onClick="{{instApply}}">Qo'llash</button></div>
+</div>
+</sc-if>
+</div>
+<label class="search"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><input type="search" placeholder="Hujjat nomi bo'yicha qidirish" aria-label="Hujjat qidirish" value="{{q}}" onChange="{{onSearch}}"></label>
+<button class="select" onClick="{{toggleSort}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16M4 17l3 3 3-3M17 20V4M14 7l3-3 3 3"></path></svg>{{sortLabel}}</button>
+</div>
+<div class="dg-tabs" role="tablist" aria-label="Hujjat guruhlari"><sc-for list="{{docGrpTabs}}" as="g" hint-placeholder-count="4"><button type="button" role="tab" aria-selected="{{g.str}}" class="{{g.cls}}" onClick="{{g.pick}}"><sc-if value="{{g.isOrg}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"></path><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"></path></svg></sc-if>{{g.label}}<span class="dg-n">{{g.n}}</span></button></sc-for></div>
+<div class="doc-list" role="list">
+<sc-for list="{{docs}}" as="d" hint-placeholder-count="6">
+<div class="{{d.rowCls}}" role="listitem">
+<span class="{{d.ftCls}}">{{d.ftLabel}}</span>
+<div class="doc-main">
+<div class="row" style="gap: 8px; flex-wrap: wrap"><b class="doc-title">{{d.title}}</b><sc-if value="{{d.isOrg}}" hint-placeholder-val="{{ false }}"><span class="{{d.orgCls}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"></path><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"></path></svg>{{d.orgShort}}</span></sc-if><span class="{{d.stCls}}">{{d.status}}</span><sc-if value="{{d.hasChg}}" hint-placeholder-val="{{ false }}"><span class="ver-chg">{{d.chgTxt}}</span></sc-if></div>
+<span class="doc-meta">{{d.meta}}</span>
+</div>
+<div class="doc-files"><sc-for list="{{d.files}}" as="f" hint-placeholder-count="1"><span class="doc-fx">{{f.ext}}</span></sc-for><sc-if value="{{d.hasExtra}}" hint-placeholder-val="{{ false }}"><span class="doc-mw"><button type="button" class="{{d.attCls}}" title="{{d.attTitle}}" aria-label="{{d.attTitle}}" aria-haspopup="menu" aria-expanded="{{d.attStr}}" onClick="{{d.attToggle}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5l-8.6 8.6a5 5 0 0 1-7.1-7.1l8.6-8.6a3.4 3.4 0 0 1 4.8 4.8l-8.6 8.6a1.7 1.7 0 0 1-2.4-2.4l7.9-7.9"></path></svg>{{d.extra}}</button><sc-if value="{{d.attOpen}}" hint-placeholder-val="{{ false }}"><div class="ihmenu doc-attm" role="menu"><div class="dat-h"><b>Ilovalar</b><small>{{d.attN}} ta fayl</small></div><sc-for list="{{d.atts}}" as="a" hint-placeholder-count="2"><div class="dat-r"><span class="{{a.cls}}">{{a.ext}}</span><span class="kv" style="gap: 1px; min-width: 0; flex: 1"><b class="dat-n" title="{{a.name}}">{{a.name}}</b><small>{{a.size}}</small></span><button type="button" class="ib dat-dl" title="Yuklab olish" aria-label="{{a.dlLabel}}" onClick="{{a.dl}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg></button></div></sc-for><button type="button" class="dat-all" onClick="{{d.attAll}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>Barchasini yuklab olish (ZIP)</button></div></sc-if></span></sc-if></div>
+<div class="doc-acts">
+<sc-if value="{{d.canEdit}}" hint-placeholder-val="{{ false }}"><button class="btn sm doc-oo" onClick="{{d.edit}}" title="ONLYOFFICE muharririda tahrirlash"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg>Tahrirlash</button></sc-if><sc-if value="{{d.pubCan}}" hint-placeholder-val="{{ false }}"><button class="{{d.pubBtnCls}}" title="{{d.pubTitle}}" aria-label="{{d.pubTitle}}" aria-disabled="{{d.pubDis}}" onClick="{{d.publish}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg>Publikatsiya</button></sc-if><sc-if value="{{d.pubMod}}" hint-placeholder-val="{{ false }}"><span class="doc-pubst mod" title="public.sud.uz moderatsiyasida"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Moderatsiyada</span></sc-if><sc-if value="{{d.pubNo}}" hint-placeholder-val="{{ false }}"><span class="doc-pubst no" title="Sud qaroriga ko'ra saytda e'lon qilinmaydi"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M5.6 5.6l12.8 12.8"></path></svg>E'lon qilinmaydi</span></sc-if><sc-if value="{{d.isPub}}" hint-placeholder-val="{{ false }}"><a class="doc-pub" href="{{d.pubUrl}}" target="_blank" rel="noopener" title="Saytda e'lon qilingan · {{d.pubAt}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg>E'lon qilingan</a></sc-if><sc-if value="{{d.canSend}}" hint-placeholder-val="{{ false }}"><button class="btn sm" onClick="{{d.send}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2-7z"></path></svg>Yuborish</button></sc-if><sc-if value="{{d.isImzo}}" hint-placeholder-val="{{ false }}"><button class="btn sm pri" onClick="{{d.sign}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21c3-1 5-3 7-6M14 4l6 6-9 9H5v-6z"></path></svg>Imzolash</button></sc-if>
+<sc-if value="{{d.isTasdiq}}" hint-placeholder-val="{{ false }}"><button class="btn sm pri" onClick="{{d.approve}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Tasdiqlash</button></sc-if>
+<sc-if value="{{d.canAi}}" hint-placeholder-val="{{ false }}"><button class="ib ai-ib" aria-label="{{d.title}} — AI tahlil" title="AI tahlil" onClick="{{d.openAi}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"></path><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"></path></svg></button></sc-if>
+<sc-if value="{{d.hasVer}}" hint-placeholder-val="{{ false }}"><button class="ib ver-ib" aria-label="{{d.title}} — versiyalarni taqqoslash" title="Versiyalar ({{d.verN}})" onClick="{{d.openVer}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v12"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg><span class="ver-n">{{d.verN}}</span></button></sc-if>
+<button class="ib" aria-label="{{d.title}} — ko'rish" title="Ko'rish" onClick="{{d.view}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
+<button class="ib" aria-label="{{d.title}} — yuklab olish" title="Yuklab olish" onClick="{{d.download}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg></button>
+<span class="doc-mw"><button class="ib" aria-label="Boshqa amallar" title="Boshqa amallar" aria-haspopup="menu" aria-expanded="{{d.menuStr}}" onClick="{{d.toggleMenu}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg></button><sc-if value="{{d.menuOpen}}" hint-placeholder-val="{{ false }}"><div class="ihmenu doc-menu" role="menu"><sc-if value="{{d.menuEdit}}" hint-placeholder-val="{{ false }}"><button class="ihitem" role="menuitem" onClick="{{d.edit}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg>ONLYOFFICE da tahrirlash</button></sc-if><sc-if value="{{d.menuCanSend}}" hint-placeholder-val="{{ true }}"><button class="ihitem" role="menuitem" onClick="{{d.menuSend}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2-7z"></path></svg>Ishtirokchilarga yuborish</button></sc-if><sc-if value="{{d.menuNoSend}}" hint-placeholder-val="{{ false }}"><div class="ihitem dsn-lock" aria-disabled="true"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2.5"></rect><path d="M8 11V7.5a4 4 0 0 1 8 0V11"></path><path d="M12 15.5v1.5"></path></svg><span class="kv" style="gap: 1px"><span>Ishtirokchilarga yuborish</span><small>Hujjat imzolangandan keyin yuborish mumkin</small></span></div></sc-if><button class="ihitem" role="menuitem" onClick="{{d.download}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>Yuklab olish</button><div class="dsn"><div class="dsn-h"><b>Yuborilganlar</b><small>{{d.sendSum}}</small></div><sc-if value="{{d.noSends}}" hint-placeholder-val="{{ false }}"><div class="dsn-empty">Hujjat hali hech kimga yuborilmagan</div></sc-if><sc-for list="{{d.sends}}" as="x" hint-placeholder-count="2"><div class="dsn-r"><div class="kv" style="gap: 1px; min-width: 0; flex: 1"><b class="dsn-who">{{x.who}}</b><small class="dsn-sub">{{x.role}} · {{x.via}} · {{x.at}}</small></div></div></sc-for></div></div></sc-if></span>
+</div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{docMenuAny}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg in" tabindex="-1" aria-label="Menyuni yopish" onClick="{{docMenuClose}}"></button></sc-if>
+<sc-if value="{{docsMore}}" hint-placeholder-val="{{ false }}"><button type="button" class="{{docsMoreCls}}" onClick="{{docsToggle}}">{{docsMoreLbl}}<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button></sc-if>
+<sc-if value="{{docsEmpty}}" hint-placeholder-val="{{ false }}"><div class="empty"><b>{{docsEmptyT}}</b><small>{{docsEmptyS}}</small><sc-if value="{{docsNone}}" hint-placeholder-val="{{ false }}"><button class="btn sm pri" onClick="{{docAttach}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Hujjat biriktirish</button></sc-if><sc-if value="{{docsFiltered}}" hint-placeholder-val="{{ true }}"><button class="btn sm" onClick="{{resetFilters}}">Filtrlarni tozalash</button></sc-if></div></sc-if>
+<div class="pager"><span>{{docPagerTxt}}</span><sc-if value="{{filtered}}" hint-placeholder-val="{{ false }}"><button class="btn sm ghost" onClick="{{resetFilters}}">Filtrlarni tozalash</button></sc-if></div>
+</section>
+
+<section class="sec" id="jildlar">
+<div class="sh"><div><h2>Yig'ma jildlar</h2><p>{{jlSub}}</p></div><div class="tools"><button class="btn" onClick="{{jlAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>So'rov qo'shish</button></div></div>
+<div class="jl-list">
+<sc-for list="{{jl}}" as="j" hint-placeholder-count="3">
+<div class="{{j.cls}}">
+<div class="jl-h">
+<span class="jl-av" aria-hidden="true">{{j.ini}}</span>
+<div class="kv" style="gap: 3px; min-width: 0; flex: 1"><b class="jl-org">{{j.org}}</b><span class="jl-num">{{j.num}} · Ariza № {{j.ariza}}</span></div>
+<span class="{{j.stCls}}">{{j.status}}</span>
+<div class="itk-acts">
+<sc-if value="{{j.notConfirm}}" hint-placeholder-val="{{ true }}"><button class="ib" aria-label="So'rovni o'chirish" title="O'chirish" style="color: #dc2626" onClick="{{j.askDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button></sc-if>
+<sc-if value="{{j.confirmDel}}" hint-placeholder-val="{{ false }}"><span class="dx-ask">O'chirilsinmi?</span><button class="btn sm" onClick="{{j.cancelDel}}">Yo'q</button><button class="btn sm dx-danger" onClick="{{j.del}}">Ha, o'chirish</button></sc-if>
+</div>
+</div>
+<div class="jl-flow">
+<button class="jl-doc" onClick="{{j.viewAriza}}"><span class="dx-ft">PDF</span><span class="kv" style="gap: 1px; min-width: 0"><small>So'rov yuborildi · {{j.sent}}</small><b>{{j.file}}</b><small>{{j.fileSize}}</small></span></button>
+<span class="jl-arr"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+<sc-if value="{{j.hasReply}}" hint-placeholder-val="{{ true }}"><button class="jl-doc ok" onClick="{{j.viewReply}}"><span class="dx-ft">PDF</span><span class="kv" style="gap: 1px; min-width: 0"><small>Javob olindi · {{j.replyDate}} · {{j.days}} kunda</small><b>{{j.replyFile}}</b><small>{{j.replySize}}</small></span></button></sc-if>
+<sc-if value="{{j.noReply}}" hint-placeholder-val="{{ false }}"><div class="jl-wait"><span class="kv" style="gap: 2px; min-width: 0"><b>Javob kutilmoqda</b><small>Yuborilganiga {{j.days}} kun bo'ldi</small></span><span class="row" style="gap: 6px"><button class="btn sm" onClick="{{j.remind}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21h4"></path></svg>Eslatma</button><button class="btn sm pri" onClick="{{j.attach}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4M7 9l5-5 5 5M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"></path></svg>Javobni biriktirish</button></span></div></sc-if>
+</div>
+</div>
+</sc-for>
+<sc-if value="{{jlEmpty}}" hint-placeholder-val="{{ false }}"><div class="bk2-empty"><b>Yig'ma jild bo'sh</b><small>Tashkilotlarga yuborilgan so'rovlar va ularning javob xatlari shu yerda jamlanadi</small></div></sc-if>
+</div>
+</section>
+
+<section class="sec" id="xarajat">
+<div class="sh"><div><h2>Sud xarajatlari</h2><p>Davlat boji, pochta va boshqa to'lovlar</p></div><div class="tools"><button class="btn" onClick="{{xrEditOpen}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg>O'zgartirish</button><button class="btn" onClick="{{xrAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Qo'shish</button></div></div>
+<div class="xs-grid">
+<sc-for list="{{xr}}" as="x" hint-placeholder-count="2">
+<div class="xs-card">
+<div class="xs-top">
+<span class="{{x.icCls}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"></path><path d="M9 8h6M9 12h6"></path></svg></span>
+<div class="kv" style="gap: 2px; min-width: 0; flex: 1"><small>{{x.turi}}</small><b class="xs-num">{{x.num}}</b></div>
+<span class="{{x.stCls}}">{{x.status}}</span>
+</div>
+<sc-if value="{{x.hasParty}}" hint-placeholder-val="{{ true }}"><div class="iv-parties" style="pointer-events: auto"><small>Undiruvchi:</small><b>{{x.und}}</b><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg><small>Qarzdor:</small><b>{{x.qarz}}</b></div></sc-if>
+<div class="xs-foot">
+<span class="xs-amt">{{x.amt}}</span>
+<span class="xs-date"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>{{x.date}}</span>
+<span style="flex: 1"></span>
+<sc-if value="{{x.notConfirm}}" hint-placeholder-val="{{ true }}"><button class="ib" aria-label="Tahrirlash" title="Tahrirlash" onClick="{{x.edit}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg></button><button class="ib" aria-label="O'chirish" title="O'chirish" onClick="{{x.askDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button></sc-if>
+<sc-if value="{{x.confirmDel}}" hint-placeholder-val="{{ false }}"><span class="dx-ask">O'chirilsinmi?</span><button class="btn sm" onClick="{{x.cancelDel}}">Yo'q</button><button class="btn sm dx-danger" onClick="{{x.del}}">Ha</button></sc-if>
+</div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{xrEmpty}}" hint-placeholder-val="{{ false }}"><div class="qm-empty"><b>Sud xarajatlari kiritilmagan</b><small>«Qo'shish» orqali davlat boji yoki boshqa to'lovni kiriting</small></div></sc-if>
+</section>
+
+
+
 <section class="sec" id="tomonlar">
 <div class="sh pt-sh"><div><h2>Ishtirokchilar</h2><p>{{ptSub}}</p></div></div>
 <div class="pt-tabs" role="tablist" aria-label="Ishtirokchilar guruhlari"><sc-for list="{{ptTabs}}" as="t" hint-placeholder-count="3"><button type="button" role="tab" aria-selected="{{t.sel}}" class="{{t.cls}}" onClick="{{t.pick}}"><span class="{{t.icCls}}" aria-hidden="true"></span><span class="kv pt-tl"><b>{{t.l}}</b><small>{{t.sub}}</small></span><span class="pt-n">{{t.n}}</span></button></sc-for></div>
@@ -1637,182 +1834,11 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </sc-if>
 </section>
 
-<section class="sec" id="turkumlar">
-<div class="sh"><div><h2>Ish mazmuni va da'vo summasi</h2><p>{{itkSub}}</p></div><div class="tools itk-tools"><button class="btn" onClick="{{itkAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Ish mazmuni qo'shish</button></div></div>
-<sc-if value="{{birlHas}}" hint-placeholder-val="{{ false }}"><div class="itk-birl"><span class="itk-birl-ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7h8M8 12h8M8 17h5"></path><rect x="4" y="3" width="16" height="18" rx="2.5"></rect></svg></span><div class="kv" style="gap: 2px; min-width: 0"><b>{{birlTitle}}</b><small>Birlashtirilgan ishlarning ish mazmuni, da'vo summalari va taraflari shu ishga ko'chirilgan</small></div><div class="itk-birl-l"><sc-for list="{{birlList}}" as="b" hint-placeholder-count="2"><span class="itk-birl-c" title="{{b.title}}"><b>{{b.num}}</b><small>{{b.sub}}</small></span></sc-for></div></div></sc-if>
-<div class="dx-entries" role="list" aria-label="Ish turkumlari va ularning da'vo summalari">
-<sc-for list="{{itk}}" as="t" hint-placeholder-count="2">
-<div class="{{t.cls}}" role="listitem">
-<div class="dx-ch">
-<button type="button" class="dx-actog" aria-expanded="{{t.openStr}}" aria-label="{{t.togLbl}}" title="{{t.togLbl}}" onClick="{{t.toggle}}"><svg class="i s dx-acchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
-<div class="dx-chm" onClick="{{t.toggle}}"><div class="row" style="gap: 10px; flex-wrap: wrap; min-width: 0">
-<span class="dx-code">{{t.code}}</span><b class="dx-cname">{{t.name}}</b><sc-if value="{{t.hasBirl}}" hint-placeholder-val="{{ false }}"><span class="dx-tag birl" title="{{t.birlTitle}}">{{t.birlTxt}}</span></sc-if>
-</div>
-<sc-if value="{{t.closed}}" hint-placeholder-val="{{ false }}"><div class="dx-acsum"><sc-for list="{{t.sumTags}}" as="g" hint-placeholder-count="2"><span class="{{g.cls}}">{{g.t}}</span></sc-for></div></sc-if></div>
-<div class="dx-eacts">
-<sc-if value="{{t.notConfirm}}" hint-placeholder-val="{{ true }}">
-<sc-if value="{{t.isMain}}" hint-placeholder-val="{{ true }}"><span class="pc-mt on itk-mt" title="Asosiy talab"><svg class="pc-st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6-5.4-3.1-5.4 3.1 1.2-6L3.3 9.3l6.1-.7z"></path></svg>Asosiy talab</span></sc-if><sc-if value="{{t.canMain}}" hint-placeholder-val="{{ false }}"><button type="button" class="pc-mt itk-mt itk-main" title="Shu turkumni asosiy talab qilish" onClick="{{t.makeMain}}"><svg class="pc-st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6-5.4-3.1-5.4 3.1 1.2-6L3.3 9.3l6.1-.7z"></path></svg>Asosiy qilish</button></sc-if>
-<button class="ib" title="Turkumni tahrirlash" aria-label="Turkumni tahrirlash" onClick="{{t.edit}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg></button>
-<button class="ib" title="O'chirish" aria-label="Turkumni o'chirish" style="color: #dc2626" onClick="{{t.askDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button>
-</sc-if>
-<sc-if value="{{t.confirmDel}}" hint-placeholder-val="{{ false }}"><span class="dx-ask">{{t.askText}}</span><button class="btn sm" onClick="{{t.cancelDel}}">Yo'q</button><button class="btn sm dx-danger" onClick="{{t.del}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg>Ha, o'chirish</button></sc-if>
-</div>
-</div>
-<sc-if value="{{t.open}}" hint-placeholder-val="{{ true }}"><div class="dx-cbody">
-<div class="dx-dgrid">
-<div class="kv"><small>Qo'shimcha ish turkumi</small><sc-if value="{{t.qHas}}" hint-placeholder-val="{{ true }}"><span class="dx-dv dx-dvc"><span class="dx-code sm">{{t.qCode}}</span>{{t.qName}}</span></sc-if><sc-if value="{{t.qNone}}" hint-placeholder-val="{{ false }}"><span class="dx-dv none">Tanlanmagan</span></sc-if></div>
-<div class="kv"><small>Ikkilamchi ish turkumi</small><sc-if value="{{t.iHas}}" hint-placeholder-val="{{ false }}"><span class="dx-dv dx-dvc"><span class="dx-code sm">{{t.iCode}}</span>{{t.iName}}</span></sc-if><sc-if value="{{t.iNone}}" hint-placeholder-val="{{ true }}"><span class="dx-dv none">Tanlanmagan</span></sc-if></div>
-<div class="kv"><small>Javobgarlar</small><sc-if value="{{t.jHas}}" hint-placeholder-val="{{ true }}"><span class="dx-dv dx-dvjv"><span class="dx-avs"><sc-for list="{{t.jv}}" as="a" hint-placeholder-count="1"><img src="{{a.photo}}" alt=""></sc-for></span><span>{{t.javTxt}}</span></span></sc-if><sc-if value="{{t.jNone}}" hint-placeholder-val="{{ false }}"><span class="dx-dv none">Tanlanmagan</span></sc-if></div>
-</div>
-<div class="dx-slist">
-<div class="dx-sums-h"><span class="dx-sumlbl">Da'vo summalari<sc-if value="{{t.hasSums}}" hint-placeholder-val="{{ true }}"><span class="dx-cnt">{{t.sumCount}}</span></sc-if></span><span class="itk-sr"><sc-if value="{{t.hasSums}}" hint-placeholder-val="{{ true }}"><span class="dx-sumtot">Jami: <b>{{t.sumTotal}}</b></span></sc-if><button type="button" class="btn sm itk-addsum" onClick="{{t.addSum}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Da'vo summasi qo'shish</button></span></div>
-<sc-for list="{{t.sums}}" as="m" hint-placeholder-count="1">
-<div class="{{m.cls}}">
-<span class="dx-sic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg></span>
-<div class="kv dx-sinfo dx-clk" onClick="{{m.toggleDet}}"><b>Da'vo summasi</b><small>{{m.rowsText}}</small></div>
-<sc-if value="{{m.hasJav}}" hint-placeholder-val="{{ false }}"><span class="dx-sjv" title="{{m.javTitle}}"><span class="dx-avs"><sc-for list="{{m.javAv}}" as="a" hint-placeholder-count="1"><img src="{{a.photo}}" alt=""></sc-for></span><span>{{m.javShort}}</span></span></sc-if>
-<span class="dx-samts"><sc-for list="{{m.amts}}" as="t" hint-placeholder-count="1"><span class="dx-samt">{{t.amt}}<small>{{t.code}}</small></span></sc-for></span>
-<div class="dx-sact">
-<button type="button" class="ib dx-detb" aria-expanded="{{m.detStr}}" title="{{m.detLbl}}" aria-label="{{m.detLbl}}" onClick="{{m.toggleDet}}"><svg class="i s dx-detchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
-<sc-if value="{{m.notConfirm}}" hint-placeholder-val="{{ true }}">
-<button class="ib" title="Tahrirlash" aria-label="{{m.n}}-da'vo summasini tahrirlash" onClick="{{m.edit}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg></button>
-<button class="ib" style="color: #dc2626" title="O'chirish" aria-label="{{m.n}}-da'vo summasini o'chirish" onClick="{{m.askDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button>
-</sc-if>
-<sc-if value="{{m.confirm}}" hint-placeholder-val="{{ false }}">
-<span class="dx-ask">O'chirilsinmi?</span>
-<button class="btn sm" onClick="{{m.cancelDel}}">Yo'q</button>
-<button class="btn sm dx-danger" onClick="{{m.del}}">Ha</button>
-</sc-if>
-</div>
-</div>
-<sc-if value="{{m.det}}" hint-placeholder-val="{{ false }}"><div class="{{m.detCls}}">
-<div class="dx-sdet-l"><span class="dx-sdh">{{m.detLinesH}}</span><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-sdl-n">{{l.n}}</span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
-<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="{{x.cls}}"><span class="dx-sdh">{{x.k}}</span><sc-if value="{{x.hasPeople}}" hint-placeholder-val="{{ true }}"><div class="dx-sdps"><sc-for list="{{x.people}}" as="q" hint-placeholder-count="1"><span class="dx-sdp"><sc-if value="{{q.hasPhoto}}" hint-placeholder-val="{{ true }}"><img src="{{q.photo}}" alt=""></sc-if><sc-if value="{{q.noPhoto}}" hint-placeholder-val="{{ false }}"><span class="dx-sdp-i" aria-hidden="true">{{q.ini}}</span></sc-if><span class="dx-sdp-t"><b>{{q.name}}</b><sc-if value="{{q.hasRole}}" hint-placeholder-val="{{ true }}"><small>{{q.role}}</small></sc-if></span></span></sc-for></div></sc-if><sc-if value="{{x.hasV}}" hint-placeholder-val="{{ false }}"><span class="dx-sdv">{{x.v}}</span></sc-if></div></sc-for></div>
-</div></sc-if>
-
-</sc-for>
-<sc-if value="{{t.sumEmpty}}" hint-placeholder-val="{{ false }}"><small class="muted">Bu turkumga da'vo summasi hali biriktirilmagan · «Da'vo summasi qo'shish» orqali qo'shing</small></sc-if>
-</div>
-<div class="dx-slist dx-nmlist">
-<div class="dx-sums-h"><span class="dx-sumlbl">Nomulkiy talablar<sc-if value="{{t.hasNm}}" hint-placeholder-val="{{ false }}"><span class="dx-cnt">{{t.nmCount}}</span></sc-if></span></div>
-<sc-for list="{{t.nms}}" as="m" hint-placeholder-count="1">
-<div class="{{m.cls}}">
-<span class="dx-sic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5M10 13h6M10 17h4"></path></svg></span>
-<div class="kv dx-sinfo dx-clk" onClick="{{m.toggleDet}}"><b>{{m.title}}</b><sc-if value="{{m.hasSub}}" hint-placeholder-val="{{ false }}"><small>{{m.sub}}</small></sc-if></div>
-<sc-if value="{{m.hasFt}}" hint-placeholder-val="{{ false }}"><span class="dx-nmft" title="{{m.ftTitle}}"><span class="dx-nmp"><sc-if value="{{m.fPh}}" hint-placeholder-val="{{ true }}"><img src="{{m.fPhoto}}" alt=""></sc-if>{{m.fT}}</span><span class="dx-nmar" aria-hidden="true">→</span><span class="dx-nmp"><sc-if value="{{m.tPh}}" hint-placeholder-val="{{ true }}"><img src="{{m.tPhoto}}" alt=""></sc-if>{{m.tT}}</span></span></sc-if>
-<sc-if value="{{m.hasJav}}" hint-placeholder-val="{{ false }}"><span class="dx-sjv" title="{{m.javTitle}}"><span class="dx-avs"><sc-for list="{{m.javAv}}" as="a" hint-placeholder-count="1"><img src="{{a.photo}}" alt=""></sc-for></span><span>{{m.javShort}}</span></span></sc-if>
-<div class="dx-sact">
-<button type="button" class="ib dx-detb" aria-expanded="{{m.detStr}}" title="{{m.detLbl}}" aria-label="{{m.detLbl}}" onClick="{{m.toggleDet}}"><svg class="i s dx-detchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
-<sc-if value="{{m.notConfirm}}" hint-placeholder-val="{{ true }}">
-<button class="ib" title="Tahrirlash" aria-label="{{m.n}}-nomulkiy talabni tahrirlash" onClick="{{m.edit}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg></button>
-<button class="ib" style="color: #dc2626" title="O'chirish" aria-label="{{m.n}}-nomulkiy talabni o'chirish" onClick="{{m.askDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button>
-</sc-if>
-<sc-if value="{{m.confirm}}" hint-placeholder-val="{{ false }}">
-<span class="dx-ask">O'chirilsinmi?</span>
-<button class="btn sm" onClick="{{m.cancelDel}}">Yo'q</button>
-<button class="btn sm dx-danger" onClick="{{m.del}}">Ha</button>
-</sc-if>
-</div>
-</div>
-<sc-if value="{{m.det}}" hint-placeholder-val="{{ false }}"><div class="{{m.detCls}}">
-<div class="dx-sdet-l"><span class="dx-sdh">{{m.detLinesH}}</span><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-sdl-n">{{l.n}}</span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
-<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="{{x.cls}}"><span class="dx-sdh">{{x.k}}</span><sc-if value="{{x.hasPeople}}" hint-placeholder-val="{{ true }}"><div class="dx-sdps"><sc-for list="{{x.people}}" as="q" hint-placeholder-count="1"><span class="dx-sdp"><sc-if value="{{q.hasPhoto}}" hint-placeholder-val="{{ true }}"><img src="{{q.photo}}" alt=""></sc-if><sc-if value="{{q.noPhoto}}" hint-placeholder-val="{{ false }}"><span class="dx-sdp-i" aria-hidden="true">{{q.ini}}</span></sc-if><span class="dx-sdp-t"><b>{{q.name}}</b><sc-if value="{{q.hasRole}}" hint-placeholder-val="{{ true }}"><small>{{q.role}}</small></sc-if></span></span></sc-for></div></sc-if><sc-if value="{{x.hasV}}" hint-placeholder-val="{{ false }}"><span class="dx-sdv">{{x.v}}</span></sc-if></div></sc-for></div>
-</div></sc-if>
-
-</sc-for>
-<sc-if value="{{t.canAddNm}}" hint-placeholder-val="{{ true }}"><button type="button" class="dx-pill nm" onClick="{{t.addNm}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>{{t.addNmLabel}}</button></sc-if>
-</div>
-</div></sc-if>
-</div>
-</sc-for>
-</div>
-<sc-if value="{{itkEmpty}}" hint-placeholder-val="{{ false }}"><div class="bk2-empty"><b>Ish mazmuni kiritilmagan</b><small>«Ish mazmuni qo'shish» orqali ish turkumini tanlang, so'ng unga da'vo summalarini biriktiring</small><button class="btn pri" onClick="{{itkAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Ish mazmuni qo'shish</button></div></sc-if>
-<sc-if value="{{itkGrandHas}}" hint-placeholder-val="{{ true }}"><div class="dx-grand" style="margin-top: 12px"><span class="row" style="gap: 8px"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg>Umumiy da'vo summasi</span><b>{{itkGrand}}</b></div></sc-if>
-</section>
-
 </div>
 
 <!-- ================= HUJJATLAR ================= -->
 <div class="group">
 <div class="group-h">Hujjatlar</div>
-
-<section class="sec" id="hujjatlar">
-<div class="sh"><div><h2>Ish hujjatlari</h2><p>Qarorlar, ajrimlar va bayonnomalar — imzolash va tasdiqlash holati bilan</p></div>
-<div class="tools"><button class="btn pri" onClick="{{docAttach}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Hujjat biriktirish</button><button class="btn soft" onClick="{{docCompose}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6M12 12v6M9 15h6"></path></svg>Hujjat yaratish</button></div></div>
-<div class="row" style="flex-wrap: wrap; gap: 8px; position: relative; z-index: 20">
-<div style="position: relative">
-<button class="{{typeBtnCls}}" aria-expanded="{{ddTypeStr}}" onClick="{{toggleType}}">Hujjat turi: {{docType}}<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
-<sc-if value="{{ddType}}" hint-placeholder-val="{{ false }}">
-<div class="dd" role="listbox" aria-label="Hujjat turi">
-<sc-for list="{{typeOpts}}" as="o" hint-placeholder-count="5"><button class="{{o.cls}}" role="option" aria-selected="{{o.selStr}}" onClick="{{o.pick}}"><span class="{{o.radioCls}}"></span>{{o.label}}</button></sc-for>
-</div>
-</sc-if>
-</div>
-<div style="position: relative">
-<button class="{{instBtnCls}}" aria-expanded="{{ddInstStr}}" onClick="{{toggleInst}}">{{instLabel}}<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
-<sc-if value="{{ddInst}}" hint-placeholder-val="{{ false }}">
-<div class="dd" aria-label="Instansiyalar">
-<sc-for list="{{instOpts}}" as="o" hint-placeholder-count="7"><button class="{{o.cls}}" role="checkbox" aria-checked="{{o.selStr}}" onClick="{{o.pick}}"><span class="{{o.boxCls}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 12px; height: 12px; stroke-width: 3"><path d="M5 12l5 5 9-10"></path></svg></span>{{o.label}}</button></sc-for>
-<div class="between" style="border-top: 1px solid #eef1f5; margin-top: 4px; padding: 8px 6px 2px"><button class="btn sm ghost" style="color: #475569" onClick="{{instAll}}">Hammasini tanlash</button><button class="btn sm pri" onClick="{{instApply}}">Qo'llash</button></div>
-</div>
-</sc-if>
-</div>
-<label class="search"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><input type="search" placeholder="Hujjat nomi bo'yicha qidirish" aria-label="Hujjat qidirish" value="{{q}}" onChange="{{onSearch}}"></label>
-<button class="select" onClick="{{toggleSort}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16M4 17l3 3 3-3M17 20V4M14 7l3-3 3 3"></path></svg>{{sortLabel}}</button>
-</div>
-<div class="dg-tabs" role="tablist" aria-label="Hujjat guruhlari"><sc-for list="{{docGrpTabs}}" as="g" hint-placeholder-count="4"><button type="button" role="tab" aria-selected="{{g.str}}" class="{{g.cls}}" onClick="{{g.pick}}"><sc-if value="{{g.isOrg}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"></path><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"></path></svg></sc-if>{{g.label}}<span class="dg-n">{{g.n}}</span></button></sc-for></div>
-<div class="doc-list" role="list">
-<sc-for list="{{docs}}" as="d" hint-placeholder-count="6">
-<div class="{{d.rowCls}}" role="listitem">
-<span class="{{d.ftCls}}">{{d.ftLabel}}</span>
-<div class="doc-main">
-<div class="row" style="gap: 8px; flex-wrap: wrap"><b class="doc-title">{{d.title}}</b><sc-if value="{{d.isOrg}}" hint-placeholder-val="{{ false }}"><span class="{{d.orgCls}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"></path><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"></path></svg>{{d.orgShort}}</span></sc-if><span class="{{d.stCls}}">{{d.status}}</span><sc-if value="{{d.hasChg}}" hint-placeholder-val="{{ false }}"><span class="ver-chg">{{d.chgTxt}}</span></sc-if></div>
-<span class="doc-meta">{{d.meta}}</span>
-</div>
-<div class="doc-files"><sc-for list="{{d.files}}" as="f" hint-placeholder-count="1"><span class="doc-fx">{{f.ext}}</span></sc-for><sc-if value="{{d.hasExtra}}" hint-placeholder-val="{{ false }}"><span class="doc-mw"><button type="button" class="{{d.attCls}}" title="{{d.attTitle}}" aria-label="{{d.attTitle}}" aria-haspopup="menu" aria-expanded="{{d.attStr}}" onClick="{{d.attToggle}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5l-8.6 8.6a5 5 0 0 1-7.1-7.1l8.6-8.6a3.4 3.4 0 0 1 4.8 4.8l-8.6 8.6a1.7 1.7 0 0 1-2.4-2.4l7.9-7.9"></path></svg>{{d.extra}}</button><sc-if value="{{d.attOpen}}" hint-placeholder-val="{{ false }}"><div class="ihmenu doc-attm" role="menu"><div class="dat-h"><b>Ilovalar</b><small>{{d.attN}} ta fayl</small></div><sc-for list="{{d.atts}}" as="a" hint-placeholder-count="2"><div class="dat-r"><span class="{{a.cls}}">{{a.ext}}</span><span class="kv" style="gap: 1px; min-width: 0; flex: 1"><b class="dat-n" title="{{a.name}}">{{a.name}}</b><small>{{a.size}}</small></span><button type="button" class="ib dat-dl" title="Yuklab olish" aria-label="{{a.dlLabel}}" onClick="{{a.dl}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg></button></div></sc-for><button type="button" class="dat-all" onClick="{{d.attAll}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>Barchasini yuklab olish (ZIP)</button></div></sc-if></span></sc-if></div>
-<div class="doc-acts">
-<sc-if value="{{d.canEdit}}" hint-placeholder-val="{{ false }}"><button class="btn sm doc-oo" onClick="{{d.edit}}" title="ONLYOFFICE muharririda tahrirlash"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg>Tahrirlash</button></sc-if><sc-if value="{{d.pubCan}}" hint-placeholder-val="{{ false }}"><button class="{{d.pubBtnCls}}" title="{{d.pubTitle}}" aria-label="{{d.pubTitle}}" aria-disabled="{{d.pubDis}}" onClick="{{d.publish}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg>Publikatsiya</button></sc-if><sc-if value="{{d.pubMod}}" hint-placeholder-val="{{ false }}"><span class="doc-pubst mod" title="public.sud.uz moderatsiyasida"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Moderatsiyada</span></sc-if><sc-if value="{{d.pubNo}}" hint-placeholder-val="{{ false }}"><span class="doc-pubst no" title="Sud qaroriga ko'ra saytda e'lon qilinmaydi"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M5.6 5.6l12.8 12.8"></path></svg>E'lon qilinmaydi</span></sc-if><sc-if value="{{d.isPub}}" hint-placeholder-val="{{ false }}"><a class="doc-pub" href="{{d.pubUrl}}" target="_blank" rel="noopener" title="Saytda e'lon qilingan · {{d.pubAt}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg>E'lon qilingan</a></sc-if><sc-if value="{{d.canSend}}" hint-placeholder-val="{{ false }}"><button class="btn sm" onClick="{{d.send}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2-7z"></path></svg>Yuborish</button></sc-if><sc-if value="{{d.isImzo}}" hint-placeholder-val="{{ false }}"><button class="btn sm pri" onClick="{{d.sign}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21c3-1 5-3 7-6M14 4l6 6-9 9H5v-6z"></path></svg>Imzolash</button></sc-if>
-<sc-if value="{{d.isTasdiq}}" hint-placeholder-val="{{ false }}"><button class="btn sm pri" onClick="{{d.approve}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Tasdiqlash</button></sc-if>
-<sc-if value="{{d.canAi}}" hint-placeholder-val="{{ false }}"><button class="ib ai-ib" aria-label="{{d.title}} — AI tahlil" title="AI tahlil" onClick="{{d.openAi}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"></path><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"></path></svg></button></sc-if>
-<sc-if value="{{d.hasVer}}" hint-placeholder-val="{{ false }}"><button class="ib ver-ib" aria-label="{{d.title}} — versiyalarni taqqoslash" title="Versiyalar ({{d.verN}})" onClick="{{d.openVer}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v12"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg><span class="ver-n">{{d.verN}}</span></button></sc-if>
-<button class="ib" aria-label="{{d.title}} — ko'rish" title="Ko'rish" onClick="{{d.view}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
-<button class="ib" aria-label="{{d.title}} — yuklab olish" title="Yuklab olish" onClick="{{d.download}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg></button>
-<span class="doc-mw"><button class="ib" aria-label="Boshqa amallar" title="Boshqa amallar" aria-haspopup="menu" aria-expanded="{{d.menuStr}}" onClick="{{d.toggleMenu}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg></button><sc-if value="{{d.menuOpen}}" hint-placeholder-val="{{ false }}"><div class="ihmenu doc-menu" role="menu"><sc-if value="{{d.menuEdit}}" hint-placeholder-val="{{ false }}"><button class="ihitem" role="menuitem" onClick="{{d.edit}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg>ONLYOFFICE da tahrirlash</button></sc-if><sc-if value="{{d.menuCanSend}}" hint-placeholder-val="{{ true }}"><button class="ihitem" role="menuitem" onClick="{{d.menuSend}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2-7z"></path></svg>Ishtirokchilarga yuborish</button></sc-if><sc-if value="{{d.menuNoSend}}" hint-placeholder-val="{{ false }}"><div class="ihitem dsn-lock" aria-disabled="true"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2.5"></rect><path d="M8 11V7.5a4 4 0 0 1 8 0V11"></path><path d="M12 15.5v1.5"></path></svg><span class="kv" style="gap: 1px"><span>Ishtirokchilarga yuborish</span><small>Hujjat imzolangandan keyin yuborish mumkin</small></span></div></sc-if><button class="ihitem" role="menuitem" onClick="{{d.download}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>Yuklab olish</button><div class="dsn"><div class="dsn-h"><b>Yuborilganlar</b><small>{{d.sendSum}}</small></div><sc-if value="{{d.noSends}}" hint-placeholder-val="{{ false }}"><div class="dsn-empty">Hujjat hali hech kimga yuborilmagan</div></sc-if><sc-for list="{{d.sends}}" as="x" hint-placeholder-count="2"><div class="dsn-r"><div class="kv" style="gap: 1px; min-width: 0; flex: 1"><b class="dsn-who">{{x.who}}</b><small class="dsn-sub">{{x.role}} · {{x.via}} · {{x.at}}</small></div></div></sc-for></div></div></sc-if></span>
-</div>
-</div>
-</sc-for>
-</div>
-<sc-if value="{{docMenuAny}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg in" tabindex="-1" aria-label="Menyuni yopish" onClick="{{docMenuClose}}"></button></sc-if>
-<sc-if value="{{docsMore}}" hint-placeholder-val="{{ false }}"><button type="button" class="{{docsMoreCls}}" onClick="{{docsToggle}}">{{docsMoreLbl}}<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button></sc-if>
-<sc-if value="{{docsEmpty}}" hint-placeholder-val="{{ false }}"><div class="empty"><b>{{docsEmptyT}}</b><small>{{docsEmptyS}}</small><sc-if value="{{docsNone}}" hint-placeholder-val="{{ false }}"><button class="btn sm pri" onClick="{{docAttach}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Hujjat biriktirish</button></sc-if><sc-if value="{{docsFiltered}}" hint-placeholder-val="{{ true }}"><button class="btn sm" onClick="{{resetFilters}}">Filtrlarni tozalash</button></sc-if></div></sc-if>
-<div class="pager"><span>{{docPagerTxt}}</span><sc-if value="{{filtered}}" hint-placeholder-val="{{ false }}"><button class="btn sm ghost" onClick="{{resetFilters}}">Filtrlarni tozalash</button></sc-if></div>
-</section>
-
-<section class="sec" id="jildlar">
-<div class="sh"><div><h2>Yig'ma jildlar</h2><p>{{jlSub}}</p></div><div class="tools"><button class="btn" onClick="{{jlAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>So'rov qo'shish</button></div></div>
-<div class="jl-list">
-<sc-for list="{{jl}}" as="j" hint-placeholder-count="3">
-<div class="{{j.cls}}">
-<div class="jl-h">
-<span class="jl-av" aria-hidden="true">{{j.ini}}</span>
-<div class="kv" style="gap: 3px; min-width: 0; flex: 1"><b class="jl-org">{{j.org}}</b><span class="jl-num">{{j.num}} · Ariza № {{j.ariza}}</span></div>
-<span class="{{j.stCls}}">{{j.status}}</span>
-<div class="itk-acts">
-<sc-if value="{{j.notConfirm}}" hint-placeholder-val="{{ true }}"><button class="ib" aria-label="So'rovni o'chirish" title="O'chirish" style="color: #dc2626" onClick="{{j.askDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button></sc-if>
-<sc-if value="{{j.confirmDel}}" hint-placeholder-val="{{ false }}"><span class="dx-ask">O'chirilsinmi?</span><button class="btn sm" onClick="{{j.cancelDel}}">Yo'q</button><button class="btn sm dx-danger" onClick="{{j.del}}">Ha, o'chirish</button></sc-if>
-</div>
-</div>
-<div class="jl-flow">
-<button class="jl-doc" onClick="{{j.viewAriza}}"><span class="dx-ft">PDF</span><span class="kv" style="gap: 1px; min-width: 0"><small>So'rov yuborildi · {{j.sent}}</small><b>{{j.file}}</b><small>{{j.fileSize}}</small></span></button>
-<span class="jl-arr"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
-<sc-if value="{{j.hasReply}}" hint-placeholder-val="{{ true }}"><button class="jl-doc ok" onClick="{{j.viewReply}}"><span class="dx-ft">PDF</span><span class="kv" style="gap: 1px; min-width: 0"><small>Javob olindi · {{j.replyDate}} · {{j.days}} kunda</small><b>{{j.replyFile}}</b><small>{{j.replySize}}</small></span></button></sc-if>
-<sc-if value="{{j.noReply}}" hint-placeholder-val="{{ false }}"><div class="jl-wait"><span class="kv" style="gap: 2px; min-width: 0"><b>Javob kutilmoqda</b><small>Yuborilganiga {{j.days}} kun bo'ldi</small></span><span class="row" style="gap: 6px"><button class="btn sm" onClick="{{j.remind}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21h4"></path></svg>Eslatma</button><button class="btn sm pri" onClick="{{j.attach}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4M7 9l5-5 5 5M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"></path></svg>Javobni biriktirish</button></span></div></sc-if>
-</div>
-</div>
-</sc-for>
-<sc-if value="{{jlEmpty}}" hint-placeholder-val="{{ false }}"><div class="bk2-empty"><b>Yig'ma jild bo'sh</b><small>Tashkilotlarga yuborilgan so'rovlar va ularning javob xatlari shu yerda jamlanadi</small></div></sc-if>
-</div>
-</section>
 
 <section class="sec" id="loglar">
 <sc-if value="{{lgMenuOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg" tabindex="-1" aria-label="Menyuni yopish" onClick="{{lgMenuClose}}"></button></sc-if>
@@ -2207,30 +2233,6 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <section class="sec" id="qmalumot">
 <div class="sh"><div><h2>Qo'shimcha ma'lumotlar</h2><p>Ish bo'yicha yordamchi ma'lumotlar</p></div></div>
 <div class="qm-empty"><svg width="72" height="72" viewBox="0 0 72 72" fill="none" aria-hidden="true"><path d="M36 14L58 25v24L36 60 14 49V25z" fill="#eef1f5"></path><path d="M36 14l22 11-22 11-22-11z" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" stroke-linejoin="round"></path><path d="M14 25v24l22 11V36M58 25v24L36 60" stroke="#cbd5e1" stroke-width="1.2" stroke-linejoin="round"></path><path d="M25 19.5l22 11v7" stroke="#cbd5e1" stroke-width="1.2" stroke-linecap="round"></path><circle cx="52" cy="12" r="3.5" fill="#fff" stroke="#94a3b8" stroke-width="1.2"></circle><path d="M40 20c3-6 7-8 9-7" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="2 2.5"></path></svg><b>Hech qanday qo'shimcha ma'lumot qo'shilmagan</b><small>Ish bo'yicha yordamchi ma'lumotlar paydo bo'lganda shu yerda ko'rinadi</small></div>
-</section>
-
-<section class="sec" id="xarajat">
-<div class="sh"><div><h2>Sud xarajatlari</h2><p>Davlat boji, pochta va boshqa to'lovlar</p></div><div class="tools"><button class="btn" onClick="{{xrEditOpen}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg>O'zgartirish</button><button class="btn" onClick="{{xrAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Qo'shish</button></div></div>
-<div class="xs-grid">
-<sc-for list="{{xr}}" as="x" hint-placeholder-count="2">
-<div class="xs-card">
-<div class="xs-top">
-<span class="{{x.icCls}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"></path><path d="M9 8h6M9 12h6"></path></svg></span>
-<div class="kv" style="gap: 2px; min-width: 0; flex: 1"><small>{{x.turi}}</small><b class="xs-num">{{x.num}}</b></div>
-<span class="{{x.stCls}}">{{x.status}}</span>
-</div>
-<sc-if value="{{x.hasParty}}" hint-placeholder-val="{{ true }}"><div class="iv-parties" style="pointer-events: auto"><small>Undiruvchi:</small><b>{{x.und}}</b><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg><small>Qarzdor:</small><b>{{x.qarz}}</b></div></sc-if>
-<div class="xs-foot">
-<span class="xs-amt">{{x.amt}}</span>
-<span class="xs-date"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>{{x.date}}</span>
-<span style="flex: 1"></span>
-<sc-if value="{{x.notConfirm}}" hint-placeholder-val="{{ true }}"><button class="ib" aria-label="Tahrirlash" title="Tahrirlash" onClick="{{x.edit}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg></button><button class="ib" aria-label="O'chirish" title="O'chirish" onClick="{{x.askDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button></sc-if>
-<sc-if value="{{x.confirmDel}}" hint-placeholder-val="{{ false }}"><span class="dx-ask">O'chirilsinmi?</span><button class="btn sm" onClick="{{x.cancelDel}}">Yo'q</button><button class="btn sm dx-danger" onClick="{{x.del}}">Ha</button></sc-if>
-</div>
-</div>
-</sc-for>
-</div>
-<sc-if value="{{xrEmpty}}" hint-placeholder-val="{{ false }}"><div class="qm-empty"><b>Sud xarajatlari kiritilmagan</b><small>«Qo'shish» orqali davlat boji yoki boshqa to'lovni kiriting</small></div></sc-if>
 </section>
 
 <section class="sec" id="uzaytirish">
@@ -3821,14 +3823,14 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1920,"height":1080}}'>
 var NAV = [
-{ t: "Birinchi instansiya", i: [["umumiy", "Umumiy"], ["tomonlar", "Ishtirokchilar"], ["qarshi", "Qarshi da'volar"]] },
-{ t: "Ish mazmuni", i: [["bankrotlik", "Bankrotlik bo'yicha"], ["turkumlar", "Ish mazmuni va da'vo summasi"]] },
-{ t: "Hujjatlar", i: [["hujjatlar", "Ish hujjatlari"], ["loglar", "Loglar"], ["integratsiya", "Integratsiyalar"]] },
+{ t: "Birinchi instansiya", i: [["umumiy", "Umumiy"], ["turkumlar", "Ish mazmuni va da'vo summasi"], ["hujjatlar", "Ish hujjatlari"], ["xarajat", "Sud xarajatlari"], ["tomonlar", "Ishtirokchilar"], ["qarshi", "Qarshi da'volar"]] },
+{ t: "Ish mazmuni", i: [["bankrotlik", "Bankrotlik bo'yicha"]] },
+{ t: "Hujjatlar", i: [["loglar", "Loglar"], ["integratsiya", "Integratsiyalar"]] },
 { t: "Da'voni ta'minlash", i: [["notarius", "Notarius tizimidan"], ["mib", "MIB tizimidan"], ["tahujjat", "Da'voni ta'minlash hujjatlari"]] },
 { t: "Ijro va ta'sir choralari", i: [["tasir", "Ta'sir choralari"], ["ijrov", "Ijro varaqalari"]] },
 { t: "Yangi sud ekspertiza tizimi", i: [["y-sorov", "Ekspertiza so'rovi"], ["iltimosnoma", "Iltimosnoma"], ["kvitansiya", "Kvitansiyalar"]] },
 { t: "Sud ekspertiza tizimi", i: [["ekspert", "Ekspert so'rovi"], ["e-sorov", "Ekspertiza so'rovlari"], ["kirim", "Kirim hujjatlar"], ["javob", "Javob berilishi lozim bo'lgan hujjatlar"]] },
-{ t: "Qo'shimcha", i: [["tarix", "Ish tarixi"], ["publ", "Publikatsiyalar"], ["qmalumot", "Qo'shimcha ma'lumotlar"], ["xarajat", "Sud xarajatlari"], ["uzaytirish", "Uzaytirish so'rovlari"]] }
+{ t: "Qo'shimcha", i: [["tarix", "Ish tarixi"], ["publ", "Publikatsiyalar"], ["qmalumot", "Qo'shimcha ma'lumotlar"], ["uzaytirish", "Uzaytirish so'rovlari"]] }
 ];
 
 // Dizayni qayta ko'rib chiqilgan bo'limlar — qolganlari oldida qizil nuqta chiqadi
