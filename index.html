@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=dbda7a2883a5">
+<link rel="stylesheet" href="assets/app.css?v=e61c43da7506">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -740,7 +740,9 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <sc-for list="{{dxImList}}" as="r" hint-placeholder-count="1">
 <div class="{{r.cls}}" role="listitem">
 <div class="dx-ch">
-<div class="row" style="gap: 10px; flex-wrap: wrap; min-width: 0"><sc-if value="{{r.hasCode}}" hint-placeholder-val="{{ true }}"><span class="dx-code">{{r.code}}</span></sc-if><b class="dx-cname">{{r.name}}</b><sc-if value="{{r.editing}}" hint-placeholder-val="{{ false }}"><span class="dx-tag edt">Tahrirlanmoqda</span></sc-if></div>
+<button type="button" class="dx-actog" aria-expanded="{{r.openStr}}" aria-label="{{r.togLbl}}" title="{{r.togLbl}}" onClick="{{r.toggle}}"><svg class="i s dx-acchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
+<div class="dx-chm" onClick="{{r.toggle}}"><div class="row" style="gap: 10px; flex-wrap: wrap; min-width: 0"><sc-if value="{{r.hasCode}}" hint-placeholder-val="{{ true }}"><span class="dx-code">{{r.code}}</span></sc-if><b class="dx-cname">{{r.name}}</b><sc-if value="{{r.editing}}" hint-placeholder-val="{{ false }}"><span class="dx-tag edt">Tahrirlanmoqda</span></sc-if></div>
+<sc-if value="{{r.closed}}" hint-placeholder-val="{{ false }}"><div class="dx-acsum"><sc-for list="{{r.sumTags}}" as="g" hint-placeholder-count="2"><span class="{{g.cls}}">{{g.t}}</span></sc-for></div></sc-if></div>
 <div class="dx-eacts">
 <sc-if value="{{r.notConfirm}}" hint-placeholder-val="{{ true }}">
 <sc-if value="{{r.isMain}}" hint-placeholder-val="{{ true }}"><span class="pc-mt on itk-mt" title="Asosiy talab"><svg class="pc-st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6-5.4-3.1-5.4 3.1 1.2-6L3.3 9.3l6.1-.7z"></path></svg>Asosiy talab</span></sc-if><sc-if value="{{r.canMain}}" hint-placeholder-val="{{ false }}"><button type="button" class="pc-mt itk-mt" title="Shu talabni asosiy qilish" onClick="{{r.makeMain}}"><svg class="pc-st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6-5.4-3.1-5.4 3.1 1.2-6L3.3 9.3l6.1-.7z"></path></svg>Asosiy qilish</button></sc-if>
@@ -754,7 +756,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </sc-if>
 </div>
 </div>
-<div class="dx-cbody">
+<sc-if value="{{r.open}}" hint-placeholder-val="{{ true }}"><div class="dx-cbody">
 <div class="dx-dgrid">
 <div class="kv"><small>Ish yuritish tartibi</small><span class="dx-dv">{{r.tartib}}</span></div>
 <div class="kv"><small>Nizo turi</small><span class="{{r.nizoCls}}">{{r.nizo}}</span></div>
@@ -809,7 +811,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </sc-for>
 <sc-if value="{{r.canAddNm}}" hint-placeholder-val="{{ true }}"><button type="button" class="dx-pill nm" onClick="{{r.addNm}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>{{r.addNmLabel}}</button></sc-if>
 </div>
-</div>
+</div></sc-if>
 </div>
 </sc-for>
 </div>
@@ -6933,6 +6935,7 @@ del: function () { var p = nmPut(target, function (a) { return a.filter(function
 };
 
 var allSums = [];
+var imOpenId = dx.imOpen === undefined ? (dx.im.length ? dx.im[dx.im.length - 1].id : "") : dx.imOpen;
 var dxImList = dx.im.map(function (r, i) {
 var editing = i === edIdx, conf = dx.imDel === r.id, sums = r.sums || [];
 allSums = allSums.concat(sums);
@@ -6944,7 +6947,15 @@ nizo: r.nizo || "Tanlanmagan", nizoCls: r.nizo ? "dx-dv" : "dx-dv none",
 qHas: !!r.qturkum, qNone: !r.qturkum, qCode: q.code, qName: q.name,
 iHas: !!r.iturkum, iNone: !r.iturkum, iCode: ik.code, iName: ik.name,
 jv: jvChips(javs), hasJv: false, noJv: false, javTxt: (r.javs || []).join(", "), hasJav: (r.javs || []).length > 0, noJav: !(r.javs || []).length, javAv: (r.javs || []).slice(0, 3).map(function (n) { return { photo: portrait(n, genderOf(n)) }; }),
-cls: editing ? "dx-entry ed" : (conf ? "dx-entry del" : "dx-entry"), editing: editing, confirm: conf, notConfirm: !conf,
+cls: (editing ? "dx-entry ed" : (conf ? "dx-entry del" : "dx-entry")) + (imOpenId === r.id ? " open" : " shut"), editing: editing, confirm: conf, notConfirm: !conf,
+open: imOpenId === r.id, closed: imOpenId !== r.id, openStr: imOpenId === r.id ? "true" : "false",
+togLbl: imOpenId === r.id ? "Yashirish" : "To'liq ko'rsatish",
+toggle: function (e) { var t = e && e.target; if (t && t.closest && t.closest(".dx-eacts")) return; setDx({ imOpen: imOpenId === r.id ? "" : r.id }); },
+sumTags: (function () { var g = [], nl = (r.nm || []).length;
+if (sums.length) g.push({ t: "Da'vo summasi: " + byCur(sums), cls: "dx-actag sum" }); else g.push({ t: "Da'vo summasi yo'q", cls: "dx-actag none" });
+if (nl) g.push({ t: nl + " ta nomulkiy talab", cls: "dx-actag nm" });
+if (r.nizo) g.push({ t: r.nizo, cls: "dx-actag" });
+return g; })(),
 askText: (sums.length || (r.nm || []).length) ? "Talab o'chirilsinmi? " + [sums.length ? sums.length + " ta da'vo summasi" : "", (r.nm || []).length ? r.nm.length + " ta nomulkiy talab" : ""].filter(Boolean).join(" va ") + " ham o'chadi." : "Talab o'chirilsinmi?",
 sums: sums.map(function (m, j) { return sumRow(m, j, r.id); }), hasSums: sums.length > 0, sumCount: sums.length + " ta", sumTotal: byCur(sums),
 addSumLabel: sums.length ? "Yana da'vo summasi qo'shish" : "Da'vo summasi qo'shish",
@@ -6987,7 +6998,7 @@ var entry, im;
 if (e.mode === "edit") { im = d.im.map(function (x) { if (x.id !== e.id) return x; entry = Object.assign({}, x, clean); return entry; }); }
 else { entry = Object.assign({ id: "im" + Date.now(), sums: e.sums.slice(), nm: (e.nm || []).slice() }, clean); im = d.im.concat([entry]); }
 var pos = im.map(function (x) { return x.id; }).indexOf(entry.id) + 1;
-setDx({ im: im, imEd: null, smDel: "" });
+setDx({ im: im, imEd: null, smDel: "", imOpen: entry.id });
 self.flash(pos + "-talab " + (e.mode === "edit" ? "saqlandi" : "qo'shildi") + ((entry.sums || []).length ? " · " + entry.sums.length + " ta da'vo summasi bilan" : "") + ((entry.nm || []).length ? " · " + entry.nm.length + " ta nomulkiy talab bilan" : ""));
 };
 var dxImCancel = function () { var d = self.state.dx; setDx({ imEd: d.im.length ? null : newEd(), smDel: "" }); };

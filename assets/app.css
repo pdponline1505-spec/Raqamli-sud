@@ -6820,3 +6820,20 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .dx-addchip.nmt.on{border-color:#3073f1;background:#eff6ff;color:#1d4ed8;font-weight:600}
 .dx-addchip.nmt.on svg{color:#3073f1}
 .dx-addchip.nmt.err{border-color:#fca5a5}
+/* Devonxona: talab kartochkasi — accordion */
+.dx-entry .dx-ch{justify-content:flex-start;gap:10px}
+.dx-entry.shut .dx-ch{border-bottom-color:transparent}
+.dx-entry .dx-eacts{margin-left:auto}
+.dx-chm{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1;cursor:pointer;padding:2px 0}
+.dx-actog{width:32px;height:32px;flex:none;display:grid;place-items:center;border:1px solid #e2e8f0;border-radius:9px;background:#fff;color:#475569;cursor:pointer;transition:background-color var(--t-fast) var(--ease-out),border-color var(--t-fast) var(--ease-out)}
+.dx-actog:hover{background:#f1f5f9;border-color:#cbd5e1}
+.dx-actog:focus-visible{outline:2px solid #3073f1;outline-offset:2px}
+.dx-acchev{transition:transform var(--t-base) var(--ease-out);transform:rotate(-90deg)}
+.dx-entry.open .dx-acchev{transform:rotate(0)}
+.dx-acsum{display:flex;flex-wrap:wrap;gap:6px}
+.dx-actag{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;background:#f1f5f9;color:#475569;font-size:12.5px;font-weight:500;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dx-actag.sum{background:#eef2ff;color:#4338ca}
+.dx-actag.nm{background:#f5f3ff;color:#6d28d9}
+.dx-actag.none{background:#f8fafc;color:#94a3b8}
+.dx-entry.shut:hover{border-color:#bfdbfe}
+.dx-entry.open .dx-cbody{animation:dialogIn var(--t-base) var(--ease-out)}
