@@ -6837,3 +6837,8 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .dx-actag.none{background:#f8fafc;color:#94a3b8}
 .dx-entry.shut:hover{border-color:#bfdbfe}
 .dx-entry.open .dx-cbody{animation:dialogIn var(--t-base) var(--ease-out)}
+/* Devonxona: talabni joyida tahrirlash */
+.dx-entry .dx-editor.inl{border:0;border-radius:0;background:#f8fbff;padding:18px;border-top:1px solid #dbeafe}
+.dx-entry.ed .dx-ch{border-bottom-color:transparent}
+.dx-entry.ed .dx-actog{opacity:.45;cursor:default}
+.dx-entry.ed .dx-chm{cursor:default}

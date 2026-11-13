@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=e61c43da7506">
+<link rel="stylesheet" href="assets/app.css?v=7eff9a1bab17">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -744,7 +744,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="dx-chm" onClick="{{r.toggle}}"><div class="row" style="gap: 10px; flex-wrap: wrap; min-width: 0"><sc-if value="{{r.hasCode}}" hint-placeholder-val="{{ true }}"><span class="dx-code">{{r.code}}</span></sc-if><b class="dx-cname">{{r.name}}</b><sc-if value="{{r.editing}}" hint-placeholder-val="{{ false }}"><span class="dx-tag edt">Tahrirlanmoqda</span></sc-if></div>
 <sc-if value="{{r.closed}}" hint-placeholder-val="{{ false }}"><div class="dx-acsum"><sc-for list="{{r.sumTags}}" as="g" hint-placeholder-count="2"><span class="{{g.cls}}">{{g.t}}</span></sc-for></div></sc-if></div>
 <div class="dx-eacts">
-<sc-if value="{{r.notConfirm}}" hint-placeholder-val="{{ true }}">
+<sc-if value="{{r.showActs}}" hint-placeholder-val="{{ true }}">
 <sc-if value="{{r.isMain}}" hint-placeholder-val="{{ true }}"><span class="pc-mt on itk-mt" title="Asosiy talab"><svg class="pc-st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6-5.4-3.1-5.4 3.1 1.2-6L3.3 9.3l6.1-.7z"></path></svg>Asosiy talab</span></sc-if><sc-if value="{{r.canMain}}" hint-placeholder-val="{{ false }}"><button type="button" class="pc-mt itk-mt" title="Shu talabni asosiy qilish" onClick="{{r.makeMain}}"><svg class="pc-st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.1 1.2 6-5.4-3.1-5.4 3.1 1.2-6L3.3 9.3l6.1-.7z"></path></svg>Asosiy qilish</button></sc-if>
 <button class="ib" title="Talabni tahrirlash" aria-label="{{r.n}}-talabni tahrirlash" onClick="{{r.edit}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg></button>
 <button class="ib" style="color: #dc2626" title="Talabni o'chirish" aria-label="{{r.n}}-talabni o'chirish" onClick="{{r.askDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button>
@@ -756,7 +756,83 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </sc-if>
 </div>
 </div>
-<sc-if value="{{r.open}}" hint-placeholder-val="{{ true }}"><div class="dx-cbody">
+<sc-if value="{{r.editing}}" hint-placeholder-val="{{ false }}">
+<div class="{{dxImEdInlCls}}" role="group" aria-label="{{dxImEdTitle}}">
+<div class="dx-g4">
+<label class="fld"><span>Ish yuritish tartibida</span><span class="{{dxS.im_tartib.cls}}" id="{{dxS.im_tartib.id}}" onKeyDown="{{dxS.im_tartib.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{dxS.im_tartib.exp}}" disabled="{{dxS.im_tartib.dis}}" onClick="{{dxS.im_tartib.toggle}}" style="border-color: {{dxS.im_tartib.bc}}"><span class="{{dxS.im_tartib.vcls}}">{{dxS.im_tartib.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{dxS.im_tartib.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{dxS.im_tartib.stop}}"><sc-for list="{{dxS.im_tartib.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
+<label class="fld"><span>Nizo turi</span><span class="{{dxS.im_nizo.cls}}" id="{{dxS.im_nizo.id}}" onKeyDown="{{dxS.im_nizo.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{dxS.im_nizo.exp}}" disabled="{{dxS.im_nizo.dis}}" onClick="{{dxS.im_nizo.toggle}}" style="border-color: {{dxS.im_nizo.bc}}"><span class="{{dxS.im_nizo.vcls}}">{{dxS.im_nizo.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{dxS.im_nizo.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{dxS.im_nizo.stop}}"><sc-for list="{{dxS.im_nizo.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
+<label class="fld"><span>Ariza turi</span><span class="{{dxS.im_ariza.cls}}" id="{{dxS.im_ariza.id}}" onKeyDown="{{dxS.im_ariza.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{dxS.im_ariza.exp}}" disabled="{{dxS.im_ariza.dis}}" onClick="{{dxS.im_ariza.toggle}}" style="border-color: {{dxS.im_ariza.bc}}"><span class="{{dxS.im_ariza.vcls}}">{{dxS.im_ariza.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{dxS.im_ariza.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{dxS.im_ariza.stop}}"><sc-for list="{{dxS.im_ariza.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
+<label class="fld"><span>Ish turkumi <b class="dx-req">*</b></span><span class="{{dxS.im_turkum.cls}}" id="{{dxS.im_turkum.id}}" onKeyDown="{{dxS.im_turkum.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{dxS.im_turkum.exp}}" disabled="{{dxS.im_turkum.dis}}" onClick="{{dxS.im_turkum.toggle}}" style="border-color: {{dxS.im_turkum.bc}}"><span class="{{dxS.im_turkum.vcls}}">{{dxS.im_turkum.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{dxS.im_turkum.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{dxS.im_turkum.stop}}"><sc-for list="{{dxS.im_turkum.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
+<label class="fld"><span>Qo'shimcha ish turkumi</span><span class="{{dxS.im_qturkum.cls}}" id="{{dxS.im_qturkum.id}}" onKeyDown="{{dxS.im_qturkum.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{dxS.im_qturkum.exp}}" disabled="{{dxS.im_qturkum.dis}}" onClick="{{dxS.im_qturkum.toggle}}" style="border-color: {{dxS.im_qturkum.bc}}"><span class="{{dxS.im_qturkum.vcls}}">{{dxS.im_qturkum.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{dxS.im_qturkum.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{dxS.im_qturkum.stop}}"><sc-for list="{{dxS.im_qturkum.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
+<label class="fld"><span>Ikkilamchi ish turkumi</span><span class="{{dxS.im_iturkum.cls}}" id="{{dxS.im_iturkum.id}}" onKeyDown="{{dxS.im_iturkum.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{dxS.im_iturkum.exp}}" disabled="{{dxS.im_iturkum.dis}}" onClick="{{dxS.im_iturkum.toggle}}" style="border-color: {{dxS.im_iturkum.bc}}"><span class="{{dxS.im_iturkum.vcls}}">{{dxS.im_iturkum.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{dxS.im_iturkum.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{dxS.im_iturkum.stop}}"><sc-for list="{{dxS.im_iturkum.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
+<label class="fld"><span>Javobgar</span><span class="{{dxS.im_jav.cls}}" id="{{dxS.im_jav.id}}" onKeyDown="{{dxS.im_jav.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{dxS.im_jav.exp}}" disabled="{{dxS.im_jav.dis}}" onClick="{{dxS.im_jav.toggle}}" style="border-color: {{dxS.im_jav.bc}}"><span class="{{dxS.im_jav.vcls}}">{{dxS.im_jav.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{dxS.im_jav.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" aria-multiselectable="true" onClick="{{dxS.im_jav.stop}}"><sc-for list="{{dxS.im_jav.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for><span class="dx-mfoot"><small>{{dxS.im_jav.selTxt}}</small><span class="row" style="gap: 6px"><sc-if value="{{dxS.im_jav.canClear}}" hint-placeholder-val="{{ false }}"><button type="button" class="btn sm" onClick="{{dxS.im_jav.clear}}">Tozalash</button></sc-if><button type="button" class="btn sm pri" onClick="{{dxS.im_jav.done}}">Tayyor</button></span></span></span></sc-if></span></label>
+</div>
+<sc-if value="{{dxPendShow}}" hint-placeholder-val="{{ true }}">
+<sc-if value="{{dxPendHas}}" hint-placeholder-val="{{ false }}">
+<div class="dx-pend">
+<div class="dx-sums-h"><span class="dx-sumlbl">Da'vo summalari<span class="dx-cnt">{{dxPendCount}}</span></span><span class="dx-sumtot">Jami: <b>{{dxPendTotal}}</b></span></div>
+<sc-for list="{{dxPend}}" as="m" hint-placeholder-count="1">
+<div class="{{m.cls}}">
+<span class="dx-sic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg></span>
+<div class="kv dx-sinfo"><b>Da'vo summasi</b><small>{{m.rowsText}}</small></div>
+<sc-if value="{{m.hasJav}}" hint-placeholder-val="{{ false }}"><span class="dx-sjv" title="{{m.javTitle}}"><span class="dx-avs"><sc-for list="{{m.javAv}}" as="a" hint-placeholder-count="1"><img src="{{a.photo}}" alt=""></sc-for></span><span>{{m.javShort}}</span></span></sc-if>
+<span class="dx-samts"><sc-for list="{{m.amts}}" as="t" hint-placeholder-count="1"><span class="dx-samt">{{t.amt}}<small>{{t.code}}</small></span></sc-for></span>
+<div class="dx-sact">
+<sc-if value="{{m.notConfirm}}" hint-placeholder-val="{{ true }}">
+<button class="ib" title="Tahrirlash" aria-label="{{m.n}}-da'vo summasini tahrirlash" onClick="{{m.edit}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg></button>
+<button class="ib" style="color: #dc2626" title="O'chirish" aria-label="{{m.n}}-da'vo summasini o'chirish" onClick="{{m.askDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button>
+</sc-if>
+<sc-if value="{{m.confirm}}" hint-placeholder-val="{{ false }}">
+<span class="dx-ask">O'chirilsinmi?</span>
+<button class="btn sm" onClick="{{m.cancelDel}}">Yo'q</button>
+<button class="btn sm dx-danger" onClick="{{m.del}}">Ha</button>
+</sc-if>
+</div>
+</div>
+</sc-for>
+<button type="button" class="dx-pill" onClick="{{dxDwNew}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Yana da'vo summasi qo'shish</button>
+</div>
+</sc-if>
+<sc-if value="{{dxPendNone}}" hint-placeholder-val="{{ true }}"><button type="button" class="dx-cta" onClick="{{dxDwNew}}"><span class="dx-cta-ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg></span><span class="dx-cta-t"><b>{{dxCtaTitle}}</b><small>{{dxCtaSub}}</small></span><sc-if value="{{dxCtaHasJv}}" hint-placeholder-val="{{ false }}"><span class="dx-cta-jv"><span class="dx-avs"><sc-for list="{{dxCtaAv}}" as="a" hint-placeholder-count="3"><img src="{{a.photo}}" alt=""></sc-for></span><span class="dx-cta-jn">{{dxCtaJv}}</span></span></sc-if><span class="dx-cta-plus"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></span></button></sc-if>
+<sc-if value="{{dxNmPendHas}}" hint-placeholder-val="{{ false }}">
+<div class="dx-pend dx-nmlist">
+<div class="dx-sums-h"><span class="dx-sumlbl">Nomulkiy talablar<sc-if value="{{dxNmPendHas}}" hint-placeholder-val="{{ false }}"><span class="dx-cnt">{{dxNmPendCount}}</span></sc-if></span></div>
+<sc-for list="{{dxNmPend}}" as="m" hint-placeholder-count="1">
+<div class="{{m.cls}}">
+<span class="dx-sic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5M10 13h6M10 17h4"></path></svg></span>
+<div class="kv dx-sinfo"><b>{{m.title}}</b><sc-if value="{{m.hasSub}}" hint-placeholder-val="{{ false }}"><small>{{m.sub}}</small></sc-if></div>
+<sc-if value="{{m.hasFt}}" hint-placeholder-val="{{ false }}"><span class="dx-nmft" title="{{m.ftTitle}}"><span class="dx-nmp"><sc-if value="{{m.fPh}}" hint-placeholder-val="{{ true }}"><img src="{{m.fPhoto}}" alt=""></sc-if>{{m.fT}}</span><span class="dx-nmar" aria-hidden="true">→</span><span class="dx-nmp"><sc-if value="{{m.tPh}}" hint-placeholder-val="{{ true }}"><img src="{{m.tPhoto}}" alt=""></sc-if>{{m.tT}}</span></span></sc-if>
+<sc-if value="{{m.hasJav}}" hint-placeholder-val="{{ false }}"><span class="dx-sjv" title="{{m.javTitle}}"><span class="dx-avs"><sc-for list="{{m.javAv}}" as="a" hint-placeholder-count="1"><img src="{{a.photo}}" alt=""></sc-for></span><span>{{m.javShort}}</span></span></sc-if>
+<div class="dx-sact">
+<sc-if value="{{m.notConfirm}}" hint-placeholder-val="{{ true }}">
+<button class="ib" title="Tahrirlash" aria-label="{{m.n}}-nomulkiy talabni tahrirlash" onClick="{{m.edit}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg></button>
+<button class="ib" style="color: #dc2626" title="O'chirish" aria-label="{{m.n}}-nomulkiy talabni o'chirish" onClick="{{m.askDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button>
+</sc-if>
+<sc-if value="{{m.confirm}}" hint-placeholder-val="{{ false }}">
+<span class="dx-ask">O'chirilsinmi?</span>
+<button class="btn sm" onClick="{{m.cancelDel}}">Yo'q</button>
+<button class="btn sm dx-danger" onClick="{{m.del}}">Ha</button>
+</sc-if>
+</div>
+</div>
+</sc-for>
+<sc-if value="{{dxNmCanAdd}}" hint-placeholder-val="{{ true }}"><button type="button" class="dx-pill nm" onClick="{{dxNmNew}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Yana nomulkiy talab qo'shish</button></sc-if>
+</div>
+</sc-if>
+<sc-if value="{{dxNmPendNone}}" hint-placeholder-val="{{ true }}"><button type="button" class="dx-cta nm" onClick="{{dxNmNew}}"><span class="dx-cta-ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5M10 13h6M10 17h4"></path></svg></span><span class="dx-cta-t"><b>Nomulkiy talab kiritish</b><small>Pul bilan bog'liq bo'lmagan talab bo'lsa · ixtiyoriy</small></span><span class="dx-cta-plus"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></span></button></sc-if>
+</sc-if>
+<sc-if value="{{dxImEdErr}}" hint-placeholder-val="{{ false }}"><small class="dx-err" style="margin: 0">{{dxImEdErrText}}</small></sc-if>
+<div class="dx-edfoot">
+<small class="muted">{{dxImHint}}</small>
+<div class="row" style="gap: 8px">
+<sc-if value="{{dxImCanCancel}}" hint-placeholder-val="{{ false }}"><button class="btn" style="border-color: transparent; background: #f1f5f9" onClick="{{dxImCancel}}">Bekor qilish</button></sc-if>
+<sc-if value="{{dxImCanClear}}" hint-placeholder-val="{{ false }}"><button class="btn" style="border-color: transparent; background: #f1f5f9" onClick="{{dxImCancel}}">Tozalash</button></sc-if>
+<button class="btn pri" onClick="{{dxImCommit}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>{{dxImCommitLabel}}</button>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{r.showBody}}" hint-placeholder-val="{{ true }}"><div class="dx-cbody">
 <div class="dx-dgrid">
 <div class="kv"><small>Ish yuritish tartibi</small><span class="dx-dv">{{r.tartib}}</span></div>
 <div class="kv"><small>Nizo turi</small><span class="{{r.nizoCls}}">{{r.nizo}}</span></div>
@@ -817,7 +893,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 </sc-if>
 
-<sc-if value="{{dxImEdOpen}}" hint-placeholder-val="{{ true }}">
+<sc-if value="{{dxImEdNewOpen}}" hint-placeholder-val="{{ true }}">
 <div class="{{dxImEdCls}}" role="group" aria-label="{{dxImEdTitle}}">
 <sc-if value="{{dxImHasList}}" hint-placeholder-val="{{ false }}"><div class="between"><span class="dx-rown">{{dxImEdTitle}}</span></div></sc-if>
 <div class="dx-g4">
@@ -6943,10 +7019,11 @@ nizo: r.nizo || "Tanlanmagan", nizoCls: r.nizo ? "dx-dv" : "dx-dv none",
 qHas: !!r.qturkum, qNone: !r.qturkum, qCode: q.code, qName: q.name,
 iHas: !!r.iturkum, iNone: !r.iturkum, iCode: ik.code, iName: ik.name,
 jv: jvChips(javs), hasJv: false, noJv: false, javTxt: (r.javs || []).join(", "), hasJav: (r.javs || []).length > 0, noJav: !(r.javs || []).length, javAv: (r.javs || []).slice(0, 3).map(function (n) { return { photo: portrait(n, genderOf(n)) }; }),
-cls: (editing ? "dx-entry ed" : (conf ? "dx-entry del" : "dx-entry")) + (imOpenId === r.id ? " open" : " shut"), editing: editing, confirm: conf, notConfirm: !conf,
-open: imOpenId === r.id, closed: imOpenId !== r.id, openStr: imOpenId === r.id ? "true" : "false",
+cls: (editing ? "dx-entry ed" : (conf ? "dx-entry del" : "dx-entry")) + ((imOpenId === r.id || editing) ? " open" : " shut"), editing: editing, confirm: conf, notConfirm: !conf,
+open: imOpenId === r.id || editing, closed: imOpenId !== r.id && !editing, openStr: (imOpenId === r.id || editing) ? "true" : "false",
+showBody: imOpenId === r.id && !editing, showActs: !conf && !editing,
 togLbl: imOpenId === r.id ? "Yashirish" : "To'liq ko'rsatish",
-toggle: function (e) { var t = e && e.target; if (t && t.closest && t.closest(".dx-eacts")) return; setDx({ imOpen: imOpenId === r.id ? "" : r.id }); },
+toggle: function (e) { var t = e && e.target; if (t && t.closest && t.closest(".dx-eacts")) return; if (editing) return; setDx({ imOpen: imOpenId === r.id ? "" : r.id }); },
 sumTags: (function () { var g = [], nl = (r.nm || []).length;
 if (sums.length) g.push({ t: "Da'vo summasi: " + byCur(sums), cls: "dx-actag sum" }); else g.push({ t: "Da'vo summasi yo'q", cls: "dx-actag none" });
 if (nl) g.push({ t: nl + " ta nomulkiy talab", cls: "dx-actag nm" });
@@ -7280,7 +7357,7 @@ dxDvHas: s.dxDv.length > 0, dxJvHas: s.dxJv.length > 0, dxDvCount: s.dxDv.length
 dxAddDv: openTm("dxDv"), dxAddJv: openTm("dxJv"),
 dxJvNames: jvNames, dxJvPh: jvNames.length ? "Javobgarni tanlang" : "Avval javobgar qo'shing",
 dxImList: dxImList, dxImHasList: dx.im.length > 0, dxImCount: dx.im.length + " ta talab",
-dxImEdOpen: !!ed, dxImEd: ed || { v: DX_IM_DEF, err: "" }, dxImSet: dxImSet,
+dxImEdOpen: !!ed, dxImEdNewOpen: !!ed && ed.mode !== "edit", dxImEdInlCls: "dx-editor im inl" + (errOn && edDirty ? " warn" : ""), dxImEd: ed || { v: DX_IM_DEF, err: "" }, dxImSet: dxImSet,
 dxImEdCls: "dx-editor im" + (dx.im.length ? "" : " solo") + (errOn && edDirty ? " warn" : ""),
 dxImEdTitle: ed ? (ed.mode === "edit" ? (edIdx + 1) + "-talabni tahrirlash" : (dx.im.length + 1) + "-talab · yangi") : "",
 dxImEdErr: !!(ed && (ed.err || (errOn && edDirty))), dxImEdErrText: ed ? (ed.err || "Bu talab hali saqlanmagan — «" + (ed.mode === "edit" ? "Saqlash" : "Qo'shish") + "» tugmasini bosing yoki bekor qiling") : "",
@@ -7288,7 +7365,7 @@ dxImTurkumB: ed && !ed.v.turkum && (ed.err || (errOn && !dx.im.length)) ? RED : 
 dxImCommitLabel: ed && ed.mode === "edit" ? "Saqlash" : "Qo'shish",
 dxImCanCancel: !!ed && dx.im.length > 0, dxImCanClear: !!ed && !dx.im.length && edDirty,
 dxImCancel: dxImCancel, dxImCommit: dxImCommit, dxImNew: dxImNew, dxImCanAdd: !ed, dxImNextN: (dx.im.length + 1) + "-talab",
-dxImHint: ed && ed.mode === "edit" ? "Da'vo summalari kartochkaning o'zida tahrirlanadi" : "Talab unga qo'shilgan da'vo summalari va nomulkiy talablar bilan birga saqlanadi",
+dxImHint: ed && ed.mode === "edit" ? "Talab ma'lumotlari shu yerda tahrirlanadi · da'vo summalari va nomulkiy talablar saqlangach yana ko'rinadi" : "Talab unga qo'shilgan da'vo summalari va nomulkiy talablar bilan birga saqlanadi",
 dxImJv: dxImJv, dxImJvHas: s.dxJv.length > 0, dxImJvNone: s.dxJv.length === 0,
 dxPendShow: !!ed && ed.mode === "new",
 dxPend: dxPend, dxPendHas: pend.length > 0, dxPendNone: pend.length === 0, dxPendCount: pend.length + " ta", dxPendTotal: byCur(pend),
