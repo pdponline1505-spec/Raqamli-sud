@@ -6912,3 +6912,8 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .l-tag.demo{border:0;line-height:14px}
 /* natija: ish mazmunidan avtomatik to'ldirilgan belgisi */
 .ntv-auto{display:inline-flex;align-items:center;gap:5px;margin-left:auto;align-self:center;height:24px;padding:0 10px;border-radius:999px;background:#eef2ff;color:#4338ca;font-size:12px;font-weight:500;white-space:nowrap}
+/* natija qatorlari: tahrirlash/o'chirish ikonlari — kattaroq va aniqroq */
+.ntv-alv-ed,.ntv-alv-x{width:36px !important;height:36px !important;color:#334155 !important;border-radius:9px}
+.ntv-alv-ed .i,.ntv-alv-x .i{width:20px;height:20px;stroke-width:1.9}
+.ntv-alv-ed:hover{background:#f1f5f9 !important;color:#0f172a !important}
+.ntv-alv-x:hover{background:#fef2f2 !important;color:#dc2626 !important}
