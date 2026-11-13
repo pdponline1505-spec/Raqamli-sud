@@ -1110,12 +1110,12 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 
 <div class="dx-dw-sec" style="gap: 10px">
 <span class="dx-lbl">Talab turi <b class="dx-req">*</b></span>
-<div class="dx-chips" role="radiogroup" aria-label="Nomulkiy tusdagi talab turi">
+<div class="dx-nmopts" role="radiogroup" aria-label="Nomulkiy tusdagi talab turi">
 <sc-for list="{{dxNmTur}}" as="o" hint-placeholder-count="5">
-<button type="button" role="radio" aria-checked="{{o.str}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.on}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if><sc-if value="{{o.off}}" hint-placeholder-val="{{ true }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></sc-if>{{o.label}}</button>
+<button type="button" role="radio" aria-checked="{{o.str}}" class="{{o.cls}}" onClick="{{o.pick}}"><span class="dx-nmrad" aria-hidden="true"></span><span class="dx-nmol">{{o.label}}</span></button>
 </sc-for>
 </div>
-<small class="{{dxNmTurHint}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8v.5"></path></svg>Bitta talab turi tanlanadi — boshqa talab uchun alohida nomulkiy talab qo'shing</small>
+<small class="{{dxNmTurHint}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8v.5"></path></svg>Bittasi tanlanadi — boshqa talab uchun alohida nomulkiy talab qo'shing</small>
 </div>
 <sc-if value="{{dxNmErr}}" hint-placeholder-val="{{ false }}"><small class="dx-err" style="margin: 0">{{dxNmErrText}}</small></sc-if>
 </div>
@@ -7125,7 +7125,7 @@ dxNmFromHint: "dx-hint" + (nmw && nmw.err && (!nmw.from || nmSame) ? " err" : ""
 dxNmToHint: "dx-hint" + (nmw && nmw.err && (!nmw.to || nmSame) ? " err" : ""),
 dxNmHasP: nmHasP,
 dxNmTur: NM_TUR.map(function (o) { var on = !!(nmw && nmw.turlar[0] === o.v); return { label: o.l, on: on, off: !on, str: on ? "true" : "false",
-cls: "dx-addchip nmt" + (on ? " on" : "") + (nmw && nmw.err && !nmw.turlar.length ? " err" : ""),
+cls: "dx-nmopt" + (on ? " on" : "") + (nmw && nmw.err && !nmw.turlar.length ? " err" : ""),
 pick: function () { setNmw(function () { return { turlar: [o.v], err: "", ask: false }; }); } }; }),
 dxNmTurHint: "dx-hint" + (nmw && nmw.err && !nmw.turlar.length ? " err" : ""),
 dxNmTotTitle: nmw && nmw.turlar.length ? (NM_L[nmw.turlar[0]] || "Nomulkiy talab") : "Nomulkiy talab",
