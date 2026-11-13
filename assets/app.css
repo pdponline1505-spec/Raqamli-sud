@@ -6842,3 +6842,8 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .dx-entry.ed .dx-ch{border-bottom-color:transparent}
 .dx-entry.ed .dx-actog{opacity:.45;cursor:default}
 .dx-entry.ed .dx-chm{cursor:default}
+/* Devonxona talab kartochkasi: tahrirlash formasidagi tartibda (4 ustun) */
+.dx-entry .dx-dgrid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.dx-entry .dx-dgrid > :nth-child(4){grid-column:1}
+@media (max-width:900px){.dx-entry .dx-dgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.dx-entry .dx-dgrid > :nth-child(4){grid-column:auto}}
+@media (max-width:560px){.dx-entry .dx-dgrid{grid-template-columns:minmax(0,1fr)}}
