@@ -1690,6 +1690,35 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </sc-for>
 <sc-if value="{{t.sumEmpty}}" hint-placeholder-val="{{ false }}"><small class="muted">Bu turkumga da'vo summasi hali biriktirilmagan · «Da'vo summasi qo'shish» orqali qo'shing</small></sc-if>
 </div>
+<div class="dx-slist dx-nmlist">
+<div class="dx-sums-h"><span class="dx-sumlbl">Nomulkiy talablar<sc-if value="{{t.hasNm}}" hint-placeholder-val="{{ false }}"><span class="dx-cnt">{{t.nmCount}}</span></sc-if></span></div>
+<sc-for list="{{t.nms}}" as="m" hint-placeholder-count="1">
+<div class="{{m.cls}}">
+<span class="dx-sic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5M10 13h6M10 17h4"></path></svg></span>
+<div class="kv dx-sinfo dx-clk" onClick="{{m.toggleDet}}"><b>{{m.title}}</b><sc-if value="{{m.hasSub}}" hint-placeholder-val="{{ false }}"><small>{{m.sub}}</small></sc-if></div>
+<sc-if value="{{m.hasFt}}" hint-placeholder-val="{{ false }}"><span class="dx-nmft" title="{{m.ftTitle}}"><span class="dx-nmp"><sc-if value="{{m.fPh}}" hint-placeholder-val="{{ true }}"><img src="{{m.fPhoto}}" alt=""></sc-if>{{m.fT}}</span><span class="dx-nmar" aria-hidden="true">→</span><span class="dx-nmp"><sc-if value="{{m.tPh}}" hint-placeholder-val="{{ true }}"><img src="{{m.tPhoto}}" alt=""></sc-if>{{m.tT}}</span></span></sc-if>
+<sc-if value="{{m.hasJav}}" hint-placeholder-val="{{ false }}"><span class="dx-sjv" title="{{m.javTitle}}"><span class="dx-avs"><sc-for list="{{m.javAv}}" as="a" hint-placeholder-count="1"><img src="{{a.photo}}" alt=""></sc-for></span><span>{{m.javShort}}</span></span></sc-if>
+<div class="dx-sact">
+<button type="button" class="ib dx-detb" aria-expanded="{{m.detStr}}" title="{{m.detLbl}}" aria-label="{{m.detLbl}}" onClick="{{m.toggleDet}}"><svg class="i s dx-detchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
+<sc-if value="{{m.notConfirm}}" hint-placeholder-val="{{ true }}">
+<button class="ib" title="Tahrirlash" aria-label="{{m.n}}-nomulkiy talabni tahrirlash" onClick="{{m.edit}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg></button>
+<button class="ib" style="color: #dc2626" title="O'chirish" aria-label="{{m.n}}-nomulkiy talabni o'chirish" onClick="{{m.askDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button>
+</sc-if>
+<sc-if value="{{m.confirm}}" hint-placeholder-val="{{ false }}">
+<span class="dx-ask">O'chirilsinmi?</span>
+<button class="btn sm" onClick="{{m.cancelDel}}">Yo'q</button>
+<button class="btn sm dx-danger" onClick="{{m.del}}">Ha</button>
+</sc-if>
+</div>
+</div>
+<sc-if value="{{m.det}}" hint-placeholder-val="{{ false }}"><div class="{{m.detCls}}">
+<div class="dx-sdet-l"><span class="dx-sdh">{{m.detLinesH}}</span><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-sdl-n">{{l.n}}</span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
+<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="{{x.cls}}"><span class="dx-sdh">{{x.k}}</span><sc-if value="{{x.hasPeople}}" hint-placeholder-val="{{ true }}"><div class="dx-sdps"><sc-for list="{{x.people}}" as="q" hint-placeholder-count="1"><span class="dx-sdp"><sc-if value="{{q.hasPhoto}}" hint-placeholder-val="{{ true }}"><img src="{{q.photo}}" alt=""></sc-if><sc-if value="{{q.noPhoto}}" hint-placeholder-val="{{ false }}"><span class="dx-sdp-i" aria-hidden="true">{{q.ini}}</span></sc-if><span class="dx-sdp-t"><b>{{q.name}}</b><sc-if value="{{q.hasRole}}" hint-placeholder-val="{{ true }}"><small>{{q.role}}</small></sc-if></span></span></sc-for></div></sc-if><sc-if value="{{x.hasV}}" hint-placeholder-val="{{ false }}"><span class="dx-sdv">{{x.v}}</span></sc-if></div></sc-for></div>
+</div></sc-if>
+
+</sc-for>
+<sc-if value="{{t.canAddNm}}" hint-placeholder-val="{{ true }}"><button type="button" class="dx-pill nm" onClick="{{t.addNm}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>{{t.addNmLabel}}</button></sc-if>
+</div>
 </div>
 </div>
 </sc-for>
@@ -2852,6 +2881,65 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <sc-if value="{{dxDwNoAsk}}" hint-placeholder-val="{{ true }}">
 <button class="btn" style="border-color: transparent; background: #f1f5f9" onClick="{{dxDwClose}}">Bekor qilish</button>
 <button class="{{dxDwSaveCls}}" aria-disabled="{{dxDwSaveDis}}" onClick="{{dxDwSave}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Saqlash</button>
+</sc-if>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{dsNmOpen}}" hint-placeholder-val="{{ false }}">
+<div class="dx-dw-wrap">
+<button class="dx-dw-bg" aria-label="Oynani yopish" onClick="{{dxNmClose}}"></button>
+<div class="dx-dw sm" role="dialog" aria-modal="true" aria-labelledby="dx-nm-title" onKeyDown="{{dxNmKey}}">
+<sc-if value="{{dxDdOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg in" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{dxDdClose}}"></button></sc-if>
+<div class="dx-dw-h">
+<div class="kv" style="gap: 4px; min-width: 0"><b id="dx-nm-title" style="font-size: 20px">{{dxNmTitle}}</b><small>{{dxNmSub}}</small></div>
+<button class="ib" style="width: 40px; height: 40px; flex: none" aria-label="Yopish" onClick="{{dxNmClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+<div class="dx-dw-b" style="gap: 24px">
+<div class="{{dxNmTotCls}}" aria-live="polite">
+<div class="kv" style="gap: 3px; min-width: 0"><b>{{dxNmTotTitle}}</b><small>{{dxNmTotSub}}</small></div>
+</div>
+
+<div class="dx-dw-sec" style="gap: 8px">
+<label class="fld"><span>Nomulkiy tusdagi talab turi <b class="dx-req">*</b></span><span class="{{dxNmTurDd.cls}}" id="{{dxNmTurDd.id}}" onKeyDown="{{dxNmTurDd.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{dxNmTurDd.exp}}" disabled="{{dxNmTurDd.dis}}" onClick="{{dxNmTurDd.toggle}}" style="border-color: {{dxNmTurDd.bc}}"><span class="{{dxNmTurDd.vcls}}">{{dxNmTurDd.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{dxNmTurDd.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{dxNmTurDd.stop}}"><sc-for list="{{dxNmTurDd.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
+<sc-if value="{{dxNmTurNote}}" hint-placeholder-val="{{ false }}"><small class="dx-hint">{{dxNmTurNoteTxt}}</small></sc-if>
+</div>
+
+<div class="dx-dw-sec" style="gap: 10px">
+<span class="dx-lbl">Talab qo'yiladigan shaxs<sc-if value="{{dxNmHasP}}" hint-placeholder-val="{{ true }}"> <b class="dx-req">*</b></sc-if></span>
+<sc-if value="{{dxNmHasP}}" hint-placeholder-val="{{ true }}">
+<div class="dx-chips" role="group" aria-label="Talab qo'yiladigan shaxs">
+<sc-for list="{{dxNmFrom}}" as="j" hint-placeholder-count="3">
+<button type="button" class="{{j.cls}}" aria-pressed="{{j.str}}" onClick="{{j.pick}}"><sc-if value="{{j.hasPhoto}}" hint-placeholder-val="{{ true }}"><img class="dx-chav" src="{{j.photo}}" alt=""></sc-if><sc-if value="{{j.noPhoto}}" hint-placeholder-val="{{ false }}"><span class="dx-chav dx-chorg" aria-hidden="true">{{j.ini}}</span></sc-if><span class="dx-chtx"><span>{{j.short}}</span><small>{{j.role}}</small></span><sc-if value="{{j.on}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if><sc-if value="{{j.off}}" hint-placeholder-val="{{ true }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></sc-if></button>
+</sc-for>
+</div>
+<small class="{{dxNmFromHint}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8v.5"></path></svg>Talab kimlarga nisbatan qo'yilayotganini belgilang · bir nechtasini tanlash mumkin</small>
+</sc-if>
+<sc-if value="{{dxNmNoParty}}" hint-placeholder-val="{{ false }}"><div class="note"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8v.5"></path></svg>Taraflar hali qo'shilmagan. «Da'vogar» va «Javobgar» bo'limlarida qo'shsangiz, shu yerda tanlash mumkin bo'ladi.</div></sc-if>
+</div>
+
+<sc-if value="{{dxNmHasP}}" hint-placeholder-val="{{ true }}">
+<div class="dx-dw-sec" style="gap: 10px">
+<span class="dx-lbl">Kimning hisobiga <b class="dx-req">*</b></span>
+<div class="dx-chips" role="group" aria-label="Kimning hisobiga">
+<sc-for list="{{dxNmTo}}" as="j" hint-placeholder-count="3">
+<button type="button" class="{{j.cls}}" aria-pressed="{{j.str}}" onClick="{{j.pick}}"><sc-if value="{{j.hasPhoto}}" hint-placeholder-val="{{ true }}"><img class="dx-chav" src="{{j.photo}}" alt=""></sc-if><sc-if value="{{j.noPhoto}}" hint-placeholder-val="{{ false }}"><span class="dx-chav dx-chorg" aria-hidden="true">{{j.ini}}</span></sc-if><span class="dx-chtx"><span>{{j.short}}</span><small>{{j.role}}</small></span><sc-if value="{{j.on}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if><sc-if value="{{j.off}}" hint-placeholder-val="{{ true }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></sc-if></button>
+</sc-for>
+</div>
+<small class="{{dxNmToHint}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8v.5"></path></svg>Talab kimlarning hisobiga ekanini belgilang · bir nechtasini tanlash mumkin</small>
+</div>
+</sc-if>
+
+<sc-if value="{{dxNmErr}}" hint-placeholder-val="{{ false }}"><small class="dx-err" style="margin: 0">{{dxNmErrText}}</small></sc-if>
+</div>
+<div class="dx-dw-f" style="justify-content: flex-end">
+<sc-if value="{{dxNmAsk}}" hint-placeholder-val="{{ false }}">
+<span class="dx-ask" style="margin-right: auto">Kiritilgan ma'lumot saqlanmaydi. Yopilsinmi?</span>
+<div class="row" style="gap: 8px"><button class="btn" onClick="{{dxNmAskNo}}">Yo'q, davom etish</button><button class="btn dx-danger" onClick="{{dxNmForceClose}}">Ha, yopish</button></div>
+</sc-if>
+<sc-if value="{{dxNmNoAsk}}" hint-placeholder-val="{{ true }}">
+<button class="btn" style="border-color: transparent; background: #f1f5f9" onClick="{{dxNmClose}}">Bekor qilish</button>
+<button class="{{dxNmSaveCls}}" aria-disabled="{{dxNmSaveDis}}" onClick="{{dxNmSave}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Saqlash</button>
 </sc-if>
 </div>
 </div>
@@ -7024,18 +7112,18 @@ var nmArr = function (v) { return Array.isArray(v) ? v.slice() : (v ? [v] : []);
 var nmSnap = function (w) { return JSON.stringify([w.turlar, w.from.slice().sort(), w.to.slice().sort()]); };
 var nmTurOf = function (m) { return (m.turlar ? m.turlar.slice() : (m.turi ? [m.turi] : [])).slice(0, 1); };
 // taraflar: da'vogarlar, javobgarlar va manfaatida idora
-var nmParties = function (st) {
-var out = [];
+var nmParties = function (st, target) {
+var out = [], itkT = isItk(target), dvL = itkT ? (st.tmDv || []) : (st.dxDv || []), jvL = itkT ? (st.tmJv || []) : (st.dxJv || []);
 var isOrgP = function (p) { return !!p.isOrg || /MChJ|MAS'ULIYATI|JAMIYAT|AJ\b|XK\b|QK\b|«|"/i.test(p.name || ""); };
-(st.dxDv || []).forEach(function (p) { var og = isOrgP(p); out.push({ v: "dv:" + p.name, l: p.name, sub: "Da'vogar", btn: p.name + " (Da'vogar)", photo: og ? "" : portrait(p.name, p.gender), role: "dv", name: p.name, org: og }); });
-(st.dxJv || []).forEach(function (p) { var og = isOrgP(p); out.push({ v: "jv:" + p.name, l: p.name, sub: "Javobgar", btn: p.name + " (Javobgar)", photo: og ? "" : portrait(p.name, p.gender), role: "jv", name: p.name, org: og }); });
+dvL.forEach(function (p) { var og = isOrgP(p); out.push({ v: "dv:" + p.name, l: p.name, sub: "Da'vogar", btn: p.name + " (Da'vogar)", photo: og ? "" : portrait(p.name, p.gender), role: "dv", name: p.name, org: og }); });
+jvL.forEach(function (p) { var og = isOrgP(p); out.push({ v: "jv:" + p.name, l: p.name, sub: "Javobgar", btn: p.name + " (Javobgar)", photo: og ? "" : portrait(p.name, p.gender), role: "jv", name: p.name, org: og }); });
 var io = DX_ALL.filter(function (o) { return o.id === st.dx.idPick; })[0];
-if (st.dx.idoraOn && io) out.push({ v: "id:" + io.id, l: io.name, sub: "Manfaatida idora", btn: io.name + " (Manfaatida idora)", role: "id", name: io.name, org: true });
+if (!itkT && st.dx.idoraOn && io) out.push({ v: "id:" + io.id, l: io.name, sub: "Manfaatida idora", btn: io.name + " (Manfaatida idora)", role: "id", name: io.name, org: true });
 return out;
 };
-var nmPartyOf = function (v) { return nmParties(self.state).filter(function (p) { return p.v === v; })[0]; };
+var nmPartyOf = function (v, t) { return nmParties(self.state, t).filter(function (p) { return p.v === v; })[0]; };
 var openNm = function (mode, src, target) {
-var ps = nmParties(self.state), fJv = ps.filter(function (p) { return p.role === "jv"; })[0], fDv = ps.filter(function (p) { return p.role !== "jv"; })[0];
+var ps = nmParties(self.state, target), fJv = ps.filter(function (p) { return p.role === "jv"; })[0], fDv = ps.filter(function (p) { return p.role !== "jv"; })[0];
 var w = { mode: mode, id: src ? src.id : "nm" + Date.now(), target: target, turlar: src ? nmTurOf(src) : [], from: src ? nmArr(src.from) : (fJv ? [fJv.v] : []), to: src ? nmArr(src.to) : (fDv ? [fDv.v] : []), err: "", ask: false };
 w.orig = nmSnap(w);
 setDx({ nmw: w, nmDel: "" });
@@ -7046,14 +7134,19 @@ var d = self.state.dx;
 if (target === "ed") { if (!d.imEd) return null; return { imEd: Object.assign({}, d.imEd, { nm: fn(d.imEd.nm || []) }) }; }
 return { im: d.im.map(function (x) { return x.id === target ? Object.assign({}, x, { nm: fn(x.nm || []) }) : x; }) };
 };
+var nmApply = function (target, fn, extra) {
+var st = self.state, d = st.dx;
+if (isItk(target)) { self.setState({ itk: (st.itk || []).map(function (x) { return "itk:" + x.id === target ? Object.assign({}, x, { nm: fn(x.nm || []) }) : x; }), dx: Object.assign({}, d, extra || {}) }); return true; }
+var p = nmPut(target, fn); if (!p) return false; setDx(Object.assign(p, extra || {})); return true;
+};
 var nmRow = function (m, j, target) {
 var mc = dx.nmDel === m.id, me = !!(nmw && nmw.mode === "edit" && nmw.id === m.id), jv = [];
-var nmNm = function (v) { var p = nmParties(s).filter(function (x) { return x.v === v; })[0]; return p ? (p.org ? p.name : initialName(p.name)) : ""; };
+var nmNm = function (v) { var p = nmParties(s, target).filter(function (x) { return x.v === v; })[0]; return p ? (p.org ? p.name : initialName(p.name)) : ""; };
 var fA = nmArr(m.from), tA = nmArr(m.to), tl = nmTurOf(m);
 var grpTxt = function (a) { if (!a.length) return ""; var f = nmNm(a[0]); return a.length > 1 ? f + " +" + (a.length - 1) : f; };
 var fT = grpTxt(fA), tT = grpTxt(tA);
-var nmPh = function (v) { var p = nmParties(s).filter(function (x) { return x.v === v; })[0]; return p && p.photo ? p.photo : ""; };
-var nmPer = function (v) { var p = nmParties(s).filter(function (x) { return x.v === v; })[0]; return p ? [{ name: p.name, role: p.sub, photo: p.photo }] : []; };
+var nmPh = function (v) { var p = nmParties(s, target).filter(function (x) { return x.v === v; })[0]; return p && p.photo ? p.photo : ""; };
+var nmPer = function (v) { var p = nmParties(s, target).filter(function (x) { return x.v === v; })[0]; return p ? [{ name: p.name, role: p.sub, photo: p.photo }] : []; };
 var nDet = detFields(m.id, "nm");
 return Object.assign(nDet, { n: j + 1, title: tl.length === 1 ? (NM_L[tl[0]] || tl[0]) : "Nomulkiy talab",
 detLinesH: "Talab turi",
@@ -7067,7 +7160,7 @@ cls: (me ? "dx-srow nm ed" : (mc ? "dx-srow nm del" : "dx-srow nm")) + (nDet.det
 edit: function () { openNm("edit", m, target); },
 askDel: function () { setDx({ nmDel: m.id }); },
 cancelDel: function () { setDx({ nmDel: "" }); },
-del: function () { var p = nmPut(target, function (a) { return a.filter(function (y) { return y.id !== m.id; }); }); if (!p) return; p.nmDel = ""; setDx(p); self.flash("Nomulkiy talab o'chirildi"); } });
+del: function () { if (!nmApply(target, function (a) { return a.filter(function (y) { return y.id !== m.id; }); }, { nmDel: "" })) return; self.flash("Nomulkiy talab o'chirildi"); } });
 };
 
 var allSums = [];
@@ -7160,6 +7253,9 @@ var ctaJv = (function () { var all = s.dxJv.map(function (p) { return p.name; })
 var dxPend = pend.map(function (m, j) { return sumRow(m, j, "ed"); });
 
 __out._itkSums = function (t) { return (t.sums || []).map(function (m, j) { return sumRow(m, j, "itk:" + t.id); }); };
+__out._itkNms = function (t) { return (t.nm || []).map(function (m, j) { return nmRow(m, j, "itk:" + t.id); }); };
+__out._itkAddNm = function (t) { return function () { openNm("new", null, "itk:" + t.id); }; };
+__out._nmTurN = function (t) { return (t.nm || []).reduce(function (a, y) { return a + nmTurOf(y).length; }, 0); }; __out._NM_N = NM_TUR.length;
 __out._byCur = byCur; __out._itkAddSum = function (t) { return function () { openDwWith("new", null, "itk:" + t.id); }; };
 __out._jvChips = function (names) { return names.map(function (n) { return { short: shortName(n), photo: portrait(n, genderOf(n)) }; }); };
 // o'ng oyna: da'vo summasi (target: "ed" — kiritilayotgan talab, yoki saqlangan talab id si)
@@ -7241,29 +7337,28 @@ var dwIdx = dw && dw.mode === "edit" ? dwList.map(function (y) { return y.id; })
 var edLabel = dwOwner ? (dwOwner.turkum || "Ish turkumi hali tanlanmagan") : "";
 
 // nomulkiy talab oynasi
-var nmPs = nmParties(s), nmHasP = nmPs.length > 0;
+var nmPs = nmParties(s, nmw ? nmw.target : "ed"), nmHasP = nmPs.length > 0;
 var nmBoth = nmw ? nmw.from.filter(function (v) { return nmw.to.indexOf(v) >= 0; }) : [], nmSame = nmBoth.length > 0;
 var nmValid = !!(nmw && nmw.turlar.length) && (!nmHasP || (nmw.from.length && nmw.to.length && !nmSame));
-var nmOwner = nmw ? (nmw.target === "ed" ? (ed ? ed.v : null) : dx.im.filter(function (x) { return x.id === nmw.target; })[0]) : null;
+var nmOwner = nmw ? (isItk(nmw.target) ? itkOf(s, nmw.target) : nmw.target === "ed" ? (ed ? ed.v : null) : dx.im.filter(function (x) { return x.id === nmw.target; })[0]) : null;
 var nmList = nmw ? (nmw.target === "ed" ? ((ed && ed.nm) || []) : ((nmOwner && nmOwner.nm) || [])) : [];
 var nmIdx = nmw && nmw.mode === "edit" ? nmList.map(function (y) { return y.id; }).indexOf(nmw.id) + 1 : 0;
 var closeNm = function () { setDx({ nmw: null }); };
 var reqCloseNm = function () { var d = self.state.dx; if (!d.nmw) return; if (nmSnap(d.nmw) !== d.nmw.orig) setNmw(function () { return { ask: true }; }); else closeNm(); };
 var saveNm = function () {
 var st = self.state, w = st.dx.nmw; if (!w) return;
-var hasP = nmParties(st).length > 0;
+var hasP = nmParties(st, w.target).length > 0;
 if (!w.turlar.length) { setNmw(function () { return { err: "Nomulkiy tusdagi talab turini tanlang" }; }); return; }
 if (hasP && !w.from.length) { setNmw(function () { return { err: "Talab qo'yiladigan shaxsni tanlang" }; }); return; }
 if (hasP && !w.to.length) { setNmw(function () { return { err: "Kimning hisobiga ekanini tanlang" }; }); return; }
 if (w.from.some(function (v) { return w.to.indexOf(v) >= 0; })) { setNmw(function () { return { err: "Bir shaxs ham «Talab qo'yiladigan shaxs», ham «Kimning hisobiga» bo'lishi mumkin emas" }; }); return; }
 var item = { id: w.id, turlar: w.turlar.slice(0, 1), from: w.from.slice(), to: w.to.slice() };
-var p = nmPut(w.target, function (a) { return w.mode === "edit" ? a.map(function (y) { return y.id === w.id ? item : y; }) : a.concat([item]); });
-if (!p) return; p.nmw = null; setDx(p);
+if (!nmApply(w.target, function (a) { return w.mode === "edit" ? a.map(function (y) { return y.id === w.id ? item : y; }) : a.concat([item]); }, { nmw: null })) return;
 self.flash("Nomulkiy talab " + (w.mode === "edit" ? "saqlandi" : "qo'shildi") + " · " + (NM_L[w.turlar[0]] || ""));
 };
 var nmPend = ed && ed.mode === "new" ? (ed.nm || []) : [];
 Object.assign(__out, {
-dxNmOpen: !!nmw && isDevon && (nmw.target !== "ed" || !!ed),
+dxNmOpen: !!nmw && isDevon && !isItk(nmw.target) && (nmw.target !== "ed" || !!ed), dsNmOpen: !!nmw && isItk(nmw.target) && !!s.caseOpen,
 dxNmTitle: nmw && nmw.mode === "edit" ? nmIdx + "-nomulkiy talabni tahrirlash" : "Yangi nomulkiy talab",
 dxNmSub: nmOwner ? (nmOwner.turkum || "Ish turkumi hali tanlanmagan") : "",
 dxNmTotCls: nmw && nmw.turlar.length ? "dx-tot nm on" : "dx-tot nm",
@@ -10607,10 +10702,12 @@ iHas: !!t.iturkum, iNone: !t.iturkum, iCode: k.code, iName: k.name,
 javTxt: (t.javs || []).join(", "), jv: __out._jvChips(t.javs || []).slice(0, 3), jHas: (t.javs || []).length > 0, jNone: !(t.javs || []).length,
 sums: __out._itkSums(t), hasSums: (t.sums || []).length > 0, sumCount: (t.sums || []).length + " ta", sumTotal: __out._byCur(t.sums || []),
 sumEmpty: !(t.sums || []).length, addSum: __out._itkAddSum(t), addSumLabel: (t.sums || []).length ? "Yana da'vo summasi qo'shish" : "Da'vo summasi qo'shish",
+nms: __out._itkNms(t), hasNm: (t.nm || []).length > 0, nmCount: (t.nm || []).length + " ta", addNm: __out._itkAddNm(t), canAddNm: __out._nmTurN(t) < __out._NM_N,
+addNmLabel: (t.nm || []).length ? "Yana nomulkiy talab qo'shish" : "Nomulkiy talab qo'shish",
 cls: "dx-entry itk2" + (cd ? " del" : ""), confirmDel: cd, notConfirm: !cd,
 confirm: function () { self.setState({ itk: self.state.itk.map(function (x) { return x.id === t.id ? Object.assign({}, x, { ok: true }) : x; }) }); self.flash("Ish turkumi tasdiqlandi"); },
 edit: function () { self.setState({ itkDel: "", dxDd: "", itkForm: { mode: "edit", id: t.id, turkum: t.turkum, qturkum: t.qturkum || "", iturkum: t.iturkum || "", javs: (t.javs || []).slice(), err: "" } }); },
-askDel: function () { self.setState({ itkDel: t.id }); }, askText: (t.sums || []).length ? "O'chirilsinmi? " + t.sums.length + " ta da'vo summasi ham o'chadi." : "O'chirilsinmi?",
+askDel: function () { self.setState({ itkDel: t.id }); }, askText: ((t.sums || []).length || (t.nm || []).length) ? "O'chirilsinmi? " + [(t.sums || []).length ? t.sums.length + " ta da'vo summasi" : "", (t.nm || []).length ? t.nm.length + " ta nomulkiy talab" : ""].filter(Boolean).join(" va ") + " ham o'chadi." : "O'chirilsinmi?",
 cancelDel: function () { self.setState({ itkDel: "" }); },
 del: function () { self.setState({ itkDel: "", itk: self.state.itk.filter(function (x) { return x.id !== t.id; }) }); self.flash("Ish turkumi o'chirildi"); } };
 }),
