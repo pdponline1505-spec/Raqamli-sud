@@ -1086,19 +1086,19 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 
 <div class="dx-dw-sec" style="gap: 8px">
-<label class="fld"><span>Nomulkiy tusdagi talab turi <b class="dx-req">*</b></span><span class="{{dxNmTurDd.cls}}" id="{{dxNmTurDd.id}}" onKeyDown="{{dxNmTurDd.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{dxNmTurDd.exp}}" disabled="{{dxNmTurDd.dis}}" onClick="{{dxNmTurDd.toggle}}" style="border-color: {{dxNmTurDd.bc}}"><span class="{{dxNmTurDd.vcls}}">{{dxNmTurDd.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{dxNmTurDd.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{dxNmTurDd.stop}}"><sc-for list="{{dxNmTurDd.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
+<label class="fld"><span>Nomulkiy tusdagi talab turi <b class="dx-req">*</b></span><span class="{{dxNmTurDd.cls}}" id="{{dxNmTurDd.id}}" onKeyDown="{{dxNmTurDd.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{dxNmTurDd.exp}}" disabled="{{dxNmTurDd.dis}}" onClick="{{dxNmTurDd.toggle}}" style="border-color: {{dxNmTurDd.bc}}"><span class="{{dxNmTurDd.vcls}}">{{dxNmTurDd.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{dxNmTurDd.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" aria-multiselectable="true" onClick="{{dxNmTurDd.stop}}"><sc-for list="{{dxNmTurDd.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for><span class="dx-mfoot"><small>{{dxNmTurDd.selTxt}}</small><span class="row" style="gap: 6px"><sc-if value="{{dxNmTurDd.canClear}}" hint-placeholder-val="{{ false }}"><button type="button" class="btn sm" onClick="{{dxNmTurDd.clear}}">Tozalash</button></sc-if><button type="button" class="btn sm pri" onClick="{{dxNmTurDd.done}}">Tayyor</button></span></span></span></sc-if></span></label>
 <sc-if value="{{dxNmTurNote}}" hint-placeholder-val="{{ false }}"><small class="dx-hint">{{dxNmTurNoteTxt}}</small></sc-if>
 </div>
 
 <div class="dx-dw-sec" style="gap: 10px">
-<span class="dx-lbl">Kimning hisobidan<sc-if value="{{dxNmHasP}}" hint-placeholder-val="{{ true }}"> <b class="dx-req">*</b></sc-if></span>
+<span class="dx-lbl">Talab qo'yiladigan shaxs<sc-if value="{{dxNmHasP}}" hint-placeholder-val="{{ true }}"> <b class="dx-req">*</b></sc-if></span>
 <sc-if value="{{dxNmHasP}}" hint-placeholder-val="{{ true }}">
-<div class="dx-chips" role="radiogroup" aria-label="Kimning hisobidan">
+<div class="dx-chips" role="radiogroup" aria-label="Talab qo'yiladigan shaxs">
 <sc-for list="{{dxNmFrom}}" as="j" hint-placeholder-count="3">
 <button type="button" role="radio" class="{{j.cls}}" aria-checked="{{j.str}}" onClick="{{j.pick}}"><sc-if value="{{j.hasPhoto}}" hint-placeholder-val="{{ true }}"><img class="dx-chav" src="{{j.photo}}" alt=""></sc-if><sc-if value="{{j.noPhoto}}" hint-placeholder-val="{{ false }}"><span class="dx-chav dx-chorg" aria-hidden="true">{{j.ini}}</span></sc-if><span class="dx-chtx"><span>{{j.short}}</span><small>{{j.role}}</small></span><sc-if value="{{j.on}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if><sc-if value="{{j.off}}" hint-placeholder-val="{{ true }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></sc-if></button>
 </sc-for>
 </div>
-<small class="{{dxNmFromHint}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8v.5"></path></svg>Talab kimning hisobidan ekanini belgilang</small>
+<small class="{{dxNmFromHint}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8v.5"></path></svg>Talab kimga nisbatan qo'yilayotganini belgilang</small>
 </sc-if>
 <sc-if value="{{dxNmNoParty}}" hint-placeholder-val="{{ false }}"><div class="note"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8v.5"></path></svg>Taraflar hali qo'shilmagan. «Da'vogar» va «Javobgar» bo'limlarida qo'shsangiz, shu yerda tanlash mumkin bo'ladi.</div></sc-if>
 </div>
@@ -6889,7 +6889,7 @@ var NM_TUR = [
 var NM_L = {}; NM_TUR.forEach(function (o) { NM_L[o.v] = o.l; });
 var nmw = dx.nmw;
 var nmSnap = function (w) { return JSON.stringify([w.turlar, w.from, w.to]); };
-var nmTurOf = function (m) { return (m.turlar ? m.turlar.slice() : (m.turi ? [m.turi] : [])).slice(0, 1); };
+var nmTurOf = function (m) { return m.turlar ? m.turlar.slice() : (m.turi ? [m.turi] : []); };
 // taraflar: da'vogarlar, javobgarlar va manfaatida idora
 var nmParties = function (st) {
 var out = [];
@@ -6918,9 +6918,9 @@ var mc = dx.nmDel === m.id, me = !!(nmw && nmw.mode === "edit" && nmw.id === m.i
 var nmNm = function (v) { var p = nmParties(s).filter(function (x) { return x.v === v; })[0]; return p ? (p.org ? p.name : initialName(p.name)) : ""; };
 var fT = nmNm(m.from), tT = nmNm(m.to), tl = nmTurOf(m);
 var nmPh = function (v) { var p = nmParties(s).filter(function (x) { return x.v === v; })[0]; return p && p.photo ? p.photo : ""; };
-return { n: j + 1, title: tl.length ? (NM_L[tl[0]] || tl[0]) : "Nomulkiy talab",
-hasFt: !!(fT || tT), fT: fT || "—", tT: tT || "—", fPhoto: nmPh(m.from), tPhoto: nmPh(m.to), fPh: !!nmPh(m.from), tPh: !!nmPh(m.to), ftTitle: (fT || "—") + " hisobidan → " + (tT || "—") + " hisobiga",
-sub: "Nomulkiy tusdagi talab", hasSub: true,
+return { n: j + 1, title: tl.length === 1 ? (NM_L[tl[0]] || tl[0]) : "Nomulkiy talab",
+hasFt: !!(fT || tT), fT: fT || "—", tT: tT || "—", fPhoto: nmPh(m.from), tPhoto: nmPh(m.to), fPh: !!nmPh(m.from), tPh: !!nmPh(m.to), ftTitle: "Talab qo'yiladigan shaxs: " + (fT || "—") + " → kimning hisobiga: " + (tT || "—"),
+sub: tl.length > 1 ? tl.length + " ta talab · " + tl.map(function (v) { return NM_L[v] || v; }).join(", ") : "Nomulkiy tusdagi talab", hasSub: true,
 hasJav: jv.length > 0, javAv: jv.slice(0, 3).map(function (n) { return { photo: portrait(n, genderOf(n)), name: n }; }),
 javShort: jv.length === 1 ? initialName(jv[0]) : jv.length + " javobgar", javTitle: jv.join(", "),
 cls: me ? "dx-srow nm ed" : (mc ? "dx-srow nm del" : "dx-srow nm"), confirm: mc, notConfirm: !mc,
@@ -6958,7 +6958,7 @@ addSumLabel: sums.length ? "Yana da'vo summasi qo'shish" : "Da'vo summasi qo'shi
 addSum: function () { openDwWith("new", null, r.id); },
 nms: (r.nm || []).map(function (m, j) { return nmRow(m, j, r.id); }), hasNm: (r.nm || []).length > 0, nmCount: (r.nm || []).length + " ta",
 addNmLabel: (r.nm || []).length ? "Yana nomulkiy talab qo'shish" : "Nomulkiy talab qo'shish",
-addNm: function () { openNm("new", null, r.id); }, canAddNm: (r.nm || []).length < NM_TUR.length,
+addNm: function () { openNm("new", null, r.id); }, canAddNm: (r.nm || []).reduce(function (a, y) { return a + nmTurOf(y).length; }, 0) < NM_TUR.length,
 edit: function () {
 if (editing) { focusEd(); return; } if (!guard()) return;
 var cur = self.state.dx.im.filter(function (x) { return x.id === r.id; })[0]; if (!cur) return;
@@ -7102,13 +7102,13 @@ var saveNm = function () {
 var st = self.state, w = st.dx.nmw; if (!w) return;
 var hasP = nmParties(st).length > 0;
 if (!w.turlar.length) { setNmw(function () { return { err: "Nomulkiy tusdagi talab turini tanlang" }; }); return; }
-if (hasP && !w.from) { setNmw(function () { return { err: "Kimning hisobidan ekanini tanlang" }; }); return; }
+if (hasP && !w.from) { setNmw(function () { return { err: "Talab qo'yiladigan shaxsni tanlang" }; }); return; }
 if (hasP && !w.to) { setNmw(function () { return { err: "Kimning hisobiga ekanini tanlang" }; }); return; }
-if (w.from && w.from === w.to) { setNmw(function () { return { err: "«Kimning hisobidan» va «Kimning hisobiga» bir xil bo'lishi mumkin emas" }; }); return; }
-var item = { id: w.id, turlar: w.turlar.slice(0, 1), from: w.from, to: w.to };
+if (w.from && w.from === w.to) { setNmw(function () { return { err: "«Talab qo'yiladigan shaxs» va «Kimning hisobiga» bir xil bo'lishi mumkin emas" }; }); return; }
+var item = { id: w.id, turlar: w.turlar.slice(), from: w.from, to: w.to };
 var p = nmPut(w.target, function (a) { return w.mode === "edit" ? a.map(function (y) { return y.id === w.id ? item : y; }) : a.concat([item]); });
 if (!p) return; p.nmw = null; setDx(p);
-self.flash("Nomulkiy talab " + (w.mode === "edit" ? "saqlandi" : "qo'shildi") + " · " + (NM_L[w.turlar[0]] || ""));
+self.flash("Nomulkiy talab " + (w.mode === "edit" ? "saqlandi" : "qo'shildi") + " · " + w.turlar.length + " ta talab turi");
 };
 var nmPend = ed && ed.mode === "new" ? (ed.nm || []) : [];
 Object.assign(__out, {
@@ -7119,7 +7119,7 @@ dxNmTotCls: nmw && nmw.turlar.length ? "dx-tot nm on" : "dx-tot nm",
 dxNmTotN: nmw ? String(nmw.turlar.length) : "0",
 dxNmTotSub: (function () { if (!nmw) return ""; var f = nmPs.filter(function (p) { return p.v === nmw.from; })[0], t = nmPs.filter(function (p) { return p.v === nmw.to; })[0];
 var nm = function (p) { return p.org ? p.name : initialName(p.name); };
-return f && t ? nm(f) + " hisobidan → " + nm(t) + " hisobiga" : "Kimning hisobidan va kimning hisobiga ekanini belgilang"; })(),
+return f && t ? "Talab qo'yiladigan shaxs: " + nm(f) + " · Kimning hisobiga: " + nm(t) : "Talab qo'yiladigan shaxs va kimning hisobiga ekanini belgilang"; })(),
 dxNmFrom: nmPs.map(function (p) { var on = !!(nmw && nmw.from === p.v), bad = !!(nmw && nmw.err && (!nmw.from || (nmSame && on)));
 return { short: p.org ? p.name : shortName(p.name), role: p.sub, photo: p.photo, hasPhoto: !!p.photo, noPhoto: !p.photo, ini: initials(p.name), on: on, off: !on, str: on ? "true" : "false",
 cls: "dx-chip nmch" + (on ? " on" : "") + (bad && !on ? " err" : "") + (bad && on ? " err" : ""),
@@ -7131,12 +7131,14 @@ pick: function () { setNmw(function () { return { to: p.v, err: "", ask: false }
 dxNmFromHint: "dx-hint" + (nmw && nmw.err && (!nmw.from || nmSame) ? " err" : ""),
 dxNmToHint: "dx-hint" + (nmw && nmw.err && (!nmw.to || nmSame) ? " err" : ""),
 dxNmHasP: nmHasP,
-dxNmTurDd: (function () { var used = NM_TUR.filter(function (o) { return nmList.some(function (y) { return !(nmw && y.id === nmw.id) && nmTurOf(y)[0] === o.v; }); }).map(function (o) { return o.v; });
-var opts = NM_TUR.filter(function (o) { return used.indexOf(o.v) < 0; });
-return dd("nm-turi", opts, nmw && nmw.turlar.length ? nmw.turlar[0] : "", function (e) { var v = e.target.value; setNmw(function () { return { turlar: v ? [v] : [], err: "", ask: false }; }); }, { noSplit: true, ph: "Talab turini tanlang", bc: nmw && nmw.err && !nmw.turlar.length ? "#dc2626" : "" }); })(),
+dxNmTurDd: (function () { var used = NM_TUR.filter(function (o) { return nmList.some(function (y) { return !(nmw && y.id === nmw.id) && nmTurOf(y).indexOf(o.v) >= 0; }); }).map(function (o) { return o.v; });
+var opts = NM_TUR.filter(function (o) { return used.indexOf(o.v) < 0; }), vals = nmw ? nmw.turlar : [];
+var D = ddMulti("nm-turi", opts, vals, function (v) { setNmw(function (w) { var a = w.turlar.slice(), k = a.indexOf(v); if (k >= 0) a.splice(k, 1); else a.push(v); return { turlar: a, err: "", ask: false }; }); }, function () { setNmw(function () { return { turlar: [], err: "", ask: false }; }); }, { noSplit: true, ph: "Talab turini tanlang", bc: nmw && nmw.err && !vals.length ? "#dc2626" : "" });
+D.label = !vals.length ? "Talab turini tanlang" : (vals.length === 1 ? (NM_L[vals[0]] || vals[0]) : (NM_L[vals[0]] || vals[0]) + " va yana " + (vals.length - 1));
+return D; })(),
 dxNmTurNote: nmList.filter(function (y) { return !(nmw && y.id === nmw.id); }).length > 0,
 dxNmTurNoteTxt: "Shu talabga qo'shilgan turlar ro'yxatda ko'rsatilmaydi",
-dxNmTotTitle: nmw && nmw.turlar.length ? (NM_L[nmw.turlar[0]] || "Nomulkiy talab") : "Nomulkiy talab",
+dxNmTotTitle: nmw && nmw.turlar.length ? (nmw.turlar.length === 1 ? (NM_L[nmw.turlar[0]] || "Nomulkiy talab") : nmw.turlar.length + " ta nomulkiy talab") : "Nomulkiy talab",
 dxNmNoParty: !nmHasP,
 dxNmErr: !!(nmw && nmw.err), dxNmErrText: nmw ? nmw.err : "",
 dxNmSaveCls: "btn pri" + (nmValid ? "" : " dx-dis"), dxNmSaveDis: nmValid ? "false" : "true",
@@ -7144,7 +7146,7 @@ dxNmClose: reqCloseNm, dxNmForceClose: closeNm, dxNmSave: saveNm,
 dxNmAsk: !!(nmw && nmw.ask), dxNmNoAsk: !(nmw && nmw.ask), dxNmAskNo: function () { setNmw(function () { return { ask: false }; }); },
 dxNmKey: function (e) { if (e.key === "Escape") { e.stopPropagation(); reqCloseNm(); } },
 dxNmNew: function () { openNm("new", null, "ed"); },
-dxNmPend: nmPend.map(function (m, j) { return nmRow(m, j, "ed"); }), dxNmPendHas: nmPend.length > 0, dxNmPendNone: nmPend.length === 0, dxNmPendCount: nmPend.length + " ta", dxNmCanAdd: nmPend.length < NM_TUR.length
+dxNmPend: nmPend.map(function (m, j) { return nmRow(m, j, "ed"); }), dxNmPendHas: nmPend.length > 0, dxNmPendNone: nmPend.length === 0, dxNmPendCount: nmPend.length + " ta", dxNmCanAdd: nmPend.reduce(function (a, y) { return a + nmTurOf(y).length; }, 0) < NM_TUR.length
 });
 
 
