@@ -6931,3 +6931,8 @@ html[data-theme="dark"] .ds-host img{filter:none}
 @container (max-width:874px){.lb-bar .tbrow .nb-sud{display:none !important}.lb-bar .tb-nmore .nmix-sud{display:flex !important}}
 @container (max-width:729px){.lb-bar .tbrow .nb-toxt{display:none !important}.lb-bar .tb-nmore .nmix-toxt{display:flex !important}}
 @container (max-width:609px){.lb-bar .tbrow .nb-sodda{display:none !important}.lb-bar .tb-nmore .nmix-sodda{display:flex !important}}
+/* ro'yxat jadvali: sichqoncha ustiga kelganda qator ajralib turadi */
+.l-table .l-row:not(.l-head){position:relative}
+.l-table .l-row:not(.l-head):hover{background:#f5f8ff !important;box-shadow:inset 3px 0 0 #3073f1}
+.l-table .l-row:not(.l-head)[style*="239, 246, 255"]:hover,.l-table .l-row:not(.l-head)[style*="#eff6ff"]:hover{background:#e6f0ff !important}
+.l-table .l-row:not(.l-head):hover .l-numlink{color:#1d4ed8}

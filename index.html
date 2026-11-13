@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=68eddfe4445e">
+<link rel="stylesheet" href="assets/app.css?v=59094037b63c">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -6234,7 +6234,7 @@ hasQaror: !!r.qaror || (!!r.majSana && ["majlis", "natija", "qoldir", "tiklash"]
 dLine: r.qaror && !(r.majSana && ["majlis", "natija", "qoldir", "tiklash"].indexOf(r.stage) >= 0) ? "Qaror: " + String(r.qaror).split(" ")[0] : (r.majSana ? "Majlis: " + isoToUz(r.majSana) : ""),
 isNew: !!r.moved && Date.now() - r.moved < 30 * 60 * 1000, newTitle: r.movedFrom ? "«" + r.movedFrom + "» bosqichidan o'tkazildi" : "Yangi o'tkazilgan",
 rowCls: "l-row" + (s.lHi && Date.now() - s.lHi.at < 4000 && (s.lHi.ids || []).indexOf(r.id) >= 0 ? " hi" : ""),
-sel: sel, selStr: sel ? "true" : "false", chkCls: sel ? "l-chk on" : "l-chk", bg: sel ? "#eff6ff" : (menuOpen ? "#f8fafc" : "#ffffff"),
+sel: sel, selStr: sel ? "true" : "false", chkCls: sel ? "l-chk on" : "l-chk", bg: sel ? "#eff6ff" : (menuOpen ? "#f1f5ff" : ""),
 menuOpen: menuOpen, menuZ: menuOpen ? "40" : "2", menuStr: menuOpen ? "true" : "false", menuBorder: menuOpen ? "#93c5fd" : "transparent", menuBg: menuOpen ? "#eff6ff" : "transparent",
 toggle: function () { var m = Object.assign({}, self.state.lSel); m[r.id] = !m[r.id]; self.setState({ lSel: m }); },
 toggleMenu: function () { self.setState({ lMenu: self.state.lMenu === r.id ? 0 : r.id }); },
