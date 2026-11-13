@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=a4bd8c7d48f3">
+<link rel="stylesheet" href="assets/app.css?v=44621f5c16f8">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -6982,7 +6982,7 @@ var edIdx = ed && ed.mode === "edit" ? dx.im.map(function (x) { return x.id; }).
 var detOn = function (id) { return !!(dx.rowDet || {})[id]; };
 var detTog = function (id) { return function (e) { var t = e && e.target; if (t && t.closest && t.closest(".dx-sact") && !t.closest(".dx-detb")) return; var o = Object.assign({}, self.state.dx.rowDet || {}); if (o[id]) delete o[id]; else o[id] = true; setDx({ rowDet: o }); }; };
 var detPeople = function (k, list) { var ps = list.map(function (q) { return { name: q.name, role: q.role || "", hasRole: !!q.role, photo: q.photo || "", hasPhoto: !!q.photo, noPhoto: !q.photo, ini: initials(q.name) }; });
-return { k: k, people: ps, hasPeople: ps.length > 0, v: "Belgilanmagan", hasV: ps.length === 0, cls: "dx-sdm" }; };
+return { k: k + (ps.length > 1 ? " · " + ps.length : ""), people: ps, hasPeople: ps.length > 0, v: "Belgilanmagan", hasV: ps.length === 0, cls: "dx-sdm ppl" }; };
 var detFields = function (id, base) { var on = detOn(id); return { det: on, detStr: on ? "true" : "false", detLbl: on ? "Batafsil ma'lumotni yashirish" : "Batafsil ko'rish", toggleDet: detTog(id), detCls: "dx-sdet " + base }; };
 var sumRow = function (m, j, target) {
 var mc = dx.smDel === m.id, me = !!(dw && dw.mode === "edit" && dw.id === m.id);
@@ -7056,7 +7056,7 @@ var nmPh = function (v) { var p = nmParties(s).filter(function (x) { return x.v 
 var nmPer = function (v) { var p = nmParties(s).filter(function (x) { return x.v === v; })[0]; return p ? [{ name: p.name, role: p.sub, photo: p.photo }] : []; };
 var nDet = detFields(m.id, "nm");
 return Object.assign(nDet, { n: j + 1, title: tl.length === 1 ? (NM_L[tl[0]] || tl[0]) : "Nomulkiy talab",
-detLinesH: "Talab turlari · " + tl.length + " ta",
+detLinesH: "Talab turi",
 detLines: tl.map(function (v, k) { return { n: k + 1, t: NM_L[v] || v, amt: "", cur: "", hasAmt: false }; }),
 detMeta: [detPeople("Talab qo'yiladigan shaxs", [].concat.apply([], fA.map(nmPer))), detPeople("Kimning hisobiga", [].concat.apply([], tA.map(nmPer)))],
 hasFt: !!(fT || tT), fT: fT || "—", tT: tT || "—", fPhoto: nmPh(fA[0]), tPhoto: nmPh(tA[0]), fPh: !!nmPh(fA[0]), tPh: !!nmPh(tA[0]), ftTitle: "Talab qo'yiladigan shaxs: " + (fA.map(nmNm).join(", ") || "—") + " → kimning hisobiga: " + (tA.map(nmNm).join(", ") || "—"),

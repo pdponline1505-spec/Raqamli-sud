@@ -6879,3 +6879,16 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .dx-sdp-t b{font-size:14px;font-weight:600;color:#0f172a;overflow-wrap:anywhere}
 .dx-sdp-t small{font-size:12px;color:#64748b}
 @media (max-width:720px){.dx-sdet{grid-template-columns:minmax(0,1fr)}.dx-sdet-m{border-left:0}}
+/* nomulkiy batafsil: talab ixcham, shaxslar kengroq */
+.dx-sdet.nm{grid-template-columns:minmax(200px,.6fr) minmax(0,2fr)}
+.dx-sdet.nm .dx-sdl{min-height:38px;padding:6px 10px;font-size:13.5px}
+.dx-sdet.nm .dx-sdl-t{font-weight:600}
+.dx-sdet.nm .dx-sdet-m{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start;background:transparent}
+.dx-sdet.nm .dx-sdm.ppl{gap:10px;padding:12px;border:1px solid #efeafc;border-radius:12px;background:#fff}
+.dx-sdet.nm .dx-sdps{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.dx-sdet.nm .dx-sdp{gap:10px;padding:8px 10px;border:1px solid #f1edfd;border-radius:10px;background:#fbfaff}
+.dx-sdet.nm .dx-sdp img,.dx-sdet.nm .dx-sdp-i{width:36px;height:36px}
+.dx-sdet.nm .dx-sdp-t b{font-size:14px}
+.dx-sdet.nm .dx-sdp-t small{display:inline-flex;align-self:flex-start;margin-top:3px;padding:1px 8px;border-radius:999px;background:#f1f5f9;font-size:11.5px;color:#475569}
+@media (max-width:1100px){.dx-sdet.nm{grid-template-columns:minmax(0,1fr)}.dx-sdet.nm .dx-sdet-m{border-left:0}}
+@media (max-width:720px){.dx-sdet.nm .dx-sdet-m{grid-template-columns:minmax(0,1fr)}}
