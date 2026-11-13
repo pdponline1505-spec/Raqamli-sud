@@ -6797,3 +6797,22 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .dx-nmopt.on .dx-nmrad{border-color:#3073f1}
 .dx-nmopt.on .dx-nmrad::after{content:"";width:8px;height:8px;border-radius:50%;background:#3073f1}
 .dx-nmol{flex:1;min-width:0}
+/* nomulkiy talab oynasi — da'vo summasi uslubida */
+.dx-tot.nm{background:#f7f5ff;border-color:#ede9fe}
+.dx-tot.nm b{color:#6d28d9}
+.dx-tot.nm .dx-totv{color:#ddd6fe}
+.dx-tot.nm.on .dx-totv{color:#7c3aed}
+.dx-chip.nmch{padding-right:12px}
+.dx-chtx{display:inline-flex;flex-direction:column;align-items:flex-start;line-height:1.2;text-align:left;min-width:0}
+.dx-chtx small{font-size:11.5px;font-weight:400;color:#64748b}
+.dx-chip.nmch.on .dx-chtx small{color:#3073f1}
+.dx-chorg{display:grid;place-items:center;font-size:12px;font-weight:600;color:#475569;background:#e2e8f0}
+.dx-trow.nm{grid-template-columns:minmax(0,1fr) 44px}
+.dx-trow.nm .dx-tlbl{cursor:default}
+.dx-trow.nm .dx-tdot{background:#7c3aed;box-shadow:0 0 0 3px #ede9fe}
+.note.dx-noteerr{border-color:#fecaca;background:#fef2f2;color:#b91c1c}
+.dx-nmft{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:#334155;flex:none;max-width:46%;min-width:0}
+.dx-nmp{display:inline-flex;align-items:center;gap:6px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dx-nmp img{width:24px;height:24px;border-radius:50%;object-fit:cover;object-position:center 20%;flex:none}
+.dx-nmar{color:#94a3b8;flex:none}
+@media (max-width:720px){.dx-nmft{display:none}}

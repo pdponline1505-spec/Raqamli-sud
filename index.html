@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=ce7108032855">
+<link rel="stylesheet" href="assets/app.css?v=64c11bbccdc6">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -792,6 +792,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="{{m.cls}}">
 <span class="dx-sic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5M10 13h6M10 17h4"></path></svg></span>
 <div class="kv dx-sinfo"><b>{{m.title}}</b><sc-if value="{{m.hasSub}}" hint-placeholder-val="{{ false }}"><small>{{m.sub}}</small></sc-if></div>
+<sc-if value="{{m.hasFt}}" hint-placeholder-val="{{ false }}"><span class="dx-nmft" title="{{m.ftTitle}}"><span class="dx-nmp"><sc-if value="{{m.fPh}}" hint-placeholder-val="{{ true }}"><img src="{{m.fPhoto}}" alt=""></sc-if>{{m.fT}}</span><span class="dx-nmar" aria-hidden="true">→</span><span class="dx-nmp"><sc-if value="{{m.tPh}}" hint-placeholder-val="{{ true }}"><img src="{{m.tPhoto}}" alt=""></sc-if>{{m.tT}}</span></span></sc-if>
 <sc-if value="{{m.hasJav}}" hint-placeholder-val="{{ false }}"><span class="dx-sjv" title="{{m.javTitle}}"><span class="dx-avs"><sc-for list="{{m.javAv}}" as="a" hint-placeholder-count="1"><img src="{{a.photo}}" alt=""></sc-for></span><span>{{m.javShort}}</span></span></sc-if>
 <div class="dx-sact">
 <sc-if value="{{m.notConfirm}}" hint-placeholder-val="{{ true }}">
@@ -860,6 +861,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="{{m.cls}}">
 <span class="dx-sic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5M10 13h6M10 17h4"></path></svg></span>
 <div class="kv dx-sinfo"><b>{{m.title}}</b><sc-if value="{{m.hasSub}}" hint-placeholder-val="{{ false }}"><small>{{m.sub}}</small></sc-if></div>
+<sc-if value="{{m.hasFt}}" hint-placeholder-val="{{ false }}"><span class="dx-nmft" title="{{m.ftTitle}}"><span class="dx-nmp"><sc-if value="{{m.fPh}}" hint-placeholder-val="{{ true }}"><img src="{{m.fPhoto}}" alt=""></sc-if>{{m.fT}}</span><span class="dx-nmar" aria-hidden="true">→</span><span class="dx-nmp"><sc-if value="{{m.tPh}}" hint-placeholder-val="{{ true }}"><img src="{{m.tPhoto}}" alt=""></sc-if>{{m.tT}}</span></span></sc-if>
 <sc-if value="{{m.hasJav}}" hint-placeholder-val="{{ false }}"><span class="dx-sjv" title="{{m.javTitle}}"><span class="dx-avs"><sc-for list="{{m.javAv}}" as="a" hint-placeholder-count="1"><img src="{{a.photo}}" alt=""></sc-for></span><span>{{m.javShort}}</span></span></sc-if>
 <div class="dx-sact">
 <sc-if value="{{m.notConfirm}}" hint-placeholder-val="{{ true }}">
@@ -1077,11 +1079,55 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <button class="ib" style="width: 40px; height: 40px; flex: none" aria-label="Yopish" onClick="{{dxNmClose}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
 </div>
 <div class="dx-dw-b" style="gap: 24px">
-<div class="dx-dw-sec dx-nmf" style="gap: 16px">
-<label class="fld"><span>Nomulkiy tusdagi talab turi <b class="dx-req">*</b></span><span class="{{dxNmDd.turi.cls}}" id="{{dxNmDd.turi.id}}" onKeyDown="{{dxNmDd.turi.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{dxNmDd.turi.exp}}" disabled="{{dxNmDd.turi.dis}}" onClick="{{dxNmDd.turi.toggle}}" style="border-color: {{dxNmDd.turi.bc}}"><span class="{{dxNmDd.turi.vcls}}">{{dxNmDd.turi.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{dxNmDd.turi.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{dxNmDd.turi.stop}}"><sc-for list="{{dxNmDd.turi.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
-<label class="fld"><span>Kimning hisobidan <b class="dx-req">*</b></span><span class="{{dxNmDd.from.cls}}" id="{{dxNmDd.from.id}}" onKeyDown="{{dxNmDd.from.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{dxNmDd.from.exp}}" disabled="{{dxNmDd.from.dis}}" onClick="{{dxNmDd.from.toggle}}" style="border-color: {{dxNmDd.from.bc}}"><span class="{{dxNmDd.from.vcls}}">{{dxNmDd.from.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{dxNmDd.from.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{dxNmDd.from.stop}}"><sc-for list="{{dxNmDd.from.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
-<label class="fld"><span>Kimning hisobiga <b class="dx-req">*</b></span><span class="{{dxNmDd.to.cls}}" id="{{dxNmDd.to.id}}" onKeyDown="{{dxNmDd.to.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{dxNmDd.to.exp}}" disabled="{{dxNmDd.to.dis}}" onClick="{{dxNmDd.to.toggle}}" style="border-color: {{dxNmDd.to.bc}}"><span class="{{dxNmDd.to.vcls}}">{{dxNmDd.to.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{dxNmDd.to.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{dxNmDd.to.stop}}"><sc-for list="{{dxNmDd.to.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><sc-if value="{{o.multi}}" hint-placeholder-val="{{ false }}"><span class="{{o.cbCls}}" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-if><sc-if value="{{o.hasPhoto}}" hint-placeholder-val="{{ false }}"><img class="dx-oav" src="{{o.photo}}" alt=""></sc-if><sc-if value="{{o.hasCode}}" hint-placeholder-val="{{ false }}"><span class="dx-ocode">{{o.code}}</span></sc-if><span class="dx-olbl">{{o.name}}<sc-if value="{{o.hasSub}}" hint-placeholder-val="{{ false }}"><small class="dx-osub">{{o.sub}}</small></sc-if></span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
+<div class="{{dxNmTotCls}}" aria-live="polite">
+<div class="kv" style="gap: 3px; min-width: 0"><b>Nomulkiy talab</b><small>{{dxNmTotSub}}</small></div>
+<span class="dx-totv">{{dxNmTotN}}</span>
+</div>
+
+<div class="dx-dw-sec" style="gap: 10px">
+<span class="dx-lbl">Kimning hisobidan<sc-if value="{{dxNmHasP}}" hint-placeholder-val="{{ true }}"> <b class="dx-req">*</b></sc-if></span>
+<sc-if value="{{dxNmHasP}}" hint-placeholder-val="{{ true }}">
+<div class="dx-chips" role="radiogroup" aria-label="Kimning hisobidan">
+<sc-for list="{{dxNmFrom}}" as="j" hint-placeholder-count="3">
+<button type="button" role="radio" class="{{j.cls}}" aria-checked="{{j.str}}" onClick="{{j.pick}}"><sc-if value="{{j.hasPhoto}}" hint-placeholder-val="{{ true }}"><img class="dx-chav" src="{{j.photo}}" alt=""></sc-if><sc-if value="{{j.noPhoto}}" hint-placeholder-val="{{ false }}"><span class="dx-chav dx-chorg" aria-hidden="true">{{j.ini}}</span></sc-if><span class="dx-chtx"><span>{{j.short}}</span><small>{{j.role}}</small></span><sc-if value="{{j.on}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if><sc-if value="{{j.off}}" hint-placeholder-val="{{ true }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></sc-if></button>
+</sc-for>
+</div>
+<small class="{{dxNmFromHint}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8v.5"></path></svg>Talab kimning hisobidan ekanini belgilang</small>
+</sc-if>
 <sc-if value="{{dxNmNoParty}}" hint-placeholder-val="{{ false }}"><div class="note"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8v.5"></path></svg>Taraflar hali qo'shilmagan. «Da'vogar» va «Javobgar» bo'limlarida qo'shsangiz, shu yerda tanlash mumkin bo'ladi.</div></sc-if>
+</div>
+
+<sc-if value="{{dxNmHasP}}" hint-placeholder-val="{{ true }}">
+<div class="dx-dw-sec" style="gap: 10px">
+<span class="dx-lbl">Kimning hisobiga <b class="dx-req">*</b></span>
+<div class="dx-chips" role="radiogroup" aria-label="Kimning hisobiga">
+<sc-for list="{{dxNmTo}}" as="j" hint-placeholder-count="3">
+<button type="button" role="radio" class="{{j.cls}}" aria-checked="{{j.str}}" onClick="{{j.pick}}"><sc-if value="{{j.hasPhoto}}" hint-placeholder-val="{{ true }}"><img class="dx-chav" src="{{j.photo}}" alt=""></sc-if><sc-if value="{{j.noPhoto}}" hint-placeholder-val="{{ false }}"><span class="dx-chav dx-chorg" aria-hidden="true">{{j.ini}}</span></sc-if><span class="dx-chtx"><span>{{j.short}}</span><small>{{j.role}}</small></span><sc-if value="{{j.on}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if><sc-if value="{{j.off}}" hint-placeholder-val="{{ true }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></sc-if></button>
+</sc-for>
+</div>
+<small class="{{dxNmToHint}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8v.5"></path></svg>Talab kimning hisobiga ekanini belgilang</small>
+</div>
+</sc-if>
+
+<div class="dx-dw-sec" style="gap: 0">
+<div class="dx-trh"><span class="dx-lbl">Talablar <b class="dx-req">*</b></span><small class="muted">Bir nechta talab turini qo'shish mumkin</small></div>
+<sc-for list="{{dxNmRows}}" as="t" hint-placeholder-count="1">
+<div class="dx-trow nm">
+<span class="dx-tlbl"><span class="dx-tdot" aria-hidden="true"></span>{{t.label}}</span>
+<button class="dx-tx" aria-label="{{t.label}} talabini olib tashlash" onClick="{{t.remove}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+</sc-for>
+<sc-if value="{{dxNmNoRows}}" hint-placeholder-val="{{ false }}"><div class="{{dxNmNoRowsCls}}" style="margin-top: 12px">Talab qo'shilmagan — pastdan talab turini tanlang.</div></sc-if>
+<sc-if value="{{dxNmHasMore}}" hint-placeholder-val="{{ true }}">
+<div class="dx-more">
+<small>{{dxNmMoreLbl}}</small>
+<div class="dx-chips end">
+<sc-for list="{{dxNmMore}}" as="a" hint-placeholder-count="5">
+<button class="dx-addchip" onClick="{{a.add}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>{{a.label}}</button>
+</sc-for>
+</div>
+</div>
+</sc-if>
 </div>
 <sc-if value="{{dxNmErr}}" hint-placeholder-val="{{ false }}"><small class="dx-err" style="margin: 0">{{dxNmErrText}}</small></sc-if>
 </div>
@@ -6856,7 +6902,8 @@ var NM_TUR = [
 { v: "taminlash", l: "Da'voni ta'minlash chorasi" }];
 var NM_L = {}; NM_TUR.forEach(function (o) { NM_L[o.v] = o.l; });
 var nmw = dx.nmw;
-var nmSnap = function (w) { return JSON.stringify([w.turi, w.from, w.to]); };
+var nmSnap = function (w) { return JSON.stringify([w.turlar, w.from, w.to]); };
+var nmTurOf = function (m) { return m.turlar ? m.turlar.slice() : (m.turi ? [m.turi] : []); };
 // taraflar: da'vogarlar, javobgarlar va manfaatida idora
 var nmParties = function (st) {
 var out = [];
@@ -6870,7 +6917,7 @@ return out;
 var nmPartyOf = function (v) { return nmParties(self.state).filter(function (p) { return p.v === v; })[0]; };
 var openNm = function (mode, src, target) {
 var ps = nmParties(self.state), fJv = ps.filter(function (p) { return p.role === "jv"; })[0], fDv = ps.filter(function (p) { return p.role !== "jv"; })[0];
-var w = { mode: mode, id: src ? src.id : "nm" + Date.now(), target: target, turi: src ? src.turi : "", from: src ? (src.from || "") : (fJv ? fJv.v : ""), to: src ? (src.to || "") : (fDv ? fDv.v : ""), err: "", ask: false };
+var w = { mode: mode, id: src ? src.id : "nm" + Date.now(), target: target, turlar: src ? nmTurOf(src) : [], from: src ? (src.from || "") : (fJv ? fJv.v : ""), to: src ? (src.to || "") : (fDv ? fDv.v : ""), err: "", ask: false };
 w.orig = nmSnap(w);
 setDx({ nmw: w, nmDel: "" });
 };
@@ -6883,9 +6930,11 @@ return { im: d.im.map(function (x) { return x.id === target ? Object.assign({}, 
 var nmRow = function (m, j, target) {
 var mc = dx.nmDel === m.id, me = !!(nmw && nmw.mode === "edit" && nmw.id === m.id), jv = [];
 var nmNm = function (v) { var p = nmParties(s).filter(function (x) { return x.v === v; })[0]; return p ? (p.org ? p.name : initialName(p.name)) : ""; };
-var fT = nmNm(m.from), tT = nmNm(m.to);
-return { n: j + 1, title: NM_L[m.turi] || m.turi || "Nomulkiy talab",
-sub: (fT || tT) ? (fT || "—") + " hisobidan → " + (tT || "—") + " hisobiga" : "", hasSub: !!(fT || tT),
+var fT = nmNm(m.from), tT = nmNm(m.to), tl = nmTurOf(m);
+var nmPh = function (v) { var p = nmParties(s).filter(function (x) { return x.v === v; })[0]; return p && p.photo ? p.photo : ""; };
+return { n: j + 1, title: "Nomulkiy talab",
+hasFt: !!(fT || tT), fT: fT || "—", tT: tT || "—", fPhoto: nmPh(m.from), tPhoto: nmPh(m.to), fPh: !!nmPh(m.from), tPh: !!nmPh(m.to), ftTitle: (fT || "—") + " hisobidan → " + (tT || "—") + " hisobiga",
+sub: tl.length + " ta talab · " + tl.map(function (v) { return NM_L[v] || v; }).join(", "), hasSub: tl.length > 0,
 hasJav: jv.length > 0, javAv: jv.slice(0, 3).map(function (n) { return { photo: portrait(n, genderOf(n)), name: n }; }),
 javShort: jv.length === 1 ? initialName(jv[0]) : jv.length + " javobgar", javTitle: jv.join(", "),
 cls: me ? "dx-srow nm ed" : (mc ? "dx-srow nm del" : "dx-srow nm"), confirm: mc, notConfirm: !mc,
@@ -7048,7 +7097,7 @@ var edLabel = dwOwner ? (dwOwner.turkum || "Ish turkumi hali tanlanmagan") : "";
 // nomulkiy talab oynasi
 var nmPs = nmParties(s), nmHasP = nmPs.length > 0;
 var nmSame = !!(nmw && nmw.from && nmw.from === nmw.to);
-var nmValid = !!(nmw && nmw.turi) && (!nmHasP || (nmw.from && nmw.to && !nmSame));
+var nmValid = !!(nmw && nmw.turlar.length) && (!nmHasP || (nmw.from && nmw.to && !nmSame));
 var nmOwner = nmw ? (nmw.target === "ed" ? (ed ? ed.v : null) : dx.im.filter(function (x) { return x.id === nmw.target; })[0]) : null;
 var nmList = nmw ? (nmw.target === "ed" ? ((ed && ed.nm) || []) : ((nmOwner && nmOwner.nm) || [])) : [];
 var nmIdx = nmw && nmw.mode === "edit" ? nmList.map(function (y) { return y.id; }).indexOf(nmw.id) + 1 : 0;
@@ -7057,25 +7106,42 @@ var reqCloseNm = function () { var d = self.state.dx; if (!d.nmw) return; if (nm
 var saveNm = function () {
 var st = self.state, w = st.dx.nmw; if (!w) return;
 var hasP = nmParties(st).length > 0;
-if (!w.turi) { setNmw(function () { return { err: "Nomulkiy tusdagi talab turini tanlang" }; }); return; }
+if (!w.turlar.length) { setNmw(function () { return { err: "Kamida bitta nomulkiy talab turini qo'shing" }; }); return; }
 if (hasP && !w.from) { setNmw(function () { return { err: "Kimning hisobidan ekanini tanlang" }; }); return; }
 if (hasP && !w.to) { setNmw(function () { return { err: "Kimning hisobiga ekanini tanlang" }; }); return; }
 if (w.from && w.from === w.to) { setNmw(function () { return { err: "«Kimning hisobidan» va «Kimning hisobiga» bir xil bo'lishi mumkin emas" }; }); return; }
-var item = { id: w.id, turi: w.turi, from: w.from, to: w.to };
+var item = { id: w.id, turlar: w.turlar.slice(), from: w.from, to: w.to };
 var p = nmPut(w.target, function (a) { return w.mode === "edit" ? a.map(function (y) { return y.id === w.id ? item : y; }) : a.concat([item]); });
 if (!p) return; p.nmw = null; setDx(p);
-self.flash("Nomulkiy talab " + (w.mode === "edit" ? "saqlandi" : "qo'shildi") + " · " + NM_L[w.turi]);
+self.flash("Nomulkiy talab " + (w.mode === "edit" ? "saqlandi" : "qo'shildi") + " · " + w.turlar.length + " ta talab");
 };
 var nmPend = ed && ed.mode === "new" ? (ed.nm || []) : [];
 Object.assign(__out, {
 dxNmOpen: !!nmw && isDevon && (nmw.target !== "ed" || !!ed),
 dxNmTitle: nmw && nmw.mode === "edit" ? nmIdx + "-nomulkiy talabni tahrirlash" : "Yangi nomulkiy talab",
 dxNmSub: nmOwner ? (nmOwner.turkum || "Ish turkumi hali tanlanmagan") : "",
-dxNmDd: {
-turi: dd("nm-turi", NM_TUR, nmw ? nmw.turi : "", function (e) { setNmw(function () { return { turi: e.target.value, err: "", ask: false }; }); }, { noSplit: true, bc: nmw && nmw.err && !nmw.turi ? "#dc2626" : "" }),
-from: dd("nm-from", nmPs, nmw ? nmw.from : "", function (e) { setNmw(function () { return { from: e.target.value, err: "", ask: false }; }); }, { noSplit: true, disabled: !nmHasP, ph: nmHasP ? "Tanlang" : "Taraf qo'shilmagan", bc: nmw && nmw.err && nmHasP && (!nmw.from || nmSame) ? "#dc2626" : "" }),
-to: dd("nm-to", nmPs, nmw ? nmw.to : "", function (e) { setNmw(function () { return { to: e.target.value, err: "", ask: false }; }); }, { noSplit: true, disabled: !nmHasP, ph: nmHasP ? "Tanlang" : "Taraf qo'shilmagan", bc: nmw && nmw.err && nmHasP && (!nmw.to || nmSame) ? "#dc2626" : "" })
-},
+dxNmTotCls: nmw && nmw.turlar.length ? "dx-tot nm on" : "dx-tot nm",
+dxNmTotN: nmw ? String(nmw.turlar.length) : "0",
+dxNmTotSub: (function () { if (!nmw) return ""; var f = nmPs.filter(function (p) { return p.v === nmw.from; })[0], t = nmPs.filter(function (p) { return p.v === nmw.to; })[0];
+var nm = function (p) { return p.org ? p.name : initialName(p.name); };
+return f && t ? nm(f) + " hisobidan → " + nm(t) + " hisobiga" : "Kimning hisobidan va kimning hisobiga ekanini belgilang"; })(),
+dxNmFrom: nmPs.map(function (p) { var on = !!(nmw && nmw.from === p.v), bad = !!(nmw && nmw.err && (!nmw.from || (nmSame && on)));
+return { short: p.org ? p.name : shortName(p.name), role: p.sub, photo: p.photo, hasPhoto: !!p.photo, noPhoto: !p.photo, ini: initials(p.name), on: on, off: !on, str: on ? "true" : "false",
+cls: "dx-chip nmch" + (on ? " on" : "") + (bad && !on ? " err" : "") + (bad && on ? " err" : ""),
+pick: function () { setNmw(function () { return { from: p.v, err: "", ask: false }; }); } }; }),
+dxNmTo: nmPs.map(function (p) { var on = !!(nmw && nmw.to === p.v), bad = !!(nmw && nmw.err && (!nmw.to || (nmSame && on)));
+return { short: p.org ? p.name : shortName(p.name), role: p.sub, photo: p.photo, hasPhoto: !!p.photo, noPhoto: !p.photo, ini: initials(p.name), on: on, off: !on, str: on ? "true" : "false",
+cls: "dx-chip nmch" + (on ? " on" : "") + (bad ? " err" : ""),
+pick: function () { setNmw(function () { return { to: p.v, err: "", ask: false }; }); } }; }),
+dxNmFromHint: "dx-hint" + (nmw && nmw.err && (!nmw.from || nmSame) ? " err" : ""),
+dxNmToHint: "dx-hint" + (nmw && nmw.err && (!nmw.to || nmSame) ? " err" : ""),
+dxNmHasP: nmHasP,
+dxNmRows: (nmw ? nmw.turlar : []).map(function (v) { return { label: NM_L[v] || v, remove: function () { setNmw(function (w) { return { turlar: w.turlar.filter(function (x) { return x !== v; }), err: "", ask: false }; }); } }; }),
+dxNmNoRows: !!nmw && nmw.turlar.length === 0,
+dxNmNoRowsCls: "note" + (nmw && nmw.err && !nmw.turlar.length ? " dx-noteerr" : ""),
+dxNmMore: NM_TUR.filter(function (o) { return !(nmw && nmw.turlar.indexOf(o.v) >= 0); }).map(function (o) { return { label: o.l, add: function () { setNmw(function (w) { return w.turlar.indexOf(o.v) >= 0 ? {} : { turlar: w.turlar.concat([o.v]), err: "", ask: false }; }); } }; }),
+dxNmHasMore: !nmw || nmw.turlar.length < NM_TUR.length,
+dxNmMoreLbl: nmw && nmw.turlar.length ? "Yana talab qo'shish" : "Talab turini tanlang",
 dxNmNoParty: !nmHasP,
 dxNmErr: !!(nmw && nmw.err), dxNmErrText: nmw ? nmw.err : "",
 dxNmSaveCls: "btn pri" + (nmValid ? "" : " dx-dis"), dxNmSaveDis: nmValid ? "false" : "true",
