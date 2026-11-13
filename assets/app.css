@@ -6847,3 +6847,21 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .dx-entry .dx-dgrid > :nth-child(4){grid-column:1}
 @media (max-width:900px){.dx-entry .dx-dgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.dx-entry .dx-dgrid > :nth-child(4){grid-column:auto}}
 @media (max-width:560px){.dx-entry .dx-dgrid{grid-template-columns:minmax(0,1fr)}}
+/* da'vo summasi va nomulkiy talab: batafsil ko'rish */
+.dx-sinfo.dx-clk{cursor:pointer}
+.dx-detb .dx-detchev{transition:transform var(--t-base) var(--ease-out)}
+.dx-detb[aria-expanded="true"] .dx-detchev{transform:rotate(180deg)}
+.dx-detb[aria-expanded="true"]{background:#eef2ff;color:#3073f1}
+.dx-sdet{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:16px 28px;margin:-4px 0 4px;padding:14px 18px 16px 72px;border:1px solid #dbeafe;border-top:0;border-radius:0 0 12px 12px;background:#fff;animation:dialogIn var(--t-base) var(--ease-out)}
+.dx-sdet.nm{border-color:#ede9fe}
+.dx-sdet-l{display:flex;flex-direction:column}
+.dx-sdl{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px dashed #e2e8f0;font-size:14px;color:#0f172a}
+.dx-sdl:last-child{border-bottom:0}
+.dx-sdl-t{flex:1;min-width:0}
+.dx-sdl-a{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+.dx-sdl-a small{margin-left:4px;font-size:11.5px;font-weight:500;color:#64748b}
+.dx-sdet.nm .dx-tdot{background:#7c3aed;box-shadow:0 0 0 3px #ede9fe}
+.dx-sdet-m{display:flex;flex-direction:column;gap:12px;padding-left:20px;border-left:1px solid #eef1f5}
+.dx-sdet-m .kv small{font-size:12px;color:#64748b}
+.dx-sdet-m .kv span{font-size:14px;color:#0f172a;overflow-wrap:anywhere}
+@media (max-width:720px){.dx-sdet{grid-template-columns:minmax(0,1fr);padding-left:18px}.dx-sdet-m{padding-left:0;border-left:0;border-top:1px solid #eef1f5;padding-top:12px}}

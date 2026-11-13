@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=d46d386db63e">
+<link rel="stylesheet" href="assets/app.css?v=4a7709af5304">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -775,10 +775,11 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <sc-for list="{{dxPend}}" as="m" hint-placeholder-count="1">
 <div class="{{m.cls}}">
 <span class="dx-sic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg></span>
-<div class="kv dx-sinfo"><b>Da'vo summasi</b><small>{{m.rowsText}}</small></div>
+<div class="kv dx-sinfo dx-clk" onClick="{{m.toggleDet}}"><b>Da'vo summasi</b><small>{{m.rowsText}}</small></div>
 <sc-if value="{{m.hasJav}}" hint-placeholder-val="{{ false }}"><span class="dx-sjv" title="{{m.javTitle}}"><span class="dx-avs"><sc-for list="{{m.javAv}}" as="a" hint-placeholder-count="1"><img src="{{a.photo}}" alt=""></sc-for></span><span>{{m.javShort}}</span></span></sc-if>
 <span class="dx-samts"><sc-for list="{{m.amts}}" as="t" hint-placeholder-count="1"><span class="dx-samt">{{t.amt}}<small>{{t.code}}</small></span></sc-for></span>
 <div class="dx-sact">
+<button type="button" class="ib dx-detb" aria-expanded="{{m.detStr}}" title="{{m.detLbl}}" aria-label="{{m.detLbl}}" onClick="{{m.toggleDet}}"><svg class="i s dx-detchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
 <sc-if value="{{m.notConfirm}}" hint-placeholder-val="{{ true }}">
 <button class="ib" title="Tahrirlash" aria-label="{{m.n}}-da'vo summasini tahrirlash" onClick="{{m.edit}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg></button>
 <button class="ib" style="color: #dc2626" title="O'chirish" aria-label="{{m.n}}-da'vo summasini o'chirish" onClick="{{m.askDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button>
@@ -790,6 +791,11 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </sc-if>
 </div>
 </div>
+<sc-if value="{{m.det}}" hint-placeholder-val="{{ false }}"><div class="{{m.detCls}}">
+<div class="dx-sdet-l"><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-tdot" aria-hidden="true"></span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
+<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="kv"><small>{{x.k}}</small><span>{{x.v}}</span></div></sc-for></div>
+</div></sc-if>
+
 </sc-for>
 <button type="button" class="dx-pill" onClick="{{dxDwNew}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Yana da'vo summasi qo'shish</button>
 </div>
@@ -801,10 +807,11 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <sc-for list="{{dxNmPend}}" as="m" hint-placeholder-count="1">
 <div class="{{m.cls}}">
 <span class="dx-sic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5M10 13h6M10 17h4"></path></svg></span>
-<div class="kv dx-sinfo"><b>{{m.title}}</b><sc-if value="{{m.hasSub}}" hint-placeholder-val="{{ false }}"><small>{{m.sub}}</small></sc-if></div>
+<div class="kv dx-sinfo dx-clk" onClick="{{m.toggleDet}}"><b>{{m.title}}</b><sc-if value="{{m.hasSub}}" hint-placeholder-val="{{ false }}"><small>{{m.sub}}</small></sc-if></div>
 <sc-if value="{{m.hasFt}}" hint-placeholder-val="{{ false }}"><span class="dx-nmft" title="{{m.ftTitle}}"><span class="dx-nmp"><sc-if value="{{m.fPh}}" hint-placeholder-val="{{ true }}"><img src="{{m.fPhoto}}" alt=""></sc-if>{{m.fT}}</span><span class="dx-nmar" aria-hidden="true">→</span><span class="dx-nmp"><sc-if value="{{m.tPh}}" hint-placeholder-val="{{ true }}"><img src="{{m.tPhoto}}" alt=""></sc-if>{{m.tT}}</span></span></sc-if>
 <sc-if value="{{m.hasJav}}" hint-placeholder-val="{{ false }}"><span class="dx-sjv" title="{{m.javTitle}}"><span class="dx-avs"><sc-for list="{{m.javAv}}" as="a" hint-placeholder-count="1"><img src="{{a.photo}}" alt=""></sc-for></span><span>{{m.javShort}}</span></span></sc-if>
 <div class="dx-sact">
+<button type="button" class="ib dx-detb" aria-expanded="{{m.detStr}}" title="{{m.detLbl}}" aria-label="{{m.detLbl}}" onClick="{{m.toggleDet}}"><svg class="i s dx-detchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
 <sc-if value="{{m.notConfirm}}" hint-placeholder-val="{{ true }}">
 <button class="ib" title="Tahrirlash" aria-label="{{m.n}}-nomulkiy talabni tahrirlash" onClick="{{m.edit}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg></button>
 <button class="ib" style="color: #dc2626" title="O'chirish" aria-label="{{m.n}}-nomulkiy talabni o'chirish" onClick="{{m.askDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button>
@@ -816,6 +823,11 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </sc-if>
 </div>
 </div>
+<sc-if value="{{m.det}}" hint-placeholder-val="{{ false }}"><div class="{{m.detCls}}">
+<div class="dx-sdet-l"><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-tdot" aria-hidden="true"></span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
+<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="kv"><small>{{x.k}}</small><span>{{x.v}}</span></div></sc-for></div>
+</div></sc-if>
+
 </sc-for>
 <sc-if value="{{dxNmCanAdd}}" hint-placeholder-val="{{ true }}"><button type="button" class="dx-pill nm" onClick="{{dxNmNew}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Yana nomulkiy talab qo'shish</button></sc-if>
 </div>
@@ -848,10 +860,11 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <sc-for list="{{r.sums}}" as="m" hint-placeholder-count="1">
 <div class="{{m.cls}}">
 <span class="dx-sic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg></span>
-<div class="kv dx-sinfo"><b>Da'vo summasi</b><small>{{m.rowsText}}</small></div>
+<div class="kv dx-sinfo dx-clk" onClick="{{m.toggleDet}}"><b>Da'vo summasi</b><small>{{m.rowsText}}</small></div>
 <sc-if value="{{m.hasJav}}" hint-placeholder-val="{{ false }}"><span class="dx-sjv" title="{{m.javTitle}}"><span class="dx-avs"><sc-for list="{{m.javAv}}" as="a" hint-placeholder-count="1"><img src="{{a.photo}}" alt=""></sc-for></span><span>{{m.javShort}}</span></span></sc-if>
 <span class="dx-samts"><sc-for list="{{m.amts}}" as="t" hint-placeholder-count="1"><span class="dx-samt">{{t.amt}}<small>{{t.code}}</small></span></sc-for></span>
 <div class="dx-sact">
+<button type="button" class="ib dx-detb" aria-expanded="{{m.detStr}}" title="{{m.detLbl}}" aria-label="{{m.detLbl}}" onClick="{{m.toggleDet}}"><svg class="i s dx-detchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
 <sc-if value="{{m.notConfirm}}" hint-placeholder-val="{{ true }}">
 <button class="ib" title="Tahrirlash" aria-label="{{m.n}}-da'vo summasini tahrirlash" onClick="{{m.edit}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg></button>
 <button class="ib" style="color: #dc2626" title="O'chirish" aria-label="{{m.n}}-da'vo summasini o'chirish" onClick="{{m.askDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button>
@@ -863,6 +876,11 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </sc-if>
 </div>
 </div>
+<sc-if value="{{m.det}}" hint-placeholder-val="{{ false }}"><div class="{{m.detCls}}">
+<div class="dx-sdet-l"><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-tdot" aria-hidden="true"></span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
+<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="kv"><small>{{x.k}}</small><span>{{x.v}}</span></div></sc-for></div>
+</div></sc-if>
+
 </sc-for>
 <button class="dx-pill" onClick="{{r.addSum}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>{{r.addSumLabel}}</button>
 </div>
@@ -871,10 +889,11 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <sc-for list="{{r.nms}}" as="m" hint-placeholder-count="1">
 <div class="{{m.cls}}">
 <span class="dx-sic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5M10 13h6M10 17h4"></path></svg></span>
-<div class="kv dx-sinfo"><b>{{m.title}}</b><sc-if value="{{m.hasSub}}" hint-placeholder-val="{{ false }}"><small>{{m.sub}}</small></sc-if></div>
+<div class="kv dx-sinfo dx-clk" onClick="{{m.toggleDet}}"><b>{{m.title}}</b><sc-if value="{{m.hasSub}}" hint-placeholder-val="{{ false }}"><small>{{m.sub}}</small></sc-if></div>
 <sc-if value="{{m.hasFt}}" hint-placeholder-val="{{ false }}"><span class="dx-nmft" title="{{m.ftTitle}}"><span class="dx-nmp"><sc-if value="{{m.fPh}}" hint-placeholder-val="{{ true }}"><img src="{{m.fPhoto}}" alt=""></sc-if>{{m.fT}}</span><span class="dx-nmar" aria-hidden="true">→</span><span class="dx-nmp"><sc-if value="{{m.tPh}}" hint-placeholder-val="{{ true }}"><img src="{{m.tPhoto}}" alt=""></sc-if>{{m.tT}}</span></span></sc-if>
 <sc-if value="{{m.hasJav}}" hint-placeholder-val="{{ false }}"><span class="dx-sjv" title="{{m.javTitle}}"><span class="dx-avs"><sc-for list="{{m.javAv}}" as="a" hint-placeholder-count="1"><img src="{{a.photo}}" alt=""></sc-for></span><span>{{m.javShort}}</span></span></sc-if>
 <div class="dx-sact">
+<button type="button" class="ib dx-detb" aria-expanded="{{m.detStr}}" title="{{m.detLbl}}" aria-label="{{m.detLbl}}" onClick="{{m.toggleDet}}"><svg class="i s dx-detchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
 <sc-if value="{{m.notConfirm}}" hint-placeholder-val="{{ true }}">
 <button class="ib" title="Tahrirlash" aria-label="{{m.n}}-nomulkiy talabni tahrirlash" onClick="{{m.edit}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg></button>
 <button class="ib" style="color: #dc2626" title="O'chirish" aria-label="{{m.n}}-nomulkiy talabni o'chirish" onClick="{{m.askDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button>
@@ -886,6 +905,11 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </sc-if>
 </div>
 </div>
+<sc-if value="{{m.det}}" hint-placeholder-val="{{ false }}"><div class="{{m.detCls}}">
+<div class="dx-sdet-l"><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-tdot" aria-hidden="true"></span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
+<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="kv"><small>{{x.k}}</small><span>{{x.v}}</span></div></sc-for></div>
+</div></sc-if>
+
 </sc-for>
 <sc-if value="{{r.canAddNm}}" hint-placeholder-val="{{ true }}"><button type="button" class="dx-pill nm" onClick="{{r.addNm}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>{{r.addNmLabel}}</button></sc-if>
 </div>
@@ -915,10 +939,11 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <sc-for list="{{dxPend}}" as="m" hint-placeholder-count="1">
 <div class="{{m.cls}}">
 <span class="dx-sic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg></span>
-<div class="kv dx-sinfo"><b>Da'vo summasi</b><small>{{m.rowsText}}</small></div>
+<div class="kv dx-sinfo dx-clk" onClick="{{m.toggleDet}}"><b>Da'vo summasi</b><small>{{m.rowsText}}</small></div>
 <sc-if value="{{m.hasJav}}" hint-placeholder-val="{{ false }}"><span class="dx-sjv" title="{{m.javTitle}}"><span class="dx-avs"><sc-for list="{{m.javAv}}" as="a" hint-placeholder-count="1"><img src="{{a.photo}}" alt=""></sc-for></span><span>{{m.javShort}}</span></span></sc-if>
 <span class="dx-samts"><sc-for list="{{m.amts}}" as="t" hint-placeholder-count="1"><span class="dx-samt">{{t.amt}}<small>{{t.code}}</small></span></sc-for></span>
 <div class="dx-sact">
+<button type="button" class="ib dx-detb" aria-expanded="{{m.detStr}}" title="{{m.detLbl}}" aria-label="{{m.detLbl}}" onClick="{{m.toggleDet}}"><svg class="i s dx-detchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
 <sc-if value="{{m.notConfirm}}" hint-placeholder-val="{{ true }}">
 <button class="ib" title="Tahrirlash" aria-label="{{m.n}}-da'vo summasini tahrirlash" onClick="{{m.edit}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg></button>
 <button class="ib" style="color: #dc2626" title="O'chirish" aria-label="{{m.n}}-da'vo summasini o'chirish" onClick="{{m.askDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button>
@@ -930,6 +955,11 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </sc-if>
 </div>
 </div>
+<sc-if value="{{m.det}}" hint-placeholder-val="{{ false }}"><div class="{{m.detCls}}">
+<div class="dx-sdet-l"><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-tdot" aria-hidden="true"></span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
+<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="kv"><small>{{x.k}}</small><span>{{x.v}}</span></div></sc-for></div>
+</div></sc-if>
+
 </sc-for>
 <button type="button" class="dx-pill" onClick="{{dxDwNew}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Yana da'vo summasi qo'shish</button>
 </div>
@@ -941,10 +971,11 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <sc-for list="{{dxNmPend}}" as="m" hint-placeholder-count="1">
 <div class="{{m.cls}}">
 <span class="dx-sic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5M10 13h6M10 17h4"></path></svg></span>
-<div class="kv dx-sinfo"><b>{{m.title}}</b><sc-if value="{{m.hasSub}}" hint-placeholder-val="{{ false }}"><small>{{m.sub}}</small></sc-if></div>
+<div class="kv dx-sinfo dx-clk" onClick="{{m.toggleDet}}"><b>{{m.title}}</b><sc-if value="{{m.hasSub}}" hint-placeholder-val="{{ false }}"><small>{{m.sub}}</small></sc-if></div>
 <sc-if value="{{m.hasFt}}" hint-placeholder-val="{{ false }}"><span class="dx-nmft" title="{{m.ftTitle}}"><span class="dx-nmp"><sc-if value="{{m.fPh}}" hint-placeholder-val="{{ true }}"><img src="{{m.fPhoto}}" alt=""></sc-if>{{m.fT}}</span><span class="dx-nmar" aria-hidden="true">→</span><span class="dx-nmp"><sc-if value="{{m.tPh}}" hint-placeholder-val="{{ true }}"><img src="{{m.tPhoto}}" alt=""></sc-if>{{m.tT}}</span></span></sc-if>
 <sc-if value="{{m.hasJav}}" hint-placeholder-val="{{ false }}"><span class="dx-sjv" title="{{m.javTitle}}"><span class="dx-avs"><sc-for list="{{m.javAv}}" as="a" hint-placeholder-count="1"><img src="{{a.photo}}" alt=""></sc-for></span><span>{{m.javShort}}</span></span></sc-if>
 <div class="dx-sact">
+<button type="button" class="ib dx-detb" aria-expanded="{{m.detStr}}" title="{{m.detLbl}}" aria-label="{{m.detLbl}}" onClick="{{m.toggleDet}}"><svg class="i s dx-detchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
 <sc-if value="{{m.notConfirm}}" hint-placeholder-val="{{ true }}">
 <button class="ib" title="Tahrirlash" aria-label="{{m.n}}-nomulkiy talabni tahrirlash" onClick="{{m.edit}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg></button>
 <button class="ib" style="color: #dc2626" title="O'chirish" aria-label="{{m.n}}-nomulkiy talabni o'chirish" onClick="{{m.askDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button>
@@ -956,6 +987,11 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </sc-if>
 </div>
 </div>
+<sc-if value="{{m.det}}" hint-placeholder-val="{{ false }}"><div class="{{m.detCls}}">
+<div class="dx-sdet-l"><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-tdot" aria-hidden="true"></span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
+<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="kv"><small>{{x.k}}</small><span>{{x.v}}</span></div></sc-for></div>
+</div></sc-if>
+
 </sc-for>
 <sc-if value="{{dxNmCanAdd}}" hint-placeholder-val="{{ true }}"><button type="button" class="dx-pill nm" onClick="{{dxNmNew}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Yana nomulkiy talab qo'shish</button></sc-if>
 </div>
@@ -1630,10 +1666,11 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <sc-for list="{{t.sums}}" as="m" hint-placeholder-count="1">
 <div class="{{m.cls}}">
 <span class="dx-sic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg></span>
-<div class="kv dx-sinfo"><b>Da'vo summasi</b><small>{{m.rowsText}}</small></div>
+<div class="kv dx-sinfo dx-clk" onClick="{{m.toggleDet}}"><b>Da'vo summasi</b><small>{{m.rowsText}}</small></div>
 <sc-if value="{{m.hasJav}}" hint-placeholder-val="{{ false }}"><span class="dx-sjv" title="{{m.javTitle}}"><span class="dx-avs"><sc-for list="{{m.javAv}}" as="a" hint-placeholder-count="1"><img src="{{a.photo}}" alt=""></sc-for></span><span>{{m.javShort}}</span></span></sc-if>
 <span class="dx-samts"><sc-for list="{{m.amts}}" as="t" hint-placeholder-count="1"><span class="dx-samt">{{t.amt}}<small>{{t.code}}</small></span></sc-for></span>
 <div class="dx-sact">
+<button type="button" class="ib dx-detb" aria-expanded="{{m.detStr}}" title="{{m.detLbl}}" aria-label="{{m.detLbl}}" onClick="{{m.toggleDet}}"><svg class="i s dx-detchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
 <sc-if value="{{m.notConfirm}}" hint-placeholder-val="{{ true }}">
 <button class="ib" title="Tahrirlash" aria-label="{{m.n}}-da'vo summasini tahrirlash" onClick="{{m.edit}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg></button>
 <button class="ib" style="color: #dc2626" title="O'chirish" aria-label="{{m.n}}-da'vo summasini o'chirish" onClick="{{m.askDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button>
@@ -1645,6 +1682,11 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </sc-if>
 </div>
 </div>
+<sc-if value="{{m.det}}" hint-placeholder-val="{{ false }}"><div class="{{m.detCls}}">
+<div class="dx-sdet-l"><sc-for list="{{m.detLines}}" as="l" hint-placeholder-count="2"><div class="dx-sdl"><span class="dx-tdot" aria-hidden="true"></span><span class="dx-sdl-t">{{l.t}}</span><sc-if value="{{l.hasAmt}}" hint-placeholder-val="{{ true }}"><b class="dx-sdl-a">{{l.amt}}<small>{{l.cur}}</small></b></sc-if></div></sc-for></div>
+<div class="dx-sdet-m"><sc-for list="{{m.detMeta}}" as="x" hint-placeholder-count="2"><div class="kv"><small>{{x.k}}</small><span>{{x.v}}</span></div></sc-for></div>
+</div></sc-if>
+
 </sc-for>
 <sc-if value="{{t.sumEmpty}}" hint-placeholder-val="{{ false }}"><small class="muted">Bu turkumga da'vo summasi hali biriktirilmagan · «Da'vo summasi qo'shish» orqali qo'shing</small></sc-if>
 </div>
@@ -6937,10 +6979,16 @@ var dxImNew = function () { if (!guard()) return; setDx({ imEd: newEd(), imDel: 
 var edIdx = ed && ed.mode === "edit" ? dx.im.map(function (x) { return x.id; }).indexOf(ed.id) : -1;
 
 // da'vo summasi qatori (kartochkada ham, kiritish formasida ham bir xil ko'rinish)
+var detOn = function (id) { return !!(dx.rowDet || {})[id]; };
+var detTog = function (id) { return function (e) { var t = e && e.target; if (t && t.closest && t.closest(".dx-sact") && !t.closest(".dx-detb")) return; var o = Object.assign({}, self.state.dx.rowDet || {}); if (o[id]) delete o[id]; else o[id] = true; setDx({ rowDet: o }); }; };
+var detFields = function (id, base) { var on = detOn(id); return { det: on, detStr: on ? "true" : "false", detLbl: on ? "Batafsil ma'lumotni yashirish" : "Batafsil ko'rish", toggleDet: detTog(id), detCls: "dx-sdet " + base }; };
 var sumRow = function (m, j, target) {
 var mc = dx.smDel === m.id, me = !!(dw && dw.mode === "edit" && dw.id === m.id);
 var ls = linesOf(m).filter(function (l) { return num(l.amt) > 0; }), nz = curTotals(ls, isNeus), jv = m.jav || [];
-return { n: j + 1, amts: curTotals(ls),
+var sDet = detFields(m.id, "sum");
+return Object.assign(sDet, { n: j + 1, amts: curTotals(ls),
+detLines: ls.map(function (l) { return { t: SM_LBL[l.type] || l.type, amt: group(String(num(l.amt))), cur: l.cur, hasAmt: true }; }),
+detMeta: [{ k: "Javobgarlar", v: jv.length ? jv.join(", ") : "Belgilanmagan" }].concat(nz.length ? [{ k: "Shundan neustoyka (penya + jarima)", v: totTxt(nz) }] : []).concat([{ k: "Jami", v: totTxt(curTotals(ls)) }]),
 rowsText: ls.length + " ta talab · " + typesTxt(ls) + (nz.length ? " · neustoyka " + totTxt(nz) : ""),
 hasJav: jv.length > 0, javAv: jv.slice(0, 3).map(function (n) { return { photo: portrait(n, genderOf(n)), name: n }; }),
 javShort: jv.length === 1 ? initialName(jv[0]) : jv.length + " javobgar", javTitle: jv.join(", "),
@@ -6954,7 +7002,7 @@ if (isItk(target)) self.setState({ itk: self.state.itk.map(function (x) { return
 else if (target === "ed") setDx({ smDel: "", imEd: Object.assign({}, d.imEd, { sums: drop(d.imEd.sums) }) });
 else setDx({ smDel: "", im: d.im.map(function (x) { return x.id === target ? Object.assign({}, x, { sums: drop(x.sums || []) }) : x; }) });
 self.flash("Da'vo summasi o'chirildi");
-} };
+} });
 };
 var jvChips = function (names) { return names.map(function (n) { return { short: shortName(n), photo: portrait(n, genderOf(n)), name: n }; }); };
 
@@ -6997,7 +7045,11 @@ var mc = dx.nmDel === m.id, me = !!(nmw && nmw.mode === "edit" && nmw.id === m.i
 var nmNm = function (v) { var p = nmParties(s).filter(function (x) { return x.v === v; })[0]; return p ? (p.org ? p.name : initialName(p.name)) : ""; };
 var fT = nmNm(m.from), tT = nmNm(m.to), tl = nmTurOf(m);
 var nmPh = function (v) { var p = nmParties(s).filter(function (x) { return x.v === v; })[0]; return p && p.photo ? p.photo : ""; };
-return { n: j + 1, title: tl.length === 1 ? (NM_L[tl[0]] || tl[0]) : "Nomulkiy talab",
+var nmFull = function (v) { var p = nmParties(s).filter(function (x) { return x.v === v; })[0]; return p ? p.name + " (" + p.sub + ")" : "Belgilanmagan"; };
+var nDet = detFields(m.id, "nm");
+return Object.assign(nDet, { n: j + 1, title: tl.length === 1 ? (NM_L[tl[0]] || tl[0]) : "Nomulkiy talab",
+detLines: tl.map(function (v) { return { t: NM_L[v] || v, amt: "", cur: "", hasAmt: false }; }),
+detMeta: [{ k: "Talab qo'yiladigan shaxs", v: nmFull(m.from) }, { k: "Kimning hisobiga", v: nmFull(m.to) }],
 hasFt: !!(fT || tT), fT: fT || "—", tT: tT || "—", fPhoto: nmPh(m.from), tPhoto: nmPh(m.to), fPh: !!nmPh(m.from), tPh: !!nmPh(m.to), ftTitle: "Talab qo'yiladigan shaxs: " + (fT || "—") + " → kimning hisobiga: " + (tT || "—"),
 sub: tl.length > 1 ? tl.length + " ta talab · " + tl.map(function (v) { return NM_L[v] || v; }).join(", ") : "Nomulkiy tusdagi talab", hasSub: true,
 hasJav: jv.length > 0, javAv: jv.slice(0, 3).map(function (n) { return { photo: portrait(n, genderOf(n)), name: n }; }),
@@ -7006,7 +7058,7 @@ cls: me ? "dx-srow nm ed" : (mc ? "dx-srow nm del" : "dx-srow nm"), confirm: mc,
 edit: function () { openNm("edit", m, target); },
 askDel: function () { setDx({ nmDel: m.id }); },
 cancelDel: function () { setDx({ nmDel: "" }); },
-del: function () { var p = nmPut(target, function (a) { return a.filter(function (y) { return y.id !== m.id; }); }); if (!p) return; p.nmDel = ""; setDx(p); self.flash("Nomulkiy talab o'chirildi"); } };
+del: function () { var p = nmPut(target, function (a) { return a.filter(function (y) { return y.id !== m.id; }); }); if (!p) return; p.nmDel = ""; setDx(p); self.flash("Nomulkiy talab o'chirildi"); } });
 };
 
 var allSums = [];
