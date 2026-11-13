@@ -807,7 +807,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 </div>
 </sc-for>
-<button type="button" class="dx-pill nm" onClick="{{r.addNm}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>{{r.addNmLabel}}</button>
+<sc-if value="{{r.canAddNm}}" hint-placeholder-val="{{ true }}"><button type="button" class="dx-pill nm" onClick="{{r.addNm}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>{{r.addNmLabel}}</button></sc-if>
 </div>
 </div>
 </div>
@@ -876,7 +876,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 </div>
 </sc-for>
-<button type="button" class="dx-pill nm" onClick="{{dxNmNew}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Yana nomulkiy talab qo'shish</button>
+<sc-if value="{{dxNmCanAdd}}" hint-placeholder-val="{{ true }}"><button type="button" class="dx-pill nm" onClick="{{dxNmNew}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Yana nomulkiy talab qo'shish</button></sc-if>
 </div>
 </sc-if>
 <sc-if value="{{dxNmPendNone}}" hint-placeholder-val="{{ true }}"><button type="button" class="dx-cta nm" onClick="{{dxNmNew}}"><span class="dx-cta-ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5M10 13h6M10 17h4"></path></svg></span><span class="dx-cta-t"><b>Nomulkiy talab kiritish</b><small>Pul bilan bog'liq bo'lmagan talab bo'lsa · ixtiyoriy</small></span><span class="dx-cta-plus"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></span></button></sc-if>
@@ -6951,7 +6951,7 @@ addSumLabel: sums.length ? "Yana da'vo summasi qo'shish" : "Da'vo summasi qo'shi
 addSum: function () { openDwWith("new", null, r.id); },
 nms: (r.nm || []).map(function (m, j) { return nmRow(m, j, r.id); }), hasNm: (r.nm || []).length > 0, nmCount: (r.nm || []).length + " ta",
 addNmLabel: (r.nm || []).length ? "Yana nomulkiy talab qo'shish" : "Nomulkiy talab qo'shish",
-addNm: function () { openNm("new", null, r.id); },
+addNm: function () { openNm("new", null, r.id); }, canAddNm: (r.nm || []).length < NM_TUR.length,
 edit: function () {
 if (editing) { focusEd(); return; } if (!guard()) return;
 var cur = self.state.dx.im.filter(function (x) { return x.id === r.id; })[0]; if (!cur) return;
@@ -7124,7 +7124,7 @@ pick: function () { setNmw(function () { return { to: p.v, err: "", ask: false }
 dxNmFromHint: "dx-hint" + (nmw && nmw.err && (!nmw.from || nmSame) ? " err" : ""),
 dxNmToHint: "dx-hint" + (nmw && nmw.err && (!nmw.to || nmSame) ? " err" : ""),
 dxNmHasP: nmHasP,
-dxNmTur: NM_TUR.map(function (o) { var on = !!(nmw && nmw.turlar[0] === o.v); return { label: o.l, on: on, off: !on, str: on ? "true" : "false",
+dxNmTur: NM_TUR.filter(function (o) { return !nmList.some(function (y) { return !(nmw && y.id === nmw.id) && nmTurOf(y)[0] === o.v; }); }).map(function (o) { var on = !!(nmw && nmw.turlar[0] === o.v); return { label: o.l, on: on, off: !on, str: on ? "true" : "false",
 cls: "dx-nmopt" + (on ? " on" : "") + (nmw && nmw.err && !nmw.turlar.length ? " err" : ""),
 pick: function () { setNmw(function () { return { turlar: [o.v], err: "", ask: false }; }); } }; }),
 dxNmTurHint: "dx-hint" + (nmw && nmw.err && !nmw.turlar.length ? " err" : ""),
@@ -7136,7 +7136,7 @@ dxNmClose: reqCloseNm, dxNmForceClose: closeNm, dxNmSave: saveNm,
 dxNmAsk: !!(nmw && nmw.ask), dxNmNoAsk: !(nmw && nmw.ask), dxNmAskNo: function () { setNmw(function () { return { ask: false }; }); },
 dxNmKey: function (e) { if (e.key === "Escape") { e.stopPropagation(); reqCloseNm(); } },
 dxNmNew: function () { openNm("new", null, "ed"); },
-dxNmPend: nmPend.map(function (m, j) { return nmRow(m, j, "ed"); }), dxNmPendHas: nmPend.length > 0, dxNmPendNone: nmPend.length === 0, dxNmPendCount: nmPend.length + " ta"
+dxNmPend: nmPend.map(function (m, j) { return nmRow(m, j, "ed"); }), dxNmPendHas: nmPend.length > 0, dxNmPendNone: nmPend.length === 0, dxNmPendCount: nmPend.length + " ta", dxNmCanAdd: nmPend.length < NM_TUR.length
 });
 
 
