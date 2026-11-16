@@ -7029,12 +7029,10 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .btn.lift-go.off,.btn.lift-go:disabled{background:#fca5a5;border-color:#fca5a5;cursor:not-allowed}
 @media (max-width:640px){.ntx-f .lift-ok{flex-basis:100%}}
 /* ===== ADMINKA · Boshqaruv paneli ===== */
-.adm-chip{display:inline-flex;align-items:center;gap:6px;margin:2px 12px 8px;padding:3px 10px 3px 8px;border-radius:999px;background:#eef2ff;color:#4338ca;font-size:11.5px;font-weight:600;letter-spacing:.01em;align-self:flex-start}
+.adm-chip{display:inline-flex;align-items:center;gap:6px;margin:2px 12px 8px;padding:3px 10px 3px 8px;border-radius:999px;background:#eff6ff;color:#3073f1;font-size:11.5px;font-weight:600;letter-spacing:.01em;align-self:flex-start}
 .adm-chip .i{width:14px;height:14px}
-.adm-badge{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px 0 8px;border-radius:999px;background:#eef2ff;border:1px solid #c7d2fe;color:#4338ca;font-size:12px;font-weight:600;white-space:nowrap}
+.adm-badge{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px 0 8px;border-radius:999px;background:#eff6ff;border:1px solid #bfdbfe;color:#3073f1;font-size:12px;font-weight:600;white-space:nowrap}
 .adm-badge .i{width:15px;height:15px}
-.l-app.is-adm .l-rail{box-shadow:inset 0 3px 0 #4f46e5}
-.l-app.is-adm .l-sn.on{background:#eef2ff !important;color:#4338ca !important}
 .adm-sn{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%}
 .adm-sn>span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .adm-soonb{flex:none;width:6px;height:6px;border-radius:50%;background:#cbd5e1}
@@ -7121,7 +7119,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .adm-reset{border:0;background:none;font:inherit;font-size:12.5px;color:#94a3b8;cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px}
 .adm-reset:hover{color:#3073f1}
 .adm-soon{align-items:center;text-align:center;padding:48px 24px;gap:10px}
-.adm-soon-ic{width:56px;height:56px;border-radius:16px;background:#eef2ff;color:#4f46e5;display:grid;place-items:center}
+.adm-soon-ic{width:56px;height:56px;border-radius:16px;background:#eff6ff;color:#3073f1;display:grid;place-items:center}
 .adm-soon-ic .i{width:26px;height:26px}
 .adm-soon b{font-size:18px;color:#0f172a}.adm-soon p{max-width:520px;margin:0 0 6px;color:#64748b;font-size:14px;line-height:1.5}
 /* forma (drawer) */
@@ -7175,7 +7173,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .adm-tr.l1,.adm-tr.l2{padding-top:8px;padding-bottom:8px}
 /* adminka: yon menyu (accordion) */
 .adm-nq{display:flex;align-items:center;gap:8px;height:38px;margin:4px 0 10px;padding:0 8px 0 10px;border:1px solid #e2e8f0;border-radius:10px;background:#f8fafc;transition:border-color 150ms,background-color 150ms}
-.adm-nq:focus-within{border-color:#a5b4fc;background:#fff;box-shadow:0 0 0 3px rgba(99,102,241,.12)}
+.adm-nq:focus-within{border-color:#3073f1;background:#fff;box-shadow:0 0 0 3px rgba(48,115,241,.12)}
 .adm-nq .i{width:15px;height:15px;color:#94a3b8;flex:none}
 .adm-nq input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:13px;color:#0f172a}
 .adm-nq-e{display:block;padding:10px 12px;color:#94a3b8;font-size:12.5px}
@@ -7197,7 +7195,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .adm-ni:hover{background:#f1f5f9;color:#0f172a}
 .adm-ni.on{background:#eef2ff;color:#4338ca;font-weight:600;position:relative}
 .adm-ni.on::before{content:"";position:absolute;left:-11px;top:6px;bottom:6px;width:2px;border-radius:2px;background:#4f46e5}
-.adm-soon-g{font-size:12px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:#6366f1}
+.adm-soon-g{font-size:12px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:#3073f1}
 .l-app.is-adm .l-sub>*{flex-shrink:0}
 .l-app.is-adm .l-sub .adm-nq{flex-shrink:0}
 /* adminka: bo'limlar asosiy yon panelda */
@@ -7216,3 +7214,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .adm-rail .l-rgrp:hover>.l-ri:not(.on){background:#eef2ff;color:#4338ca}
 .adm-tr.can{cursor:pointer;user-select:none}
 .adm-tr.can .adm-tog{pointer-events:auto}
+/* adminka ichki menyusi — sudya kabinetidagi l-sn bilan bir xil */
+.adm-nav{gap:2px}
+.adm-sn2{display:block;width:100%;line-height:1.35}
+.adm-nq{margin:0 0 10px}
