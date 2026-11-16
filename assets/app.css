@@ -7201,3 +7201,17 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .adm-soon-g{font-size:12px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:#6366f1}
 .l-app.is-adm .l-sub>*{flex-shrink:0}
 .l-app.is-adm .l-sub .adm-nq{flex-shrink:0}
+/* adminka: bo'limlar asosiy yon panelda */
+.adm-rail{display:flex;flex-direction:column;align-items:center;gap:6px;padding:6px 0;margin:2px 0;border-top:1px solid #eef1f5;border-bottom:1px solid #eef1f5}
+.adm-rail .l-ri .i{width:22px;height:22px}
+.adm-fly .l-flyin{min-width:260px;max-width:300px}
+.adm-fly-t{display:block;font-size:13px;font-weight:600;color:#0f172a;padding:4px 10px 6px}
+.adm-fly-l{display:flex;flex-direction:column;gap:1px;max-height:min(60vh,420px);overflow:auto;border-top:1px solid #f1f5f9;padding-top:4px}
+.adm-fly-i{font-size:13px !important;padding:7px 10px !important;line-height:1.35;white-space:normal}
+.adm-fly-i.on{background:#eef2ff !important;color:#4338ca !important;font-weight:600}
+.adm-leaf{display:flex;align-items:flex-start;gap:10px;margin-top:6px;padding:12px;border-radius:12px;background:#f8fafc;border:1px solid #eef1f5}
+.adm-leaf small{font-size:12.5px;color:#64748b;line-height:1.45}
+.adm-nav .adm-ni{padding:9px 12px;font-size:14px}
+.adm-nav .adm-ni.on::before{left:0;top:8px;bottom:8px;width:3px}
+@media (min-height:760px){.l-app.is-adm .l-rail{overflow:visible}}
+.adm-rail .l-rgrp:hover>.l-ri:not(.on){background:#eef2ff;color:#4338ca}
