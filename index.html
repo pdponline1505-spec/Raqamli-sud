@@ -6797,7 +6797,7 @@ nsTargetWhen: !s.nsForm.natija ? "Quyida natijani tanlang" : (s.nsForm.sana ? "K
 nsSummary: s.nsForm.natija ? "Ish «" + nsTarget + "» bosqichiga o'tadi" : "Davom etish uchun natijani tanlang",
 nsModal: s.nsModal, nsForm: s.nsForm, nsSet: nsSet, nsBorder: nsBorder, nsErr: s.nsErr,
 nsErrText: NS_REQ.filter(function (r) { return !s.nsForm[r[0]]; }).map(function (r) { return r[1]; }).join(", "),
-nsOpen: function () { self.setState({ dxDd: "", nx: { res: "", f: { ajrim: (function () { var d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); })(), sana: "", sayyorAddr: "" }, joy: "", yord: "Ergashev Jahongir Alisherovich", farq: "", manzil: "3-zal · Termiz sh., Al-Hakim at-Termiziy ko'chasi, 12", asos: "", tpl: "", cb: { sms: true, email: true }, hal: "", talab: [], talabPick: "", judges: ["Tojiyev Z. X."], helpers: ["Ergashev Jahongir A."], err: "" } }); },
+nsOpen: function () { self.setState({ dxDd: "", nx: { full: true, res: "", f: { ajrim: (function () { var d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); })(), sana: "", sayyorAddr: "" }, joy: "", yord: "Ergashev Jahongir Alisherovich", farq: "", manzil: "3-zal · Termiz sh., Al-Hakim at-Termiziy ko'chasi, 12", asos: "", tpl: "", cb: { sms: true, email: true }, hal: "", talab: [], talabPick: "", judges: ["Tojiyev Z. X."], helpers: ["Ergashev Jahongir A."], err: "" } }); },
 nsClose: function () { self.setState({ nsModal: false }); },
 nsSave: function () {
 var f = self.state.nsForm;
