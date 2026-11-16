@@ -142,3 +142,21 @@ a.rsc-ib{text-decoration:none}
 .rsc-dtab svg{width:12px;height:12px}
 .rsc-dtab b{position:absolute;top:-6px;left:-6px;min-width:15px;height:15px;padding:0 4px;border-radius:999px;background:#2563eb;color:#fff;font-size:9.5px;font-weight:700;line-height:15px;box-shadow:0 0 0 2px #fff}
 @media (max-width:760px){.rsc-dock.shift{right:0;opacity:0;pointer-events:none}}
+/* izohni panelda to'liq ko'rish */
+.rsc-det{display:flex;flex-direction:column;min-height:0;flex:1}
+.rsc-deth{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid #eef1f5}
+.rsc-back{display:inline-flex;align-items:center;gap:4px;height:30px;padding:0 10px 0 6px;border:1px solid #e2e8f0;border-radius:8px;background:#fff;font:inherit;font-size:12.5px;color:#334155;cursor:pointer}
+.rsc-back svg{width:15px;height:15px}
+.rsc-back:hover{background:#f1f5f9}
+.rsc-detl{display:flex;flex-direction:column;min-width:0;flex:1;line-height:1.25}
+.rsc-detl b{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rsc-detl small{font-size:11.5px;color:#64748b}
+.rsc-detb{display:flex;flex-direction:column;gap:12px;padding:14px;overflow:auto;flex:1}
+.rsc-bigshot{position:relative;display:block;width:100%;padding:0;border:1px solid #dbe3ef;border-radius:10px;overflow:hidden;background:#f1f5f9;cursor:zoom-in}
+.rsc-bigshot img{display:block;width:100%;height:auto;max-height:260px;object-fit:cover;object-position:top left}
+.rsc-bigshot span{position:absolute;left:8px;bottom:8px;display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:7px;background:rgba(15,23,42,.75);color:#fff;font-size:11.5px}
+.rsc-bigshot span svg{width:12px;height:12px}
+.rsc-detgo{display:flex;flex-direction:column;gap:8px}
+.rsc-go{justify-content:center;width:100%}
+.rsc-go{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px}
+.rsc-go svg{width:13px;height:13px;flex:none}
