@@ -7214,3 +7214,5 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .adm-nav .adm-ni.on::before{left:0;top:8px;bottom:8px;width:3px}
 @media (min-height:760px){.l-app.is-adm .l-rail{overflow:visible}}
 .adm-rail .l-rgrp:hover>.l-ri:not(.on){background:#eef2ff;color:#4338ca}
+.adm-tr.can{cursor:pointer;user-select:none}
+.adm-tr.can .adm-tog{pointer-events:auto}
