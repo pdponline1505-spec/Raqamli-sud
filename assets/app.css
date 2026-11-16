@@ -6968,3 +6968,29 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .ntv-ad-sol::before{content:"";width:7px;height:7px;border-radius:50%;background:#cbd5e1}
 .ntv-ad-sol.on::before{background:#2563eb}
 @media (max-width:640px){.ntv-ad-parties{grid-template-columns:1fr}.ntv-ad-arr{transform:rotate(90deg);height:20px}}
+/* natija: sud xarajati summasi — ko'rish / tahrirlash */
+.ntv-sv{display:flex;flex-direction:column;gap:8px}
+.ntv-sv-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.ntv-sv-sum{display:flex;flex-direction:column;gap:3px;min-width:180px;flex:1}
+.ntv-sv-sum small{font-size:12px;color:#64748b;font-weight:500}
+.ntv-sv-sum b{font-size:20px;font-weight:600;color:#0f172a;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.ntv-sv-src,.ntv-sv-chg{align-self:flex-start;display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px}
+.ntv-sv-src{background:#ecfdf3;color:#15803d}.ntv-sv-src .i{width:12px;height:12px}
+.ntv-sv-chg{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa}
+.ntv-sv-row .ntv-stats{margin-left:auto}
+.ntv-sv-note{font-size:12.5px;color:#475569;background:#f8fafc;border:1px solid #e6ebf3;border-radius:8px;padding:8px 12px}
+.ntv-sv-note b{font-weight:600;color:#334155}
+.ntv-se{display:flex;flex-direction:column;gap:12px;padding:14px;border:1px solid #c7d7fe;border-radius:12px;background:#fbfcff;animation:ntAlIn 200ms cubic-bezier(.22,1,.36,1)}
+.ntv-se-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 190px;gap:12px;align-items:start}
+.ntv-se-h{font-size:11.5px;color:#64748b}
+.ntv-se-und{align-self:stretch;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:10px 14px;border-radius:10px;background:#fef2f2;border:1px solid #fee2e2;margin-top:22px;height:44px;box-sizing:border-box}
+.ntv-se-und small{font-size:11.5px;color:#b91c1c}.ntv-se-und b{font-size:15px;color:#b91c1c;font-variant-numeric:tabular-nums}
+.ntv-se textarea{width:100%;box-sizing:border-box;border:1px solid #dbe2ea;border-radius:10px;padding:9px 12px;font:inherit;font-size:13.5px;resize:vertical;min-height:60px;background:#fff}
+.ntv-se textarea:focus{outline:none;border-color:#3073f1;box-shadow:0 0 0 3px rgba(48,115,241,.12)}
+.ntv-se-err{display:flex;align-items:center;gap:8px;font-size:12.5px;color:#b91c1c;background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:8px 12px}
+.ntv-se-err .i{width:16px;height:16px;flex:none}
+.ntv-se-act{display:flex;justify-content:flex-end;gap:8px}
+.ntv-alw{display:flex;align-items:center;gap:8px;font-size:12.5px;color:#b45309;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:8px 12px;margin-top:8px}
+.ntv-alw .i{width:16px;height:16px;flex:none}
+.ntv-alw.ok{color:#15803d;background:#f0fdf4;border-color:#bbf7d0}
+@media (max-width:760px){.ntv-se-g{grid-template-columns:1fr}.ntv-se-und{margin-top:0}}
