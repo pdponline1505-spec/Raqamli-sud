@@ -7265,7 +7265,7 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .adm-ib.ed:hover,.adm-ib.ed:focus-visible{color:#2563eb;background:#eff6ff !important}
 .adm-ib.del:hover,.adm-ib.del:focus-visible{color:#dc2626;background:#fef2f2 !important}
 .adm-lr .adm-act{gap:4px}
-.adm-ib .i{width:19px;height:19px;stroke-width:1.8 !important;color:inherit}
+.adm-ib .i{width:18px;height:18px;stroke-width:1.6 !important;color:inherit}
 .adm-ib{color:#94a3b8}
 /* adminka: pagination (jadval pastki qatori) */
 .adm-lt{display:flex;flex-direction:column}
