@@ -8853,13 +8853,13 @@ if (I > S) { o.sErr = "Ixtiyoriy to'langan summa asosiy summadan oshmasligi kera
 var ch = !!src && (S !== src.sum || I !== src.ix); if (ch && !nt2) { o.sErr = "Summa ish materiallaridan farq qiladi — o'zgartirish sababini yozing"; return; }
 o[k] = String(S); var px = Object.assign({}, o.px || {}); px[k] = I > 0 ? [String(I)] : []; o.px = px; var sn = Object.assign({}, o.sNote || {}); sn[k] = ch ? nt2 : ""; o.sNote = sn; o.sEd = ""; o.sDr = null; o.sErr = ""; }); };
 var sDr = function (f) { return function (e) { var val = f === "note" ? e.target.value : digits(e.target.value); setNt(function (o) { var d = Object.assign({}, o.sDr || {}); d[f] = val; o.sDr = d; if (o.sErr) o.sErr = ""; }); }; };
-var sX = { sView: !sEd, sEdit: sEd, valTxt: (group(raw) || "0") + " so'm", srcOn: !!src && !chg, chg: chg, chgTxt: src ? "Ishda: " + (group(String(src.sum)) || "0") + " so'm" + (src.ix ? " · to'langan " + group(String(src.ix)) : "") : "", hasNote: !!sNote && chg, note: sNote,
+var sX = { sView: !sEd, sEdit: sEd, valTxt: (group(raw) || "0") + " so'm", srcOn: false, chg: chg, chgTxt: src ? "Ishda: " + (group(String(src.sum)) || "0") + " so'm" + (src.ix ? " · to'langan " + group(String(src.ix)) : "") : "", hasNote: !!sNote && chg, note: sNote,
 sOpen: function () { setNt(function (o) { o.sEd = k; o.sDr = { sum: String(num(raw)), ix: String(ix), note: sNote }; o.sErr = ""; o.alEd = ""; o.alDet = ""; }); },
 hasSrc: !!src, srcSumTxt: src ? (group(String(src.sum)) || "0") + " so'm" : "", srcIxTxt: src ? (group(String(src.ix)) || "0") + " so'm" : "",
 dSum: group(dr.sum || ""), dIx: group(dr.ix || ""), dUnd: fm(dS - dI), dNote: dr.note || "", setDSum: sDr("sum"), setDIx: sDr("ix"), setDNote: sDr("note"),
 noteLbl: dChg ? "O'zgartirish sababi *" : "Izoh (ixtiyoriy)", noteBc: sEd && nt.sErr && dChg && !(dr.note || "").trim() ? "#dc2626" : "", dErr: sEd ? (nt.sErr || "") : "",
 dCancel: function () { setNt(function (o) { o.sEd = ""; o.sDr = null; o.sErr = ""; }); }, dDone: sCommit,
-alWarn: !dis && alDiff !== 0 && (und > 0 || alTot > 0), alOk: !dis && und > 0 && alDiff === 0, alDiff: alDiff,
+alWarn: !dis && alDiff !== 0 && (und > 0 || alTot > 0), alOk: false, alDiff: alDiff,
 alWarnTxt: alDiff > 0 ? "Taqsimlanmagan: " + fm(alDiff) + " so'm — taqsimotlar yig'indisi undiriladigan summaga teng bo'lishi kerak" : "Ortiqcha taqsimlangan: " + fm(-alDiff) + " so'm — taqsimotlar yig'indisi undiriladigan summadan oshib ketdi" };
 return { val: group(raw), dis: dis, ix: fm(ix), und: fm(und), undN: und, hasUnd: k !== "qarz" && !dis, ozod: dis,
 ixLbl: { qarz: "Ixtiyoriy to'langan asosiy qarz", poch: "Ixtiyoriy to'langan pochta xarajatlari", vka: "Ixtiyoriy to'langan VKA xarajatlari", boj: "Ixtiyoriy to'langan davlat boji" }[k],
