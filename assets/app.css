@@ -7265,3 +7265,4 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .adm-ib.ed:hover,.adm-ib.ed:focus-visible{color:#2563eb;background:#eff6ff !important}
 .adm-ib.del:hover,.adm-ib.del:focus-visible{color:#dc2626;background:#fef2f2 !important}
 .adm-lr .adm-act{gap:4px}
+.adm-ib .i{width:18px;height:18px;stroke-width:1.4 !important;color:inherit}
