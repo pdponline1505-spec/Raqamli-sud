@@ -7106,9 +7106,8 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .adm-act{display:flex;justify-content:flex-end;gap:8px}
 .adm-ib{width:32px;height:32px;border-radius:8px;border:1px solid #e2e8f0;background:#fff;display:grid;place-items:center;color:#64748b;cursor:pointer;transition:color 150ms,background-color 150ms,border-color 150ms}
 .adm-ib .i{width:17px;height:17px;stroke-width:1.8}
-.adm-tr:hover .adm-ib.ed,.adm-ib.ed:hover,.adm-ib.ed:focus-visible{color:#2563eb;border-color:#bfdbfe;background:#eff6ff}
-.adm-tr:hover .adm-ib.del,.adm-ib.del:hover,.adm-ib.del:focus-visible{color:#dc2626;border-color:#fecaca;background:#fef2f2}
-.adm-ib.ed:hover{background:#dbeafe}.adm-ib.del:hover{background:#fee2e2}
+.adm-ib.ed:hover,.adm-ib.ed:focus-visible{color:#2563eb;border-color:#bfdbfe;background:#eff6ff}
+.adm-ib.del:hover,.adm-ib.del:focus-visible{color:#dc2626;border-color:#fecaca;background:#fef2f2}
 .adm-ib:focus-visible{outline:2px solid #3073f1;outline-offset:2px}
 .adm-empty{display:flex;flex-direction:column;align-items:center;gap:4px;padding:40px 16px;border-top:1px solid #eef1f5;text-align:center}
 .adm-empty b{font-size:15px;color:#0f172a}.adm-empty small{color:#64748b}
