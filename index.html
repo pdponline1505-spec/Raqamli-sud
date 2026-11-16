@@ -3850,6 +3850,11 @@ var QD_REG_KEY = "adolat.qd.reg.v1", QD_MEM = null;
 function qdRegAll() { if (QD_MEM) return QD_MEM; try { QD_MEM = JSON.parse(localStorage.getItem(QD_REG_KEY) || "[]") || []; } catch (x) { QD_MEM = []; } return QD_MEM; }
 function qdRegSave(a) { QD_MEM = a; try { localStorage.setItem(QD_REG_KEY, JSON.stringify(a)); } catch (x) {} }
 function qdIni(n) { var w = String(n || "").replace(/["«»“”']/g, "").split(/\s+/).filter(function (x) { return x && !/^(mchj|aj|xk|qk|ok|mas'uliyati)$/i.test(x); }); return ((w[0] || "?")[0] + ((w[1] || "")[0] || "")).toUpperCase(); }
+// Devonxonada ro'yxatga olingan ishlar sahifa qayta yuklanganda ham saqlanib qolishi uchun (brauzerda)
+function regStored() { try { return JSON.parse(window.localStorage.getItem("adolat.regCases") || "[]") || []; } catch (e) { return []; } }
+function regStoredRows() { var seen = {}; return regStored().map(function (x) { return x.row; }).filter(function (r) { if (!r || seen[r.num]) return false; seen[r.num] = 1; return true; }); }
+function regStoredCtx(num) { var x = regStored().filter(function (y) { return y.row && y.row.num === num; })[0]; return x && x.ctx ? JSON.parse(JSON.stringify(x.ctx)) : null; }
+function regStore(row, ctx) { try { var all = regStored().filter(function (y) { return !y.row || y.row.num !== row.num; }); all.unshift({ row: row, ctx: ctx }); var keep = all.slice(0, 20); for (;;) { try { window.localStorage.setItem("adolat.regCases", JSON.stringify(keep)); break; } catch (q) { if (keep.length <= 1) break; keep = keep.slice(0, keep.length - 1); } } } catch (e) {} }
 function regCaseBlank(row) {
 var o = {}; CASE_KEYS.forEach(function (k) { o[k] = k === "bk" ? null : []; });
 var g = function (n) { return /ovna|evna|qizi|Nigora|Dilfuza/i.test(n) ? "Ayol" : "Erkak"; };
@@ -5009,7 +5014,7 @@ var cur = this.state.listSrc || "main";
 if (cur === target) return {};
 this._lists = this._lists || {};
 var save = {}; var st = this.state; LIST_KEYS.forEach(function (k) { save[k] = st[k]; }); this._lists[cur] = save;
-var load = this._lists[target] || (target === "reg" ? { lRows: REG_ROWS.slice(), lTab: "korib", lSel: {}, lMenu: 0, lfQ: "", lfSud: [], lfTag: [], lfDate: "", lfPer: [], lfPerRole: "any", lfPerQ: "", lfOpen: "", lOnlySel: false } : null);
+var load = this._lists[target] || (target === "reg" ? { lRows: (function () { var st = regStoredRows(), nums = st.map(function (r) { return r.num; }); return st.concat(REG_ROWS.filter(function (r) { return nums.indexOf(r.num) < 0; })); })(), lTab: "korib", lSel: {}, lMenu: 0, lfQ: "", lfSud: [], lfTag: [], lfDate: "", lfPer: [], lfPerRole: "any", lfPerQ: "", lfOpen: "", lOnlySel: false } : null);
 return Object.assign({}, load || {}, { listSrc: target });
 }
 _loadCase(row) {
@@ -5019,7 +5024,7 @@ var cur = this.state.caseCtx || "main";
 if (cur === target) return {};
 this._cases = this._cases || {};
 var save = {}; var st = this.state; CASE_KEYS.forEach(function (k) { save[k] = st[k]; }); this._cases[cur] = save;
-var load = this._cases[target] || (reg ? regCaseBlank(row) : (row && row.demo ? demoCase(row, this._cases.main || save) : null));
+var load = this._cases[target] || (reg ? (regStoredCtx(row.num) || regCaseBlank(row)) : (row && row.demo ? demoCase(row, this._cases.main || save) : null));
 return Object.assign({}, load || {}, { caseCtx: target });
 }
 componentDidMount() {
@@ -7748,7 +7753,17 @@ var base = sw.lRows || st.lRows;
 var o = Object.assign(sw, { lRows: [row].concat(base), page: "list", lTab: "korib", lSel: {}, lMenu: 0,
 dx: dxBlank(), dxDv: [], dxJv: [], dxErr: false, dxOver: false, ap: { docs: [], shk: "", shkPick: "", pro: "", idTur: "", idNom: "" }, apShk: [], apc: "", apcs: [], apcSel: {}, apcSyn: [], apcPick: null, apiPick: null, qdNum: "", qdPick: null, qdAp: {}, qdShkP: [], qdShkPro: [], qdShk: [], qdKind: "", apQsh: [], apHj: [] });
 self._cases = self._cases || {};
-var blank = regCaseBlank(row); blank.tmDv = st.dxDv.slice(); blank.tmJv = st.dxJv.slice(); self._cases["reg:" + caseNo] = blank;
+var blank = regCaseBlank(row); blank.tmDv = st.dxDv.slice(); blank.tmJv = st.dxJv.slice();
+// Devonxonada kiritilgan talablar (ish turkumi, da'vo summalari, nomulkiy talablar) va sud xarajatlari ishga ko'chiriladi
+var cp = function (x) { return JSON.parse(JSON.stringify(x || [])); }, rsd = Date.now();
+blank.itk = (d.im || []).map(function (e, i) { return { id: "r" + rsd + "_" + i, turkum: e.turkum || "", qturkum: e.qturkum || "", iturkum: e.iturkum || "", tartib: e.tartib || "", nizo: e.nizo || "", ariza: e.ariza || "", javs: (e.javs || []).slice(), davs: (e.davs || []).slice(), ok: false, src: "devon", sums: cp(e.sums), nm: cp(e.nm) }; });
+var dv0 = (st.dxDv[0] || {}).name || "", jv0 = (st.dxJv[0] || {}).name || "", VAL = { "So'm": "UZS", "AQSh dollari": "USD", "Yevro": "EUR" }, xdt = d.bSana || dxTodayIso();
+blank.xr = [];
+// byDv: da'vogar ariza berishda to'lagan — natijada javobgardan da'vogar foydasiga undiriladi
+if ((parseInt(d.bSum, 10) || 0) > 0) blank.xr.push({ id: "rx" + rsd + "b", turi: "Davlat boji", num: d.bKvit || d.tolov || "—", amt: parseInt(d.bSum, 10), paid: parseInt(d.bSum, 10), date: xdt, val: VAL[d.bValyuta] || "UZS", und: dv0, qarz: jv0, byDv: true });
+if (d.pochta === "To'langan") blank.xr.push({ id: "rx" + rsd + "p", turi: "Pochta xarajati", num: d.tolov || "—", amt: 41200, paid: 41200, date: xdt, val: "UZS", und: dv0, qarz: jv0, byDv: true });
+if (d.vka === "To'langan") blank.xr.push({ id: "rx" + rsd + "v", turi: "VKA xarajati", num: d.tolov || "—", amt: 103000, paid: 103000, date: xdt, val: "UZS", und: dv0, qarz: jv0, byDv: true });
+self._cases["reg:" + caseNo] = blank; regStore(row, blank);
 self.setState(o);
 try { localStorage.removeItem("adolat.dx.draft.v3"); } catch (x) {}
 self._draftLast = "";
@@ -8736,6 +8751,7 @@ if (!n || cRows.length !== 1) return null; var row = cRows[0], st = self.state;
 var reg = (st.listSrc || "main") === "reg", key = reg ? "reg:" + row.num : (row.demo ? "demo:" + row.num : "main"), cur = st.caseCtx || "main", src = null;
 if (cur === key && (key !== "main" || st.caseNum === row.num)) src = st;
 else if (key !== "main" && self._cases && self._cases[key]) src = self._cases[key];
+else if (reg && typeof regStoredCtx === "function") src = regStoredCtx(row.num);
 else if (row.demo && typeof DEMO_CASES !== "undefined" && DEMO_CASES[row.demo]) src = DEMO_CASES[row.demo];
 if (!src) return null;
 return { itk: src.itk || [], xr: src.xr || [], dv: (src.tmDv || []).map(function (p) { return p.name; }), jv: (src.tmJv || []).map(function (p) { return p.name; }) };
@@ -8759,7 +8775,7 @@ var XK = function (t) { t = String(t || ""); return /davlat boji/i.test(t) ? "bo
 var who = function (nm) { if (!nm) return ""; if (ntCtx.dv.indexOf(nm) >= 0) return "Da'vogar · " + nm; if (ntCtx.jv.indexOf(nm) >= 0) return "Javobgar · " + nm; return ""; };
 var nN = function (x) { return parseInt(String(x == null ? "" : x).replace(/\D/g, ""), 10) || 0; };
 var xs = { boj: 0, poch: 0, vka: 0 }, xpx = {}, xal = {}, xHas = {};
-(ntCtx.xr || []).forEach(function (x) { var k = XK(x.turi); if (!k) return; var a = nN(x.amt), pd = Math.min(a, nN(x.paid)); if (!a) return; xHas[k] = true;
+(ntCtx.xr || []).forEach(function (x) { var k = XK(x.turi); if (!k) return; var a = nN(x.amt), pd = x.byDv ? 0 : Math.min(a, nN(x.paid)); if (!a) return; xHas[k] = true;
 if ((x.val || "UZS") === "UZS") xs[k] += a; if (pd) (xpx[k] = xpx[k] || []).push(String(pd));
 if (a - pd > 0) (xal[k] = xal[k] || []).push({ sum: String(a - pd), cur: x.val || "UZS", from: who(x.qarz), to: who(x.und), auto: true }); });
 var xAny = Object.keys(xHas).length > 0;
@@ -10967,6 +10983,8 @@ this._navKey = navKey;
 try {
 var snap = JSON.stringify({ page: s.page, caseOpen: !!s.caseOpen, openMode: s.openMode, caseNum: s.caseNum, nav: s.nav, lTab: s.lTab, lInst: s.lInst, role: s.role, dbDay2: s.dbDay2, subCollapsed: !!s.subCollapsed });
 if (snap !== this._navSaved) { this._navSaved = snap; window.localStorage.setItem("adolat.nav", snap); }
+// ro'yxatga olingan ishlarning bosqichi (Ko'rib chiqish → Natija qo'yish ...) ham saqlanadi
+if ((s.listSrc || "main") === "reg" && typeof regStored === "function") { var rs0 = regStored(); if (rs0.length) { var chg = false; rs0.forEach(function (x) { var r = (s.lRows || []).filter(function (y) { return x.row && y.num === x.row.num; })[0]; if (r && JSON.stringify(r) !== JSON.stringify(x.row)) { x.row = JSON.parse(JSON.stringify(r)); chg = true; } }); if (chg) window.localStorage.setItem("adolat.regCases", JSON.stringify(rs0)); } }
 } catch (e) {}
 if (this._rtOn) { try {
 var rtH = rtBuild(s), rtK = rtBuild(s, true);
