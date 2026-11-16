@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=59094037b63c">
+<link rel="stylesheet" href="assets/app.css?v=33663088583e">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -1385,7 +1385,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 
 <section class="sec" id="turkumlar">
 <div class="sh"><div><h2>Ish mazmuni va da'vo summasi</h2><p>{{itkSub}}</p></div><div class="tools itk-tools"><button class="btn" onClick="{{itkAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Ish mazmuni qo'shish</button></div></div>
-<sc-if value="{{birlHas}}" hint-placeholder-val="{{ false }}"><div class="itk-birl"><span class="itk-birl-ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7h8M8 12h8M8 17h5"></path><rect x="4" y="3" width="16" height="18" rx="2.5"></rect></svg></span><div class="kv" style="gap: 2px; min-width: 0"><b>{{birlTitle}}</b><small>Birlashtirilgan ishlarning ish mazmuni, da'vo summalari va taraflari shu ishga ko'chirilgan</small></div><div class="itk-birl-l"><sc-for list="{{birlList}}" as="b" hint-placeholder-count="2"><span class="itk-birl-c" title="{{b.title}}"><b>{{b.num}}</b><small>{{b.sub}}</small></span></sc-for></div></div></sc-if>
+<sc-if value="{{birlHas}}" hint-placeholder-val="{{ false }}"><div class="itk-birl2" title="Birlashtirilgan ishlarning ish mazmuni, da'vo summalari va taraflari shu ishga ko'chirilgan"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v6a4 4 0 0 0 4 4h6M17 14l-3-3M17 14l-3 3M7 20v-3"></path></svg><span class="itk-birl2-t">{{birlTitle}}:</span><sc-for list="{{birlList}}" as="b" hint-placeholder-count="2"><span class="itk-birl2-c" title="{{b.title}} · {{b.sub}}">{{b.num}}</span></sc-for></div></sc-if>
 <div class="dx-entries" role="list" aria-label="Ish turkumlari va ularning da'vo summalari">
 <sc-for list="{{itk}}" as="t" hint-placeholder-count="2">
 <div class="{{t.cls}}" role="listitem">
@@ -10858,7 +10858,7 @@ itkSumAdd: function () { var l = self.state.itk || []; if (!l.length) return; if
 itkSumClose: function () { self.setState({ itkSumMenu: false }); },
 itkSumOpts: list.map(function (t, i) { var a = sc(t.turkum); return { code: a.code || String(i + 1), name: a.name, isMain: i === 0, pick: function () { self.setState({ itkSumMenu: false }); __out._itkAddSum(t)(); } }; }),
 itkSub: list.length ? list.length + " ta ish mazmuni · da'vo summalari bilan" : "Ish mazmuni va unga tegishli da'vo summalari",
-birlHas: (s.birlFrom || []).length > 0, birlTitle: "Bu ishga " + (s.birlFrom || []).length + " ta ish birlashtirilgan",
+birlHas: (s.birlFrom || []).length > 0, birlTitle: "Birlashtirilgan ishlar",
 birlList: (s.birlFrom || []).map(function (b) { return { num: b.num, sub: b.sana + " · " + b.ariz + " → " + b.jav, title: b.sud }; }),
 itkGrandHas: list.some(function (x) { return (x.sums || []).length; }), itkGrand: __out._byCur([].concat.apply([], list.map(function (x) { return x.sums || []; }))),
 itkAdd: function () { self.setState({ itkDel: "", dxDd: "", itkForm: { mode: "new", id: "", turkum: "", qturkum: "", iturkum: "", javs: [], err: "" } }); }
