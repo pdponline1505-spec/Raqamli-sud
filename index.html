@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=4a41705eb2fa">
+<link rel="stylesheet" href="assets/app.css?v=feccc6f28bce">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -3231,9 +3231,9 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div></div>
 <sc-if value="{{ntfDetMode}}" hint-placeholder-val="{{ false }}"><div class="ntx-f"><span style="flex: 1"></span><button class="btn qv-close" onClick="{{ntfClose}}">Yopish</button><sc-if value="{{ntfCanLift}}" hint-placeholder-val="{{ true }}"><button class="btn nt-lift nt-liftbig" onClick="{{ntfToLift}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2.5"></rect><path d="M8 11V7.5a4 4 0 0 1 7.6-1.7"></path><path d="M12 15.5v1.5"></path></svg>Taqiqni bekor qilish</button></sc-if></div></sc-if>
 <sc-if value="{{ntfLiftMode}}" hint-placeholder-val="{{ false }}"><div class="ntx-f">
-<div class="itkm-conf" role="alert"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l10 18H2z"></path><path d="M12 10v5M12 18h.01"></path></svg><span>Haqiqatan ham taqiqni olishni istaysizmi?</span></div>
-<button class="btn qv-close" onClick="{{ntfClose}}">Yo'q</button>
-<button class="btn dx-danger" onClick="{{ntfLift}}">Ha, taqiqni olish</button>
+<button type="button" role="checkbox" aria-checked="{{ntfOkStr}}" class="{{ntfOkCls}}" onClick="{{ntfOkT}}"><span class="lift-cbx" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span><span class="kv" style="gap: 1px; min-width: 0; text-align: left"><b>Taqiqni olishga to'liq rozilik beraman</b><small>Taqiq barcha cheklovlari bilan bekor qilinadi va {{ntfSys}} tizimiga yuboriladi</small></span></button>
+<button type="button" class="btn" style="border-color: transparent; background: #f1f5f9" onClick="{{ntfBack}}">Bekor qilish</button>
+<button class="{{ntfLiftCls}}" disabled="{{ntfLiftDis}}" onClick="{{ntfLift}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2.5"></rect><path d="M8 11V7.5a4 4 0 0 1 7.6-1.7"></path><path d="M12 15.5v1.5"></path></svg>Taqiqni olish</button>
 </div></sc-if>
 <sc-if value="{{ntfEdit}}" hint-placeholder-val="{{ true }}"><div class="ntx-f">
 <button class="btn nt-other" onClick="{{ntfOther}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-4-6"></path></svg>Boshqa sudyaga yuklash</button>
@@ -3304,9 +3304,9 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div></div>
 <sc-if value="{{mbfDetMode}}" hint-placeholder-val="{{ false }}"><div class="ntx-f"><span style="flex: 1"></span><button class="btn qv-close" onClick="{{mbfClose}}">Yopish</button><sc-if value="{{mbfCanLift}}" hint-placeholder-val="{{ true }}"><button class="btn nt-lift nt-liftbig" onClick="{{mbfToLift}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2.5"></rect><path d="M8 11V7.5a4 4 0 0 1 7.6-1.7"></path><path d="M12 15.5v1.5"></path></svg>Taqiqni bekor qilish</button></sc-if></div></sc-if>
 <sc-if value="{{mbfLiftMode}}" hint-placeholder-val="{{ false }}"><div class="ntx-f">
-<div class="itkm-conf" role="alert"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l10 18H2z"></path><path d="M12 10v5M12 18h.01"></path></svg><span>Haqiqatan ham taqiqni olishni istaysizmi?</span></div>
-<button class="btn qv-close" onClick="{{mbfClose}}">Yo'q</button>
-<button class="btn dx-danger" onClick="{{mbfLift}}">Ha, taqiqni olish</button>
+<button type="button" role="checkbox" aria-checked="{{mbfOkStr}}" class="{{mbfOkCls}}" onClick="{{mbfOkT}}"><span class="lift-cbx" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span><span class="kv" style="gap: 1px; min-width: 0; text-align: left"><b>Taqiqni olishga to'liq rozilik beraman</b><small>Taqiq barcha cheklovlari bilan bekor qilinadi va {{mbfSys}} tizimiga yuboriladi</small></span></button>
+<button type="button" class="btn" style="border-color: transparent; background: #f1f5f9" onClick="{{mbfBack}}">Bekor qilish</button>
+<button class="{{mbfLiftCls}}" disabled="{{mbfLiftDis}}" onClick="{{mbfLift}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2.5"></rect><path d="M8 11V7.5a4 4 0 0 1 7.6-1.7"></path><path d="M12 15.5v1.5"></path></svg>Taqiqni olish</button>
 </div></sc-if>
 <sc-if value="{{mbfEdit}}" hint-placeholder-val="{{ true }}"><div class="ntx-f"><span style="flex: 1"></span>
 <button class="btn qv-close" onClick="{{mbfClose}}">Bekor qilish</button>
@@ -9896,15 +9896,17 @@ var mch = CH[(+v.chora || 0) - 1]; __out.mbfHasCh = !mbView && !!mch; __out.mbfC
 var mrec = mbView ? list.filter(function (x) { return x.id === f.view; })[0] : null;
 var vCard = function (t, ic, tag, rows, g2, file) { var o = { t: t, icCls: "smd-ni " + ic, hasTag: !!tag, tag: tag || "", tagCls: "igr-tag", hasPhoto: false, noPhoto: true, dlCls: "smd-idg" + (g2 ? " g2" : ""), rows: rows, hasFile: !!(file && file.name), file: file ? file.name : "", fileSub: file ? file.sub : "", openFile: file ? file.open : function () {} }; return o; };
 __out.mbfCanLift = !!(mrec && mrec.st !== "bekor");
-__out.mbv = { status: mrec ? ST[mrec.st][0] : "", stCls: (mrec ? ST[mrec.st][1] : "nt-st") + " igr-st", cards: !mrec ? [] : [].concat(f && f.detail ? [vCard("Taqiq ma'lumotlari", "ic-shield", "", [tile("ID (MIB)", mrec.id), tile("Holati", ST[mrec.st][0])], true)] : [], [
+__out.mbv = { status: mrec ? ST[mrec.st][0] : "", stCls: (mrec ? ST[mrec.st][1] : "nt-st") + " igr-st", cards: !mrec ? [] : [].concat(f ? [vCard("Taqiq ma'lumotlari", "ic-shield", "", [tile("ID (MIB)", mrec.id), tile("Holati", ST[mrec.st][0])], true)] : [], [
 vCard("Javobgar va asos", "ic-user", "", [tile("Javobgar", mrec.mulkdor), tile("Asosi", mrec.asos)], true),
 vCard("Da'voni ta'minlash chorasi", "ic-shield", "", [tile("Da'voni ta'minlash choralari", mrec.chora + " – " + (CH[mrec.chora - 1] || CH[0])[0], "w3")], false),
 vCard("Ajrim ma'lumotlari", "ic-id", "", [tile("Ajrim (qaror) sanasi", mrec.ajrim), tile("Kuchga kirish sanasi", mrec.kuch)], true, { name: mrec.file, sub: "Ajrim qarorining elektron shakli" + (mrec.size && mrec.size !== "—" ? " · " + mrec.size : ""), open: function () { self.flash("«" + mrec.file + "» ko'rish oynasida ochiladi"); } })]) };
 var mbDet = mbView && !!f.detail; __out.mbfTitle = mbDet ? "Taqiq tafsilotlari" : mbView ? "Taqiqni bekor qilish" : "Taqiq qo'yish";
-__out.mbfSub = mbDet ? "MIB tizimi · " + f.view : mbView ? "MIB tizimi · " + f.view + " · ma'lumotlar faqat ko'rish uchun" : "MIB tizimi · asosiy ish " + (s.caseNum || "");
-__out.mbfLiftMode = mbView && !mbDet; __out.mbfDetMode = mbDet;
-__out.mbfToLift = function () { self.setState(function (prev) { return prev.mbForm ? { mbForm: Object.assign({}, prev.mbForm, { detail: false }) } : null; }); };
-__out.mbfLift = function () { var w = self.state.mbForm; if (!w || !w.view) return; self.setState({ mbForm: null, dxDd: "", mb: self.state.mb.map(function (x) { return x.id === w.view ? Object.assign({}, x, { st: "bekor" }) : x; }) }); self.flash(w.view + " · taqiqdan olindi"); };
+__out.mbfSub = mbDet ? "MIB tizimi · " + f.view : mbView ? "MIB tizimi · " + f.view : "MIB tizimi · asosiy ish " + (s.caseNum || "");
+__out.mbfLiftMode = mbView && !mbDet; __out.mbfDetMode = mbDet; (function () { var ff = self.state.mbForm || {}, ok = !!ff.liftOk; __out.mbfSys = "MIB"; __out.mbfOkStr = ok ? "true" : "false"; __out.mbfOkCls = "lift-ok" + (ok ? " on" : ""); __out.mbfLiftDis = !ok; __out.mbfLiftCls = "btn dx-danger lift-go" + (ok ? "" : " off");
+__out.mbfOkT = function () { self.setState(function (prev) { return prev.mbForm ? { mbForm: Object.assign({}, prev.mbForm, { liftOk: !prev.mbForm.liftOk }) } : null; }); };
+__out.mbfBack = function () { self.setState(function (prev) { var w = prev.mbForm; if (!w) return null; return w.fromDet ? { mbForm: Object.assign({}, w, { detail: true, liftOk: false }) } : { mbForm: null, dxDd: "" }; }); }; })();
+__out.mbfToLift = function () { self.setState(function (prev) { return prev.mbForm ? { mbForm: Object.assign({}, prev.mbForm, { detail: false, fromDet: true, liftOk: false }) } : null; }); };
+__out.mbfLift = function () { var w = self.state.mbForm; if (!w || !w.view || !w.liftOk) return; self.setState({ mbForm: null, dxDd: "", mb: self.state.mb.map(function (x) { return x.id === w.view ? Object.assign({}, x, { st: "bekor" }) : x; }) }); self.flash(w.view + " · taqiqdan olindi"); };
 __out.mbS = {
 mulkdor: dd("mb-mulk", [{ v: "", l: "Javobgarni tanlang" }].concat(owners), v.mulkdor, setMF("mulkdor"), { extra: "fxm", ph: "Javobgarni tanlang", noSplit: true, bc: errOn && !v.mulkdor ? RD : "" }),
 chora: dd("mb-chora", [{ v: "", l: "Chorani tanlang" }].concat(CH.map(function (c, i) { return { v: String(i + 1), l: (i + 1) + " – " + c[0] }; })), v.chora, setMF("chora"), { extra: "fxm", ph: "Chorani tanlang", bc: errOn && !v.chora ? RD : "" }),
@@ -9986,7 +9988,7 @@ var nrec = ntView ? list.filter(function (x) { return x.id === f.view; })[0] : n
 var vCard = function (t, ic, tag, rows, g2, file) { var o = { t: t, icCls: "smd-ni " + ic, hasTag: !!tag, tag: tag || "", tagCls: "igr-tag", hasPhoto: false, noPhoto: true, dlCls: "smd-idg" + (g2 ? " g2" : ""), rows: rows, hasFile: !!(file && file.name), file: file ? file.name : "", fileSub: file ? file.sub : "", openFile: file ? file.open : function () {} }; return o; };
 var nfx = nrec ? (nrec.fields || {}) : {}, nAv = nrec && nrec.turi === "avto";
 __out.ntfCanLift = !!(nrec && nrec.st !== "bekor");
-__out.ntv = { status: nrec ? ST[nrec.st][0] : "", stCls: (nrec ? ST[nrec.st][1] : "nt-st") + " igr-st", cards: !nrec ? [] : [].concat(f && f.detail ? [vCard("Taqiq ma'lumotlari", "ic-shield", "", [tile("ID (Notarius)", nrec.id), tile("Holati", ST[nrec.st][0]), tile("Taqiq sanasi", nrec.sana)], false)] : [], [
+__out.ntv = { status: nrec ? ST[nrec.st][0] : "", stCls: (nrec ? ST[nrec.st][1] : "nt-st") + " igr-st", cards: !nrec ? [] : [].concat(f ? [vCard("Taqiq ma'lumotlari", "ic-shield", "", [tile("ID (Notarius)", nrec.id), tile("Holati", ST[nrec.st][0]), tile("Taqiq sanasi", nrec.sana)], false)] : [], [
 vCard("Mol-mulk va mulkdor", "ic-prop", "", [tile("Mol-mulk turi", (TYPES[nrec.turi] || TYPES.kochmas)[0]), tile("Mulkdorning F.I.Sh", nrec.mulkdor)], true),
 nfx.oKind === "org" ? vCard("Mulkdor ma'lumotlari", "ic-user", "Yuridik shaxs", [tile("STIR", nfx.stir), tile("Tashkilot nomi", nfx.tashkilot)], true)
 : vCard("Mulkdor ma'lumotlari", "ic-user", "Jismoniy shaxs", [tile("PINFL", nfx.pinfl), tile("Pasport seriyasi va raqami", ((nfx.pSeriya || "") + " " + (nfx.pRaqam || "")).trim()), tile("Tug'ilgan sanasi", nfx.pBirth ? isoToUz(nfx.pBirth) : ""), tile("Hujjat turi", nfx.hujjatTuri, "w3"), tile("Pasport berilgan sana", nfx.pBerSana ? isoToUz(nfx.pBerSana) : ""), tile("Kim tomonidan berilgan", nfx.pBerKim, "w2")], false),
@@ -9996,10 +9998,12 @@ vCard("Mol-mulk ma'lumotlari", nAv ? "ic-car" : "ic-home", nAv ? "Avtotransport"
 : [tile("Kadastr raqami", nfx.kadastr, "w2"), tile("Tuman kodi", nfx.tumanKod), tile("Tuman", nfx.tuman), tile("Uy", nfx.uy), tile("Xonadon", nfx.xonadon), tile("Manzil", nfx.manzil, "w3")], false),
 vCard("Ajrim ma'lumotlari", "ic-id", "", [tile("Ajrim (qaror) sanasi", nrec.ajrimSana)], true, { name: nrec.file, sub: "Ajrim qarorining elektron shakli" + (nrec.size && nrec.size !== "—" ? " · " + nrec.size : ""), open: function () { self.flash("«" + nrec.file + "» ko'rish oynasida ochiladi"); } })]) };
 var ntDet = ntView && !!f.detail; __out.ntfTitle = ntDet ? "Taqiq tafsilotlari" : ntView ? "Taqiqni bekor qilish" : "Taqiq qo'yish";
-__out.ntfSub = ntDet ? "Notarius tizimi · " + f.view : ntView ? "Notarius tizimi · " + f.view + " · ma'lumotlar faqat ko'rish uchun" : "Notarius tizimi · asosiy ish " + (s.caseNum || "");
-__out.ntfLiftMode = ntView && !ntDet; __out.ntfDetMode = ntDet;
-__out.ntfToLift = function () { self.setState(function (prev) { return prev.ntForm ? { ntForm: Object.assign({}, prev.ntForm, { detail: false }) } : null; }); };
-__out.ntfLift = function () { var w = self.state.ntForm; if (!w || !w.view) return; self.setState({ ntForm: null, dxDd: "", nt: self.state.nt.map(function (x) { return x.id === w.view ? Object.assign({}, x, { st: "bekor" }) : x; }) }); self.flash(w.view + " · taqiqdan olindi"); };
+__out.ntfSub = ntDet ? "Notarius tizimi · " + f.view : ntView ? "Notarius tizimi · " + f.view : "Notarius tizimi · asosiy ish " + (s.caseNum || "");
+__out.ntfLiftMode = ntView && !ntDet; __out.ntfDetMode = ntDet; (function () { var ff = self.state.ntForm || {}, ok = !!ff.liftOk; __out.ntfSys = "Notarius"; __out.ntfOkStr = ok ? "true" : "false"; __out.ntfOkCls = "lift-ok" + (ok ? " on" : ""); __out.ntfLiftDis = !ok; __out.ntfLiftCls = "btn dx-danger lift-go" + (ok ? "" : " off");
+__out.ntfOkT = function () { self.setState(function (prev) { return prev.ntForm ? { ntForm: Object.assign({}, prev.ntForm, { liftOk: !prev.ntForm.liftOk }) } : null; }); };
+__out.ntfBack = function () { self.setState(function (prev) { var w = prev.ntForm; if (!w) return null; return w.fromDet ? { ntForm: Object.assign({}, w, { detail: true, liftOk: false }) } : { ntForm: null, dxDd: "" }; }); }; })();
+__out.ntfToLift = function () { self.setState(function (prev) { return prev.ntForm ? { ntForm: Object.assign({}, prev.ntForm, { detail: false, fromDet: true, liftOk: false }) } : null; }); };
+__out.ntfLift = function () { var w = self.state.ntForm; if (!w || !w.view || !w.liftOk) return; self.setState({ ntForm: null, dxDd: "", nt: self.state.nt.map(function (x) { return x.id === w.view ? Object.assign({}, x, { st: "bekor" }) : x; }) }); self.flash(w.view + " · taqiqdan olindi"); };
 __out.ntS = {
 turi: dd("nt-turi", [{ v: "", l: "Mol-mulk turini tanlang" }].concat(Object.keys(TYPES).map(function (k) { return { v: k, l: TYPES[k][0] }; })), v.turi, function (e) { setNF({ turi: e.target.value, f: v.mulkdor ? ownerInfo(v.mulkdor) : {}, found: false }); }, { extra: "fxm", ph: "Mol-mulk turini tanlang", bc: errOn && !v.turi ? RD : "" }),
 mulkdor: dd("nt-mulk", [{ v: "", l: "Mulkdorni tanlang" }].concat(owners), v.mulkdor, function (e) { var nm = e.target.value; self.setState(function (prev) { if (!prev.ntForm) return null; return { ntForm: Object.assign({}, prev.ntForm, { mulkdor: nm, f: Object.assign({}, prev.ntForm.f, ownerInfo(nm)), err: "" }) }; }); }, { extra: "fxm", ph: "Mulkdorni tanlang", noSplit: true, bc: errOn && !v.mulkdor ? RD : "" }),
