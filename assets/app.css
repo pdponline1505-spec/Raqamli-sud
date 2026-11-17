@@ -7647,3 +7647,5 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .adm-mn-i:hover .i{color:#3073f1}
 .adm-mn-i.del{color:#b91c1c}.adm-mn-i.del .i{color:#ef4444}
 .adm-mn-i.del:hover{background:#fef2f2}.adm-mn-i.del:hover .i{color:#b91c1c}
+/* tanlov paneli: hech qanday amal bo'lmasa umuman ko'rinmaydi */
+.lb-wrap:not(:has(.tbrow > :not(.tbspacer))){display:none !important}
