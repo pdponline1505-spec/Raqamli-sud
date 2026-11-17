@@ -7363,3 +7363,4 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .adm-pcard .adm-sum-i small{font-size:12px !important;color:#64748b !important;font-weight:400 !important}
 .adm-pcard .adm-sum-i>span{font-size:13.5px !important;color:#0f172a !important;font-weight:500 !important}
 .adm-it-b{padding:4px 14px 14px 14px !important}
+.l-table.adm-lt .l-row.l-head>:first-child{justify-self:stretch !important;align-self:stretch !important;padding:12px 16px !important}
