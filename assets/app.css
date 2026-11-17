@@ -7620,3 +7620,11 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .hol-ft2 .btn{height:48px;font-size:15px;justify-content:center}
 .hol-rm{align-self:center;display:inline-flex;align-items:center;gap:6px;margin-top:-10px;border:0;background:none;color:#b91c1c;font:inherit;font-size:14px;font-weight:500;cursor:pointer;padding:8px 12px;border-radius:10px}
 .hol-rm:hover{background:#fef2f2}
+/* ro'yxatga yangi qo'shish */
+.hol-add{display:flex;align-items:center;gap:8px;padding:10px;border:1px dashed #bfd3fb;border-radius:12px;background:#f8fbff}
+.hol-add .hol-in2{flex:1;min-width:0;min-height:44px}
+.hol-add-ok{height:44px;flex:none;gap:6px;padding:0 14px}
+.hol-add .adm-ib{flex:none}
+.hol-lnk{align-self:flex-start;border:0;background:none;padding:2px 0;font:inherit;font-size:13px;color:#b91c1c;cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-color:#fca5a5}
+.hol-lnk:hover{text-decoration-color:#b91c1c}
+.hol-ed2 .dx-opt:last-child .dx-olbl{color:#1d4ed8;font-weight:600}
