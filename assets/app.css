@@ -7628,3 +7628,22 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .hol-lnk{align-self:flex-start;border:0;background:none;padding:2px 0;font:inherit;font-size:13px;color:#b91c1c;cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-color:#fca5a5}
 .hol-lnk:hover{text-decoration-color:#b91c1c}
 .hol-ed2 .dx-opt:last-child .dx-olbl{color:#1d4ed8;font-weight:600}
+/* qator amallari — uch nuqta menyusi */
+.l-table.adm-lt .l-row.l-head,.l-table.adm-lt .l-row{grid-template-columns:56px minmax(0,2.4fr) 120px 130px 124px 170px 64px !important}
+@media (max-width:1280px){.l-table.adm-lt .l-row.l-head,.l-table.adm-lt .l-row{grid-template-columns:48px minmax(0,2fr) 100px 110px 110px 64px !important}}
+.l-table.nm-lt .l-row.l-head,.l-table.nm-lt .l-row{grid-template-columns:56px minmax(0,2fr) 120px 110px 124px 170px 64px !important}
+.adm-kb{width:34px !important;height:34px !important;border-radius:9px !important;color:#94a3b8 !important;background:transparent}
+.adm-kb .i{width:18px;height:18px}
+.adm-kb:hover,.adm-kb.on{background:#f1f5f9 !important;color:#0f172a !important}
+.adm-kb.on{box-shadow:inset 0 0 0 1px #e2e8f0}
+.adm-mn-bg{position:fixed;inset:0;z-index:60;border:0;background:transparent;cursor:default}
+.adm-mn{position:fixed;z-index:61;min-width:176px;transform:translateX(-100%);background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 12px 32px rgba(15,23,42,.14);padding:6px;display:flex;flex-direction:column;gap:2px;animation:admMnIn 140ms cubic-bezier(.22,1,.36,1)}
+.adm-mn.up{transform:translate(-100%,-100%);animation-name:admMnUp}
+@keyframes admMnIn{from{opacity:0;transform:translate(-100%,-4px)}to{opacity:1;transform:translate(-100%,0)}}
+@keyframes admMnUp{from{opacity:0;transform:translate(-100%,calc(-100% + 4px))}to{opacity:1;transform:translate(-100%,-100%)}}
+.adm-mn-i{display:flex;align-items:center;gap:10px;height:38px;padding:0 12px;border:0;border-radius:8px;background:none;font:inherit;font-size:14px;font-weight:500;color:#0f172a;cursor:pointer;text-align:left;width:100%}
+.adm-mn-i .i{width:17px;height:17px;color:#64748b}
+.adm-mn-i:hover,.adm-mn-i:focus-visible{background:#f1f5f9;outline:none}
+.adm-mn-i:hover .i{color:#3073f1}
+.adm-mn-i.del{color:#b91c1c}.adm-mn-i.del .i{color:#ef4444}
+.adm-mn-i.del:hover{background:#fef2f2}.adm-mn-i.del:hover .i{color:#b91c1c}
