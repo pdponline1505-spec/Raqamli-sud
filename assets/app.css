@@ -7587,3 +7587,36 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .hol-in.soon{background:#eff6ff;color:#1d4ed8}
 .hol-in.now{background:#3073f1;color:#fff}
 .hol-ut b,.hol-ut small{color:inherit}.hol-in{min-width:52px;text-align:center}
+/* tahrirlash paneli — sodda va yirik */
+.hol-ed2{gap:22px !important;padding:24px !important}
+.hol-ed2 .hol-ed-h{padding-bottom:18px}
+.hol-ed2 .hol-ed-d{width:56px;height:56px}
+.hol-ed2 .hol-ed-d b{font-size:22px}
+.hol-ed2 .hol-ed-t b{font-size:18px}.hol-ed2 .hol-ed-t small{font-size:14px}
+.hol-sec{display:flex;flex-direction:column;gap:10px}
+.hol-lbl{font-size:14.5px;font-weight:600;color:#0f172a}
+.hol-lbl small{font-size:13px;font-weight:400;color:#94a3b8;margin-left:4px}
+.hol-ed2 .hol-types{gap:8px}
+.hol-ed2 .hol-t{flex-direction:row;align-items:center;justify-content:center;gap:8px;height:52px;padding:0 6px;font-size:14px;font-weight:600;color:#0f172a;white-space:nowrap}
+.hol-ed2 .hol-t i{margin:0;width:10px;height:10px;border-radius:50%;flex:none}
+.hol-opts{display:flex;flex-direction:column;gap:8px}
+.hol-opt{display:flex;align-items:center;gap:12px;min-height:48px;padding:0 14px;border:1px solid #e2e8f0;border-radius:12px;background:#fff;font:inherit;font-size:14px;font-weight:500;color:#0f172a;cursor:pointer;text-align:left;transition:border-color var(--t-fast) var(--ease-out),background-color var(--t-fast) var(--ease-out)}
+.hol-opt i{position:relative;width:20px;height:20px;border-radius:50%;border:2px solid #cbd5e1;flex:none;background:#fff}
+.hol-opt:hover{border-color:#cbd5e1;background:#fafbfc}
+.hol-opt.on{border-color:#f97316;background:#fffaf5}
+.hol-opt.on i{border-color:#f97316}.hol-opt.on i::after{content:"";position:absolute;inset:3px;border-radius:50%;background:#f97316}
+.hol-opt.bad{border-color:#fca5a5}
+.hol-sw{padding:2px 0;gap:12px !important}
+.hol-sw b{font-size:14px;font-weight:500;color:#0f172a}
+.hol-ed2 .dx-selbtn{min-height:48px;font-size:14px}
+.hol-in2{width:100%;min-height:48px;border:1px solid #e2e8f0;border-radius:12px;padding:12px 14px;font:inherit;font-size:14px;color:#0f172a;background:#fff;resize:vertical;box-sizing:border-box}
+.hol-in2:focus{outline:none;border-color:#3073f1;box-shadow:0 0 0 3px #dbeafe}
+.hol-in2::placeholder{color:#94a3b8}
+.hol-tl{display:flex;flex-direction:column;gap:6px}.hol-tl>span{font-size:13px;color:#475569}
+.hol-ed2 .hol-hrs{font-size:14px;font-weight:600;color:#0f172a;padding:12px 14px}
+.hol-ed2 .hol-hrs.q{color:#6d28d9}.hol-ed2 .hol-hrs.bad{color:#b91c1c}
+.hol-ed2 .hol-err{font-size:14px;padding:10px 12px}
+.hol-ft2{display:grid;grid-template-columns:1fr 1.4fr;gap:10px;padding-top:18px;border-top:1px solid #eef1f5}
+.hol-ft2 .btn{height:48px;font-size:15px;justify-content:center}
+.hol-rm{align-self:center;display:inline-flex;align-items:center;gap:6px;margin-top:-10px;border:0;background:none;color:#b91c1c;font:inherit;font-size:14px;font-weight:500;cursor:pointer;padding:8px 12px;border-radius:10px}
+.hol-rm:hover{background:#fef2f2}
