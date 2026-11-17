@@ -7364,3 +7364,17 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .adm-pcard .adm-sum-i>span{font-size:13.5px !important;color:#0f172a !important;font-weight:500 !important}
 .adm-it-b{padding:4px 14px 14px 14px !important}
 .l-table.adm-lt .l-row.l-head>:first-child{justify-self:stretch !important;align-self:stretch !important;padding:12px 16px !important}
+.adm-back-ib{width:40px;height:40px;flex:none;display:grid;place-items:center;border:1px solid #e2e8f0;border-radius:10px;background:#fff;color:#334155;cursor:pointer;transition:background-color 150ms,border-color 150ms,color 150ms}
+.adm-back-ib .i{width:19px;height:19px}
+.adm-back-ib:hover{background:#f1f5f9;border-color:#cbd5e1;color:#0f172a}
+.adm-back-ib:focus-visible{outline:2px solid #3073f1;outline-offset:2px}
+.adm-pg-bar{gap:12px}
+/* № ustuni */
+.l-table.adm-lt .l-row.l-head,.l-table.adm-lt .l-row{grid-template-columns:56px minmax(0,2.4fr) 120px 130px 124px 170px 104px !important}
+.l-table.nm-lt .l-row.l-head,.l-table.nm-lt .l-row{grid-template-columns:56px minmax(0,2fr) 120px 110px 124px 170px 104px !important}
+@media (max-width:1280px){.l-table.adm-lt .l-row.l-head,.l-table.adm-lt .l-row{grid-template-columns:48px minmax(0,2fr) 100px 110px 110px 104px !important}.l-table.nm-lt .l-row.l-head,.l-table.nm-lt .l-row{grid-template-columns:48px minmax(0,2fr) 100px 100px 110px 104px !important}.adm-lt .l-head>span:nth-child(5){display:inline-flex !important}.adm-lt .l-head>span:nth-child(6){display:none !important}.nm-lt .l-head>span:nth-child(5){display:inline-flex !important}.nm-lt .l-head>span:nth-child(6){display:none !important}}
+.l-table.adm-lt .l-row.l-head>:first-child{justify-self:stretch !important;align-self:stretch !important;padding:12px 8px !important;justify-content:center !important}
+.l-table.adm-lt .l-row>.adm-no{justify-content:center;font-size:13.5px;color:#64748b;font-variant-numeric:tabular-nums;padding:12px 8px !important}
+.adm-noh{display:flex;align-items:center;justify-content:center;font-weight:500;color:#475569}
+.l-table.adm-lt .l-row.l-head>span:nth-child(2){justify-content:flex-start !important}
+.l-table.adm-lt .l-row.l-head>span:nth-child(2) .adm-sort{width:100%}
