@@ -7561,3 +7561,11 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .hol-td.cur{background:#fff}
 .hol-td.cur:hover,.hol-td:hover{border-color:#bfd3fb;background:#f8fbff}
 .hol-tb{padding-bottom:4px}
+/* Bugun — yumshoq ko'k tugma */
+.hol-td{gap:6px;height:36px;padding:0 14px;border:0;border-radius:10px;background:#eff6ff;color:#1d4ed8}
+.hol-td b{font-size:13px;font-weight:600;color:#1d4ed8}
+.hol-td span{font-size:13px;font-weight:500;color:#60a5fa;padding-left:0;border-left:0;line-height:inherit}
+.hol-td>span::before{content:"·";margin-right:6px;color:#93c5fd}
+.hol-td.cur{background:#eff6ff}
+.hol-td:hover,.hol-td.cur:hover{background:#dbeafe;border-color:transparent}
+.hol-td:active{transform:translateY(1px)}
