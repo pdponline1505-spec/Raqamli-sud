@@ -17,7 +17,21 @@ Bu statik sayt — build bosqichi yo'q, Node.js kerak emas.
 | `izohlar.html` | Barcha izohlar jadvali (/izohlar) |
 | `api/comments.js` | Izohlar API (Vercel serverless funksiyasi) |
 
-## Lokal ko'rish
+## Lokal ko'rish (localhost)
+
+Node.js 18 yoki yangisi kerak (https://nodejs.org). Qo'shimcha paket o'rnatish shart emas.
+
+```bash
+node local-server.js
+# yoki: npm start
+```
+
+Brauzer o'zi ochiladi: **http://localhost:3000** (izohlar jadvali: http://localhost:3000/izohlar).
+Port band bo'lsa: `PORT=4000 node local-server.js` (Windows PowerShell: `$env:PORT=4000; node local-server.js`).
+
+Lokal rejimda izohlar kompyuter xotirasida saqlanadi va server to'xtaganda o'chadi. Prototip ma'lumotlari (dam olish kunlari, moddalar va h.k.) brauzerning localStorage'ida qoladi.
+
+Node.js bo'lmasa, oddiy statik server ham yetadi (izohlar ishlamaydi):
 
 ```bash
 python3 -m http.server 8080

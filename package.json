@@ -2,8 +2,13 @@
   "name": "raqamli-sud-demo",
   "private": true,
   "description": "Raqamli sud — sudya kabineti prototipi (statik sayt + izohlar API)",
-  "engines": { "node": ">=18" },
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "redis": "^4.7.0"
+  },
+  "scripts": {
+    "start": "node local-server.js"
   }
 }
