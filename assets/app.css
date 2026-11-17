@@ -7362,3 +7362,4 @@ html[data-theme="dark"] .ds-host img{filter:none}
 @media (max-width:900px){.adm-sum-kv{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .adm-pcard .adm-sum-i small{font-size:12px !important;color:#64748b !important;font-weight:400 !important}
 .adm-pcard .adm-sum-i>span{font-size:13.5px !important;color:#0f172a !important;font-weight:500 !important}
+.adm-it-b{padding:4px 14px 14px 14px !important}
