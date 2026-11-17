@@ -7378,3 +7378,13 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .adm-noh{display:flex;align-items:center;justify-content:center;font-weight:500;color:#475569}
 .l-table.adm-lt .l-row.l-head>span:nth-child(2){justify-content:flex-start !important}
 .l-table.adm-lt .l-row.l-head>span:nth-child(2) .adm-sort{width:100%}
+/* band batafsil */
+.adm-band-h{cursor:pointer}
+.adm-it-tog.sm{width:26px;height:26px}
+.adm-band.open{border-color:#dbe4f5;box-shadow:0 1px 3px rgba(15,23,42,.05)}
+.adm-band.open>.adm-band-h{background:#f8fbff;border-bottom:1px dashed #e2e8f0;border-radius:10px 10px 0 0}
+.adm-band.off .adm-it-n{color:#94a3b8}
+.adm-band-d{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 24px;padding:14px 16px 16px 50px;animation:ntAlIn 200ms cubic-bezier(.22,1,.36,1)}
+.adm-band-d .adm-sum-i small{font-size:12px !important;color:#64748b !important;font-weight:400 !important}
+.adm-band-d .adm-sum-i>span{font-size:13.5px !important;color:#0f172a !important;font-weight:500 !important;white-space:normal !important}
+@media (max-width:900px){.adm-band-d{grid-template-columns:1fr;padding-left:16px}}
