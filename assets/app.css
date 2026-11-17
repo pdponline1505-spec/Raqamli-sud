@@ -7569,3 +7569,21 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .hol-td.cur{background:#eff6ff}
 .hol-td:hover,.hol-td.cur:hover{background:#dbeafe;border-color:transparent}
 .hol-td:active{transform:translateY(1px)}
+/* keladigan kunlar */
+.hol-up{gap:4px;padding-top:14px}
+.hol-up-h{display:flex;align-items:center;justify-content:space-between;padding:0 4px 6px}
+.hol-up-h small{font-size:12px;font-weight:600;color:#475569;text-transform:uppercase;letter-spacing:.04em}
+.hol-up-h span{font-size:12px;color:#94a3b8}
+.hol-up-e{font-size:12.5px;color:#94a3b8;padding:8px 4px}
+.hol-ur{gap:12px;padding:8px;border-radius:12px}
+.hol-ur:hover{background:#f8fafc}
+.hol-ut{width:42px;height:44px;border-radius:11px;flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;background:#f1f5f9;color:#334155}
+.hol-ut b{font-size:16px;font-weight:700}.hol-ut small{font-size:10px;font-weight:700;text-transform:uppercase;margin-top:3px;opacity:.85}
+.hol-ut.b{background:#fef2f2;color:#b91c1c}.hol-ut.d{background:#fff7ed;color:#c2410c}.hol-ut.q{background:#f5f3ff;color:#6d28d9}.hol-ut.w{background:#ecfdf5;color:#047857}
+.hol-ur .kv{flex:1;min-width:0;gap:3px}
+.hol-ur .kv b{font-size:13.5px;font-weight:600;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hol-ur .kv small{font-size:12px;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hol-in{margin-left:0;flex:none;font-size:11.5px;font-weight:500;padding:3px 9px;border-radius:999px;background:#f1f5f9;color:#475569;white-space:nowrap}
+.hol-in.soon{background:#eff6ff;color:#1d4ed8}
+.hol-in.now{background:#3073f1;color:#fff}
+.hol-ut b,.hol-ut small{color:inherit}.hol-in{min-width:52px;text-align:center}
