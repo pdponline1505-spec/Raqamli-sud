@@ -7545,3 +7545,11 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .hol-td .kv{gap:0}.hol-td .kv b{font-size:13px;font-weight:600;color:#0f172a;line-height:1.2}.hol-td .kv small{font-size:11px;color:#64748b;line-height:1.2}
 .hol-td.cur{background:#f8fafc}
 .hol-cal:has(.hol-pk){position:relative;z-index:47}
+/* oy sarlavhasi ikki chetida strelka */
+.hol-nav{gap:4px}
+.hol-nav>.hol-ar{width:36px;height:36px;border:1px solid #e2e8f0 !important;border-radius:999px;background:#fff;display:grid;place-items:center;color:#475569 !important;cursor:pointer;flex:none;transition:background-color var(--t-fast) var(--ease-out),border-color var(--t-fast) var(--ease-out),color var(--t-fast) var(--ease-out)}
+.hol-nav>.hol-ar:hover{background:#eff6ff;border-color:#bfd3fb !important;color:#1d4ed8 !important}
+.hol-ttl{margin-left:0;min-width:178px;justify-content:center;padding:0 12px}
+.hol-pk{left:50%;transform:translateX(-50%)}
+@keyframes holPkIn{from{opacity:0;transform:translate(-50%,-4px)}to{opacity:1;transform:translate(-50%,0)}}
+.hol-pk{animation:holPkIn 180ms cubic-bezier(.22,1,.36,1)}
