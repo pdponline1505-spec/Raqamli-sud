@@ -7758,3 +7758,18 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .adm-mn-i:hover .i{color:inherit}
 .adm-mn-i.del{color:#dc2626}.adm-mn-i.del .i{color:inherit}
 .adm-mn-i.del:hover{background:#fef2f2;color:#dc2626}
+/* yon menyu: siljiydigan faol fon */
+.l-sub{position:relative}
+.sn-ind{position:absolute;left:0;top:0;width:0;height:0;border-radius:10px;background:#eff6ff;pointer-events:none;z-index:0;opacity:0;transition:transform 340ms cubic-bezier(.22,1,.36,1),width 340ms cubic-bezier(.22,1,.36,1),height 340ms cubic-bezier(.22,1,.36,1),opacity 160ms ease-out}
+.sn-ind[data-on="1"]{opacity:1}
+.l-sub .l-sn,.l-sub .adm-ni,.l-sub .l-ci{position:relative;z-index:1}
+.l-sub:has(>.sn-ind[data-on="1"]) .l-sn.on,.l-sub:has(>.sn-ind[data-on="1"]) .l-ci.on{background:transparent !important}
+.l-sub:has(>.sn-ind[data-on="1"]) .adm-ni.on{background:transparent}
+.sn-ind[data-k="adm-ni"]{background:#eef2ff}
+.l-sub .l-sn,.l-sub .adm-ni{transition:color 240ms ease-out,background-color 160ms ease-out}
+@media (prefers-reduced-motion:reduce){.sn-ind{transition:none}}
+.l-sub>.sn-ind{position:absolute !important;left:0 !important;top:0 !important;margin:0 !important;display:block !important}
+/* Tungi rejim: oq bo'lib ko'rinadigan soyalar olib tashlanadi (fokus halqasi qoladi) */
+html[data-theme="dark"] *:not(:focus-visible),html[data-theme="dark"] *::before,html[data-theme="dark"] *::after{box-shadow:none !important}
+/* Tungi rejim: faol tab — ko'k fon, oq matn (teskari rangni qaytarish) */
+html[data-theme="dark"] .seg-tabs>.seg-ind,html[data-theme="dark"] .seg-tabs>button.on,html[data-theme="dark"] .btn.pri{filter:invert(1) hue-rotate(180deg)}
