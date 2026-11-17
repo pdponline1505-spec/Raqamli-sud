@@ -7514,3 +7514,34 @@ html[data-theme="dark"] .ds-host img{filter:none}
 @media (max-width:900px){.adm-mm-b .adm-pgrid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
 @media (max-width:600px){.adm-mm-b .adm-pgrid{grid-template-columns:1fr !important}}
 .hol-side{top:100px}
+/* Dam olish kunlari — yangi asboblar paneli */
+.hol-nav{gap:10px}
+.hol-pkw{position:relative}
+.hol-ttl{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 12px 0 14px;margin-left:-14px;border:0;border-radius:10px;background:none;font:inherit;font-size:20px;font-weight:600;color:#0f172a;cursor:pointer;letter-spacing:-.01em;transition:background-color var(--t-fast) var(--ease-out)}
+.hol-ttl .i{color:#64748b;transition:transform var(--t-fast) var(--ease-out)}
+.hol-ttl:hover{background:#f1f5f9}.hol-ttl.on{background:#eff6ff;color:#1d4ed8}.hol-ttl.on .i{transform:rotate(180deg);color:#1d4ed8}
+.hol-pk-bg{position:fixed;inset:0;border:0;background:transparent;z-index:48;cursor:default}
+.hol-pk{position:absolute;top:calc(100% + 6px);left:-14px;z-index:49;width:300px;background:#fff;border:1px solid #e2e8f0;border-radius:14px;box-shadow:0 16px 40px rgba(15,23,42,.14);padding:12px;animation:ntAlIn 180ms cubic-bezier(.22,1,.36,1)}
+.hol-pk-h{display:flex;align-items:center;justify-content:space-between;padding:0 2px 10px}
+.hol-pk-h b{font-size:14px;font-weight:600;color:#0f172a}
+.hol-pk-ar{width:30px;height:30px;border:0;border-radius:8px;background:none;display:grid;place-items:center;color:#475569;cursor:pointer}
+.hol-pk-ar:hover{background:#f1f5f9;color:#0f172a}
+.hol-pk-g{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.hol-pk-i{position:relative;height:38px;border:1px solid transparent;border-radius:9px;background:#f8fafc;font:inherit;font-size:13px;font-weight:500;color:#334155;cursor:pointer}
+.hol-pk-i:hover{background:#eff6ff;color:#1d4ed8}
+.hol-pk-i.now{border-color:#bfd3fb;color:#1d4ed8}
+.hol-pk-i.on{background:#3073f1;border-color:#3073f1;color:#fff}
+.hol-pk-i i{position:absolute;top:6px;right:7px;width:5px;height:5px;border-radius:50%;background:#ef4444}
+.hol-pk-i.on i{background:#fff}
+.hol-arw{display:inline-flex;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;background:#fff}
+.hol-arw .hol-ar{width:36px;height:34px;border:0 !important;border-radius:0;background:none;display:grid;place-items:center;color:#475569 !important;cursor:pointer}
+.hol-arw .hol-ar+.hol-ar{border-left:1px solid #e2e8f0 !important}
+.hol-arw .hol-ar:hover{background:#f8fafc;color:#0f172a !important}
+.hol-tbr{display:flex;align-items:center;gap:10px}
+.hol-td{display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 14px 0 4px;border:1px solid #e2e8f0;border-radius:11px;background:#fff;font:inherit;cursor:pointer;text-align:left;transition:border-color var(--t-fast) var(--ease-out),background-color var(--t-fast) var(--ease-out)}
+.hol-td:hover{border-color:#bfd3fb;background:#f8fbff}
+.hol-td-d{width:32px;height:32px;border-radius:8px;background:#3073f1;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}
+.hol-td-d b{font-size:13px}.hol-td-d small{font-size:8.5px;font-weight:700;text-transform:uppercase;margin-top:1px;opacity:.9}
+.hol-td .kv{gap:0}.hol-td .kv b{font-size:13px;font-weight:600;color:#0f172a;line-height:1.2}.hol-td .kv small{font-size:11px;color:#64748b;line-height:1.2}
+.hol-td.cur{background:#f8fafc}
+.hol-cal:has(.hol-pk){position:relative;z-index:47}
