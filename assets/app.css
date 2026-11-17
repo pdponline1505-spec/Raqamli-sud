@@ -7553,3 +7553,11 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .hol-pk{left:50%;transform:translateX(-50%)}
 @keyframes holPkIn{from{opacity:0;transform:translate(-50%,-4px)}to{opacity:1;transform:translate(-50%,0)}}
 .hol-pk{animation:holPkIn 180ms cubic-bezier(.22,1,.36,1)}
+/* Bugun — sodda tugma */
+.hol-td{gap:7px;height:36px;padding:0 12px;border-radius:10px;color:#475569}
+.hol-td .i{color:#3073f1}
+.hol-td b{font-size:13px;font-weight:600;color:#0f172a}
+.hol-td span{font-size:12.5px;color:#64748b;padding-left:7px;border-left:1px solid #e2e8f0;line-height:16px}
+.hol-td.cur{background:#fff}
+.hol-td.cur:hover,.hol-td:hover{border-color:#bfd3fb;background:#f8fbff}
+.hol-tb{padding-bottom:4px}
