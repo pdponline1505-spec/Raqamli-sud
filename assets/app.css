@@ -7388,3 +7388,9 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .adm-band-d .adm-sum-i small{font-size:12px !important;color:#64748b !important;font-weight:400 !important}
 .adm-band-d .adm-sum-i>span{font-size:13.5px !important;color:#0f172a !important;font-weight:500 !important;white-space:normal !important}
 @media (max-width:900px){.adm-band-d{grid-template-columns:1fr;padding-left:16px}}
+/* saqlangan modda — qism/band kabi karta */
+.adm-it-tag.m{background:#eff6ff;color:#1d4ed8}
+.adm-mcard>.adm-it-h{background:#fafcff}
+.adm-mcard.open>.adm-it-h{border-bottom:1px dashed #e2e8f0}
+.adm-mod-d{padding-left:50px}
+.adm-pcard:has(.adm-mcard) .adm-pc-h{padding-bottom:12px}
