@@ -6560,6 +6560,9 @@ if (!window.__tabEdge) { window.__tabEdge = function () { try { var ws = documen
 window.addEventListener("scroll", function (e) { if (e.target && e.target.classList && e.target.classList.contains("seg-tabs")) window.__tabEdge(); }, true); window.addEventListener("resize", window.__tabEdge);
 try { new ResizeObserver(function () { window.__tabEdge(); }).observe(document.body); } catch (er) {} }
 setTimeout(window.__tabEdge, 0);
+// Faol tab (ichki bo'lim tanlanganda nomi uzayadi) har doim to'liq ko'rinadigan joyga suriladi
+var tKey = (s.page || "") + "|" + s.lTab + "|" + (lSubsS[s.lTab] || "") + "|" + (s.caseOpen ? 1 : 0);
+if (window.__lTabKey !== tKey) { window.__lTabKey = tKey; [80, 360].forEach(function (ms) { setTimeout(function () { var el = document.querySelector('.l-tabwrap .seg-tabs [role="tab"][aria-selected="true"]'); if (el) revealTab(el); if (window.__tabEdge) setTimeout(window.__tabEdge, 300); }, ms); }); }
 var BS_REQ = [["natija", "Natija"], ["ajrim", "Ajrim sanasi"], ["sana", "Ish ko'riladigan sana"]];
 var bsSet = {}, bsBorder = {};
 ["natija", "ajrim", "sana", "farq", "joy", "yordamchi"].forEach(function (k) {
