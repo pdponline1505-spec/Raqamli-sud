@@ -9438,7 +9438,7 @@ var arx = curKey === "arxiv"; // Arxiv: yuborish / olish / qaytarish
 var axSub = "";
 if (arx) { if (n && n.bulk) { axSub = ((s.lSubs || {}).arxiv) || "all"; if (axSub === "all") { var axR = (s.lRows || []).filter(function (r) { return (n.ids || []).indexOf(r.id) >= 0; })[0]; axSub = (axR && axR.sub) || "yuborish"; } } else axSub = (row && row.sub) || "yuborish"; }
 var axOl = axSub === "olish", axTo = axOl ? "qaytarish" : "yuborilgan";
-var AX_SABAB = ["Apellyatsiya shikoyati kelib tushganligi munosabati bilan", "Kassatsiya shikoyati kelib tushganligi munosabati bilan", "Yangi ochilgan holatlar bo'yicha qayta ko'rish uchun", "Ijro hujjatini berish uchun", "Prokuratura so'rovi asosida", "Boshqa sabab"];
+var AX_SABAB = ["Sud raisining talabiga asosan", "Sudyaning talabiga asosan", "Kassatsiya tushganligi sababli", "Oliy sudning so'roviga asosan", "Prokurorning so'roviga asosan", "Boshqa davlat organlarining so'roviga asosan", "Boshqa sabablarga asosan"];
 var tik = curKey === "tiklash"; // "Ish yuritishni tiklash" — maydonlari Sudgacha majlis bilan bir xil
 var maj = curKey === "majlis" || tik; // "Sudgacha majlis" — natija tanlanmaydi, ish sud muhokamasiga tayinlanadi
 if (qol) RES = [["qoldirish", "Ishni keyinga qoldirish", "natija", "Natija qo'yish", ""]];
@@ -9954,7 +9954,7 @@ var minSend = function () { var n = new Date(), d = new Date(n.getFullYear(), n.
 var todayIso = function () { return isoD(new Date()); };
 var rowsOf = function (ids) { return (self.state.lRows || []).filter(function (r) { return ids.indexOf(r.id) >= 0; }); };
 var AXL = { yuborilgan: "Yuborilgan", qabul: "Qabul qilingan", qaytarilgan: "Qaytarilgan" };
-var SAB = ["Yangi ochilgan holatlar bo'yicha qayta ko'rish", "Apellyatsiya yoki kassatsiya shikoyati kelib tushdi", "Sud hujjatidagi xatoni tuzatish", "Qo'shimcha qaror chiqarish", "Ijro varaqasini (dublikatini) berish", "Ijro hujjatini qayta rasmiylashtirish", "Prokuratura yoki boshqa organ so'rovi", "Boshqa sabab"];
+var SAB = ["Sud raisining talabiga asosan", "Sudyaning talabiga asosan", "Kassatsiya tushganligi sababli", "Oliy sudning so'roviga asosan", "Prokurorning so'roviga asosan", "Boshqa davlat organlarining so'roviga asosan", "Boshqa sabablarga asosan"];
 var openAx = function (mode, ids) { var ms = minSend(), rs = rowsOf(ids); setTimeout(function () { var d = document.querySelector(".ax-qv"); if (d) try { d.focus({ preventScroll: true }); } catch (e) {} }, 60);
 self.setState({ nMore: false, lMore: false, dxDd: "", calKey: "", ax: { mode: mode, ids: ids, sana: mode === "olish" ? todayIso() : isoD(ms), sabab: [], izoh: "", err: "", nums: rs.map(function (r) { return r.num; }), errF: "", note: mode === "resend" ? rs.map(function (r) { return (r.axRet && r.axRet.note) || r.axNote || ""; }).filter(Boolean)[0] || "" : "" } }); };
 self._openAx = openAx;
@@ -9965,10 +9965,12 @@ var T = s.lTab, cj = __out.canJudge !== false, axSub = ((s.lSubs || {}).arxiv) |
 var selRows = (s.lRows || []).filter(function (r) { return s.lSel && s.lSel[r.id]; });
 var axS = function (r) { return r.stage === "arxiv" ? r.sub : r.axRet ? "qaytarilgan" : ""; };
 var allSub = function (k) { return selRows.length > 0 && selRows.every(function (r) { return axS(r) === k; }); };
-var send = cj && (T === "ijro" || T === "yakun"), resend = cj && ((T === "arxiv" && (axSub === "qaytarilgan" || (axSub === "all" && allSub("qaytarilgan")))) || (send && allSub("qaytarilgan"))), olish = cj && T === "arxiv" && (axSub === "qabul" || (axSub === "all" && allSub("qabul")));
+var anyOf = function (k) { return selRows.some(function (r) { return axS(r) === k; }); }, hasRows = function (k) { return (s.lRows || []).some(function (r) { return (r.stage === "arxiv" || r.axRet) && axS(r) === k; }); };
+var arxAll = T === "arxiv" && axSub === "all";
+var send = cj && (T === "ijro" || T === "yakun"), resend = cj && ((T === "arxiv" && (axSub === "qaytarilgan" || (arxAll && hasRows("qaytarilgan") && (anyOf("qaytarilgan") || !selRows.length)))) || (send && allSub("qaytarilgan"))), olish = cj && T === "arxiv" && (axSub === "qabul" || (arxAll && hasRows("qabul") && (anyOf("qabul") || !selRows.length)));
 __out.axb = { send: send || resend, sendLbl: resend ? "Arxivga qayta yuborish" : "Arxivga yuborish", olish: olish };
-__out.axSendBtn = needSel(function (ids) { openAx(resend ? "resend" : "send", ids); });
-__out.axOlishBtn = needSel(function (ids) { openAx("olish", ids); });
+__out.axSendBtn = needSel(function (ids) { if (T === "arxiv") { var ok = rowsOf(ids).filter(function (r) { return axS(r) === "qaytarilgan"; }).map(function (r) { return r.id; }); if (!ok.length) { self.flash("Tanlanganlar orasida kamchilik bilan qaytarilgan ish yo'q"); return; } openAx("resend", ok); return; } openAx(resend ? "resend" : "send", ids); });
+__out.axOlishBtn = needSel(function (ids) { var ok = rowsOf(ids).filter(function (r) { return axS(r) === "qabul"; }).map(function (r) { return r.id; }); if (!ok.length) { self.flash("Arxiv qabul qilgan ishni tanlang — faqat ular qaytarib olinadi"); return; } openAx("olish", ok); });
 // Ish sahifasi sarlavhasi
 var cr = s.caseOpen ? (s.lRows || []).filter(function (r) { return r.num === s.caseNum; })[0] : null, cst = cr ? cr.stage : "";
 var cMode = !cr || !cj ? "" : cr.axRet ? "resend" : (cst === "ijro" || cst === "yakun") ? "send" : cst === "arxiv" && cr.sub === "qaytarilgan" ? "resend" : cst === "arxiv" && cr.sub === "qabul" ? "olish" : "";
@@ -10008,7 +10010,7 @@ __out.axRule = shifted ? "Hozir ish vaqtidan tashqari. Ish keyingi ish kuni — 
 var sb = A.sabab || [];
 __out.axReasons = SAB.map(function (l) { var on = sb.indexOf(l) >= 0; return { l: l, str: on ? "true" : "false", cls: "ax-r" + (on ? " on" : "") + (A.errF === "sabab" ? " bad" : ""), pick: function () { setAx({ sabab: on ? sb.filter(function (x) { return x !== l; }) : sb.concat([l]) }); } }; });
 __out.axSabN = sb.length ? sb.length + " ta tanlandi" : "Bir yoki bir nechtasini tanlang"; __out.axCntCls = "ax-cnt" + (sb.length ? " on" : "");
-__out.axHasOther = sb.indexOf("Boshqa sabab") >= 0; __out.axIzoh = A.izoh || ""; __out.axSetIzoh = function (e) { setAx({ izoh: e.target.value }); };
+__out.axHasOther = sb.indexOf("Boshqa sabablarga asosan") >= 0; __out.axIzoh = A.izoh || ""; __out.axSetIzoh = function (e) { setAx({ izoh: e.target.value }); };
 __out.axErr = A.err || ""; __out.axErrSab = A.errF === "sabab"; __out.axErrIzoh = A.errF === "izoh"; __out.axErrDate = A.errF === "sana";
 __out.axDateCls = "ax-date" + (A.errF === "sana" ? " bad" : ""); __out.axIzohCls = "hol-in2 ax-ta" + (A.errF === "izoh" ? " bad" : "");
 __out.axGoCls = "btn pri ax-go" + (isO ? " o" : "");
@@ -10019,7 +10021,7 @@ __out.axGo = function () { var a = self.state.ax; if (!a) return; var err = "";
 if (!a.sana) err = (isO ? "Qaytarib olish" : "Yuborish") + " sanasini tanlang";
 else if (!isO) { var d = new Date(a.sana + "T00:00:00"); if (!isWork(d)) err = "Yuborish sanasi ish kuni bo'lishi kerak — dam olish yoki bayram kunini tanlab bo'lmaydi"; else if (a.sana < msIso) err = "Yuborish sanasi " + uzD(msIso) + " dan oldin bo'lishi mumkin emas"; }
 if (!err && isO && !(a.sabab || []).length) err = "Qaytarib olish sababini tanlang";
-if (!err && isO && (a.sabab || []).indexOf("Boshqa sabab") >= 0 && !String(a.izoh || "").trim()) err = "Boshqa sababni yozing";
+if (!err && isO && (a.sabab || []).indexOf("Boshqa sabablarga asosan") >= 0 && !String(a.izoh || "").trim()) err = "Boshqa sababni izohda yozing";
 if (err) { setAx({ err: err, errF: /sabab/i.test(err) && !/Boshqa/.test(err) ? "sabab" : /Boshqa/.test(err) ? "izoh" : "sana" }); return; }
 var ids = a.ids, dU = uzD(a.sana), now = Date.now();
 if (isO) {
