@@ -7787,3 +7787,32 @@ html[data-theme="dark"] .seg-tabs>.seg-ind,html[data-theme="dark"] .seg-tabs>but
 .lockd-banner b{font-size:14.5px;font-weight:600;color:#334155}
 .lockd-banner small{font-size:12.5px;color:#64748b;line-height:1.45}
 .lockd-banner~.group{opacity:.42;filter:grayscale(1);pointer-events:none;user-select:none}
+/* Mening so'rovlarim — ishlar ro'yxati uslubida */
+.uzq-wrap{padding:0;gap:16px}
+.uzq-lt .l-row{grid-template-columns:minmax(170px,1fr) minmax(0,1.5fr) minmax(0,1.7fr) minmax(130px,.9fr) 130px 150px 84px !important;align-items:center}
+.uzq-lt .l-row>*{padding:0 16px;min-width:0}
+.uzq-lt .l-row.l-head>*:first-child{justify-self:stretch !important;padding:0 16px !important}
+.uzq-lt .l-row:not(.l-head){min-height:64px;border-top:1px solid #eef1f5;font-size:13.5px;color:#0f172a;transition:background-color .15s}
+.uzq-lt .l-row.click{cursor:pointer}
+.uzq-lt .l-row:not(.l-head):hover{background:#f8fafc}
+.uzq-num{display:flex;flex-direction:column;gap:3px}
+.uzq-num b{font-size:14px;font-weight:600;color:#0f172a}
+.uzq-num small{font-size:12px;color:#64748b}
+.uzq-req{display:flex;flex-direction:column;gap:4px;min-width:0}
+.uzq-req b{font-size:13.5px;font-weight:600;color:#0f172a}
+.uzq-doc{font-size:12.5px;color:#3073f1}
+.uzq-from{color:#334155}
+.uzq-date{display:inline-flex;align-items:center;height:28px;padding:0 10px;border:1px solid #e2e8f0;border-radius:8px;font-size:13px;color:#0f172a;background:#fff;font-variant-numeric:tabular-nums}
+.uzq-st{height:24px;padding:0 10px !important;font-size:12px !important;font-weight:500 !important;gap:6px}
+.uzq-st::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.uzq-acts{justify-content:center !important;flex-wrap:nowrap !important}
+.uzq-open{width:32px;height:32px;border-radius:8px;color:#94a3b8}
+.uzq-open:hover{background:#eff6ff;color:#3073f1}
+.uzq-lt .uzq-empty{padding:48px 24px;text-align:center;color:#64748b;border-top:1px solid #eef1f5}
+@media (max-width:1200px){.uzq-lt .l-row{grid-template-columns:minmax(150px,1fr) minmax(0,1.6fr) minmax(0,1.4fr) 120px 140px 64px !important}.uzq-lt .l-row>:nth-child(4){display:none}}
+.uzq-lt .l-row>*{justify-self:stretch !important;text-align:left}
+.uzq-req,.uzq-num{align-items:flex-start}
+.uzq-lt .l-row>.uzq-acts{justify-content:center !important}
+.uzq-lt.rais .l-row{grid-template-columns:minmax(160px,1fr) minmax(0,1.4fr) minmax(0,1.5fr) minmax(120px,.8fr) 120px 150px 250px !important}
+.uzq-lt.rais .uzq-acts{justify-content:flex-end !important;gap:6px}
+.uzq-lt .l-row:not(.l-head)>*:not(.uzq-acts){text-align:left !important}.uzq-lt .uzq-num,.uzq-lt .uzq-req{align-items:flex-start !important;text-align:left !important}.uzq-lt .uzq-num *,.uzq-lt .uzq-req *{text-align:left !important}
