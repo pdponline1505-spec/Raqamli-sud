@@ -8012,3 +8012,12 @@ html[data-theme="dark"] .seg-tabs>.seg-ind,html[data-theme="dark"] .seg-tabs>but
 .l-axr-go:hover .l-axr-d b,.l-axr-go:hover .l-axr-d small{color:#1d4ed8}
 .l-axr-go:hover span{text-decoration:none !important}
 .l-axr-go:hover .l-axr-d b{text-decoration:underline;text-underline-offset:3px}
+.l-tag.res.k-ax-olingan{background:#ede9fe;color:#6d28d9}
+.l-tag.res.k-ax-olingan i{background:#7c3aed}
+.l-axr-tag.k-ax-olingan:hover{background:#ddd6fe}
+.l-axr-tag.k-ax-olingan:focus-visible{box-shadow:0 0 0 2px #c4b5fd}
+.axh.ol .ax-ic.w{background:#f5f3ff;border-color:#ddd6fe;color:#7c3aed}
+.axh.ol .axh-why{background:#f5f3ff;border-color:#ddd6fe}
+.axh.ol .axh-why small{color:#5b21b6}
+.axh.ol .axh-why p{color:#3b0764}
+.ax-qv .dx-sel{width:100%}
