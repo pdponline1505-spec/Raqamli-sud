@@ -7779,3 +7779,11 @@ html[data-theme="dark"] .seg-tabs>.seg-ind,html[data-theme="dark"] .seg-tabs>but
 .l-clock{width:14px;height:14px;flex:none;color:#b4bcc8}
 .l-cg.lock{color:#a3acba}
 .l-clock{display:inline-block;vertical-align:-2px;margin-right:8px}
+/* Ish sahifasi: hali faol bo'lmagan bo'limlar */
+.lockd-banner{display:flex;align-items:center;gap:14px;margin:28px 0 8px;padding:14px 18px;border:1px dashed #cbd5e1;border-radius:14px;background:repeating-linear-gradient(135deg,#f8fafc 0 10px,#f1f5f9 10px 20px)}
+.lockd-ic{width:38px;height:38px;border-radius:10px;background:#fff;border:1px solid #e2e8f0;display:grid;place-items:center;color:#64748b;flex:none}
+.lockd-ic .i{width:18px;height:18px}
+.lockd-banner .kv{gap:2px;min-width:0}
+.lockd-banner b{font-size:14.5px;font-weight:600;color:#334155}
+.lockd-banner small{font-size:12.5px;color:#64748b;line-height:1.45}
+.lockd-banner~.group{opacity:.42;filter:grayscale(1);pointer-events:none;user-select:none}

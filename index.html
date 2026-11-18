@@ -1902,6 +1902,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 
 </div>
 
+<div class="lockd-banner" role="note" id="lockd"><span class="lockd-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></span><div class="kv"><b>Quyidagi bo'limlar hozircha faol emas</b><small>Ish mazmuni, hujjatlar, da'voni ta'minlash, ijro, ekspertiza va qo'shimcha bo'limlar keyingi bosqichda ishga tushiriladi — hozir ularni ochish yoki tahrirlash mumkin emas.</small></div></div>
 <!-- ================= ISH MAZMUNI ================= -->
 <div class="group">
 <div class="group-h">Ish mazmuni</div>
@@ -5230,7 +5231,7 @@ jl: [{ id: "j1", num: "01-2458/26", ariza: "2458", org: "O'zbekiston Respublikas
 ds: [{ id: "s1", jav: "Rahimova Dilnoza Anvarovna", lines: [{ type: "asosiy", amt: "1000000", cur: "UZS" }, { type: "manaviy", amt: "100000", cur: "UZS" }, { type: "moddiy", amt: "150000", cur: "UZS" }] }, { id: "s2", jav: "Normurodov Bekzod Azizovich", lines: [{ type: "asosiy", amt: "1000000", cur: "UZS" }, { type: "penya", amt: "150000", cur: "UZS" }, { type: "jarima", amt: "100000", cur: "UZS" }] }], dsDel: "",
 itk: [{ id: "t1", turkum: "2 – Mulk ijarasiga doir (uy-joy ijarasi bundan mustasno)", qturkum: "2.1 – Avtotransport vositasi ijarasiga doir", iturkum: "60 – Notarial harakatlarni haqiqiy emas deb topish", javs: ["Rahimova Dilnoza Anvarovna"], ok: true, sums: [{ id: "s1", jav: ["Rahimova Dilnoza Anvarovna"], lines: [{ id: "s1a", type: "asosiy", amt: "1000000", cur: "UZS" }, { id: "s1b", type: "manaviy", amt: "100000", cur: "UZS" }, { id: "s1c", type: "moddiy", amt: "150000", cur: "UZS" }] }] }, { id: "t2", turkum: "1 – Oldi-sotdi shartnomasi yuzasidan", qturkum: "1.1 – Chakana oldi-sotdi shartnomasi yuzasidan", iturkum: "", javs: ["Normurodov Bekzod Azizovich"], ok: false, sums: [{ id: "s2", jav: ["Normurodov Bekzod Azizovich"], lines: [{ id: "s2a", type: "asosiy", amt: "1000000", cur: "UZS" }, { id: "s2b", type: "penya", amt: "150000", cur: "UZS" }, { id: "s2c", type: "jarima", amt: "100000", cur: "UZS" }] }] }], itkDel: "", itkForm: null, birlFrom: [],
 bk: BK_DEMO, bkFormOpen: false, bkForm: bkBlank(), bkEditing: false, bkStep: "umumiy", bkErr: false, bkErrSteps: {},
-bkOpen: true, bkConfirmDel: false, bkDetail: "",
+bkOpen: false, bkConfirmDel: false, bkDetail: "",
 bkDone: { turi: "", sana: "", natija: "", izoh: "", saved: false }, bkDoneErr: false
 };
 // ===== Yangi versiya chiqib sahifa qayta yuklansa — foydalanuvchi turgan joyni tiklash =====
@@ -5977,7 +5978,7 @@ return { dvList: [D], jvList: [T], dvName: D.name, dvSub: D.sub, jvName: T.name,
 };
 var QX_LIM = 3, qxSorted = qCase.slice().sort(function (x, y) { return s.qSortDesc ? (x.key < y.key ? 1 : -1) : (x.key > y.key ? 1 : -1); });
 var qxShowAll = !!s.qxAll, qxOpenMap = s.qxOpen || {};
-var qxFirstOpen = qxSorted.length ? qxSorted[0].id : "";
+var qxFirstOpen = "";
 var qarshi = (qxShowAll ? qxSorted : qxSorted.slice(0, QX_LIM))
 .map(function (q) {
 var QF_LIM = 4, qfAll = qFil(q), qfOpen = !!(s.qFilAll || {})[q.id], qfMany = qfAll.length > QF_LIM;
@@ -11709,7 +11710,7 @@ dsAdd: function () { self.flash("Da'vo summasi qo'shish oynasi prototipda chizil
 var sc = function (t) { var m2 = /^([\d.]+)\s*–\s*(.*)$/.exec(t || ""); return m2 ? { code: m2[1], name: m2[2] } : { code: "", name: t || "" }; };
 var list = s.itk || [];
 var okN = list.filter(function (x) { return x.ok; }).length;
-var itkOpenId = s.itkOpen === undefined ? (list[0] ? list[0].id : "") : s.itkOpen;
+var itkOpenId = s.itkOpen === undefined ? "" : s.itkOpen;
 Object.assign(__out, {
 itk: list.map(function (t, i) {
 var a = sc(t.turkum), q = sc(t.qturkum), k = sc(t.iturkum), cd = s.itkDel === t.id;
