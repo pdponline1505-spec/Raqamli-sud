@@ -7773,3 +7773,9 @@ html[data-theme="dark"] .ds-host img{filter:none}
 html[data-theme="dark"] *:not(:focus-visible),html[data-theme="dark"] *::before,html[data-theme="dark"] *::after{box-shadow:none !important}
 /* Tungi rejim: faol tab — ko'k fon, oq matn (teskari rangni qaytarish) */
 html[data-theme="dark"] .seg-tabs>.seg-ind,html[data-theme="dark"] .seg-tabs>button.on,html[data-theme="dark"] .btn.pri{filter:invert(1) hue-rotate(180deg)}
+/* Ish menyusi: hali kerak bo'lmagan bo'limlar qulflangan */
+.l-ci.lock{color:#a3acba !important;cursor:not-allowed;background:transparent !important}
+.l-ci.lock:hover{background:transparent !important;color:#a3acba !important}
+.l-clock{width:14px;height:14px;flex:none;color:#b4bcc8}
+.l-cg.lock{color:#a3acba}
+.l-clock{display:inline-block;vertical-align:-2px;margin-right:8px}
