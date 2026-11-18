@@ -7986,3 +7986,8 @@ html[data-theme="dark"] .seg-tabs>.seg-ind,html[data-theme="dark"] .seg-tabs>but
 .axh .ax-fb .btn{height:46px;padding:0 20px;font-size:15px;border-radius:11px}
 .axh .ax-fb .btn .i{width:18px;height:18px}
 @media (max-width:560px){.axh .ax-fb{flex-direction:column-reverse}.axh .ax-fb .btn{width:100%}}
+.l-numlink{display:inline-flex;align-items:center;gap:6px;cursor:copy}
+.l-numlink .l-cpi{width:14px;height:14px;flex:none;color:#94a3b8;opacity:0;transform:translateX(-2px);transition:opacity .15s,transform .15s}
+.l-numlink:hover .l-cpi,.l-numlink:focus-visible .l-cpi{opacity:1;transform:none}
+.l-numlink .l-cpi.ok{opacity:1;transform:none;color:#16a34a;stroke-width:2.4}
+.l-numlink.cp,.l-numlink.cp:hover{color:#15803d !important;text-decoration:none}
