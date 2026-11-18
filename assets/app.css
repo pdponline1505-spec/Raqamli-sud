@@ -6922,15 +6922,15 @@ html[data-theme="dark"] .ds-host img{filter:none}
 .lb-bar .tbrow{justify-content:flex-start !important}
 .lb-bar .tbrow .tbspacer{flex:1 1 auto}
 /* tanlov paneli: tugmalar chapdan to'ldiriladi, sig'maganlari o'ngdan boshlab «Boshqalar» ichiga o'tadi */
-.lb-bar .tbrow .nb-sodda,.lb-bar .tbrow .nb-toxt,.lb-bar .tbrow .nb-sud,.lb-bar .tbrow .nb-uzay,.lb-bar .tbrow .nb-qayta,.lb-bar .tbrow .nb-birl{display:inline-flex !important}
+.lb-bar .tbrow .nb-sodda,.lb-bar .tbrow .nb-qol,.lb-bar .tbrow .nb-toxt,.lb-bar .tbrow .nb-sud,.lb-bar .tbrow .nb-uzay,.lb-bar .tbrow .nb-qayta,.lb-bar .tbrow .nb-birl{display:inline-flex !important}
 .lb-bar .tb-nmore .nmix,.lb-bar .tb-nmore .nmq{display:none !important}
 .lb-bar .tb-nmore.q{display:none !important}
-@container (max-width:1239px){.lb-bar .tbrow .nb-birl{display:none !important}.lb-bar .tb-nmore.q{display:block !important}.lb-bar .tb-nmore .nmq-birl{display:flex !important}}
-@container (max-width:1159px){.lb-bar .tbrow .nb-qayta{display:none !important}.lb-bar .tb-nmore .nmq-qayta{display:flex !important}}
-@container (max-width:994px){.lb-bar .tbrow .nb-uzay{display:none !important}.lb-bar .tb-nmore .nmq-uzay{display:flex !important}}
-@container (max-width:874px){.lb-bar .tbrow .nb-sud{display:none !important}.lb-bar .tb-nmore .nmix-sud{display:flex !important}}
-@container (max-width:729px){.lb-bar .tbrow .nb-toxt{display:none !important}.lb-bar .tb-nmore .nmix-toxt{display:flex !important}}
-@container (max-width:609px){.lb-bar .tbrow .nb-sodda{display:none !important}.lb-bar .tb-nmore .nmix-sodda{display:flex !important}}
+@container (max-width:1425px){.lb-bar .tbrow .nb-birl{display:none !important}.lb-bar .tb-nmore.q{display:block !important}.lb-bar .tb-nmore .nmq-birl{display:flex !important}}
+@container (max-width:1345px){.lb-bar .tbrow .nb-qayta{display:none !important}.lb-bar .tb-nmore .nmq-qayta{display:flex !important}}
+@container (max-width:1180px){.lb-bar .tbrow .nb-uzay{display:none !important}.lb-bar .tb-nmore .nmq-uzay{display:flex !important}}
+@container (max-width:1060px){.lb-bar .tbrow .nb-sud{display:none !important}.lb-bar .tb-nmore .nmix-sud{display:flex !important}}
+@container (max-width:915px){.lb-bar .tbrow .nb-toxt{display:none !important}.lb-bar .tb-nmore .nmix-toxt{display:flex !important}}
+@container (max-width:545px){.lb-bar .tbrow .nb-sodda{display:none !important}.lb-bar .tb-nmore .nmix-sodda{display:flex !important}}
 /* ro'yxat jadvali: sichqoncha ustiga kelganda qator ajralib turadi */
 .l-table .l-row:not(.l-head){position:relative}
 .l-table .l-row:not(.l-head):hover{background:#f5f8ff !important;box-shadow:inset 3px 0 0 #3073f1}
@@ -8021,3 +8021,4 @@ html[data-theme="dark"] .seg-tabs>.seg-ind,html[data-theme="dark"] .seg-tabs>but
 .axh.ol .axh-why small{color:#5b21b6}
 .axh.ol .axh-why p{color:#3b0764}
 .ax-qv .dx-sel{width:100%}
+@container (max-width:735px){.lb-bar .tbrow .nb-qol{display:none !important}.lb-bar .tb-nmore .nmix-qol{display:flex !important}}
