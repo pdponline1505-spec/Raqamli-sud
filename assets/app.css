@@ -7816,3 +7816,4 @@ html[data-theme="dark"] .seg-tabs>.seg-ind,html[data-theme="dark"] .seg-tabs>but
 .uzq-lt.rais .l-row{grid-template-columns:minmax(160px,1fr) minmax(0,1.4fr) minmax(0,1.5fr) minmax(120px,.8fr) 120px 150px 250px !important}
 .uzq-lt.rais .uzq-acts{justify-content:flex-end !important;gap:6px}
 .uzq-lt .l-row:not(.l-head)>*:not(.uzq-acts){text-align:left !important}.uzq-lt .uzq-num,.uzq-lt .uzq-req{align-items:flex-start !important;text-align:left !important}.uzq-lt .uzq-num *,.uzq-lt .uzq-req *{text-align:left !important}
+.l-sn-uz{width:100%;box-sizing:border-box;min-width:0}.l-sn-uz>span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.l-sn-uz .l-sn-n{flex:none}
