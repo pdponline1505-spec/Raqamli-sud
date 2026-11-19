@@ -8377,3 +8377,4 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 /* Ichki panel sahifa aylantirilganda ham joyida turadi (sticky) — sn-ind uchun ham konteyner bo'lib qoladi */
 .l-app .l-sub{position:sticky;top:0;height:100vh;align-self:start}
 .l-app .l-rail{position:sticky;top:0;height:100vh;align-self:start}
+.l-tag.res.k-ax-tasdiq{background:#fff7ed;color:#c2410c}
