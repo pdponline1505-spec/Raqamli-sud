@@ -8210,3 +8210,49 @@ html[data-theme="dark"] .seg-tabs>.seg-ind,html[data-theme="dark"] .seg-tabs>but
 .rail-tip{position:fixed;z-index:9999;transform:translate(-4px,-50%);padding:7px 11px;border-radius:8px;background:#0f172a;color:#fff;font:500 12.5px/1.2 Inter,system-ui,sans-serif;white-space:nowrap;box-shadow:0 6px 18px rgba(15,23,42,.18);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .12s ease,transform .12s ease,visibility 0s linear .12s}
 .rail-tip::before{content:"";position:absolute;left:-4px;top:50%;width:9px;height:9px;background:#0f172a;border-radius:2px;transform:translateY(-50%) rotate(45deg)}
 .rail-tip.on{opacity:1;visibility:visible;transform:translate(0,-50%);transition-delay:0s}
+/* ===== Ikki qavatli yon menyu: 1-panel belgi + to'liq nom (Magnific uslubi), yig'ilsa faqat belgilar ===== */
+.l-app{--rail-w:232px;grid-template-columns:var(--rail-w) 220px minmax(0,1fr)}
+.l-app.subc{grid-template-columns:var(--rail-w) 0px minmax(0,1fr)}
+.l-app.railc{--rail-w:72px}
+.l-ri-l{display:none}
+.l-brand{display:flex;align-items:center;gap:10px;flex:none}
+.l-brand .l-logo{margin:0 !important;flex:none}
+.l-brand-t{display:none}
+.l-rtog{display:grid;place-items:center;width:30px;height:30px;border:0;border-radius:8px;background:transparent;color:#64748b;cursor:pointer;flex:none;transition:background-color .15s,color .15s}
+.l-rtog:hover{background:#f1f5f9;color:#0f172a}
+.l-rtog:focus-visible{outline:2px solid #3073f1;outline-offset:2px}
+.l-rtog .i{width:18px;height:18px}
+/* yig'ilgan holat */
+.l-app.railc .l-brand{flex-direction:column;gap:8px;margin-bottom:6px}
+/* kengaytirilgan holat */
+.l-app:not(.railc) .l-rail{align-items:stretch;padding:16px 12px 14px;gap:2px !important;overflow-x:hidden}
+.l-app:not(.railc) .l-brand{padding:0 2px 0 4px;margin:0 0 14px}
+.l-app:not(.railc) .l-brand .l-logo{width:36px;height:36px}.l-app:not(.railc) .l-brand .l-logo img{width:34px;height:34px}
+.l-app:not(.railc) .l-brand-t{display:flex;flex-direction:column;gap:1px;flex:1;min-width:0}
+.l-brand-t b{font-size:15px;font-weight:700;color:#0f172a;letter-spacing:-.01em;white-space:nowrap}
+.l-brand-t small{font-size:11.5px;color:#64748b;white-space:nowrap}
+.l-app:not(.railc) .l-rail .l-ri{width:100% !important;height:40px !important;min-height:40px !important;display:flex !important;align-items:center;justify-content:flex-start;gap:12px;padding:0 10px !important;border-radius:10px !important;font:inherit;font-size:13.5px;font-weight:500;color:#334155;background:transparent;box-shadow:none !important;text-align:left}
+.l-app:not(.railc) .l-rail .l-ri svg{width:19px !important;height:19px !important;flex:none}
+.l-app:not(.railc) .l-rail .l-ri:hover{background:#f1f5f9;color:#0f172a}
+.l-app:not(.railc) .l-rail .l-ri.on{background:#eaf1fe !important;color:#1d5fd6;font-weight:600;box-shadow:none !important}
+.l-app:not(.railc) .l-rail .l-ri.dis{color:#cbd5e1;background:transparent !important}
+.l-app:not(.railc) .l-ri-l{display:block;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.l-app:not(.railc) .l-rail .l-ri-n{position:static;margin-left:auto;border:0;min-width:20px;height:20px;line-height:20px;font-size:11px}
+.l-app:not(.railc) .l-rgrp,.l-app:not(.railc) .adm-rg{width:100%}
+.l-app:not(.railc) .l-fly{display:none !important}
+.l-app:not(.railc) .adm-rail{align-items:stretch;gap:2px !important;padding:8px 0;margin:6px 0;border-color:#eef1f5}
+.l-app:not(.railc) .adm-rail .l-rgrp:hover>.l-ri:not(.on){background:#f1f5f9 !important;color:#0f172a}
+.l-app:not(.railc) .l-rail .l-ri[aria-label="Design System"]{margin-top:auto}
+/* profil qatori */
+.l-app:not(.railc) .l-rail .pf-rail{height:56px !important;min-height:56px !important;gap:10px;padding:0 8px !important;margin-top:8px;border-top:1px solid #eef1f5 !important;border-radius:0 !important;background:#fff !important;box-shadow:0 -10px 12px 2px #fff !important}
+.l-app:not(.railc) .l-rail .pf-rail .pf-av{width:34px;height:34px;flex:none}
+.l-app:not(.railc) .l-rail .pf-rail .pf-dot{left:34px;right:auto}
+.l-app:not(.railc) .pf-rl{display:flex;flex-direction:column;gap:1px}
+.pf-rl b{font-size:13px;font-weight:600;color:#0f172a;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pf-rl small{font-size:11.5px;color:#64748b;font-weight:400;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media (max-height:860px){.l-app:not(.railc) .l-rail .l-ri{height:36px !important;min-height:36px !important}}
+@media (max-height:760px){.l-app:not(.railc) .l-rail .l-ri{height:32px !important;min-height:32px !important;font-size:13px}}
+.l-app.nosub{grid-template-columns:var(--rail-w) 0px minmax(0,1fr)}
+.l-app.nosub .l-sub{padding-left:0;padding-right:0;opacity:0;overflow:hidden;border-right-width:0 !important;pointer-events:none}
+.l-app.nosub .l-subclose{display:none}
+body:has(.l-app:not(.railc)) .pfp{left:244px}
