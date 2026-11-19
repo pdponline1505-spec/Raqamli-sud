@@ -8146,3 +8146,21 @@ html[data-theme="dark"] .seg-tabs>.seg-ind,html[data-theme="dark"] .seg-tabs>but
 .sdm-kok .i{width:13px;height:13px}
 .axc-bar-b .sd-sign{background:#3073f1 !important;border-color:#3073f1 !important}
 .axc-bar-b .sd-sign:hover{background:#1d5fd8 !important}
+/* Chap panel: bo'lim belgilari soni */
+.l-rail .l-ri{position:relative}
+.l-ri-n{position:absolute;top:1px;right:1px;min-width:18px;height:18px;padding:0 4px;border-radius:99px;background:#ea7a2c;color:#fff;font-size:10.5px;font-weight:700;line-height:14px;display:grid;place-items:center;border:2px solid #fff;font-variant-numeric:tabular-nums}
+/* "Boshqalar" faqat ichida amal bo'lsa */
+.hq-more.nb{display:none}
+@container hacts (max-width:1120px){.hq-more.nb.c-d{display:block}}
+@container hacts (max-width:840px){.hq-more.nb.c-q{display:block}}
+@container hacts (max-width:680px){.hq-more.nb.c-s{display:block}}
+@container hacts (max-width:530px){.hq-more.nb.c-o{display:block}}
+/* Arxiv bosh sahifasi (sudya bosh sahifasi nusxasi) */
+.axd2-ph{display:grid;place-items:center;background:linear-gradient(160deg,#eff6ff,#dbeafe);color:#3073f1}
+.axd2-ph .i{width:38px;height:38px;stroke-width:1.5}
+.axd2 .d2-party img{background:#f1f5f9}
+.axd2 .d2-tr>span[role="cell"]:nth-child(3){overflow:hidden;text-overflow:ellipsis;font-size:13px}
+.axd2 .d3-tk .d3-body{padding-top:2px}
+.axd2 .axd-tl .axh-li{padding-bottom:12px}
+.axd2 .d2-gl span:nth-child(2){color:#3073f1;font-weight:600}
+.l-rail .l-ri.dis{color:#cbd5e1;cursor:not-allowed;background:transparent !important;box-shadow:none !important}
