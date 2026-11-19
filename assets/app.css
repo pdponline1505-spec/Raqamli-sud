@@ -8259,3 +8259,24 @@ body:has(.l-app:not(.railc)) .pfp{left:244px}
 /* 2-panel yopish/ochish tugmasi panellar chegarasida (1-panel kengligiga bog'liq) */
 .l-subclose{left:calc(var(--rail-w,72px) + 220px - 14px)}
 .l-subopen{left:calc(var(--rail-w,72px) - 14px)}
+/* ===== Yig'ilgan va ochiq holat bir xil o'lchamda: faqat nomlar yashiriladi ===== */
+.l-app.railc .l-rail{align-items:center;padding:16px 12px 14px;gap:2px !important}
+.l-app.railc .l-brand{position:relative;flex-direction:row;gap:0;width:48px;height:36px;justify-content:center;margin:0 0 14px}
+.l-app.railc .l-brand .l-logo{width:36px;height:36px;transition:opacity .15s}
+.l-app.railc .l-brand .l-logo img{width:34px;height:34px}
+.l-app.railc .l-rtog{position:absolute;inset:0;margin:auto;width:36px;height:36px;opacity:0;background:#f1f5f9;color:#0f172a}
+.l-app.railc .l-brand:hover .l-rtog,.l-app.railc .l-rtog:focus-visible{opacity:1}
+.l-app.railc .l-brand:hover .l-logo{opacity:0}
+.l-app.railc .l-rail .l-ri{width:48px !important;height:40px !important;min-height:40px !important;padding:0 !important;display:grid !important;place-items:center;border-radius:10px !important;color:#334155;background:transparent;box-shadow:none !important}
+.l-app.railc .l-rail .l-ri svg{width:19px !important;height:19px !important}
+.l-app.railc .l-rail .l-ri:hover{background:#f1f5f9;color:#0f172a}
+.l-app.railc .l-rail .l-ri.on{background:#eaf1fe !important;color:#1d5fd6;box-shadow:none !important}
+.l-app.railc .l-rail .l-ri.dis{color:#cbd5e1;background:transparent !important}
+.l-app.railc .l-rail .l-ri-n{top:2px;right:2px;min-width:16px;height:16px;line-height:12px;font-size:10px;padding:0 3px}
+.l-app.railc .adm-rail{gap:2px !important;padding:8px 0;margin:6px 0}
+.l-app.railc .adm-rail .l-rgrp:hover>.l-ri:not(.on){background:#f1f5f9 !important;color:#0f172a}
+.l-app.railc .l-rail .l-ri[aria-label="Design System"]{margin-top:auto}
+.l-app.railc .l-rail .pf-rail{width:48px !important;height:56px !important;min-height:56px !important;margin-top:8px;border-top:1px solid #eef1f5 !important;border-radius:0 !important;background:#fff !important}
+.l-app.railc .l-rail .pf-rail .pf-av{width:34px;height:34px}
+@media (max-height:860px){.l-app.railc .l-rail .l-ri{height:36px !important;min-height:36px !important}}
+@media (max-height:760px){.l-app.railc .l-rail .l-ri{height:32px !important;min-height:32px !important}}
