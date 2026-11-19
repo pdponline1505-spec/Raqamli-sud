@@ -8322,3 +8322,7 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .l-app:not(.railc) .adm-rail,.l-app.railc .adm-rail{gap:8px !important}
 @media (max-height:860px){.l-app:not(.railc) .l-rail,.l-app.railc .l-rail,.l-app:not(.railc) .adm-rail,.l-app.railc .adm-rail{gap:5px !important}}
 @media (max-height:780px){.l-app:not(.railc) .l-rail,.l-app.railc .l-rail,.l-app:not(.railc) .adm-rail,.l-app.railc .adm-rail{gap:2px !important}}
+/* Yig'ilgan holat: yuqoridagi tugma ko'rinmaydi (bo'sh joy bosib ochiladi) — logotip bloki ochiq holat bilan bir xil balandlikda */
+.l-app.railc .l-brand{position:relative;flex-direction:row;height:36px;gap:0;width:48px;justify-content:center;margin:0 0 14px}
+.l-app.railc .l-rtog{position:absolute;inset:0;margin:auto;width:36px;height:36px;opacity:0;pointer-events:none;background:#f1f5f9;color:#0f172a}
+.l-app.railc .l-rtog:focus-visible{opacity:1;pointer-events:auto}
