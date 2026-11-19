@@ -8296,3 +8296,5 @@ body:has([aria-modal="true"]) .l-app.railc .l-rtog{z-index:1;pointer-events:none
 .l-app.railc .l-rtog:hover{background:#f1f5f9;color:#0f172a;border-color:transparent}
 .l-app.railc .l-rtog .i{width:18px;height:18px}
 .l-app.railc .l-rtog .rt-a{display:block}.l-app.railc .l-rtog .rt-b{display:none}
+/* Ichki (2-) panelni yopish imkoniyati olib tashlandi */
+.l-subclose,.l-subopen,.l-subhit{display:none !important}

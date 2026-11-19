@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=5e4af3d25b97">
+<link rel="stylesheet" href="assets/app.css?v=bf00937a554f">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -7247,12 +7247,12 @@ isPageMode: s.openMode === "page", isModalMode: s.openMode === "modal",
 isCasePage: s.caseOpen && s.openMode === "page", notCasePage: !(s.caseOpen && s.openMode === "page"),
 vmPage: s.openMode === "page" ? "on" : "", vmModal: s.openMode === "modal" ? "on" : "",
 setPageMode: function () { self.setState({ openMode: "page" }); }, setModalMode: function () { self.setState({ openMode: "modal" }); },
-appCls: (s.subCollapsed ? "subc" : "") + (((s.railC === true || (s.railC == null && (s.vw || window.innerWidth) <= 1440)) || (s.caseOpen && s.openMode === "page" && s.railCaseExp !== s.caseNum)) ? " railc" : "") + (s.caseOpen ? " locked" : "") + (s.caseOpen && s.openMode === "page" ? " pgmode" : ""), subCollapsed: s.subCollapsed,
+appCls: "" + (((s.railC === true || (s.railC == null && (s.vw || window.innerWidth) <= 1440)) || (s.caseOpen && s.openMode === "page" && s.railCaseExp !== s.caseNum)) ? " railc" : "") + (s.caseOpen ? " locked" : "") + (s.caseOpen && s.openMode === "page" ? " pgmode" : ""), subCollapsed: s.subCollapsed,
 railTitle: s.subCollapsed ? "Yon menyuni ochish" : "Yon menyuni yopish", railExp: s.subCollapsed ? "false" : "true",
 railArrowCls: s.subCollapsed ? "" : "open",
-subToggle: function () { self.setState({ subCollapsed: !self.state.subCollapsed }); },
+subToggle: function () {}, // ichki panel yopilmaydi
 railToggle: function () { var st = self.state; var base = st.railC === true || (st.railC == null && (st.vw || window.innerWidth) <= 1440); if (st.caseOpen && st.openMode === "page" && !base) { self.setState({ railCaseExp: st.railCaseExp === st.caseNum ? "" : st.caseNum }); return; } self.setState({ railC: !base }); }, railTogLbl: ((s.railC === true || (s.railC == null && (s.vw || window.innerWidth) <= 1440)) || (s.caseOpen && s.openMode === "page" && s.railCaseExp !== s.caseNum)) ? "Menyuni kengaytirish" : "Menyuni yig'ish", railExpStr: ((s.railC === true || (s.railC == null && (s.vw || window.innerWidth) <= 1440)) || (s.caseOpen && s.openMode === "page" && s.railCaseExp !== s.caseNum)) ? "false" : "true",
-cwWrap: s.openMode === "page" ? "position: fixed; top: calc(" + (s.ltH || 81) + "px - var(--cw-off, 0px)); right: 0; bottom: 0; left: " + ((((s.railC === true || (s.railC == null && (s.vw || window.innerWidth) <= 1440)) || (s.caseOpen && s.openMode === "page" && s.railCaseExp !== s.caseNum)) ? 72 : 232) + (s.subCollapsed ? 0 : 220)) + "px; transition: left 240ms cubic-bezier(.2,0,0,1); z-index: 40; display: block; padding: 0; background: #f4f4f5"
+cwWrap: s.openMode === "page" ? "position: fixed; top: calc(" + (s.ltH || 81) + "px - var(--cw-off, 0px)); right: 0; bottom: 0; left: " + ((((s.railC === true || (s.railC == null && (s.vw || window.innerWidth) <= 1440)) || (s.caseOpen && s.openMode === "page" && s.railCaseExp !== s.caseNum)) ? 72 : 232) + 220) + "px; transition: left 240ms cubic-bezier(.2,0,0,1); z-index: 40; display: block; padding: 0; background: #f4f4f5"
 : "position: fixed; inset: 0; z-index: 40; display: grid; place-items: center; padding: 24px",
 cwCls: s.openMode === "modal" ? "quick" : "",
 hdrCls: s.hdrCompact && s.openMode === "page" ? "compact" : "",
