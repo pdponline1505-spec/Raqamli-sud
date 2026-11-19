@@ -8256,3 +8256,6 @@ html[data-theme="dark"] .seg-tabs>.seg-ind,html[data-theme="dark"] .seg-tabs>but
 .l-app.nosub .l-sub{padding-left:0;padding-right:0;opacity:0;overflow:hidden;border-right-width:0 !important;pointer-events:none}
 .l-app.nosub .l-subclose{display:none}
 body:has(.l-app:not(.railc)) .pfp{left:244px}
+/* 2-panel yopish/ochish tugmasi panellar chegarasida (1-panel kengligiga bog'liq) */
+.l-subclose{left:calc(var(--rail-w,72px) + 220px - 14px)}
+.l-subopen{left:calc(var(--rail-w,72px) - 14px)}
