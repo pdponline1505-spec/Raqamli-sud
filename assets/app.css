@@ -8317,3 +8317,8 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .l-app.railc .l-rail,.l-app:not(.railc) .l-rail{cursor:ew-resize}
 .l-app .l-rail :is(button,a){cursor:pointer}
 .l-app .l-rail .l-ri.dis{cursor:not-allowed}
+/* Asosiy panel qatorlari orasi (ikkala holatda) — kuchliroq selektor bilan */
+.l-app:not(.railc) .l-rail,.l-app.railc .l-rail{gap:8px !important}
+.l-app:not(.railc) .adm-rail,.l-app.railc .adm-rail{gap:8px !important}
+@media (max-height:860px){.l-app:not(.railc) .l-rail,.l-app.railc .l-rail,.l-app:not(.railc) .adm-rail,.l-app.railc .adm-rail{gap:5px !important}}
+@media (max-height:780px){.l-app:not(.railc) .l-rail,.l-app.railc .l-rail,.l-app:not(.railc) .adm-rail,.l-app.railc .adm-rail{gap:2px !important}}
