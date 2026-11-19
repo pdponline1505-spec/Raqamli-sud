@@ -8092,3 +8092,4 @@ html[data-theme="dark"] .seg-tabs>.seg-ind,html[data-theme="dark"] .seg-tabs>but
 .axc-mbg{position:fixed;inset:0;z-index:40;background:transparent;border:0;padding:0;cursor:default}
 .axc-menu{position:absolute;top:calc(100% + 6px);right:0;z-index:41;min-width:200px}
 .axc-lt .l-row{overflow:visible}
+.axc-lt .l-row>.axc-chkc{border-left:0 !important;border-right:0 !important;box-shadow:none !important}
