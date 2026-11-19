@@ -8374,3 +8374,6 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .btn.axk-ret{background:#fff;border-color:#fecaca;color:#b91c1c}.btn.axk-ret:hover{background:#fef2f2}
 .btn.axk-acc.dis,.btn.axk-ret.dis{opacity:.45}
 @media (max-width:640px){.axk-row{flex-direction:column;align-items:stretch}.axk-bs{justify-content:flex-end}}
+/* Ichki panel sahifa aylantirilganda ham joyida turadi (sticky) — sn-ind uchun ham konteyner bo'lib qoladi */
+.l-app .l-sub{position:sticky;top:0;height:100vh;align-self:start}
+.l-app .l-rail{position:sticky;top:0;height:100vh;align-self:start}
