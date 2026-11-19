@@ -8750,3 +8750,14 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .axk-alll:hover{background:#eff6ff;color:#1d4ed8}
 .axk-alll:focus-visible{outline:2px solid #3073f1;outline-offset:1px}
 .axk-row.open .axk-det{margin-top:0}
+/* axk: ochilgan karta ikki qism — yuqorisi holat rangida, pasti oq */
+.axk-qv .axk-row{background:#fff !important;overflow:hidden}
+.axk-qv .axk-row .axk-rowb{border-radius:0;transition:background-color .15s}
+.axk-qv .axk-row.ok .axk-rowb{background:#f0fdf4}
+.axk-qv .axk-row.no .axk-rowb{background:#fef2f2}
+.axk-qv .axk-row.na .axk-rowb{background:#f8fafc}
+.axk-qv .axk-row.open .axk-rowb{border-bottom:1px solid #e2e8f0}
+.axk-qv .axk-row.open.ok .axk-rowb{border-bottom-color:#bbf7d0}
+.axk-qv .axk-row.open.no .axk-rowb{border-bottom-color:#fecaca}
+.axk-qv .axk-row .axk-det{margin:0 !important;padding:14px 16px 16px;border:0 !important;border-radius:0;background:#fff !important}
+.axk-qv .axk-row.na .axk-det .axk-tx,.axk-qv .axk-row.na .axk-det{color:inherit}
