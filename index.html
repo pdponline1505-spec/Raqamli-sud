@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=9c90312e6e7c">
+<link rel="stylesheet" href="assets/app.css?v=75750fb49c2d">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -386,6 +386,18 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div></sc-for>
 <sc-if value="{{uzEmpty}}" hint-placeholder-val="{{ false }}"><div class="uzq-empty">{{uzEmptyTxt}}</div></sc-if>
 </div>
+</div>
+</sc-if>
+<sc-if value="{{isAxDash}}" hint-placeholder-val="{{ false }}">
+<div class="d2 axd">
+<div class="d2-head"><div class="kv" style="gap: 6px; min-width: 0"><div class="d2-h1" role="heading" aria-level="1">{{dbHello}}</div><p class="d2-sub">{{dbDate}} · Arxiv xodimi · Termiz tumanlararo iqtisodiy sudi</p></div><div class="d2-acts"><button type="button" class="d2-btn" onClick="{{axd.reqGo}}">Qaytarish so'rovlari<span class="d2-bn">{{axd.reqN}}</span></button><button type="button" class="d2-btn pri" onClick="{{axd.inGo}}">Kelgan ishlar<span class="d2-bn">{{axd.inN}}</span><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button></div></div>
+<div class="d2-stats">
+<sc-for list="{{axd.kpis}}" as="k" hint-placeholder-count="4"><button type="button" class="{{k.cls}}" onClick="{{k.go}}" aria-label="{{k.title}}: {{k.n}} ta. {{k.chip}}"><span class="d2-kt"><b>{{k.title}}</b><span class="d2-ka" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></span><span class="d2-kv"><b class="d2-kn db-cnt" style="--to: {{k.n}}"><span>{{k.n}}</span></b><span class="{{k.chipCls}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="{{k.chipIc}}"></path></svg>{{k.chip}}</span></span><span class="d2-kf">{{k.foot}}</span><sc-if value="{{k.spark}}" hint-placeholder-val="{{ false }}"><svg class="d2-ksp" viewBox="0 0 120 48" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="d2spg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#3073f1" stop-opacity=".28"></stop><stop offset="1" stop-color="#3073f1" stop-opacity="0"></stop></linearGradient></defs><path d="{{d2.spArea}}" fill="url(#d2spg)"></path><path d="{{d2.spLine}}" class="d2-ksl" fill="none" stroke="#3073f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path></svg></sc-if></button></sc-for>
+</div>
+<section class="d2-card axd-in" aria-labelledby="axd-int"><div class="d2-ch"><b id="axd-int">Qabul uchun kelgan ishlar</b><button type="button" class="d2-sel" onClick="{{axd.inGo}}">Barchasi · {{axd.inN}}<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button></div><div class="axd-t" role="table" aria-labelledby="axd-int"><div class="axd-tr axd-th" role="row"><span role="columnheader">Ish raqami</span><span role="columnheader">Taraflar</span><span role="columnheader">Qayerdan keldi</span><span role="columnheader">Sana</span><span role="columnheader">Holat</span><span></span></div><sc-for list="{{axd.in}}" as="r" hint-placeholder-count="3"><div class="axd-tr" role="row"><span class="kv" style="gap: 2px; min-width: 0" role="cell"><button type="button" class="d2-num" onClick="{{r.open}}">{{r.num}}</button><small>{{r.sub}}</small></span><span class="kv axd-party" role="cell"><b>{{r.ariz}}</b><small>{{r.jav}}</small></span><span class="axd-c3" role="cell" title="{{r.c3}}">{{r.c3}}</span><span role="cell"><b class="d2-dt">{{r.date}}</b></span><span role="cell"><span class="{{r.stCls}}">{{r.st}}</span></span><span role="cell" style="justify-self: end"><button type="button" class="ib d2-more" aria-label="{{r.num}} ishini ochish" onClick="{{r.open}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></button></span></div></sc-for><sc-if value="{{axd.inEmpty}}" hint-placeholder-val="{{ false }}"><div class="qm-empty" style="min-height: 120px"><b>Kelgan ish yo'q</b><small>Sudyalar yuborgan ishlar shu yerda ko'rinadi</small></div></sc-if></div></section>
+<section class="d2-card axd-act" aria-labelledby="axd-actt"><div class="d2-ch"><b id="axd-actt">So'nggi harakatlar</b></div><ol class="axh-tl axd-tl"><sc-for list="{{axd.act}}" as="e" hint-placeholder-count="5"><li class="{{e.cls}}"><span class="axh-dot"></span><div class="axh-ev"><div class="axh-evh"><b>{{e.t}}</b><time>{{e.d}}</time></div><button type="button" class="axd-anum" onClick="{{e.open}}">{{e.num}}</button></div></li></sc-for></ol></section>
+<section class="d2-card axd-req" aria-labelledby="axd-reqt"><div class="d2-ch"><b id="axd-reqt">Qaytarish so'rovlari</b><button type="button" class="d2-sel" onClick="{{axd.reqGo}}">Barchasi · {{axd.reqN}}<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button></div><div class="axd-t" role="table" aria-labelledby="axd-reqt"><div class="axd-tr axd-th" role="row"><span role="columnheader">Ish raqami</span><span role="columnheader">Taraflar</span><span role="columnheader">Sabab</span><span role="columnheader">Sana</span><span role="columnheader">Holat</span><span></span></div><sc-for list="{{axd.req}}" as="r" hint-placeholder-count="3"><div class="axd-tr" role="row"><span class="kv" style="gap: 2px; min-width: 0" role="cell"><button type="button" class="d2-num" onClick="{{r.open}}">{{r.num}}</button><small>{{r.sub}}</small></span><span class="kv axd-party" role="cell"><b>{{r.ariz}}</b><small>{{r.jav}}</small></span><span class="axd-c3" role="cell" title="{{r.c3}}">{{r.c3}}</span><span role="cell"><b class="d2-dt">{{r.date}}</b></span><span role="cell"><span class="{{r.stCls}}">{{r.st}}</span></span><span role="cell" style="justify-self: end"><button type="button" class="ib d2-more" aria-label="{{r.num}} ishini ochish" onClick="{{r.open}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></button></span></div></sc-for><sc-if value="{{axd.reqEmpty}}" hint-placeholder-val="{{ false }}"><div class="qm-empty" style="min-height: 120px"><b>So'rov yo'q</b><small>Sudyalarning qaytarish so'rovlari shu yerda ko'rinadi</small></div></sc-if></div></section>
+<section class="d2-card axd-sum" aria-labelledby="axd-sumt"><div class="d2-ch"><b id="axd-sumt">Holatlar bo'yicha</b><small class="axd-tot">Jami {{axd.total}} ta</small></div><div class="axd-bars"><sc-for list="{{axd.bars}}" as="b" hint-placeholder-count="4"><button type="button" class="axd-bar" onClick="{{b.go}}"><span class="axd-bl"><span>{{b.l}}</span><b>{{b.n}}</b></span><span class="axd-bt"><i style="width: {{b.w}}; background: {{b.c}}"></i></span></button></sc-for></div></section>
 </div>
 </sc-if>
 <sc-if value="{{isAxCab}}" hint-placeholder-val="{{ false }}">
@@ -10194,7 +10206,9 @@ if (isUz) { __out.topTitle = isRais ? "Kelib tushgan so'rovlar" : "Mening so'rov
 // ===== ARXIV KABINETI (Arxiv xodimi): sudyadan kelgan ishlarni qabul qilish / rad etish, qaytarish so'rovlari =====
 (function () {
 var role = s.role || "yordamchi", isAxRole = role === "arxiv";
-var isAxCab = isAxRole && !(s.caseOpen && s.openMode === "page") && s.page !== "ds" && s.page !== "admin";
+var isAxDash = isAxRole && s.page === "dash" && !(s.caseOpen && s.openMode === "page");
+var isAxCab = isAxRole && !isAxDash && !(s.caseOpen && s.openMode === "page") && s.page !== "ds" && s.page !== "admin";
+__out.isAxDash = isAxDash;
 __out.isAxRole = isAxRole; __out.isAxRoleSub = isAxRole && !(s.caseOpen && s.openMode === "page"); __out.isAxCab = isAxCab;
 if (isAxRole) { __out.showListSub = false; __out.isListPage = false; __out.isDash = false; __out.isUzPage = false; }
 var p2 = function (x) { return (x < 10 ? "0" : "") + x; }, tod = function () { var d = new Date(); return p2(d.getDate()) + "." + p2(d.getMonth() + 1) + "." + d.getFullYear(); };
@@ -10209,7 +10223,8 @@ qaytgan: rows.filter(function (r) { return r.stage !== "arxiv" && (r.axRet || r.
 var NAV = [["kelgan", "Kelgan ishlar"], ["sorov", "Qaytarish so'rovlari"], ["arxiv", "Arxivdagi ishlar"], ["qaytgan", "Sudyaga qaytarilgan"]];
 var tab = s.axcTab || "kelgan";
 var goTab = function (k) { return function () { self.setState({ page: "axcab", axcTab: k, caseOpen: false, axcSel: {} }); try { window.scrollTo(0, 0); } catch (e) {} }; };
-__out.goAxCab = goTab(tab); __out.railAxCls = isAxCab ? "l-ri on" : "l-ri"; __out.railAxCur = isAxCab ? "page" : "false";
+__out.goAxCab = goTab(tab); __out.railAxCls = isAxCab ? "l-ri on" : "l-ri";
+if (isAxRole) { __out.goDash = function () { self.setState({ page: "dash", caseOpen: false, axcMenu: 0 }); try { window.scrollTo(0, 0); } catch (e) {} }; __out.railDashCls = isAxDash ? "l-ri on" : "l-ri"; __out.railDashCur = isAxDash ? "page" : "false"; } __out.railAxCur = isAxCab ? "page" : "false";
 __out.axcNav = NAV.map(function (t) { var n = SEC[t[0]].length; return { l: t[1], n: String(n), has: n > 0 && (t[0] === "kelgan" || t[0] === "sorov"), cls: "l-sn l-sn-uz" + (isAxCab && tab === t[0] ? " on" : ""), go: goTab(t[0]) }; });
 var HD = { kelgan: ["Qabul uchun kelgan ishlar", "Sudyalar arxivga topshirgan ishlar · ishni tekshirib qabul qiling yoki kamchilik bilan rad eting"], sorov: ["Qaytarish so'rovlari", "Sudyalar arxivdan qaytarib olishni so'ragan ishlar · tasdiqlasangiz ish sudya jo'natgan bo'limiga qaytadi"], arxiv: ["Arxivdagi ishlar", "Arxiv qabul qilgan va saqlanayotgan ishlar"], qaytgan: ["Sudyaga qaytarilgan ishlar", "Qabul qilish rad etilgan yoki so'rov bo'yicha qaytarib berilgan ishlar"] };
 __out.axcTitle = HD[tab][0]; __out.axcDesc = HD[tab][1];
@@ -10254,6 +10269,33 @@ __out.axcRetSel = function () { if (!nSel) return; var d = tod();
 __out.axcRejSel = function () { if (nSel) openRej(tab === "sorov" ? "sorov" : "qabul", selIds); };
 __out.axcEmpty = !__out.axcRows.length; __out.axcEmptyTxt = { kelgan: "Hozircha qabul uchun kelgan ish yo'q", sorov: "Qaytarish so'rovlari yo'q", arxiv: "Arxivda ish yo'q", qaytgan: "Qaytarilgan ishlar yo'q" }[tab];
 if (isAxCab) { __out.topTitle = HD[tab][0]; __out.topCrumb = "Arxiv"; }
+if (isAxDash) { __out.topTitle = "Bosh sahifa"; __out.topCrumb = "Arxiv"; __out.axcNav.forEach(function (t) { t.cls = "l-sn l-sn-uz"; }); }
+// Arxiv xodimi · bosh sahifa
+(function () {
+var openR = function (r) { return function () { self.setState(Object.assign(self._loadCase ? self._loadCase(r) : {}, { caseOpen: true, openMode: "modal", subView: "", caseNum: r.num, nav: "umumiy" })); }; };
+var key = function (d) { return String(d || "").split(".").reverse().join(""); };
+var mk = function (r, kind) { var q = r.axReq || {}; return { num: r.num, sub: kind === "in" ? (r.axCount > 1 ? r.axCount + "-marta yuborilgan" : "Arxivga yuborilgan") : "Arxivda · qabul " + (r.axQabul || ""), ariz: (r.ariz || [])[0] || "—", jav: (r.jav || [])[0] || "—",
+  c3: kind === "in" ? (r.axFrom ? stL(r.axFrom) : "—") : ((q.sabab || []).join("; ") || "—"), date: kind === "in" ? (r.axSana || "—") : (q.sana || "—"),
+  st: kind === "in" ? "Kutilmoqda" : "Ko'rib chiqilmoqda", stCls: "uzq-st w", open: openR(r) }; };
+var inL = SEC.kelgan.slice().sort(function (a, b) { return key(b.axSana) < key(a.axSana) ? -1 : 1; }), rqL = SEC.sorov.slice();
+var ev = []; rows.forEach(function (r) { (r.axHist || []).forEach(function (e) { if (e.sana) ev.push({ e: e, r: r }); }); });
+ev.sort(function (a, b) { return key(b.e.sana) < key(a.e.sana) ? -1 : key(b.e.sana) > key(a.e.sana) ? 1 : 0; });
+var TT = { yuborish: "Arxivga yuborildi", qaytarildi: "Qabul qilish rad etildi", qabul: "Arxivga qabul qilindi", olish: "Sudyaga qaytarildi", sorov: "Qaytarish so'raldi", sorovRad: "So'rov rad etildi" };
+var CL = { yuborish: "b", qaytarildi: "w", qabul: "g", olish: "v", sorov: "v", sorovRad: "w" };
+var KP = [["Qabul uchun kelgan ishlar", SEC.kelgan.length, "kelgan", "Kutilmoqda", "warn", "Sudyalar arxivga topshirgan", "M12 7v6M12 17h.01", " a"],
+  ["Qaytarish so'rovlari", SEC.sorov.length, "sorov", "Javob kutilmoqda", "vio", "Sudyalar qaytarishni so'ragan", "M9 14L4 9l5-5M4 9h11a5 5 0 0 1 0 10h-3", " v"],
+  ["Arxivdagi ishlar", SEC.arxiv.length, "arxiv", "Saqlanmoqda", "ok", "Arxiv qabul qilgan ishlar", "M5 12l5 5 9-10", ""],
+  ["Sudyaga qaytarilgan", SEC.qaytgan.length, "qaytgan", "Rad etilgan va qaytarilgan", "", "Qabul rad etilgan yoki qaytarilgan", "M5 12h14", " s"]];
+var tot = KP.reduce(function (a, k) { return a + k[1]; }, 0) || 1, CC = ["#f59e0b", "#8b5cf6", "#10b981", "#64748b"];
+__out.axd = {
+  kpis: KP.map(function (k) { return { title: k[0], n: k[1], chip: k[3], chipCls: "d2-kc " + (k[4] || (k[1] ? "warn" : "ok")), chipIc: k[6], foot: k[5], go: goTab(k[2]), spark: false, cls: "d2-k" }; }),
+  in: inL.slice(0, 5).map(function (r) { return mk(r, "in"); }), inN: String(SEC.kelgan.length), inEmpty: !inL.length, inGo: goTab("kelgan"),
+  req: rqL.slice(0, 5).map(function (r) { return mk(r, "req"); }), reqN: String(SEC.sorov.length), reqEmpty: !rqL.length, reqGo: goTab("sorov"),
+  act: ev.slice(0, 6).map(function (x) { return { t: TT[x.e.t] || x.e.t, d: x.e.sana, num: x.r.num, cls: "axh-li " + (CL[x.e.t] || "b"), open: openR(x.r) }; }),
+  bars: KP.map(function (k, i) { return { l: k[0], n: k[1], w: Math.max(4, Math.round(k[1] / tot * 100)) + "%", c: CC[i], go: goTab(k[2]) }; }),
+  total: String(KP.reduce(function (a, k) { return a + k[1]; }, 0))
+};
+})();
 // Rad etish oynasi (qabul qilishni rad etish / qaytarish so'rovini rad etish)
 var A = s.axr || null, RS = A ? rows.filter(function (r) { return (A.ids || []).indexOf(r.id) >= 0; }) : [], R = RS[0] || null; __out.axrOpen = !!(A && R);
 var setA = function (p) { self.setState(function (prev) { return prev.axr ? { axr: Object.assign({}, prev.axr, p, { err: p.err || "" }) } : null; }); };
