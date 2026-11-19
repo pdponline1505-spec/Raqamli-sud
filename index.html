@@ -8591,6 +8591,7 @@ self.flash("Ekspertiza so'rovi devonxonaga yuborildi · " + rec.num);
 (function () {
 var role = s.role || "yordamchi", P = { yordamchi: ["Ergashev Jahongir Alisherovich", "Sudya yordamchisi", "EJ", "Jahongir"], sudya: ["Tojiyev Zokirjon Xolboyevich", "Sudya", "TZ", "Zokirjon"], rais: ["Rahimov Baxtiyor Odilovich", "Sud raisi", "RB", "Baxtiyor"], admin: ["Abdumalikov Abduazim Abdullayevich", "Administrator", "AA", "Abduazim"], devon: ["Qodirova Dilfuza Ergashevna", "Devonxona mudiri", "QD", "Dilfuza"], operator: ["Ortiqov Sardor Baxtiyorovich", "Operator", "OS", "Sardor"], arxiv: ["Normatova Gulnora Rustamovna", "Arxiv xodimi", "NG", "Gulnora"] };
 var me = P[role];
+if (role === "arxiv") __out.canJudge = false;
 __out.pfName = me[0].split(" ").slice(0, 2).join(" "); __out.pfFull = me[0]; __out.pfRole = me[1]; __out.pfIni = me[2];
 __out.pfBtnCls = "l-ri pf-rail" + (s.pf ? " on" : "");
 __out.pfKey = function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ pf: false }); } };
@@ -10193,7 +10194,7 @@ if (isUz) { __out.topTitle = isRais ? "Kelib tushgan so'rovlar" : "Mening so'rov
 // ===== ARXIV KABINETI (Arxiv xodimi): sudyadan kelgan ishlarni qabul qilish / rad etish, qaytarish so'rovlari =====
 (function () {
 var role = s.role || "yordamchi", isAxRole = role === "arxiv";
-var isAxCab = isAxRole && !s.caseOpen && s.page !== "ds" && s.page !== "admin";
+var isAxCab = isAxRole && !(s.caseOpen && s.openMode === "page") && s.page !== "ds" && s.page !== "admin";
 __out.isAxRole = isAxRole; __out.isAxRoleSub = isAxRole && !(s.caseOpen && s.openMode === "page"); __out.isAxCab = isAxCab;
 if (isAxRole) { __out.showListSub = false; __out.isListPage = false; __out.isDash = false; __out.isUzPage = false; }
 var p2 = function (x) { return (x < 10 ? "0" : "") + x; }, tod = function () { var d = new Date(); return p2(d.getDate()) + "." + p2(d.getMonth() + 1) + "." + d.getFullYear(); };
@@ -10237,8 +10238,8 @@ __out.axcLtCls = "l-table uzq-lt axc-lt" + (selectable ? "" : " nochk");
 var toggle = function (id) { self.setState(function (prev) { var o = Object.assign({}, prev.axcSel || {}); if (o[id]) delete o[id]; else o[id] = true; return { axcSel: o }; }); };
 __out.axcRows.forEach(function (o, i) { var id = ids[i], on = !!SEL[id]; o.idx = String(i + 1); o.sel = on; o.selStr = on ? "true" : "false"; o.chkCls = "l-chk" + (on ? " on" : "");
   o.toggle = function (e) { if (e && e.stopPropagation) e.stopPropagation(); toggle(id); };
-  o.rowCls = "l-row axc-r" + (selectable ? " click" : "") + (on ? " sel" : "");
-  o.rowTap = function (e) { if (!selectable) return; try { if (e && e.target && e.target.closest && e.target.closest("button")) return; } catch (x) {} toggle(id); }; });
+  o.rowCls = "l-row axc-r click" + (on ? " sel" : "");
+  o.rowTap = function (e) { try { if (e && e.target && e.target.closest && e.target.closest("button")) return; } catch (x) {} var rr = byId(id); if (!rr) return; self.setState(Object.assign(self._loadCase ? self._loadCase(rr) : {}, { axcMenu: 0, caseOpen: true, openMode: "modal", subView: "", caseNum: rr.num, nav: "umumiy" })); }; });
 var nSel = selIds.length, all = ids.length > 0 && nSel === ids.length;
 __out.axcAllOn = all; __out.axcSomeOn = nSel > 0 && !all; __out.axcAllStr = all ? "true" : nSel ? "mixed" : "false"; __out.axcAllCls = "l-chk" + (nSel ? " on" : "");
 __out.axcToggleAll = function () { var o = {}; if (!all) ids.forEach(function (id) { o[id] = true; }); self.setState({ axcSel: o }); };
