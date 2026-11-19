@@ -8761,3 +8761,5 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .axk-qv .axk-row.open.no .axk-rowb{border-bottom-color:#fecaca}
 .axk-qv .axk-row .axk-det{margin:0 !important;padding:14px 16px 16px;border:0 !important;border-radius:0;background:#fff !important}
 .axk-qv .axk-row.na .axk-det .axk-tx,.axk-qv .axk-row.na .axk-det{color:inherit}
+/* axk: barcha bandlar belgilanmaguncha "Qabul qilish" — kulrang, faol emas */
+.axk-qv .qv-f .btn.axk-acc.dis,.axk-qv .qv-f .btn.axk-acc[disabled]{opacity:1;background:#e2e8f0 !important;border-color:#e2e8f0 !important;color:#94a3b8 !important;cursor:not-allowed;box-shadow:none}
