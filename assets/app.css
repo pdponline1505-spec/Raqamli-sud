@@ -8464,3 +8464,45 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .axu-warn{display:flex;flex-direction:column;gap:3px;padding:11px 14px;border-radius:12px;background:#fef2f2;border:1px solid #fecaca}
 .axu-warn b{font-size:13.5px;color:#b91c1c;font-weight:600}.axu-warn span{font-size:12.5px;color:#7f1d1d}
 .nitem.axov .ic{background:#fef2f2;color:#dc2626}
+/* ===== Arxiv bosh sahifasi: 5 karta, pastki qator, qidiruv, hisobot ===== */
+.axd2 .d2-stats{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:1500px){.axd2 .d2-stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:900px){.axd2 .d2-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.axd2 .d2-stats{grid-template-columns:minmax(0,1fr)}}
+.axd3 .d3-body{gap:0}
+.axd3 .d3-tx{gap:2px}
+.axd3 .d3-tx b{font-size:13.5px;font-weight:600;color:#0f172a;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.axd3 .d3-tx small{font-size:12px;color:#64748b;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.axd3-n{min-width:40px;height:24px;padding:0 9px;border-radius:99px;background:#fff7ed;color:#c2410c;font-size:12px;font-weight:700;display:inline-grid;place-items:center;font-variant-numeric:tabular-nums}
+.axd3-n.ok{background:#ecfdf5;color:#059669}
+.axd3-t.done .d3-tx b{color:#94a3b8;font-weight:500}
+.axd3-t.done .d3-chev{opacity:.3}
+.axd3-ev{grid-template-columns:32px minmax(0,1fr) auto !important}
+.axd3-dt{font-size:12px;color:#64748b;font-variant-numeric:tabular-nums;white-space:nowrap}
+/* qidiruv */
+.axs-qv{width:min(680px,calc(100vw - 32px)) !important}
+.axs-in{display:flex;align-items:center;gap:10px;height:46px;padding:0 14px;border:1px solid #cbd5e1;border-radius:12px;background:#fff}
+.axs-in:focus-within{border-color:#3073f1;box-shadow:0 0 0 3px rgba(48,115,241,.14)}
+.axs-in .i{width:18px;height:18px;color:#64748b;flex:none}
+.axs-q{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:15px;color:#0f172a}
+.axs-n{font-size:12.5px;color:#64748b}
+.axs-list{display:flex;flex-direction:column;gap:6px;max-height:min(52vh,460px);overflow:auto}
+.axs-r{display:flex;align-items:center;gap:12px;width:100%;padding:10px 12px;border:1px solid #e2e8f0;border-radius:10px;background:#fff;font:inherit;text-align:left;cursor:pointer}
+.axs-r:hover{border-color:#bfdbfe;background:#f8fbff}
+.axs-r:focus-visible{outline:2px solid #3073f1;outline-offset:2px}
+.axs-tx{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.axs-tx b{font-size:14px;font-weight:600;color:#0f172a;font-variant-numeric:tabular-nums}
+.axs-tx small{font-size:12.5px;color:#475569;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.axs-tx .axs-sud{color:#94a3b8}
+.axs-r .uzq-st{flex:none;white-space:nowrap}
+.uzq-st.b{background:#eff6ff;color:#1d4ed8}
+/* hisobot */
+.axrep-qv{width:min(560px,calc(100vw - 32px)) !important}
+.axrep-g{display:flex;flex-direction:column;border:1px solid #eef1f5;border-radius:12px;overflow:hidden}
+.axrep-gt{padding:10px 14px;background:#f8fafc;font-size:12.5px;font-weight:600;color:#475569;border-bottom:1px solid #eef1f5}
+.axrep-r{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;font-size:13.5px;color:#334155}
+.axrep-r+.axrep-r{border-top:1px solid #f1f4f8}
+.axrep-r b{font-size:14px;color:#0f172a;font-variant-numeric:tabular-nums}
+.axrep-qv .qv-f .btn{display:inline-flex;align-items:center;gap:6px}
+.axd3 .d3-body{--rh:54px;height:calc(var(--rh) * 5 + 12px)}
+@media (max-width:760px){.axd3 .d3-body{height:auto;max-height:none}}

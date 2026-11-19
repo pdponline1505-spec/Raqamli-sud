@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=7d27649d100a">
+<link rel="stylesheet" href="assets/app.css?v=fb93a12ee078">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -431,7 +431,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="d2 axd2">
 <div class="d2-head">
 <div class="kv" style="gap: 6px; min-width: 0"><div class="d2-h1" role="heading" aria-level="1">{{dbHello}}</div><p class="d2-sub">{{dbDate}} · Arxiv xodimi · Termiz tumanlararo iqtisodiy sudi</p></div>
-<div class="d2-acts"><button type="button" class="d2-btn" onClick="{{axd.reqGo}}">Berish so'rovlari<span class="d2-bn">{{axd.reqN}}</span></button><button type="button" class="d2-btn" onClick="{{soon}}">Hisobot<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg></button><button type="button" class="d2-btn pri" onClick="{{axd.inGo}}">Kelgan ishlar<span class="d2-bn">{{axd.inN}}</span><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button></div>
+<div class="d2-acts"><button type="button" class="d2-btn" onClick="{{axd.srchGo}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>Arxivdan qidirish</button><button type="button" class="d2-btn" onClick="{{axd.reqGo}}">So'rovlarni ko'rish<span class="d2-bn">{{axd.reqN}}</span></button><button type="button" class="d2-btn" onClick="{{axd.repGo}}">Hisobot<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg></button><button type="button" class="d2-btn pri" onClick="{{axd.inGo}}">Qabul qilish<span class="d2-bn">{{axd.inN}}</span><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button></div>
 </div>
 <div class="d2-stats">
 <sc-for list="{{axd.kpis}}" as="k" hint-placeholder-count="4"><button type="button" class="{{k.cls}}" onClick="{{k.go}}" aria-label="{{k.title}}: {{k.n}} ta. {{k.chip}}"><span class="d2-kt"><b>{{k.title}}</b><span class="d2-ka" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></span><span class="d2-kv"><b class="d2-kn db-cnt" style="--to: {{k.n}}"><span>{{k.n}}</span></b><span class="{{k.chipCls}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="{{k.chipIc}}"></path></svg>{{k.chip}}</span></span><span class="d2-kf">{{k.foot}}</span><sc-if value="{{k.spark}}" hint-placeholder-val="{{ false }}"><svg class="d2-ksp" viewBox="0 0 120 48" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="axd2spg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#3073f1" stop-opacity=".28"></stop><stop offset="1" stop-color="#3073f1" stop-opacity="0"></stop></linearGradient></defs><path d="{{axd.spArea}}" fill="url(#axd2spg)"></path><path d="{{axd.spLine}}" class="d2-ksl" fill="none" stroke="#3073f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path></svg></sc-if></button></sc-for>
@@ -504,20 +504,20 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="d2-ptx"><b>Qabul muddatini o'tkazib yubormang!</b><p>{{axd.remTxt}}</p></div>
 </section>
 
-<section class="d2-card d3 d3-tk" aria-labelledby="axd3-tk">
-<div class="d3-h"><span class="d3-ic" style="--c: #6d28d9; --b: #f5f3ff"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span><div class="kv d3-ht"><b id="axd3-tk">So'nggi harakatlar</b><small>{{axd.actSum}}</small></div><span class="d3-ring" style="background: {{axd.actRing}}"><b>{{axd.actN}}</b></span></div>
-<div class="d3-body"><ol class="axh-tl axd-tl"><sc-for list="{{axd.act}}" as="e" hint-placeholder-count="4"><li class="{{e.cls}}"><span class="axh-dot"></span><div class="axh-ev"><div class="axh-evh"><b>{{e.t}}</b><time>{{e.d}}</time></div><button type="button" class="axd-anum" onClick="{{e.open}}">{{e.num}}</button></div></li></sc-for></ol></div>
+<section class="d2-card d3 d3-tk axd3" aria-labelledby="axd3-tk">
+<div class="d3-h"><span class="d3-ic" style="--c: #b45309; --b: #fff4e2"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="17" rx="2"></rect><path d="M9 3h6v3H9zM8 12l3 3 5-6"></path></svg></span><div class="kv d3-ht"><b id="axd3-tk">Bugungi vazifalar</b><small>{{axd.taskSum}}</small></div><span class="d3-ring" style="background: {{axd.taskRing}}" title="{{axd.taskSum}}"><b>{{axd.taskLeft}}</b></span></div>
+<div class="d3-body"><sc-for list="{{axd.tasks}}" as="t" hint-placeholder-count="5"><button type="button" class="{{t.cls}}" onClick="{{t.go}}" style="--c: {{t.color}}"><span class="d3-dot"></span><div class="d3-tx"><b title="{{t.t}}">{{t.t}}</b><small>{{t.s}}</small></div><span class="{{t.nCls}}">{{t.nTxt}}</span><svg class="i s d3-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></sc-for></div>
+<button type="button" class="d3-ft" onClick="{{axd.inGo}}"><span>Kelgan ishlarga o'tish</span><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+</section>
+<section class="d2-card d3 d3-pm axd3" aria-labelledby="axd3-pm">
+<div class="d3-h"><span class="d3-ic" style="--c: #6d28d9; --b: #f5f3ff"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span><div class="kv d3-ht"><b id="axd3-pm">So'nggi harakatlar</b><small>{{axd.actSum}}</small></div></div>
+<div class="d3-body"><sc-for list="{{axd.evs}}" as="e" hint-placeholder-count="5"><button type="button" class="d3-row axd3-ev" onClick="{{e.open}}" style="--c: {{e.color}}"><span class="d3-dot"></span><div class="d3-tx"><b title="{{e.t}}">{{e.t}}</b><small>{{e.num}}</small></div><span class="axd3-dt">{{e.d}}</span></button></sc-for></div>
 <button type="button" class="d3-ft" onClick="{{axd.arxGo}}"><span>Arxivdagi ishlar</span><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
 </section>
-<section class="d2-card d3 d3-pm" aria-labelledby="axd3-pm">
-<div class="d3-h"><span class="d3-ic" style="--c: #3073f1; --b: #eff6ff"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg></span><div class="kv d3-ht"><b id="axd3-pm">Holatlar bo'yicha</b><small>{{axd.pmSum}}</small></div><span class="d3-ring" style="background: {{axd.pmRing}}" title="Jami {{axd.total}} ta"><b>{{axd.total}}</b></span></div>
-<div class="d3-body"><sc-for list="{{axd.pm}}" as="m" hint-placeholder-count="8"><button type="button" class="d3-row" onClick="{{m.go}}" style="--c: {{m.color}}"><span class="d3-dot"></span><div class="d3-tx"><b title="{{m.label}}">{{m.label}}</b><span class="d3-bar"><i style="width: {{m.w}}"></i></span></div><span class="d3-n">{{m.n}}</span><svg class="i s d3-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></sc-for></div>
+<section class="d2-card d3 d3-ij axd3" aria-labelledby="axd3-ij">
+<div class="d3-h"><span class="d3-ic" style="--c: #3073f1; --b: #eff6ff"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg></span><div class="kv d3-ht"><b id="axd3-ij">Holatlar bo'yicha</b><small>{{axd.pmSum}}</small></div><span class="d3-ring" style="background: {{axd.pmRing}}" title="Jami {{axd.total}} ta"><b>{{axd.total}}</b></span></div>
+<div class="d3-body"><sc-for list="{{axd.pm}}" as="m" hint-placeholder-count="5"><button type="button" class="d3-row" onClick="{{m.go}}" style="--c: {{m.color}}"><span class="d3-dot"></span><div class="d3-tx"><b title="{{m.label}}">{{m.label}}</b><span class="d3-bar"><i style="width: {{m.w}}"></i></span></div><span class="d3-n">{{m.n}}</span><svg class="i s d3-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></sc-for></div>
 <button type="button" class="d3-ft" onClick="{{axd.arxGo}}"><span>Barcha ishlar · {{axd.total}} ta</span><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
-</section>
-<section class="d2-card d3 d3-ij" aria-labelledby="axd3-ij">
-<div class="d3-h"><span class="d3-ic" style="--c: #15803d; --b: #ecfdf3"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6l-1 7h3a2 2 0 0 1 2 2v3H5v-3a2 2 0 0 1 2-2h3z"></path><path d="M5 19h14"></path></svg></span><div class="kv d3-ht"><b id="axd3-ij">Qaysi bosqichdan kelgan</b><small>{{axd.ijSum}}</small></div><span class="d3-ring" style="background: {{axd.ijRing}}" title="Jami {{axd.ijTot}} ta"><b>{{axd.ijTot}}</b></span></div>
-<div class="d3-body"><sc-for list="{{axd.ij}}" as="j" hint-placeholder-count="4"><button type="button" class="d3-row" onClick="{{axd.inGo}}" style="--c: {{j.color}}"><span class="d3-dot"></span><div class="d3-tx"><b title="{{j.label}}">{{j.label}}</b><span class="d3-bar"><i style="width: {{j.w}}"></i></span></div><span class="d3-n">{{j.n}}<small>{{j.pct}}</small></span><svg class="i s d3-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></sc-for></div>
-<button type="button" class="d3-ft" onClick="{{axd.inGo}}"><span>Kelgan ishlarga o'tish</span><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
 </section>
 </div>
 </sc-if>
@@ -571,6 +571,33 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <label class="ax-fld"><div class="ax-lbl"><span>Uzaytirish sababi</span><small>ixtiyoriy · arxiv ko'radi</small></div><textarea class="hol-in2 ax-ta" rows="2" value="{{axuIzoh}}" onChange="{{axuSetIzoh}}" placeholder="Masalan: kassatsiya shikoyati hali ko'rib chiqilmagan"></textarea></label>
 </div>
 <div class="qv-f"><button class="btn qv-close" style="margin-left: auto" onClick="{{axuX}}">Bekor qilish</button><button class="btn pri" onClick="{{axuGo}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4M12 14v3l2 1"></path></svg>Muddatni uzaytirish</button></div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{axsOpen}}" hint-placeholder-val="{{ false }}">
+<div class="qv-wrap ax-qvw">
+<button class="qv-bg" aria-label="Oynani yopish" onClick="{{axsX}}"></button>
+<div class="qv nxm nxm-main nxa ax-qv axs-qv" role="dialog" aria-modal="true" aria-labelledby="axs-t" tabindex="-1" onKeyDown="{{axsKey}}">
+<div class="qv-h"><div class="nx-hh"><span class="nx-si"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg></span><div class="kv" style="gap: 2px"><b id="axs-t" class="qv-title">Arxivdan qidirish</b><small>Ish raqami, taraf yoki nizo turi bo'yicha</small></div></div><button class="ib qv-x" aria-label="Yopish" onClick="{{axsX}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+<div class="qv-b nxm-b ax-qb">
+<label class="axs-in"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><input class="axs-q" value="{{axsQ}}" onInput="{{axsSetQ}}" onChange="{{axsSetQ}}" placeholder="Masalan: 2604/2534 yoki Hamkorbank" aria-label="Arxivdan qidirish"></label>
+<small class="axs-n">{{axsN}}</small>
+<div class="axs-list"><sc-for list="{{axsRes}}" as="r" hint-placeholder-count="5"><button type="button" class="axs-r" onClick="{{r.open}}"><span class="axs-tx"><b>{{r.num}}</b><small>{{r.side}}</small><small class="axs-sud">{{r.sud}}</small></span><span class="{{r.stCls}}">{{r.st}}</span></button></sc-for><sc-if value="{{axsEmpty}}" hint-placeholder-val="{{ false }}"><div class="uzq-empty">Hech narsa topilmadi · boshqa so'z bilan qidirib ko'ring</div></sc-if></div>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{axrepOpen}}" hint-placeholder-val="{{ false }}">
+<div class="qv-wrap ax-qvw">
+<button class="qv-bg" aria-label="Oynani yopish" onClick="{{axrepX}}"></button>
+<div class="qv nxm nxm-main nxa ax-qv axrep-qv" role="dialog" aria-modal="true" aria-labelledby="axrep-t" tabindex="-1" onKeyDown="{{axrepKey}}">
+<div class="qv-h"><div class="nx-hh"><span class="nx-si"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg></span><div class="kv" style="gap: 2px"><b id="axrep-t" class="qv-title">Arxiv hisoboti</b><small>{{axrepSub}}</small></div></div><button class="ib qv-x" aria-label="Yopish" onClick="{{axrepX}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+<div class="qv-b nxm-b ax-qb">
+<div class="ax-kun" role="radiogroup" aria-label="Davr"><sc-for list="{{axrepPer}}" as="k" hint-placeholder-count="4"><button type="button" role="radio" aria-checked="{{k.str}}" class="{{k.cls}}" onClick="{{k.pick}}">{{k.l}}</button></sc-for></div>
+<div class="axrep-g"><b class="axrep-gt">Davr ichidagi harakatlar</b><sc-for list="{{axrepMov}}" as="r" hint-placeholder-count="6"><div class="axrep-r"><span>{{r.k}}</span><b>{{r.v}}</b></div></sc-for></div>
+<div class="axrep-g"><b class="axrep-gt">Hozirgi holat</b><sc-for list="{{axrepNow}}" as="r" hint-placeholder-count="3"><div class="axrep-r"><span>{{r.k}}</span><b>{{r.v}}</b></div></sc-for></div>
+</div>
+<div class="qv-f"><button class="btn qv-close" onClick="{{axrepX}}">Yopish</button><button class="btn" style="margin-left: auto" onClick="{{axrepPdf}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>PDF</button><button class="btn pri" onClick="{{axrepCsv}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>Excel (CSV)</button></div>
 </div>
 </div>
 </sc-if>
@@ -4507,8 +4534,8 @@ var L_DATA = [
 { id: 43, num: "4-1901-2604/2521", tag: "", stage: "arxiv", sub: "qabul", axFrom: { stage: "ijro", sub: "", ijSub: "tasdiq", res: "toliq" }, axSana: "15.10.2025", axNote: "", axQabul: "17.10.2025", axCount: 1, axHist: [{ t: "yuborish", sana: "15.10.2025" }, { t: "qabul", sana: "17.10.2025" }], ariz: ["«Termiz Energiya Savdo» MChJ"], jav: ["«Jarqo'rg'on Paxta Tozalash» AJ"], sud: "Elektr energiyasi uchun qarzni undirish yuzasidan", sana: "11.09.2025", qaror: "29.09.2025 15:30" },
 { id: 44, num: "4-1901-2604/2507", tag: "", stage: "arxiv", sub: "qabul", axFrom: { stage: "yakun", sub: "qisman" }, axSana: "08.10.2025", axNote: "", axQabul: "10.10.2025", axCount: 1, axHist: [{ t: "yuborish", sana: "08.10.2025" }, { t: "qabul", sana: "10.10.2025" }], ariz: ["«Sherobod Don Mahsulotlari» MChJ"], jav: ["«Denov Agro Servis» fermer xo'jaligi"], sud: "Yetkazib berish shartnomasi bo'yicha qarz undirish yuzasidan", sana: "02.09.2025", qaror: "22.09.2025 10:15" },
 { id: 45, num: "4-1901-2604/2493", tag: "", stage: "arxiv", sub: "qabul", axFrom: { stage: "yakun", sub: "rad" }, axSana: "01.10.2025", axNote: "", axQabul: "03.10.2025", axCount: 1, axHist: [{ t: "yuborish", sana: "01.10.2025" }, { t: "qabul", sana: "03.10.2025" }], ariz: ["«Angor Logistika» MChJ"], jav: ["Termiz shahar hokimligi"], sud: "Ijara shartnomasini bekor qilish yuzasidan", sana: "26.08.2025", qaror: "15.09.2025 14:00" },
-{ id: 46, num: "4-1901-2604/2480", tag: "", stage: "arxiv", sub: "qabul", axFrom: { stage: "ijro", sub: "", ijSub: "tasdiq", res: "qisman" }, axSana: "24.09.2025", axNote: "", axQabul: "26.09.2025", axCount: 1, axHist: [{ t: "yuborish", sana: "24.09.2025" }, { t: "qabul", sana: "26.09.2025" }], ariz: ["«Agrobank» ATB Termiz filiali"], jav: ["«Boysun Meva Eksport» MChJ"], sud: "Lizing to'lovlarini undirish yuzasidan", sana: "19.08.2025", qaror: "08.09.2025 16:20" },
-{ id: 47, num: "4-1901-2604/2466", tag: "", stage: "arxiv", sub: "qabul", axFrom: { stage: "yakun", sub: "tug" }, axSana: "17.09.2025", axNote: "", axQabul: "19.09.2025", axCount: 1, axHist: [{ t: "yuborish", sana: "17.09.2025" }, { t: "qabul", sana: "19.09.2025" }], ariz: ["«Surxon Gaz Ta'minot» AJ"], jav: ["«Qumqo'rg'on Issiqlik» MChJ"], sud: "Tabiiy gaz uchun qarzni undirish yuzasidan", sana: "12.08.2025", qaror: "01.09.2025 09:40" }
+{ id: 46, num: "4-1901-2604/2480", tag: "", stage: "arxiv", sub: "qabul", axTayyor: true, axFrom: { stage: "ijro", sub: "", ijSub: "tasdiq", res: "qisman" }, axSana: "24.09.2025", axNote: "", axQabul: "26.09.2025", axCount: 1, axHist: [{ t: "yuborish", sana: "24.09.2025" }, { t: "qabul", sana: "26.09.2025" }], ariz: ["«Agrobank» ATB Termiz filiali"], jav: ["«Boysun Meva Eksport» MChJ"], sud: "Lizing to'lovlarini undirish yuzasidan", sana: "19.08.2025", qaror: "08.09.2025 16:20" },
+{ id: 47, num: "4-1901-2604/2466", tag: "", stage: "arxiv", sub: "qabul", axTayyor: true, axFrom: { stage: "yakun", sub: "tug" }, axSana: "17.09.2025", axNote: "", axQabul: "19.09.2025", axCount: 1, axHist: [{ t: "yuborish", sana: "17.09.2025" }, { t: "qabul", sana: "19.09.2025" }], ariz: ["«Surxon Gaz Ta'minot» AJ"], jav: ["«Qumqo'rg'on Issiqlik» MChJ"], sud: "Tabiiy gaz uchun qarzni undirish yuzasidan", sana: "12.08.2025", qaror: "01.09.2025 09:40" }
 ].map(function (r) { return Object.assign({ stage: "korib" }, r); });
 var TM_AVC = [["#fde2e4", "#9f1239"], ["#dbeafe", "#1e40af"], ["#dcfce7", "#166534"], ["#fef3c7", "#92400e"]];
 var TM_RES = [
@@ -10504,6 +10531,7 @@ kelgan: rows.filter(function (r) { return r.stage === "arxiv" && r.sub === "yubo
 sorov: rows.filter(function (r) { return r.stage === "arxiv" && r.sub === "qabul" && r.axReq && r.axReq.st === "kutish"; }),
 arxiv: rows.filter(function (r) { return r.stage === "arxiv" && r.sub === "qabul" && !(r.axReq && r.axReq.st === "kutish"); }),
 berilgan: rows.filter(function (r) { return r.stage === "arxiv" && !!r.axBer; }),
+tayyor: rows.filter(function (r) { return r.stage === "arxiv" && r.sub === "qabul" && !!r.axTayyor && !r.axBer && !(r.axReq && r.axReq.st === "kutish"); }),
 qaytgan: rows.filter(function (r) { return r.stage !== "arxiv" && !!r.axRet; })
 };
 var NAV = [["kelgan", "Kelgan ishlar"], ["arxiv", "Arxivdagi ishlar"], ["sorov", "Berish so'rovlari"], ["berilgan", "Vaqtincha berilgan"], ["qaytgan", "Kamchilik bilan qaytgan"]];
@@ -10520,8 +10548,9 @@ var openRej = function (kind, ids) { self.setState({ axr: { kind: kind, ids: ids
 var openH = function (id) { return function () { if (self._openAxHist) self._openAxHist(id); }; };
 var grpOf = function (r) { if (tab === "berilgan") { var x = axBerSt(r.axBer)[1]; return x === "no" ? "Muddati o'tgan" : x === "w" ? "Qaytarilgan · tasdiq kutilmoqda" : "Sudyada"; } return tab === "qaytgan" ? tabLbl(r.stage) : (r.axFrom ? tabLbl(r.axFrom.stage) : "Boshqa"); };
 // Guruh tablari doim ko'rinadi (ish bo'lmasa ham, 0 bilan)
-var GRPS = tab === "berilgan" ? ["Sudyada", "Muddati o'tgan", "Qaytarilgan · tasdiq kutilmoqda"] : [tabLbl("yakun"), tabLbl("ijro")]; SEC[tab].forEach(function (r) { var g = grpOf(r); if (GRPS.indexOf(g) < 0) GRPS.push(g); });
-var grp = GRPS.indexOf(s.axcGrp || "") >= 0 ? s.axcGrp : "", LST = SEC[tab].filter(function (r) { return !grp || grpOf(r) === grp; });
+var GRPS = tab === "berilgan" ? ["Sudyada", "Muddati o'tgan", "Qaytarilgan · tasdiq kutilmoqda"] : tab === "arxiv" ? [tabLbl("yakun"), tabLbl("ijro"), "Topshirishga tayyor"] : [tabLbl("yakun"), tabLbl("ijro")];
+var inGrp = function (r, g) { return g === "Topshirishga tayyor" ? !!r.axTayyor : grpOf(r) === g; }; SEC[tab].forEach(function (r) { var g = grpOf(r); if (GRPS.indexOf(g) < 0) GRPS.push(g); });
+var grp = GRPS.indexOf(s.axcGrp || "") >= 0 ? s.axcGrp : "", LST = SEC[tab].filter(function (r) { return !grp || inGrp(r, grp); });
 var SHORT = { kelgan: "Kelgan", arxiv: "Arxiv", sorov: "So'rovlar", berilgan: "Berilgan", qaytgan: "Kamchilik" };
 var ICS = { kelgan: "M4 13h4l2 3h4l2-3h4M4 13l2.5-7h11L20 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z", sorov: "M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8zM14 3v5h5M9 13h6M9 17h4", berilgan: "M10 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h5M14 8l4 4-4 4M18 12H8", arxiv: "M3 4h18v5H3zM5 9v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9M10 13h4", qaytgan: "M12 3l9.5 17h-19zM12 10v4M12 17h.01" };
 var berAlert = SEC.berilgan.filter(function (r) { var x = axBerSt(r.axBer)[1]; return x === "no" || x === "w"; }).length;
@@ -10531,7 +10560,7 @@ var navIt = function (l, n, has, on, go) { return { l: l, n: String(n), has: has
 if (isAxDash) { __out.axSubT1 = "Arxiv kabineti"; __out.axSubT2 = "Normatova Gulnora Rustamovna";
   __out.axcSide = [navIt("Bosh sahifa", 0, false, true, function () {})].concat(NAV.map(function (t) { var n = cntOf(t[0]); return navIt(t[1], n, (pend(t[0]) || t[0] === "berilgan") && n > 0, false, goTab(t[0])); })); }
 else { __out.axSubT1 = HD[tab][0]; __out.axSubT2 = tab === "berilgan" ? "Qaytarish holati bo'yicha" : tab === "qaytgan" ? "Qaytgan bo'limi bo'yicha" : "Qayerdan kelgani bo'yicha";
-  __out.axcSide = [navIt("Barchasi", SEC[tab].length, pend(tab) && SEC[tab].length > 0, !grp, function () { self.setState({ axcGrp: "", axcSel: {}, axcMenu: 0 }); })].concat(GRPS.map(function (g) { var n = SEC[tab].filter(function (r) { return grpOf(r) === g; }).length; return navIt(g, n, false, grp === g, function () { self.setState({ axcGrp: g, axcSel: {}, axcMenu: 0 }); }); })); }
+  __out.axcSide = [navIt("Barchasi", SEC[tab].length, pend(tab) && SEC[tab].length > 0, !grp, function () { self.setState({ axcGrp: "", axcSel: {}, axcMenu: 0 }); })].concat(GRPS.map(function (g) { var n = SEC[tab].filter(function (r) { return inGrp(r, g); }).length; return navIt(g, n, false, grp === g, function () { self.setState({ axcGrp: g, axcSel: {}, axcMenu: 0 }); }); })); }
 __out.axcTabs = isAxDash ? [] : (__out.axcSide || []).map(function (t) { var on = t.cls.indexOf(" on") >= 0; return { label: t.l, n: t.n, sel: on ? "true" : "false", cls: on ? "on" : "", pick: t.go }; });
 __out.axcRows = LST.map(function (r) {
 var req = r.axReq || null, from = r.axFrom ? stL(r.axFrom) : "";
@@ -10541,6 +10570,7 @@ if (tab === "kelgan") { o.from = (r.axCount > 1 ? r.axCount + "-marta · " : "Yu
 else if (tab === "sorov") { o.from = "Arxivda · qabul " + (r.axQabul || ""); o.infoT = (req.sabab || []).join("; ") || "—"; o.infoS = (req.kun || 10) + " kunga" + (req.izoh ? " · " + req.izoh : ""); o.sana = req.sana || "—"; o.stLbl = "Ko'rib chiqilmoqda"; o.stCls = "uzq-st w"; }
 else if (tab === "berilgan") { var B = r.axBer, bs = axBerSt(B); o.from = B.uz ? "Uzaytirildi: " + B.uzSana + (B.uz > 1 ? " (" + B.uz + "-marta)" : "") : "Berilgan: " + B.sana + " · " + B.kun + " kunga"; if (B.uz && B.uzIzoh) B = Object.assign({}, B, { izoh: B.uzIzoh }); o.infoT = (B.sabab || []).join("; ") || "—"; o.infoS = B.izoh || ""; o.sana = B.muddat; o.stLbl = bs[0]; o.stCls = "uzq-st " + bs[1]; }
 else if (tab === "arxiv" && r.axBer) { o.from = "Vaqtincha berilgan"; o.infoT = from || "—"; o.infoS = "Qaytarish muddati: " + r.axBer.muddat; o.sana = r.axSana || "—"; o.stLbl = "Vaqtincha berilgan"; o.stCls = "uzq-st v"; }
+else if (tab === "arxiv" && r.axTayyor) { o.from = "Topshirishga tayyor"; o.infoT = from || "—"; o.infoS = "Saqlash muddati yakunlangan · davlat arxiviga topshiriladi"; o.sana = r.axSana || "—"; o.stLbl = "Topshirishga tayyor"; o.stCls = "uzq-st b"; }
 else if (tab === "arxiv") { o.from = "Saqlanmoqda"; o.infoT = from || "—"; o.infoS = req && req.st === "rad" ? "Qaytarish so'rovi rad etilgan" : ""; o.sana = r.axSana || "—"; o.stLbl = "Qabul qilingan"; o.stCls = "uzq-st ok"; }
 else { o.from = "Hozir: " + stL(r); o.infoT = r.axRet.note; o.infoS = ""; o.sana = r.axRet.sana; o.stLbl = "Tuzatish kutilmoqda"; o.stCls = "uzq-st no"; }
 o.hasInfoS = !!o.infoS;
@@ -10591,11 +10621,15 @@ var ev = []; rows.forEach(function (r) { (r.axHist || []).forEach(function (e) {
 ev.sort(function (a, b) { return key(b.e.sana) < key(a.e.sana) ? -1 : key(b.e.sana) > key(a.e.sana) ? 1 : 0; });
 var TT = { yuborish: "Arxivga yuborildi", qaytarildi: "Qabul qilish rad etildi", qabul: "Arxivga qabul qilindi", olish: "Sudyaga vaqtincha berildi", sorov: "Vaqtincha olish so'raldi", sorovRad: "So'rov rad etildi", qaytdi: "Sudya arxivga qaytardi", qaytTasdiq: "Qaytgani tasdiqlandi", uzaytirish: "Muddat uzaytirildi" };
 var CL = { yuborish: "b", qaytarildi: "w", qabul: "g", olish: "v", sorov: "v", sorovRad: "w", qaytdi: "b", qaytTasdiq: "g", uzaytirish: "v" };
-var KP = [["Qabul uchun kelgan ishlar", SEC.kelgan.length, "kelgan", "Kutilmoqda", "warn", "Sudyalar arxivga topshirgan", "M12 7v6M12 17h.01", " a"],
-  ["Berish so'rovlari", SEC.sorov.length, "sorov", "Javob kutilmoqda", "vio", "Sudyalar vaqtincha olishni so'ragan", "M9 14L4 9l5-5M4 9h11a5 5 0 0 1 0 10h-3", " v"],
-  ["Arxivdagi ishlar", SEC.arxiv.length, "arxiv", "Saqlanmoqda", "ok", "Arxiv qabul qilgan ishlar", "M5 12l5 5 9-10", ""],
-  ["Vaqtincha berilgan", SEC.berilgan.length, "berilgan", berAlert ? berAlert + " tasi e'tibor talab" : "Muddatida", berAlert ? "warn" : "ok", "Sudyaga vaqtincha berilgan ishlar", berAlert ? "M12 7v6M12 17h.01" : "M5 12l5 5 9-10", " s"]];
-var tot = KP.reduce(function (a, k) { return a + k[1]; }, 0) || 1, CC = ["#f59e0b", "#8b5cf6", "#10b981", "#64748b"];
+var nQ = SEC.qaytgan.length, nT = SEC.tayyor.length;
+var KP = [["Arxivdagi ishlar", SEC.arxiv.length, "arxiv", "Saqlanmoqda", "ok", "Arxiv hisobida turgan ishlar", "M5 12l5 5 9-10", ""],
+  ["Qabul kutayotgan", SEC.kelgan.length, "kelgan", SEC.kelgan.length ? "Tekshirish kerak" : "Hammasi qabul qilingan", SEC.kelgan.length ? "warn" : "ok", "Topshirilgan, hali qabul qilinmagan", "M12 7v6M12 17h.01", " a"],
+  ["Kamchiligi bor", nQ, "qaytgan", nQ ? "Tuzatilmoqda" : "Kamchilik yo'q", nQ ? "warn" : "ok", "Tekshiruvda kamchilik topilgan", "M12 3l9.5 17h-19zM12 10v4M12 17h.01", ""],
+  ["Vaqtincha berilgan", SEC.berilgan.length, "berilgan", berAlert ? berAlert + " tasi e'tibor talab" : "Muddatida", berAlert ? "warn" : "ok", "Sudyaga berilgan, qaytarilmagan", berAlert ? "M12 7v6M12 17h.01" : "M5 12l5 5 9-10", " s"],
+  ["Topshirishga tayyor", nT, "tayyor", nT ? "Davlat arxiviga" : "Hozircha yo'q", "vio", "Asosi va tasdiqlari mavjud ishlar", "M12 4v11M7 10l5 5 5-5M5 20h14", ""]];
+var tot = KP.reduce(function (a, k) { return a + k[1]; }, 0) || 1, CC = ["#10b981", "#f59e0b", "#ef4444", "#8b5cf6", "#3073f1"];
+var goGrp = function (t, g) { return function () { self.setState({ page: "axcab", axcTab: t, axcGrp: g, caseOpen: false, axcSel: {}, axcMenu: 0 }); try { window.scrollTo(0, 0); } catch (e) {} }; };
+var goK = function (k) { return k === "tayyor" ? goGrp("arxiv", "Topshirishga tayyor") : goTab(k); };
 var A = {}, MS = ["yan", "fev", "mar", "apr", "may", "iyun", "iyul", "avg", "sen", "okt", "noy", "dek"], WDS = ["Ya", "Du", "Se", "Ch", "Pa", "Ju", "Sh"], t0 = new Date(); t0.setHours(0, 0, 0, 0);
 var addD = function (n) { var d = new Date(t0); d.setDate(d.getDate() + n); return d; }, fmt = function (d) { return d.getDate() + "-" + MS[d.getMonth()] + ", " + d.getFullYear(); };
 var smooth = function (pts) { var d = "M " + pts[0][0].toFixed(1) + " " + pts[0][1].toFixed(1);
@@ -10603,7 +10637,7 @@ for (var i = 0; i < pts.length - 1; i++) { var p0 = pts[i - 1] || pts[i], p1 = p
 d += " C " + (p1[0] + (p2[0] - p0[0]) / 6).toFixed(1) + " " + (p1[1] + (p2[1] - p0[1]) / 6).toFixed(1) + ", " + (p2[0] - (p3[0] - p1[0]) / 6).toFixed(1) + " " + (p2[1] - (p3[1] - p1[1]) / 6).toFixed(1) + ", " + p2[0].toFixed(1) + " " + p2[1].toFixed(1); }
 return d; };
 // KPI
-A.kpis = KP.map(function (k, i) { return { title: k[0], n: k[1], chip: k[3], chipCls: "d2-kc " + (k[4] || (k[1] ? "warn" : "ok")), chipIc: k[6], foot: i === 3 ? "Oxirgi 7 kundagi holat" : k[5], go: goTab(k[2]), spark: i === 3, cls: "d2-k" + (i === 3 ? " sp" : "") }; });
+A.kpis = KP.map(function (k) { return { title: k[0], n: k[1], chip: k[3], chipCls: "d2-kc " + (k[4] || (k[1] ? "warn" : "ok")), chipIc: k[6], foot: k[5], go: goK(k[2]), spark: false, cls: "d2-k" }; });
 var SPv = [2, 3, 1, 2, 1, 2, 1], spl = SPv.map(function (v, i) { return [i * 20, 44 - v / 3 * 36]; }); A.spLine = smooth(spl); A.spArea = smooth(spl) + " L 120 48 L 0 48 Z";
 // grafik
 var V = [2, 1, 3, 2, 4, 3, Math.max(1, SEC.kelgan.length)], U = [4, 3, 5, 4, 6, 5, 5], LO = [0, 0, 1, 1, 2, 1, 1], YM = 6;
@@ -10643,17 +10677,56 @@ var rem = s.axdRemind !== false; A.remCls = "d2-rem" + (rem ? " on" : ""); A.rem
 A.remTxt = rem ? "Ish arxivga kelib tushgach 3 kun ichida qabul qilinmasa, avtomatik eslatma olasiz." : "Avto eslatma o'chirilgan — qabul muddatlarini o'zingiz kuzatib boring.";
 A.remToggle = function () { var v = self.state.axdRemind === false; self.setState({ axdRemind: v }); self.flash(v ? "Avto eslatma yoqildi" : "Avto eslatma o'chirildi"); };
 // pastki qator
-A.act = ev.slice(0, 4).map(function (x) { return { t: TT[x.e.t] || x.e.t, d: x.e.sana, num: x.r.num, cls: "axh-li " + (CL[x.e.t] || "b"), open: openR(x.r) }; });
-A.actN = ev.length; A.actSum = ev.length + " ta harakat · oxirgisi " + (ev[0] ? ev[0].e.sana : "—"); A.actRing = "conic-gradient(#8b5cf6 0 100%)";
-var tot2 = KP.reduce(function (a, k) { return a + k[1]; }, 0); A.total = String(tot2);
-var pa = 0; A.pm = KP.map(function (k, i) { return { label: k[0], n: k[1], color: CC[i], w: Math.max(4, Math.round(k[1] / (tot2 || 1) * 100)) + "%", go: goTab(k[2]) }; });
-A.pmRing = "conic-gradient(" + KP.map(function (k, i) { var a0 = pa; pa += k[1] / (tot2 || 1) * 100; return CC[i] + " " + a0.toFixed(1) + "% " + pa.toFixed(1) + "%"; }).join(", ") + ")";
-A.pmSum = "4 ta holat · eng ko'pi: " + Math.max.apply(null, KP.map(function (k) { return k[1]; })) + " ta";
-var FR = {}; rows.forEach(function (r) { if (r.axFrom && (r.stage === "arxiv" || SEC.kelgan.indexOf(r) >= 0)) { var l = tabLbl(r.axFrom.stage); FR[l] = (FR[l] || 0) + 1; } });
-var FK = Object.keys(FR).sort(function (a, c) { return FR[c] - FR[a]; }), ft = FK.reduce(function (a, k) { return a + FR[k]; }, 0), FC = ["#3073f1", "#10b981", "#f59e0b", "#8b5cf6", "#64748b"], fa = 0;
-A.ij = FK.slice(0, 4).map(function (k, i) { var pc = ft ? Math.round(FR[k] / ft * 100) : 0; return { label: k, n: FR[k], color: FC[i], w: pc + "%", pct: pc + "%" }; });
-A.ijTot = ft; A.ijRing = ft ? "conic-gradient(" + FK.map(function (k, i) { var a0 = fa; fa += FR[k] / ft * 100; return FC[i % FC.length] + " " + a0.toFixed(1) + "% " + fa.toFixed(1) + "%"; }).join(", ") + ")" : "#e2e8f0";
-A.ijSum = "Arxivga kelgan va qabul qilingan ishlar";
+// So'nggi harakatlar
+var EC = { b: "#3073f1", w: "#ef4444", g: "#10b981", v: "#8b5cf6" };
+A.evs = ev.slice(0, 5).map(function (x) { return { t: TT[x.e.t] || x.e.t, d: x.e.sana, num: x.r.num, color: EC[CL[x.e.t] || "b"], open: openR(x.r) }; });
+A.actSum = ev.length + " ta harakat · oxirgisi " + (ev[0] ? ev[0].e.sana : "—");
+// Bugungi vazifalar
+var ovr = SEC.berilgan.filter(function (r) { return axBerSt(r.axBer)[1] === "no"; }).length, qt = SEC.berilgan.filter(function (r) { return r.axBer && r.axBer.qayt; }).length;
+var TK = [["Kelgan ishlarni tekshirib qabul qilish", "Sudya yordamchisi topshirgan", SEC.kelgan.length, "#f59e0b", goTab("kelgan")],
+  ["Berish so'rovlarini ko'rib chiqish", "Sudyalar ishni vaqtincha so'ragan", SEC.sorov.length, "#8b5cf6", goTab("sorov")],
+  ["Qaytgan ishlarni qabul qilish", "Sudya arxivga qaytargan · tasdiqlang", qt, "#3073f1", goGrp("berilgan", "Qaytarilgan · tasdiq kutilmoqda")],
+  ["Muddati o'tganlar bo'yicha eslatma", "Qaytarish muddati o'tgan ishlar", ovr, "#ef4444", goGrp("berilgan", "Muddati o'tgan")],
+  ["Davlat arxiviga topshirishga tayyorlash", "Topshirishga tayyor ishlar", nT, "#10b981", goGrp("arxiv", "Topshirishga tayyor")]];
+var tLeft = TK.filter(function (t) { return t[2] > 0; }).length;
+A.tasks = TK.slice().sort(function (a, b) { return (b[2] > 0) - (a[2] > 0); }).map(function (t) { var on = t[2] > 0; return { t: t[0], s: on ? t[1] : "Bajarildi · bugun ish yo'q", color: on ? t[3] : "#cbd5e1", cls: "d3-row axd3-t" + (on ? "" : " done"), nTxt: on ? t[2] + " ta" : "✓", nCls: "axd3-n" + (on ? "" : " ok"), go: t[4] }; });
+A.taskLeft = tLeft; A.taskSum = tLeft ? tLeft + " ta vazifa kutilmoqda" : "Bugungi vazifalar bajarilgan";
+A.taskRing = "conic-gradient(#22c55e 0 " + Math.round((TK.length - tLeft) / TK.length * 100) + "%, #fde7c2 0 100%)";
+// Holatlar bo'yicha (takrorlanmaydigan holatlar)
+var nSaq = SEC.arxiv.filter(function (r) { return !r.axBer && !r.axTayyor; }).length;
+var PM = [["Qabul kutilmoqda", SEC.kelgan.length, "#f59e0b", goTab("kelgan")], ["Saqlanmoqda", nSaq, "#10b981", goTab("arxiv")], ["Vaqtincha berilgan", SEC.berilgan.length, "#8b5cf6", goTab("berilgan")], ["Topshirishga tayyor", nT, "#3073f1", goGrp("arxiv", "Topshirishga tayyor")], ["Kamchilik bilan qaytgan", nQ, "#ef4444", goTab("qaytgan")]];
+var pmTot = PM.reduce(function (a, m) { return a + m[1]; }, 0), pmMax = Math.max.apply(null, PM.map(function (m) { return m[1]; })) || 1, pa = 0;
+A.total = String(pmTot);
+A.pm = PM.map(function (m) { return { label: m[0], n: m[1], color: m[2], w: Math.max(m[1] ? 6 : 0, Math.round(m[1] / pmMax * 100)) + "%", go: m[3] }; });
+A.pmRing = pmTot ? "conic-gradient(" + PM.map(function (m) { var a0 = pa; pa += m[1] / pmTot * 100; return m[2] + " " + a0.toFixed(1) + "% " + pa.toFixed(1) + "%"; }).join(", ") + ")" : "#e2e8f0";
+A.pmSum = PM.length + " ta holat · jami " + pmTot + " ta ish";
+// Arxivdan qidirish
+A.srchGo = function () { self.setState({ axs: { q: "" } }); setTimeout(function () { var x = document.querySelector(".axs-q"); if (x) try { x.focus(); } catch (e) {} }, 80); };
+var stOf = function (r) { return r.axRet ? ["Kamchilik bilan qaytgan", "no"] : r.sub === "yuborilgan" ? ["Qabul kutilmoqda", "w"] : r.axBer ? ["Vaqtincha berilgan", "v"] : (r.axReq && r.axReq.st === "kutish") ? ["Berish so'ralgan", "v"] : r.axTayyor ? ["Topshirishga tayyor", "b"] : ["Saqlanmoqda", "ok"]; };
+var SQ = s.axs || null; __out.axsOpen = !!SQ; __out.axsX = function () { self.setState({ axs: null }); }; __out.axsKey = function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ axs: null }); } };
+if (SQ) { var q = String(SQ.q || "").trim().toLowerCase(), pool = rows.filter(function (r) { return r.stage === "arxiv" || r.axRet; });
+  var res = pool.filter(function (r) { if (!q) return true; return [r.num, (r.ariz || []).join(" "), (r.jav || []).join(" "), r.sud || ""].join(" ").toLowerCase().indexOf(q) >= 0; });
+  __out.axsQ = SQ.q || ""; __out.axsSetQ = function (e) { self.setState({ axs: { q: e.target.value } }); };
+  __out.axsN = q ? res.length + " ta natija" : "Arxivdagi barcha ishlar · " + res.length + " ta"; __out.axsEmpty = !res.length;
+  __out.axsRes = res.slice(0, 40).map(function (r) { var st = stOf(r); return { num: r.num, side: ((r.ariz || [])[0] || "—") + " — " + ((r.jav || [])[0] || "—"), sud: r.sud || "", st: st[0], stCls: "uzq-st " + st[1], open: function () { self.setState({ axs: null }); openR(r)(); } }; }); }
+// Hisobot
+A.repGo = function () { self.setState({ axrep: { per: "all" } }); };
+var RP = s.axrep || null; __out.axrepOpen = !!RP; __out.axrepX = function () { self.setState({ axrep: null }); }; __out.axrepKey = function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ axrep: null }); } };
+if (RP) { var PER = [["oy", "Joriy oy"], ["chorak", "Chorak"], ["yil", "Joriy yil"], ["all", "Barchasi"]], per = RP.per || "all", now = new Date(), st0 = null;
+  if (per === "oy") st0 = new Date(now.getFullYear(), now.getMonth(), 1); else if (per === "chorak") st0 = new Date(now.getFullYear(), now.getMonth() - 2, 1); else if (per === "yil") st0 = new Date(now.getFullYear(), 0, 1);
+  var cnt = {}; rows.forEach(function (r) { (r.axHist || []).forEach(function (e) { var d = axPD(e.sana); if (!d) return; if (st0 && d < st0) return; cnt[e.t] = (cnt[e.t] || 0) + 1; }); });
+  var perL = PER.filter(function (p) { return p[0] === per; })[0][1];
+  __out.axrepSub = perL + (st0 ? " · " + axFD(st0) + " — " + axFD(now) : " · barcha davr");
+  __out.axrepPer = PER.map(function (p) { var on = per === p[0]; return { l: p[1], str: on ? "true" : "false", cls: "ax-kb" + (on ? " on" : ""), pick: function () { self.setState({ axrep: { per: p[0] } }); } }; });
+  var MOV = [["Arxivga kelib tushgan", cnt.yuborish || 0], ["Qabul qilingan", cnt.qabul || 0], ["Kamchilik bilan qaytarilgan", cnt.qaytarildi || 0], ["Vaqtincha berilgan", cnt.olish || 0], ["Arxivga qaytarilgan", cnt.qaytTasdiq || 0], ["Muddat uzaytirilgan", cnt.uzaytirish || 0]];
+  var NOW = [["Arxivda saqlanmoqda", nSaq], ["Sudyada (vaqtincha berilgan)", SEC.berilgan.length], ["Topshirishga tayyor", nT], ["Qabul kutilmoqda", SEC.kelgan.length]];
+  __out.axrepMov = MOV.map(function (m) { return { k: m[0], v: String(m[1]) }; }); __out.axrepNow = NOW.map(function (m) { return { k: m[0], v: String(m[1]) }; });
+  var fname = "arxiv-hisobot-" + per;
+  __out.axrepCsv = function () { var L = ["Arxiv hisoboti;" + __out.axrepSub, "", "Davr ichidagi harakatlar;Soni"].concat(MOV.map(function (m) { return m[0] + ";" + m[1]; }), ["", "Hozirgi holat;Soni"], NOW.map(function (m) { return m[0] + ";" + m[1]; }));
+    try { var bl = new Blob(["﻿" + L.join("\r\n")], { type: "text/csv;charset=utf-8" }), u = URL.createObjectURL(bl), a = document.createElement("a"); a.href = u; a.download = fname + ".csv"; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(u); a.remove(); }, 500); self.flash("Hisobot yuklab olindi · " + fname + ".csv"); } catch (e) { self.flash("Yuklab bo'lmadi"); } };
+  __out.axrepPdf = function () { var tr = function (m) { return "<tr><td>" + m[0] + "</td><td style='text-align:right'><b>" + m[1] + "</b></td></tr>"; };
+    var html = "<html><head><meta charset='utf-8'><title>" + fname + "</title><style>body{font-family:Arial,sans-serif;padding:32px;color:#0f172a}h1{font-size:20px;margin:0 0 4px}p{color:#64748b;margin:0 0 20px}table{width:100%;border-collapse:collapse;margin-bottom:22px}td,th{padding:8px 10px;border-bottom:1px solid #e2e8f0;font-size:13px;text-align:left}th{background:#f8fafc}</style></head><body><h1>Arxiv hisoboti</h1><p>Termiz tumanlararo iqtisodiy sudi · " + __out.axrepSub + "</p><table><tr><th>Davr ichidagi harakatlar</th><th style='text-align:right'>Soni</th></tr>" + MOV.map(tr).join("") + "</table><table><tr><th>Hozirgi holat</th><th style='text-align:right'>Soni</th></tr>" + NOW.map(tr).join("") + "</table></body></html>";
+    try { var fr = document.createElement("iframe"); fr.style.cssText = "position:fixed;right:0;bottom:0;width:0;height:0;border:0"; document.body.appendChild(fr); fr.contentDocument.open(); fr.contentDocument.write(html); fr.contentDocument.close(); setTimeout(function () { try { fr.contentWindow.focus(); fr.contentWindow.print(); } catch (e) {} setTimeout(function () { fr.remove(); }, 1500); }, 200); } catch (e) { self.flash("PDF tayyorlab bo'lmadi"); } }; }
 __out.axd = A;
 })();
 // Tekshirib qabul qilish oynasi: yordamchi to'ldirgan ro'yxat bandma-band solishtiriladi
