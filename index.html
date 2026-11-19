@@ -10697,14 +10697,14 @@ o.view = function (e) { if (e && e.stopPropagation) e.stopPropagation(); self._a
 o.canDal = tab === "berilgan" && !!(r.axBer && r.axBer.dd); o.dal = function () { self._axDalOf(r.id); };
 o.remind = function () { self.setState({ axcMenu: 0 }); self.flash(r.num + " · " + (r.axBer && r.axBer.tur === "tash" ? "«" + ((r.axBer.tash || {}).nom || "tashkilot") + "»ga" : "sudyaga") + " qaytarish muddati haqida eslatma yuborildi"); };
 return o; });
-var selectable = tab === "kelgan" || tab === "sorov" || tab === "berilgan", SEL = s.axcSel || {}, ids = LST.map(function (r) { return r.id; }), selIds = ids.filter(function (id) { return SEL[id]; });
+var selectable = tab === "sorov" || tab === "berilgan", SEL = s.axcSel || {}, ids = LST.map(function (r) { return r.id; }), selIds = ids.filter(function (id) { return SEL[id]; });
 __out.axcSelectable = selectable; __out.axcIsKelgan = tab === "kelgan"; __out.axcIsSorov = tab === "sorov"; __out.axcIsBer = tab === "berilgan"; __out.axcCanRejBar = tab === "sorov";
 __out.axcLtCls = "l-table uzq-lt axc-lt" + (selectable ? "" : " nochk");
 var toggle = function (id) { self.setState(function (prev) { var o = Object.assign({}, prev.axcSel || {}); if (o[id]) delete o[id]; else o[id] = true; return { axcSel: o }; }); };
 __out.axcRows.forEach(function (o, i) { var id = ids[i], on = !!SEL[id]; o.idx = String(i + 1); o.sel = on; o.selStr = on ? "true" : "false"; o.chkCls = "l-chk" + (on ? " on" : "");
   o.toggle = function (e) { if (e && e.stopPropagation) e.stopPropagation(); toggle(id); };
   o.rowCls = "l-row axc-r click" + (on ? " sel" : "");
-  o.rowTap = function (e) { try { if (e && e.target && e.target.closest && e.target.closest("button")) return; } catch (x) {} var rr = byId(id); if (!rr) return; if (tab === "sorov") { self._axView(id); return; } self.setState(Object.assign(self._loadCase ? self._loadCase(rr) : {}, { axcMenu: 0, caseOpen: true, openMode: "modal", subView: "", caseNum: rr.num, nav: "umumiy" })); }; });
+  o.rowTap = function (e) { try { if (e && e.target && e.target.closest && e.target.closest("button")) return; } catch (x) {} var rr = byId(id); if (!rr) return; if (tab === "sorov") { self._axView(id); return; } if (tab === "kelgan") { if (self._openAxk) self._openAxk([id]); return; } self.setState(Object.assign(self._loadCase ? self._loadCase(rr) : {}, { axcMenu: 0, caseOpen: true, openMode: "modal", subView: "", caseNum: rr.num, nav: "umumiy" })); }; });
 var nSel = selIds.length, all = ids.length > 0 && nSel === ids.length;
 __out.axcAllOn = all; __out.axcSomeOn = nSel > 0 && !all; __out.axcAllStr = all ? "true" : nSel ? "mixed" : "false"; __out.axcAllCls = "l-chk" + (nSel ? " on" : "");
 __out.axcToggleAll = function () { var o = {}; if (!all) ids.forEach(function (id) { o[id] = true; }); self.setState({ axcSel: o }); };
