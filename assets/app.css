@@ -8731,3 +8731,22 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .axn-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .axn-hint{font-size:12px;color:#94a3b8;margin-top:6px}
 @media (max-width:640px){.axq-steps{grid-template-columns:1fr}.axq-s::after{display:none}.axg-opts,.axg-opts.three,.axg-docs,.axn-2{grid-template-columns:1fr}.axg-ks{grid-template-columns:repeat(2,minmax(0,1fr))}.axdl-paper{padding:20px 16px}.axdl-sig{grid-template-columns:1fr;gap:20px}.axc-new{margin-left:0}}
+/* axk: karta bosiladi -> batafsil; o'ngda holat belgisi */
+.axk-rowb{width:100%;border:0;background:transparent;font:inherit;color:inherit;text-align:left;cursor:pointer;border-radius:10px}
+.axk-rowb:focus-visible{outline:2px solid #3073f1;outline-offset:-2px}
+.axk-qv .axk-row-r.axk-rowb{align-items:center !important;gap:10px !important;padding:12px 12px 12px 16px !important}
+.axk-row:not(.open) .axk-rowb:hover{background:rgba(15,23,42,.025)}
+.axk-qv .axk-tx{cursor:pointer;flex:1}
+.axk-pill{flex:none;display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 9px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap}
+.axk-pill .i{display:none;width:12px;height:12px;stroke-width:2.8}
+.axk-pill.ok{background:#d1fae5;color:#047857}.axk-pill.ok .p-ok{display:block}
+.axk-pill.no{background:#fee2e2;color:#b91c1c}.axk-pill.no .p-no{display:block}
+.axk-pill.na{background:#e2e8f0;color:#475569}.axk-pill.na .p-na{display:block}
+.axk-chv{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:8px;color:#64748b;transition:background-color .15s}
+.axk-chv .i{width:16px;height:16px;transition:transform .2s}
+.axk-rowb:hover .axk-chv{background:#f1f5f9;color:#0f172a}
+.axk-rowb[aria-expanded="true"] .axk-chv .i{transform:rotate(180deg)}
+.axk-alll{flex:none;height:28px;padding:0 10px;border:0;border-radius:8px;background:transparent;font:inherit;font-size:12.5px;font-weight:600;color:#3073f1;cursor:pointer}
+.axk-alll:hover{background:#eff6ff;color:#1d4ed8}
+.axk-alll:focus-visible{outline:2px solid #3073f1;outline-offset:1px}
+.axk-row.open .axk-det{margin-top:0}
