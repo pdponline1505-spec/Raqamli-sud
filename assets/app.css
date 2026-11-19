@@ -8086,3 +8086,9 @@ html[data-theme="dark"] .seg-tabs>.seg-ind,html[data-theme="dark"] .seg-tabs>but
 .axc-lt .axc-nh{font-weight:500}
 .axc-lt.nochk .axc-n,.axc-lt.nochk .axc-nh{display:inline}
 .axc-lt.nochk .axc-chkc .l-chk{display:none !important}
+.axc-km{position:relative;display:flex;justify-content:center}
+.axc-kb{width:32px;height:32px;border-radius:8px;border:1px solid transparent;color:#64748b}
+.axc-kb:hover,.axc-kb.on{background:#f1f5f9;border-color:#e2e8f0;color:#0f172a}
+.axc-mbg{position:fixed;inset:0;z-index:40;background:transparent;border:0;padding:0;cursor:default}
+.axc-menu{position:absolute;top:calc(100% + 6px);right:0;z-index:41;min-width:200px}
+.axc-lt .l-row{overflow:visible}
