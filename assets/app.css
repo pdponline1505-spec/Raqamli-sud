@@ -8940,3 +8940,15 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .ay-bad{margin:12px 24px 0;font-size:13.5px}
 .axk:has(>.axw.ro){background:transparent !important;border:0 !important;padding:0 !important}
 .axk:has(>.axw.ro)>.axk-h b{font-size:15px}.axk:has(>.axk-h+.axw.ro)>.axk-h small,.axk:has(>.axw.ro) .axk-h small{font-size:13px}
+/* yordamchi: xatoni tuzatish yo'li */
+.ay-fixl{font-size:13.5px;color:#475569;font-weight:500}
+.ay-fix{display:inline-flex;align-items:center;gap:7px;height:46px;padding:0 18px;border-radius:10px;font-size:15px;font-weight:600;background:#fff;border:1px solid #cbd5e1;color:#0f172a}
+.ay-fix:hover{background:#f8fafc;border-color:#94a3b8}
+.ay-fix .i{width:17px;height:17px}
+.ay-fix .f-sig{display:none}.ay-fix.sig .f-sig{display:block}.ay-fix.sig .f-pen{display:none}
+.ay-fix.sig{border-color:#c7d2fe;background:#eef2ff;color:#3730a3}
+.ay-hint{display:inline-flex;align-items:flex-start;gap:7px;max-width:52%;font-size:13.5px;line-height:1.4;color:#475569}
+.ay-hint .i{flex:none;width:17px;height:17px;margin-top:1px;color:#64748b}
+/* axw: modal tanasi siqilganda kesilmasin (izoh maydoni chiqqanda) */
+.axw,.axk:has(>.axw){flex-shrink:0 !important}
+.axw-body{max-height:none}
