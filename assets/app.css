@@ -8763,3 +8763,24 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .axk-qv .axk-row.na .axk-det .axk-tx,.axk-qv .axk-row.na .axk-det{color:inherit}
 /* axk: barcha bandlar belgilanmaguncha "Qabul qilish" — kulrang, faol emas */
 .axk-qv .qv-f .btn.axk-acc.dis,.axk-qv .qv-f .btn.axk-acc[disabled]{opacity:1;background:#e2e8f0 !important;border-color:#e2e8f0 !important;color:#94a3b8 !important;cursor:not-allowed;box-shadow:none}
+/* axk: qatordagi "Baholash" tugmasi + Mos/Kamchilik menyusi */
+.axk-qv .axk-row{overflow:visible !important}
+.axk-qv .axk-row .axk-rowb{border-radius:9px}
+.axk-qv .axk-row.open .axk-rowb{border-radius:9px 9px 0 0}
+.axk-qv .axk-row .axk-det{border-radius:0 0 9px 9px}
+.axk-evw{position:relative;flex:none}
+.axk-ev{display:inline-flex;align-items:center;gap:5px;height:30px;padding:0 8px 0 11px;border:1px solid #e2e8f0;border-radius:8px;background:#fff;font:inherit;font-size:12.5px;font-weight:600;color:#334155;cursor:pointer;white-space:nowrap;transition:all .15s}
+.axk-ev .i{width:13px;height:13px;stroke-width:2.6}
+.axk-ev .p-ok,.axk-ev .p-no{display:none}
+.axk-ev .ev-ch{width:14px;height:14px;color:#94a3b8;transition:transform .2s}
+.axk-ev.on .ev-ch{transform:rotate(180deg)}
+.axk-ev.none{border-color:#bfdbfe;color:#1d4ed8;background:#eff6ff}
+.axk-ev.none:hover{background:#dbeafe}
+.axk-ev.ok{border-color:#a7f3d0;background:#d1fae5;color:#047857}.axk-ev.ok .p-ok{display:block}.axk-ev.ok .ev-ch{color:#059669}
+.axk-ev.no{border-color:#fecaca;background:#fee2e2;color:#b91c1c}.axk-ev.no .p-no{display:block}.axk-ev.no .ev-ch{color:#dc2626}
+.axk-ev.na{background:#e2e8f0;color:#475569}
+.axk-ev:focus-visible{outline:2px solid #3073f1;outline-offset:1px}
+.axk-evw .axk-menu{min-width:180px}
+.axk-mi.ok.on,.axk-mi.no.on{font-weight:600}
+.axk-rowb:hover .axk-exp{background:#f1f5f9;color:#0f172a}
+.axk-qv .axk-rowb .axk-exp{margin:0}
