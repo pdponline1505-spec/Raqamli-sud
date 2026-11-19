@@ -8083,3 +8083,4 @@ html[data-theme="dark"] .seg-tabs>.seg-ind,html[data-theme="dark"] .seg-tabs>but
 .axc-bar-b .btn[disabled]{opacity:.45;cursor:not-allowed;filter:grayscale(.3)}
 .axc-bar-b .axc-clr{color:#475569 !important}
 @media (max-width:1400px){.axc-lt .l-row{grid-template-columns:48px minmax(160px,1fr) minmax(0,1.2fr) minmax(0,1.3fr) 118px 196px 52px !important}.axc-lt.nochk .l-row{grid-template-columns:minmax(160px,1fr) minmax(0,1.2fr) minmax(0,1.3fr) 118px 196px 52px !important}.axc-lt .l-row>:nth-child(5){display:none !important}}
+.axc-bar-b .btn[disabled],.axc-bar-b .btn.axc-ok[disabled],.axc-bar-b .btn.axc-no[disabled]{opacity:1 !important;filter:none !important;background:#f1f5f9 !important;border-color:#e2e8f0 !important;color:#94a3b8 !important;box-shadow:none !important;cursor:not-allowed}
