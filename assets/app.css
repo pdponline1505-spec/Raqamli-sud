@@ -8195,3 +8195,18 @@ html[data-theme="dark"] .seg-tabs>.seg-ind,html[data-theme="dark"] .seg-tabs>but
 .l-rail{gap:clamp(8px,calc((100vh - 800px) / 12),16px)}
 @media (max-height:860px){.l-rail{gap:6px}}
 @media (max-height:780px){.l-rail{gap:4px}.adm-rail{gap:2px}}
+/* Chap panel: nomlar olib tashlandi — oraliqlar avvalgi holatga, nom esa darhol chiqadigan tooltipda */
+.l-rail{gap:clamp(4px,calc((100vh - 788px) / 16),20px)}
+.adm-rail{gap:6px}
+@media (max-height:860px){.l-rail{gap:clamp(4px,calc((100vh - 712px) / 16),12px)}}
+@media (max-height:780px){.l-rail{gap:4px}.adm-rail{gap:6px}}
+.l-rail .l-ri[data-tip]::after{content:attr(data-tip);position:absolute;left:calc(100% + 12px);top:50%;transform:translate(-4px,-50%);padding:7px 11px;border-radius:8px;background:#0f172a;color:#fff;font:500 12.5px/1.2 inherit;letter-spacing:0;white-space:nowrap;box-shadow:0 6px 18px rgba(15,23,42,.18);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .12s ease,transform .12s ease,visibility 0s linear .12s;z-index:80}
+.l-rail .l-ri[data-tip]::before{content:"";position:absolute;left:calc(100% + 7px);top:50%;width:10px;height:10px;background:#0f172a;border-radius:2px;transform:translate(-4px,-50%) rotate(45deg);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .12s ease,transform .12s ease,visibility 0s linear .12s;z-index:79}
+.l-rail .l-ri[data-tip]:hover::after,.l-rail .l-ri[data-tip]:focus-visible::after{opacity:1;visibility:visible;transform:translate(0,-50%);transition-delay:0s}
+.l-rail .l-ri[data-tip]:hover::before,.l-rail .l-ri[data-tip]:focus-visible::before{opacity:1;visibility:visible;transform:translate(0,-50%) rotate(45deg);transition-delay:0s}
+.l-app .l-rail:has(.l-ri[data-tip]:hover),.l-app .l-rail:has(.l-ri[data-tip]:focus-visible){z-index:70 !important}
+.l-rail .l-ri[data-tip]:hover,.l-rail .l-ri[data-tip]:focus-visible{z-index:5}
+.l-rail .l-ri[data-tip]::after,.l-rail .l-ri[data-tip]::before{content:none !important;display:none !important}
+.rail-tip{position:fixed;z-index:9999;transform:translate(-4px,-50%);padding:7px 11px;border-radius:8px;background:#0f172a;color:#fff;font:500 12.5px/1.2 Inter,system-ui,sans-serif;white-space:nowrap;box-shadow:0 6px 18px rgba(15,23,42,.18);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .12s ease,transform .12s ease,visibility 0s linear .12s}
+.rail-tip::before{content:"";position:absolute;left:-4px;top:50%;width:9px;height:9px;background:#0f172a;border-radius:2px;transform:translateY(-50%) rotate(45deg)}
+.rail-tip.on{opacity:1;visibility:visible;transform:translate(0,-50%);transition-delay:0s}
