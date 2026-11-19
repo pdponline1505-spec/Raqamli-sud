@@ -8116,3 +8116,5 @@ html[data-theme="dark"] .seg-tabs>.seg-ind,html[data-theme="dark"] .seg-tabs>but
 .axd-tr .d2-num{font-variant-numeric:tabular-nums;letter-spacing:0}
 .axd-tr .d2-dt{font-size:13px;font-weight:500;font-variant-numeric:tabular-nums}
 @media (max-width:1500px){.axd-tr{grid-template-columns:minmax(140px,1fr) minmax(140px,1.3fr) 96px 150px 32px}.axd-tr>:nth-child(3){display:none}}
+.axc-bar.on{animation:axcBarIn .22s cubic-bezier(.22,1,.36,1)}
+@keyframes axcBarIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
