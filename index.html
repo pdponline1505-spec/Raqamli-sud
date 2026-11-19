@@ -6540,7 +6540,7 @@ var dubNo = function (ids) {
 self.setState({ lRows: self.state.lRows.map(function (r) { return ids.indexOf(r.id) >= 0 && r.tag === "dub" ? Object.assign({}, r, { tag: "" }) : r; }), lMenu: 0 });
 self.flash(ids.length + " ta ish dublikat emas deb belgilandi");
 };
-var isYord = (s.role || "yordamchi") === "yordamchi";
+var isYord = false; // Sudya yordamchisi kabineti sudya kabinetining aynan nusxasi — barcha amallar bir xil
 // Dublikat ishlar / Dublikat emas / O'chirish — faqat dublikat ishlarda
 var selDubAll = (function () { var ids = Object.keys(s.lSel || {}).filter(function (k) { return s.lSel[k]; }); if (!ids.length) return false; return ids.every(function (id) { var r = (s.lRows || []).filter(function (x) { return String(x.id) === String(id); })[0]; return !!r && r.tag === "dub"; }); })();
 var caseIsDub = (s.lRows || []).some(function (x) { return x.num === s.caseNum && x.tag === "dub"; });
@@ -9504,7 +9504,7 @@ var yRows = byIds((n && n.ids) || []), yUniq = yRows.map(function (r) { return r
 var manNeed = function (j) { return !!j && j !== JOY[0]; };
 var R = RES.filter(function (r) { return r[0] === v.res; })[0];
 var errOn = !!(n && n.err);
-var bulk = !!(n && n.bulk), bNums = bulk ? (n.nums || []) : [], yord = (s.role || "yordamchi") === "yordamchi";
+var bulk = !!(n && n.bulk), bNums = bulk ? (n.nums || []) : [], yord = false; // yordamchi ham sudya kabi to'g'ridan-to'g'ri saqlaydi
 __out.nxYord = yord; __out.nxSaveLbl = yord ? "Sudyaga yuborish" : "Saqlash";
 __out.nxOpen = !!n && (!!s.caseOpen || bulk);
 __out.nxBulk = bulk; __out.nxBulkCnt = bNums.length; __out.nxBulkNums = bNums.join(", ");
