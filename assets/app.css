@@ -8039,7 +8039,6 @@ html[data-theme="dark"] .seg-tabs>.seg-ind,html[data-theme="dark"] .seg-tabs>but
 .axc-acts .axc-no{color:#b91c1c !important;border-color:#fecaca !important;background:#fff !important}
 .axc-acts .axc-no:hover{background:#fef2f2 !important}
 .uzq-st.v{background:#f5f3ff;color:#6d28d9}
-@media (max-width:1400px){.axc-lt .l-row{grid-template-columns:minmax(160px,1fr) minmax(0,1.2fr) minmax(0,1.3fr) 110px 150px 290px !important}.axc-lt .l-row>:nth-child(4){display:none}}
 .l-tag.res.k-ax-sorov{background:#fef3c7;color:#b45309}
 .l-tag.res.k-ax-sorovrad{background:#fee2e2;color:#b91c1c}
 .axr-si{background:#fff7ed !important;color:#ea580c !important}
@@ -8060,3 +8059,27 @@ html[data-theme="dark"] .seg-tabs>.seg-ind,html[data-theme="dark"] .seg-tabs>but
 .axr-qv .qv-f .btn.pri.axr-go:hover{background:#b91c1c !important}
 .axc-lt .l-row>.axc-info>*{max-width:100%;align-self:stretch;text-align:left}
 .axc-lt .l-row>.uzq-clamp{font-size:13px;line-height:1.4}
+/* Arxiv kabineti: belgilash ustuni + ommaviy amallar paneli */
+.axc-lt .l-row{grid-template-columns:52px minmax(170px,1fr) minmax(0,1.3fr) minmax(0,1.5fr) minmax(110px,.7fr) 124px 200px 56px !important}
+.axc-lt.nochk .l-row{grid-template-columns:minmax(180px,1fr) minmax(0,1.3fr) minmax(0,1.5fr) minmax(110px,.7fr) 124px 200px 56px !important}
+.axc-lt.nochk .axc-chkc{display:none !important}
+.axc-lt .l-row>.axc-chkc{padding:0 !important;display:flex;align-items:center;justify-content:center}
+.axc-lt .l-row>*:nth-last-child(2){white-space:nowrap}
+.axc-lt .uzq-st{white-space:nowrap}
+.axc-lt .axc-acts{justify-content:center !important}
+.axc-lt .l-row.click{cursor:pointer}
+.axc-lt .l-row.sel{background:#eff6ff !important}
+.axc-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 12px 10px 16px;border-radius:12px;background:#fff;border:1px solid #e2e8f0;transition:background-color .2s,border-color .2s}
+.axc-bar.on{background:#eff6ff;border-color:#bfdbfe}
+.axc-bar-t{font-size:13.5px;color:#64748b}
+.axc-bar.on .axc-bar-t{color:#1d4ed8;font-weight:600}
+.axc-bar-b{display:flex;gap:8px;flex-wrap:wrap}
+.axc-bar-b .btn{gap:6px;height:36px}
+.axc-bar-b .btn .i{width:15px;height:15px}
+.axc-bar-b .axc-ok{background:#16a34a !important;border-color:#16a34a !important;color:#fff !important}
+.axc-bar-b .axc-ok:hover:not([disabled]){background:#15803d !important}
+.axc-bar-b .axc-no{color:#b91c1c !important;border-color:#fecaca !important;background:#fff !important}
+.axc-bar-b .axc-no:hover:not([disabled]){background:#fef2f2 !important}
+.axc-bar-b .btn[disabled]{opacity:.45;cursor:not-allowed;filter:grayscale(.3)}
+.axc-bar-b .axc-clr{color:#475569 !important}
+@media (max-width:1400px){.axc-lt .l-row{grid-template-columns:48px minmax(160px,1fr) minmax(0,1.2fr) minmax(0,1.3fr) 118px 196px 52px !important}.axc-lt.nochk .l-row{grid-template-columns:minmax(160px,1fr) minmax(0,1.2fr) minmax(0,1.3fr) 118px 196px 52px !important}.axc-lt .l-row>:nth-child(5){display:none !important}}

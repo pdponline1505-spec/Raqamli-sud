@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=8ddedd48b13e">
+<link rel="stylesheet" href="assets/app.css?v=f7158b8541be">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -390,9 +390,10 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </sc-if>
 <sc-if value="{{isAxCab}}" hint-placeholder-val="{{ false }}">
 <div class="uzq-wrap axc-wrap">
-<div class="l-table uzq-lt axc-lt" role="table" aria-label="{{axcTitle}}">
-<div class="l-row l-head" role="row"><span>Ish raqami</span><span>Tomonlar</span><span>{{axcCol3}}</span><span>Sudya</span><span>{{axcColDate}}</span><span>Holat</span><span></span></div>
-<sc-for list="{{axcRows}}" as="q" hint-placeholder-count="3"><div class="l-row axc-r" role="row"><span class="uzq-num"><b>{{q.num}}</b><small>{{q.from}}</small></span><span class="uzq-clamp">{{q.side}}</span><span class="axc-info"><b>{{q.infoT}}</b><sc-if value="{{q.hasInfoS}}" hint-placeholder-val="{{ false }}"><small title="{{q.infoS}}">{{q.infoS}}</small></sc-if></span><span class="uzq-from">{{q.judge}}</span><span><span class="uzq-date">{{q.sana}}</span></span><span><span class="{{q.stCls}}">{{q.stLbl}}</span></span><span class="uzq-acts axc-acts"><sc-if value="{{q.canAcc}}" hint-placeholder-val="{{ false }}"><button class="btn sm axc-ok" onClick="{{q.acc}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Qabul qilish</button><button class="btn sm axc-no" onClick="{{q.rej}}">Rad etish</button></sc-if><sc-if value="{{q.canRet}}" hint-placeholder-val="{{ false }}"><button class="btn sm axc-ok" onClick="{{q.ret}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14L4 9l5-5M4 9h11a5 5 0 0 1 0 10h-3"></path></svg>Ishni qaytarish</button><button class="btn sm axc-no" onClick="{{q.rej}}">Rad etish</button></sc-if><button type="button" class="ib uzq-open" title="Arxiv tarixi" aria-label="{{q.num}} — arxiv tarixi" onClick="{{q.hist}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></button></span></div></sc-for>
+<sc-if value="{{axcSelectable}}" hint-placeholder-val="{{ false }}"><div class="{{axcBarCls}}"><span class="axc-bar-t">{{axcSelTxt}}</span><div class="axc-bar-b"><sc-if value="{{axcIsKelgan}}" hint-placeholder-val="{{ false }}"><button class="btn sm axc-ok" disabled="{{axcDis}}" onClick="{{axcAccSel}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Qabul qilish</button></sc-if><sc-if value="{{axcIsSorov}}" hint-placeholder-val="{{ false }}"><button class="btn sm axc-ok" disabled="{{axcDis}}" onClick="{{axcRetSel}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14L4 9l5-5M4 9h11a5 5 0 0 1 0 10h-3"></path></svg>Ishni qaytarish</button></sc-if><button class="btn sm axc-no" disabled="{{axcDis}}" onClick="{{axcRejSel}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M8 12h8"></path></svg>Rad etish</button><sc-if value="{{axcAny}}" hint-placeholder-val="{{ false }}"><button class="btn sm axc-clr" onClick="{{axcClear}}">Tanlovni bekor qilish</button></sc-if></div></div></sc-if>
+<div class="{{axcLtCls}}" role="table" aria-label="{{axcTitle}}">
+<div class="l-row l-head" role="row"><span class="axc-chkc"><button class="{{axcAllCls}}" role="checkbox" aria-checked="{{axcAllStr}}" aria-label="Barchasini tanlash" onClick="{{axcToggleAll}}"><sc-if value="{{axcAllOn}}" hint-placeholder-val="{{ false }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 12px; height: 12px; stroke-width: 3"><path d="M5 12l5 5 9-10"></path></svg></sc-if><sc-if value="{{axcSomeOn}}" hint-placeholder-val="{{ false }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 12px; height: 12px; stroke-width: 3"><path d="M6 12h12"></path></svg></sc-if></button></span><span>Ish raqami</span><span>Tomonlar</span><span>{{axcCol3}}</span><span>Sudya</span><span>{{axcColDate}}</span><span>Holat</span><span></span></div>
+<sc-for list="{{axcRows}}" as="q" hint-placeholder-count="3"><div class="{{q.rowCls}}" role="row" onClick="{{q.rowTap}}"><span class="axc-chkc"><button class="{{q.chkCls}}" role="checkbox" aria-checked="{{q.selStr}}" aria-label="{{q.num}} ni tanlash" onClick="{{q.toggle}}"><sc-if value="{{q.sel}}" hint-placeholder-val="{{ false }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 12px; height: 12px; stroke-width: 3"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></span><span class="uzq-num"><b>{{q.num}}</b><small>{{q.from}}</small></span><span class="uzq-clamp">{{q.side}}</span><span class="axc-info"><b>{{q.infoT}}</b><sc-if value="{{q.hasInfoS}}" hint-placeholder-val="{{ false }}"><small title="{{q.infoS}}">{{q.infoS}}</small></sc-if></span><span class="uzq-from">{{q.judge}}</span><span><span class="uzq-date">{{q.sana}}</span></span><span><span class="{{q.stCls}}">{{q.stLbl}}</span></span><span class="uzq-acts axc-acts"><button type="button" class="ib uzq-open" title="Arxiv tarixi" aria-label="{{q.num}} — arxiv tarixi" onClick="{{q.hist}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></button></span></div></sc-for>
 <sc-if value="{{axcEmpty}}" hint-placeholder-val="{{ false }}"><div class="uzq-empty">{{axcEmptyTxt}}</div></sc-if>
 </div>
 </div>
@@ -403,7 +404,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="qv nxm nxm-main nxa ax-qv axr-qv" role="dialog" aria-modal="true" aria-labelledby="axr-t" tabindex="-1" onKeyDown="{{axrKey}}">
 <div class="qv-h"><div class="nx-hh"><span class="nx-si axr-si"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9.5 17h-19zM12 10v4M12 17h.01"></path></svg></span><div class="kv" style="gap: 2px"><b id="axr-t" class="qv-title">{{axrTitle}}</b><small>{{axrSub}}</small></div></div><button class="ib qv-x" aria-label="Yopish" onClick="{{axrX}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
 <div class="qv-b nxm-b ax-qb">
-<div class="nx-cases"><div class="nx-cases-h"><b class="nx-cases-t">Ish</b><span class="nx-cases-n">1 ta</span><span class="nx-cases-from">{{axrFrom}}</span></div><div class="nx-cases-l"><span class="nx-case">{{axrNum}}</span></div></div>
+<div class="nx-cases"><div class="nx-cases-h"><b class="nx-cases-t">Ishlar</b><span class="nx-cases-n">{{axrN}}</span><span class="nx-cases-from">{{axrFrom}}</span></div><div class="nx-cases-l"><sc-for list="{{axrNums}}" as="c" hint-placeholder-count="1"><span class="nx-case">{{c.num}}</span></sc-for></div></div>
 <sc-if value="{{axrHasReq}}" hint-placeholder-val="{{ false }}"><div class="axr-req"><small>Sudya so'rovi · {{axrReqSana}}</small><span>{{axrReqTxt}}</span></div></sc-if>
 <div class="ax-fld"><div class="ax-lbl"><span>{{axrLbl}} <b class="dx-req">*</b></span><small>Tez tanlash</small></div><div class="axr-chips"><sc-for list="{{axrChips}}" as="c" hint-placeholder-count="4"><button type="button" role="checkbox" aria-checked="{{c.str}}" class="{{c.cls}}" onClick="{{c.pick}}"><span class="ax-cb"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span>{{c.l}}</button></sc-for></div><textarea class="{{axrTaCls}}" rows="3" value="{{axrIzoh}}" onChange="{{axrSetIzoh}}" placeholder="{{axrPh}}"></textarea><sc-if value="{{axrHasErr}}" hint-placeholder-val="{{ false }}"><span class="ax-ferr" role="alert">{{axrErr}}</span></sc-if></div>
 </div>
@@ -10206,14 +10207,14 @@ qaytgan: rows.filter(function (r) { return r.stage !== "arxiv" && (r.axRet || r.
 };
 var NAV = [["kelgan", "Kelgan ishlar"], ["sorov", "Qaytarish so'rovlari"], ["arxiv", "Arxivdagi ishlar"], ["qaytgan", "Sudyaga qaytarilgan"]];
 var tab = s.axcTab || "kelgan";
-var goTab = function (k) { return function () { self.setState({ page: "axcab", axcTab: k, caseOpen: false }); try { window.scrollTo(0, 0); } catch (e) {} }; };
+var goTab = function (k) { return function () { self.setState({ page: "axcab", axcTab: k, caseOpen: false, axcSel: {} }); try { window.scrollTo(0, 0); } catch (e) {} }; };
 __out.goAxCab = goTab(tab); __out.railAxCls = isAxCab ? "l-ri on" : "l-ri"; __out.railAxCur = isAxCab ? "page" : "false";
 __out.axcNav = NAV.map(function (t) { var n = SEC[t[0]].length; return { l: t[1], n: String(n), has: n > 0 && (t[0] === "kelgan" || t[0] === "sorov"), cls: "l-sn l-sn-uz" + (isAxCab && tab === t[0] ? " on" : ""), go: goTab(t[0]) }; });
 var HD = { kelgan: ["Qabul uchun kelgan ishlar", "Sudyalar arxivga topshirgan ishlar · ishni tekshirib qabul qiling yoki kamchilik bilan rad eting"], sorov: ["Qaytarish so'rovlari", "Sudyalar arxivdan qaytarib olishni so'ragan ishlar · tasdiqlasangiz ish sudya jo'natgan bo'limiga qaytadi"], arxiv: ["Arxivdagi ishlar", "Arxiv qabul qilgan va saqlanayotgan ishlar"], qaytgan: ["Sudyaga qaytarilgan ishlar", "Qabul qilish rad etilgan yoki so'rov bo'yicha qaytarib berilgan ishlar"] };
 __out.axcTitle = HD[tab][0]; __out.axcDesc = HD[tab][1];
 __out.axcCol3 = tab === "sorov" ? "Qaytarish sababi" : tab === "qaytgan" ? "Sabab" : "Qayerdan keldi"; __out.axcColDate = tab === "sorov" ? "So'rov sanasi" : tab === "qaytgan" ? "Qaytarilgan" : "Yuborilgan";
 var setRows = function (fn) { self.setState(function (prev) { return { lRows: (prev.lRows || []).map(fn) }; }); };
-var openRej = function (kind, r) { self.setState({ axr: { kind: kind, id: r.id, picks: [], izoh: "", err: "" } }); setTimeout(function () { var d = document.querySelector(".axr-qv"); if (d) try { d.focus({ preventScroll: true }); } catch (e) {} }, 60); };
+var openRej = function (kind, ids) { self.setState({ axr: { kind: kind, ids: ids, picks: [], izoh: "", err: "" } }); setTimeout(function () { var d = document.querySelector(".axr-qv"); if (d) try { d.focus({ preventScroll: true }); } catch (e) {} }, 60); };
 var openH = function (id) { return function () { if (self._openAxHist) self._openAxHist(id); }; };
 __out.axcRows = SEC[tab].map(function (r) {
 var req = r.axReq || null, from = r.axFrom ? stL(r.axFrom) : "";
@@ -10224,15 +10225,35 @@ else if (tab === "arxiv") { o.from = "Saqlanmoqda"; o.infoT = from || "—"; o.i
 else { var isR = !!r.axRet; o.from = "Hozir: " + stL(r); o.infoT = isR ? r.axRet.note : (r.axOl.sabab || []).join("; "); o.infoS = ""; o.sana = isR ? r.axRet.sana : r.axOl.sana; o.stLbl = isR ? "Qabul qilish rad etilgan" : "So'rov bo'yicha qaytarildi"; o.stCls = isR ? "uzq-st no" : "uzq-st v"; }
 o.hasInfoS = !!o.infoS;
 o.acc = function () { var d = tod(); setRows(function (x) { return x.id === r.id ? Object.assign({}, x, { sub: "qabul", axQabul: d, axHist: (x.axHist && x.axHist.length ? x.axHist : [{ t: "yuborish", sana: x.axSana || "" }]).concat([{ t: "qabul", sana: d }]) }) : x; }); self.flash(r.num + " · ish arxivga qabul qilindi · " + d, { label: "«Arxivdagi ishlar» ga o'tish", fn: goTab("arxiv") }); };
-o.rej = function () { openRej(tab === "sorov" ? "sorov" : "qabul", r); };
+o.rej = function () { openRej(tab === "sorov" ? "sorov" : "qabul", [r.id]); };
 o.ret = function () { var d = tod(), f = r.axFrom || { stage: "yakun", sub: "qanoat" };
 setRows(function (x) { if (x.id !== r.id) return x; var q = x.axReq || {}; return Object.assign({}, x, { stage: f.stage, sub: f.sub || "", ijSub: f.ijSub || x.ijSub, res: f.res || x.res, axOl: { sana: d, sabab: (q.sabab || []).slice(), izoh: q.izoh || "" }, axReq: null, axRet: null, moved: Date.now(), movedFrom: "Arxiv", axHist: (x.axHist || []).concat([{ t: "olish", sana: d, sabab: (q.sabab || []).slice(), izoh: q.izoh || "" }]) }); });
 self.flash(r.num + " · ish sudyaga qaytarildi · «" + stL(f) + "» bo'limiga tushdi", { label: "«Sudyaga qaytarilgan» ga o'tish", fn: goTab("qaytgan") }); };
 return o; });
+var selectable = tab === "kelgan" || tab === "sorov", SEL = s.axcSel || {}, ids = SEC[tab].map(function (r) { return r.id; }), selIds = ids.filter(function (id) { return SEL[id]; });
+__out.axcSelectable = selectable; __out.axcIsKelgan = tab === "kelgan"; __out.axcIsSorov = tab === "sorov";
+__out.axcLtCls = "l-table uzq-lt axc-lt" + (selectable ? "" : " nochk");
+var toggle = function (id) { self.setState(function (prev) { var o = Object.assign({}, prev.axcSel || {}); if (o[id]) delete o[id]; else o[id] = true; return { axcSel: o }; }); };
+__out.axcRows.forEach(function (o, i) { var id = ids[i], on = !!SEL[id]; o.sel = on; o.selStr = on ? "true" : "false"; o.chkCls = "l-chk" + (on ? " on" : "");
+  o.toggle = function (e) { if (e && e.stopPropagation) e.stopPropagation(); toggle(id); };
+  o.rowCls = "l-row axc-r" + (selectable ? " click" : "") + (on ? " sel" : "");
+  o.rowTap = function (e) { if (!selectable) return; try { if (e && e.target && e.target.closest && e.target.closest("button")) return; } catch (x) {} toggle(id); }; });
+var nSel = selIds.length, all = ids.length > 0 && nSel === ids.length;
+__out.axcAllOn = all; __out.axcSomeOn = nSel > 0 && !all; __out.axcAllStr = all ? "true" : nSel ? "mixed" : "false"; __out.axcAllCls = "l-chk" + (nSel ? " on" : "");
+__out.axcToggleAll = function () { var o = {}; if (!all) ids.forEach(function (id) { o[id] = true; }); self.setState({ axcSel: o }); };
+__out.axcAny = nSel > 0; __out.axcDis = nSel ? "" : "true"; __out.axcBarCls = "axc-bar" + (nSel ? " on" : "");
+__out.axcSelTxt = nSel ? nSel + " ta ish tanlandi" : "Amal bajarish uchun ishlarni belgilang";
+__out.axcClear = function () { self.setState({ axcSel: {} }); };
+var byId = function (id) { return rows.filter(function (r) { return r.id === id; })[0]; };
+__out.axcAccSel = function () { if (!nSel) return; var d = tod(); setRows(function (x) { return selIds.indexOf(x.id) < 0 ? x : Object.assign({}, x, { sub: "qabul", axQabul: d, axHist: (x.axHist && x.axHist.length ? x.axHist : [{ t: "yuborish", sana: x.axSana || "" }]).concat([{ t: "qabul", sana: d }]) }); }); self.setState({ axcSel: {} }); self.flash(nSel + " ta ish arxivga qabul qilindi · " + d, { label: "«Arxivdagi ishlar» ga o'tish", fn: goTab("arxiv") }); };
+__out.axcRetSel = function () { if (!nSel) return; var d = tod();
+  setRows(function (x) { if (selIds.indexOf(x.id) < 0) return x; var f = x.axFrom || { stage: "yakun", sub: "qanoat" }, q = x.axReq || {}; return Object.assign({}, x, { stage: f.stage, sub: f.sub || "", ijSub: f.ijSub || x.ijSub, res: f.res || x.res, axOl: { sana: d, sabab: (q.sabab || []).slice(), izoh: q.izoh || "" }, axReq: null, axRet: null, moved: Date.now(), movedFrom: "Arxiv", axHist: (x.axHist || []).concat([{ t: "olish", sana: d, sabab: (q.sabab || []).slice(), izoh: q.izoh || "" }]) }); });
+  self.setState({ axcSel: {} }); self.flash(nSel + " ta ish sudyaga qaytarildi · jo'natilgan bo'limlariga tushdi", { label: "«Sudyaga qaytarilgan» ga o'tish", fn: goTab("qaytgan") }); };
+__out.axcRejSel = function () { if (nSel) openRej(tab === "sorov" ? "sorov" : "qabul", selIds); };
 __out.axcEmpty = !__out.axcRows.length; __out.axcEmptyTxt = { kelgan: "Hozircha qabul uchun kelgan ish yo'q", sorov: "Qaytarish so'rovlari yo'q", arxiv: "Arxivda ish yo'q", qaytgan: "Qaytarilgan ishlar yo'q" }[tab];
 if (isAxCab) { __out.topTitle = HD[tab][0]; __out.topCrumb = "Arxiv"; }
 // Rad etish oynasi (qabul qilishni rad etish / qaytarish so'rovini rad etish)
-var A = s.axr || null, R = A ? rows.filter(function (r) { return r.id === A.id; })[0] : null; __out.axrOpen = !!(A && R);
+var A = s.axr || null, RS = A ? rows.filter(function (r) { return (A.ids || []).indexOf(r.id) >= 0; }) : [], R = RS[0] || null; __out.axrOpen = !!(A && R);
 var setA = function (p) { self.setState(function (prev) { return prev.axr ? { axr: Object.assign({}, prev.axr, p, { err: p.err || "" }) } : null; }); };
 __out.axrX = function () { self.setState({ axr: null }); };
 __out.axrKey = function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ axr: null }); } };
@@ -10240,8 +10261,8 @@ if (A && R) {
 var isQ = A.kind === "qabul", rq = R.axReq || {};
 __out.axrTitle = isQ ? "Qabul qilishni rad etish" : "Qaytarish so'rovini rad etish";
 __out.axrSub = isQ ? "Ish kamchilik bilan sudyaga qaytariladi · sabab ko'rsatiladi" : "Ish arxivda qoladi · sudyaga rad etish sababi ko'rsatiladi";
-__out.axrNum = R.num; __out.axrFrom = isQ ? "Qaytadi: «" + stL(R.axFrom) + "»" : "Arxivda qoladi";
-__out.axrHasReq = !isQ; __out.axrReqSana = rq.sana || ""; __out.axrReqTxt = (rq.sabab || []).join("; ") + (rq.izoh ? " — " + rq.izoh : "");
+__out.axrNums = RS.map(function (r) { return { num: r.num }; }); __out.axrN = RS.length + " ta"; __out.axrFrom = isQ ? (RS.length === 1 ? "Qaytadi: «" + stL(R.axFrom) + "»" : "Jo'natilgan bo'limlariga qaytadi") : "Arxivda qoladi";
+__out.axrHasReq = !isQ && RS.length === 1; __out.axrReqSana = rq.sana || ""; __out.axrReqTxt = (rq.sabab || []).join("; ") + (rq.izoh ? " — " + rq.izoh : "");
 __out.axrLbl = isQ ? "Kamchilik (rad etish sababi)" : "Rad etish sababi";
 var CH = isQ ? ["Ish varaqlari raqamlanmagan", "Ichki ro'yxat (opis) to'ldirilmagan", "Sud hujjatining imzolangan nusxasi yo'q", "Ijro varaqasi nusxasi ishga tikilmagan", "Muqova (titul varag'i) rasmiylashtirilmagan"]
 : ["So'rov uchun asos hujjat ilova qilinmagan", "Ish boshqa organ so'rovi bilan berilgan", "Sabab qonunda nazarda tutilmagan", "Ish bo'yicha nusxa berish kifoya"];
@@ -10253,11 +10274,12 @@ __out.axrHasErr = !!A.err; __out.axrErr = A.err || "";
 __out.axrGoLbl = isQ ? "Rad etish va qaytarish" : "So'rovni rad etish";
 __out.axrGo = function () { var a = self.state.axr; if (!a) return; var note = (a.picks || []).concat(String(a.izoh || "").trim() ? [String(a.izoh).trim()] : []).join("; ");
 if (!note) { setA({ err: "Kamida bitta sababni tanlang yoki izoh yozing" }); return; } var d = tod();
+var aIds = RS.map(function (r) { return r.id; }), nn = RS.length, one = nn === 1 ? R.num + " · " : nn + " ta ish · ";
 if (isQ) { var f = R.axFrom || { stage: "yakun", sub: "qanoat" };
-setRows(function (x) { return x.id !== R.id ? x : Object.assign({}, x, { stage: f.stage, sub: f.sub || "", ijSub: f.ijSub || x.ijSub, res: f.res || x.res, axRet: { note: note, sana: d }, axOl: null, axNote: "", moved: Date.now(), movedFrom: "Arxiv", axHist: (x.axHist && x.axHist.length ? x.axHist : [{ t: "yuborish", sana: x.axSana || "" }]).concat([{ t: "qaytarildi", sana: d, izoh: note }]) }); });
-self.setState({ axr: null }); self.flash(R.num + " · qabul qilish rad etildi · ish sudyaga «" + stL(f) + "» bo'limiga qaytarildi"); }
-else { setRows(function (x) { return x.id !== R.id ? x : Object.assign({}, x, { axReq: Object.assign({}, x.axReq || {}, { st: "rad", radNote: note, radSana: d }), axHist: (x.axHist || []).concat([{ t: "sorovRad", sana: d, izoh: note }]) }); });
-self.setState({ axr: null }); self.flash(R.num + " · qaytarish so'rovi rad etildi · ish arxivda qoladi"); } };
+setRows(function (x) { if (aIds.indexOf(x.id) < 0) return x; var f = x.axFrom || { stage: "yakun", sub: "qanoat" }; return Object.assign({}, x, { stage: f.stage, sub: f.sub || "", ijSub: f.ijSub || x.ijSub, res: f.res || x.res, axRet: { note: note, sana: d }, axOl: null, axNote: "", moved: Date.now(), movedFrom: "Arxiv", axHist: (x.axHist && x.axHist.length ? x.axHist : [{ t: "yuborish", sana: x.axSana || "" }]).concat([{ t: "qaytarildi", sana: d, izoh: note }]) }); });
+self.setState({ axr: null, axcSel: {} }); self.flash(one + "qabul qilish rad etildi · " + (nn === 1 ? "ish sudyaga «" + stL(f) + "» bo'limiga qaytarildi" : "ishlar sudyaga qaytarildi")); }
+else { setRows(function (x) { return aIds.indexOf(x.id) < 0 ? x : Object.assign({}, x, { axReq: Object.assign({}, x.axReq || {}, { st: "rad", radNote: note, radSana: d }), axHist: (x.axHist || []).concat([{ t: "sorovRad", sana: d, izoh: note }]) }); });
+self.setState({ axr: null, axcSel: {} }); self.flash(one + "qaytarish so'rovi rad etildi · " + (nn === 1 ? "ish arxivda qoladi" : "ishlar arxivda qoladi")); } };
 }
 })();
 // ---- Ish hujjatlari: "Hujjat tuzish" oynasi ----
