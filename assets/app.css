@@ -8378,3 +8378,45 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .l-app .l-sub{position:sticky;top:0;height:100vh;align-self:start}
 .l-app .l-rail{position:sticky;top:0;height:100vh;align-self:start}
 .l-tag.res.k-ax-tasdiq{background:#fff7ed;color:#c2410c}
+/* ===== Ro'yxat bandlari: batafsil ochiladi ===== */
+.axk-it{display:flex;flex-direction:column;gap:0;padding:0;cursor:default}
+.axk-it:hover{border-color:#e2e8f0}
+.axk-it.on:hover{border-color:#a7f3d0}
+.axk-it-r{display:flex;align-items:center;gap:10px;padding:8px 10px 8px 0;min-width:0}
+.axk-it-c{display:flex;align-items:center;gap:12px;flex:1;min-width:0;padding:2px 0 2px 12px;border:0;background:none;font:inherit;text-align:left;cursor:pointer}
+.axk-it-c:focus-visible{outline:2px solid #3073f1;outline-offset:2px;border-radius:8px}
+.axk-it-c:hover .axk-cb{border-color:#3073f1}
+.axk-more{display:inline-flex;align-items:center;gap:4px;flex:none;height:28px;padding:0 8px 0 10px;border:1px solid #e2e8f0;border-radius:8px;background:#fff;font:inherit;font-size:12.5px;font-weight:500;color:#334155;cursor:pointer;transition:background-color .15s,border-color .15s}
+.axk-more:hover{background:#f8fafc;border-color:#cbd5e1;color:#0f172a}
+.axk-more:focus-visible{outline:2px solid #3073f1;outline-offset:2px}
+.axk-chev{width:14px !important;height:14px !important;transition:transform .2s}
+.axk-more[aria-expanded="true"] .axk-chev{transform:rotate(180deg)}
+.axk-det{margin:0 12px 12px;padding:12px;border-radius:10px;background:#f8fafc;border:1px solid #eef1f5;animation:fadeIn .18s ease-out}
+.axk-it.on .axk-det,.axk-row.ok .axk-det{background:#fff;border-color:#d1fae5}
+.axk-row.no .axk-det{background:#fff;border-color:#fecaca}
+.axk-kv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 18px;margin:0}
+.axk-kvr{display:flex;flex-direction:column;gap:2px;min-width:0}
+.axk-kvr dt{font-size:11.5px;color:#64748b}
+.axk-kvr dd{margin:0;font-size:13px;font-weight:500;color:#0f172a;overflow-wrap:anywhere}
+.axk-kvr dd.ok{color:#047857}
+.axk-tbl{display:flex;flex-direction:column;font-size:12.5px}
+.axk-tr{display:grid;gap:10px;align-items:center;padding:7px 2px;border-top:1px solid #e9edf3;min-width:0}
+.axk-tr>span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#334155;font-variant-numeric:tabular-nums}
+.axk-tr>span.b{color:#0f172a;font-weight:500}
+.axk-tr>span.ok{color:#047857;font-weight:600}.axk-tr>span.mut{color:#94a3b8}
+.axk-tr.axk-th{border-top:0;padding-top:0;font-size:11.5px;color:#64748b}
+.axk-tr.axk-th>span{color:#64748b;font-weight:500}
+.axk-tr.tot>span{font-weight:700;color:#0f172a}
+.axk-dfoot{display:block;margin-top:8px;font-size:12px;color:#64748b}
+/* arxiv oynasi */
+.axk-row{flex-direction:column;align-items:stretch;gap:0;padding:0}
+.axk-row-r{display:flex;align-items:center;gap:10px;padding:10px 12px}
+.axk-row-r .axk-tx{flex:1}
+@media (max-width:640px){.axk-row-r{flex-wrap:wrap}.axk-kv{grid-template-columns:minmax(0,1fr)}}
+.axk-it{align-items:stretch !important;text-align:left}
+.axk-it-r,.axk-det{width:auto;align-self:stretch}
+.axk-row{align-items:stretch !important}
+/* Arxiv oynasi: kamchilik bo'lsa faqat qaytarish (qizil), aks holda faqat qabul */
+.btn.axk-ret{background:#ef4444;border-color:#ef4444;color:#fff;display:inline-flex;align-items:center;gap:6px}
+.btn.axk-ret:hover{background:#dc2626;border-color:#dc2626}
+.btn.axk-ret.dis{opacity:1}
