@@ -8326,3 +8326,51 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .l-app.railc .l-brand{position:relative;flex-direction:row;height:36px;gap:0;width:48px;justify-content:center;margin:0 0 14px}
 .l-app.railc .l-rtog{position:absolute;inset:0;margin:auto;width:36px;height:36px;opacity:0;pointer-events:none;background:#f1f5f9;color:#0f172a}
 .l-app.railc .l-rtog:focus-visible{opacity:1;pointer-events:auto}
+/* ===== Arxivga topshirish ro'yxati (yordamchi va arxiv) ===== */
+.axk{display:flex;flex-direction:column;gap:10px;padding:14px;border:1px solid #e6ebf2;border-radius:14px;background:#fbfcfe}
+.axk-h{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.axk-h b{font-size:14.5px;font-weight:600;color:#0f172a}.axk-h small{font-size:12.5px;color:#64748b;line-height:1.4}
+.axk-cnt{flex:none;height:26px;padding:0 10px;border-radius:99px;background:#fff7ed;color:#c2410c;font-size:12.5px;font-weight:600;display:inline-flex;align-items:center;font-variant-numeric:tabular-nums}
+.axk-cnt.ok{background:#ecfdf5;color:#047857}
+.axk-ret{display:flex;flex-direction:column;gap:3px;padding:10px 12px;border-radius:10px;background:#fef2f2;border:1px solid #fecaca}
+.axk-ret b{font-size:12.5px;color:#b91c1c;font-weight:600}.axk-ret span{font-size:13px;color:#7f1d1d;line-height:1.45}
+.axk-cases{display:flex;flex-wrap:wrap;gap:6px}
+.axk-case{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 10px;border:1px solid #e2e8f0;border-radius:8px;background:#fff;font:inherit;font-size:12.5px;font-weight:500;color:#334155;cursor:pointer;font-variant-numeric:tabular-nums}
+.axk-case em{font-style:normal;font-size:11.5px;color:#94a3b8}
+.axk-case.on{border-color:#3073f1;background:#eff6ff;color:#1d4ed8}.axk-case.ok em{color:#059669}
+.axk-list{display:flex;flex-direction:column;gap:6px}
+.axk-it{display:flex;align-items:center;gap:12px;width:100%;padding:10px 12px;border:1px solid #e2e8f0;border-radius:10px;background:#fff;font:inherit;text-align:left;cursor:pointer;transition:border-color .15s,background-color .15s}
+.axk-it:hover{border-color:#bfdbfe}
+.axk-it:focus-visible{outline:2px solid #3073f1;outline-offset:2px}
+.axk-cb{flex:none;width:20px;height:20px;border-radius:6px;border:1.5px solid #cbd5e1;background:#fff;display:grid;place-items:center;color:transparent}
+.axk-cb .i{width:13px;height:13px;stroke-width:3}
+.axk-it.on{border-color:#a7f3d0;background:#f0fdf4}.axk-it.on .axk-cb{background:#10b981;border-color:#10b981;color:#fff}
+.axk-it.bad:not(.on){border-color:#fecaca;background:#fff7f7}
+.axk-it.err{border-color:#f87171}
+.axk-tx{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.axk-tx b{font-size:13.5px;font-weight:600;color:#0f172a}.axk-tx small{font-size:12.5px;color:#64748b;line-height:1.4}
+.axk-note{font-size:12px;color:#b91c1c;font-weight:500}
+.axk-tag{flex:none;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:99px;white-space:nowrap}
+.axk-tag.ok{background:#ecfdf5;color:#047857}.axk-tag.w{background:#fff7ed;color:#c2410c}.axk-tag.no{background:#fef2f2;color:#b91c1c}
+.axk-f{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.axk-allbtn{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border:1px solid #d1fae5;border-radius:8px;background:#ecfdf5;color:#047857;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.axk-allbtn .i{width:14px;height:14px;stroke-width:2.6}.axk-allbtn:hover{background:#d1fae5}
+.axk-allbtn.sm{height:30px;flex:none}
+/* arxiv tekshiruv oynasi */
+.axk-qv{width:min(720px,calc(100vw - 32px)) !important}
+.axk-from{display:flex;flex-direction:column;gap:3px;padding:10px 12px;border-radius:10px;background:#f8fafc;border:1px solid #eef1f5}
+.axk-from span{font-size:13px;font-weight:500;color:#0f172a}.axk-from small{font-size:12.5px;color:#64748b}
+.axk-row{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid #e2e8f0;border-radius:10px;background:#fff}
+.axk-row.ok{border-color:#a7f3d0;background:#f0fdf4}.axk-row.no{border-color:#fecaca;background:#fef2f2}
+.axk-y{display:inline-flex;align-items:center;gap:4px;margin-top:2px;font-size:11.5px;color:#059669;font-weight:500}.axk-y .i{width:12px;height:12px;stroke-width:2.6}
+.axk-bs{display:flex;gap:6px;flex:none}
+.axk-b{display:inline-flex;align-items:center;gap:5px;height:32px;padding:0 11px;border:1px solid #e2e8f0;border-radius:8px;background:#fff;font:inherit;font-size:12.5px;font-weight:600;color:#475569;cursor:pointer;transition:all .15s}
+.axk-b .i{width:13px;height:13px;stroke-width:2.6}
+.axk-b.ok:hover{border-color:#6ee7b7;color:#047857}.axk-b.no:hover{border-color:#fca5a5;color:#b91c1c}
+.axk-b.ok.on{background:#10b981;border-color:#10b981;color:#fff}.axk-b.no.on{background:#ef4444;border-color:#ef4444;color:#fff}
+.axk-b:focus-visible{outline:2px solid #3073f1;outline-offset:2px}
+.axk-cnt2{font-size:12.5px;color:#64748b;font-variant-numeric:tabular-nums}
+.btn.axk-acc{background:#10b981;border-color:#10b981;color:#fff;display:inline-flex;align-items:center;gap:6px}.btn.axk-acc:hover{background:#059669}
+.btn.axk-ret{background:#fff;border-color:#fecaca;color:#b91c1c}.btn.axk-ret:hover{background:#fef2f2}
+.btn.axk-acc.dis,.btn.axk-ret.dis{opacity:.45}
+@media (max-width:640px){.axk-row{flex-direction:column;align-items:stretch}.axk-bs{justify-content:flex-end}}
