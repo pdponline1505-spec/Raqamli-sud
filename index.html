@@ -10064,6 +10064,10 @@ var raf = 0, q = function () { if (raf) return; raf = requestAnimationFrame(func
 try { new MutationObserver(q).observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ["class"] }); } catch (e) {}
 window.addEventListener("resize", function () { var A = document.querySelectorAll(".l-sub"); for (var i = 0; i < A.length; i++) A[i].__snK = ""; scan(); });
 document.addEventListener("scroll", function (e) { if (e.target && e.target.classList && e.target.classList.contains("l-sub")) { e.target.__snK = ""; q(); } }, true);
+// panel ochilish/yopilish animatsiyasi tugagach fon joyi qayta hisoblanadi (aks holda chetda qotib qoladi)
+var reset = function () { var A = document.querySelectorAll(".l-sub"); for (var i = 0; i < A.length; i++) A[i].__snK = ""; scan(); };
+document.addEventListener("transitionend", function (e) { var t = e.target; if (t && t.classList && (t.classList.contains("l-app") || t.classList.contains("l-sub") || t.classList.contains("l-rail"))) { reset(); setTimeout(reset, 120); } }, true);
+document.addEventListener("click", function (e) { if (e.target && e.target.closest && e.target.closest(".l-rail, .l-sub")) { setTimeout(reset, 450); setTimeout(reset, 700); } }, true);
 setTimeout(scan, 200); setTimeout(scan, 800);
 })(); }
 // Tablar: faol tab foni silliq siljiydi (sliding indicator)
