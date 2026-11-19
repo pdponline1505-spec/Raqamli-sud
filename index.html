@@ -10237,6 +10237,9 @@ var H = s.axHis ? (s.lRows || []).filter(function (r) { return r.id === s.axHis;
 var focusH = function () { setTimeout(function () { var d = document.querySelector(".axh"); if (d) try { d.focus({ preventScroll: true }); } catch (e) {} }, 60); };
 self._openAxHist = function (id) { self.setState({ axHis: id, lMenu: 0 }); focusH(); };
 __out.axhKey = function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ axHis: 0 }); } };
+// Chap paneldagi bo'lim bosilganda yopilgan ichki (2-) panel avtomatik ochiladi
+window.__railSelf = self;
+if (!window.__railOpen) { window.__railOpen = 1; document.addEventListener("click", function (e) { var b = e.target && e.target.closest ? e.target.closest(".l-rail .l-ri") : null; if (!b || b.disabled || b.classList.contains("pf-rail") || b.classList.contains("dis")) return; var me = window.__railSelf; if (me && me.state && me.state.subCollapsed) me.setState({ subCollapsed: false }); }, true); }
 // Chap panel: bo'lim nomi sichqoncha ustiga kelishi bilan chiqadi (panel kesmasligi uchun sahifa ustida)
 if (!window.__railTip) { window.__railTip = 1; var rtEl = null;
   var rtShow = function (b) { if (!b.closest(".railc")) { rtHide(); return; } if (!rtEl) { rtEl = document.createElement("div"); rtEl.className = "rail-tip"; rtEl.setAttribute("role", "tooltip"); document.body.appendChild(rtEl); } rtEl.textContent = b.getAttribute("data-tip"); var r = b.getBoundingClientRect(); rtEl.style.top = (r.top + r.height / 2) + "px"; rtEl.style.left = (r.right + 12) + "px"; rtEl.classList.add("on"); };
