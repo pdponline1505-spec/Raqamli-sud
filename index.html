@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=8015c7884c8a">
+<link rel="stylesheet" href="assets/app.css?v=2762d66191d5">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -7247,12 +7247,12 @@ isPageMode: s.openMode === "page", isModalMode: s.openMode === "modal",
 isCasePage: s.caseOpen && s.openMode === "page", notCasePage: !(s.caseOpen && s.openMode === "page"),
 vmPage: s.openMode === "page" ? "on" : "", vmModal: s.openMode === "modal" ? "on" : "",
 setPageMode: function () { self.setState({ openMode: "page" }); }, setModalMode: function () { self.setState({ openMode: "modal" }); },
-appCls: "" + (((s.railC === true || (s.railC == null && (s.vw || window.innerWidth) <= 1440)) || (s.caseOpen && s.openMode === "page" && s.railCaseExp !== s.caseNum)) ? " railc" : "") + (s.caseOpen ? " locked" : "") + (s.caseOpen && s.openMode === "page" ? " pgmode" : ""), subCollapsed: s.subCollapsed,
+appCls: "" + ((s.caseOpen && s.openMode === "page" ? s.railCaseExp !== s.caseNum : (s.railC === true || (s.railC == null && (s.vw || window.innerWidth) <= 1440))) ? " railc" : "") + (s.caseOpen ? " locked" : "") + (s.caseOpen && s.openMode === "page" ? " pgmode" : ""), subCollapsed: s.subCollapsed,
 railTitle: s.subCollapsed ? "Yon menyuni ochish" : "Yon menyuni yopish", railExp: s.subCollapsed ? "false" : "true",
 railArrowCls: s.subCollapsed ? "" : "open",
 subToggle: function () {}, // ichki panel yopilmaydi
-railToggle: function () { var st = self.state; var base = st.railC === true || (st.railC == null && (st.vw || window.innerWidth) <= 1440); if (st.caseOpen && st.openMode === "page" && !base) { self.setState({ railCaseExp: st.railCaseExp === st.caseNum ? "" : st.caseNum }); return; } self.setState({ railC: !base }); }, railTogLbl: ((s.railC === true || (s.railC == null && (s.vw || window.innerWidth) <= 1440)) || (s.caseOpen && s.openMode === "page" && s.railCaseExp !== s.caseNum)) ? "Menyuni kengaytirish" : "Menyuni yig'ish", railExpStr: ((s.railC === true || (s.railC == null && (s.vw || window.innerWidth) <= 1440)) || (s.caseOpen && s.openMode === "page" && s.railCaseExp !== s.caseNum)) ? "false" : "true",
-cwWrap: s.openMode === "page" ? "position: fixed; top: calc(" + (s.ltH || 81) + "px - var(--cw-off, 0px)); right: 0; bottom: 0; left: " + ((((s.railC === true || (s.railC == null && (s.vw || window.innerWidth) <= 1440)) || (s.caseOpen && s.openMode === "page" && s.railCaseExp !== s.caseNum)) ? 72 : 232) + 220) + "px; transition: left 240ms cubic-bezier(.2,0,0,1); z-index: 40; display: block; padding: 0; background: #f4f4f5"
+railToggle: function () { var st = self.state; var base = st.railC === true || (st.railC == null && (st.vw || window.innerWidth) <= 1440); if (st.caseOpen && st.openMode === "page") { self.setState({ railCaseExp: st.railCaseExp === st.caseNum ? "" : st.caseNum }); return; } self.setState({ railC: !base }); }, railTogLbl: (s.caseOpen && s.openMode === "page" ? s.railCaseExp !== s.caseNum : (s.railC === true || (s.railC == null && (s.vw || window.innerWidth) <= 1440))) ? "Menyuni kengaytirish" : "Menyuni yig'ish", railExpStr: (s.caseOpen && s.openMode === "page" ? s.railCaseExp !== s.caseNum : (s.railC === true || (s.railC == null && (s.vw || window.innerWidth) <= 1440))) ? "false" : "true",
+cwWrap: s.openMode === "page" ? "position: fixed; top: calc(" + (s.ltH || 81) + "px - var(--cw-off, 0px)); right: 0; bottom: 0; left: " + (((s.caseOpen && s.openMode === "page" ? s.railCaseExp !== s.caseNum : (s.railC === true || (s.railC == null && (s.vw || window.innerWidth) <= 1440))) ? 72 : 248) + 220) + "px; transition: left 240ms cubic-bezier(.2,0,0,1); z-index: 40; display: block; padding: 0; background: #f4f4f5"
 : "position: fixed; inset: 0; z-index: 40; display: grid; place-items: center; padding: 24px",
 cwCls: s.openMode === "modal" ? "quick" : "",
 hdrCls: s.hdrCompact && s.openMode === "page" ? "compact" : "",
@@ -10244,8 +10244,8 @@ __out.axhKey = function (e) { if (e.key === "Escape") { e.stopPropagation(); sel
 // Chap paneldagi bo'lim bosilganda yopilgan ichki (2-) panel avtomatik ochiladi
 window.__railSelf = self;
 if (!window.__vwL) { window.__vwL = 1; var vwT; window.addEventListener("resize", function () { clearTimeout(vwT); vwT = setTimeout(function () { var me = window.__railSelf; if (me) me.setState({ vw: window.innerWidth }); }, 150); }); }
-// Yig'ilgan asosiy paneldagi bo'sh joy bosilsa panel to'liq ochiladi
-if (!window.__railExp) { window.__railExp = 1; document.addEventListener("click", function (e) { var t = e.target; if (!t || !t.closest || !t.closest(".l-app.railc .l-rail")) return; if (t.closest("button, a, input, [role=menu], [role=menuitem]")) return; var me = window.__railSelf; if (!me || !me.state) return; var st = me.state, base = st.railC === true || (st.railC == null && (st.vw || window.innerWidth) <= 1440); if (st.caseOpen && st.openMode === "page" && !base) me.setState({ railCaseExp: st.caseNum }); else me.setState({ railC: false }); }); }
+// Asosiy paneldagi bo'sh joy bosilsa: yig'ilgan bo'lsa ochiladi, ochiq bo'lsa yig'iladi
+if (!window.__railExp) { window.__railExp = 1; document.addEventListener("click", function (e) { var t = e.target; if (!t || !t.closest || !t.closest(".l-app .l-rail")) return; if (t.closest("button, a, input, [role=menu], [role=menuitem]")) return; var me = window.__railSelf; if (!me || !me.state) return; var st = me.state, base = st.railC === true || (st.railC == null && (st.vw || window.innerWidth) <= 1440), cp = st.caseOpen && st.openMode === "page", coll = !!t.closest(".l-app.railc"); if (cp) { me.setState({ railCaseExp: coll ? st.caseNum : "" }); return; } me.setState({ railC: !coll }); }); }
 if (!window.__railOpen) { window.__railOpen = 1; document.addEventListener("click", function (e) { var b = e.target && e.target.closest ? e.target.closest(".l-rail .l-ri") : null; if (!b || b.disabled || b.classList.contains("pf-rail") || b.classList.contains("dis")) return; var me = window.__railSelf; if (me && me.state && me.state.subCollapsed) me.setState({ subCollapsed: false }); }, true); }
 // Chap panel: bo'lim nomi sichqoncha ustiga kelishi bilan chiqadi (panel kesmasligi uchun sahifa ustida)
 if (!window.__railTip) { window.__railTip = 1; var rtEl = null;
@@ -10379,7 +10379,7 @@ arxiv: rows.filter(function (r) { return r.stage === "arxiv" && r.sub === "qabul
 berilgan: rows.filter(function (r) { return r.stage === "arxiv" && !!r.axBer; }),
 qaytgan: rows.filter(function (r) { return r.stage !== "arxiv" && !!r.axRet; })
 };
-var NAV = [["kelgan", "Kelgan ishlar"], ["arxiv", "Arxivdagi ishlar"], ["sorov", "Berish so'rovlari"], ["berilgan", "Vaqtincha berilgan"], ["qaytgan", "Kamchilik bilan qaytarilgan"]];
+var NAV = [["kelgan", "Kelgan ishlar"], ["arxiv", "Arxivdagi ishlar"], ["sorov", "Berish so'rovlari"], ["berilgan", "Vaqtincha berilgan"], ["qaytgan", "Kamchilik bilan qaytgan"]];
 var tab = s.axcTab || "kelgan";
 var goTab = function (k) { return function () { self.setState({ page: "axcab", axcTab: k, axcGrp: "", caseOpen: false, axcSel: {}, axcMenu: 0 }); try { window.scrollTo(0, 0); } catch (e) {} }; };
 __out.goAxCab = goTab(tab); __out.railAxCls = isAxCab ? "l-ri on" : "l-ri";

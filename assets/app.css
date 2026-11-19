@@ -8302,3 +8302,14 @@ body:has([aria-modal="true"]) .l-app.railc .l-rtog{z-index:1;pointer-events:none
 .l-app.railc .l-rail{cursor:ew-resize}
 .l-app.railc .l-rail :is(button,a){cursor:pointer}
 .l-app.railc .l-rail .l-ri.dis{cursor:not-allowed}
+/* Bo'sh joy kursori: yig'ilgan → (ochish), ochiq ← (yig'ish) */
+.l-app.railc .l-rail{cursor:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M4 12h14M13 7l5 5-5 5' fill='none' stroke='white' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M4 12h14M13 7l5 5-5 5' fill='none' stroke='%230f172a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 12 12,e-resize}
+.l-app:not(.railc) .l-rail{cursor:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M20 12H6M11 7l-5 5 5 5' fill='none' stroke='white' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M20 12H6M11 7l-5 5 5 5' fill='none' stroke='%230f172a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 12 12,w-resize}
+.l-app .l-rail :is(button,a){cursor:pointer}
+.l-app .l-rail .l-ri.dis{cursor:not-allowed}
+/* Asosiy panel: qatorlar orasi kengroq (ikkala holatda bir xil), kenglik 248px */
+.l-app{--rail-w:248px}.l-app.railc{--rail-w:72px}
+body:has(.l-app:not(.railc)) .pfp{left:260px}
+.l-app .l-rail{gap:6px !important}
+.l-app .adm-rail{gap:6px !important}
+@media (max-height:820px){.l-app .l-rail,.l-app .adm-rail{gap:3px !important}}
