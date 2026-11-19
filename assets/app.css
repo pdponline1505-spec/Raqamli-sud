@@ -8298,3 +8298,7 @@ body:has([aria-modal="true"]) .l-app.railc .l-rtog{z-index:1;pointer-events:none
 .l-app.railc .l-rtog .rt-a{display:block}.l-app.railc .l-rtog .rt-b{display:none}
 /* Ichki (2-) panelni yopish imkoniyati olib tashlandi */
 .l-subclose,.l-subopen,.l-subhit{display:none !important}
+/* Yig'ilgan panel: bo'sh joyda ↔ kursor, bosilsa ochiladi */
+.l-app.railc .l-rail{cursor:ew-resize}
+.l-app.railc .l-rail :is(button,a){cursor:pointer}
+.l-app.railc .l-rail .l-ri.dis{cursor:not-allowed}

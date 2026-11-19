@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=bf00937a554f">
+<link rel="stylesheet" href="assets/app.css?v=8015c7884c8a">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -10244,6 +10244,8 @@ __out.axhKey = function (e) { if (e.key === "Escape") { e.stopPropagation(); sel
 // Chap paneldagi bo'lim bosilganda yopilgan ichki (2-) panel avtomatik ochiladi
 window.__railSelf = self;
 if (!window.__vwL) { window.__vwL = 1; var vwT; window.addEventListener("resize", function () { clearTimeout(vwT); vwT = setTimeout(function () { var me = window.__railSelf; if (me) me.setState({ vw: window.innerWidth }); }, 150); }); }
+// Yig'ilgan asosiy paneldagi bo'sh joy bosilsa panel to'liq ochiladi
+if (!window.__railExp) { window.__railExp = 1; document.addEventListener("click", function (e) { var t = e.target; if (!t || !t.closest || !t.closest(".l-app.railc .l-rail")) return; if (t.closest("button, a, input, [role=menu], [role=menuitem]")) return; var me = window.__railSelf; if (!me || !me.state) return; var st = me.state, base = st.railC === true || (st.railC == null && (st.vw || window.innerWidth) <= 1440); if (st.caseOpen && st.openMode === "page" && !base) me.setState({ railCaseExp: st.caseNum }); else me.setState({ railC: false }); }); }
 if (!window.__railOpen) { window.__railOpen = 1; document.addEventListener("click", function (e) { var b = e.target && e.target.closest ? e.target.closest(".l-rail .l-ri") : null; if (!b || b.disabled || b.classList.contains("pf-rail") || b.classList.contains("dis")) return; var me = window.__railSelf; if (me && me.state && me.state.subCollapsed) me.setState({ subCollapsed: false }); }, true); }
 // Chap panel: bo'lim nomi sichqoncha ustiga kelishi bilan chiqadi (panel kesmasligi uchun sahifa ustida)
 if (!window.__railTip) { window.__railTip = 1; var rtEl = null;
