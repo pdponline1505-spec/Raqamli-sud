@@ -8420,3 +8420,5 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .btn.axk-ret{background:#ef4444;border-color:#ef4444;color:#fff;display:inline-flex;align-items:center;gap:6px}
 .btn.axk-ret:hover{background:#dc2626;border-color:#dc2626}
 .btn.axk-ret.dis{opacity:1}
+.axk-qv .qv-f .btn.axk-ret,.axk-qv .qv-f .btn.axk-acc{display:inline-flex;flex-direction:row;align-items:center;gap:6px;white-space:nowrap;flex:none;height:40px;padding:0 16px}
+.axk-qv .qv-f .btn .i{flex:none}
