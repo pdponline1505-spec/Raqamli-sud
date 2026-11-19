@@ -8506,3 +8506,29 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .axrep-qv .qv-f .btn{display:inline-flex;align-items:center;gap:6px}
 .axd3 .d3-body{--rh:54px;height:calc(var(--rh) * 5 + 12px)}
 @media (max-width:760px){.axd3 .d3-body{height:auto;max-height:none}}
+/* ===== Arxiv ro'yxatlari: Hajmi ustuni va filtrlar ===== */
+.axc-lt .l-row{grid-template-columns:52px minmax(160px,1fr) minmax(0,1.2fr) minmax(0,1.3fr) 128px minmax(100px,.6fr) 112px 196px 52px !important}
+@media (max-width:1400px){.axc-lt .l-row{grid-template-columns:48px minmax(150px,1fr) minmax(0,1.1fr) minmax(0,1.2fr) 118px 108px 190px 48px !important}.axc-lt .l-row>:nth-child(5){display:flex !important}.axc-lt .l-row>:nth-child(6){display:none !important}}
+.axc-vol{display:flex;flex-direction:column;gap:2px;min-width:0}
+.axc-vol b{font-size:13px;font-weight:500;color:#0f172a;white-space:nowrap}
+.axc-vol small{font-size:12px;color:#64748b}
+.axc-fil{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.axc-q{display:flex;align-items:center;gap:8px;flex:1 1 280px;max-width:420px;height:40px;padding:0 12px;border:1px solid #e2e8f0;border-radius:10px;background:#fff}
+.axc-q:focus-within{border-color:#3073f1;box-shadow:0 0 0 3px rgba(48,115,241,.12)}
+.axc-q .i{width:16px;height:16px;color:#94a3b8;flex:none}
+.axc-q input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:13.5px;color:#0f172a}
+.axc-qx{display:grid;place-items:center;width:24px;height:24px;border:0;border-radius:6px;background:transparent;color:#64748b;cursor:pointer}
+.axc-qx:hover{background:#f1f5f9}.axc-qx .i{width:14px;height:14px}
+.axc-per{display:flex;align-items:center;gap:4px;padding:3px;border:1px solid #e2e8f0;border-radius:10px;background:#fff}
+.axc-per-l{font-size:12.5px;color:#64748b;padding:0 6px 0 8px}
+.axc-pb{height:32px;padding:0 11px;border:0;border-radius:8px;background:transparent;font:inherit;font-size:13px;font-weight:500;color:#475569;cursor:pointer}
+.axc-pb:hover{background:#f1f5f9}.axc-pb.on{background:#eff6ff;color:#1d4ed8;font-weight:600}
+.axc-pb:focus-visible{outline:2px solid #3073f1;outline-offset:1px}
+.axc-reset{height:36px;padding:0 10px;border:0;background:transparent;font:inherit;font-size:13px;font-weight:500;color:#3073f1;cursor:pointer}
+.axc-reset:hover{text-decoration:underline}
+/* "Tegishli emas" */
+.axk-b.na:hover{border-color:#cbd5e1;color:#334155}
+.axk-b.na.on{background:#64748b;border-color:#64748b;color:#fff}
+.axk-row.na{border-color:#e2e8f0;background:#f8fafc}
+.axk-row.na .axk-tx b{color:#64748b}
+@media (max-width:760px){.axk-bs{flex-wrap:wrap}}
