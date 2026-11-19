@@ -8422,3 +8422,41 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .btn.axk-ret.dis{opacity:1}
 .axk-qv .qv-f .btn.axk-ret,.axk-qv .qv-f .btn.axk-acc{display:inline-flex;flex-direction:row;align-items:center;gap:6px;white-space:nowrap;flex:none;height:40px;padding:0 16px}
 .axk-qv .qv-f .btn .i{flex:none}
+/* ===== Qaytarilgan hujjat: sabab va xato joylari ===== */
+.sdr-qv{width:min(640px,calc(100vw - 32px)) !important}
+.sdr-doc{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border-radius:12px;background:#f8fafc;border:1px solid #eef1f5}
+.sdr-doc b{font-size:15px;font-weight:600;color:#0f172a;line-height:1.35}.sdr-doc span{font-size:12.5px;color:#64748b}
+.sdr-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.sdr-meta>div{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border:1px solid #eef1f5;border-radius:10px}
+.sdr-meta small{font-size:11.5px;color:#64748b}.sdr-meta b{font-size:13.5px;font-weight:600;color:#0f172a}
+.sdr-list{display:flex;flex-direction:column;gap:8px}
+.sdr-lt{font-size:13.5px;font-weight:600;color:#0f172a;margin-bottom:2px}
+.sdr-it{display:flex;gap:12px;padding:12px 14px;border:1px solid #fecaca;border-radius:12px;background:#fff7f7}
+.sdr-n{flex:none;width:24px;height:24px;border-radius:50%;background:#ef4444;color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center}
+.sdr-tx{display:flex;flex-direction:column;gap:6px;min-width:0}
+.sdr-tx b{font-size:14px;font-weight:600;color:#7f1d1d}
+.sdr-joy{display:inline-flex;align-items:center;gap:5px;width:max-content;max-width:100%;padding:3px 9px;border-radius:99px;background:#fff;border:1px solid #fecaca;font-size:12.5px;font-weight:500;color:#b91c1c}
+.sdr-joy .i{width:13px;height:13px;flex:none}
+.sdr-tx p{margin:0;font-size:13.5px;line-height:1.5;color:#334155}
+.sdr-note{display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-radius:12px;background:#f8fafc;border:1px solid #eef1f5}
+.sdr-note small{font-size:11.5px;color:#64748b}.sdr-note p{margin:0;font-size:13.5px;color:#0f172a;line-height:1.5}
+.sdm-locs{display:flex;flex-direction:column;gap:8px;margin:10px 0}
+.sdm-locs-t{font-size:12.5px;color:#64748b}
+.sdm-loc{display:flex;flex-direction:column;gap:5px}
+.sdm-loc-s{font-size:12.5px;font-weight:600;color:#7f1d1d}
+.sdm-loc-i{display:flex;align-items:center;gap:8px;height:38px;padding:0 12px;border:1px solid #e2e8f0;border-radius:10px;background:#fff}
+.sdm-loc-i:focus-within{border-color:#3073f1;box-shadow:0 0 0 3px rgba(48,115,241,.12)}
+.sdm-loc-i .i{width:15px;height:15px;color:#94a3b8;flex:none}
+.sdm-loc-i input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:13.5px;color:#0f172a}
+@media (max-width:560px){.sdr-meta{grid-template-columns:minmax(0,1fr)}}
+/* "Barchasini belgilash" — ro'yxat tepasida, jadval sarlavhasidagi kabi belgilash katagi */
+.axk-sa{display:flex;align-items:center;gap:12px;width:100%;padding:9px 12px;border:1px dashed #cbd5e1;border-radius:10px;background:#fff;font:inherit;text-align:left;cursor:pointer;transition:border-color .15s,background-color .15s}
+.axk-sa:hover{border-color:#3073f1;background:#f8fbff}
+.axk-sa:focus-visible{outline:2px solid #3073f1;outline-offset:2px}
+.axk-sa .axk-cb{color:#fff}
+.axk-sa.on .axk-cb,.axk-sa.some .axk-cb{background:#3073f1;border-color:#3073f1}
+.axk-sa.on{border-style:solid;border-color:#bfdbfe;background:#eff6ff}
+.axk-sa-t{flex:1;font-size:13.5px;font-weight:600;color:#0f172a}
+.axk-sa-n{font-size:12.5px;color:#64748b;font-variant-numeric:tabular-nums}
+.axk-f:empty{display:none}
+.axk-h .axk-cnt{display:none}
