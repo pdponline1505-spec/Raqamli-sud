@@ -9149,3 +9149,39 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 #umumiy .tools{flex-wrap:wrap}
 #umumiy .smj-stopn{margin:0 20px}
 .main.smj-ins .smj-g{display:none}
+
+/* Qatnashchilar — soddalashtirilgan davomat jadvali */
+.smj-qbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.smj-qstats{display:flex;gap:8px;flex-wrap:wrap}
+.smj-qs{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 12px;border:1px solid #e2e8f0;border-radius:10px;background:#fff;font:inherit;font-size:13px;color:#475569;cursor:pointer}
+.smj-qs i{width:8px;height:8px;border-radius:50%;background:#94a3b8}
+.smj-qs b{font-weight:700;color:#0f172a;font-variant-numeric:tabular-nums}
+.smj-qs.all i{display:none}
+.smj-qs.st-kutish i{background:#f59e0b}.smj-qs.st-zal i{background:#3073f1}.smj-qs.st-vks i{background:#7c3aed}.smj-qs.st-kelmadi i{background:#dc2626}
+.smj-qs:hover{background:#f8fafc}
+.smj-qs.on{border-color:#3073f1;background:#eff5ff;color:#1d4ed8}.smj-qs.on b{color:#1d4ed8}
+.smj-qdev{display:flex;align-items:center;gap:8px;font-size:13px;color:#64748b}
+.smj-qdev .dx-sel{width:280px;flex:none}.smj-qdev .dx-selbtn{height:36px;gap:8px}.smj-qdev .dx-selbtn>svg:first-child{color:#64748b;flex:none}
+.smj-qt{overflow:visible}
+.smj-q{grid-template-columns:48px minmax(240px,1.6fr) minmax(200px,1fr) minmax(220px,1fr) 64px}
+.smj-q>span{min-height:64px}
+.smj-q.off{background:#fcfcfd}.smj-q.off .smj-who b{color:#94a3b8}
+.smj-pw{display:flex;align-items:center;gap:12px;min-width:0}
+.smj-pav{width:36px;height:36px;border-radius:50%;object-fit:cover;flex:none;background:#e2e8f0}
+.smj-pav.ini{display:grid;place-items:center;background:#eef2ff;color:#4f46e5;font-weight:700;font-size:14px}
+.smj-q .smj-who{display:flex;flex-direction:column;gap:2px;min-width:0}
+.smj-q .smj-who small{font-size:12px;color:#64748b}
+.smj-stc{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.smj-stc small{font-size:12px;color:#64748b}
+.smj-fpb{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 12px;border:1px solid #d6dcf5;border-radius:10px;background:#fff;color:#4f46e5;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.smj-fpb:hover{background:#f5f5ff}
+.smj-fpd{display:flex;align-items:center;gap:8px;color:#15803d}.smj-fpd>svg{width:18px;height:18px;padding:3px;border-radius:50%;background:#dcfce7;box-sizing:content-box}
+.smj-fpd span{display:flex;flex-direction:column;line-height:1.25}.smj-fpd b{font-size:13px;font-weight:600}.smj-fpd small{font-size:12px;color:#64748b}
+.smj-mw{position:relative}
+.smj-qmenu{min-width:230px !important;top:38px}
+.smj-mh{display:block;padding:6px 10px 4px;font-size:11.5px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.smj-mi{gap:10px}.smj-mi svg{margin-left:auto;color:#3073f1}.smj-mi.on{background:#f1f5ff}
+.smj-md{width:8px;height:8px;border-radius:50%;flex:none}.smj-md.st-kutish{background:#f59e0b}.smj-md.st-zal{background:#3073f1}.smj-md.st-vks{background:#7c3aed}.smj-md.st-kelmadi{background:#dc2626}
+.smj-msep{height:1px;background:#eef1f5;margin:4px 6px}
+.smj-q.mopen{position:relative;z-index:60}
+.smj-q.mopen .smj-mw{z-index:61}
+.smj-qmenu{z-index:62 !important}
