@@ -7371,7 +7371,7 @@ lMoreOpen: s.lMore, lMoreStr: s.lMore ? "true" : "false", lMoreToggle: function 
 hMoreOpen: s.dd === "hmore", hMoreStr: s.dd === "hmore" ? "true" : "false", hMoreToggle: function () { self.setState({ dd: self.state.dd === "hmore" ? "" : "hmore" }); },
 selDub: selDubAll, selDel: selDubAll && !isYord, selJD: selDubAll && !isYord, caseJD: caseIsDub && !isYord, hqMoreCls: "hq-more", tbRowCls: selDubAll ? "" : "nodub", caseIsDub: caseIsDub, caseDel: caseIsDub && !isYord,
 tbOpacity: "1", tbDisabled: selIds.length ? "false" : "true",
-tbNat: s.lTab === "natija" || s.lTab === "qoldir" || s.lTab === "sudm", tbNatT: s.lTab === "natija" || s.lTab === "sudm", tbQolT: s.lTab === "qoldir", tbSudlovOn: s.lTab === "sudm", tbQolOn: s.lTab !== "sudm", nMoreCls: "tb-nmore q" + (s.lTab === "natija" || s.lTab === "sudm" ? " n" : ""), tbStd: s.lTab !== "natija" && s.lTab !== "qoldir" && s.lTab !== "sudm",
+tbNat: s.lTab === "natija" || s.lTab === "qoldir" || s.lTab === "sudm", tbNatT: s.lTab === "natija" || s.lTab === "sudm", tbQolT: s.lTab === "qoldir", tbQolOn: true, nMoreCls: "tb-nmore q" + (s.lTab === "natija" || s.lTab === "sudm" ? " n" : ""), tbStd: s.lTab !== "natija" && s.lTab !== "qoldir" && s.lTab !== "sudm",
 natReady: (function () { var rs = byIds(selIds); return rs.length > 0 && rs.every(function (r) { return !!r.yord; }); })(),
 yordOpen: !!s.yordOpen, yordExp: s.yordOpen ? "true" : "false",
 yordToggle: function () { if (!selIds.length) { self.flash("Avval ish(lar)ni tanlang"); return; } self.setState({ yordOpen: !self.state.yordOpen, nMore: false }); }, yordClose: function () { self.setState({ yordOpen: false }); },
@@ -7384,7 +7384,7 @@ canNext: ["ijro", "yakun"].indexOf(s.lTab) < 0 && (s.lTab !== "arxiv" || (functi
 if (cs !== "all") return ["yuborish", "olish", "qaytarish"].indexOf(cs) >= 0;
 var ss = stageRows.filter(function (r) { return s.lSel[r.id]; }).map(function (r) { return r.sub; }).filter(function (x, i, a) { return a.indexOf(x) === i; });
 return !ss.length || (ss.length === 1 && ["yuborish", "olish", "qaytarish"].indexOf(ss[0]) >= 0); })()),
-pgCanNext: (function () { var rr = (s.lRows || []).filter(function (x) { return x.num === s.caseNum; })[0]; return !rr || (["ijro", "yakun"].indexOf(rr.stage) < 0 && (rr.stage !== "arxiv" || ["yuborish", "olish", "qaytarish"].indexOf(rr.sub) >= 0)); })(), canJudge: !isYord, isYord: isYord, nextLbl: isYord ? "Sudyaga yuborish" : s.lTab === "sudm" ? "Natija" : "Keyingi bosqichga o'tkazish",
+pgCanNext: (function () { var rr = (s.lRows || []).filter(function (x) { return x.num === s.caseNum; })[0]; return !rr || (["ijro", "yakun"].indexOf(rr.stage) < 0 && (rr.stage !== "arxiv" || ["yuborish", "olish", "qaytarish"].indexOf(rr.sub) >= 0)); })(), canJudge: !isYord, isYord: isYord, nextLbl: isYord ? "Sudyaga yuborish" : "Keyingi bosqichga o'tkazish",
 tbCls: selIds.length ? "" : "off", tbTitle: selIds.length ? "" : "Avval ish(lar)ni tanlang",
 bSodda: needSel(function (ids) { var st = self.state, from = (L_TABS.filter(function (t) { return t[0] === st.lTab; })[0] || ["", ""])[1], p2 = function (x) { return (x < 10 ? "0" : "") + x; }, d = new Date(), t = p2(d.getDate()) + "." + p2(d.getMonth() + 1) + "." + d.getFullYear() + " " + p2(d.getHours()) + ":" + p2(d.getMinutes());
 self.setState({ lSel: {}, nMore: false, lRows: st.lRows.map(function (r) { return ids.indexOf(r.id) >= 0 ? Object.assign({}, r, { stage: "yakun", sub: "boshqa", res: "", sodda: true, alsoQol: false, alsoIjro: false, moved: Date.now(), movedFrom: from, qaror: t }) : r; }) });
@@ -10318,7 +10318,7 @@ __out.lbWrapCls = "lb-wrap" + (__out.lAny ? " on" : ""); __out.lbHid = __out.lAn
 try { if (__out.lAny) window.__lbLast = __out.lSelCount; else if (window.__lbLast) __out.lSelCount = window.__lbLast; } catch (er) {}
 if (s.nx && s.nx.yord === "__keep" && __out.nxS && __out.nxS.yord) __out.nxS.yord = Object.assign({}, __out.nxS.yord, { label: "Har bir ishda o'z yordamchisi qolsin" });
 var inst1 = (s.lInst || "Birinchi instansiya") === "Birinchi instansiya";
-__out.tbSudlovOn = (T === "natija" && !inst1) || T === "sudm";
+__out.tbSudlovOn = (T === "natija" || T === "sudm") && !inst1;
 // Sud majlisi: «Sudlov tarkibi» oynasi
 (function () { var D = s.sdl || null; __out.sdlOpen = !!D; if (!D) return;
   var JS0 = ["Tojiyev Z. X.", "Karimov A. A.", "Abdullayev S. I.", "Eshnazarov A. B."], KT = ["Ergashev Jahongir A.", "Rahimov Jasur T.", "Qodirov Sherzod A."];
