@@ -9139,3 +9139,9 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .smj-tilebtn{margin-left:auto;flex:none;gap:4px}
 .smj-ums .ums-row{flex-wrap:nowrap}
 .smj-ums .ums-m.ell{overflow:hidden;text-overflow:ellipsis;min-width:0}
+/* Majlisni yaratish — tab qatoridagi seg-tabs ko'rinishida */
+.smj-tabrow .smj-newbox{margin-left:auto !important;flex:none !important;width:auto !important}
+.smj-tabrow .smj-newbox+.lf-btn2{margin-left:0 !important}
+.smj-newbox .smj-newb{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font:inherit}
+.smj-newbox .smj-newb svg{width:14px;height:14px;color:#94a3b8}
+.smj-newbox .smj-newb[disabled]{opacity:.5;cursor:not-allowed}
