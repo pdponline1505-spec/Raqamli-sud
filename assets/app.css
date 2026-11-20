@@ -9127,3 +9127,6 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .smnf-ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:#fef3c7;color:#b45309;flex:none}
 .smnf-t{display:flex;flex-direction:column;gap:2px}.smnf-t b{font-size:14px;color:#92400e}.smnf-t small{font-size:12.5px;color:#a16207}
 .smnfm textarea{width:100%;min-height:84px;padding:10px 12px;border:1px solid #dbe2ea;border-radius:12px;font:inherit;font-size:14px;resize:vertical}
+/* Majlisni yaratish — sarlavhadagi «Boshqalar» tugmasi o'lchamida */
+.smj-tabrow .smj-new{height:36px;padding:0 13px;gap:7px;border:1px solid #d5dbe4;border-radius:10px;font-size:13px;font-weight:500;align-self:center}
+.smj-tabrow .smj-new svg{width:14px;height:14px}
