@@ -8952,3 +8952,8 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 /* axw: modal tanasi siqilganda kesilmasin (izoh maydoni chiqqanda) */
 .axw,.axk:has(>.axw){flex-shrink:0 !important}
 .axw-body{max-height:none}
+/* Sud majlisi tabi ikonkasi (sud bolg'asi) */
+.k-sudm{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.5 3.5l6 6M12 6l6 6M13 5l-6 6 4 4 6-6M9 13l-6 6M4 21h9'/%3E%3C/svg%3E")}
+/* Sud majlisi: «Sudlov tarkibi» doim «Boshqalar» menyusida */
+.lb-bar .tbrow .nb-sudlov{display:none !important}.lb-bar .tb-nmore .nmq-sudlov{display:flex !important}.lb-bar .tb-nmore.q.n{display:block !important}
+.sdl-qv{max-width:640px !important}.sdl-qv .ex-chips{display:flex;flex-wrap:wrap;gap:8px}
