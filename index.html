@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=b2fdaf8d677a">
+<link rel="stylesheet" href="assets/app.css?v=260929623f8b">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -1810,6 +1810,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="ctools" role="toolbar" aria-label="Ish amallari"><sc-if value="{{ca.toxt}}" hint-placeholder-val="{{ true }}"><button class="ctool" title="To'xtatish" aria-label="To'xtatish" onClick="{{caToxt}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg></button></sc-if><sc-if value="{{ca.uzay}}" hint-placeholder-val="{{ true }}"><button class="ctool" title="Uzaytirish" aria-label="Uzaytirish" onClick="{{caUzay}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 2.5M9 2h6"></path></svg></button></sc-if><sc-if value="{{ca.natoz}}" hint-placeholder-val="{{ true }}"><button class="ctool" title="Natijani o'zgartirish" aria-label="Natijani o'zgartirish" onClick="{{caNatOz}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path><path d="m15 5 4 4"></path></svg></button></sc-if><sc-if value="{{ca.ijq}}" hint-placeholder-val="{{ true }}"><button class="ctool" title="Ijro tuzishga qaytarish" aria-label="Ijro tuzishga qaytarish" onClick="{{caIjq}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14L4 9l5-5"></path><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"></path></svg></button></sc-if><sc-if value="{{ca.korq}}" hint-placeholder-val="{{ true }}"><button class="ctool" title="Ko'rib chiqishga qaytarish" aria-label="Ko'rib chiqishga qaytarish" onClick="{{caKorq}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14L4 9l5-5"></path><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"></path></svg></button></sc-if><sc-if value="{{ca.sodda}}" hint-placeholder-val="{{ true }}"><button class="ctool" title="Soddalashtirilganga o'tkazish" aria-label="Soddalashtirilganga o'tkazish" onClick="{{actSodda}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h13l-3-3M17 17H4l3 3"></path></svg></button></sc-if><sc-if value="{{ca.sud}}" hint-placeholder-val="{{ true }}"><button class="ctool" title="Boshqa sudga" aria-label="Boshqa sudga" onClick="{{actSud}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg></button></sc-if><sc-if value="{{ca.qayta}}" hint-placeholder-val="{{ true }}"><button class="ctool" title="Qayta taqsimlash" aria-label="Qayta taqsimlash" onClick="{{actQayta}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.9-3.9M4 5v4h4M4 13a8 8 0 0 0 14.9 3.9M20 19v-4h-4"></path></svg></button></sc-if><sc-if value="{{caseIsDub}}" hint-placeholder-val="{{ true }}"><button class="ctool" title="Dublikat ishlar" aria-label="Dublikat ishlar" onClick="{{actDub}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg></button><button class="ctool" title="Dublikat emas" aria-label="Dublikat emas" onClick="{{actDubNo}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9M12.5 12.5l4 4M16.5 12.5l-4 4"></path></svg></button></sc-if><sc-if value="{{caseDel}}" hint-placeholder-val="{{ true }}"><button class="ctool del" title="O'chirish" aria-label="O'chirish" onClick="{{actDel}}"><svg class="ic-del i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6"></path></svg></button></sc-if></div>
 <div class="row" style="gap: 8px">
 <sc-if value="{{axCase.wait}}" hint-placeholder-val="{{ false }}"><span class="ax-wait"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>{{axCase.waitTxt}}</span></sc-if><sc-if value="{{axCase.ret}}" hint-placeholder-val="{{ false }}"><button type="button" class="ax-retpill" title="Arxivdan qaytarish sababi va sanalarini ko'rish" onClick="{{axCase.hist}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9.5 17h-19zM12 10v4M12 17h.01"></path></svg><span class="ax-rp-t"><b>Arxiv rad etgan</b><span>{{axCase.retNote}}</span></span><svg class="i s ax-rp-ch" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></sc-if><sc-if value="{{axCase.on}}" hint-placeholder-val="{{ false }}"><sc-if value="{{isPageMode}}" hint-placeholder-val="{{ false }}"><button class="btn pri hprimary ax-btn" title="{{axCase.lbl}}" onClick="{{axCase.go}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1.5"></rect><path d="M5 9v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9M10 13h4"></path></svg>{{axCase.lbl}}</button></sc-if></sc-if>
+<sc-if value="{{smHdr}}" hint-placeholder-val="{{ false }}"><sc-if value="{{sm.live}}" hint-placeholder-val="{{ false }}"><button type="button" class="smj-live" title="Sud majlisi bo'limiga o'tish" onClick="{{sm.goSec}}"><i></i>Majlis davom etmoqda · {{sm.at}} dan</button></sc-if></sc-if>
 <sc-if value="{{pgCanNext}}" hint-placeholder-val="{{ true }}"><sc-if value="{{isPageMode}}" hint-placeholder-val="{{ true }}"><button class="btn pri hprimary" title="Keyingi bosqichga o'tkazish" aria-label="{{nextLbl}}" onClick="{{nsOpen}}">{{nextLbl}}<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button></sc-if></sc-if>
 <sc-if value="{{isModalMode}}" hint-placeholder-val="{{ false }}"><button class="btn pri" onClick="{{toFull}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"></path></svg>Batafsil ko'rish</button><button class="btn" onClick="{{caseClose}}">Yopish</button></sc-if>
 </div>
@@ -1832,6 +1833,63 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <!-- ===== MAIN ===== -->
 <main class="main">
 <sc-if value="{{axCase.ret}}" hint-placeholder-val="{{ false }}"><button type="button" class="axr-ban" onClick="{{axCase.hist}}"><span class="axr-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9.5 17h-19zM12 10v4M12 17h.01"></path></svg></span><span class="axr-t"><b>Arxiv ishni qabul qilishni rad etgan · {{axCase.retDate}}</b><span>{{axCase.retNote}}</span></span><span class="axr-more">Sabab va sanalar<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></span></button></sc-if>
+
+<sc-if value="{{sm.on}}" hint-placeholder-val="{{ false }}">
+<div class="group">
+<div class="group-h">Sud majlisi</div>
+<section class="sec" id="smajlis">
+<div class="sh"><div><h2>Bugungi sud majlisi</h2><p>{{sm.sub}}</p></div><div class="tools smj-tools"><span class="{{sm.stCls}}"><i></i>{{sm.stTxt}}</span><sc-if value="{{sm.edit}}" hint-placeholder-val="{{ true }}"><button class="btn smj-hb" title="{{sm.bayTip}}" onClick="{{sm.bayon}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6M9 14h6M9 18h4"></path></svg>Bayonnomani ochish</button><sc-if value="{{sm.canStart}}" hint-placeholder-val="{{ true }}"><button class="btn smj-hb smj-go" onClick="{{sm.start}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5v14l11-7z"></path></svg>Majlisni boshlash</button></sc-if><sc-if value="{{sm.live}}" hint-placeholder-val="{{ false }}"><button class="btn smj-hb smj-end" onClick="{{sm.end}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"></rect></svg>Majlisni yakunlash</button></sc-if></sc-if></div></div>
+<div class="smj-info"><sc-for list="{{sm.info}}" as="x" hint-placeholder-count="4"><div class="smj-kv"><span>{{x.k}}</span><b>{{x.v}}</b></div></sc-for></div>
+<div class="smj-bay"><span class="smj-bay-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6M9 14h6M9 18h4"></path></svg></span><div class="smj-bay-t"><b>Sud majlisi bayonnomasi</b><small>{{sm.bayTxt}}</small></div><span class="{{sm.bayCls}}">{{sm.bayStTxt}}</span></div>
+<div class="smj-ph"><b>Qatnashchilar</b><span class="dx-cnt">{{sm.cnt}}</span><small>{{sm.cntTxt}}</small></div>
+<div class="smj-list" role="list">
+<sc-for list="{{sm.people}}" as="p" hint-placeholder-count="3">
+<div class="smj-row" role="listitem">
+<div class="smj-who"><small>{{p.role}}</small><b>{{p.name}}</b></div>
+<sc-if value="{{sm.edit}}" hint-placeholder-val="{{ true }}"><div class="smj-ctl">
+<label class="smj-dd smj-stdd {{p.stCls}}"><span class="sr">Ishtirok holati</span><span class="{{p.stDd.cls}}" id="{{p.stDd.id}}" onKeyDown="{{p.stDd.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{p.stDd.exp}}" onClick="{{p.stDd.toggle}}"><span class="{{p.stDd.vcls}}">{{p.stDd.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{p.stDd.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{p.stDd.stop}}"><sc-for list="{{p.stDd.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><span class="dx-olbl">{{o.name}}</span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
+<label class="smj-dd smj-dvdd"><span class="sr">Qurilma</span><span class="{{p.dvDd.cls}}" id="{{p.dvDd.id}}" onKeyDown="{{p.dvDd.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{p.dvDd.exp}}" onClick="{{p.dvDd.toggle}}"><span class="{{p.dvDd.vcls}}">{{p.dvDd.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{p.dvDd.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{p.dvDd.stop}}"><sc-for list="{{p.dvDd.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><span class="dx-olbl">{{o.name}}</span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
+<button type="button" class="{{p.fpCls}}" title="{{p.fpTip}}" onClick="{{p.fp}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"></path><path d="M14 13.12c0 2.38 0 6.38-1 8.88"></path><path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"></path><path d="M2 12a10 10 0 0 1 18-6"></path><path d="M2 16h.01"></path><path d="M21.8 16c.2-2 .131-5.354 0-6"></path><path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2"></path><path d="M8.65 22c.21-.66.45-1.32.57-2"></path><path d="M9 6.8a6 6 0 0 1 9 5.2v2"></path></svg><span>{{p.fpTxt}}</span></button>
+<button type="button" class="ib smj-eye" title="Ma'lumotni ko'rish" aria-label="{{p.name}} — ma'lumotni ko'rish" onClick="{{p.view}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
+<button type="button" class="btn sm smj-save" disabled="{{p.saveDis}}" onClick="{{p.save}}">Saqlash</button>
+</div></sc-if>
+<sc-if value="{{sm.ro}}" hint-placeholder-val="{{ false }}"><div class="smj-ctl"><span class="{{p.pillCls}}"><i></i>{{p.stTxt}}</span><sc-if value="{{p.fpOk}}" hint-placeholder-val="{{ false }}"><span class="smj-fpok"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"></path><path d="M14 13.12c0 2.38 0 6.38-1 8.88"></path><path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"></path><path d="M2 12a10 10 0 0 1 18-6"></path><path d="M2 16h.01"></path><path d="M21.8 16c.2-2 .131-5.354 0-6"></path><path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2"></path><path d="M8.65 22c.21-.66.45-1.32.57-2"></path><path d="M9 6.8a6 6 0 0 1 9 5.2v2"></path></svg>Tasdiqlangan</span></sc-if></div></sc-if>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{sm.ro}}" hint-placeholder-val="{{ false }}"><small class="muted" style="padding: 0 20px">Davomatni belgilash, barmoq izi, bayonnoma va majlisni boshlash «Batafsil ko'rish»da mavjud.</small></sc-if>
+</section>
+<section class="sec" id="smijro">
+<div class="sh"><div><h2>Ijro varaqalari</h2><p>{{sm.ijSub}}</p></div></div>
+<div class="smj-tw"><div class="smj-it" role="table" aria-label="Ijro varaqalari">
+<div class="smj-ir smj-ih" role="row"><span role="columnheader">Turi</span><span role="columnheader">Miqdori</span><span role="columnheader">Valyuta</span><span role="columnheader">Qarzdor</span><span role="columnheader">Undiruvchi</span><span role="columnheader">MIB nomi</span><span role="columnheader">Holati</span><span role="columnheader">Buyurtma vaqti</span><span role="columnheader">Bajarilgan vaqt</span><span role="columnheader">Yuborish turi</span><span role="columnheader">Ijro varaqa fayli</span><span role="columnheader">Harakat</span></div>
+<div class="smj-iempty"><b>Ijro varaqalari yo'q</b><small>Natija qo'yilib, undiriladigan summa bo'lsa ijro varaqasi shu yerda shakllanadi</small></div>
+</div></div>
+</section>
+<section class="sec" id="smlist">
+<div class="sh"><div><h2>Majlislar ro'yxati</h2><p>Shu ish bo'yicha belgilangan, o'tkazilgan va boshlanmagan majlislar</p></div></div>
+<div class="smj-flt">
+<label class="smj-fd"><span class="sr">Ish ko'riladigan sana</span><input type="date" value="{{sm.fDate}}" onChange="{{sm.setFDate}}" aria-label="Ish ko'riladigan sana"></label>
+<label class="smj-dd smj-zdd"><span class="sr">Zal nomlari</span><span class="{{sm.zalDd.cls}}" id="{{sm.zalDd.id}}" onKeyDown="{{sm.zalDd.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{sm.zalDd.exp}}" onClick="{{sm.zalDd.toggle}}"><span class="{{sm.zalDd.vcls}}">{{sm.zalDd.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{sm.zalDd.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{sm.zalDd.stop}}"><sc-for list="{{sm.zalDd.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><span class="dx-olbl">{{o.name}}</span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
+<sc-if value="{{sm.hasF}}" hint-placeholder-val="{{ false }}"><button type="button" class="btn sm" onClick="{{sm.clrF}}">Tozalash</button></sc-if>
+<sc-if value="{{sm.edit}}" hint-placeholder-val="{{ true }}"><button type="button" class="btn pri smj-new" onClick="{{sm.newOpen}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Majlisni yaratish</button></sc-if>
+</div>
+<sc-if value="{{sm.nf}}" hint-placeholder-val="{{ false }}"><div class="smj-nf">
+<label class="fld"><span>Sana <b style="color: #b91c1c">*</b></span><input type="date" value="{{sm.nfSana}}" onChange="{{sm.nfSetSana}}"></label>
+<label class="fld"><span>Vaqt <b style="color: #b91c1c">*</b></span><input type="time" value="{{sm.nfVaqt}}" onChange="{{sm.nfSetVaqt}}"></label>
+<label class="fld smj-dd"><span>Zal <b style="color: #b91c1c">*</b></span><span class="{{sm.nfZalDd.cls}}" id="{{sm.nfZalDd.id}}" onKeyDown="{{sm.nfZalDd.kd}}"><button type="button" class="dx-selbtn" aria-haspopup="listbox" aria-expanded="{{sm.nfZalDd.exp}}" onClick="{{sm.nfZalDd.toggle}}"><span class="{{sm.nfZalDd.vcls}}">{{sm.nfZalDd.label}}</span><svg class="i s dx-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><sc-if value="{{sm.nfZalDd.open}}" hint-placeholder-val="{{ false }}"><span class="dx-menu" role="listbox" onClick="{{sm.nfZalDd.stop}}"><sc-for list="{{sm.nfZalDd.opts}}" as="o" hint-placeholder-count="3"><button type="button" role="option" aria-selected="{{o.sel}}" class="{{o.cls}}" onClick="{{o.pick}}"><span class="dx-olbl">{{o.name}}</span><sc-if value="{{o.tick}}" hint-placeholder-val="{{ false }}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></sc-if></button></sc-for></span></sc-if></span></label>
+<div class="smj-nfb"><sc-if value="{{sm.nfErr}}" hint-placeholder-val="{{ false }}"><small class="smj-err">{{sm.nfErr}}</small></sc-if><button type="button" class="btn" onClick="{{sm.nfClose}}">Bekor qilish</button><button type="button" class="btn pri" onClick="{{sm.nfSave}}">Saqlash</button></div>
+</div></sc-if>
+<div class="smj-t" role="table" aria-label="Majlislar ro'yxati">
+<div class="smj-r smj-h" role="row"><span role="columnheader">Belgilangan vaqt</span><span role="columnheader">Boshlanish vaqti</span><span role="columnheader">Tugash vaqti</span><span role="columnheader">Zal</span><span role="columnheader">Status</span></div>
+<sc-for list="{{sm.hist}}" as="h" hint-placeholder-count="3">
+<div class="{{h.cls}}" role="row"><span role="cell"><b>{{h.plan}}</b><sc-if value="{{h.today}}" hint-placeholder-val="{{ false }}"><em class="smj-tday">bugun</em></sc-if></span><span role="cell">{{h.start}}</span><span role="cell">{{h.end}}</span><span role="cell">{{h.zal}}</span><span role="cell"><span class="{{h.stCls}}"><i></i>{{h.st}}</span></span></div>
+</sc-for>
+<sc-if value="{{sm.histEmpty}}" hint-placeholder-val="{{ false }}"><div class="smj-iempty"><b>Majlis topilmadi</b><small>Sana yoki zal filtrini o'zgartiring</small></div></sc-if>
+</div>
+</section>
+</div>
+</sc-if>
 
 <!-- ================= BIRINCHI INSTANSIYA ================= -->
 <div class="group">
@@ -4431,7 +4489,7 @@ while (x < n) push(A[x++], "del"); while (y < m) push(B[y++], "ins");
 return out;
 }
 var NAV_IDS = [];
-NAV.forEach(function (g) { g.i.forEach(function (x) { NAV_IDS.push(x[0]); }); });
+NAV.forEach(function (g) { g.i.forEach(function (x) { NAV_IDS.push(x[0]); }); }); NAV_IDS.unshift("smajlis", "smijro", "smlist");
 
 var TYPES = ["Hammasi", "Arizachi/Javobgar", "Sud hujjatlari", "Ijro hujjatlari", "Kvitansiyalar"];
 var INSTS = [[1, "Birinchi instansiya"], [2, "Apellyatsiya instansiyasi"], [3, "Kassatsiya instansiyasi"], [4, "Takroriy kassatsiya"], [5, "Taftish"], [6, "Taftish (oliy sud)"], [7, "Oliy sud rayosati"]];
@@ -4527,6 +4585,22 @@ var subOf = function (r, tab) { if (tab === "arxiv" && r.axRet && r.stage !== "a
 var QN = ["natija", "qoldir"];
 var axTopOut = function (r, key) { return (key === "ijro" || key === "yakun") && !!r.axTop && !r.axRet; };
 // Sud majlisi tabi: Natija qo'yish ishlarining faqat bugungi majlisdagilari
+var smBayParas = function (s, row, dUz) {
+  var num = row.num, J = (s.smj || {})[num] || {}, A = (s.smAtt || {})[num] || {}, L = { kutish: "kutilmoqda", zal: "sud zalida", vks: "videokonferensiya orqali", kelmadi: "kelmadi" };
+  var ppl = []; [["tmDv", "Da'vogar"], ["tmJv", "Javobgar"], ["qtAr", "Da'vogar vakili"], ["qtJv", "Javobgar vakili"], ["qsh", "Qo'shimcha shaxs"]].forEach(function (g) { (s[g[0]] || []).forEach(function (p) { var a = A[g[0] + ":" + p.id] || {}; ppl.push(["oo-j", "— " + (p.rol || g[1]) + ": " + p.name + " — " + L[a.st || "kutish"] + (a.fp ? " (barmoq izi bilan tasdiqlangan)" : "")]); }); });
+  return [["oo-c b", "O'ZBEKISTON RESPUBLIKASI"], ["oo-c b", "TERMIZ TUMANLARARO IQTISODIY SUDI"], ["oo-sp", ""], ["oo-c b oo-h", "SUD MAJLISI BAYONNOMASI"],
+    ["oo-row", dUz + " yil" + "          " + "Termiz shahri"], ["oo-sp", ""],
+    ["oo-j", "Ish raqami: " + num + ". Majlis boshlandi: " + (J.at || "__:__") + ". Majlis tugadi: " + (J.end || "__:__") + "."],
+    ["oo-j", "Termiz tumanlararo iqtisodiy sudi sudyasi Tojiyev Z. X. raisligida, sudya yordamchisi " + (row.yord || "Ergashev J. A.") + " ishtirokida " + (row.ariz || ["—"])[0] + "ning " + (row.jav || ["—"])[0] + "ga nisbatan " + String(row.sud || "da'vo talabi yuzasidan").toLowerCase() + " ishi bo'yicha sud majlisi o'tkazildi."],
+    ["oo-c b", "SUD MAJLISIDA ISHTIROK ETDILAR:"]].concat(ppl).concat([
+    ["oo-c b", "SUD MAJLISI JARAYONI:"],
+    ["oo-j", "Raislik qiluvchi sud majlisini ochdi va qaysi ish ko'rilishini e'lon qildi. Ishtirokchilarga protsessual huquq va majburiyatlari tushuntirildi."],
+    ["oo-j", "[Sud majlisida bildirilgan arizalar, tushuntirishlar, savol-javoblar va ko'rsatmalar shu yerda yozib boriladi.]"],
+    ["oo-sp", ""],
+    ["oo-row b", "Raislik qiluvchi, sudya" + "        " + "Z. X. Tojiyev"],
+    ["oo-row b", "Sudya yordamchisi" + "           " + (row.yord || "J. A. Ergashev")]]);
+};
+var smCaseRow = function (s) { if (!s.caseOpen) return null; var rw = (s.lRows || []).filter(function (r) { return r.num === s.caseNum; })[0]; return rw && inStage(rw, "sudm") ? rw : null; };
 var sudmToday = function () { var d = new Date(), p = function (x) { return (x < 10 ? "0" : "") + x; }; return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()); };
 var inStage = function (r, key) { if (key === "sudm") return QN.indexOf(r.stage) >= 0 && !!r.majSana && String(r.majSana).slice(0, 10) === sudmToday(); if (axTopOut(r, key)) return false; return r.stage === key || (key === "arxiv" && (!!r.axRet || (!!r.axTop && r.stage !== "arxiv"))) || (QN.indexOf(key) >= 0 && QN.indexOf(r.stage) >= 0) || (key === "ijro" && r.stage === "yakun" && !!r.alsoIjro); };
 var DESTMAP = { t_full: ["ijro", "tasdiq"], t_part: ["ijro", "tasdiq"], t_rad: ["yakun", "rad"], t_kor: ["yakun", "korm"], t_tug: ["yakun", "tug"], rad: ["yakun", "qabrad"], qaytarish: ["yakun", "qayt"] };
@@ -4661,7 +4735,7 @@ var TM_RES = [
 { name: "Abdusattorov Jasur Rustamovich", birth: "1995-11-02", gender: "Erkak", jshshir: "3021 1950 2210 45", viloyat: "Toshkent shahri", tuman: "Chilonzor tumani", manzil: "Chilonzor tumani, 9-mavze, 14-uy" },
 { name: "Abdusattorova Malika Botirovna", birth: "1988-03-21", gender: "Ayol", jshshir: "4210 3880 1177 09", viloyat: "Samarqand viloyati", tuman: "Samarqand shahri", manzil: "Samarqand sh., Registon ko'chasi, 3-uy" }
 ];
-(function () { var d = new Date(), p = function (x) { return (x < 10 ? "0" : "") + x; }, t = d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()); L_DATA.forEach(function (r) { if ([83, 50, 56].indexOf(r.id) >= 0) r.majSana = t; }); })();
+(function () { var d = new Date(), p = function (x) { return (x < 10 ? "0" : "") + x; }, t = d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()); L_DATA.forEach(function (r) { if ([83, 50, 56].indexOf(r.id) >= 0) { r.majSana = t; r.majVaqt = ({ 83: "10:00", 50: "11:30", 56: "15:00" })[r.id]; } }); })();
 function ageOf(iso) { if (!iso) return "—"; var b = new Date(iso), n = new Date(2026, 9, 2); var a = n.getFullYear() - b.getFullYear(); if (n.getMonth() < b.getMonth() || (n.getMonth() === b.getMonth() && n.getDate() < b.getDate())) a--; return String(a); }
 var TME_REG = [["Qoraqalpog'iston Respublikasi", "Nukus shahri|Taxiatosh shahri|Amudaryo|Beruniy|Bo'zatov|Chimboy|Ellikqal'a|Kegeyli|Mo'ynoq|Nukus|Qanliko'l|Qo'ng'irot|Qorao'zak|Shumanay|Taxtako'pir|To'rtko'l|Xo'jayli"], ["Andijon viloyati", "Andijon shahri|Xonobod shahri|Andijon|Asaka|Baliqchi|Bo'z|Buloqboshi|Izboskan|Jalaquduq|Marhamat|Oltinko'l|Paxtaobod|Qo'rg'ontepa|Shahrixon|Ulug'nor|Xo'jaobod"], ["Buxoro viloyati", "Buxoro shahri|Kogon shahri|Buxoro|G'ijduvon|Jondor|Kogon|Olot|Peshku|Qorako'l|Qorovulbozor|Romitan|Shofirkon|Vobkent"], ["Farg'ona viloyati", "Farg'ona shahri|Marg'ilon shahri|Qo'qon shahri|Quvasoy shahri|Beshariq|Bog'dod|Buvayda|Dang'ara|Farg'ona|Furqat|Oltiariq|Qo'shtepa|Quva|Rishton|So'x|Toshloq|Uchko'prik|O'zbekiston|Yozyovon"], ["Jizzax viloyati", "Jizzax shahri|Arnasoy|Baxmal|Do'stlik|Forish|G'allaorol|Mirzacho'l|Paxtakor|Sharof Rashidov|Yangiobod|Zafarobod|Zarbdor|Zomin"], ["Xorazm viloyati", "Urganch shahri|Xiva shahri|Bog'ot|Gurlan|Hazorasp|Xiva|Xonqa|Qo'shko'pir|Shovot|Tuproqqal'a|Urganch|Yangiariq|Yangibozor"], ["Namangan viloyati", "Namangan shahri|Chortoq|Chust|Davlatobod|Kosonsoy|Mingbuloq|Namangan|Norin|Pop|To'raqo'rg'on|Uchqo'rg'on|Uychi|Yangiqo'rg'on"], ["Navoiy viloyati", "Navoiy shahri|Zarafshon shahri|G'ozg'on shahri|Karmana|Konimex|Navbahor|Nurota|Qiziltepa|Tomdi|Uchquduq|Xatirchi"], ["Qashqadaryo viloyati", "Qarshi shahri|Shahrisabz shahri|Chiroqchi|Dehqonobod|G'uzor|Kasbi|Kitob|Ko'kdala|Koson|Mirishkor|Muborak|Nishon|Qamashi|Qarshi|Shahrisabz|Yakkabog'"], ["Samarqand viloyati", "Samarqand shahri|Kattaqo'rg'on shahri|Bulung'ur|Ishtixon|Jomboy|Kattaqo'rg'on|Narpay|Nurobod|Oqdaryo|Pastdarg'om|Paxtachi|Payariq|Qo'shrabot|Samarqand|Toyloq|Urgut"], ["Sirdaryo viloyati", "Guliston shahri|Yangiyer shahri|Shirin shahri|Boyovut|Guliston|Mirzaobod|Oqoltin|Sardoba|Sayxunobod|Sirdaryo|Xovos"], ["Surxondaryo viloyati", "Termiz shahri|Angor|Bandixon|Boysun|Denov|Jarqo'rg'on|Muzrabot|Oltinsoy|Qiziriq|Qumqo'rg'on|Sariosiyo|Sherobod|Sho'rchi|Termiz|Uzun"], ["Toshkent viloyati", "Nurafshon shahri|Angren shahri|Bekobod shahri|Chirchiq shahri|Olmaliq shahri|Ohangaron shahri|Yangiyo'l shahri|Bekobod|Bo'ka|Bo'stonliq|Chinoz|Ohangaron|Oqqo'rg'on|Parkent|Piskent|Qibray|Quyichirchiq|O'rtachirchiq|Yangiyo'l|Yuqorichirchiq|Zangiota|Toshkent"], ["Toshkent shahri", "Bektemir|Chilonzor|Mirobod|Mirzo Ulug'bek|Olmazor|Sergeli|Shayxontohur|Uchtepa|Yakkasaroy|Yangihayot|Yashnobod|Yunusobod"]].map(function (r) { return { v: r[0], t: r[1].split("|").map(function (x) { return /shahri$/.test(x) ? x : x + " tumani"; }) }; });
 var TME_CC = [["+998", "🇺🇿", "90 123 45 67", [2, 3, 2, 2], "O'zbekiston"], ["+7", "🇰🇿", "701 123 45 67", [3, 3, 2, 2], "Qozog'iston"], ["+7 ", "🇷🇺", "912 345 67 89", [3, 3, 2, 2], "Rossiya"], ["+992", "🇹🇯", "90 123 4567", [2, 3, 4], "Tojikiston"], ["+996", "🇰🇬", "555 123 456", [3, 3, 3], "Qirg'iziston"], ["+993", "🇹🇲", "65 123456", [2, 6], "Turkmaniston"], ["+90", "🇹🇷", "532 123 45 67", [3, 3, 2, 2], "Turkiya"]];
@@ -6217,7 +6291,7 @@ try { var el = box.querySelector(".top"); if (!el || !el.classList.contains("com
 if (self._raf || self._lock) return;
 self._raf = requestAnimationFrame(function () {
 self._raf = 0;
-var cur = NAV_IDS[0];
+var cur = document.getElementById("smajlis") ? "smajlis" : NAV_IDS[0];
 for (var i = 0; i < NAV_IDS.length; i++) {
 var el = document.getElementById(NAV_IDS[i]);
 if (el && el.getBoundingClientRect().top < 160) cur = NAV_IDS[i];
@@ -6310,6 +6384,7 @@ this.setState({ fp: Object.assign({ act: (this.state.fp && this.state.fp.act) ||
 this._fpT = setTimeout(function () { var f = self.state.fp; if (!f || f.st !== "scan") return;
 var o = { fp: Object.assign({}, f, { st: "ok", at: new Date().toTimeString().slice(0, 5) }) };
 if (f.key && self.state[f.key]) o[f.key] = self.state[f.key].map(function (x) { return x.id === f.id ? Object.assign({}, x, { fpOk: true }) : x; });
+if (f.sm) { var smA = Object.assign({}, self.state.smAtt || {}), smC = Object.assign({}, smA[f.sm] || {}); smC[f.id] = Object.assign({}, smC[f.id] || {}, { fp: true, st: (smC[f.id] && smC[f.id].st === "vks") ? "vks" : "zal", dirty: true }); smA[f.sm] = smC; o.smAtt = smA; }
 if (f.act === "rozi") { var rw = (self.state.lRows || []).filter(function (r) { return r.num === self.state.caseNum; })[0], stg = ({ korib: "pre", majlis: "pre", qoldir: "majlis", natija: "natija" })[(rw && rw.stage) || "korib"] || "pre";
 var n = new Date(), z = function (x) { return (x < 10 ? "0" : "") + x; }, c = Object.assign({}, self.state.pubCons || {});
 c[f.name] = { how: "finger", stage: stg, at: z(n.getDate()) + "." + z(n.getMonth() + 1) + "." + n.getFullYear() + " " + z(n.getHours()) + ":" + z(n.getMinutes()), src: "fp" }; o.pubCons = c; }
@@ -6355,6 +6430,7 @@ var s = this.state, self = this;
 
 // ---------- nav ----------
 var navGroups = NAV.map(function (g, gi) { var gLock = gi > 0; return { title: g.t, cls: "l-cg" + (gLock ? " lock" : ""), items: g.i.map(function (x) { var on = s.nav === x[0], lock = gLock && NAV_REVIEWED.indexOf(x[0]) < 0; return { id: x[0], label: x[1], lock: lock, todo: !lock && NAV_REVIEWED.indexOf(x[0]) < 0, dis: lock ? "true" : "false", tip: lock ? "Bu bo'lim hozircha yopiq" : "", cls: (on && !lock ? "on" : "") + (lock ? " lock" : ""), current: on && !lock ? "true" : "false", go: function (e) { try { if (e && e.preventDefault) e.preventDefault(); } catch (er) {} if (lock) return; self.scrollTo(x[0]); } }; }) }; });
+if (smCaseRow(s)) navGroups.unshift({ title: "Sud majlisi", cls: "l-cg", items: [["smajlis", "Majlis va qatnashchilar"], ["smijro", "Ijro varaqalari"], ["smlist", "Majlislar ro'yxati"]].map(function (x) { var on = s.nav === x[0]; return { id: x[0], label: x[1], lock: false, todo: false, dis: "false", tip: "", cls: on ? "on" : "", current: on ? "true" : "false", go: function (e) { try { if (e && e.preventDefault) e.preventDefault(); } catch (er) {} self.scrollTo(x[0]); } }; }) });
 
 // ---------- qarshi ----------
 var openQ = function (id) {
@@ -6469,6 +6545,7 @@ var docGrpTabs = [["all", "Barchasi"], ["sud", "Sud hujjatlari"], ["taraf", "Tar
 var n = g[0] === "all" ? s.docs.length : s.docs.filter(function (d) { return grpOf(d) === g[0]; }).length, on = dGrp === g[0];
 return { label: g[1], n: n, cls: "dg-tab" + (on ? " on" : "") + (g[0] === "org" ? " org" : ""), str: on ? "true" : "false", isOrg: g[0] === "org", pick: function () { self.setState({ docGrp: g[0], docAll: false, docMenu: 0 }); } }; });
 var docs = s.docs.filter(function (d) {
+if (d.bay && d.bay !== s.caseNum) return false;
 if (dGrp !== "all" && grpOf(d) !== dGrp) return false;
 if (s.docType !== "Hammasi" && d.type !== s.docType) return false;
 if (s.docSt && s.docSt !== "all" && d.st !== s.docSt) return false;
@@ -6480,18 +6557,19 @@ return true;
 return {
 title: d.title, type: d.type, instLabel: INST_NAME[d.inst], dateStr: fmtDate(d.date),
 isOrg: !!d.org, orgShort: d.org ? d.org.short : "", orgCls: "dg-org " + (d.org ? d.org.k : ""), isTaraf: grpOf(d) === "taraf",
-meta: d.org ? d.org.name + " · " + fmtDate(d.date) + " · integratsiya: " + d.org.sys : INST_NAME[d.inst] + " · " + d.type + " · " + fmtDate(d.date) + " · " + (d.author || (grpOf(d) === "taraf" ? "Taraf tomonidan" : "Eshnazarov A.")),
+meta: d.org ? d.org.name + " · " + fmtDate(d.date) + " · integratsiya: " + d.org.sys : INST_NAME[d.inst] + " · " + d.type + " · " + fmtDate(d.date) + " · " + (d.author || (grpOf(d) === "taraf" ? "Taraf tomonidan" : "Eshnazarov A.")) + (d.bay ? (d.yImzo ? " · yordamchi imzolagan" : " · yordamchi va sudya imzolaydi") : ""),
 status: d.org ? "Kelib tushgan" : DOC_ST[d.st][0], badgeCls: DOC_ST[d.st][1],
-isImzo: d.st === "imzo" || (d.st === "sudya" && (s.role || "yordamchi") === "sudya"), signLbl: (s.role || "yordamchi") === "yordamchi" ? "Sudyaga imzoga yuborish" : "Imzolash", isTasdiq: d.st === "tasdiq", isTayyor: d.st === "tayyor",
+isImzo: (d.st === "imzo" && !(d.bay && (s.role || "yordamchi") === "sudya")) || (d.st === "sudya" && (s.role || "yordamchi") === "sudya"), signLbl: (s.role || "yordamchi") === "yordamchi" ? (d.bay ? "Imzolash va sudyaga yuborish" : "Sudyaga imzoga yuborish") : "Imzolash", isTasdiq: d.st === "tasdiq", isTayyor: d.st === "tayyor",
 files: d.files.map(function (f) { return { label: f, cls: FILE_CLS[f], ext: ({ PDF: "PDF", W: "DOCX", X: "XLSX" })[f] || f }; }),
 ftCls: "dx-ft" + (({ PDF: "", W: " w", X: " x" })[d.files[0]] || ""), ftLabel: ({ PDF: "PDF", W: "DOC", X: "XLS" })[d.files[0]] || "FILE",
 stCls: "doc-st " + (d.org ? "org" : d.st), rowCls: "doc-row" + (d.st !== "tayyor" ? " act " + d.st : ""),
-hasVer: !!DOC_VERS[d.title] && d.st !== "imzo", verN: DOC_VERS[d.title] ? DOC_VERS[d.title].v.length : 0,
-hasChg: !!(DOC_VERS[d.title] && DOC_VERS[d.title].chg), chgTxt: DOC_VERS[d.title] && DOC_VERS[d.title].chg ? "Tuzatish kiritilgan · " + DOC_VERS[d.title].chg.length : "",
+hasVer: !!DOC_VERS[d.title] && d.st !== "imzo" && !d.bay, verN: DOC_VERS[d.title] ? DOC_VERS[d.title].v.length : 0,
+hasChg: !!(DOC_VERS[d.title] && DOC_VERS[d.title].chg) && !d.bay, chgTxt: DOC_VERS[d.title] && DOC_VERS[d.title].chg ? "Tuzatish kiritilgan · " + DOC_VERS[d.title].chg.length : "",
 openVer: function () { var n = DOC_VERS[d.title].v.length; self.setState({ verDoc: d.title, verA: Math.max(0, n - 2), verB: n - 1, verMode: "inline" }); },
 canAi: !!AI_DATA[d.title], openAi: function () { self.setState({ aiDoc: d.title, aiLoading: true }); setTimeout(function () { self.setState({ aiLoading: false }); }, 1200); },
 hasExtra: !!d.extra, extra: d.extra || "", attN: parseInt(String(d.extra || "0").replace(/\D/g, ""), 10) || 0, attTitle: (parseInt(String(d.extra || "0").replace(/\D/g, ""), 10) || 0) + " ta ilova — ko'rish", attOpen: s.docMenu === "a" + d.id, attStr: s.docMenu === "a" + d.id ? "true" : "false", attCls: "doc-att" + (s.docMenu === "a" + d.id ? " on" : ""), attToggle: function () { self.setState({ docMenu: self.state.docMenu === "a" + d.id ? 0 : "a" + d.id }); }, attAll: function () { self.setState({ docMenu: 0 }); self.flash("«" + d.title + "» ilovalari ZIP arxiv sifatida yuklab olinmoqda"); }, atts: (function () { var P = [["Solishtirma dalolatnoma", "PDF", "412 KB"], ["Hisob-fakturalar reyestri", "XLSX", "86 KB"], ["Yetkazib berish shartnomasi nusxasi", "PDF", "1.2 MB"], ["Ishonchnoma", "PDF", "164 KB"], ["Davlat boji to'langanligi kvitansiyasi", "PDF", "98 KB"]]; var n = parseInt(String(d.extra || "0").replace(/\D/g, ""), 10) || 0; return P.slice(0, Math.min(n, P.length)).map(function (x) { return { name: x[0] + "." + x[1].toLowerCase(), ext: x[1], size: x[1] + " · " + x[2], cls: "dat-x " + x[1].toLowerCase(), dlLabel: x[0] + " — yuklab olish", dl: function () { self.flash("«" + x[0] + "» yuklab olinmoqda"); } }; }); })(),
 sign: function () { var rl = self.state.role || "yordamchi", row = (self.state.lRows || []).filter(function (x) { return x.num === self.state.caseNum; })[0];
+if (rl === "yordamchi" && d.bay) { self.updDoc(d.id, { st: "sudya", yImzo: true }); if (self._sdAdd) self._sdAdd(d, row); self.flash("Bayonnoma yordamchi tomonidan imzolandi (E-IMZO) va sudyaga imzoga yuborildi"); return; }
 if (rl === "yordamchi") { self.updDoc(d.id, { st: "sudya" }); if (self._sdAdd) self._sdAdd(d, row); self.flash("«" + d.title + "» sudyaga imzoga yuborildi · «Sud hujjatlari» bo'limida kuzatish mumkin"); return; }
 self.updDoc(d.id, { st: "tasdiq" }); if (d.st === "sudya") self.setState(function (prev) { return { sdocs: (prev.sdocs || []).map(function (x) { return x.docId === d.id && x.st === "kutish" ? Object.assign({}, x, { st: "imzo", signAt: "" }) : x; }) }; }); self.flash("«" + d.title + "» imzolandi — tasdiqlashga o'tdi"); },
 approve: function () { self.updDoc(d.id, { st: "tayyor" }); self.flash("«" + d.title + "» tasdiqlandi"); },
@@ -7215,7 +7293,7 @@ tmAskOpen: !!s.tmAsk,
 fpOpen: !!s.fp, fpName: s.fp ? s.fp.name : "", fpScan: !!(s.fp && s.fp.st === "scan"), fpOk: !!(s.fp && s.fp.st === "ok"),
 fpOkTxt: s.fp && s.fp.st === "ok" ? "Barmoq izi qabul qilindi · " + ({ imzo: "Hujjat imzolandi", tasdiq: "Shaxs tasdiqlandi", majlis: "Majlisda ishtirok qayd etildi", rozi: "Publikatsiyaga rozilik qayd etildi" })[s.fp.act] + " · " + (s.fp.at || "") : "",
 fpClose: function () { clearTimeout(self._fpT); self.setState({ fp: null, dxDd: "" }); },
-fpRetry: function () { var f = self.state.fp; if (f) self.fpStart({ key: f.key, id: f.id, name: f.name }); },
+fpRetry: function () { var f = self.state.fp; if (f) self.fpStart({ key: f.key, id: f.id, name: f.name, sm: f.sm }); },
 fpKey: function (e) { if (e.key === "Escape") { e.stopPropagation(); clearTimeout(self._fpT); self.setState({ fp: null, dxDd: "" }); } },
 tmEdOpen: !!s.tmEd,
 tmEdTitle: s.tmEd ? ((s.tmEd.key === "tmDv" || s.tmEd.key === "dxDv") ? "Da'vogar" : "Javobgar") + " ma'lumotlarini tahrirlash" : "",
@@ -11310,7 +11388,7 @@ var dp = String(o.date || "").split("-"), dUz = dp.length === 3 ? dp[2] + "." + 
 var about = /ajrim/.test(low) && head === "AJRIM" ? t.replace(/ ajrim$/i, "").replace(/^Ishni /, "ishni ") : "";
 __out.ooFile = t.replace(/[\s']+/g, "_") + ".docx";
 __out.ooSavedTxt = o.saved ? "Barcha o'zgarishlar saqlandi" : "Avtomatik saqlash yoqilgan";
-var P = [
+var BAY = /bayonnoma/.test(low), P = BAY ? smBayParas(s, row, dUz) : [
 ["oo-c b", "O'ZBEKISTON RESPUBLIKASI"],
 ["oo-c b", "TERMIZ TUMANLARARO IQTISODIY SUDI"],
 ["oo-sp", ""],
@@ -11337,8 +11415,13 @@ __out.ooKey = function (e) { if (e.key === "Escape") { e.stopPropagation(); clos
 __out.ooInput = function () { if (!self.state.oo || !self.state.oo.saved) return; self.setState({ oo: Object.assign({}, self.state.oo, { saved: false }) }); };
 __out.ooTool = function () {};
 __out.ooSave = function () { self.setState({ oo: Object.assign({}, self.state.oo, { saved: true }) }); self.flash("«" + t + "» saqlandi"); };
-__out.ooSignLbl = (s.role || "yordamchi") === "yordamchi" ? "Sudyaga imzoga yuborish" : "Imzolash";
-__out.ooSign = function () { var id = o.id; if ((self.state.role || "yordamchi") === "yordamchi") { var row = (self.state.lRows || []).filter(function (x) { return x.num === self.state.caseNum; })[0]; self.setState({ oo: null, docs: (self.state.docs || []).map(function (d) { return d.id === id ? Object.assign({}, d, { st: "sudya" }) : d; }) }); if (self._sdAdd) self._sdAdd({ id: id, title: t }, row); self.flash("«" + t + "» sudyaga imzoga yuborildi"); return; } self.setState({ oo: null, docs: (self.state.docs || []).map(function (d) { return d.id === id ? Object.assign({}, d, { st: "tasdiq" }) : d; }) }); self.flash("«" + t + "» imzolandi (E-IMZO) — tasdiqlashga o'tdi"); };
+__out.ooSignLbl = (s.role || "yordamchi") === "yordamchi" ? (BAY ? "Imzolash va sudyaga yuborish" : "Sudyaga imzoga yuborish") : "Imzolash";
+__out.ooSign = function () { var id = o.id, bd0 = (self.state.docs || []).filter(function (d) { return d.id === id; })[0];
+if (BAY && bd0) { var rl0 = self.state.role || "yordamchi", rw0 = (self.state.lRows || []).filter(function (x) { return x.num === self.state.caseNum; })[0];
+  if (rl0 === "yordamchi") { if (bd0.st !== "imzo") { self.flash("Bayonnoma allaqachon imzolangan va sudyaga yuborilgan"); return; } self.setState({ oo: null, docs: (self.state.docs || []).map(function (d) { return d.id === id ? Object.assign({}, d, { st: "sudya", yImzo: true }) : d; }) }); if (self._sdAdd) self._sdAdd({ id: id, title: t }, rw0); self.flash("Bayonnoma imzolandi (E-IMZO) va sudyaga imzoga yuborildi"); return; }
+  if (bd0.st === "imzo") { self.flash("Bayonnomani avval sudya yordamchisi imzolab yuborishi kerak"); return; }
+  if (bd0.st !== "sudya") { self.flash("Bayonnoma allaqachon imzolangan"); return; } }
+if ((self.state.role || "yordamchi") === "yordamchi") { var row = (self.state.lRows || []).filter(function (x) { return x.num === self.state.caseNum; })[0]; self.setState({ oo: null, docs: (self.state.docs || []).map(function (d) { return d.id === id ? Object.assign({}, d, { st: "sudya" }) : d; }) }); if (self._sdAdd) self._sdAdd({ id: id, title: t }, row); self.flash("«" + t + "» sudyaga imzoga yuborildi"); return; } self.setState({ oo: null, docs: (self.state.docs || []).map(function (d) { return d.id === id ? Object.assign({}, d, { st: "tasdiq" }) : d; }) }); self.flash("«" + t + "» imzolandi (E-IMZO) — tasdiqlashga o'tdi"); };
 })();
 // ---- taraf: to'liq ma'lumot oynasi ----
 (function () {
@@ -12320,9 +12403,94 @@ function (name) { setImEd(function (x) { var js = x.v.davs || []; return { v: Ob
 function () { setImEd(function (x) { return { v: Object.assign({}, x.v, { davs: [] }), err: "" }; }); },
 { disabled: s.dxDv.length === 0, ph: s.dxDv.length ? "Da'vogarlarni tanlang" : "Avval da'vogar qo'shing", bc: self.state.dx.imEd && self.state.dx.imEd.err && !(edV.davs || []).length ? "#dc2626" : "" });
 __out.dxS = dxS; __out.dxDdOpen = !!ddOpen && isDevon && ddOpen !== "ap-sudya";
+// ---- Sud majlisi: ish sahifasidagi majlis bo'limi (davomat, barmoq izi, bayonnoma, ijro varaqalari, majlislar ro'yxati) ----
+(function () {
+var rw = smCaseRow(s), SM = { on: !!rw };
+__out.sm = SM; __out.smHdr = !!rw && s.openMode === "page";
+// bayonnoma: ish Sudgacha majlisdan Sud majlisi / Natija qo'yishga o'tganda «Ish hujjatlari»da avtomatik shakllanadi
+var cr = s.caseOpen ? (s.lRows || []).filter(function (r) { return r.num === s.caseNum; })[0] : null;
+if (cr && QN.indexOf(cr.stage) >= 0 && cr.majSana && !(s.docs || []).some(function (d) { return d.bay === cr.num; })) {
+  self._smBay = self._smBay || {};
+  if (!self._smBay[cr.num]) { self._smBay[cr.num] = 1; var bnum = cr.num, bd = String(cr.majSana).slice(0, 10);
+    setTimeout(function () { if ((self.state.docs || []).some(function (d) { return d.bay === bnum; })) return; self.setState({ docs: [{ id: "bay-" + bnum, bay: bnum, title: "Sud majlisi bayonnomasi", type: "Sud hujjatlari", inst: 1, st: "imzo", gen: true, auto: true, date: bd, files: ["W"], sends: [], author: "Avtomatik shakllangan" }].concat(self.state.docs || []) }); }, 0); }
+}
+if (!rw) return;
+var edit = s.openMode === "page", num = rw.num, isY = (s.role || "yordamchi") === "yordamchi";
+var J = (s.smj || {})[num] || {}, A = (s.smAtt || {})[num] || {};
+var z2 = function (x) { return (x < 10 ? "0" : "") + x; };
+var uz = function (iso) { var p = String(iso || "").slice(0, 10).split("-"); return p.length === 3 ? p[2] + "." + p[1] + "." + p[0] : "—"; };
+var addD = function (iso, n) { var d = new Date(String(iso).slice(0, 10) + "T00:00:00"); d.setDate(d.getDate() + n); return d.getFullYear() + "-" + z2(d.getMonth() + 1) + "-" + z2(d.getDate()); };
+var now = function () { var d = new Date(); return z2(d.getHours()) + ":" + z2(d.getMinutes()); };
+var VQ = rw.majVaqt || "10:00", ZAL = rw.zal || "Zal № 2", ZALS = ["Zal № 1", "Zal № 2", "Zal № 3", "Kichik zal"];
+var setJ = function (o) { self.setState(function (p) { var m = Object.assign({}, p.smj || {}); m[num] = Object.assign({}, m[num] || {}, o); return { smj: m }; }); };
+var setA = function (k, o) { self.setState(function (p) { var m = Object.assign({}, p.smAtt || {}), c = Object.assign({}, m[num] || {}); c[k] = Object.assign({}, c[k] || {}, o); m[num] = c; return { smAtt: m }; }); };
+SM.edit = edit; SM.ro = !edit; SM.at = J.at || "";
+SM.live = J.st === "on"; SM.canStart = !J.st;
+SM.goSec = function () { self.scrollTo("smajlis"); };
+SM.sub = uz(rw.majSana) + " · soat " + VQ + " · " + ZAL;
+SM.stTxt = J.st === "on" ? "Davom etmoqda · " + J.at + " dan" : J.st === "done" ? "Yakunlangan · " + J.at + "–" + J.end : "Boshlanmagan";
+SM.stCls = "smj-st " + (J.st === "on" ? "on" : J.st === "done" ? "done" : "wait");
+var sdl = rw.sudlov, tark = sdl && sdl.mode === "hayat" ? "Hay'at (3 sudya)" : "Yakka sudya";
+SM.info = [{ k: "Ish ko'riladigan sana", v: uz(rw.majSana) + " " + VQ }, { k: "Majlis zali", v: ZAL }, { k: "Sudlov tarkibi", v: tark }, { k: "Sudya yordamchisi", v: rw.yord || "Ergashev Jahongir Alisherovich" }];
+// bayonnoma holati
+var BD = (s.docs || []).filter(function (d) { return d.bay === num; })[0];
+var bst = BD ? BD.st : "imzo";
+SM.bayStTxt = bst === "imzo" ? (J.st ? "Yordamchi to'ldirmoqda" : "Loyiha · majlisda to'ldiriladi") : bst === "sudya" ? "Yordamchi imzoladi · sudya imzosida" : bst === "tasdiq" ? "Imzolangan" : "Tayyor";
+SM.bayCls = "smj-pill " + (bst === "imzo" ? "st-wait" : bst === "sudya" ? "st-vks" : "st-done");
+SM.bayTxt = "Ish hujjatlarida avtomatik shakllangan · majlis jarayoni yordamchi tomonidan yoziladi · yordamchi va sudya imzolaydi";
+SM.bayTip = isY ? "Bayonnomani ochib, sud majlisi jarayonini yozib boring" : "Bayonnomani ko'rish va imzolash";
+SM.bayon = function () { var d = (self.state.docs || []).filter(function (x) { return x.bay === num; })[0]; if (!d) { self.flash("Bayonnoma shakllanmoqda — birozdan so'ng qayta urinib ko'ring"); return; } self.setState({ dxDd: "", oo: { id: d.id, title: d.title, date: d.date, bay: num } }); };
+var ST = [{ v: "kutish", l: "Kutilmoqda" }, { v: "zal", l: "Sud zalida" }, { v: "vks", l: "Videokonferensiyada" }, { v: "kelmadi", l: "Kelmadi" }];
+var DV = [{ v: "fp1", l: "Barmoq izi skaneri · " + ZAL }, { v: "fp2", l: "Barmoq izi skaneri · Kotib stoli" }, { v: "vks", l: "VKS terminali" }];
+var P = [], add = function (key, role) { (s[key] || []).forEach(function (p) { P.push({ key: key, id: p.id, role: typeof role === "function" ? role(p) : role, name: p.name }); }); };
+add("tmDv", "Da'vogar"); add("tmJv", "Javobgar"); add("qtAr", function (p) { return p.rol || "Da'vogar vakili"; }); add("qtJv", function (p) { return p.rol || "Javobgar vakili"; }); add("qsh", function (p) { return p.rol || "Qo'shimcha shaxs"; });
+var nZal = 0;
+SM.people = P.map(function (p) {
+var k = p.key + ":" + p.id, a = A[k] || {}, st = a.st || "kutish", stL = ST.filter(function (x) { return x.v === st; })[0].l;
+if (st === "zal" || st === "vks") nZal++;
+return { role: p.role, name: p.name, stTxt: stL, stCls: "st-" + st, pillCls: "smj-pill st-" + st, fpOk: !!a.fp,
+stDd: dd("smst-" + k, ST, st, function (e) { setA(k, { st: e.target.value, dirty: true }); }, { noSplit: true }),
+dvDd: dd("smdv-" + k, DV, a.dev || "", function (e) { setA(k, { dev: e.target.value, dirty: true }); }, { noSplit: true, ph: "Qurilma tanlang" }),
+fpCls: "smj-fp" + (a.fp ? " ok" : ""), fpTxt: a.fp ? "Tasdiqlandi" : "Barmoq izi", fpTip: a.fp ? "Barmoq izi bilan tasdiqlangan · qayta skanerlash" : "Barmoq izi orqali shaxsni tasdiqlash",
+fp: function () { if (!a.dev) { self.flash("Avval qurilmani tanlang"); return; } if (a.dev === "vks") { self.flash("VKS terminalida barmoq izi olinmaydi — skanerni tanlang"); return; } self.fpStart({ key: "", id: k, name: p.name, act: "majlis", sm: num }); },
+view: function () { self.setState({ pInfo: { key: p.key, id: p.id }, dxDd: "" }); },
+saveDis: a.dirty ? "" : "true",
+save: function () { setA(k, { dirty: false }); self.flash(p.name + " — ishtirok holati saqlandi: " + stL); } };
+});
+SM.cnt = String(P.length); SM.cntTxt = nZal + " tasi majlisda ishtirok etmoqda";
+SM.start = function () { var t = now(); setJ({ st: "on", at: t }); self.flash("Sud majlisi boshlandi · " + t + " · bayonnomani ochib, jarayonni yozib boring"); };
+SM.end = function () { var t = now(); setJ({ st: "done", end: t }); self.flash("Majlis yakunlandi · bayonnomani imzolab sudyaga yuboring va natija qo'ying"); };
+SM.ijSub = num + " · " + (rw.und ? "undiriladigan summa bor — natijadan so'ng shakllanadi" : "undiruv yo'q");
+// majlislar ro'yxati
+var a0 = String(rw.ajrimSana || rw.majSana).slice(0, 10), td = String(rw.majSana).slice(0, 10);
+var H = [{ d: a0, v: "11:00", s: "11:04", e: "11:36", zal: "Zal № 1", st: "done" }, { d: addD(a0, 7), v: "10:00", s: "", e: "", zal: "Zal № 2", st: "wait" }, { d: addD(a0, 9), v: "15:00", s: "15:02", e: "15:40", zal: "Zal № 2", st: "done" }]
+.filter(function (h) { return h.d < td; })
+.concat([{ d: td, v: VQ, s: J.at || "", e: J.end || "", zal: ZAL, st: J.st || "wait", today: true }])
+.concat(((s.smNew || {})[num] || []).map(function (h) { return { d: h.d, v: h.v, s: "", e: "", zal: h.zal, st: "wait" }; }));
+var fD = (s.smF || {}).d || "", fZ = (s.smF || {}).z || "";
+var setF = function (o) { self.setState(function (p) { return { smF: Object.assign({}, p.smF || {}, o) }; }); };
+SM.fDate = fD; SM.setFDate = function (e) { setF({ d: e.target.value }); };
+SM.zalDd = dd("smzal", [{ v: "", l: "Barcha zallar" }].concat(ZALS.map(function (x) { return { v: x, l: x }; })), fZ, function (e) { setF({ z: e.target.value }); }, { noSplit: true, ph: "Zal nomlari" });
+SM.hasF = !!(fD || fZ); SM.clrF = function () { self.setState({ smF: {} }); };
+var SL = { done: ["Tugatilgan", "st-done"], wait: ["Boshlanmagan", "st-gray"], on: ["Davom etmoqda", "st-on"] };
+SM.hist = H.filter(function (h) { return (!fD || h.d === fD) && (!fZ || h.zal === fZ); }).sort(function (x, y) { return (y.d + y.v) < (x.d + x.v) ? -1 : 1; })
+.map(function (h) { return { plan: uz(h.d) + " " + h.v, start: h.s ? uz(h.d) + " " + h.s : "—", end: h.e ? uz(h.d) + " " + h.e : "—", zal: h.zal, st: SL[h.st][0], stCls: "smj-pill " + SL[h.st][1], today: !!h.today, cls: "smj-r" + (h.today ? " today" : "") }; });
+SM.histEmpty = !SM.hist.length;
+var NF = s.smNf;
+SM.nf = !!NF && NF.num === num; NF = SM.nf ? NF : {};
+var setNF = function (o) { self.setState(function (p) { return p.smNf ? { smNf: Object.assign({}, p.smNf, o, { err: "" }) } : null; }); };
+SM.newOpen = function () { self.setState({ smNf: { num: num, d: "", v: "10:00", zal: ZAL, err: "" }, dxDd: "" }); };
+SM.nfSana = NF.d || ""; SM.nfVaqt = NF.v || ""; SM.nfErr = NF.err || "";
+SM.nfSetSana = function (e) { setNF({ d: e.target.value }); }; SM.nfSetVaqt = function (e) { setNF({ v: e.target.value }); };
+SM.nfZalDd = dd("smnfzal", ZALS.map(function (x) { return { v: x, l: x }; }), NF.zal || "", function (e) { setNF({ zal: e.target.value }); }, { noSplit: true, ph: "Zalni tanlang" });
+SM.nfClose = function () { self.setState({ smNf: null }); };
+SM.nfSave = function () { var x = self.state.smNf; if (!x) return; if (!x.d || !x.v || !x.zal) { self.setState({ smNf: Object.assign({}, x, { err: "Sana, vaqt va zalni kiriting" }) }); return; }
+  if (x.d < td) { self.setState({ smNf: Object.assign({}, x, { err: "O'tgan sanaga majlis yaratib bo'lmaydi" }) }); return; }
+  var m = Object.assign({}, self.state.smNew || {}); m[num] = (m[num] || []).concat([{ d: x.d, v: x.v, zal: x.zal }]); self.setState({ smNew: m, smNf: null }); self.flash("Majlis yaratildi · " + uz(x.d) + " " + x.v + " · " + x.zal); };
+})();
 // ---- Barmoq izini skanerlash: harakat turi ----
 __out.fpDd = dd("fp-act", [{ v: "imzo", l: "Hujjat imzolash" }, { v: "tasdiq", l: "Shaxsni tasdiqlash" }, { v: "majlis", l: "Sud majlisida ishtirok" }].concat(s.fp && /^(tmDv|tmJv|qtJv|qtAr)$/.test(s.fp.key || "") ? [{ v: "rozi", l: "Publikatsiyaga rozilik", sub: "Sud qarorini to'liq shaklda e'lon qilishga rozilik" }] : []), (s.fp && s.fp.act) || "imzo",
-function (e) { var v = e.target.value; var f = self.state.fp; if (!f) return; self.setState({ fp: Object.assign({}, f, { act: v }) }); if (f.st === "ok") self.fpStart({ key: f.key, id: f.id, name: f.name }); }, { noSplit: true });
+function (e) { var v = e.target.value; var f = self.state.fp; if (!f) return; self.setState({ fp: Object.assign({}, f, { act: v }) }); if (f.st === "ok") self.fpStart({ key: f.key, id: f.id, name: f.name, sm: f.sm }); }, { noSplit: true });
 // ---- Tomonlar: asosiy shaxsni qayta tanlash ----
 ["Dv", "Jv"].forEach(function (k) { var key = "tm" + k, lst = s[key] || [], hasM = lst.some(function (x) { return x.main; });
 var cur = lst.filter(function (x, i) { return hasM ? x.main : i === 0; })[0];

@@ -8957,3 +8957,61 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 /* Sud majlisi: «Sudlov tarkibi» doim «Boshqalar» menyusida */
 .lb-bar .tbrow .nb-sudlov{display:none !important}.lb-bar .tb-nmore .nmq-sudlov{display:flex !important}.lb-bar .tb-nmore.q.n{display:block !important}
 .sdl-qv{max-width:640px !important}.sdl-qv .ex-chips{display:flex;flex-wrap:wrap;gap:8px}
+
+/* ---- Sud majlisi bo'limi (ish sahifasi) ---- */
+.smj-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.smj-st{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 12px;border-radius:999px;font-size:13px;font-weight:600;background:#f1f5f9;color:#475569}
+.smj-st i,.smj-pill i,.smj-live i{width:8px;height:8px;border-radius:50%;background:currentColor;flex:none}
+.smj-st.on{background:#fef2f2;color:#dc2626}.smj-st.on i,.smj-live i{animation:smjPulse 1.2s ease-in-out infinite}
+.smj-st.done{background:#ecfdf5;color:#047857}
+@keyframes smjPulse{50%{opacity:.25}}
+.smj-hb{gap:8px;height:38px}.smj-go{background:#16a34a;border-color:#16a34a;color:#fff}.smj-go:hover{background:#15803d;border-color:#15803d}
+.smj-end{background:#fff;border-color:#fecaca;color:#dc2626}.smj-end:hover{background:#fef2f2}
+.smj-info{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:0 20px}
+.smj-kv{display:flex;flex-direction:column;gap:5px;padding:12px 14px;border-radius:12px;background:#f7f9fd;border:1px solid #e8edf5;min-width:0}
+.smj-kv span{font-size:12.5px;color:#64748b}.smj-kv b{font-size:15px;font-weight:600;color:#0f172a;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.smj-bay{display:flex;align-items:center;gap:12px;margin:0 20px;padding:12px 14px;border-radius:12px;border:1px solid #e3e8fb;background:#f7f8ff}
+.smj-bay-ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:#e8ecff;color:#4f46e5;flex:none}
+.smj-bay-t{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}.smj-bay-t b{font-size:15px}.smj-bay-t small{font-size:12.5px;color:#64748b}
+.smj-ph{display:flex;align-items:center;gap:8px;padding:4px 20px 0}.smj-ph b{font-size:16px}.smj-ph small{color:#64748b;margin-left:4px;font-size:13px}
+.smj-list{display:flex;flex-direction:column;margin:0 20px;border:1px solid #e8edf5;border-radius:14px}
+.smj-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 16px;border-top:1px solid #eef1f5;flex-wrap:wrap}
+.smj-row:first-child{border-top:0}
+.smj-who{display:flex;flex-direction:column;gap:2px;min-width:200px;flex:1}.smj-who small{font-size:12.5px;color:#8a94a6}.smj-who b{font-size:15px;color:#0f172a}
+.smj-ctl{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.smj-dd{display:block;position:relative}.smj-dd .dx-sel{flex:none}
+.smj-stdd .dx-sel{width:186px}.smj-dvdd .dx-sel{width:250px}.smj-zdd .dx-sel{width:210px}
+.smj-dd .dx-selbtn{height:38px}
+.smj-stdd .dx-selbtn{border-radius:999px;font-weight:600}
+.smj-stdd.st-kutish .dx-selbtn{border-color:#f5c58a;background:#fff8ef;color:#b45309}
+.smj-stdd.st-zal .dx-selbtn{border-color:#a7c4fb;background:#eff5ff;color:#1d4ed8}
+.smj-stdd.st-vks .dx-selbtn{border-color:#c9b8f5;background:#f5f2ff;color:#6d28d9}
+.smj-stdd.st-kelmadi .dx-selbtn{border-color:#f5b5b5;background:#fff3f3;color:#b91c1c}
+.smj-stdd .dx-selv{color:inherit}
+.smj-fp{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:10px;border:1px solid #d6dcf5;background:#fff;color:#4f46e5;font-weight:600;font-size:14px;cursor:pointer}
+.smj-fp:hover{background:#f5f5ff}.smj-fp.ok{border-color:#a7e3c4;background:#ecfdf5;color:#047857}
+.smj-eye{width:38px;height:38px}
+.smj-save{height:38px;min-width:96px;justify-content:center;background:#4f46e5;border-color:#4f46e5;color:#fff}
+.smj-save[disabled]{background:#e2e8f0;border-color:#e2e8f0;color:#94a3b8;cursor:not-allowed}
+.smj-pill{display:inline-flex;align-items:center;gap:7px;height:28px;padding:0 11px;border-radius:999px;font-size:13px;font-weight:600;background:#f1f5f9;color:#475569;white-space:nowrap}
+.smj-pill.st-kutish,.smj-pill.st-wait{background:#fff8ef;color:#b45309}.smj-pill.st-zal{background:#eff5ff;color:#1d4ed8}.smj-pill.st-vks{background:#f5f2ff;color:#6d28d9}
+.smj-pill.st-kelmadi{background:#fff3f3;color:#b91c1c}.smj-pill.st-done{background:#ecfdf5;color:#047857}.smj-pill.st-on{background:#fef2f2;color:#dc2626}.smj-pill.st-gray{background:#f1f5f9;color:#64748b}
+.smj-fpok{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#047857;font-weight:600}
+.smj-tw{margin:0 20px;border:1px solid #e8edf5;border-radius:14px;overflow-x:auto}
+.smj-it{min-width:1180px}
+.smj-ir{display:grid;grid-template-columns:.9fr .9fr .7fr 1.1fr 1.1fr 1.2fr .9fr 1fr 1fr .9fr 1fr .8fr;gap:10px;align-items:center;padding:12px 16px;font-size:13.5px}
+.smj-ih{background:#f8fafc;font-size:12px;font-weight:600;color:#64748b}
+.smj-iempty{display:flex;flex-direction:column;align-items:center;gap:4px;padding:28px 16px;text-align:center;border-top:1px solid #eef1f5}.smj-iempty b{font-size:15px;color:#334155}.smj-iempty small{color:#64748b;font-size:13px}
+.smj-flt{display:flex;align-items:center;gap:10px;padding:0 20px;flex-wrap:wrap}
+.smj-fd input{height:38px;border:1px solid #dbe2ea;border-radius:10px;padding:0 12px;font:inherit;font-size:14px;color:#0f172a;background:#fff}
+.smj-new{margin-left:auto;gap:8px;height:38px}
+.smj-nf{display:grid;grid-template-columns:180px 140px 220px 1fr;gap:12px;align-items:end;margin:0 20px;padding:14px 16px;border:1px solid #dfe6ff;background:#f7f9ff;border-radius:14px}
+.smj-nf input{height:40px}
+.smj-nfb{display:flex;align-items:center;gap:8px;justify-content:flex-end}.smj-err{color:#b91c1c;margin-right:auto}
+.smj-t{margin:0 20px;border:1px solid #e8edf5;border-radius:14px;overflow:hidden}
+.smj-r{display:grid;grid-template-columns:1.2fr 1.1fr 1.1fr .8fr 1fr;gap:12px;align-items:center;padding:12px 16px;border-top:1px solid #eef1f5;font-size:14px;color:#334155}
+.smj-r:first-child{border-top:0}.smj-h{background:#f8fafc;font-size:12px;font-weight:600;color:#64748b}
+.smj-r.today{background:#fbfaff}
+.smj-tday{font-style:normal;margin-left:8px;font-size:11.5px;font-weight:600;color:#4f46e5;background:#eef0ff;border-radius:6px;padding:2px 6px}
+.smj-live{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 12px;border-radius:10px;border:0;background:#fef2f2;color:#dc2626;font:inherit;font-weight:600;font-size:13px;white-space:nowrap;cursor:pointer}
+@media (max-width:1100px){.smj-info{grid-template-columns:repeat(2,minmax(0,1fr))}.smj-nf{grid-template-columns:1fr 1fr}}
