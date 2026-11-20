@@ -9098,3 +9098,32 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .smj-tabrow .smj-new{display:inline-flex;align-items:center;gap:8px;margin-left:auto;height:50px;padding:0 16px;border:1px solid #e2e8f0;border-radius:14px;background:#fff;color:#0f172a;font:inherit;font-size:14px;font-weight:500;cursor:pointer;box-shadow:none;flex:none;transition:border-color var(--t-fast) var(--ease-out),background-color var(--t-fast) var(--ease-out)}
 .smj-tabrow .smj-new:hover{background:#f8fafc;border-color:#cbd5e1}
 .smj-tabrow .smj-new svg{color:#475569}
+
+/* Qatnashchilar tabi — jadval ko'rinishida */
+.smj-qsum{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 20px;padding:12px 14px;border:1px solid #e8edf5;border-radius:12px;background:#fff}
+.smj-qsum-t{display:flex;align-items:center;gap:8px}.smj-qsum-t b{font-size:15px}.smj-qsum-t small{color:#64748b;font-size:13px;margin-left:4px}
+.smj-qlink{display:inline-flex;align-items:center;gap:6px;border:0;background:transparent;font:inherit;font-size:14px;font-weight:600;color:#3073f1;cursor:pointer;padding:6px 4px}
+.smj-qlink:hover{text-decoration:underline;text-underline-offset:3px}
+.smj-q{display:grid;grid-template-columns:48px minmax(200px,1.3fr) 204px minmax(220px,1.1fr) 160px 132px;gap:0;padding:0;font-size:13px;color:#0f172a;border-top:1px solid #eef1f5}
+.smj-q>span{display:flex;align-items:center;min-width:0;padding:10px 14px;border-left:1px solid #eceef2;min-height:60px}
+.smj-q>span:first-child{border-left:0}
+.smj-q.smj-h{border-top:0}.smj-q.smj-h>span{min-height:40px;padding:12px 14px}
+.smj-q .smj-who{min-width:0}.smj-q .smj-who b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;font-size:14px}
+.smj-q .smj-dd,.smj-q .smj-dd .dx-sel{width:100% !important}
+.smj-q .smj-fp{width:100%;justify-content:center}
+.smj-q>span.smj-acts{gap:6px;justify-content:center;padding-left:8px;padding-right:8px}
+.smj-q .smj-save{min-width:0;padding:0 12px;height:34px}
+.smj-q .smj-eye{width:34px;height:34px}
+.smj-q>span.smj-no{justify-content:center;padding-left:8px;padding-right:8px;color:#64748b}
+/* to'xtatish */
+.smj-pause{background:#fff;border-color:#fde68a;color:#b45309}.smj-pause:hover{background:#fffbeb}
+.smj-st.stop{background:#fff8ef;color:#b45309}
+.smj-stopn{display:flex;flex-direction:column;gap:2px;margin:0 20px;padding:12px 14px;border:1px solid #fde68a;border-radius:12px;background:#fffbeb}
+.smj-stopn b{font-size:14px;color:#92400e}.smj-stopn small{font-size:12.5px;color:#a16207}
+.smj-tabrow .smj-new[disabled]{opacity:.5;cursor:not-allowed;background:#fff}
+/* yangi majlis modali */
+.smnfm{max-width:640px}
+.smnf-info{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid #fde68a;border-radius:12px;background:#fffbeb;margin-bottom:14px}
+.smnf-ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:#fef3c7;color:#b45309;flex:none}
+.smnf-t{display:flex;flex-direction:column;gap:2px}.smnf-t b{font-size:14px;color:#92400e}.smnf-t small{font-size:12.5px;color:#a16207}
+.smnfm textarea{width:100%;min-height:84px;padding:10px 12px;border:1px solid #dbe2ea;border-radius:12px;font:inherit;font-size:14px;resize:vertical}
