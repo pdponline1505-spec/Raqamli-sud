@@ -9019,3 +9019,45 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .smj-tabrow{margin:0 0 2px}
 .main.smj-only .group:not(.smj-g){display:none}
 .main.smj-only .lockd-banner{display:none}
+
+/* ---- Natija qo'yish: bugungi sud majlislari guruhi (SUDM_MERGED) ---- */
+.l-grp{display:flex;align-items:center;gap:10px;padding:10px 18px;border-top:1px solid #eef1f5;background:#f8fafc;font-size:13px;color:#475569}
+.l-grp b{font-size:13.5px;color:#0f172a}.l-grp small{color:#64748b;font-size:12.5px}
+.l-grp-ic{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;background:#e2e8f0}.l-grp-ic i{width:7px;height:7px;border-radius:50%;background:#64748b}
+.l-grp.today{background:#f3f4ff}.l-grp.today .l-grp-ic{background:#e0e3ff}.l-grp.today .l-grp-ic i{background:#4f46e5}
+.l-grp-n{min-width:22px;height:20px;padding:0 7px;border-radius:999px;background:#fff;border:1px solid #e2e8f0;font-size:12px;font-weight:600;display:inline-grid;place-items:center;color:#334155}
+.l-row.l-today{box-shadow:inset 3px 0 0 #6366f1}
+.l-smgo{position:relative;z-index:3;display:inline-flex;align-items:center;gap:6px;margin-top:4px;height:24px;padding:0 9px;border-radius:999px;border:1px solid #c7d2fe;background:#eef2ff;color:#4338ca;font:inherit;font-size:11.5px;font-weight:600;white-space:nowrap;cursor:pointer;width:max-content}
+.l-smgo i{width:0;height:0;border-left:6px solid currentColor;border-top:4px solid transparent;border-bottom:4px solid transparent}
+.l-smgo:hover{background:#e0e7ff}
+.l-smgo.on{border-color:#fecaca;background:#fef2f2;color:#dc2626}.l-smgo.on i{width:7px;height:7px;border:0;border-radius:50%;background:currentColor;animation:smjPulse 1.2s ease-in-out infinite}
+.l-smgo.done{border-color:#bbf7d0;background:#ecfdf5;color:#047857}.l-smgo.done i{width:7px;height:7px;border:0;border-radius:50%;background:currentColor}
+
+/* ---- Ichki jadvallar tashqi ro'yxat jadvali uslubida ---- */
+.smj-t,.smj-tw{border:1px solid #e4e4e7;border-radius:14px;background:#fff}
+.smj-r,.smj-ir{gap:0;padding:0;font-size:13px;color:#0f172a;border-top:1px solid #eef1f5}
+.smj-r>span,.smj-ir>span{display:flex;align-items:center;min-width:0;padding:14px 16px;border-left:1px solid #eceef2;min-height:56px}
+.smj-r>span:first-child,.smj-ir>span:first-child{border-left:0}
+.smj-h,.smj-ih{background:#f8fafc;font-size:13px;font-weight:500;color:#475569;border-top:0}
+.smj-h>span,.smj-ih>span{padding:12px 16px;min-height:40px}
+.smj-hc,.smj-sort{display:inline-flex;align-items:center;gap:6px;justify-content:space-between;width:100%}
+.smj-sort{border:0;background:transparent;padding:0;font:inherit;font-weight:500;color:inherit;cursor:pointer;text-align:left}
+.smj-hc svg,.smj-sort svg{color:#94a3b8;flex:none}
+.smj-sort:hover{color:#0f172a}.smj-sort.on{color:#0f172a}.smj-sort.on svg{color:#3073f1}
+.smj-r b{font-weight:600}
+.smj-r.today{background:#fbfaff}
+.smj-tw{overflow-x:auto}
+.smj-it{min-width:1500px}
+.smj-ir{grid-template-columns:150px 120px 80px 1.2fr 1.2fr 150px 160px 140px 140px 140px 170px 128px}
+.smj-ct{display:flex;flex-direction:column;gap:2px}.smj-ct small{font-size:12px;color:#64748b}
+.smj-num{font-variant-numeric:tabular-nums;font-weight:600}
+.smj-file{display:inline-flex;align-items:center;gap:6px;border:0;background:transparent;padding:0;font:inherit;font-size:12.5px;color:#3073f1;cursor:pointer;min-width:0}
+.smj-file span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.smj-file:hover span{text-decoration:underline}
+.smj-acts{gap:2px}.smj-acts .ib{width:32px;height:32px}.smj-send{color:#4f46e5}
+.smj-iempty{border-top:1px solid #eef1f5}
+.l-smgo{pointer-events:auto}
+.smj-it{min-width:1880px}
+.smj-ir{grid-template-columns:170px 130px 80px minmax(210px,1.2fr) minmax(210px,1.2fr) 170px 170px 150px 150px 150px 190px 128px}
+.l-smgo{max-width:100%}
+.smj-ir{grid-template-columns:170px 130px 80px minmax(210px,1.2fr) minmax(210px,1.2fr) 170px 196px 150px 150px 150px 190px 128px}
+.smj-it{min-width:1906px}
