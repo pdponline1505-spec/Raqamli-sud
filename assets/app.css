@@ -9130,3 +9130,12 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 /* Majlisni yaratish — sarlavhadagi «Boshqalar» tugmasi o'lchamida */
 .smj-tabrow .smj-new{height:36px;padding:0 13px;gap:7px;border:1px solid #d5dbe4;border-radius:10px;font-size:13px;font-weight:500;align-self:center}
 .smj-tabrow .smj-new svg{width:14px;height:14px}
+
+/* Bugungi sud majlisi — Umumiy bo'limidagi «ums» kartochkalari asosida */
+.smj-ums{padding:0 20px}
+.smj-stv.wait{color:#64748b}.smj-stv.on{color:#dc2626}.smj-stv.on::before{animation:smjPulse 1.2s ease-in-out infinite}
+.smj-stv.ok{color:#16a34a}.smj-stv.stop{color:#d97706}.smj-stv.sign{color:#7c3aed}
+.smj-of{font-style:normal;font-weight:500;color:#94a3b8;font-size:.7em}
+.smj-tilebtn{margin-left:auto;flex:none;gap:4px}
+.smj-ums .ums-row{flex-wrap:nowrap}
+.smj-ums .ums-m.ell{overflow:hidden;text-overflow:ellipsis;min-width:0}
