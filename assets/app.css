@@ -9095,3 +9095,6 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .smj-dt small.smj-ok{color:#15803d}
 .smj-dt small.smj-ok::before{content:"✓ "}
 .smj-ir{grid-template-columns:44px minmax(158px,1.1fr) 136px minmax(200px,1.5fr) minmax(130px,1fr) 170px 150px 108px}
+.smj-tabrow .smj-new{display:inline-flex;align-items:center;gap:8px;margin-left:auto;height:50px;padding:0 16px;border:1px solid #e2e8f0;border-radius:14px;background:#fff;color:#0f172a;font:inherit;font-size:14px;font-weight:500;cursor:pointer;box-shadow:none;flex:none;transition:border-color var(--t-fast) var(--ease-out),background-color var(--t-fast) var(--ease-out)}
+.smj-tabrow .smj-new:hover{background:#f8fafc;border-color:#cbd5e1}
+.smj-tabrow .smj-new svg{color:#475569}
