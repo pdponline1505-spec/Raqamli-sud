@@ -9069,3 +9069,8 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .smj-tabrow .smj-new+.lf-btn2{margin-left:0 !important}
 .smj-fclr{margin-left:4px}
 .smj-ijsub{display:none}
+.smj-r{grid-template-columns:56px 1.2fr 1.1fr 1.1fr .8fr 1fr}
+.smj-ir{grid-template-columns:56px 170px 130px 80px minmax(210px,1.2fr) minmax(210px,1.2fr) 170px 196px 150px 150px 150px 190px 128px}
+.smj-it{min-width:1962px}
+.smj-r>span.smj-no,.smj-ir>span.smj-no{justify-content:center;padding-left:8px;padding-right:8px;color:#64748b;font-variant-numeric:tabular-nums}
+.smj-h>span.smj-no,.smj-ih>span.smj-no{font-weight:600}
