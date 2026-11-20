@@ -9061,3 +9061,11 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .l-smgo{max-width:100%}
 .smj-ir{grid-template-columns:170px 130px 80px minmax(210px,1.2fr) minmax(210px,1.2fr) 170px 196px 150px 150px 150px 190px 128px}
 .smj-it{min-width:1906px}
+
+/* ichki tablar: ro'yxat sahifasi bilan bir xil tab qatori, filtr paneli va jadval */
+.smj-pane{display:flex;flex-direction:column;gap:12px}
+.smj-pane>.smj-t,.smj-pane>.smj-tw,.smj-pane>.smj-nf{margin:0}
+.smj-tabrow .smj-new{margin-left:auto;height:50px;border-radius:14px;padding:0 18px;font-size:14px}
+.smj-tabrow .smj-new+.lf-btn2{margin-left:0 !important}
+.smj-fclr{margin-left:4px}
+.smj-ijsub{display:none}
