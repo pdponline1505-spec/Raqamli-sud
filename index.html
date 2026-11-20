@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=260929623f8b">
+<link rel="stylesheet" href="assets/app.css?v=4a31ea9986eb">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -1831,13 +1831,13 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </nav>
 
 <!-- ===== MAIN ===== -->
-<main class="main">
+<main class="main {{smMainCls}}">
+<sc-if value="{{sm.on}}" hint-placeholder-val="{{ false }}"><div class="l-tabrow smj-tabrow"><div class="l-tabwrap"><div class="l-tabs seg-tabs" role="tablist" aria-label="Ish bo'limlari"><span class="seg-ind" aria-hidden="true"></span><sc-for list="{{sm.tabs}}" as="t" hint-placeholder-count="3"><button type="button" role="tab" aria-selected="{{t.sel}}" class="{{t.cls}}" onClick="{{t.pick}}">{{t.label}}<sc-if value="{{t.hasN}}" hint-placeholder-val="{{ false }}"><span class="l-tabn">{{t.n}}</span></sc-if></button></sc-for></div></div></div></sc-if>
 <sc-if value="{{axCase.ret}}" hint-placeholder-val="{{ false }}"><button type="button" class="axr-ban" onClick="{{axCase.hist}}"><span class="axr-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9.5 17h-19zM12 10v4M12 17h.01"></path></svg></span><span class="axr-t"><b>Arxiv ishni qabul qilishni rad etgan · {{axCase.retDate}}</b><span>{{axCase.retNote}}</span></span><span class="axr-more">Sabab va sanalar<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></span></button></sc-if>
 
 <sc-if value="{{sm.on}}" hint-placeholder-val="{{ false }}">
-<div class="group">
-<div class="group-h">Sud majlisi</div>
-<section class="sec" id="smajlis">
+<div class="group smj-g">
+<sc-if value="{{sm.tIns}}" hint-placeholder-val="{{ true }}"><section class="sec" id="smajlis">
 <div class="sh"><div><h2>Bugungi sud majlisi</h2><p>{{sm.sub}}</p></div><div class="tools smj-tools"><span class="{{sm.stCls}}"><i></i>{{sm.stTxt}}</span><sc-if value="{{sm.edit}}" hint-placeholder-val="{{ true }}"><button class="btn smj-hb" title="{{sm.bayTip}}" onClick="{{sm.bayon}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6M9 14h6M9 18h4"></path></svg>Bayonnomani ochish</button><sc-if value="{{sm.canStart}}" hint-placeholder-val="{{ true }}"><button class="btn smj-hb smj-go" onClick="{{sm.start}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5v14l11-7z"></path></svg>Majlisni boshlash</button></sc-if><sc-if value="{{sm.live}}" hint-placeholder-val="{{ false }}"><button class="btn smj-hb smj-end" onClick="{{sm.end}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"></rect></svg>Majlisni yakunlash</button></sc-if></sc-if></div></div>
 <div class="smj-info"><sc-for list="{{sm.info}}" as="x" hint-placeholder-count="4"><div class="smj-kv"><span>{{x.k}}</span><b>{{x.v}}</b></div></sc-for></div>
 <div class="smj-bay"><span class="smj-bay-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6M9 14h6M9 18h4"></path></svg></span><div class="smj-bay-t"><b>Sud majlisi bayonnomasi</b><small>{{sm.bayTxt}}</small></div><span class="{{sm.bayCls}}">{{sm.bayStTxt}}</span></div>
@@ -1858,15 +1858,15 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </sc-for>
 </div>
 <sc-if value="{{sm.ro}}" hint-placeholder-val="{{ false }}"><small class="muted" style="padding: 0 20px">Davomatni belgilash, barmoq izi, bayonnoma va majlisni boshlash «Batafsil ko'rish»da mavjud.</small></sc-if>
-</section>
-<section class="sec" id="smijro">
+</section></sc-if>
+<sc-if value="{{sm.tIjro}}" hint-placeholder-val="{{ false }}"><section class="sec" id="smijro">
 <div class="sh"><div><h2>Ijro varaqalari</h2><p>{{sm.ijSub}}</p></div></div>
 <div class="smj-tw"><div class="smj-it" role="table" aria-label="Ijro varaqalari">
 <div class="smj-ir smj-ih" role="row"><span role="columnheader">Turi</span><span role="columnheader">Miqdori</span><span role="columnheader">Valyuta</span><span role="columnheader">Qarzdor</span><span role="columnheader">Undiruvchi</span><span role="columnheader">MIB nomi</span><span role="columnheader">Holati</span><span role="columnheader">Buyurtma vaqti</span><span role="columnheader">Bajarilgan vaqt</span><span role="columnheader">Yuborish turi</span><span role="columnheader">Ijro varaqa fayli</span><span role="columnheader">Harakat</span></div>
 <div class="smj-iempty"><b>Ijro varaqalari yo'q</b><small>Natija qo'yilib, undiriladigan summa bo'lsa ijro varaqasi shu yerda shakllanadi</small></div>
 </div></div>
-</section>
-<section class="sec" id="smlist">
+</section></sc-if>
+<sc-if value="{{sm.tList}}" hint-placeholder-val="{{ false }}"><section class="sec" id="smlist">
 <div class="sh"><div><h2>Majlislar ro'yxati</h2><p>Shu ish bo'yicha belgilangan, o'tkazilgan va boshlanmagan majlislar</p></div></div>
 <div class="smj-flt">
 <label class="smj-fd"><span class="sr">Ish ko'riladigan sana</span><input type="date" value="{{sm.fDate}}" onChange="{{sm.setFDate}}" aria-label="Ish ko'riladigan sana"></label>
@@ -1887,7 +1887,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </sc-for>
 <sc-if value="{{sm.histEmpty}}" hint-placeholder-val="{{ false }}"><div class="smj-iempty"><b>Majlis topilmadi</b><small>Sana yoki zal filtrini o'zgartiring</small></div></sc-if>
 </div>
-</section>
+</section></sc-if>
 </div>
 </sc-if>
 
@@ -4489,7 +4489,7 @@ while (x < n) push(A[x++], "del"); while (y < m) push(B[y++], "ins");
 return out;
 }
 var NAV_IDS = [];
-NAV.forEach(function (g) { g.i.forEach(function (x) { NAV_IDS.push(x[0]); }); }); NAV_IDS.unshift("smajlis", "smijro", "smlist");
+NAV.forEach(function (g) { g.i.forEach(function (x) { NAV_IDS.push(x[0]); }); }); NAV_IDS.unshift("smajlis");
 
 var TYPES = ["Hammasi", "Arizachi/Javobgar", "Sud hujjatlari", "Ijro hujjatlari", "Kvitansiyalar"];
 var INSTS = [[1, "Birinchi instansiya"], [2, "Apellyatsiya instansiyasi"], [3, "Kassatsiya instansiyasi"], [4, "Takroriy kassatsiya"], [5, "Taftish"], [6, "Taftish (oliy sud)"], [7, "Oliy sud rayosati"]];
@@ -6374,6 +6374,7 @@ this.setState({ nav: id });
 }
 
 scrollTo(id) {
+if (this.state.smTab && this.state.smTab !== "ins" && this.state.caseOpen) { var me = this; this.setState({ smTab: "ins" }); setTimeout(function () { me.scrollTo(id); }, 80); return; }
 this.goTo(id);
 try { var el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) {}
 }
@@ -6430,7 +6431,7 @@ var s = this.state, self = this;
 
 // ---------- nav ----------
 var navGroups = NAV.map(function (g, gi) { var gLock = gi > 0; return { title: g.t, cls: "l-cg" + (gLock ? " lock" : ""), items: g.i.map(function (x) { var on = s.nav === x[0], lock = gLock && NAV_REVIEWED.indexOf(x[0]) < 0; return { id: x[0], label: x[1], lock: lock, todo: !lock && NAV_REVIEWED.indexOf(x[0]) < 0, dis: lock ? "true" : "false", tip: lock ? "Bu bo'lim hozircha yopiq" : "", cls: (on && !lock ? "on" : "") + (lock ? " lock" : ""), current: on && !lock ? "true" : "false", go: function (e) { try { if (e && e.preventDefault) e.preventDefault(); } catch (er) {} if (lock) return; self.scrollTo(x[0]); } }; }) }; });
-if (smCaseRow(s)) navGroups.unshift({ title: "Sud majlisi", cls: "l-cg", items: [["smajlis", "Majlis va qatnashchilar"], ["smijro", "Ijro varaqalari"], ["smlist", "Majlislar ro'yxati"]].map(function (x) { var on = s.nav === x[0]; return { id: x[0], label: x[1], lock: false, todo: false, dis: "false", tip: "", cls: on ? "on" : "", current: on ? "true" : "false", go: function (e) { try { if (e && e.preventDefault) e.preventDefault(); } catch (er) {} self.scrollTo(x[0]); } }; }) });
+if (smCaseRow(s)) navGroups.unshift({ title: "Sud majlisi", cls: "l-cg", items: [["smajlis", "Bugungi sud majlisi"]].map(function (x) { var on = s.nav === x[0]; return { id: x[0], label: x[1], lock: false, todo: false, dis: "false", tip: "", cls: on ? "on" : "", current: on ? "true" : "false", go: function (e) { try { if (e && e.preventDefault) e.preventDefault(); } catch (er) {} self.scrollTo(x[0]); } }; }) });
 
 // ---------- qarshi ----------
 var openQ = function (id) {
@@ -12406,7 +12407,7 @@ __out.dxS = dxS; __out.dxDdOpen = !!ddOpen && isDevon && ddOpen !== "ap-sudya";
 // ---- Sud majlisi: ish sahifasidagi majlis bo'limi (davomat, barmoq izi, bayonnoma, ijro varaqalari, majlislar ro'yxati) ----
 (function () {
 var rw = smCaseRow(s), SM = { on: !!rw };
-__out.sm = SM; __out.smHdr = !!rw && s.openMode === "page";
+__out.sm = SM; __out.smHdr = !!rw && s.openMode === "page"; __out.smMainCls = "";
 // bayonnoma: ish Sudgacha majlisdan Sud majlisi / Natija qo'yishga o'tganda «Ish hujjatlari»da avtomatik shakllanadi
 var cr = s.caseOpen ? (s.lRows || []).filter(function (r) { return r.num === s.caseNum; })[0] : null;
 if (cr && QN.indexOf(cr.stage) >= 0 && cr.majSana && !(s.docs || []).some(function (d) { return d.bay === cr.num; })) {
@@ -12476,6 +12477,12 @@ var SL = { done: ["Tugatilgan", "st-done"], wait: ["Boshlanmagan", "st-gray"], o
 SM.hist = H.filter(function (h) { return (!fD || h.d === fD) && (!fZ || h.zal === fZ); }).sort(function (x, y) { return (y.d + y.v) < (x.d + x.v) ? -1 : 1; })
 .map(function (h) { return { plan: uz(h.d) + " " + h.v, start: h.s ? uz(h.d) + " " + h.s : "—", end: h.e ? uz(h.d) + " " + h.e : "—", zal: h.zal, st: SL[h.st][0], stCls: "smj-pill " + SL[h.st][1], today: !!h.today, cls: "smj-r" + (h.today ? " today" : "") }; });
 SM.histEmpty = !SM.hist.length;
+// yuqoridagi tablar: Instansiya · Ijro varaqalari · Majlislar ro'yxati
+var TB = (s.smTabNum === num && s.smTab) || "ins";
+SM.tIns = TB === "ins"; SM.tIjro = TB === "ijro"; SM.tList = TB === "list";
+__out.smMainCls = TB === "ins" ? "" : "smj-only";
+SM.tabs = [["ins", "Instansiya", ""], ["ijro", "Ijro varaqalari", "0"], ["list", "Majlislar ro'yxati", String(H.length)]].map(function (t) { var on = t[0] === TB; return { label: t[1], n: t[2], hasN: t[2] !== "", sel: on ? "true" : "false", cls: on ? "on" : "",
+  pick: function () { if (on) return; self.setState({ smTab: t[0], smTabNum: num, dxDd: "" }); try { var cm = document.querySelector(".casemodal"); if (cm) cm.scrollTop = 0; } catch (er) {} } }; });
 var NF = s.smNf;
 SM.nf = !!NF && NF.num === num; NF = SM.nf ? NF : {};
 var setNF = function (o) { self.setState(function (p) { return p.smNf ? { smNf: Object.assign({}, p.smNf, o, { err: "" }) } : null; }); };
