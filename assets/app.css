@@ -9145,3 +9145,7 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .smj-newbox .smj-newb{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font:inherit}
 .smj-newbox .smj-newb svg{width:14px;height:14px;color:#94a3b8}
 .smj-newbox .smj-newb[disabled]{opacity:.5;cursor:not-allowed}
+
+#umumiy .tools{flex-wrap:wrap}
+#umumiy .smj-stopn{margin:0 20px}
+.main.smj-ins .smj-g{display:none}
