@@ -10150,3 +10150,24 @@ html[data-theme="dark"] .seg-tabs>.seg-ind,html[data-theme="dark"] .seg-tabs>but
 .oc-fab.on{background:#0f172a;box-shadow:0 12px 28px -8px rgba(15,23,42,.45)}
 .oc-fab.on b{color:#0f172a;box-shadow:0 0 0 2px #0f172a}
 html[data-theme="dark"] .oc-fab{filter:invert(1) hue-rotate(180deg)}
+/* sudya va boshqa kabinetlar: o'ng pastki burchakdagi «Operatorni chaqirish» */
+.oc-jfw{position:fixed;right:20px;bottom:20px;z-index:2147483050;display:flex;align-items:center;gap:10px}
+.oc-jfab{position:relative;width:52px;height:52px;border-radius:50%;border:1px solid #dbe3ef;background:#fff;color:#1d4ed8;display:grid;place-items:center;cursor:pointer;box-shadow:0 12px 28px -10px rgba(15,23,42,.35),0 2px 6px rgba(15,23,42,.08);transition:transform .15s ease,box-shadow .15s ease}
+.oc-jfab:hover{transform:translateY(-2px);box-shadow:0 16px 32px -10px rgba(15,23,42,.4)}
+.oc-jfab:focus-visible{outline:3px solid #bfdbfe;outline-offset:2px}
+.oc-jfab svg{width:22px;height:22px}
+.oc-jfab .oc-jdot{top:2px;right:2px;width:12px;height:12px}
+.oc-jfab.wait{background:#fff7ed;border-color:#fdba74;color:#c2410c}
+.oc-jfab.wait .oc-jdot{animation:ocPulse 1.4s ease-out infinite}
+.oc-jfab.acc{background:#ecfdf5;border-color:#6ee7b7;color:#047857}
+.oc-jfab.acc .oc-jdot{background:#10b981}
+.oc-jfw .oc-jchip{height:36px;box-shadow:0 8px 20px -10px rgba(15,23,42,.3)}
+@media (max-width:640px){.oc-jfw .oc-jchip{display:none}}
+.oc-ask{display:flex;gap:14px;align-items:flex-start}
+.oc-aski{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:#eff5ff;color:#2563eb;flex:none}
+.oc-aski svg{width:20px;height:20px}
+.oc-askt{display:flex;flex-direction:column;gap:6px}
+.oc-askt b{font-size:16px;color:#0f172a}
+.oc-askt span{font-size:14px;color:#475569;line-height:1.5}
+.oc-m{width:min(480px,100%)}
+html[data-theme="dark"] .oc-jfab{box-shadow:0 12px 28px -10px rgba(0,0,0,.5)}
