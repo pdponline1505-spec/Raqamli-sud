@@ -10364,3 +10364,5 @@ html[data-theme="dark"] .dub-yes{filter:invert(1) hue-rotate(180deg)}
 .dub-gh b{font-size:14px;color:#0f172a;font-variant-numeric:tabular-nums}
 .dub-gh small{font-size:12.5px;color:#64748b}
 .dub-lead{margin:0 0 10px;font-size:13.5px;color:#475569}
+.dub-vw{flex:none;height:32px;gap:6px}
+.dub-vw svg{width:14px;height:14px}

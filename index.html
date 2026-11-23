@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=ec0be8fa3e97">
+<link rel="stylesheet" href="assets/app.css?v=b8b76ad790c8">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -1948,7 +1948,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <sc-if value="{{axCase.wait}}" hint-placeholder-val="{{ false }}"><span class="ax-wait"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>{{axCase.waitTxt}}</span></sc-if><sc-if value="{{axCase.ret}}" hint-placeholder-val="{{ false }}"><button type="button" class="ax-retpill" title="Arxivdan qaytarish sababi va sanalarini ko'rish" onClick="{{axCase.hist}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9.5 17h-19zM12 10v4M12 17h.01"></path></svg><span class="ax-rp-t"><b>Arxiv rad etgan</b><span>{{axCase.retNote}}</span></span><svg class="i s ax-rp-ch" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></sc-if><sc-if value="{{axCase.on}}" hint-placeholder-val="{{ false }}"><sc-if value="{{isPageMode}}" hint-placeholder-val="{{ false }}"><button class="btn pri hprimary ax-btn" title="{{axCase.lbl}}" onClick="{{axCase.go}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1.5"></rect><path d="M5 9v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9M10 13h4"></path></svg>{{axCase.lbl}}</button></sc-if></sc-if>
 <sc-if value="{{smHdr}}" hint-placeholder-val="{{ false }}"><sc-if value="{{sm.live}}" hint-placeholder-val="{{ false }}"><button type="button" class="smj-live" title="Sud majlisi bo'limiga o'tish" onClick="{{sm.goSec}}"><i></i>Majlis davom etmoqda · {{sm.at}} dan</button></sc-if><sc-if value="{{sm.ban}}" hint-placeholder-val="{{ false }}"><button type="button" class="smj-live smj-today" title="Sud majlisi bo'limiga o'tish" onClick="{{sm.goMaj}}"><i></i>Bugun majlis · {{sm.vq}} · boshlash mumkin</button></sc-if></sc-if>
 <sc-if value="{{pgCanNext}}" hint-placeholder-val="{{ true }}"><sc-if value="{{isPageMode}}" hint-placeholder-val="{{ true }}"><button class="btn pri hprimary" title="Keyingi bosqichga o'tkazish" aria-label="{{nextLbl}}" onClick="{{nsOpen}}">{{nextLbl}}<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button></sc-if></sc-if>
-<sc-if value="{{isModalMode}}" hint-placeholder-val="{{ false }}"><sc-if value="{{notPeek}}" hint-placeholder-val="{{ true }}"><button class="btn pri" onClick="{{toFull}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"></path></svg>Batafsil ko'rish</button></sc-if><sc-if value="{{isPeek}}" hint-placeholder-val="{{ false }}"><button class="btn dub-rm" onClick="{{peekNo}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"></path></svg>Dublikat emas</button></sc-if><button class="btn" onClick="{{caseClose}}">Yopish</button></sc-if>
+<sc-if value="{{isModalMode}}" hint-placeholder-val="{{ false }}"><sc-if value="{{notPeek}}" hint-placeholder-val="{{ true }}"><button class="btn pri" onClick="{{toFull}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"></path></svg>Batafsil ko'rish</button></sc-if><sc-if value="{{peekNoOn}}" hint-placeholder-val="{{ false }}"><button class="btn dub-rm" onClick="{{peekNo}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"></path></svg>Dublikat emas</button></sc-if><button class="btn" onClick="{{caseClose}}">Yopish</button></sc-if>
 </div>
 </div>
 </header>
@@ -4527,7 +4527,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="qv-wrap"><button class="qv-bg" aria-label="Oynani yopish" onClick="{{dubAskM.close}}"></button>
 <div class="qv itkm dub-m" role="dialog" aria-modal="true" aria-labelledby="dubask-t" onKeyDown="{{dubAskM.key}}">
 <div class="qv-h"><div class="kv" style="gap: 4px; min-width: 0"><b id="dubask-t" class="qv-title" style="font-size: 20px">{{dubAskM.title}}</b><span class="qv-sub">Tanlangan ishlar bir-biri bilan dublikat deb belgilanadi</span></div><button class="ib qv-x" aria-label="Yopish" onClick="{{dubAskM.close}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"></path></svg></button></div>
-<div class="qv-b itkm-b"><div class="dub-l"><sc-for list="{{dubAskM.items}}" as="d" hint-placeholder-count="2"><div class="dub-ar"><span class="dub-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg></span><span class="dub-t"><b>{{d.num}}</b><small>{{d.sub}}</small><small>{{d.sud}} · {{d.sana}}</small></span><sc-if value="{{d.was}}" hint-placeholder-val="{{ false }}"><span class="dub-bd own">{{d.wasT}}</span></sc-if></div></sc-for></div><p class="oc-mhint">Keyin «Dublikat ishlar» oynasidan har birini ko'rib chiqib, dublikat bo'lmaganini ro'yxatdan o'chirish mumkin.</p></div>
+<div class="qv-b itkm-b"><div class="dub-l"><sc-for list="{{dubAskM.items}}" as="d" hint-placeholder-count="2"><div class="dub-ar"><span class="dub-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg></span><span class="dub-t"><b>{{d.num}}</b><small>{{d.sub}}</small><small>{{d.sud}} · {{d.sana}}</small></span><sc-if value="{{d.was}}" hint-placeholder-val="{{ false }}"><span class="dub-bd own">{{d.wasT}}</span></sc-if><button type="button" class="btn sm dub-vw" onClick="{{d.view}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg>Batafsil</button></div></sc-for></div><p class="oc-mhint">Keyin «Dublikat ishlar» oynasidan har birini ko'rib chiqib, dublikat bo'lmaganini ro'yxatdan o'chirish mumkin.</p></div>
 <div class="qv-f itkm-f"><button class="btn qv-close" onClick="{{dubAskM.close}}">Bekor qilish</button><button class="btn pri" onClick="{{dubAskM.go}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg>Dublikat qilish</button></div>
 </div></div>
 </sc-if>
@@ -7972,7 +7972,7 @@ tpType: s.tpType, tpSetType: function (e) { self.setState({ tpType: e.target.val
 tpQ: s.tpQ, tpSetQ: function (e) { self.setState({ tpQ: e.target.value, tpLimit: 8 }); },
 tpHasMore: tpFiltered.length > s.tpLimit, tpMoreN: Math.min(8, Math.max(0, tpFiltered.length - s.tpLimit)),
 tpMore: function () { self.setState({ tpLimit: self.state.tpLimit + 8 }); },
-isPageMode: s.openMode === "page", isModalMode: s.openMode === "modal", isPeek: s.openMode === "modal" && !!s.dubPeek, notPeek: !(s.openMode === "modal" && s.dubPeek), qhintTxt: "Tezkor ko'rish rejimi — faqat ko'rish uchun. Qo'shish, tahrirlash va boshqa amallar «Batafsil ko'rish»da mavjud.",
+isPageMode: s.openMode === "page", isModalMode: s.openMode === "modal", isPeek: s.openMode === "modal" && !!s.dubPeek, peekNoOn: s.openMode === "modal" && !!s.dubPeek && s.dubPeek.ctx !== "ask", notPeek: !(s.openMode === "modal" && s.dubPeek), qhintTxt: "Tezkor ko'rish rejimi — faqat ko'rish uchun. Qo'shish, tahrirlash va boshqa amallar «Batafsil ko'rish»da mavjud.",
 isCasePage: s.caseOpen && s.openMode === "page", notCasePage: !(s.caseOpen && s.openMode === "page"),
 vmPage: s.openMode === "page" ? "on" : "", vmModal: s.openMode === "modal" ? "on" : "",
 setPageMode: function () { self.setState({ openMode: "page" }); }, setModalMode: function () { self.setState({ openMode: "modal" }); },
@@ -14679,9 +14679,9 @@ var stg = function (r) { return STG[r.stage] || "Ko'rib chiqish"; };
 var two = function (a) { a = a || []; return (a[0] || "—") + (a.length > 1 ? " va yana " + (a.length - 1) + " ta" : ""); };
 // --- tasdiqlash: tanlangan ishlarni o'zaro dublikat qilish
 var A = s.dubAsk, M = { on: false };
-if (A && A.length) { var L = A.map(byId).filter(Boolean);
+if (A && A.length && !s.dubPeek) { var L = A.map(byId).filter(Boolean);
   M = { on: true, n: String(L.length), title: L.length + " ta ishni dublikat qilish",
-    items: L.map(function (r) { return { num: r.num, sub: two(r.ariz) + " → " + two(r.jav), sud: r.sud || "—", sana: r.sana || "—", was: r.tag === "dub", wasT: r.tag === "dub" ? "Allaqachon dublikat" : "" }; }),
+    items: L.map(function (r) { return { num: r.num, sub: two(r.ariz) + " → " + two(r.jav), sud: r.sud || "—", sana: r.sana || "—", was: r.tag === "dub", wasT: r.tag === "dub" ? "Allaqachon dublikat" : "", view: function () { self.setState(Object.assign(self._loadCase ? self._loadCase(r) : {}, { dubPeek: { num: r.num, own: true, ctx: "ask", from: r.id, stage: stg(r) }, caseOpen: true, openMode: "modal", subView: "", caseNum: r.num, nav: "umumiy", lMenu: 0 })); } }; }),
     close: function () { self.setState({ dubAsk: null }); }, key: function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ dubAsk: null }); } },
     go: function () { var nums = L.map(function (r) { return r.num; });
       self.setState(function (p) { return { dubAsk: null, lSel: {}, lRows: (p.lRows || []).map(function (r) { if (nums.indexOf(r.num) < 0) return r;
@@ -14737,7 +14737,7 @@ __out.dubVM = V;
 var PK = s.dubPeek;
 if (PK && s.caseOpen && s.openMode === "modal") { var src = byId(PK.from);
   __out.caseNum = PK.num; if (PK.stage) __out.caseStage = PK.stage;
-  __out.qhintTxt = PK.own ? "Dublikat ish · faqat ko'rish uchun — bu oynada hech qanday amal bajarilmaydi" : "Boshqa sudyaning ishi (" + PK.judge + ") · faqat ko'rish uchun — hech qanday amal bajarib bo'lmaydi";
+  __out.qhintTxt = PK.ctx === "ask" ? "Dublikat qilishdan oldin ko'rib chiqish · faqat ko'rish uchun — hech qanday amal bajarilmaydi" : PK.own ? "Dublikat ish · faqat ko'rish uchun — bu oynada hech qanday amal bajarilmaydi" : "Boshqa sudyaning ishi (" + PK.judge + ") · faqat ko'rish uchun — hech qanday amal bajarib bo'lmaydi";
   if (!PK.own && __out.um) { var jf = OP_JFULL[PK.judge] || PK.judge; __out.um = Object.assign({}, __out.um, { sudya: jf, sudyaPhoto: portrait(jf, /a$/.test(String(jf).split(" ")[0]) ? "f" : "m") }); }
   __out.peekNo = function () { if (!src) return; var num = PK.num;
     var nr = (self.state.lRows || []).map(function (r) {
