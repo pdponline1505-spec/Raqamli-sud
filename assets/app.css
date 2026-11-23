@@ -10335,3 +10335,19 @@ html[data-theme="dark"] .d2-st.b{background:rgba(59,130,246,.18);color:#93c5fd}
 html[data-theme="dark"] .d2-st.r{background:rgba(239,68,68,.18);color:#fca5a5}
 html[data-theme="dark"] .d2-promo{background:radial-gradient(120% 90% at 0% 0%,#2a4a9c 0%,#1e3a8a 48%,#162452 100%);box-shadow:0 14px 34px rgba(0,0,0,.35)}
 html[data-theme="dark"] .d2-tip{background:#1e293b;box-shadow:0 8px 20px rgba(0,0,0,.4)}
+/* dublikat ishni ko'rish (peek): faqat ko'rish, hech qanday amal yo'q */
+.casemodal.peek .main :is(.sh .tools,.btn,.ib:not(.qv-x),[class*="asosiy"],.ihitem,.dx-sel,.dx-selbtn){display:none !important}
+.casemodal.peek .main :is(input,textarea,select){pointer-events:none}
+.casemodal.peek .qhint{background:#f5f3ff !important;color:#5b21b6 !important}
+.casemodal.peek .htools .dub-rm{gap:6px}
+/* tungi rejim: majlis zali sahnasi o'z qorong'i dizaynini saqlaydi (ikki marta inversiya = asl ranglar) */
+html[data-theme="dark"] :is(.smr-stage,.smr-scr2.busy .smr-s2v){filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] :is(.smr-stage,.smr-scr2.busy .smr-s2v) :is(img,video,picture){filter:none}
+html[data-theme="dark"] .smr-stagec{background:transparent}
+html[data-theme="dark"] .smj-end{filter:invert(1) hue-rotate(180deg)}
+.l-tagbtn{position:relative;z-index:2;border:0;font:inherit;cursor:pointer;transition:background-color .15s,box-shadow .15s}
+.l-tagbtn.dub:hover{background:#ffedd5;box-shadow:0 0 0 1px #fdba74}
+.l-tagbtn:focus-visible{outline:2px solid #f59e0b;outline-offset:1px}
+.l-tagch{width:11px !important;height:11px !important;margin-left:-1px;opacity:.7}
+.l-tagbtn{pointer-events:auto}
+.casemodal.peek .main :is(.itk-mt,.pc-mt){display:none !important}
