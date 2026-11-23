@@ -9699,3 +9699,6 @@ html:has(.smr-stage.fs),body:has(.smr-stage.fs),.smr:has(.smr-stage.fs){overflow
 .seg-tabs button.on .l-tabn:not(.smj-tn){background:#d3e2fd !important;color:#1d4ed8 !important}
 .smr-dfn{background:#eef1f5;color:#475569;min-width:18px;padding:0 6px;font-weight:600}
 .smr-dfc.on .smr-dfn{background:#d3e2fd;color:#1d4ed8}
+/* asosiy ekrandagi ko'k ramka olib tashlandi */
+.smr-tile.me{box-shadow:none !important}
+.smr-tile.big,.smr-tile.big:not(.me){border-color:rgba(255,255,255,.06) !important}
