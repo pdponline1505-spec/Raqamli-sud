@@ -9564,3 +9564,29 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .smr-cbq{position:relative}
 .smr-cbn{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#f59e0b;color:#1f2937;font-size:11px;font-weight:700;display:grid;place-items:center;box-shadow:0 0 0 2px #0b1220}
 .smr-btabs{scroll-margin-top:16px}
+/* plitkani bosib asosiy oynaga chiqarish */
+.smr-tile.pickable{cursor:pointer;transition:border-color .15s,transform .15s}
+.smr-tile.pickable:hover{border-color:rgba(96,165,250,.7)}
+.smr-tile.pickable:hover::after{content:"Asosiy oynaga";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:6px 12px;border-radius:999px;background:rgba(15,23,42,.8);color:#fff;font-size:12px;font-weight:600;pointer-events:none}
+.smr-tile:focus-visible{outline:2px solid #60a5fa;outline-offset:2px}
+.smr-tile.big:not(.me){border-color:rgba(96,165,250,.55)}
+.smr-tile.pickable:hover::after{top:12px;transform:translateX(-50%)}
+/* VKS pastki tabda */
+.smr-vks.smr-vks2{padding:0;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+.smr-vks2 .smr-vf,.smr-vks2 .smr-vf.half{grid-column:span 1}
+.smr-vks2>button{grid-column:1;justify-self:start;min-width:220px}
+.smr-vks2>small{grid-column:2;align-self:center}
+@media (max-width:760px){.smr-vks.smr-vks2{grid-template-columns:1fr}.smr-vks2>button,.smr-vks2>small{grid-column:1}.smr-vks2>button{justify-self:stretch}}
+/* ikki qator: (jonli efir | AI) va (pastki tablar | ish ma'lumotlari) — har qator bir xil balandlikda */
+@media (min-width:1201px){
+.smr-grid{align-items:stretch;grid-auto-rows:auto}
+.smr-grid>.smr-main,.smr-grid>.smr-side{display:contents}
+.smr-main>*{grid-column:1;min-width:0}.smr-side>*{grid-column:2;min-width:0}
+.smr-main>:nth-child(1),.smr-side>:nth-child(1){grid-row:1}
+.smr-main>:nth-child(n+2),.smr-side>:nth-child(n+2){grid-row:2}
+.smr-side>.smr-card:nth-child(n+2){display:flex;flex-direction:column}
+}
+@media (min-width:1201px){.smr-main>.smr-stagec{align-self:start}}
+/* to'liq ekran: butun oynani qoplaydi */
+.smr-stage.fs{position:fixed;inset:0;z-index:2147483000;border-radius:0;padding:20px 24px;width:100vw;height:100vh;height:100dvh;max-width:none;margin:0}
+html:has(.smr-stage.fs),body:has(.smr-stage.fs),.smr:has(.smr-stage.fs){overflow:hidden !important}
