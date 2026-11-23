@@ -9202,3 +9202,8 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .l-app.railc .l-rail,.l-app .l-rail{row-gap:10px}
 @media (max-height:860px){.l-app.railc .l-rail{gap:10px !important}}
 @media (max-height:780px){.l-sub,.l-casenav{gap:4px !important}.l-app.railc .l-rail{gap:8px !important}}
+
+/* Sud majlisi tabi */
+#smajlis .smj-stopn{margin:0 20px}
+.smj-subrow{display:flex;align-items:center;gap:10px}
+.smj-subrow .seg-tabs{flex:none;width:auto}
