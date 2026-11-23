@@ -9529,3 +9529,6 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .smr-dempty{border:1px dashed #e2e8f0;border-radius:12px}
 @media (max-width:900px){.smr-dr{grid-template-columns:minmax(0,1fr) auto}.smr-drb{grid-column:1/-1;justify-content:flex-start;padding-left:48px}.smr-dra .btn{padding:0 8px}}
 @media (max-width:900px){.smr-dr{grid-template-columns:minmax(0,1fr);gap:8px}.smr-drb,.smr-dra{grid-column:1/-1;padding-left:48px;justify-content:flex-start}.smr-drb:empty{display:none}}
+.qv.smr-updlg{max-width:540px}
+.smr-updlg .smr-note{display:flex;gap:8px;align-items:flex-start;line-height:1.45}
+.smr-updlg .smr-note svg{flex:none;margin-top:2px}

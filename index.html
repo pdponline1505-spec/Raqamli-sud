@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=333fcc4781b8">
+<link rel="stylesheet" href="assets/app.css?v=f2b68e8f71dd">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -4406,12 +4406,24 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="qv-f itkm-f"><button class="btn qv-close" onClick="{{smr.cdClose}}">Bekor qilish</button><button class="btn pri" disabled="{{smr.cdDis}}" onClick="{{smr.cdGo}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>{{smr.cdGoTxt}}</button></div>
 </div></div>
 </sc-if>
+<sc-if value="{{smr.upOpen}}" hint-placeholder-val="{{ false }}">
+<div class="qv-wrap"><button class="qv-bg" aria-label="Oynani yopish" onClick="{{smr.sdClose}}"></button>
+<div class="qv itkm smr-cdlg smr-updlg" role="dialog" aria-modal="true" aria-labelledby="smr-up-t" onKeyDown="{{smr.sdKey}}">
+<div class="qv-h"><div class="kv" style="gap: 4px; min-width: 0"><b id="smr-up-t" class="qv-title" style="font-size: 20px">Hujjat yuklash</b><span class="qv-sub">Hujjat «Ish hujjatlari» ro'yxatiga qo'shiladi</span></div><button class="ib qv-x" aria-label="Yopish" onClick="{{smr.sdClose}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"></path></svg></button></div>
+<div class="qv-b itkm-b">
+<div class="smr-fl"><span class="smr-fll">Hujjat</span><sc-if value="{{smr.noFile}}" hint-placeholder-val="{{ true }}"><button type="button" class="nt-attach smr-att" onClick="{{smr.pick}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11l-8.5 8.5a5 5 0 0 1-7-7L14 4a3.5 3.5 0 0 1 5 5l-8.5 8.5a2 2 0 0 1-3-3L15 7"></path></svg>Fayl biriktirish<small>PDF, JPG, DOCX · 10 MB gacha</small></button></sc-if><sc-if value="{{smr.hasFile}}" hint-placeholder-val="{{ false }}"><div class="smr-fchip"><span class="dx-ft" style="width: 24px; height: 28px; font-size: 7px">{{smr.fileExt}}</span><b>{{smr.fileName}}</b><small>{{smr.fileSize}}</small><button type="button" class="smr-flink" onClick="{{smr.pick}}">Almashtirish</button><button type="button" class="ib smr-frm" aria-label="Faylni olib tashlash" onClick="{{smr.clearFile}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div></sc-if></div>
+<small class="muted smr-note"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 16v-4M12 8h.01"></path></svg>Ishtirokchilarga yuborish kerak bo'lsa, yuklangandan so'ng ro'yxatdagi «Yuborish» tugmasidan foydalaning.</small>
+<sc-if value="{{smr.err}}" hint-placeholder-val="{{ false }}"><small class="dx-err" style="margin: 0">{{smr.err}}</small></sc-if>
+</div>
+<div class="qv-f itkm-f"><button class="btn qv-close" onClick="{{smr.sdClose}}">Bekor qilish</button><button class="btn pri" disabled="{{smr.upDis}}" onClick="{{smr.upSave}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"></path></svg>Yuklash</button></div>
+</div></div>
+</sc-if>
 <sc-if value="{{smr.sdOpen}}" hint-placeholder-val="{{ false }}">
 <div class="qv-wrap"><button class="qv-bg" aria-label="Oynani yopish" onClick="{{smr.sdClose}}"></button>
 <div class="qv itkm smr-cdlg smr-sdlg" role="dialog" aria-modal="true" aria-labelledby="smr-sd-t" onKeyDown="{{smr.sdKey}}">
 <div class="qv-h"><div class="kv" style="gap: 4px; min-width: 0"><b id="smr-sd-t" class="qv-title" style="font-size: 20px">Hujjat yuborish</b><span class="qv-sub">Yuborilgan hujjat majlis bayonnomasiga yoziladi va ish materiallariga qo'shiladi</span></div><button class="ib qv-x" aria-label="Yopish" onClick="{{smr.sdClose}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"></path></svg></button></div>
 <div class="qv-b itkm-b">
-<div class="smr-fl"><span class="smr-fll">Hujjat</span><sc-if value="{{smr.noFile}}" hint-placeholder-val="{{ true }}"><button type="button" class="nt-attach smr-att" onClick="{{smr.pick}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11l-8.5 8.5a5 5 0 0 1-7-7L14 4a3.5 3.5 0 0 1 5 5l-8.5 8.5a2 2 0 0 1-3-3L15 7"></path></svg>Fayl biriktirish<small>PDF, JPG, DOCX · 10 MB gacha</small></button></sc-if><sc-if value="{{smr.hasFile}}" hint-placeholder-val="{{ false }}"><div class="smr-fchip"><span class="dx-ft" style="width: 24px; height: 28px; font-size: 7px">{{smr.fileExt}}</span><b>{{smr.fileName}}</b><small>{{smr.fileSize}}</small><button type="button" class="smr-flink" onClick="{{smr.pick}}">Almashtirish</button><button type="button" class="ib smr-frm" aria-label="Faylni olib tashlash" onClick="{{smr.clearFile}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div></sc-if></div>
+<div class="smr-fl"><span class="smr-fll">Hujjat</span><div class="smr-fchip"><span class="dx-ft" style="width: 24px; height: 28px; font-size: 7px">{{smr.fileExt}}</span><b>{{smr.fileName}}</b><small>{{smr.fileSize}}</small></div></div>
 <div class="smr-rh"><b>Kimga yuboriladi</b><small>{{smr.selTxt}}</small><button type="button" class="smr-link" onClick="{{smr.selAll}}">{{smr.selAllTxt}}</button></div>
 <div class="smr-rcp"><sc-for list="{{smr.rcp}}" as="r" hint-placeholder-count="4"><button type="button" class="{{r.cls}}" role="checkbox" aria-checked="{{r.on}}" onClick="{{r.tog}}"><sc-if value="{{r.hasPh}}" hint-placeholder-val="{{ true }}"><img class="smr-rav" src="{{r.ph}}" alt=""></sc-if><sc-if value="{{r.noPh}}" hint-placeholder-val="{{ false }}"><span class="smr-rav ini">{{r.ini}}</span></sc-if><span class="smr-rt"><b>{{r.name}}</b><small>{{r.role}}</small></span><span class="smr-rck"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 14px; height: 14px; stroke-width: 3"><path d="M5 12l5 5 9-10"></path></svg></span></button></sc-for></div>
 <label class="fld smr-iz"><span>Izoh <small class="muted">ixtiyoriy</small></span><textarea rows="3" placeholder="Masalan: Da'vo summasini tasdiqlovchi to'lov topshiriqnomasi — 3-betga e'tibor bering" value="{{smr.izoh}}" onChange="{{smr.setIzoh}}"></textarea></label>
@@ -12766,7 +12778,7 @@ if (RO) {
   SR.info = [{ k: "Ish raqami", v: num }, { k: "Ish turi", v: "Iqtisodiy" }, { k: "Instansiya", v: "Birinchi instansiya" }, { k: "Sudya", v: um0.sudya }, { k: "Sudya yordamchisi", v: SM.yName }, { k: "Da'vogar", v: (rw.ariz || ["—"])[0] }, { k: "Javobgar", v: (rw.jav || ["—"])[0] }, { k: "Majlis sanasi", v: uz(rw.majSana) + " " + VQ }];
   // kelib tushgan hujjatlar
   var IN = [{ t: "Da'vo arizasi", f: "Ariza_" + num.slice(-4) + ".pdf · 208 KB", e: "PDF", s: "Da'vogar" }, { t: "Ishni sud muhokamasiga tayyorlash ajrimi", f: "Ajrim_" + num.slice(-4) + ".pdf · 86 KB", e: "PDF", s: "Sud" }, { t: "Javobgarning izohi (e'tirozi)", f: "Etiroz_" + num.slice(-4) + ".pdf · 334 KB", e: "PDF", s: "Javobgar" }, { t: "Ish materiallari (dalillar to'plami)", f: "Ish_materiallari.pdf · 2,5 MB", e: "PDF", s: "Sud" }]
-    .concat(((s.smSent || {})[num] || []).map(function (x) { return { t: x.name, f: x.size, e: x.ext, s: "Siz yukladingiz", mine: true, sent: x.to + "ga yuborildi · " + x.t }; }));
+    .concat(((s.smSent || {})[num] || []).map(function (x) { return { t: x.name, f: x.size, e: x.ext, s: "Siz yukladingiz", mine: true, sent: x.to ? x.to + "ga yuborildi · " + x.t : "" }; }));
   SR.inDocs = IN.slice().reverse().map(function (d) { return { title: d.t, meta: d.s + " · " + d.f, src: d.s, file: d.f, sentTxt: d.sent || "", ext: d.e, icCls: "smr-dic " + d.e.toLowerCase() + (d.mine ? " mine" : ""), open: function () { self.flash("«" + d.t + "» ko'rish oynasida ochiladi"); } }; });
   SR.inDocsN = String(IN.length);
   // hujjat yuborish
@@ -12782,10 +12794,12 @@ if (RO) {
   SR.pick = function () { var n = ((self.state.smR || {}).fi || 0); setR({ file: FILES[n % FILES.length], fi: n + 1, err: "" }); };
   SR.izoh = R0.izoh || ""; SR.setIzoh = function (e) { setR({ izoh: e.target.value }); };
   SR.err = R0.err || "";
-  SR.sdOpen = !!R0.sd; SR.sdClose = function () { setR({ sd: false, err: "" }); }; SR.sdKey = function (e) { if (e.key === "Escape") { e.stopPropagation(); setR({ sd: false, err: "" }); } };
+  SR.sdOpen = R0.sd === "send"; SR.upOpen = R0.sd === "up"; SR.upDis = R0.file ? "" : "true"; SR.sdClose = function () { setR({ sd: false, err: "" }); }; SR.sdKey = function (e) { if (e.key === "Escape") { e.stopPropagation(); setR({ sd: false, err: "" }); } };
+  SR.upSave = function () { var r = self.state.smR || {}; if (!r.file) { setR({ err: "Faylni biriktiring" }); return; } var m = Object.assign({}, self.state.smSent || {}); m[num] = (m[num] || []).concat([{ name: r.file.name, size: r.file.size, ext: r.file.ext, to: "", t: now() }]);
+    self.setState({ smSent: m, smR: Object.assign({}, r, { file: null, sd: false, err: "", df: "all" }) }); useDoc({ name: r.file.name.replace(/_/g, " ").replace(/\.(pdf|docx)$/i, ""), by: "Siz", act: "yuklandi", size: r.file.size, ext: r.file.ext }); self.flash("«" + r.file.name + "» yuklandi · Ish hujjatlari ro'yxatiga qo'shildi"); };
   SR.sendTxt = nSel ? nSel + " kishiga yuborish" : "Yuborish";
-  SR.upNew = function () { var n = ((self.state.smR || {}).fi || 0); setR({ sd: true, file: FILES[n % FILES.length], fi: n + 1, sel: {}, izoh: "", err: "" }); };
-  var sendDoc = function (d) { var mm = /·\s*([\d,.]+\s*[KM]B)/.exec(d.meta || ""); setR({ sd: true, file: { name: d.title, size: mm ? mm[1] : "", ext: d.ext, doc: true }, sel: {}, izoh: "", err: "" }); };
+  SR.upNew = function () { var n = ((self.state.smR || {}).fi || 0); setR({ sd: "up", file: FILES[n % FILES.length], fi: n + 1, sel: {}, izoh: "", err: "" }); };
+  var sendDoc = function (d) { var mm = /·\s*([\d,.]+\s*[KM]B)/.exec(d.meta || ""); setR({ sd: "send", file: { name: d.title, size: mm ? mm[1] : "", ext: d.ext, doc: true }, sel: {}, izoh: "", err: "" }); };
   SR.send = function () { var r = self.state.smR || {}; if (!r.file) { setR({ err: "Yuboriladigan hujjatni tanlang" }); return; } var ks = Object.keys(r.sel || {}).filter(function (k) { return r.sel[k]; }); if (!ks.length) { setR({ err: "Kamida bitta qabul qiluvchini tanlang" }); return; }
     var m = Object.assign({}, self.state.smSent || {}); m[num] = (m[num] || []).concat([{ name: r.file.name, size: r.file.size, ext: r.file.ext, to: ks.length + " kishi", t: now() }]);
     var dsx = Object.assign({}, self.state.smDS || {}); if (r.file.doc) { m = self.state.smSent || {}; var dd0 = Object.assign({}, dsx[num] || {}); dd0[r.file.name] = { n: ks.length, t: now() }; dsx[num] = dd0; } self.setState({ smDS: dsx, smSent: m, smR: Object.assign({}, r, { file: null, sel: {}, izoh: "", err: "", sd: false }) }); useDoc({ name: r.file.name.replace(/_/g, " ").replace(/\.(pdf|docx)$/i, ""), by: "Siz", act: "uzatildi", size: r.file.size, ext: r.file.ext }); self.flash("«" + r.file.name + "» " + ks.length + " ta ishtirokchiga yuborildi · bayonnomaga yozildi"); };
