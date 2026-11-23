@@ -9560,3 +9560,7 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .smr-qban>i{width:8px;height:8px;border-radius:50%;background:#f59e0b;flex:none;animation:smjPulse 1.4s infinite}
 .smr-qban b{font-weight:600}
 .smr-qbanl{margin-left:auto;display:inline-flex;align-items:center;gap:4px;font-weight:600;color:#b45309}.smr-qbanl svg{width:14px;height:14px}
+/* boshqaruv paneli: qatnashchilar tugmasi */
+.smr-cbq{position:relative}
+.smr-cbn{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#f59e0b;color:#1f2937;font-size:11px;font-weight:700;display:grid;place-items:center;box-shadow:0 0 0 2px #0b1220}
+.smr-btabs{scroll-margin-top:16px}
