@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=b6b30fdbe71f">
+<link rel="stylesheet" href="assets/app.css?v=b92baf94f43d">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -14182,13 +14182,12 @@ if (PG === "ish") {
   var mins = function (at) { var p = String(at || "").split(":"), d = opNowM() - (+p[0] * 60 + +p[1]); return d < 1 ? "hozirgina" : d < 60 ? d + " daq" : Math.floor(d / 60) + " soat " + (d % 60) + " daq"; };
   var TT = { on: ["Boshlangan majlislar", "Hozir davom etayotgan sud majlislari · ishni bosib majlis ma'lumotlarini oching"], wait: ["Kutilayotgan majlislar", "Bugungi va keyingi kunlardagi majlislar · vaqt bo'yicha"], done: ["Tugatilgan majlislar", "Yakunlangan va to'xtatilgan majlislar"] };
   OP.cards.push(card({ span: 12, t: TT[it][0], s: TT[it][1], ic: it === "on" ? IC.vks : it === "wait" ? IC.clock : IC.check, isTbl: true, xcls: "oc-list", hasHd: false,
-    cols: "minmax(170px,1.1fr) minmax(160px,1fr) minmax(160px,1fr) minmax(190px,1.3fr) 140px 150px 170px 76px", hd: ["Ish raqami", "Arizachi", "Javobgar", "Ish turkumi", "Sudya", "Majlis", "Holat", ""],
-    rows: LST.map(function (x) { var r = x.r, c = x.call, jv = r.jav || [];
+    cols: "44px minmax(160px,1fr) minmax(160px,1fr) minmax(160px,1fr) minmax(190px,1.3fr) 140px 150px 170px 76px", hd: ["№", "Ish raqami", "Arizachi", "Javobgar", "Ish turkumi", "Sudya", "Majlis", "Holat", ""],
+    rows: LST.map(function (x, xi) { var r = x.r, jv = r.jav || [];
       var pl = it === "on" ? ["Davom etmoqda · " + mins(x.J.at || x.vq), "no"] : it === "wait" ? (x.today ? ["Bugun · " + x.vq, "info"] : ["Rejada", "mut"]) : (x.J.st === "stop" ? ["To'xtatilgan", "w"] : ["Yakunlangan", "ok"]);
-      var sub = c ? (c.st === "new" ? "Chaqiruv · " : "Qabul qilingan · ") + c.type : "";
-      return row([cell(r.num, sub, { b: true, cls: c ? (c.st === "new" ? "oc-cc" : "oc-cca") : "" }), cell((r.ariz || ["—"])[0]), cell(jv[0] || "—", jv.length > 1 ? jv.length + " ta" : ""), cell(r.sud || "—"), cell(x.judge),
+      return row([cell(String(xi + 1), "", { cls: "oc-no" }), cell(r.num, "", { b: true }), cell((r.ariz || ["—"])[0]), cell(jv[0] || "—", jv.length > 1 ? jv.length + " ta" : ""), cell(r.sud || "—"), cell(x.judge),
         cell(uzD(x.d), (it === "done" && x.J.at ? x.J.at + "–" + (x.J.end || "") : x.vq) + " · " + x.zal, { mono: true }), cell(pl[0], "", { p: pl[1] })],
-        { cls: c && c.st === "new" ? "oc-rcall" : "", go: function () { opOpenCase(self, r.num, false); }, acts: [act(IC.vks, "Majlis zaliga o'tish", function () { opOpenCase(self, r.num, true); })] }); }),
+        { go: function () { opOpenCase(self, r.num, false); }, acts: [act(IC.vks, "Majlis zaliga o'tish", function () { opOpenCase(self, r.num, true); })] }); }),
     eT: it === "on" ? "Hozir boshlangan majlis yo'q" : it === "wait" ? "Kutilayotgan majlis yo'q" : "Tugatilgan majlis yo'q", eS: it === "on" ? "Sudya majlisni boshlaganda u shu yerda ko'rinadi" : "Majlislar sudyalar jadvaliga ko'ra shu yerda ko'rinadi" }));
 }
 

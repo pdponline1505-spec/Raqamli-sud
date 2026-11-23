@@ -10025,3 +10025,4 @@ html:has(.smr-stage.fs),body:has(.smr-stage.fs),.smr:has(.smr-stage.fs){overflow
 .oc-list .op-td.b .op-ct b{font-weight:600}
 .oc-list .op-ct b{font-weight:500}
 .oc-list .op-empty{padding:40px 16px}
+.oc-list .op-td.oc-no .op-ct b{font-weight:500;color:#64748b;font-variant-numeric:tabular-nums}
