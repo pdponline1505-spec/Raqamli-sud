@@ -9655,3 +9655,10 @@ html:has(.smr-stage.fs),body:has(.smr-stage.fs),.smr:has(.smr-stage.fs){overflow
 .smr-vkph .smr-link{margin-left:auto;font-size:13px;padding:0}
 .smr-vkp .smr-vin{height:42px}
 @media (max-width:900px){.smr-vkg{grid-template-columns:1fr}.smr-vkh{flex-wrap:wrap}.smr-vkh .smr-vkgo{width:100%}}
+/* Sud majlisi tabidagi holat belgisi */
+.l-tabn.smj-tn{background:#dcfce7;color:#15803d;font-weight:600;padding:0 8px;width:auto;white-space:nowrap}
+.l-tabn.smj-tn.live{background:#fee2e2;color:#dc2626}
+.on>.l-tabn.smj-tn{background:rgba(255,255,255,.95);color:#15803d}
+.on>.l-tabn.smj-tn.live{color:#dc2626}
+.l-tabs .on>.l-tabn.smj-tn{background:#fff !important;color:#15803d !important}
+.l-tabs .on>.l-tabn.smj-tn.live{color:#dc2626 !important}
