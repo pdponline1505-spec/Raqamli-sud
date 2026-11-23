@@ -9323,3 +9323,70 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .smr-vin code{flex:1;font-size:15px;letter-spacing:.08em;color:#0f172a;font-family:inherit}
 @media (max-width:1200px){.smr-grid{grid-template-columns:1fr}.smr-rcp{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .smr-tb.cam{background:rgba(220,38,38,.25);color:#fca5a5}
+
+/* Sud majlisi zali — qo'shimchalar */
+.smr-stage.fs{position:fixed;inset:12px;z-index:46;min-height:0;border-radius:16px}
+.smr-castchip{position:absolute;top:18px;right:18px;display:inline-flex;align-items:center;gap:7px;height:32px;padding:0 12px;border-radius:999px;background:rgba(48,115,241,.9);color:#fff;font-size:13px;font-weight:600;z-index:2}
+.smr-tiles.grid .smr-tile.big{grid-column:auto;grid-row:auto}
+.smr-tiles.grid .smr-tile.big .smr-tav{width:64px;height:64px}
+.smr-btabs{display:flex;gap:4px;padding:0 20px;border-bottom:1px solid #eef1f5}
+.smr-btab{display:inline-flex;align-items:center;gap:8px;height:54px;padding:0 14px;border:0;border-bottom:2px solid transparent;background:transparent;font:inherit;font-size:15px;font-weight:500;color:#64748b;cursor:pointer}
+.smr-btab:hover{color:#0f172a}.smr-btab.on{color:#3073f1;border-bottom-color:#3073f1;font-weight:600}
+.smr-scrh{margin:0;font-size:13.5px;color:#64748b}
+.smr-scrs{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.smr-scr{position:relative}
+.smr-scrb{width:100%;display:flex;flex-direction:column;gap:10px;padding:10px;border:1px solid #e2e8f0;border-radius:14px;background:#fff;font:inherit;text-align:left;cursor:pointer}
+.smr-scr.on .smr-scrb{border-color:#a7c4fb;background:#f3f7ff}
+.smr-scrv{height:96px;border-radius:10px;background:linear-gradient(160deg,#1f2a3d,#0b1220);display:grid;place-items:center;color:#475569}
+.smr-scrv svg{width:34px;height:34px}
+.smr-scr.busy .smr-scrv{background:linear-gradient(160deg,#1e3a8a,#0b1220)}
+.smr-scrc{padding:6px 10px;border-radius:8px;background:rgba(255,255,255,.12);color:#fff;font-size:12.5px;font-weight:600;text-align:center;max-width:90%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.smr-scrn{display:flex;flex-direction:column;padding-right:30px}.smr-scrn b{font-size:14px;color:#0f172a}.smr-scrn small{font-size:12px;color:#64748b}
+.smr-scr .smr-rck{top:auto;bottom:16px;transform:none}
+.smr-scrx{position:absolute;top:16px;right:16px;width:26px;height:26px;border:0;border-radius:50%;background:rgba(15,23,42,.7);color:#fff;display:grid;place-items:center;cursor:pointer}
+.smr-scrx svg{width:14px;height:14px}
+.smr-ql{display:flex;flex-direction:column;border:1px solid #eef1f5;border-radius:14px;overflow:hidden}
+.smr-qr{display:flex;align-items:center;gap:12px;padding:10px 14px;border-top:1px solid #f1f5f9}.smr-qr:first-child{border-top:0}
+.smr-qr .smr-rt{flex:1}
+.smr-fpk{width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#15803d;display:grid;place-items:center}.smr-fpk svg{width:14px;height:14px}
+.smr-qall{align-self:flex-start}
+.smr-aitab{display:flex;gap:6px}
+.smr-ait{display:inline-flex;align-items:center;height:52px;padding:0 12px;border:0;border-bottom:2px solid transparent;background:transparent;font:inherit;font-size:15px;font-weight:500;color:#64748b;cursor:pointer}
+.smr-ait.on{color:#3073f1;border-bottom-color:#3073f1;font-weight:600}
+.smr-aitab span{display:none}
+.smr-aih{gap:8px}.smr-aih .smr-sp{flex:1}
+.smr-vdd{position:relative}
+.smr-vbtn{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 10px;border:1px solid #e2e8f0;border-radius:10px;background:#fff;font:inherit;font-size:13px;font-weight:500;color:#0f172a;cursor:pointer}
+.smr-vmenu{position:absolute;right:0;top:40px;min-width:220px;z-index:5}
+.smr-vmenu .dx-olbl small{color:#94a3b8;font-weight:400}
+.smr-trh{justify-content:space-between}
+.smr-trw{display:flex;flex-direction:column;gap:1px}.smr-trw b{font-size:11.5px;letter-spacing:.04em}.smr-trw small{font-size:11.5px;color:#94a3b8}
+.smr-tra{display:flex;gap:2px;opacity:0;transition:opacity .15s}.smr-trl:hover .smr-tra,.smr-trl:focus-within .smr-tra{opacity:1}
+.smr-tra .ib{width:28px;height:28px}
+.smr-trl{padding:10px 12px;border-radius:12px;border:1px solid transparent}.smr-trl:hover{background:#f8fafc;border-color:#eef1f5}
+.smr-tre{width:100%;padding:8px 10px;border:1px solid #a7c4fb;border-radius:10px;font:inherit;font-size:14px;resize:vertical}
+.smr-tref{display:flex;justify-content:flex-end;gap:6px}
+.smr-edm{font-style:normal;font-size:12px;color:#94a3b8}
+.smr-aif{gap:8px}.smr-aif .btn{flex:1;justify-content:center}
+.smr-castb{gap:8px}.smr-castw{margin:6px 0 0;width:100%;justify-content:center}
+.smr-chat{flex:1;max-height:380px;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:10px}
+.smr-msg{align-self:flex-start;max-width:88%;padding:10px 12px;border-radius:14px 14px 14px 4px;background:#f1f5f9}.smr-msg p{margin:0;font-size:14px;line-height:1.5;color:#1e293b}
+.smr-msg.me{align-self:flex-end;border-radius:14px 14px 4px 14px;background:#3073f1}.smr-msg.me p{color:#fff}
+.smr-sugg{display:flex;gap:6px;flex-wrap:wrap;padding:0 20px 10px}
+.smr-sg{height:30px;padding:0 10px;border:1px solid #dbe4ff;border-radius:999px;background:#f5f8ff;font:inherit;font-size:12.5px;color:#3073f1;cursor:pointer}.smr-sg:hover{background:#eaf1ff}
+.smr-ask{display:flex;gap:8px;padding:12px 20px;border-top:1px solid #eef1f5}
+.smr-ask input{flex:1;height:40px;padding:0 12px;border:1px solid #dbe2ea;border-radius:10px;font:inherit;font-size:14px}
+.smr-ask .btn{width:40px;height:40px;padding:0;justify-content:center}
+.smr-docw{display:flex;align-items:center;gap:6px}.smr-docw .smr-doc{flex:1}
+.smr-dcast{flex:none}
+.smr-kv{display:flex;flex-direction:column;padding-bottom:18px}
+.smr-vks{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.smr-vks .smr-vf{grid-column:span 2}.smr-vks .smr-vf.half{grid-column:span 1}
+.smr-vks>small,.smr-vkgo{grid-column:span 2}
+.smr-vkgo{justify-content:center;height:44px}
+.smr-vkst{margin-left:auto;display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:999px;background:#f1f5f9;color:#64748b;font-size:12.5px;font-weight:600}
+.smr-vkst i{width:7px;height:7px;border-radius:50%;background:currentColor}.smr-vkst.on{background:#ecfdf5;color:#047857}
+.smr-aitab .smr-ait span{display:inline !important}
+.smr-vbtn{white-space:nowrap}
+.smr-ch2 small.muted{margin-left:auto;font-size:12px}
+.smr-aitab .smr-ait span{border:0 !important;height:auto !important;color:inherit !important;font-weight:inherit !important;gap:0}
