@@ -9194,3 +9194,11 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .l-app:not(.railc) .l-rail{gap:10px !important}
 .l-app:not(.railc) .l-rail>.l-ri{height:44px !important;min-height:44px !important}
 @media (max-height:780px){.l-app:not(.railc) .l-rail{gap:8px !important}.l-app:not(.railc) .l-rail>.l-ri{height:40px !important;min-height:40px !important}}
+/* Barcha yon menyular: qatorlar orasini kengaytirish */
+.l-sub{gap:6px !important}
+.l-sub .l-sn{min-height:40px}
+.l-casenav{gap:6px !important}
+.l-casenav .l-ci{min-height:40px}
+.l-app.railc .l-rail,.l-app .l-rail{row-gap:10px}
+@media (max-height:860px){.l-app.railc .l-rail{gap:10px !important}}
+@media (max-height:780px){.l-sub,.l-casenav{gap:4px !important}.l-app.railc .l-rail{gap:8px !important}}
