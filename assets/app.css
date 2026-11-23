@@ -9471,3 +9471,8 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .smr-scra .smr-scrst{width:32px;padding:0;justify-content:center;flex:none}
 .smr-cdlg .smr-cdh{margin:0}
 .smr-cdlg .smr-cdl2+.smr-cdh{margin-top:8px}
+/* uzatish dialoglari: past ekranlarda tugmalar doim ko'rinsin */
+.qv.smr-cdlg{overflow:hidden;max-height:calc(100vh - 48px);max-height:calc(100dvh - 48px)}
+.qv.smr-cdlg>.qv-h,.qv.smr-cdlg>.qv-f{flex:none}
+.qv.smr-cdlg>.qv-b{flex:1 1 auto;min-height:0;overflow-y:auto !important;overscroll-behavior:contain}
+@media (max-width:640px){.qv.smr-cdlg{max-height:calc(100dvh - 24px)}}
