@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=22355f881360">
+<link rel="stylesheet" href="assets/app.css?v=ec0be8fa3e97">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -4535,7 +4535,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="qv-wrap"><button class="qv-bg" aria-label="Oynani yopish" onClick="{{dubNoM.close}}"></button>
 <div class="qv itkm dub-m" role="alertdialog" aria-modal="true" aria-labelledby="dubno-t" onKeyDown="{{dubNoM.key}}">
 <div class="qv-h"><div class="kv" style="gap: 4px; min-width: 0"><b id="dubno-t" class="qv-title" style="font-size: 20px">{{dubNoM.title}}</b><span class="qv-sub">{{dubNoM.sub}}</span></div><button class="ib qv-x" aria-label="Yopish" onClick="{{dubNoM.close}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"></path></svg></button></div>
-<div class="qv-b itkm-b"><div class="dub-l"><sc-for list="{{dubNoM.items}}" as="d" hint-placeholder-count="1"><div class="dub-ar dub-nar"><span class="dub-ic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9M12.5 12.5l4 4M16.5 12.5l-4 4"></path></svg></span><span class="dub-t"><b>{{d.num}}</b><small>{{d.sub}}</small><sc-if value="{{d.hasLinks}}" hint-placeholder-val="{{ true }}"><small class="dub-mt">{{d.linkT}}</small><span class="dub-lk"><sc-for list="{{d.links}}" as="l" hint-placeholder-count="2"><span class="dub-lki"><b>{{l.num}}</b><span class="{{l.cls}}">{{l.who}}</span></span></sc-for></span></sc-if></span></div></sc-for></div><p class="oc-mhint">{{dubNoM.note}}</p></div>
+<div class="qv-b itkm-b"><sc-for list="{{dubNoM.items}}" as="d" hint-placeholder-count="1"><div class="dub-grp"><sc-if value="{{d.multi}}" hint-placeholder-val="{{ false }}"><div class="dub-gh"><b>{{d.num}}</b><small>{{d.sub}}</small></div></sc-if><sc-if value="{{d.hasLinks}}" hint-placeholder-val="{{ true }}"><p class="dub-lead">{{d.linkT}}:</p><div class="dub-l"><sc-for list="{{d.links}}" as="l" hint-placeholder-count="2"><div class="dub-it"><div class="dub-row"><span class="dub-t"><span class="dub-nr"><b>{{l.num}}</b><span class="{{l.cls}}">{{l.badge}}</span></span><small>{{l.judge}} · {{l.stage}}</small><small class="dub-mt">{{l.match}}</small></span></div></div></sc-for></div></sc-if></div></sc-for><p class="oc-mhint">{{dubNoM.note}}</p></div>
 <div class="qv-f itkm-f"><button class="btn qv-close" onClick="{{dubNoM.close}}">Bekor qilish</button><button class="btn pri" onClick="{{dubNoM.go}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9M12.5 12.5l4 4M16.5 12.5l-4 4"></path></svg>Ha, dublikat emas</button></div>
 </div></div>
 </sc-if>
@@ -14697,7 +14697,7 @@ if (NA && NA.length) { var NL = NA.map(byId).filter(function (r) { return r && r
   var ext = 0; NL.forEach(function (r) { (r.dubWith || []).forEach(function (d) { if (!d.own) ext++; }); });
   NM = { on: NL.length > 0, title: NL.length > 1 ? NL.length + " ta ishni dublikat emas deb belgilash" : "Dublikat emas deb belgilash",
     sub: NL.length > 1 ? "Tanlangan ishlar dublikatlar ro'yxatidan chiqariladi" : NL[0] ? NL[0].num + " dublikatlar ro'yxatidan chiqariladi" : "",
-    items: NL.map(function (r) { var dw = r.dubWith || []; return { num: r.num, sub: two(r.ariz) + " → " + two(r.jav), links: dw.map(function (d) { return { num: d.num, who: d.own ? "Sizda" : d.judge, cls: "dub-bd " + (d.own ? "own" : "oth") }; }), hasLinks: dw.length > 0, linkT: dw.length + " ta ish bilan bog'lanish olib tashlanadi" }; }),
+    items: NL.map(function (r) { var dw = r.dubWith || []; return { num: r.num, sub: two(r.ariz) + " → " + two(r.jav), links: dw.map(function (d) { return { num: d.num, badge: d.own ? "Sizda" : "Boshqa sudya", cls: "dub-bd " + (d.own ? "own" : "oth"), judge: d.own ? "Sizning ishingiz" : "Sudya: " + d.judge, stage: d.stage || "—", match: d.match || "Taraflar mos" }; }), hasLinks: dw.length > 0, linkT: dw.length + " ta ish bilan bog'lanish olib tashlanadi", multi: NL.length > 1 }; }),
     note: ext ? "Boshqa sudyalarning ishlarida ham bu ishlar dublikat emas bo'lib qoladi (" + ext + " ta bog'lanish)." : "Bog'langan ishlaringizda ham dublikat belgisi olib tashlanadi.",
     close: function () { self.setState({ dubNoAsk: null }); }, key: function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ dubNoAsk: null }); } },
     go: function () { var ids = NL.map(function (r) { return String(r.id); }), nums = NL.map(function (r) { return r.num; });

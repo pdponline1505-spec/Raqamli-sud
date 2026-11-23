@@ -10359,3 +10359,8 @@ html[data-theme="dark"] .smj-end{filter:invert(1) hue-rotate(180deg)}
 .dub-yes{background:#dc2626 !important;border-color:#dc2626 !important;color:#fff !important}
 .dub-yes:hover{background:#b91c1c !important}
 html[data-theme="dark"] .dub-yes{filter:invert(1) hue-rotate(180deg)}
+.dub-grp+.dub-grp{margin-top:16px;padding-top:16px;border-top:1px solid #eef1f5}
+.dub-gh{display:flex;flex-direction:column;gap:2px;margin-bottom:8px}
+.dub-gh b{font-size:14px;color:#0f172a;font-variant-numeric:tabular-nums}
+.dub-gh small{font-size:12.5px;color:#64748b}
+.dub-lead{margin:0 0 10px;font-size:13.5px;color:#475569}
