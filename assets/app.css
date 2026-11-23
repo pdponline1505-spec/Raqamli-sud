@@ -9490,3 +9490,7 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .smr-sdlg .smr-iz{margin:0}
 .smr-docw{gap:2px}
 @media (max-width:640px){.smr-sdlg .smr-rcp{grid-template-columns:1fr}}
+/* Ish hujjatlari pastki tabda */
+.smr-rh .smr-up{margin-left:auto;gap:6px}.smr-rh .smr-up svg{width:14px;height:14px}
+.smr-docs2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:0;max-height:none}
+@media (max-width:1200px){.smr-docs2{grid-template-columns:1fr}}
