@@ -10005,3 +10005,8 @@ html:has(.smr-stage.fs),body:has(.smr-stage.fs),.smr:has(.smr-stage.fs){overflow
 .smr-hdx .oc-ban.sm{max-width:460px}
 .oc-mon{grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr))}
 @media (max-width:640px){.oc-calls{padding:12px}.oc-ch{flex-wrap:wrap}.oc-ch small{margin-left:0;width:100%}.oc-c{flex-wrap:wrap;padding:12px}.oc-ct{flex:1 1 calc(100% - 48px)}.oc-c>.op-p{order:3}.oc-ca{order:4;width:100%;justify-content:flex-start;flex-wrap:wrap}.oc-mf{justify-content:flex-start}}
+.oc-top{display:flex;align-items:center;gap:10px;position:relative;z-index:20}
+.oc-top .oc-jb{width:40px !important;height:40px !important;border-radius:10px !important;color:#334155}
+.oc-top .oc-jchip{height:40px}
+@media (max-width:1365px){.oc-top .oc-jchip{display:none}}
+@media (max-width:1799px){.oc-top .oc-jchip{display:none}}
