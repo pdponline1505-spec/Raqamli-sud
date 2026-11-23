@@ -10223,3 +10223,64 @@ body:has(.smr-stage.fs) .oc-jfw,body:has(.smr-stage.fs) .oc-stack{bottom:104px;r
 .smr-stripl::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.3)}
 .smr-stripl::-webkit-scrollbar-button{display:none;width:0;height:0}
 .smr-live.dock .smr-stripl{padding:8px 4px 8px 8px}
+/* «Boshqa ekranlar» qidiruvi */
+.smr-stq{display:flex;align-items:center;gap:7px;margin:8px 8px 0;height:34px;padding:0 8px 0 10px;border-radius:9px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:#94a3b8;flex:none}
+.smr-stq:focus-within{border-color:rgba(96,165,250,.7);background:rgba(48,115,241,.1)}
+.smr-stq svg{width:14px;height:14px;flex:none}
+.smr-stq input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:#f1f5f9;font:inherit;font-size:12.5px}
+.smr-stq input::placeholder{color:#64748b}
+.smr-stqx{width:22px;height:22px;border:0;border-radius:6px;background:transparent;color:#94a3b8;display:grid;place-items:center;cursor:pointer;padding:0}
+.smr-stqx:hover{background:rgba(255,255,255,.1);color:#fff}
+.smr-stqe{display:flex;flex-direction:column;align-items:center;gap:3px;padding:22px 10px;text-align:center}
+.smr-stqe b{font-size:13px;color:#e2e8f0}
+.smr-stqe small{font-size:11.5px;color:#94a3b8}
+/* zal ekranlari — qayta ishlangan */
+.smr-srh{align-items:flex-start;gap:12px}
+.smr-srt{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
+.smr-srt b{font-size:15px;color:#0f172a}
+.smr-srt small{font-size:12.5px;color:#64748b}
+.smr-sra{display:flex;gap:8px;flex-wrap:wrap}
+.smr-sra .btn.sm,.smr-ssa .btn.sm{height:32px;gap:6px}
+.smr-sra .btn.sm svg,.smr-ssa .btn.sm svg{width:14px;height:14px}
+.smr-ssbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 8px 8px 14px;border-radius:12px;background:#eff5ff;border:1px solid #c9dafd;animation:qvIn .18s ease-out}
+.smr-ssn{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:#1d4ed8}
+.smr-sschk{width:18px;height:18px;border-radius:5px;background:#2563eb;color:#fff;display:grid;place-items:center}
+.smr-ssa{display:flex;gap:8px;flex-wrap:wrap}
+.smr-scrs2{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.smr-scr2{position:relative;display:flex;flex-direction:column;border:1px solid #e2e8f0;border-radius:14px;background:#fff;overflow:hidden;transition:border-color .15s,box-shadow .15s}
+.smr-scr2:hover{border-color:#bfd3fb;box-shadow:0 8px 20px -12px rgba(15,23,42,.25)}
+.smr-scr2.busy{border-color:#bfd3fb}
+.smr-scr2.sel{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.14)}
+.smr-s2v{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;width:100%;aspect-ratio:16/9;border:0;margin:0;padding:12px;font:inherit;cursor:pointer;background:#f8fafc;color:#64748b;border-bottom:1px solid #eef1f5}
+.smr-scr2:not(.busy) .smr-s2v{background:repeating-linear-gradient(135deg,#f8fafc 0 10px,#f3f6fa 10px 20px)}
+.smr-scr2:not(.busy) .smr-s2v:hover{color:#2563eb;background:#f3f7ff}
+.smr-s2add{width:36px;height:36px;border-radius:50%;background:#fff;border:1px dashed #94a3b8;display:grid;place-items:center;transition:all .15s}
+.smr-s2add svg{width:16px;height:16px}
+.smr-s2v:hover .smr-s2add{border-style:solid;border-color:#2563eb;background:#2563eb;color:#fff}
+.smr-s2e{font-size:12.5px;font-weight:600}
+.smr-scr2.busy .smr-s2v{background:linear-gradient(160deg,#1e3a8a,#0b1220);color:#fff}
+.smr-scr2.busy .smr-s2v .smr-live2{position:absolute;top:10px;left:10px}
+.smr-sx{min-width:40px;height:40px;padding:0 8px;border-radius:10px;display:grid;place-items:center;font-size:12px;font-weight:800;letter-spacing:.02em;background:rgba(255,255,255,.14);color:#fff}
+.smr-sx.ai{background:linear-gradient(135deg,#8b5cf6,#3b82f6)}
+.smr-sx.vks{background:#7c3aed}
+.smr-sx.sys{background:#0ea5e9}
+.smr-s2w{max-width:92%;font-size:13px;font-weight:600;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.smr-s2c{position:absolute;top:10px;right:10px;width:22px;height:22px;border-radius:6px;border:1.5px solid #cbd5e1;background:#fff;color:transparent;display:grid;place-items:center;cursor:pointer;padding:0;opacity:0;transition:opacity .15s}
+.smr-scr2:hover .smr-s2c,.smr-scr2.sel .smr-s2c,.smr-s2c:focus-visible,.smr-ssbar ~ .smr-scrs2 .smr-s2c{opacity:1}
+.smr-scr2.sel .smr-s2c{background:#2563eb;border-color:#2563eb;color:#fff}
+.smr-scr2.busy .smr-s2c{border-color:rgba(255,255,255,.5);background:rgba(15,23,42,.4)}
+.smr-scr2.busy.sel .smr-s2c{background:#2563eb;border-color:#2563eb}
+.smr-s2f{display:flex;align-items:center;gap:10px;padding:10px 10px 10px 12px;min-height:56px}
+.smr-s2ic{width:30px;height:30px;border-radius:9px;background:#f1f5f9;color:#475569;display:grid;place-items:center;flex:none}
+.smr-scr2.busy .smr-s2ic{background:#eff5ff;color:#2563eb}
+.smr-s2ic svg{width:15px;height:15px}
+.smr-s2n{display:flex;flex-direction:column;min-width:0;flex:1}
+.smr-s2n b{font-size:13.5px;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.smr-s2n small{font-size:11.5px;color:#94a3b8;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.smr-s2a{display:flex;gap:2px;flex:none}
+.smr-s2a .ib{width:30px !important;height:30px !important}
+.smr-s2stop{color:#dc2626 !important}
+.smr-s2stop:hover{background:#fef2f2 !important}
+@media (hover:none){.smr-s2c{opacity:1}}
+/* tezkor ko'rish oynasi: yopiq (qulflangan) bo'limlar ko'rinmaydi */
+.casemodal.quick .nav .g.lock,.casemodal.quick .nav a.lock{display:none}
