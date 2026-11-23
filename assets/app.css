@@ -9190,3 +9190,7 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .smj-q .smj-dvdd,.smj-q .smj-dvdd .dx-sel{width:100% !important}
 .smj-q .smj-dvdd .dx-selbtn{height:36px}
 .smj-q .smj-fpb{white-space:nowrap}
+/* Ochiq yon menyu: qatorlar orasini kengaytirish */
+.l-app:not(.railc) .l-rail{gap:10px !important}
+.l-app:not(.railc) .l-rail>.l-ri{height:44px !important;min-height:44px !important}
+@media (max-height:780px){.l-app:not(.railc) .l-rail{gap:8px !important}.l-app:not(.railc) .l-rail>.l-ri{height:40px !important;min-height:40px !important}}
