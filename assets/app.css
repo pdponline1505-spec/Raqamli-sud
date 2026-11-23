@@ -9684,3 +9684,13 @@ html:has(.smr-stage.fs),body:has(.smr-stage.fs),.smr:has(.smr-stage.fs){overflow
 .smr-dfc.on{background:#e8f0fe;color:#2563eb;box-shadow:none}
 .smr-dfn{background:transparent;color:#64748b;min-width:0;padding:0 1px;font-weight:500}
 .smr-dfc.on .smr-dfn{background:transparent;color:#2563eb}
+/* bayonnoma yaratish — tasdiqlash oynasi */
+.qv.smj-bayq{max-width:500px}
+.smj-bqw{display:flex;gap:12px;align-items:flex-start}
+.smj-bqw p{margin:0;font-size:14px;line-height:1.5;color:#334155}
+.smj-bqi{flex:none;width:36px;height:36px;border-radius:10px;background:#fff7ed;color:#c2410c;display:grid;place-items:center}
+.smj-bqd{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid #e2e8f0;border-radius:12px;background:#f8fafc}
+.smj-bqd .smr-dic{width:32px;height:38px;font-size:9px;padding-bottom:5px}
+.smj-bqd .smr-dt{flex:1}
+.smj-bqd .smr-link{margin-left:auto;font-size:13.5px}
+.smj-bqq{font-size:15px;font-weight:600;color:#0f172a}

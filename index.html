@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=f8e23c214b12">
+<link rel="stylesheet" href="assets/app.css?v=df424a1d2ecf">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -4109,6 +4109,15 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="qv-f"><button class="btn qv-close" style="margin-left: auto" onClick="{{mgClose}}">Bekor qilish</button><button class="btn pri" onClick="{{mgSave}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h11l3 3v15H5z"></path><path d="M8 3v5h8M8 21v-7h8v7"></path></svg>Saqlash</button></div>
 </div>
 </div>
+</sc-if>
+
+<sc-if value="{{sm.bayQ}}" hint-placeholder-val="{{ false }}">
+<div class="qv-wrap"><button class="qv-bg" aria-label="Oynani yopish" onClick="{{sm.bayQClose}}"></button>
+<div class="qv itkm smj-bayq" role="alertdialog" aria-modal="true" aria-labelledby="smbq-t" aria-describedby="smbq-d" onKeyDown="{{sm.bayQKey}}">
+<div class="qv-h"><div class="kv" style="gap: 4px; min-width: 0"><b id="smbq-t" class="qv-title" style="font-size: 20px">Bayonnoma allaqachon yaratilgan</b><span class="qv-sub">Ish {{sm.num}}</span></div><button class="ib qv-x" aria-label="Yopish" onClick="{{sm.bayQClose}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"></path></svg></button></div>
+<div class="qv-b itkm-b"><div class="smj-bqw"><span class="smj-bqi"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9.5 17h-19zM12 10v4M12 17h.01"></path></svg></span><p id="smbq-d">{{sm.bayQTxt}}</p></div><div class="smj-bqd"><span class="smr-dic docx">DOCX</span><span class="smr-dt"><b>Sud majlisi bayonnomasi</b><small>{{sm.bayQMeta}}</small></span><button type="button" class="smr-link" onClick="{{sm.bayQOpen}}">Ochish</button></div><b class="smj-bqq">Yana yangi bayonnoma yaratishni istaysizmi?</b></div>
+<div class="qv-f itkm-f"><button class="btn qv-close" onClick="{{sm.bayQClose}}">Bekor qilish</button><button class="btn pri" onClick="{{sm.bayNew}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6M9 14h6M9 18h4"></path></svg>Ha, yangisini yaratish</button></div>
+</div></div>
 </sc-if>
 
 <sc-if value="{{smNfOpen}}" hint-placeholder-val="{{ false }}">
@@ -12583,19 +12592,26 @@ SM.info = [{ k: "Ish ko'riladigan sana", v: uz(rw.majSana) + " " + VQ }, { k: "M
 // bayonnoma holati
 var BD = J.bayId ? (s.docs || []).filter(function (d) { return d.id === J.bayId; })[0] : null;
 var bst = BD ? BD.st : "none";
-SM.bayStTxt = bst === "none" ? "Yaratilmagan" : bst === "imzo" ? "Loyiha · yordamchi to'ldiradi" : bst === "sudya" ? "Yordamchi imzoladi · sudya imzosida" : "Imzolangan";
+SM.bayStTxt = bst === "none" ? "Loyiha · avtomatik yaratilgan" : bst === "imzo" ? "Loyiha · yordamchi to'ldiradi" : bst === "sudya" ? "Yordamchi imzoladi · sudya imzosida" : "Imzolangan";
 SM.bayCls = "smj-pill " + (bst === "none" || bst === "imzo" ? "st-wait" : bst === "sudya" ? "st-vks" : "st-done");
 SM.bayTxt = "«Ish hujjatlari»da yaratiladi · majlis jarayoni yordamchi tomonidan yoziladi · yordamchi va sudya imzolaydi";
-SM.bayLbl = BD ? "Bayonnomani ko'rish" : "Bayonnomani ochish";
-SM.bayTip = BD ? "«Ish hujjatlari»dagi bayonnomaga o'tish" : "«Ish hujjatlari»da shu majlis uchun yangi bayonnoma hujjatini yaratish";
-SM.bayon = function () {
+SM.bayLbl = "Bayonnoma yaratish";
+SM.bayTip = "Sud majlisi bayonnomasini yaratish";
+var BAYS = (s.docs || []).filter(function (d) { return d.bay === num; });
+SM.num = num; SM.bayQ = s.smBayQ === num;
+SM.bayQTxt = BAYS.length ? "Bu ish bo'yicha " + (BAYS.length + 1) + " ta sud majlisi bayonnomasi mavjud (birinchisi avtomatik yaratilgan). Eng so'nggisi:" : "Ish sud majlisi bosqichiga o'tganda bayonnoma avtomatik yaratilgan va «Ish hujjatlari»da turibdi.";
+SM.bayQMeta = BD ? uz(BD.date) + " · " + (bst === "imzo" ? "loyiha" : bst === "sudya" ? "sudya imzosida" : "imzolangan") : "Avtomatik yaratilgan · " + uz(rw.majSana) + " · loyiha";
+SM.bayQClose = function () { self.setState({ smBayQ: "" }); };
+SM.bayQKey = function (e) { if (e.key === "Escape") { e.stopPropagation(); self.setState({ smBayQ: "" }); } };
+SM.bayon = function () { self.setState({ smBayQ: num, dxDd: "" }); };
+SM.bayQOpen = function () { self.setState({ smBayQ: "" }); setTimeout(function () { self.scrollTo("hujjatlar"); }, 60); self.flash("Mavjud bayonnoma «Ish hujjatlari» bo'limida"); };
+SM.bayNew = function () {
   var go = function () { setTimeout(function () { self.scrollTo("hujjatlar"); }, 60); };
-  if (BD) { go(); self.flash("Bayonnoma «Ish hujjatlari» bo'limida"); return; }
   var d = new Date(), iso = d.getFullYear() + "-" + z2(d.getMonth() + 1) + "-" + z2(d.getDate()), id = "bay-" + num + "-" + Date.now();
   var doc = { id: id, bay: num, title: "Sud majlisi bayonnomasi", type: "Sud hujjatlari", inst: 1, st: "imzo", gen: true, date: iso, files: ["W"], sends: [], author: (rw.yord || "Ergashev J. A.") };
   var jj = Object.assign({}, self.state.smj || {}); jj[num] = Object.assign({}, jj[num] || {}, { bayId: id });
-  self.setState({ docs: [doc].concat(self.state.docs || []), smj: jj, dxDd: "" }); go();
-  self.flash("Sud majlisi bayonnomasi «Ish hujjatlari»da yaratildi · majlis jarayonini shu hujjatda yozib boring"); };
+  self.setState({ docs: [doc].concat(self.state.docs || []), smj: jj, dxDd: "", smBayQ: "" }); go();
+  self.flash("Yangi sud majlisi bayonnomasi «Ish hujjatlari»da yaratildi"); };
 var ST = [{ v: "kutish", l: "Kutilmoqda" }, { v: "zal", l: "Sud zalida" }, { v: "vks", l: "Videokonferensiyada" }, { v: "kelmadi", l: "Kelmadi" }];
 var DV = [{ v: "fp1", l: "Skaner · " + ZAL }, { v: "fp2", l: "Skaner · Kotib stoli" }, { v: "fp3", l: "Skaner · Kirish eshigi" }, { v: "vks", l: "VKS terminali" }];
 var P = [], add = function (key, role) { (s[key] || []).forEach(function (p) { P.push({ key: key, id: p.id, role: typeof role === "function" ? role(p) : role, name: p.name }); }); };
@@ -12635,7 +12651,7 @@ SM.inZal = String(nZal); SM.vaqt = VQ; SM.sana = uz(rw.majSana) + (String(rw.maj
 SM.stVal = J.st === "on" ? "Davom etmoqda" : J.st === "done" ? "Yakunlangan" : J.st === "stop" ? "To'xtatilgan" : "Boshlanmagan";
 SM.stM = J.st === "on" ? J.at + " dan" : (J.st === "done" || J.st === "stop") ? J.at + "–" + J.end : ""; SM.stHasM = !!SM.stM;
 SM.stValCls = "ums-v txt ums-st smj-stv " + (J.st === "on" ? "on" : J.st === "done" ? "ok" : J.st === "stop" ? "stop" : "wait");
-SM.umBtn = !SM_MAJLIS_TAB && edit; SM.bayShort = bst === "none" ? "Yaratilmagan" : bst === "imzo" ? "Loyiha" : bst === "sudya" ? "Sudya imzosida" : "Imzolangan";
+SM.umBtn = !SM_MAJLIS_TAB && edit; SM.bayShort = bst === "none" ? "Loyiha" : bst === "imzo" ? "Loyiha" : bst === "sudya" ? "Sudya imzosida" : "Imzolangan";
 SM.yName = rw.yord || "Ergashev Jahongir Alisherovich"; SM.yIni = SM.yName.split(/\s+/).slice(0, 2).map(function (w) { return w.charAt(0); }).join("").toUpperCase();
 SM.bayValCls = "ums-v txt ums-st smj-stv " + (bst === "none" || bst === "imzo" ? "wait" : bst === "sudya" ? "sign" : "ok");
 var qq = String(F.qq || "").trim().toLowerCase(), qRol = F.qrol || [], qSt = F.qst || [], qFp = F.qfp || [];
