@@ -10215,3 +10215,11 @@ html[data-theme="dark"] .oc-jfab{box-shadow:0 12px 28px -10px rgba(0,0,0,.5)}
 @media (max-width:900px){.smr-live.dock{grid-template-columns:minmax(0,1fr)}.smr-live.dock>.smr-strip{grid-column:1;grid-row:2;max-height:200px}.smr-live.dock>.smr-bar{grid-row:3}.smr-live.dock .smr-stripl{flex-direction:row;overflow-x:auto}.smr-live.dock .smr-sti{width:150px;flex:none}}
 .smr-live.dock>.smr-strip{height:0;min-height:100%;align-self:stretch}
 body:has(.smr-stage.fs) .oc-jfw,body:has(.smr-stage.fs) .oc-stack{bottom:104px;right:28px}
+/* «Boshqa ekranlar» — ingichka, qorong'i scroll */
+.smr-stripl{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.18) transparent;scrollbar-gutter:stable}
+.smr-stripl::-webkit-scrollbar{width:6px;height:6px}
+.smr-stripl::-webkit-scrollbar-track{background:transparent}
+.smr-stripl::-webkit-scrollbar-thumb{background:rgba(255,255,255,.16);border-radius:99px}
+.smr-stripl::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.3)}
+.smr-stripl::-webkit-scrollbar-button{display:none;width:0;height:0}
+.smr-live.dock .smr-stripl{padding:8px 4px 8px 8px}
