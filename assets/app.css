@@ -9532,3 +9532,6 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .qv.smr-updlg{max-width:540px}
 .smr-updlg .smr-note{display:flex;gap:8px;align-items:flex-start;line-height:1.45}
 .smr-updlg .smr-note svg{flex:none;margin-top:2px}
+.smr-up{position:relative;overflow:hidden;cursor:pointer}
+.smr-upin{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:0}
+.smr-up:focus-within{outline:2px solid #93b4f8;outline-offset:2px}
