@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=d1ab1e5b29c2">
+<link rel="stylesheet" href="assets/app.css?v=094537997b78">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -12739,7 +12739,7 @@ SM.room = function () { self.openRoom(num); };
   SM.banCls = "smj-ban" + (live ? " live" : diff > 0 ? " soon" : " due");
   SM.banT = live ? "Sud majlisi davom etmoqda · " + (J.at || VQ) + " dan" : "Bugun sud majlisi · " + VQ + " · " + ZAL;
   SM.banS = live ? "Bayonnoma yozilmoqda · ishtirokchilar zalda" : diff > 0 ? "Majlisni boshlash mumkin · rejalashtirilgan vaqtgacha " + (diff >= 60 ? Math.floor(diff / 60) + " soat " + (diff % 60) + " daqiqa" : diff + " daqiqa") + " qoldi" : "Majlisni boshlash mumkin · majlis vaqti keldi";
-  SM.tabs = SM.tabs.map(function (t) { return t.label === "Sud majlisi" && (SM.ban || live) ? Object.assign({}, t, { n: live ? "Jonli" : VQ, hasN: true, nCls: "l-tabn smj-tn" + (live ? " live" : "") }) : t; }); })();
+  SM.tabs = SM.tabs.map(function (t) { return t.label === "Sud majlisi" && (SM.ban || live) ? Object.assign({}, t, { n: live ? "Jonli" : "1", hasN: true, nCls: "l-tabn smj-tn" + (live ? " live" : "") }) : t; }); })();
 if (RO) {
   var SR = {}, fmtD = function (iso) { var d = new Date(String(iso).slice(0, 10) + "T00:00:00"), M = ["yanvar", "fevral", "mart", "aprel", "may", "iyun", "iyul", "avgust", "sentyabr", "oktyabr", "noyabr", "dekabr"], W = ["yakshanba", "dushanba", "seshanba", "chorshanba", "payshanba", "juma", "shanba"]; return d.getDate() + "-" + M[d.getMonth()] + ", " + W[d.getDay()]; };
   var R0 = s.smR || {}, setR = function (o) { self.setState(function (p) { return { smR: Object.assign({}, p.smR || {}, o) }; }); };
@@ -12831,7 +12831,7 @@ if (RO) {
   SR.vks = VK.map(function (v, i) { var shown = !!(R0.vksShow || {})[i]; return { l: v[0], val: shown ? v[1] : v[1].replace(/./g, "•"), eyeT: shown ? "Yashirish" : "Ko'rsatish", eye: function () { var m = Object.assign({}, (self.state.smR || {}).vksShow || {}); m[i] = !m[i]; setR({ vksShow: m }); }, copy: function () { try { navigator.clipboard.writeText(v[1]); } catch (er) {} self.flash(v[0] + " nusxalandi"); } }; });
   // --- qo'shimchalar: tartib, to'liq ekran, ekranlar, bayonnoma variantlari, AI chat, VKS ulanish ---
   SR.layT = R0.grid ? "Spiker ko'rinishi" : "Panjara ko'rinishi"; SR.lay = function () { setR({ grid: !(self.state.smR || {}).grid }); };
-  SR.fsSpk = !!R0.fs && !R0.grid; SR.tilesCls = "smr-tiles" + (R0.grid ? " grid" : "") + (SR.fsSpk ? " spk" : "");
+  SR.fsSpk = !R0.grid; SR.tilesCls = "smr-tiles" + (R0.grid ? " grid" : "") + (SR.fsSpk ? " spk" : "");
   SR.stripOpen = SR.fsSpk && !!R0.strip; SR.stripOpenS = SR.stripOpen ? "true" : "false"; SR.stripCls = "smr-cb wide" + (SR.stripOpen ? " act" : ""); SR.stripTog = function () { setR({ strip: !(self.state.smR || {}).strip }); };
   SR.fsT = R0.fs ? "To'liq ekrandan chiqish" : "To'liq ekran"; SR.fs = function () { setR({ fs: !(self.state.smR || {}).fs }); };
   SR.stageCls += R0.fs ? " fs" : "";

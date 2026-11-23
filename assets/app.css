@@ -9662,3 +9662,7 @@ html:has(.smr-stage.fs),body:has(.smr-stage.fs),.smr:has(.smr-stage.fs){overflow
 .on>.l-tabn.smj-tn.live{color:#dc2626}
 .l-tabs .on>.l-tabn.smj-tn{background:#fff !important;color:#15803d !important}
 .l-tabs .on>.l-tabn.smj-tn.live{color:#dc2626 !important}
+/* oddiy holat ham to'liq ekran bilan bir xil: bitta asosiy ekran + «Boshqa ekranlar» */
+.smr-stage:not(.fs) .smr-strip{right:18px;top:66px;bottom:84px;width:280px}
+.smr-stage:not(.fs) .smr-tiles.spk{min-height:380px}
+.l-tabn.smj-tn:not(.live){min-width:20px;padding:0 6px}
