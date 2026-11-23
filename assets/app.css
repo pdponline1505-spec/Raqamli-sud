@@ -10171,3 +10171,29 @@ html[data-theme="dark"] .oc-fab{filter:invert(1) hue-rotate(180deg)}
 .oc-askt span{font-size:14px;color:#475569;line-height:1.5}
 .oc-m{width:min(480px,100%)}
 html[data-theme="dark"] .oc-jfab{box-shadow:0 12px 28px -10px rgba(0,0,0,.5)}
+/* operator: «Hal qilindi» — bajarilgan ishlar */
+.oc-fm{width:min(540px,100%)}
+.oc-fm .qv-b{overflow:visible}
+.oc-ml .oc-fn{float:right;font-weight:500;color:#2563eb}
+.oc-fddw{position:relative}
+.oc-fbg{position:fixed;inset:0;z-index:1;border:0;background:transparent;cursor:default}
+.oc-fdd{position:relative;z-index:2;display:flex;align-items:center;gap:8px;min-height:44px;padding:6px 10px 6px 12px;border:1px solid #d5dbe4;border-radius:10px;background:#fff;cursor:pointer}
+.oc-fdd:hover{border-color:#bfd3fb}
+.oc-fdd.open,.oc-fdd:focus-visible{outline:none;border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+.oc-fdd.err{border-color:#dc2626}
+.oc-fvals{display:flex;flex-wrap:wrap;gap:6px;flex:1;min-width:0}
+.oc-fph{font-size:14px;color:#94a3b8;line-height:30px}
+.oc-fchip{display:inline-flex;align-items:center;gap:4px;height:28px;padding:0 4px 0 10px;border-radius:8px;background:#eff5ff;color:#1d4ed8;font-size:12.5px;font-weight:600;max-width:100%}
+.oc-fchip button{width:20px;height:20px;border:0;border-radius:6px;background:transparent;color:#3b82f6;display:grid;place-items:center;cursor:pointer;padding:0}
+.oc-fchip button:hover{background:#dbe8ff}
+.oc-fchip button svg{width:12px;height:12px}
+.oc-fchev{color:#64748b;flex:none;transition:transform .15s ease}
+.oc-fdd.open .oc-fchev{transform:rotate(180deg)}
+.oc-fmenu{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:3;max-height:300px;overflow-y:auto;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 18px 40px -12px rgba(15,23,42,.28);padding:6px}
+.oc-fo{display:flex;align-items:center;gap:10px;width:100%;min-height:38px;padding:8px 10px;border:0;border-radius:8px;background:transparent;font:inherit;font-size:13.5px;color:#0f172a;text-align:left;cursor:pointer}
+.oc-fo:hover{background:#f6f8fc}
+.oc-fcb{width:18px;height:18px;border-radius:5px;border:1.5px solid #cbd5e1;display:grid;place-items:center;color:transparent;flex:none;background:#fff}
+.oc-fo.on .oc-fcb{background:#2563eb;border-color:#2563eb;color:#fff}
+.oc-fother{border-top:1px solid #f1f5f9;border-radius:0 0 8px 8px;margin-top:4px;padding-top:10px;color:#2563eb;font-weight:600}
+.oc-fcb.plus{color:#2563eb;border-color:#bfd3fb}
+.oc-fother.on .oc-fcb{background:#2563eb;border-color:#2563eb;color:#fff}

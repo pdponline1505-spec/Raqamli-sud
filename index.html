@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=2138ec03d546">
+<link rel="stylesheet" href="assets/app.css?v=5a357acb1bc8">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -4510,6 +4510,19 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <sc-if value="{{ocm.isNew}}" hint-placeholder-val="{{ true }}"><div class="qv-b itkm-b"><div class="oc-ask"><span class="oc-aski"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 14v-2a9 9 0 0 1 18 0v2"></path><path d="M21 15a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 2zM3 15a2 2 0 0 0 2 2h1v-6H5a2 2 0 0 0-2 2z"></path><path d="M18 17v1a3 3 0 0 1-3 3h-3"></path></svg></span><span class="oc-askt"><b>Operatorni chaqirishni istaysizmi?</b><span>{{ocm.askS}}</span></span></div></div><div class="qv-f itkm-f"><button class="btn qv-close" onClick="{{ocm.close}}">Bekor qilish</button><button class="btn pri" onClick="{{ocm.send}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 14v-2a9 9 0 0 1 18 0v2"></path><path d="M21 15a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 2zM3 15a2 2 0 0 0 2 2h1v-6H5a2 2 0 0 0-2 2z"></path><path d="M18 17v1a3 3 0 0 1-3 3h-3"></path></svg>Ha, chaqirish</button></div></sc-if>
 </div></div>
 </sc-if>
+<sc-if value="{{ocf.on}}" hint-placeholder-val="{{ false }}">
+<div class="qv-wrap oc-mw"><button class="qv-bg" aria-label="Oynani yopish" onClick="{{ocf.close}}"></button>
+<div class="qv itkm oc-m oc-fm" role="dialog" aria-modal="true" aria-labelledby="ocf-t" onKeyDown="{{ocf.key}}">
+<div class="qv-h"><div class="kv" style="gap: 4px; min-width: 0"><b id="ocf-t" class="qv-title" style="font-size: 20px">Muammo hal qilindi</b><span class="qv-sub">{{ocf.sub}}</span></div><button class="ib qv-x" aria-label="Yopish" onClick="{{ocf.close}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"></path></svg></button></div>
+<div class="qv-b itkm-b"><span class="oc-ml">Nima qilindi?<em>*</em><sc-if value="{{ocf.hasN}}" hint-placeholder-val="{{ false }}"><small class="oc-fn">{{ocf.nSel}} ta tanlandi</small></sc-if></span>
+<div class="oc-fddw"><sc-if value="{{ocf.ddOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="oc-fbg" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{ocf.ddClose}}"></button></sc-if><div class="{{ocf.ddCls}}" role="button" tabindex="0" aria-haspopup="listbox" aria-expanded="{{ocf.ddStr}}" onClick="{{ocf.ddTog}}"><span class="oc-fvals"><sc-if value="{{ocf.none}}" hint-placeholder-val="{{ true }}"><span class="oc-fph">{{ocf.ph}}</span></sc-if><sc-for list="{{ocf.chips}}" as="c" hint-placeholder-count="2"><span class="oc-fchip">{{c.t}}<button type="button" aria-label="Olib tashlash: {{c.t}}" onClick="{{c.rm}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"></path></svg></button></span></sc-for></span><svg class="i s oc-fchev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></div>
+<sc-if value="{{ocf.ddOpen}}" hint-placeholder-val="{{ false }}"><div class="oc-fmenu" role="listbox" aria-multiselectable="true" aria-label="Bajarilgan ishlar"><sc-for list="{{ocf.opts}}" as="o" hint-placeholder-count="6"><button type="button" role="option" aria-selected="{{o.on}}" class="{{o.cls}}" onClick="{{o.pick}}"><span class="oc-fcb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 12px; height: 12px; stroke-width: 3"><path d="M5 12l5 5 9-10"></path></svg></span>{{o.t}}</button></sc-for><button type="button" role="option" aria-selected="{{ocf.oOn}}" class="{{ocf.oCls}}" onClick="{{ocf.oPick}}"><span class="oc-fcb plus"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 12px; height: 12px; stroke-width: 3"><path d="M12 5v14M5 12h14"></path></svg></span>Boshqa — o'zim yozaman</button></div></sc-if></div>
+<sc-if value="{{ocf.other}}" hint-placeholder-val="{{ false }}"><label class="oc-ml" for="ocf-n" style="margin-top: 14px">Boshqa — qisqacha yozing<em>*</em></label><textarea id="ocf-n" class="oc-mta" rows="2" placeholder="Masalan: sudya noutbuki HDMI kabeli almashtirildi" value="{{ocf.note}}" onChange="{{ocf.setNote}}"></textarea></sc-if>
+<sc-if value="{{ocf.hasErr}}" hint-placeholder-val="{{ false }}"><span class="oc-merr" style="margin: 10px 0 0">{{ocf.err}}</span></sc-if>
+<p class="oc-mhint">Qayd texnik jurnalga yoziladi va sudyaga «muammo hal qilindi» xabari bilan yuboriladi.</p></div>
+<div class="qv-f itkm-f"><button class="btn qv-close" onClick="{{ocf.close}}">Bekor qilish</button><button class="btn pri" onClick="{{ocf.save}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Hal qilindi</button></div>
+</div></div>
+</sc-if>
 <sc-if value="{{smrOpen}}" hint-placeholder-val="{{ false }}">
 <div class="smr" role="dialog" aria-modal="true" aria-label="Sud majlisi zali" onKeyDown="{{smr.key}}">
 <div class="smr-hd"><button type="button" class="smr-back" aria-label="Ish sahifasiga qaytish" onClick="{{smr.close}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg></button><div class="smr-hdt"><div class="smr-meta"><span class="{{smr.stCls}}"><i></i>{{smr.stTxt}}</span><span>{{smr.meta}}</span></div><h1>{{smr.title}}</h1><div class="smr-sub"><span>{{smr.court}}</span><span class="smr-dot">·</span><span>Ish {{smr.num}}</span><span class="smr-role">{{smr.roleT}}</span></div></div><div class="smr-hdx"><sc-if value="{{occ.on}}" hint-placeholder-val="{{ false }}"><div class="{{occ.cls}} sm" aria-live="polite"><span class="oc-banic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="{{occ.ic}}"></path></svg></span><span class="oc-bant"><b>{{occ.t}}</b><small>{{occ.s}}</small></span><sc-if value="{{occ.canAcc}}" hint-placeholder-val="{{ false }}"><button type="button" class="btn sm" onClick="{{occ.accept}}">Qabul qilish</button></sc-if><sc-if value="{{occ.canDone}}" hint-placeholder-val="{{ false }}"><button type="button" class="btn sm pri" onClick="{{occ.done}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Hal qilindi</button></sc-if></div></sc-if></div></div>
@@ -4897,6 +4910,7 @@ var OP_CALL0 = (function () { var t = function (mm) { return opHM(opNowM() - mm)
     { id: "oc3", num: "R4-1901-2603/4234", judge: "Ibragimov Sh. R.", by: "Sudya", at: t(1), st: "new" },
     { id: "oc4", num: "R4-1901-2603/4236", judge: "Karimov A. B.", by: "Sudya yordamchisi · Qodirov Sh. A.", at: t(6), st: "new" }]; })();
 var opCallsOf = function (s) { return s.opCalls || OP_CALL0; };
+var OP_FIXES = ["Mikrofon qayta ulandi / sozlandi", "Kamera qayta ishga tushirildi", "Ovoz (dinamik, mikser) sozlandi", "VKS ulanishi tiklandi", "Ishtirokchi qayta ulandi", "Tarmoq / VPN ulanishi tiklandi", "Zal ekrani / translyatsiya tiklandi", "Qurilma zaxirasiga almashtirildi", "Dastur qayta ishga tushirildi", "Foydalanuvchiga yo'l-yo'riq berildi"];
 var OP_CALLT = [["Mikrofon", "M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3zM19 10v2a7 7 0 0 1-14 0v-2M12 19v3"], ["Kamera", "M23 7l-7 5 7 5V7zM3 5h11a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"], ["Ovoz (dinamik)", "M11 5L6 9H2v6h4l5 4zM15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"], ["VKS ulanishi", "M5 12.6a10 10 0 0 1 14 0M8.5 16.1a5 5 0 0 1 7 0M2 8.8a15 15 0 0 1 20 0M12 20h.01"], ["Ekran / translyatsiya", "M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zM8 21h8M12 17v4"], ["Boshqa", "M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18zM12 16v-4M12 8h.01"]];
 var opCallIc = function () { return "M3 14v-2a9 9 0 0 1 18 0v2M21 15a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 2zM3 15a2 2 0 0 0 2 2h1v-6H5a2 2 0 0 0-2 2zM18 17v1a3 3 0 0 1-3 3h-3"; };
 var opOpenCase = function (self, num, room) { var st = self.state, rw = (st.lRows || []).filter(function (r) { return r.num === num; })[0]; if (!rw) { self.flash("Ish topilmadi: " + num); return; }
@@ -4916,7 +4930,7 @@ var opCallVM = function (self, s, c) { var rw = opRowX((s.lRows || []).filter(fu
   return { id: c.id, num: c.num || "Ish biriktirilmagan", judge: c.judge, zal: c.num ? (rw.zal || "Zal № 2") : (c.where || "Kabinet"), type: c.type, note: c.note || "", hasNote: !!c.note, noteT: c.note ? " — " + c.note : "", by: c.by, at: c.at, ago: ago, ic: opCallIc(c.type), isNew: isNew,
     p: isNew ? "Yangi" : "Qabul qilingan", pc: "op-p " + (isNew ? "no" : "w"), cls: "oc-c" + (isNew ? " new" : " acc"), canAcc: isNew, canDone: !isNew, accT: isNew ? "" : "Qabul qildi: " + (c.accBy || "") + " · " + (c.accAt || ""),
     accept: function () { acc(); self.flash("Chaqiruv qabul qilindi · " + c.judge + " · " + c.num + " — sudyaga «operator shug'ullanmoqda» xabari yuborildi"); },
-    done: function () { opCallUpd(self, c.id, { st: "done", doneAt: now() }); self.flash("Chaqiruv yopildi · " + c.num + " — muammo hal qilindi, sudyaga xabar yuborildi"); },
+    done: function () { self.setState({ ocFix: { id: c.id, sel: [], other: false, note: "", err: "", dd: false } }); },
     room: function () { if (isNew) acc(); if (!c.num) { self.flash((c.where || "Kabinet") + " · " + c.judge + " bilan bog'laning — chaqiruv qabul qilindi"); return; } opOpenCase(self, c.num, true); },
     info: function () { if (c.num) opOpenCase(self, c.num, false); },
     hide: function () { var m = Object.assign({}, self.state.ocHide || {}); m[c.id] = true; self.setState({ ocHide: m }); } }; };
@@ -14490,7 +14504,8 @@ var shortN = function (n) { var w = String(n).split(/\s+/); return w[0] + " " + 
 var me0 = RN[role] || ["", "Foydalanuvchi"];
 var inCase = !!rw && isJ, keyNum = inCase ? rw.num : "";
 var mine = function (list) { return list.filter(function (x) { return x.st !== "done" && (inCase ? x.num === keyNum : (!x.num && x.src === role)); })[0]; };
-var J = { on: !isO && role !== "operator", dot: false, chip: false };
+var tbJ = inCase && s.smTabNum === keyNum ? s.smTab : "", inMajJ = inCase && s.caseOpen && s.openMode === "page" && (tbJ === "maj" || tbJ === "qat" || tbJ === "list");
+var J = { on: inCase && (inMajJ || s.smRoom === keyNum), dot: false, chip: false };
 if (J.on) {
   var c = mine(CL);
   J.dot = !!c; J.fabCls = "oc-jfab" + (c ? (c.st === "new" ? " wait" : " acc") : "");
@@ -14545,12 +14560,36 @@ var B = { on: false };
 if (isO && rw) { var cc = CL.filter(function (x) { return x.num && x.num === rw.num && x.st !== "done"; })[0];
   if (cc) { var v = opCallVM(self, s, cc); B = { on: true, cls: "oc-ban" + (cc.st === "new" ? "" : " acc"), ic: v.ic, t: cc.st === "new" ? "Sudya operatorni chaqirdi" : "Chaqiruv qabul qilingan", s: cc.by + " · " + cc.at + (cc.accAt ? " · qabul: " + cc.accAt : ""), canAcc: v.canAcc, canDone: v.canDone, accept: v.accept, done: v.done }; } }
 __out.occ = B;
+// --- operator: «Hal qilindi» — nima qilinganini qisqacha qayd etish
+var FX = s.ocFix, F = { on: false };
+if (isO && FX) { var fc = CL.filter(function (x) { return x.id === FX.id; })[0];
+  if (fc) {
+    var setF = function (o) { self.setState(function (p) { return p.ocFix ? { ocFix: Object.assign({}, p.ocFix, o, { err: "" }) } : null; }); };
+    var SEL = FX.sel || [], OPTS = OP_FIXES;
+    F = { on: true, sub: (fc.num || fc.where || "Kabinet") + " · " + fc.judge + (fc.num ? " · " + ((opRowX((s.lRows || []).filter(function (r) { return r.num === fc.num; })[0]) || {}).zal || "") : ""),
+      ddOpen: !!FX.dd, ddStr: FX.dd ? "true" : "false", ddCls: "oc-fdd" + (FX.dd ? " open" : "") + (FX.err && !SEL.length && !FX.other ? " err" : ""),
+      ddTog: function () { setF({ dd: !(self.state.ocFix || {}).dd }); }, ddClose: function () { setF({ dd: false }); },
+      none: !SEL.length && !FX.other, ph: "Bajarilgan ishlarni tanlang",
+      chips: SEL.map(function (v) { return { t: v, rm: function (e) { try { e.stopPropagation(); } catch (er) {} setF({ sel: ((self.state.ocFix || {}).sel || []).filter(function (x) { return x !== v; }) }); } }; }).concat(FX.other ? [{ t: "Boshqa", rm: function (e) { try { e.stopPropagation(); } catch (er) {} setF({ other: false }); } }] : []),
+      opts: OPTS.map(function (o) { var on = SEL.indexOf(o) >= 0; return { t: o, on: on ? "true" : "false", cls: "oc-fo" + (on ? " on" : ""), pick: function () { var cur = ((self.state.ocFix || {}).sel || []).slice(), i = cur.indexOf(o); if (i >= 0) cur.splice(i, 1); else cur.push(o); setF({ sel: cur }); } }; }),
+      oOn: FX.other ? "true" : "false", oCls: "oc-fo oc-fother" + (FX.other ? " on" : ""), oPick: function () { var nx = !(self.state.ocFix || {}).other; setF({ other: nx, dd: nx ? false : (self.state.ocFix || {}).dd }); if (nx) setTimeout(function () { try { document.getElementById("ocf-n").focus(); } catch (er) {} }, 60); },
+      other: !!FX.other, note: FX.note || "", setNote: function (e) { setF({ note: e.target.value }); },
+      err: FX.err || "", hasErr: !!FX.err, nSel: String(SEL.length + (FX.other ? 1 : 0)), hasN: SEL.length + (FX.other ? 1 : 0) > 0,
+      close: function () { self.setState({ ocFix: null }); }, key: function (e) { if (e.key === "Escape") { e.stopPropagation(); if ((self.state.ocFix || {}).dd) setF({ dd: false }); else self.setState({ ocFix: null }); } },
+      save: function () { var x = self.state.ocFix || {}, sel = x.sel || [], nt = String(x.note || "").trim();
+        if (!sel.length && !x.other) { self.setState({ ocFix: Object.assign({}, x, { err: "Kamida bitta bajarilgan ishni tanlang" }) }); return; }
+        if (x.other && !nt) { self.setState({ ocFix: Object.assign({}, x, { err: "«Boshqa» uchun nima qilinganini qisqacha yozing" }) }); return; }
+        var fix = sel.concat(x.other ? [nt] : []);
+        opCallUpd(self, fc.id, { st: "done", doneAt: now(), fix: fix }); self.setState({ ocFix: null });
+        self.flash("Chaqiruv yopildi · " + (fc.num || fc.where) + " — " + fix.join(", ").toLowerCase() + " · sudyaga xabar yuborildi"); } };
+  } }
+__out.ocf = F;
 // --- operator: bildirishnomalar (qo'ng'iroqcha) — sudyalardan chaqiruvlar
 if (isO) { var RD = s.ocRead || {};
   var NL = CL.map(function (c) { var rw2 = opRowX((s.lRows || []).filter(function (r) { return r.num === c.num; })[0]) || {}, un = c.st === "new" && !RD[c.id], v = opCallVM(self, s, c);
     return { id: c.id, isCall: true, isCal: false, notCal: false, unread: un, cls: un ? "nitem unread" : "nitem", caseNum: c.num || (c.where || "Kabinet"), goT: !c.num ? "bog'lanish →" : c.st === "done" ? "ochish →" : "majlis zaliga →",
       title: c.st === "new" ? "Sudya operatorni chaqirdi" : c.st === "acc" ? "Chaqiruv qabul qilingan" : "Chaqiruv yopildi", time: c.st === "done" && c.doneAt ? c.doneAt : c.at,
-      text: c.judge + " · " + (c.num ? (rw2.zal || "Zal № 2") : (c.where || "Kabinet")) + " · " + c.by + (c.st === "acc" && c.accBy ? " · qabul qildi: " + c.accBy : ""),
+      text: c.judge + " · " + (c.num ? (rw2.zal || "Zal № 2") : (c.where || "Kabinet")) + " · " + c.by + (c.st === "acc" && c.accBy ? " · qabul qildi: " + c.accBy : "") + (c.st === "done" && c.fix && c.fix.length ? " · hal qilindi: " + c.fix.join(", ") : ""),
       open: function () { var r0 = Object.assign({}, self.state.ocRead || {}), h0 = Object.assign({}, self.state.ocHide || {}); r0[c.id] = true; h0[c.id] = true; self.setState({ lBell: false, ocRead: r0, ocHide: h0 }); if (c.st === "done") { if (c.num) opOpenCase(self, c.num, false); } else v.room(); } }; });
   var nU = NL.filter(function (n) { return n.unread; }).length;
   __out.lNotifs = NL; __out.unreadCount = nU; __out.hasUnread = nU > 0;
