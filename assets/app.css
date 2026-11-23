@@ -9706,3 +9706,4 @@ html:has(.smr-stage.fs),body:has(.smr-stage.fs),.smr:has(.smr-stage.fs){overflow
 .sd-lt .l-row{grid-template-columns:52px minmax(200px,1.5fr) minmax(150px,1fr) minmax(0,1.2fr) 130px 110px 210px 56px !important}
 .sd-lt .uzq-st{margin:0 !important}
 @media (max-width:1400px){.sd-lt .l-row{grid-template-columns:48px minmax(180px,1.5fr) minmax(140px,1fr) minmax(0,1.1fr) 104px 200px 52px !important}}
+.ihmenu .ihsep{display:block;height:1px;margin:4px 6px;background:#eef1f5}
