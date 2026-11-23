@@ -9390,3 +9390,14 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .smr-vbtn{white-space:nowrap}
 .smr-ch2 small.muted{margin-left:auto;font-size:12px}
 .smr-aitab .smr-ait span{border:0 !important;height:auto !important;color:inherit !important;font-weight:inherit !important;gap:0}
+
+.smr-over{gap:8px}
+.smr-ovic{width:68px;height:68px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;color:#e2e8f0;margin-bottom:6px}
+.smr-ovic svg{width:30px;height:30px}
+.smr-ovt{font-size:24px;color:#fff;font-weight:700}
+.smr-ovm{font-size:14.5px;color:#94a3b8}
+.smr-ovs{margin:6px 0 0;font-size:15px;color:#e2e8f0}
+.smr-vidok{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;color:#cbd5e1}
+.smr-aib.ok{background:#ecfdf5;color:#047857}
+.smr-docs0{padding:0}
+.smr-aib{white-space:nowrap}
