@@ -9483,3 +9483,10 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .smr-scr .smr-scrn{flex:1}
 .smr-scra .btn{gap:6px}
 .smr-scra .btn svg{width:14px;height:14px}
+/* Ish hujjatlari + hujjat yuborish birlashtirildi */
+.smr-ch2 .smr-up{margin-left:auto;gap:6px}.smr-ch2 .smr-up svg{width:14px;height:14px}
+.qv.smr-sdlg{max-width:640px}
+.smr-sdlg .smr-rcp{grid-template-columns:repeat(2,minmax(0,1fr))}
+.smr-sdlg .smr-iz{margin:0}
+.smr-docw{gap:2px}
+@media (max-width:640px){.smr-sdlg .smr-rcp{grid-template-columns:1fr}}
