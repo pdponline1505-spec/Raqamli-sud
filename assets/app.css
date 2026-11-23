@@ -9207,3 +9207,4 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 #smajlis .smj-stopn{margin:0 20px}
 .smj-subrow{display:flex;align-items:center;gap:10px}
 .smj-subrow .seg-tabs{flex:none;width:auto}
+#smajlis .smj-ums{padding:0}
