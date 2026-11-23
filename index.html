@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=5c4e34dea91e">
+<link rel="stylesheet" href="assets/app.css?v=8fddee196729">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -6391,6 +6391,8 @@ this.dxStopTimers();
 
 openRoom(num) {
 var self = this; clearInterval(this._smrIv);
+var pos = function () { try { var m = document.querySelector(".l-main"), t = document.querySelector(".l-top"), r = document.documentElement.style; if (m) r.setProperty("--smr-l", Math.max(0, m.getBoundingClientRect().left) + "px"); if (t) r.setProperty("--smr-t", Math.max(0, t.getBoundingClientRect().bottom) + "px"); } catch (e) {} };
+pos(); setTimeout(pos, 60); if (!this._smrRz) { this._smrRz = true; window.addEventListener("resize", pos); }
 this.setState({ smRoom: num, smR: {} });
 var LINES = function (st) { var dv = ((st.tmDv || [])[0] || {}).name || "Da'vogar", jv = ((st.tmJv || [])[0] || {}).name || "Javobgar", sd = "Raislik qiluvchi";
   return [[sd, "j", "Sud majlisi ochiq deb e'lon qilinadi. " + num + "-sonli ish ko'rib chiqiladi."], ["Sudya yordamchisi", "y", "Ishtirokchilarning kelganligi tekshirildi: da'vogar va javobgar hozir, ularning shaxsi tasdiqlandi."], [sd, "j", "Taraflarga protsessual huquq va majburiyatlari tushuntirildi. Sudlov tarkibiga raddiya bildirasizlarmi?"], [dv, "d", "Raddiya yo'q."], [jv, "v", "Raddiya yo'q."], [sd, "j", "Da'vogar, da'vo talablaringizni bayon qiling."], [dv, "d", "Shartnoma bo'yicha 13 750 000 so'm asosiy qarz va penyani undirishni so'rayman. To'lov topshiriqnomalari ish materiallarida mavjud."], [sd, "j", "Javobgar, da'vo talablariga munosabatingiz?"], [jv, "v", "Asosiy qarzni tan olaman, lekin penya miqdorini kamaytirishni va to'lov muddatini bir oyga uzaytirishni so'rayman."], [sd, "j", "Taraflarning tushuntirishlari bayonnomaga kiritildi. Dalillarni tekshirishga o'tamiz."]]; };
@@ -6460,6 +6462,7 @@ this.setState({ nav: id });
 }
 
 scrollTo(id) {
+if (this.state.smRoom) { clearInterval(this._smrIv); this.setState({ smRoom: "" }); }
 if (this.state.smTab && this.state.smTab !== "ins" && this.state.caseOpen) { var me = this; this.setState({ smTab: "ins" }); setTimeout(function () { me.scrollTo(id); }, 80); return; }
 this.goTo(id);
 try { var el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) {}
@@ -12747,7 +12750,7 @@ if (RO) {
   SR.err = R0.err || "";
   SR.send = function () { var r = self.state.smR || {}; if (!r.file) { setR({ err: "Yuboriladigan hujjatni tanlang" }); return; } var ks = Object.keys(r.sel || {}).filter(function (k) { return r.sel[k]; }); if (!ks.length) { setR({ err: "Kamida bitta qabul qiluvchini tanlang" }); return; }
     var m = Object.assign({}, self.state.smSent || {}); m[num] = (m[num] || []).concat([{ name: r.file.name, size: r.file.size, ext: r.file.ext, to: ks.length + " kishi", t: now() }]);
-    self.setState({ smSent: m, smR: Object.assign({}, r, { file: null, sel: {}, izoh: "", err: "" }) }); useDoc({ name: r.file.name.replace(/_/g, " ").replace(/\.(pdf|docx)$/i, ""), by: "Siz", act: "uzatildi", size: r.file.size, ext: r.file.ext }); self.flash("«" + r.file.name + "» " + ks.length + " ta ishtirokchiga yuborildi · bayonnomaga yozildi"); };
+    var nfi = r.fi || 0; self.setState({ smSent: m, smR: Object.assign({}, r, { file: FILES[nfi % FILES.length], fi: nfi + 1, sel: {}, izoh: "", err: "" }) }); useDoc({ name: r.file.name.replace(/_/g, " ").replace(/\.(pdf|docx)$/i, ""), by: "Siz", act: "uzatildi", size: r.file.size, ext: r.file.ext }); self.flash("«" + r.file.name + "» " + ks.length + " ta ishtirokchiga yuborildi · bayonnomaga yozildi"); };
   // vks
   var VK = [["Konferensiya raqami", "4" + num.replace(/\D/g, "").slice(-6)], ["Mehmon paroli", "S" + num.replace(/\D/g, "").slice(-4) + "#"]];
   SR.vksSub = live ? "Ulanish ochiq" : "Majlis boshlanganda ochiladi";
@@ -12761,7 +12764,7 @@ if (RO) {
   var SCR = [["advokat", "Advokat stoli"], ["ichkitablo", "Zal ichki tablosi"], ["display1", "Sudya o'ng tomoni"], ["display2", "Taraflar qatori"], ["display3", "Kirish eshigi"]];
   var CS = R0.cast || {}, SSEL = R0.ssel || {};
   var nCast = SCR.filter(function (d) { return CS[d[0]]; }).length;
-  SR.btabs = [["scr", "Ekranlar", String(nCast ? nCast + "/" + SCR.length : SCR.length)], ["doc", "Hujjat yuborish", ""], ["qat", "Qatnashchilar", String(P.length)]].map(function (t) { var on = t[0] === BT; return { label: t[1], n: t[2], hasN: !!t[2], sel: on ? "true" : "false", cls: "smr-btab" + (on ? " on" : ""), pick: function () { setR({ bt: t[0] }); } }; });
+  SR.btabs = [["scr", "Ekranlar", String(nCast ? nCast + "/" + SCR.length : SCR.length)], ["doc", "Hujjat yuborish", ""], ["qat", "Qatnashchilar", String(P.length)]].map(function (t) { var on = t[0] === BT; return { label: t[1], n: t[2], hasN: !!t[2], sel: on ? "true" : "false", cls: "smr-btab" + (on ? " on" : ""), pick: function () { var r = self.state.smR || {}, o = { bt: t[0] }; if (t[0] === "doc" && !r.file) { var n = r.fi || 0; o.file = FILES[n % FILES.length]; o.fi = n + 1; } setR(o); } }; });
   SR.bScr = BT === "scr"; SR.bDoc = BT === "doc"; SR.bQat = BT === "qat";
   SR.scrs = SCR.map(function (d) { var on = !!SSEL[d[0]], c = CS[d[0]]; return { name: d[0], place: d[1], on: on ? "true" : "false", busy: !!c, idle: !c, what: c || "", cls: "smr-scr" + (on ? " on" : "") + (c ? " busy" : ""), tog: function () { var m = Object.assign({}, (self.state.smR || {}).ssel || {}); m[d[0]] = !m[d[0]]; setR({ ssel: m }); }, clear: function () { var m = Object.assign({}, (self.state.smR || {}).cast || {}); delete m[d[0]]; setR({ cast: m }); self.flash(d[0] + " ekranida uzatish to'xtatildi"); } }; });
   var castTo = function (what) { var r = self.state.smR || {}, sel = Object.keys(r.ssel || {}).filter(function (k) { return r.ssel[k]; }); if (!sel.length) { setR({ bt: "scr" }); self.flash("Avval «Ekranlar» bo'limidan ekranni tanlang"); return; } var m = Object.assign({}, r.cast || {}); sel.forEach(function (k) { m[k] = what; }); setR({ cast: m }); if (what !== "Bayonnoma" && what !== "Ish ma'lumotlari") useDoc({ name: what, by: "Siz", act: "ekranga chiqarildi", size: "402 KB", ext: "PDF" }); self.flash("«" + what + "» " + sel.join(", ") + " ekraniga uzatildi"); };

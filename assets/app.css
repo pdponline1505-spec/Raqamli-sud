@@ -9401,3 +9401,8 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .smr-aib.ok{background:#ecfdf5;color:#047857}
 .smr-docs0{padding:0}
 .smr-aib{white-space:nowrap}
+/* Majlis zali: asosiy yon menyu va sarlavha ko'rinib turadi */
+.smr{inset:auto;top:var(--smr-t,0px);left:var(--smr-l,0px);right:0;bottom:0;z-index:25;padding:24px 28px 40px}
+.smr-grid,.smr-hd{max-width:none}
+@media (max-width:1400px){.smr-grid{grid-template-columns:minmax(0,1fr) 380px}}
+.smr{z-index:45}
