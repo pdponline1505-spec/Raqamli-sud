@@ -9694,3 +9694,8 @@ html:has(.smr-stage.fs),body:has(.smr-stage.fs),.smr:has(.smr-stage.fs){overflow
 .smj-bqd .smr-dt{flex:1}
 .smj-bqd .smr-link{margin-left:auto;font-size:13.5px}
 .smj-bqq{font-size:15px;font-weight:600;color:#0f172a}
+/* tab sonlari yana dumaloq ichida */
+.seg-tabs .l-tabn:not(.smj-tn){background:#eef1f5 !important;color:#475569 !important;min-width:22px !important;height:20px !important;padding:0 7px !important;border-radius:999px !important;display:inline-grid !important;place-items:center;font-size:12px;font-weight:600 !important}
+.seg-tabs button.on .l-tabn:not(.smj-tn){background:#d3e2fd !important;color:#1d4ed8 !important}
+.smr-dfn{background:#eef1f5;color:#475569;min-width:18px;padding:0 6px;font-weight:600}
+.smr-dfc.on .smr-dfn{background:#d3e2fd;color:#1d4ed8}
