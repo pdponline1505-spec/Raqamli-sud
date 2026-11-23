@@ -12738,7 +12738,7 @@ SM.room = function () { self.openRoom(num); };
   SM.banCls = "smj-ban" + (live ? " live" : diff > 0 ? " soon" : " due");
   SM.banT = live ? "Sud majlisi davom etmoqda · " + (J.at || VQ) + " dan" : "Bugun sud majlisi · " + VQ + " · " + ZAL;
   SM.banS = live ? "Bayonnoma yozilmoqda · ishtirokchilar zalda" : diff > 0 ? "Majlisni boshlash mumkin · rejalashtirilgan vaqtgacha " + (diff >= 60 ? Math.floor(diff / 60) + " soat " + (diff % 60) + " daqiqa" : diff + " daqiqa") + " qoldi" : "Majlisni boshlash mumkin · majlis vaqti keldi";
-  SM.tabs = SM.tabs.map(function (t) { return t.label === "Sud majlisi" && (SM.ban || live) ? Object.assign({}, t, { n: live ? "Jonli" : "Bugun " + VQ, hasN: true, nCls: "l-tabn smj-tn" + (live ? " live" : "") }) : t; }); })();
+  SM.tabs = SM.tabs.map(function (t) { return t.label === "Sud majlisi" && (SM.ban || live) ? Object.assign({}, t, { n: live ? "Jonli" : VQ, hasN: true, nCls: "l-tabn smj-tn" + (live ? " live" : "") }) : t; }); })();
 if (RO) {
   var SR = {}, fmtD = function (iso) { var d = new Date(String(iso).slice(0, 10) + "T00:00:00"), M = ["yanvar", "fevral", "mart", "aprel", "may", "iyun", "iyul", "avgust", "sentyabr", "oktyabr", "noyabr", "dekabr"], W = ["yakshanba", "dushanba", "seshanba", "chorshanba", "payshanba", "juma", "shanba"]; return d.getDate() + "-" + M[d.getMonth()] + ", " + W[d.getDay()]; };
   var R0 = s.smR || {}, setR = function (o) { self.setState(function (p) { return { smR: Object.assign({}, p.smR || {}, o) }; }); };
