@@ -10010,3 +10010,18 @@ html:has(.smr-stage.fs),body:has(.smr-stage.fs),.smr:has(.smr-stage.fs){overflow
 .oc-top .oc-jchip{height:40px}
 @media (max-width:1365px){.oc-top .oc-jchip{display:none}}
 @media (max-width:1799px){.oc-top .oc-jchip{display:none}}
+.op-td.oc-cc small{color:#dc2626;font-weight:600}
+.op-td.oc-cca small{color:#c2410c;font-weight:600}
+.oc-list .op-tr.oc-rcall{background:#fff7f7}
+.oc-list .op-tr.click .op-ct b{white-space:normal}
+/* operator «Ishlar» — sudya ishlar ro'yxati uslubi */
+.op-c.oc-list{padding:0;gap:0;overflow:hidden;border-color:#e4e4e7;border-radius:14px}
+.oc-list .op-tblw{margin:0}
+.oc-list .op-tr{border-radius:0;padding:14px 16px;border-top:1px solid #eef1f5;min-height:64px}
+.oc-list .op-th{background:#f8fafc;border-top:0;padding:12px 16px;min-height:0;font-size:13px;font-weight:500;color:#334155;border-bottom:1px solid #e9edf2}
+.oc-list .op-tr.op-th + .op-tr{border-top:0}
+.oc-list .op-tr.click:hover{background:#f8fbff}
+.oc-list .op-td{font-size:14px;color:#0f172a}
+.oc-list .op-td.b .op-ct b{font-weight:600}
+.oc-list .op-ct b{font-weight:500}
+.oc-list .op-empty{padding:40px 16px}

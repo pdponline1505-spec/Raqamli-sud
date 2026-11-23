@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=6428ff7de23a">
+<link rel="stylesheet" href="assets/app.css?v=b6b30fdbe71f">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -14177,29 +14177,19 @@ if (PG === "ish") {
     return { r: r, J: J, k: k, d: d, vq: r.majVaqt || "10:00", today: d === tdI, judge: opJudge(r.num), zal: r.zal || "Zal № 2", call: c, sk: d + " " + (r.majVaqt || "10:00") }; });
   var IN = { on: IR.filter(function (x) { return x.k === "on"; }), wait: IR.filter(function (x) { return x.k === "wait"; }), done: IR.filter(function (x) { return x.k === "done"; }) };
   var it = tabs([["on", "Boshlangan", IN.on.length], ["wait", "Kutilmoqda", IN.wait.length], ["done", "Tugatilgan", IN.done.length]], "on");
-  // chaqiruvlar paneli: qaysi sudya, qaysi majlis, qaysi zal
-  OP.calls = CALLS.slice().sort(function (a, b) { return (a.st === "new" ? 0 : 1) - (b.st === "new" ? 0 : 1) || (a.at < b.at ? 1 : -1); }).map(function (c) { return opCallVM(self, s, c); });
-  OP.hasCalls = OP.calls.length > 0; OP.callN = String(OP.calls.length); OP.callS = callNew ? callNew + " tasi javob kutmoqda" : "Barchasi qabul qilingan · bartaraf etilmoqda";
-  var parts = function (r) { return ((r.ariz || [])[0] || "—") + " — " + ((r.jav || [])[0] || "—"); };
+  // sudyaning ishlar ro'yxati uslubidagi jadval
+  var LST = IN[it].slice().sort(function (a, b) { return it === "done" ? (a.sk < b.sk ? 1 : -1) : (a.sk < b.sk ? -1 : 1); });
   var mins = function (at) { var p = String(at || "").split(":"), d = opNowM() - (+p[0] * 60 + +p[1]); return d < 1 ? "hozirgina" : d < 60 ? d + " daq" : Math.floor(d / 60) + " soat " + (d % 60) + " daq"; };
-  if (it === "on") {
-    OP.hasMon = true;
-    OP.mon = IN.on.sort(function (a, b) { return (a.call ? (a.call.st === "new" ? 0 : 1) : 2) - (b.call ? (b.call.st === "new" ? 0 : 1) : 2) || (a.sk < b.sk ? -1 : 1); }).map(function (x) { var c = x.call, cv = c ? opCallVM(self, s, c) : null, jn = x.judge;
-      return { num: x.r.num, parts: parts(x.r), judge: jn, jIni: jn.split(/\s+/).slice(0, 2).map(function (w) { return w.charAt(0); }).join(""), jPh: portrait(OP_JFULL[jn] || jn, /a$/.test(jn.split(" ")[0]) ? "f" : "m"), zal: x.zal, at: (x.J.at || x.vq) + " dan · " + mins(x.J.at || x.vq), plan: "Reja: " + x.vq,
-        cls: "oc-mt" + (c ? (c.st === "new" ? " alarm" : " acc") : ""), hasCall: !!c, callT: c ? c.type + (c.note ? " — " + c.note : "") : "", callM: c ? (c.st === "new" ? "Sudya chaqirdi · " + cv.ago : "Qabul qilingan · " + (c.accBy || "")) : "", callIc: c ? cv.ic : "", callPc: c ? cv.pc : "", callP: c ? cv.p : "",
-        canAcc: !!c && c.st === "new", accept: c ? cv.accept : function () {}, canDone: !!c && c.st !== "new", done: c ? cv.done : function () {},
-        okT: "Texnik muammo yo'q", noCall: !c,
-        info: function () { opOpenCase(self, x.r.num, false); }, room: function () { if (c && c.st === "new") cv.accept(); opOpenCase(self, x.r.num, true); } }; });
-    OP.monEmpty = !OP.mon.length; OP.monN = String(OP.mon.length);
-  } else {
-    var LST = IN[it].slice().sort(function (a, b) { return it === "wait" ? (a.sk < b.sk ? -1 : 1) : (a.sk < b.sk ? 1 : -1); });
-    OP.cards.push(card({ span: 12, t: it === "wait" ? "Boshlanishi kutilayotgan majlislar" : "Tugatilgan majlislar", s: it === "wait" ? "Bugungi va keyingi kunlardagi majlislar · vaqt bo'yicha" : "Yakunlangan va to'xtatilgan majlislar", ic: it === "wait" ? IC.clock : IC.check, isTbl: true,
-      cols: "minmax(220px,1.6fr) minmax(150px,1fr) 150px 110px 170px 96px", hd: ["Ish raqami / taraflar", "Sudya", "Sana / vaqt", "Zal", "Holat", ""],
-      rows: LST.map(function (x) { var pl = it === "wait" ? (x.today ? ["Bugun · " + x.vq, "info"] : ["Rejada", "mut"]) : (x.J.st === "stop" ? ["To'xtatilgan", "w"] : ["Yakunlangan", "ok"]);
-        return row([cell(x.r.num, parts(x.r), { b: true }), cell(x.judge), cell(uzD(x.d), it === "done" && x.J.at ? x.J.at + "–" + (x.J.end || "") : x.vq, { mono: true }), cell(x.zal), cell(pl[0], "", { p: pl[1] })],
-          { go: function () { opOpenCase(self, x.r.num, false); }, acts: [act(IC.eye, "Majlis ma'lumotlari", function () { opOpenCase(self, x.r.num, false); }), act(IC.vks, "Majlis zaliga o'tish", function () { opOpenCase(self, x.r.num, true); })] }); }),
-      eT: it === "wait" ? "Kutilayotgan majlis yo'q" : "Tugatilgan majlis yo'q", eS: "Majlislar sudyalar jadvaliga ko'ra shu yerda ko'rinadi" }));
-  }
+  var TT = { on: ["Boshlangan majlislar", "Hozir davom etayotgan sud majlislari · ishni bosib majlis ma'lumotlarini oching"], wait: ["Kutilayotgan majlislar", "Bugungi va keyingi kunlardagi majlislar · vaqt bo'yicha"], done: ["Tugatilgan majlislar", "Yakunlangan va to'xtatilgan majlislar"] };
+  OP.cards.push(card({ span: 12, t: TT[it][0], s: TT[it][1], ic: it === "on" ? IC.vks : it === "wait" ? IC.clock : IC.check, isTbl: true, xcls: "oc-list", hasHd: false,
+    cols: "minmax(170px,1.1fr) minmax(160px,1fr) minmax(160px,1fr) minmax(190px,1.3fr) 140px 150px 170px 76px", hd: ["Ish raqami", "Arizachi", "Javobgar", "Ish turkumi", "Sudya", "Majlis", "Holat", ""],
+    rows: LST.map(function (x) { var r = x.r, c = x.call, jv = r.jav || [];
+      var pl = it === "on" ? ["Davom etmoqda · " + mins(x.J.at || x.vq), "no"] : it === "wait" ? (x.today ? ["Bugun · " + x.vq, "info"] : ["Rejada", "mut"]) : (x.J.st === "stop" ? ["To'xtatilgan", "w"] : ["Yakunlangan", "ok"]);
+      var sub = c ? (c.st === "new" ? "Chaqiruv · " : "Qabul qilingan · ") + c.type : "";
+      return row([cell(r.num, sub, { b: true, cls: c ? (c.st === "new" ? "oc-cc" : "oc-cca") : "" }), cell((r.ariz || ["—"])[0]), cell(jv[0] || "—", jv.length > 1 ? jv.length + " ta" : ""), cell(r.sud || "—"), cell(x.judge),
+        cell(uzD(x.d), (it === "done" && x.J.at ? x.J.at + "–" + (x.J.end || "") : x.vq) + " · " + x.zal, { mono: true }), cell(pl[0], "", { p: pl[1] })],
+        { cls: c && c.st === "new" ? "oc-rcall" : "", go: function () { opOpenCase(self, r.num, false); }, acts: [act(IC.vks, "Majlis zaliga o'tish", function () { opOpenCase(self, r.num, true); })] }); }),
+    eT: it === "on" ? "Hozir boshlangan majlis yo'q" : it === "wait" ? "Kutilayotgan majlis yo'q" : "Tugatilgan majlis yo'q", eS: it === "on" ? "Sudya majlisni boshlaganda u shu yerda ko'rinadi" : "Majlislar sudyalar jadvaliga ko'ra shu yerda ko'rinadi" }));
 }
 
 // ---------- 1. BOSH SAHIFA (sudya bosh sahifasi uslubida) ----------
@@ -14520,8 +14510,7 @@ __out.ocm = MM;
 var HID = s.ocHide || {}, T = { on: false, list: [] };
 if (isO) {
   var curNum = s.caseOpen ? s.caseNum : "";
-  var onIsh = !s.caseOpen && s.page !== "ds" && ((s.op || {}).pg === "ish");
-  T.list = onIsh ? [] : CL.filter(function (c) { return c.st === "new" && !HID[c.id] && curNum !== c.num; }).slice(0, 3).map(function (c) { return opCallVM(self, s, c); });
+  T.list = CL.filter(function (c) { return c.st === "new" && !HID[c.id] && curNum !== c.num; }).slice(0, 3).map(function (c) { return opCallVM(self, s, c); });
   T.on = T.list.length > 0;
 }
 __out.oct = T;
