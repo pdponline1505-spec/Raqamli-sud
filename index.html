@@ -6392,7 +6392,7 @@ this.dxStopTimers();
 openRoom(num) {
 var self = this; clearInterval(this._smrIv);
 var pos = function () { try { var m = document.querySelector(".l-main"), t = document.querySelector(".l-top"), r = document.documentElement.style; if (m) r.setProperty("--smr-l", Math.max(0, m.getBoundingClientRect().left) + "px"); if (t) r.setProperty("--smr-t", Math.max(0, t.getBoundingClientRect().bottom) + "px"); } catch (e) {} };
-pos(); setTimeout(pos, 60); if (!this._smrRz) { this._smrRz = true; window.addEventListener("resize", pos); }
+pos(); setTimeout(pos, 60); setTimeout(pos, 260); setTimeout(pos, 520); if (!this._smrRz) { this._smrRz = true; window.addEventListener("resize", pos); }
 this.setState({ smRoom: num, smR: {} });
 var LINES = function (st) { var dv = ((st.tmDv || [])[0] || {}).name || "Da'vogar", jv = ((st.tmJv || [])[0] || {}).name || "Javobgar", sd = "Raislik qiluvchi";
   return [[sd, "j", "Sud majlisi ochiq deb e'lon qilinadi. " + num + "-sonli ish ko'rib chiqiladi."], ["Sudya yordamchisi", "y", "Ishtirokchilarning kelganligi tekshirildi: da'vogar va javobgar hozir, ularning shaxsi tasdiqlandi."], [sd, "j", "Taraflarga protsessual huquq va majburiyatlari tushuntirildi. Sudlov tarkibiga raddiya bildirasizlarmi?"], [dv, "d", "Raddiya yo'q."], [jv, "v", "Raddiya yo'q."], [sd, "j", "Da'vogar, da'vo talablaringizni bayon qiling."], [dv, "d", "Shartnoma bo'yicha 13 750 000 so'm asosiy qarz va penyani undirishni so'rayman. To'lov topshiriqnomalari ish materiallarida mavjud."], [sd, "j", "Javobgar, da'vo talablariga munosabatingiz?"], [jv, "v", "Asosiy qarzni tan olaman, lekin penya miqdorini kamaytirishni va to'lov muddatini bir oyga uzaytirishni so'rayman."], [sd, "j", "Taraflarning tushuntirishlari bayonnomaga kiritildi. Dalillarni tekshirishga o'tamiz."]]; };
@@ -12680,7 +12680,7 @@ SM.nfZalDd = dd("smnfzal", ZALS.map(function (x) { return { v: x, l: x }; }), NF
 SM.nfClose = function () { self.setState({ smNf: null }); };
 // ---- Sud majlisi zali (sudya kabineti) ----
 var RO = s.smRoom === num;
-__out.smrOpen = RO;
+__out.smrOpen = RO; if (RO) __out.appCls = (__out.appCls || "") + " nosub smr-on";
 SM.room = function () { self.openRoom(num); };
 if (RO) {
   var SR = {}, fmtD = function (iso) { var d = new Date(String(iso).slice(0, 10) + "T00:00:00"), M = ["yanvar", "fevral", "mart", "aprel", "may", "iyun", "iyul", "avgust", "sentyabr", "oktyabr", "noyabr", "dekabr"], W = ["yakshanba", "dushanba", "seshanba", "chorshanba", "payshanba", "juma", "shanba"]; return d.getDate() + "-" + M[d.getMonth()] + ", " + W[d.getDay()]; };
