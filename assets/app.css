@@ -9476,3 +9476,10 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .qv.smr-cdlg>.qv-h,.qv.smr-cdlg>.qv-f{flex:none}
 .qv.smr-cdlg>.qv-b{flex:1 1 auto;min-height:0;overflow-y:auto !important;overscroll-behavior:contain}
 @media (max-width:640px){.qv.smr-cdlg{max-height:calc(100dvh - 24px)}}
+/* ekran kartalari: bo'sh va efirdagi holat bir xil tuzilishda */
+.smr-scr:not(.busy) .smr-scrv{background:linear-gradient(160deg,#1f2a3d,#0b1220);border:0;color:#64748b}
+.smr-scr:not(.busy) .smr-scrv:hover{background:linear-gradient(160deg,#1f2a3d,#0b1220);color:#94a3b8;box-shadow:0 0 0 2px #3073f1}
+.smr-scr:not(.busy) .smr-idle{color:inherit;font-weight:500}
+.smr-scr .smr-scrn{flex:1}
+.smr-scra .btn{gap:6px}
+.smr-scra .btn svg{width:14px;height:14px}
