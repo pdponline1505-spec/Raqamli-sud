@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=085181731311">
+<link rel="stylesheet" href="assets/app.css?v=c922c38b2581">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -335,6 +335,100 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <sc-if value="{{isDs}}" hint-placeholder-val="{{ false }}"><div class="ds-host" id="ds-host"></div></sc-if>
 <sc-if value="{{isOp}}" hint-placeholder-val="{{ false }}">
 <div class="op">
+<sc-if value="{{op.isHome}}" hint-placeholder-val="{{ false }}">
+<div class="d2">
+<div class="d2-head">
+<div class="kv" style="gap: 6px; min-width: 0"><div class="d2-h1" role="heading" aria-level="1">{{opd.hello}}</div><p class="d2-sub">{{opd.sub}}</p></div>
+<div class="d2-acts"><button type="button" class="d2-btn" onClick="{{opd.goTkt}}">Texnik murojaatlar<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"></path></svg></button><button type="button" class="d2-btn" onClick="{{opd.goRep}}">Hisobotlar<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg></button><button type="button" class="d2-btn pri" onClick="{{opd.goToday}}">Bugungi majlislar<span class="d2-bn">{{opd.todayN}}</span><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg></button></div>
+</div>
+<div class="d2-stats">
+<sc-for list="{{opd.kpis}}" as="k" hint-placeholder-count="4"><button type="button" class="{{k.cls}}" onClick="{{k.go}}" aria-label="{{k.title}}: {{k.n}} ta. {{k.chip}}"><span class="d2-kt"><b>{{k.title}}</b><span class="d2-ka" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></span><span class="d2-kv"><b class="d2-kn db-cnt" style="--to: {{k.n}}"><span>{{k.n}}</span></b><span class="{{k.chipCls}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="{{k.chipIc}}"></path></svg>{{k.chip}}</span></span><span class="d2-kf">{{k.foot}}</span><sc-if value="{{k.spark}}" hint-placeholder-val="{{ false }}"><svg class="d2-ksp" viewBox="0 0 120 48" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="d2spg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#3073f1" stop-opacity=".28"></stop><stop offset="1" stop-color="#3073f1" stop-opacity="0"></stop></linearGradient></defs><path d="{{opd.spArea}}" fill="url(#d2spg)"></path><path d="{{opd.spLine}}" class="d2-ksl" fill="none" stroke="#3073f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path></svg></sc-if></button></sc-for>
+</div>
+
+<section class="d2-card d2-chart" aria-labelledby="opd2-ct">
+<div class="d2-ch"><b id="opd2-ct">VKS sessiyalari</b><div class="d2-ctl"><button type="button" class="d2-sel" onClick="{{opd.chZalGo}}">{{opd.chZal}}<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button><button type="button" class="d2-sel" onClick="{{opd.soon}}">Oxirgi 7 kun<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button></div></div>
+<div class="d2-plotw">
+<div class="d2-yax" aria-hidden="true"><sc-for list="{{opd.yTicks}}" as="y" hint-placeholder-count="4"><span style="top: {{y.top}}">{{y.v}}</span></sc-for></div>
+<div class="d2-plot" role="img" aria-label="{{opd.aria}}">
+<svg class="d2-svg" viewBox="0 0 600 180" preserveAspectRatio="none" aria-hidden="true">
+<defs><pattern id="d2hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="#eff6ff"></rect><line x1="0" y1="0" x2="0" y2="7" stroke="#e4ebf6" stroke-width="3"></line></pattern><linearGradient id="d2lg" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#3073f1"></stop><stop offset="1" stop-color="#3073f1"></stop></linearGradient></defs>
+<sc-for list="{{opd.gridY}}" as="g" hint-placeholder-count="4"><line x1="0" x2="600" y1="{{g}}" y2="{{g}}" class="d2-grid" vector-effect="non-scaling-stroke"></line></sc-for>
+<path d="{{opd.band}}" fill="url(#d2hatch)" class="d2-band"></path>
+<polyline points="{{opd.up}}" class="d2-edge" vector-effect="non-scaling-stroke"></polyline>
+<polyline points="{{opd.lo}}" class="d2-edge" vector-effect="non-scaling-stroke"></polyline>
+<path d="{{opd.line}}" class="d2-line" vector-effect="non-scaling-stroke"></path>
+</svg>
+<sc-for list="{{opd.pts}}" as="p" hint-placeholder-count="7"><span class="{{p.cls}}" style="left: {{p.x}}; --y: {{p.y}}; --u: {{p.u}}; --l: {{p.l}}" tabindex="0" aria-label="{{p.date}}: {{p.n}} ta sessiya"><i class="d2-eu"></i><i class="d2-el"></i><i class="d2-dot"></i><span class="d2-tip"><small>{{p.date}}</small><b>{{p.n}} ta sessiya</b></span></span></sc-for>
+</div>
+</div>
+<div class="d2-xax" aria-hidden="true"><sc-for list="{{opd.pts}}" as="p" hint-placeholder-count="7"><span style="left: {{p.x}}">{{p.wd}}</span></sc-for></div>
+<div class="d2-cf"><span class="d2-avg">7 kunlik o'rtacha <b>{{opd.avg}}</b></span><span class="d2-leg"><span><i class="lb"></i>VKS sessiyalari</span><span><i class="lh"></i>Oylik oraliq</span></span></div>
+</section>
+
+<section class="d2-card d2-gauge" aria-labelledby="opd2-gt">
+<div class="d2-ch"><b id="opd2-gt">Keyingi majlis tayyorligi</b><button type="button" class="ib d2-more" aria-label="Majlisni ochish" onClick="{{opd.gOpen}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></button></div>
+<small class="d2-gs">{{opd.gSub}}</small>
+<div class="d2-gw">
+<svg viewBox="0 0 260 150" class="d2-gsvg" aria-hidden="true"><defs><linearGradient id="d2gg" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#3073f1"></stop><stop offset="1" stop-color="#3073f1"></stop></linearGradient></defs>
+<path d="M 25 135 A 105 105 0 0 1 235 135" class="d2-gtrk"></path>
+<path d="M 25 135 A 105 105 0 0 1 235 135" class="d2-gbar" pathLength="1" style="stroke-dasharray: {{opd.gP}} 1"></path>
+<path d="M 7 135 A 123 123 0 0 1 253 135" class="d2-gotrk"></path>
+<path d="M 7 135 A 123 123 0 0 1 253 135" class="d2-gout" pathLength="1" style="stroke-dasharray: {{opd.gT}} 1"></path>
+</svg>
+<sc-for list="{{opd.gSteps}}" as="g" hint-placeholder-count="5"><span class="{{g.cls}}" style="left: {{g.x}}; top: {{g.y}}" title="{{g.label}}"><em>{{g.txt}}</em><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></sc-for>
+<div class="d2-gc"><span class="d2-gball"><b>{{opd.gLeft}}</b></span><small>{{opd.gUnit}}</small></div>
+</div>
+<div class="d2-gl"><span>{{opd.gL1}}</span><span>{{opd.gStage}}</span><span>{{opd.gL2}}</span></div>
+</section>
+
+<section class="d2-card d2-prof" aria-labelledby="opd2-pt">
+<div class="d2-ch"><b id="opd2-pt">{{opd.pTitle}}</b><button type="button" class="ib d2-more" aria-label="Batafsil" onClick="{{opd.soon}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.4"></circle><circle cx="12" cy="12" r="1.4"></circle><circle cx="12" cy="19" r="1.4"></circle></svg></button></div>
+<div class="d2-pr"><img class="d2-ph" src="{{opd.pPhoto}}" alt=""><div class="kv" style="gap: 2px; min-width: 0"><small>{{opd.pOrg}}</small><b class="d2-pn">{{opd.pName}}</b><small style="margin-top: 8px">Mas'uliyat sohasi</small><span class="d2-pv">{{opd.pSpec}}</span></div></div>
+<button type="button" class="d2-met" onClick="{{opd.goToday}}"><span class="d2-mi"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg></span><span class="kv" style="gap: 1px; flex: 1; min-width: 0; text-align: left"><b>Bugungi majlislar</b><small>{{opd.pToday}}</small></span><span class="d2-go"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></button>
+<button type="button" class="d2-met" onClick="{{opd.goTkt}}"><span class="d2-mi"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg></span><span class="kv" style="gap: 1px; flex: 1; min-width: 0; text-align: left"><b>Ochiq murojaatlar</b><small>{{opd.pLoad}}</small></span><span class="d2-go"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></button>
+</section>
+
+<section class="d2-card d2-tbl" id="opd2-tbl" aria-labelledby="opd2-tt">
+<div class="d2-ch"><b id="opd2-tt">Bugungi sud majlislari</b><div class="d2-ctl"><button type="button" class="d2-sel" onClick="{{opd.sortT}}">{{opd.sortLbl}}<svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 9l4-4 4 4M8 15l4 4 4-4"></path></svg></button><span class="d2-seg" role="tablist" aria-label="Filtr"><sc-for list="{{opd.days}}" as="d" hint-placeholder-count="4"><button type="button" role="tab" aria-selected="{{d.str}}" class="{{d.cls}}" onClick="{{d.pick}}">{{d.label}}<em>{{d.n}}</em></button></sc-for></span></div></div>
+<div class="d2-t" role="table" aria-labelledby="opd2-tt">
+<div class="d2-tr d2-th" role="row"><span role="columnheader">Ish raqami</span><span role="columnheader">Sudya</span><span role="columnheader">Masofaviy tomon</span><span role="columnheader">Vaqt</span><span role="columnheader">VKS holati</span><span role="columnheader">Texnik tayyorlik</span><span></span></div>
+<sc-for list="{{opd.rows}}" as="r" hint-placeholder-count="4"><div class="d2-tr" role="row"><span class="kv" style="gap: 2px; min-width: 0" role="cell"><button type="button" class="d2-num" onClick="{{r.open}}">{{r.num}}</button><small>{{r.zal}}</small></span><span class="d2-party" role="cell"><img src="{{r.photo}}" alt=""><span class="kv" style="gap: 2px; min-width: 0"><b>{{r.ariz}}</b><small>{{r.jav}}</small></span></span><span role="cell">{{r.turi}}</span><span class="kv" style="gap: 2px" role="cell"><b class="d2-dt">{{r.date}}</b><small>{{r.time}}</small></span><span role="cell"><span class="{{r.stCls}}">{{r.st}}</span></span><span role="cell"><span class="{{r.rdCls}}"><i></i>{{r.doc}}</span></span><span role="cell" style="justify-self: end"><button type="button" class="ib d2-more" aria-label="{{r.num}} ishini ochish" onClick="{{r.open}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.4"></circle><circle cx="12" cy="12" r="1.4"></circle><circle cx="12" cy="19" r="1.4"></circle></svg></button></span></div></sc-for>
+<sc-if value="{{opd.empty}}" hint-placeholder-val="{{ false }}"><div class="qm-empty" style="min-height: 150px"><b>Majlis yo'q</b><small>Tanlangan filtr bo'yicha bugungi majlis topilmadi</small></div></sc-if>
+</div>
+</section>
+
+<section class="d2-promo" aria-label="Avtomatik eslatmalar">
+<svg class="d2-art" viewBox="0 0 320 240" aria-hidden="true">
+<defs>
+<linearGradient id="d2r1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dbeafe"></stop><stop offset=".35" stop-color="#3073f1"></stop><stop offset=".7" stop-color="#3073f1"></stop><stop offset="1" stop-color="#172554"></stop></linearGradient>
+<linearGradient id="d2r2" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eff6ff"></stop><stop offset=".4" stop-color="#93c5fd"></stop><stop offset=".8" stop-color="#3073f1"></stop><stop offset="1" stop-color="#1e3a8a"></stop></linearGradient>
+<filter id="d2bl" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"></feGaussianBlur></filter>
+</defs>
+<ellipse cx="200" cy="200" rx="120" ry="40" fill="#1e3a8a" opacity=".35" filter="url(#d2bl)"></ellipse>
+<g class="d2-ring a"><circle cx="150" cy="150" r="62" fill="none" stroke="url(#d2r1)" stroke-width="40"></circle><path d="M104 118 A 62 62 0 0 1 176 94" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".7" filter="url(#d2bl)"></path></g>
+<g class="d2-ring b"><circle cx="250" cy="120" r="48" fill="none" stroke="url(#d2r2)" stroke-width="30"></circle><path d="M218 98 A 48 48 0 0 1 262 76" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".75" filter="url(#d2bl)"></path></g>
+</svg>
+<div class="d2-ptop"><button type="button" class="{{opd.remCls}}" role="switch" aria-checked="{{opd.remStr}}" onClick="{{opd.remToggle}}">Avto monitoring<span class="d2-sw"><i></i></span></button><button type="button" class="d2-arr" aria-label="Monitoring sozlamalari" onClick="{{opd.soon}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg></button></div>
+<div class="d2-ptx"><b>Nosozlikni o'tkazib yubormang!</b><p>{{opd.remTxt}}</p></div>
+</section>
+
+<section class="d2-card d3 d3-tk" aria-labelledby="opd3-tk">
+<div class="d3-h"><span class="d3-ic" style="--c: #b45309; --b: #fff4e2"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="17" rx="2"></rect><path d="M9 3h6v3H9zM8 12l3 3 5-6"></path></svg></span><div class="kv d3-ht"><b id="opd3-tk">{{opd.tkTitle}}</b><small>{{opd.tkSum}}</small></div><span class="d3-ring" style="background: {{opd.tkRing}}" title="{{opd.tkDone}} / {{opd.tkTot}} bajarildi"><b>{{opd.tkLeft}}</b></span></div>
+<div class="d3-body"><sc-for list="{{opd.tasks}}" as="t" hint-placeholder-count="4"><div class="{{t.cls3}}"><button type="button" class="nx-cb d3-lead" role="checkbox" aria-checked="{{t.str}}" aria-label="Bajarildi deb belgilash" onClick="{{t.toggle}}"><span class="{{t.box}}"><svg class="i" style="width: 12px; height: 12px; stroke-width: 3" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span></button><div class="d3-tx"><b title="{{t.title}}">{{t.title}}</b><small>{{t.num}} · {{t.from}}</small></div><span class="{{t.dueCls}}">{{t.due}}</span></div></sc-for></div>
+<button type="button" class="d3-ft" onClick="{{opd.goTkt}}"><span>Barcha texnik murojaatlar</span><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+</section>
+<section class="d2-card d3 d3-pm" aria-labelledby="opd3-pm">
+<div class="d3-h"><span class="d3-ic" style="--c: #3073f1; --b: #eff6ff"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg></span><div class="kv d3-ht"><b id="opd3-pm">Qurilmalar holati</b><small>{{opd.pmSum}}</small></div><span class="d3-ring" style="background: {{opd.pmRing}}" title="Jami {{opd.pmTotal}} ta"><b>{{opd.pmTotal}}</b></span></div>
+<div class="d3-body more" tabindex="0" aria-label="Qurilmalar ro'yxati"><sc-for list="{{opd.pm}}" as="m" hint-placeholder-count="8"><button type="button" class="d3-row" onClick="{{m.go}}" style="--c: {{m.color}}"><span class="d3-dot"></span><div class="d3-tx"><b title="{{m.label}}">{{m.label}}</b><span class="d3-bar"><i style="width: {{m.w}}"></i></span></div><span class="d3-n">{{m.n}}</span><svg class="i s d3-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></sc-for></div><span class="d3-hint" aria-hidden="true">Yana {{opd.pmMore}} ta<svg class="i s" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
+<button type="button" class="d3-ft" onClick="{{opd.goDev}}"><span>Barcha qurilmalar · {{opd.pmCnt}}</span><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+</section>
+<section class="d2-card d3 d3-ij" aria-labelledby="opd3-ij">
+<div class="d3-h"><span class="d3-ic" style="--c: #15803d; --b: #ecfdf3"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6l-1 7h3a2 2 0 0 1 2 2v3H5v-3a2 2 0 0 1 2-2h3z"></path><path d="M5 19h14"></path></svg></span><div class="kv d3-ht"><b id="opd3-ij">Xabarlar yetkazilishi</b><small>{{opd.ijSum}}</small></div><span class="d3-ring" style="background: {{opd.ijRing}}" title="Jami {{opd.ijTotal}} ta"><b>{{opd.ijTotal}}</b></span></div>
+<div class="d3-body"><sc-for list="{{opd.ij}}" as="j" hint-placeholder-count="4"><button type="button" class="d3-row" onClick="{{opd.goNq}}" style="--c: {{j.color}}"><span class="d3-dot"></span><div class="d3-tx"><b title="{{j.label}}">{{j.label}}</b><span class="d3-bar"><i style="width: {{j.w}}"></i></span></div><span class="d3-n">{{j.n}}<small>{{j.pct}}</small></span><svg class="i s d3-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></sc-for></div>
+<button type="button" class="d3-ft" onClick="{{opd.goNq}}"><span>Xabarnomalar nazoratiga o'tish</span><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+</section>
+</div>
+</sc-if>
 <sc-if value="{{op.hasTabs}}" hint-placeholder-val="{{ false }}"><div class="op-tabrow"><div class="l-tabs seg-tabs op-tabs" role="tablist" aria-label="{{op.title}} bo'limlari"><sc-for list="{{op.tabs}}" as="t" hint-placeholder-count="4"><button type="button" role="tab" aria-selected="{{t.sel}}" class="{{t.cls}}" onClick="{{t.go}}">{{t.l}}<sc-if value="{{t.hasN}}" hint-placeholder-val="{{ false }}"><span class="l-tabn">{{t.n}}</span></sc-if></button></sc-for></div><sc-if value="{{op.hasCtx}}" hint-placeholder-val="{{ false }}"><div class="op-ctx"><span class="op-ctxl">{{op.ctxL}}</span><sc-for list="{{op.ctx}}" as="c" hint-placeholder-count="3"><button type="button" class="{{c.cls}}" aria-pressed="{{c.on}}" onClick="{{c.go}}">{{c.t}}</button></sc-for></div></sc-if></div></sc-if>
 <sc-if value="{{op.hasBan}}" hint-placeholder-val="{{ false }}"><div class="{{op.banCls}}" role="status"><span class="op-banic"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="{{op.banIc}}"></path></svg></span><span class="op-bant"><b>{{op.banT}}</b><small>{{op.banS}}</small></span><sc-if value="{{op.banHasBtn}}" hint-placeholder-val="{{ false }}"><button type="button" class="btn sm" onClick="{{op.banGo}}">{{op.banBtn}}</button></sc-if></div></sc-if>
 <sc-if value="{{op.hasKpis}}" hint-placeholder-val="{{ false }}"><div class="op-kpis"><sc-for list="{{op.kpis}}" as="k" hint-placeholder-count="5"><button type="button" class="{{k.cls}}" onClick="{{k.go}}" title="{{k.tip}}"><span class="{{k.icCls}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="{{k.ic}}"></path></svg></span><span class="op-kt"><small>{{k.l}}</small><b>{{k.v}}</b><span class="{{k.dCls}}">{{k.d}}</span></span></button></sc-for></div></sc-if>
@@ -371,7 +465,6 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </sc-if>
 </div>
 </sc-if>
-
 <sc-if value="{{isAdmin}}" hint-placeholder-val="{{ false }}">
 <div class="adm">
 <sc-if value="{{admDdOpen}}" hint-placeholder-val="{{ false }}"><button type="button" class="dx-ddbg" tabindex="-1" aria-label="Ro'yxatni yopish" onClick="{{admDdClose}}"></button></sc-if>
@@ -13993,22 +14086,86 @@ var newIncM = function (pre) { var base = Object.assign({ src: "Sud zali", hall:
     okT: "Yaratish", okIc: IC.plus, okGo: function () { var x = Object.assign({}, base, (self.state.op || {}).nf || {}); if (!String(x.txt || "").trim()) { setOp({ mErr: "Muammo tavsifini kiriting" }); return; } setOp({ nf: null }); logInc({ src: x.src, obj: x.hall + (x.src === "Sud zali" ? "" : " · " + x.src), ic: x.src === "Tarmoq" ? IC.lan : x.src === "Tizim" ? IC.server : x.src === "Qurilma" ? IC.dev : IC.hall, txt: x.txt, pri: x.pri }); } }; }; };
 var openInc = function (pre) { M(newIncM(pre), { nf: null }); };
 
-// ---------- 1. BOSH SAHIFA ----------
+// ---------- 1. BOSH SAHIFA (sudya bosh sahifasi uslubida) ----------
 if (PG === "home") {
-  var nBad = DEVS.filter(function (d) { return d.st !== "on"; }).length, nOnS = SES.filter(function (x) { return x.st === "on"; }).length;
-  OP.kpis = [kpi("Bugungi majlislar", SES.length, "2 tasi VKS orqali yakunlandi", IC.cal, "blue", function () { go("vks"); }), kpi("Faol VKS sessiyalari", nOnS, "hozirda onlayn", IC.vks, "green", function () { go("vks", { tab: Object.assign({}, O.tab || {}, { vks: "live" }) }); }), kpi("Nosoz qurilmalar", nBad, "jami " + DEVS.length + " ta qurilmadan", IC.dev, "amber", function () { go("dev", { devF: "bad" }); }, "w"), kpi("Ochiq texnik murojaatlar", openTk.length, "2 tasi yuqori ustuvorlikda", IC.tkt, "red", function () { go("tkt"); }, "no"), kpi("Tarmoq ogohlantirishlari", 2, "VPN · Zal № 3 segmenti", IC.net, "violet", function () { go("net", { tab: Object.assign({}, O.tab || {}, { net: "out" }) }); }, "w")];
-  OP.acts = [actB("VKS tayyorlash", IC.vks, function () { go("vks", { sesSel: "R4-1901-2657/2" }); }, true), actB("Ekranlarni boshqarish", IC.scr, function () { go("scr"); }), actB("Qurilmani tekshirish", IC.dev, function () { go("dev"); }), actB("Insident yaratish", IC.plus, function () { openInc(); })];
-  OP.cards.push(card({ span: 8, t: "Bugungi sud majlislari", ic: IC.cal, lk: "Barchasini ko'rish", lkGo: function () { go("vks"); }, isTbl: true, cols: "minmax(150px,1.2fr) 100px minmax(130px,1fr) 70px 150px", hd: ["Ish raqami", "Sud zali", "Sudya", "Vaqt", "VKS holati"],
-    rows: SES.map(function (x) { var p = sesSt(x); return row([cell(x.num, x.fmt, { b: true }), cell(hallOf(x.hall).n), cell(x.judge), cell(x.t, "", { mono: true }), cell(p[0], "", { p: p[1] })], { go: function () { go("vks", { sesSel: x.num }); } }); }) }));
-  var grp = [["face", "Face ID (yuzni tanish)"], ["fing", "Barmoq izi skaneri"], ["cam", "Kamera"], ["mic", "Mikrofon"], ["tv", "TV / displey"], ["kiosk", "Infokiosk"], ["prn", "Printer"]];
-  OP.cards.push(card({ span: 4, t: "Qurilmalar holati", ic: IC.dev, lk: "Batafsil", lkGo: function () { go("dev"); }, isList: true, items: grp.map(function (g) { var all = DEVS.filter(function (d) { return d.t === g[0] || (g[0] === "tv" && d.t === "tablo"); }), ok = all.filter(function (d) { return d.st === "on"; }).length, pc = ok === all.length ? "ok" : ok === 0 ? "no" : "w"; return li({ ic: DT[g[0]][1], t: g[1], m: ok + " / " + all.length, p: pc === "ok" ? "Normal" : pc === "w" ? "Qisman" : "Muammo", pc: pc, go: function () { go("dev", { devT: g[0] === "tv" ? "disp" : DT[g[0]][2] }); } }); }) }));
-  OP.cards.push(card({ span: 8, t: "So'nggi texnik hodisalar", ic: IC.alert, lk: "Barchasini ko'rish", lkGo: function () { go("tkt"); }, isTbl: true, cols: "130px minmax(150px,1fr) minmax(180px,1.4fr) 160px", hd: ["Vaqt", "Qurilma / tizim", "Hodisa tavsifi", "Holat"],
-    rows: TK.slice(0, 4).map(function (t) { var p = TST[t.st]; return row([cell(t.at.replace(/^(\d\d)\.(\d\d)\.\d{4}/, "$1.$2"), "", { mono: true }), cell(t.obj, "", { ic: t.ic }), cell(t.txt), cell(p[0], "", { p: p[1] })], { go: function () { go("tkt", { tkSel: t.id, tab: Object.assign({}, O.tab || {}, { tkt: t.st }) }); } }); }) }));
-  var TASKS = O.tasks || { t1: false, t2: false, t3: true };
-  var task = function (id, t, s, goFn) { var done = !!TASKS[id]; return { t: t, s: s, sic: done ? IC.check : IC.clock, cls: "op-ck " + (done ? "ok" : "mut") + " click", pc: pill(done ? "ok" : "w"), p: done ? "Bajarildi" : "Kutilmoqda", ic: IC.tkt }; };
-  OP.cards.push(card({ span: 4, t: "Mening texnik vazifalarim", ic: IC.check, isChk: true, chk: [task("t1", "Zal № 1 · 14:00 majlisiga tayyorgarlik", "R4-1901-2657/2 · VKS (sudlararo)"), task("t2", "Zal № 3 elektron tablosi", "HDMI ulanishini tiklash · TK-2026-03870"), task("t3", "Ertalabki tarmoq tekshiruvi", "LAN, VPN, internet · 08:45")], btns: [btn("Tayyorgarlikni boshlash", IC.play, function () { go("vks", { sesSel: "R4-1901-2657/2" }); }, "pri")] }));
-  OP.cards.push(card({ span: 4, t: "Tarmoq", ic: IC.globe, lk: "Monitoring", lkGo: function () { go("net"); }, isKv: true, kv: [kvr("Internet", "Ulangan", "ok"), kvr("Ichki tarmoq (LAN)", "Normal", "ok"), kvr("VPN tunnellari", "17 / 18 faol", "w"), kvr("Kanal tezligi", "100 Mbit/s"), kvr("Kechikish (ping)", "12 ms")] }));
-  OP.cards.push(card({ span: 8, t: "Tizim holati", ic: IC.pulse, isTiles: true, tilesCls: "op-tiles c3", tiles: [["VKS serveri", "Uptime 99,97%", IC.vks], ["Audio-video yozuv", "Uptime 99,96%", IC.rec], ["Xabarnoma shlyuzi", "2 ta xato · nazoratda", IC.ntf, "w"]].map(function (x) { return { t: x[0], s: x[1], ic: x[2], icCls: "op-lic", p: x[3] ? "Diqqat" : "Ishlamoqda", pc: pill(x[3] || "ok"), cls: "op-tile", on: "false", go: function () { go(x[0] === "Xabarnoma shlyuzi" ? "nq" : "net"); }, hn: false }; }) }));
+  OP.isHome = true;
+  var OPD = {}, nBad = DEVS.filter(function (d) { return d.st !== "on"; }).length, nOff = DEVS.filter(function (d) { return d.st === "off"; }).length;
+  var hr0 = new Date().getHours();
+  OPD.hello = (hr0 < 11 ? "Xayrli tong" : hr0 < 18 ? "Xayrli kun" : "Xayrli kech") + ", Sardor!";
+  var MSx = ["yanvar", "fevral", "mart", "aprel", "may", "iyun", "iyul", "avgust", "sentabr", "oktabr", "noyabr", "dekabr"], WDx = ["yakshanba", "dushanba", "seshanba", "chorshanba", "payshanba", "juma", "shanba"], dN = new Date();
+  OPD.sub = dN.getDate() + "-" + MSx[dN.getMonth()] + ", " + WDx[dN.getDay()] + " · Termiz tumanlararo iqtisodiy sudi · texnik operator";
+  OPD.goTkt = function () { go("tkt"); }; OPD.goRep = function () { go("rep"); }; OPD.goDev = function () { go("dev"); }; OPD.goNq = function () { go("nq"); };
+  OPD.soon = function () { flash("Bu funksiya prototipda hali tayyorlanmoqda"); };
+  OPD.todayN = SES.length;
+  OPD.goToday = function () { setOp({ hf: "all" }); setTimeout(function () { try { var el = document.getElementById("opd2-tbl"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) {} }, 60); };
+  // KPI
+  var KX = [["Nosoz qurilmalar", nBad, nOff + " tasi oflayn", "bad", "Printer (Zal № 2) · tablo (Zal № 3)", "M12 5v10M7 10l5-5 5 5", function () { go("dev", { devF: "bad" }); }],
+    ["Ulanish muammolari", SES.filter(function (x) { return x.st === "err"; }).length, "17:00 majlisi", "warn", "VKS sessiyasiga tayyorlik kerak", "M12 7v6M12 17h.01", function () { go("vks", { sesSel: "R4-1901-2661/4" }); }],
+    ["Ochiq texnik murojaatlar", openTk.length, TK.filter(function (t) { return t.st === "esc"; }).length + " tasi markazda", "vio", "Markaziy mutaxassis javobi kutilmoqda", "M5 12h14", function () { go("tkt"); }],
+    ["Tarmoq ogohlantirishlari", 2, "Kuzatilmoqda", "warn", "Oxirgi 7 kundagi holat", "M12 7v6M12 17h.01", function () { go("net", { tab: Object.assign({}, O.tab || {}, { net: "out" }) }); }]];
+  OPD.kpis = KX.map(function (x, i) { return { title: x[0], n: x[1], chip: x[2], chipCls: "d2-kc " + x[3], chipIc: x[5], foot: x[4], go: x[6], spark: i === 3, cls: "d2-k" + (i === 3 ? " sp" : "") }; });
+  var smooth = function (pts) { var d = "M " + pts[0][0].toFixed(1) + " " + pts[0][1].toFixed(1); for (var i = 0; i < pts.length - 1; i++) { var p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2; d += " C " + (p1[0] + (p2[0] - p0[0]) / 6).toFixed(1) + " " + (p1[1] + (p2[1] - p0[1]) / 6).toFixed(1) + ", " + (p2[0] - (p3[0] - p1[0]) / 6).toFixed(1) + " " + (p2[1] - (p3[1] - p1[1]) / 6).toFixed(1) + ", " + p2[0].toFixed(1) + " " + p2[1].toFixed(1); } return d; };
+  var SP = [4, 3, 5, 2, 3, 1, 2], spl = SP.map(function (v, i) { return [i * 20, 44 - v / 5 * 36]; });
+  OPD.spLine = smooth(spl); OPD.spArea = smooth(spl) + " L 120 48 L 0 48 Z";
+  // grafik: VKS sessiyalari
+  var zf = O.chZ || "all", ZM = { all: 1, z1: .4, z2: .45, z3: .15, zv: .3 };
+  var V0 = [6, 8, 5, 7, 9, 3, SES.length], U0 = [8, 10, 8, 9, 11, 6, 8], L0 = [3, 4, 2, 4, 5, 1, 3], k = ZM[zf];
+  var V = V0.map(function (v) { return Math.max(0, Math.round(v * k)); }), U = U0.map(function (v) { return Math.round(v * k) + 1; }), LO = L0.map(function (v) { return Math.round(v * k); }), YM = 12;
+  var X = function (i) { return 4 + i * 92 / 6; }, Y = function (v) { return 8 + (1 - v / YM) * 84; }, P = function (a) { return a.map(function (v, i) { return [X(i) * 6, Y(v) * 1.8]; }); };
+  var pu = P(U), pl = P(LO);
+  OPD.line = smooth(P(V)); OPD.up = pu.map(function (p) { return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" "); OPD.lo = pl.map(function (p) { return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" ");
+  OPD.band = "M " + pu.map(function (p) { return p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" L ") + " L " + pl.slice().reverse().map(function (p) { return p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" L ") + " Z";
+  OPD.gridY = [0, 4, 8, 12].map(function (v) { return (Y(v) * 1.8).toFixed(1); }); OPD.yTicks = [12, 8, 4, 0].map(function (v) { return { v: v, top: Y(v) + "%" }; });
+  var WDS = ["Ya", "Du", "Se", "Ch", "Pa", "Ju", "Sh"], MS3 = ["yan", "fev", "mar", "apr", "may", "iyun", "iyul", "avg", "sen", "okt", "noy", "dek"];
+  OPD.pts = V.map(function (v, i) { var d = new Date(); d.setDate(d.getDate() - 6 + i); return { x: X(i) + "%", y: Y(v) + "%", u: Y(U[i]) + "%", l: Y(LO[i]) + "%", n: v, date: d.getDate() + "-" + MS3[d.getMonth()] + ", " + d.getFullYear(), wd: i === 6 ? "Bugun" : WDS[d.getDay()], cls: "d2-pt" + (i === 6 ? " on" : "") }; });
+  OPD.avg = (V.reduce(function (a, b) { return a + b; }, 0) / 7).toFixed(1).replace(".", ",") + " ta sessiya"; OPD.aria = "Oxirgi 7 kundagi VKS sessiyalari: " + V.join(", ");
+  var ZO = ["all", "z1", "z2", "z3", "zv"]; OPD.chZal = zf === "all" ? "Barcha zallar" : hallOf(zf).n; OPD.chZalGo = function () { setOp({ chZ: ZO[(ZO.indexOf(zf) + 1) % ZO.length] }); };
+  // o'lchagich: keyingi majlis tayyorligi
+  var nowM = dN.getHours() * 60 + dN.getMinutes(), nx = SES.filter(function (x) { var q = x.t.split(":"); return x.st !== "on" && +q[0] * 60 + +q[1] > nowM; })[0] || SES.filter(function (x) { return x.st === "plan"; })[0] || SES[0], nck = chkOf(nx), nKeys = CHK_KEYS.filter(function (q) { return nck[q[0]] !== "na"; }), nOk = nKeys.filter(function (q) { return nck[q[0]] === "ok"; }).length;
+  var ST5 = ["Vazifa", "Zal va qurilma", "Tarmoq", "Yozuv", "Tayyor"], cur5 = nOk === nKeys.length ? 4 : nOk >= 6 ? 3 : nOk >= 3 ? 2 : 1;
+  var tp = nx.t.split(":"), mins = (+tp[0] * 60 + +tp[1]) - (dN.getHours() * 60 + dN.getMinutes());
+  OPD.gSub = nx.num + " · " + hallOf(nx.hall).n + " · " + nx.t; OPD.gP = String(Math.max(.08, nOk / nKeys.length).toFixed(2)); OPD.gT = String(Math.min(1, Math.max(.05, 1 - mins / 360)).toFixed(2));
+  OPD.gLeft = mins <= 0 ? 0 : mins >= 60 ? Math.floor(mins / 60) : mins; OPD.gUnit = mins <= 0 ? "boshlandi" : mins >= 60 ? "soat qoldi" : "daqiqa qoldi";
+  OPD.gStage = "Tayyor: " + nOk + " / " + nKeys.length; OPD.gL1 = "Vazifa"; OPD.gL2 = "Majlis";
+  OPD.gSteps = ST5.map(function (lb, i) { var th = Math.PI * (1 - i / 4), x = 130 + 105 * Math.cos(th), y = 135 - 105 * Math.sin(th); return { label: lb, txt: String(i + 1), x: (x / 260 * 100).toFixed(2) + "%", y: (y / 150 * 100).toFixed(2) + "%", cls: "d2-gst" + (i < cur5 ? " done" : i === cur5 ? " cur" : "") }; });
+  OPD.gOpen = function () { go("vks", { sesSel: nx.num }); };
+  // profil: markaziy mutaxassis
+  OPD.pTitle = "Markaziy texnik mutaxassis"; OPD.pName = "Karimov Akmal"; OPD.pOrg = "Surxondaryo viloyat sudi · IT bo'limi"; OPD.pSpec = "VKS va tarmoq · eskalatsiyalar";
+  try { OPD.pPhoto = portrait("Karimov Akmal Saidovich"); } catch (x) { OPD.pPhoto = ""; }
+  OPD.pToday = SES.length + " ta majlis · birinchisi " + SES[0].t; OPD.pLoad = openTk.length + " ta ochiq · " + TK.filter(function (t) { return t.st === "esc"; }).length + " tasi markazda";
+  // jadval
+  var hf = O.hf || "all", HFL = { all: "Barchasi", vks: "VKS", bad: "Muammoli" };
+  var fOk = function (x, f) { return f === "all" || (f === "vks" ? x.fmt.indexOf("VKS") === 0 : (x.st === "err" || chkOf(x).net === "fail")); };
+  OPD.days = ["all", "vks", "bad"].map(function (f) { var on = f === hf; return { label: HFL[f], n: SES.filter(function (x) { return fOk(x, f); }).length, str: on ? "true" : "false", cls: "d2-sb" + (on ? " on" : ""), pick: function () { setOp({ hf: f }); } }; });
+  var L = SES.filter(function (x) { return fOk(x, hf); }); if (O.hDesc) L = L.slice().reverse();
+  OPD.sortLbl = O.hDesc ? "Kechroq avval" : "Yaqinroq avval"; OPD.sortT = function () { setOp({ hDesc: !O.hDesc }); };
+  OPD.rows = L.map(function (x) { var p = sesSt(x), ck = chkOf(x), ks = CHK_KEYS.filter(function (q) { return ck[q[0]] !== "na"; }), ok = ks.filter(function (q) { return ck[q[0]] === "ok"; }).length, ph = ""; try { ph = portrait(x.judge); } catch (e) {}
+    return { num: x.num, zal: hallOf(x.hall).n + " · " + x.fmt, ariz: x.judge, jav: "Raislik qiluvchi", photo: ph, turi: x.rem, date: "Bugun", time: x.t, st: x.st === "err" ? "Muammo" : p[0], stCls: "d2-st " + (x.st === "on" ? "g" : x.st === "err" ? "r" : "p"), doc: ok + " / " + ks.length + " tayyor", rdCls: "op-rd " + (ok === ks.length ? "ok" : ck.net === "fail" ? "no" : "w"), open: function () { go("vks", { sesSel: x.num }); } }; });
+  OPD.empty = !L.length;
+  // avto monitoring
+  var mon = O.mon !== false; OPD.remCls = "d2-rem" + (mon ? " on" : ""); OPD.remStr = mon ? "true" : "false";
+  OPD.remTxt = mon ? "Qurilma oflayn bo'lsa yoki ping 50 ms dan oshsa darhol xabar olasiz." : "Avto monitoring o'chirilgan — qurilmalarni o'zingiz kuzatib boring.";
+  OPD.remToggle = function () { var v = (self.state.op || {}).mon === false; setOp({ mon: v }); flash(v ? "Avto monitoring yoqildi" : "Avto monitoring o'chirildi"); };
+  // vazifalar
+  var TD = O.tasks || { t3: true };
+  var TKS = [["t1", "Zal № 1 · 14:00 majlisiga texnik tayyorgarlik", "R4-1901-2657/2", "Navbatchi", "Bugun 13:30", "warn"], ["t2", "Zal № 3 elektron tablosini tiklash", "TK-2026-03870", "Monitoring", "Bugun 16:00", "warn"], ["t4", "Zal № 2 printerini ishga tushirish", "TK-2026-03866", "Monitoring", "Kecha", "bad"], ["t3", "Ertalabki tarmoq tekshiruvi", "LAN · VPN · internet", "Reja", "08:45", "ok"]];
+  OPD.tasks = TKS.map(function (t) { var d = !!TD[t[0]]; return { title: t[1], num: t[2], from: t[3], due: d ? "Bajarildi" : t[4], dueCls: "db-due " + (d ? "ok" : t[5]), cls3: "d3-row" + (d ? " done" : ""), str: d ? "true" : "false", box: d ? "cbox on" : "cbox", toggle: function () { var m = Object.assign({}, (self.state.op || {}).tasks || { t3: true }); m[t[0]] = !m[t[0]]; setOp({ tasks: m }); } }; });
+  var tDone = TKS.filter(function (t) { return TD[t[0]]; }).length, tLeft = TKS.length - tDone;
+  OPD.tkTitle = "Mening texnik vazifalarim"; OPD.tkDone = tDone; OPD.tkTot = TKS.length; OPD.tkLeft = tLeft;
+  OPD.tkRing = "conic-gradient(#22c55e 0 " + Math.round(tDone / TKS.length * 100) + "%, #fde7c2 0 100%)";
+  OPD.tkSum = tLeft + " ta bajarilmagan" + (TKS.some(function (t) { return !TD[t[0]] && t[5] === "bad"; }) ? " · 1 tasi kechikkan" : "");
+  // qurilmalar holati
+  var CAT = [["av", "Audio-video qurilmalar"], ["bio", "Face ID va barmoq izi"], ["disp", "Displey va infokiosk"], ["skud", "SKUD"], ["ofis", "Ofis texnikasi"]];
+  OPD.pm = CAT.map(function (c) { var all = DEVS.filter(function (d) { return DT[d.t][2] === c[0]; }), ok = all.filter(function (d) { return d.st === "on"; }).length; return { label: c[1], n: ok + "/" + all.length, color: ok === all.length ? "#22c55e" : all.some(function (d) { return d.st === "off"; }) ? "#ef4444" : "#f59e0b", w: Math.round(ok / (all.length || 1) * 100) + "%", go: function () { go("dev", { devT: c[0] }); } }; });
+  var nOnD = DEVS.length - nBad, nWarn = nBad - nOff;
+  OPD.pmTotal = DEVS.length; OPD.pmRing = "conic-gradient(#22c55e 0 " + (nOnD / DEVS.length * 100).toFixed(1) + "%, #f59e0b 0 " + ((nOnD + nWarn) / DEVS.length * 100).toFixed(1) + "%, #ef4444 0 100%)";
+  OPD.pmSum = nOnD + " ta onlayn · " + nBad + " tasi nosoz"; OPD.pmCnt = CAT.length + " tur"; OPD.pmMore = Math.max(0, CAT.length - 4);
+  // xabarlar yetkazilishi
+  var IJ = [["Yetkazilgan", 208, "#22c55e"], ["Navbatda / yuborilmoqda", 4, "#3b82f6"], ["Xato", NQ.filter(function (r) { return r[5] === "err"; }).length, "#ef4444"]], ijT = IJ.reduce(function (a, j) { return a + j[1]; }, 0), pa = 0;
+  OPD.ij = IJ.map(function (j) { var pc = Math.round(j[1] / ijT * 100); return { label: j[0], n: j[1], color: j[2], w: Math.max(2, pc) + "%", pct: pc + "%" }; });
+  OPD.ijTotal = ijT; OPD.ijRing = "conic-gradient(" + IJ.map(function (j) { var a0 = pa; pa += j[1] / ijT * 100; return j[2] + " " + a0.toFixed(1) + "% " + pa.toFixed(1) + "%"; }).join(", ") + ")";
+  OPD.ijSum = "Bugun · " + Math.round(IJ[0][1] / ijT * 1000) / 10 + "% yetkazildi";
+  __out.opd = OPD;
 }
 
 // ---------- 2. SUD MAJLISLARI VA VKS ----------
@@ -14194,6 +14351,7 @@ if (PG === "inb") {
 }
 
 // ---------- umumiy ----------
+OP.isHome = !!OP.isHome; if (!__out.opd) __out.opd = { kpis: [], pts: [], gSteps: [], rows: [], days: [], tasks: [], pm: [], ij: [], yTicks: [], gridY: [] };
 OP.hasTabs = OP.tabs.length > 0; OP.hasKpis = OP.kpis.length > 0; OP.hasActs = OP.acts.length > 0; OP.hasCtx = !!OP.hasCtx && OP.ctx.length > 0; OP.hasBan = !!OP.hasBan;
 var MM = typeof O.m === "function" ? O.m(O) : O.m;
 OP.mOpen = !!MM;

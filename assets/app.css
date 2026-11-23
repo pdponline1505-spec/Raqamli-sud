@@ -9857,3 +9857,15 @@ html:has(.smr-stage.fs),body:has(.smr-stage.fs),.smr:has(.smr-stage.fs){overflow
 .btn.op-warnb{background:#d97706;border-color:#d97706;color:#fff}.btn.op-warnb:hover{background:#b45309}
 .l-ri.op-admlink{color:#1d4ed8}
 .op-c.r2{grid-row:span 2}@media (max-width:1200px){.op-c.r2{grid-row:auto}}
+/* operator bosh sahifasi (d2 uslubi) */
+.op-rd{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:999px;font-size:12.5px;font-weight:600;white-space:nowrap}
+.op-rd i{width:6px;height:6px;border-radius:50%;background:currentColor}
+.op-rd.ok{background:#ecfdf5;color:#047857}.op-rd.w{background:#fff7ed;color:#c2410c}.op-rd.no{background:#fef2f2;color:#dc2626}
+.op>.d2{padding-bottom:0}
+/* yon menyu: yig'ilgan holatdagi bo'limlar ochiq holat bilan bir xil o'lchamda */
+.l-app.railc .l-rail{gap:10px !important}
+.l-app.railc .l-rail .l-ri{height:44px !important;min-height:44px !important;width:48px !important}
+@media (max-height:780px){.l-app.railc .l-rail{gap:8px !important}.l-app.railc .l-rail .l-ri{height:40px !important;min-height:40px !important}}
+/* yig'ilgan holatda profil ustidagi chiziq avatar ortidan o'tmasin */
+.l-app.railc .l-rail .pf-rail{border-top:0 !important;overflow:visible;margin-top:12px !important}
+.l-app.railc .l-rail .pf-rail::before{content:"";position:absolute;left:6px;right:6px;top:-6px;height:1px;background:#eef1f5;pointer-events:none}
