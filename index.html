@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=73e932dff20d">
+<link rel="stylesheet" href="assets/app.css?v=68250ca8f376">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -6425,7 +6425,8 @@ this.dxStopTimers();
 
 openRoom(num) {
 var self = this; clearInterval(this._smrIv);
-var pos = function () { try { var m = document.querySelector(".l-main"), t = document.querySelector(".l-top"), r = document.documentElement.style; if (m) r.setProperty("--smr-l", Math.max(0, m.getBoundingClientRect().left) + "px"); if (t) r.setProperty("--smr-t", Math.max(0, t.getBoundingClientRect().bottom) + "px"); } catch (e) {} };
+var fit = function () { try { var c = document.querySelector(".smr-stagec"); if (!c) return; document.documentElement.style.setProperty("--smr-vh", c.offsetHeight + "px"); if (window.ResizeObserver && self._smrROel !== c) { if (!self._smrRO) self._smrRO = new ResizeObserver(function () { var c2 = self._smrROel; if (c2 && c2.isConnected) document.documentElement.style.setProperty("--smr-vh", c2.offsetHeight + "px"); }); else self._smrRO.disconnect(); self._smrRO.observe(c); self._smrROel = c; } } catch (e) {} };
+var pos = function () { try { var m = document.querySelector(".l-main"), t = document.querySelector(".l-top"), r = document.documentElement.style; if (m) r.setProperty("--smr-l", Math.max(0, m.getBoundingClientRect().left) + "px"); if (t) r.setProperty("--smr-t", Math.max(0, t.getBoundingClientRect().bottom) + "px"); fit(); } catch (e) {} };
 pos(); setTimeout(pos, 60); setTimeout(pos, 260); setTimeout(pos, 520); if (!this._smrRz) { this._smrRz = true; window.addEventListener("resize", pos); }
 this.setState({ smRoom: num, smR: {} });
 var LINES = function (st) { var dv = ((st.tmDv || [])[0] || {}).name || "Da'vogar", jv = ((st.tmJv || [])[0] || {}).name || "Javobgar", sd = "Raislik qiluvchi";

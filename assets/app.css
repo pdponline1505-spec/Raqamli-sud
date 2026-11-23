@@ -9545,3 +9545,11 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .smr-qf .smr-link{margin-left:auto;font-size:13.5px}
 .smr-qmore{gap:6px}.smr-qmore svg{width:14px;height:14px;transition:transform .15s}
 @media (max-width:700px){.smr-qr{flex-wrap:wrap}.smr-qa{width:100%;padding-left:52px}}
+/* jonli efir va AI paneli bir xil balandlikda */
+@media (min-width:1201px){
+.smr-side>.smr-ai{height:var(--smr-vh,auto);min-height:0;overflow:hidden}
+.smr-side>.smr-ai .smr-tr,.smr-side>.smr-ai .smr-chat{max-height:none;min-height:0;flex:1 1 auto}
+.smr-side>.smr-ai .smr-aie{min-height:0}
+.smr-side>.smr-ai>*{flex-shrink:0}
+.smr-side>.smr-ai>.smr-tr,.smr-side>.smr-ai>.smr-chat,.smr-side>.smr-ai>.smr-aie{flex-shrink:1}
+}
