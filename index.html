@@ -6762,6 +6762,22 @@ updDoc(id, patch) {
 this.setState({ docs: this.state.docs.map(function (d) { return d.id === id ? Object.assign({}, d, patch) : d; }) });
 }
 
+_secAnim() {
+try {
+if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+var run = function () {
+  var root = document.querySelector(".smr") || document.querySelector(".cw-wrap .casemodal") || document.querySelector(".l-main"); if (!root) return;
+  var SEL = ".smr-hd,.smr-card,.l-tabrow,.sec,.smj-subrow,.smj-pane>.l-toolbar,.smj-t,.smj-tw,.l-toolbar,.l-card,.d2-head,.d2-stats,.d2-card,.op-tabrow,.op-ban,.op-kpis,.op-acts,.op-c,.oc-lt,.ax-card,.adm-card,.uz-card,.sd-card,.card:not(.qv)";
+  var all = Array.prototype.slice.call(root.querySelectorAll(SEL)).filter(function (el) { return !el.closest(".qv-wrap,.dd,.oc-stack,.oc-jfw,.lf-menu,.dx-menu,[role=dialog]:not(.smr)") && el.offsetParent !== null; });
+  var top = all.filter(function (el) { return !all.some(function (o) { return o !== el && o.contains(el); }); });
+  var vh = window.innerHeight || 900, i = 0;
+  top.forEach(function (el) { var r = el.getBoundingClientRect(); if (r.bottom < 0 || r.top > vh + 120 || i >= 12) return;
+    try { el.animate([{ opacity: 0, transform: "translateY(22px)" }, { opacity: 1, transform: "none" }], { duration: 640, delay: i * 80, easing: "cubic-bezier(.22,1,.36,1)", fill: "backwards" }); } catch (e) {} i++; });
+};
+if (window.requestAnimationFrame) requestAnimationFrame(function () { requestAnimationFrame(run); }); else setTimeout(run, 16);
+} catch (e) {}
+}
+
 _navAnim(prev, next) {
 try {
 if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -14023,6 +14039,10 @@ __out.gcal[g.k] = o;
 // ===== Sahifa almashinuvi animatsiyasi (o'zgargan qismlar) =====
 var navKey = [s.page || "list", s.listSrc || "main", s.lInst || "", s.lTab || "", (s.caseOpen && s.openMode === "page") ? "case" : "", s.role || "yordamchi", s.dbDay2 || "hammasi"].join("|");
 if (this._navKey !== undefined && this._navKey !== navKey) this._navAnim(this._navKey, navKey);
+// bo'limlar: har bir tab / sahifa almashganda pastdan tepaga sekin paydo bo'ladi
+var secKey = [s.page || "", s.listSrc || "", s.lInst || "", s.lTab || "", s.caseOpen ? (s.openMode || "") + ":" + (s.caseNum || "") : "", s.role || "", s.caseOpen ? (s.smTab || "") + ":" + (s.smSub || "") : "", s.smRoom || "", (s.op || {}).pg || "", JSON.stringify((s.op || {}).tab || {}), s.axcTab || "", s.uzTab || "", s.sdTab || "", JSON.stringify(s.lSubs || {}), s.dbDay2 || ""].join("|");
+if (this._secKey !== undefined && this._secKey !== secKey) this._secAnim();
+this._secKey = secKey;
 this._navKey = navKey;
 try {
 var snap = JSON.stringify({ op: s.role === "operator" ? { pg: (s.op || {}).pg || "home" } : undefined, page: s.page, caseOpen: !!s.caseOpen, openMode: s.openMode, caseNum: s.caseNum, nav: s.nav, lTab: s.lTab, lInst: s.lInst, role: s.role, dbDay2: s.dbDay2, subCollapsed: !!s.subCollapsed });
