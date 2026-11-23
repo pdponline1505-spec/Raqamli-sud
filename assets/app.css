@@ -10085,3 +10085,32 @@ span.oc-lh{cursor:default}
 @media (max-width:1100px){.oc-lr{min-width:1300px}}
 .oc-lavs img{width:24px;height:24px;margin-left:-10px}
 .oc-ljv{gap:8px}
+/* tungi rejim: faol tab ham yon menyudagi faol bandlar kabi */
+html[data-theme="dark"] .seg-tabs>.seg-ind,html[data-theme="dark"] .seg-tabs>button.on{filter:none}
+/* chaqiruvlar oynasi — qayta ishlangan */
+.oc-t::before,.oc-g::before{display:none}
+.oc-g{border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 20px 44px -14px rgba(15,23,42,.30),0 2px 6px rgba(15,23,42,.06)}
+.oc-gh{display:flex;align-items:center;gap:12px;padding:14px 44px 14px 16px;border-bottom:1px solid #f1f5f9;background:linear-gradient(#fff7f7,#fff)}
+.oc-ghi{position:relative;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:#fee2e2;color:#dc2626;flex:none;animation:ocPulseR 1.6s ease-out infinite}
+.oc-ghi svg{width:18px;height:18px}
+.oc-ghi b{position:absolute;top:-6px;right:-6px;min-width:18px;height:18px;padding:0 4px;border-radius:99px;background:#dc2626;color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center;border:2px solid #fff;line-height:1}
+.oc-ght b{font-size:14.5px}
+.oc-g .oc-tx{top:14px;right:12px}
+.oc-gl{padding:6px;gap:2px;max-height:264px}
+.oc-gi{display:grid;grid-template-columns:92px minmax(0,1fr) auto auto;align-items:center;gap:12px;width:100%;padding:10px;border:0;border-radius:10px;background:transparent;font:inherit;text-align:left;cursor:pointer;border-top:0 !important}
+.oc-gi:hover{background:#f6f8fc}
+.oc-gi:focus-visible{outline:2px solid #2563eb;outline-offset:-2px}
+.oc-gz{display:inline-flex;align-items:center;gap:6px;min-width:0;height:auto;padding:0;background:none;color:#0f172a;font-size:13px;font-weight:700;white-space:nowrap}
+.oc-gz i{width:8px;height:8px;border-radius:50%;background:#ef4444;flex:none;box-shadow:0 0 0 3px #fee2e2}
+.oc-gt b{font-weight:600}
+.oc-gt small{color:#64748b;font-variant-numeric:tabular-nums}
+.oc-gtm{font-size:12px;color:#94a3b8;font-variant-numeric:tabular-nums}
+.oc-ggo{display:inline-flex;align-items:center;gap:2px;height:28px;padding:0 8px 0 10px;border-radius:8px;background:#eff5ff;color:#2563eb;font-size:12.5px;font-weight:600}
+.oc-ggo svg{width:14px;height:14px}
+.oc-gi:hover .oc-ggo{background:#2563eb;color:#fff}
+.oc-gf{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 16px;border-top:1px solid #f1f5f9;background:#fafbfc}
+.oc-gf .btn.sm{height:30px;gap:6px}
+.oc-gf .btn.sm svg{width:14px;height:14px}
+.oc-glink{border:0;background:none;padding:0;font:inherit;font-size:12.5px;font-weight:600;color:#2563eb;cursor:pointer}
+.oc-glink:hover{text-decoration:underline}
+.oc-t{border-color:#e5e7eb;border-radius:16px}
