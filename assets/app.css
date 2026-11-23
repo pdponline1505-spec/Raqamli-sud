@@ -9590,3 +9590,21 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 /* to'liq ekran: butun oynani qoplaydi */
 .smr-stage.fs{position:fixed;inset:0;z-index:2147483000;border-radius:0;padding:20px 24px;width:100vw;height:100vh;height:100dvh;max-width:none;margin:0}
 html:has(.smr-stage.fs),body:has(.smr-stage.fs),.smr:has(.smr-stage.fs){overflow:hidden !important}
+/* bugungi majlis banneri */
+.smj-ban{display:flex;align-items:center;gap:14px;margin:0 0 16px;padding:12px 14px 12px 12px;border-radius:14px;border:1px solid #bbf7d0;background:linear-gradient(90deg,#f0fdf4,#fff 70%)}
+.smj-ban.soon{border-color:#bfdbfe;background:linear-gradient(90deg,#eff6ff,#fff 70%)}
+.smj-ban.live{border-color:#fecaca;background:linear-gradient(90deg,#fef2f2,#fff 70%)}
+.smj-banic{position:relative;flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:#dcfce7;color:#15803d}
+.smj-ban.soon .smj-banic{background:#dbeafe;color:#1d4ed8}.smj-ban.live .smj-banic{background:#fee2e2;color:#dc2626}
+.smj-banic svg{width:20px;height:20px}
+.smj-banic i{position:absolute;top:-3px;right:-3px;width:10px;height:10px;border-radius:50%;background:#16a34a;box-shadow:0 0 0 2px #fff;animation:smjPulse 1.4s infinite}
+.smj-ban.soon .smj-banic i{background:#3073f1}.smj-ban.live .smj-banic i{background:#dc2626}
+.smj-bant{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.smj-bant b{font-size:15px;font-weight:600;color:#0f172a}
+.smj-bant small{font-size:13px;color:#15803d;font-weight:500}
+.smj-ban.soon .smj-bant small{color:#1d4ed8}.smj-ban.live .smj-bant small{color:#b91c1c}
+.smj-bana{display:flex;gap:8px;flex:none}.smj-bana .btn{gap:6px}.smj-bana .btn svg{width:14px;height:14px}
+.smj-tdot{position:relative}
+.smj-tdot::after{content:"";position:absolute;top:6px;right:4px;width:7px;height:7px;border-radius:50%;background:#16a34a;box-shadow:0 0 0 2px #fff}
+.smj-tdot.live::after{background:#dc2626;animation:smjPulse 1.2s infinite}
+@media (max-width:760px){.smj-ban{flex-wrap:wrap}.smj-bana{width:100%;padding-left:54px}}
