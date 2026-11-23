@@ -9208,3 +9208,10 @@ body:has(.l-app:not(.railc)) .pfp{left:260px}
 .smj-subrow{display:flex;align-items:center;gap:10px}
 .smj-subrow .seg-tabs{flex:none;width:auto}
 #smajlis .smj-ums{padding:0}
+
+.smj-more{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;height:46px;border:0;border-top:1px solid #eef1f5;background:#fafbfc;font:inherit;font-size:13.5px;font-weight:600;color:#3073f1;cursor:pointer;border-radius:0 0 14px 14px}
+.smj-more:hover{background:#f1f5ff}
+
+.smj-subrow .smj-newbox{margin-left:auto !important}
+.smj-subrow .lf-btn2{margin-left:auto}
+.smj-subrow .smj-newbox+.lf-btn2{margin-left:0 !important}
