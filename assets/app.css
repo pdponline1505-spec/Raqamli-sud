@@ -10351,3 +10351,11 @@ html[data-theme="dark"] .smj-end{filter:invert(1) hue-rotate(180deg)}
 .l-tagch{width:11px !important;height:11px !important;margin-left:-1px;opacity:.7}
 .l-tagbtn{pointer-events:auto}
 .casemodal.peek .main :is(.itk-mt,.pc-mt){display:none !important}
+.dub-nar{align-items:flex-start}
+.dub-lk{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.dub-lki{display:flex;align-items:center;gap:8px;font-size:12.5px}
+.dub-lki b{font-size:12.5px;font-weight:600;color:#334155;font-variant-numeric:tabular-nums}
+.dub-q{align-self:center;font-size:12.5px;font-weight:600;color:#b91c1c;white-space:nowrap}
+.dub-yes{background:#dc2626 !important;border-color:#dc2626 !important;color:#fff !important}
+.dub-yes:hover{background:#b91c1c !important}
+html[data-theme="dark"] .dub-yes{filter:invert(1) hue-rotate(180deg)}
