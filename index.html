@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=094537997b78">
+<link rel="stylesheet" href="assets/app.css?v=f8e23c214b12">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -13713,7 +13713,7 @@ var dPart = raw.slice(0, 10), tPart = g.t ? (raw.slice(11, 16) || "") : "";
 var vd = /^\d{4}-\d{2}-\d{2}$/.test(dPart) ? new Date(dPart + "T00:00:00") : null;
 var base = open && s.calMonth ? new Date(s.calMonth + "-01T00:00:00") : (vd ? new Date(vd.getFullYear(), vd.getMonth(), 1) : new Date(today.getFullYear(), today.getMonth(), 1));
 var y = base.getFullYear(), m = base.getMonth();
-var emit = function (dIso, tm) { var v = dIso ? (g.t ? dIso + "T" + (tm || tPart || "09:00") : dIso) : ""; h({ target: { value: v } }); };
+var emit = function (dIso, tm) { var defT = dIso === iso(today) ? pd(Math.min(23, new Date().getHours() + 1)) + ":00" : "09:00"; var v = dIso ? (g.t ? dIso + "T" + (tm || tPart || defT) : dIso) : ""; h({ target: { value: v } }); };
 var close = function () { self.setState({ calKey: "", calView: "", calMonth: "", calTimeDraft: "" }); };
 var setMonth = function (yy, mm) { var d = new Date(yy, mm, 1); self.setState({ calMonth: iso(d).slice(0, 7) }); };
 var o = { open: open, exp: open ? "true" : "false", hasTime: !!g.t, isD: view === "d", isM: view === "m" || view === "y" };
@@ -13740,7 +13740,7 @@ var cxT = window.__calDis && window.__calDis[g.k] ? window.__calDis[g.k](d, key)
 days.push({ n: d.getDate(), dis: dis,
 cls: "cal-d" + (out ? " out" : "") + (we ? " we" : "") + (dis && past ? " past" : "") + (cxT ? " off" : "") + (+d === +today ? " today" : "") + (dPart === key ? " sel" : ""),
 title: cxT || (dis ? (we ? "Dam olish kuni" : "O'tgan sana") : ""), aria: uz(d) + (we ? ", dam olish kuni" : ""),
-pick: (function (kk) { return function () { emit(kk); if (!g.t) close(); }; })(key) });
+pick: (function (kk) { return function () { var dr = self.state.calTimeDraft; emit(kk, /^\d{2}:\d{2}$/.test(dr || "") ? dr : undefined); close(); }; })(key) });
 }
 o.days = days;
 } else if (view === "m") {

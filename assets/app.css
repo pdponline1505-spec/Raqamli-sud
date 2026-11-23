@@ -9666,3 +9666,21 @@ html:has(.smr-stage.fs),body:has(.smr-stage.fs),.smr:has(.smr-stage.fs){overflow
 .smr-stage:not(.fs) .smr-strip{right:18px;top:66px;bottom:84px;width:280px}
 .smr-stage:not(.fs) .smr-tiles.spk{min-height:380px}
 .l-tabn.smj-tn:not(.live){min-width:20px;padding:0 6px}
+/* Barcha segment-tablar: och ko'k faol holat, kulrang hover, oddiy son (namuna bo'yicha) */
+.seg-tabs button{color:#1e293b !important;font-weight:500 !important}
+.seg-tabs button:not(.on):hover{background:#f4f6f9 !important;color:#0f172a !important}
+.seg-tabs button.on,.seg-tabs:not(:has(>.seg-ind[data-on="1"]))>button.on{background:#e8f0fe !important;color:#2563eb !important;font-weight:500 !important;box-shadow:none !important}
+.seg-tabs:has(>.seg-ind[data-on="1"])>button.on{background:transparent !important}
+.seg-ind{background:#e8f0fe !important;box-shadow:none !important}
+.seg-tabs .l-tabn{background:transparent !important;color:#64748b !important;min-width:0 !important;height:auto !important;padding:0 2px !important;font-weight:500 !important}
+.seg-tabs button.on .l-tabn{background:transparent !important;color:#2563eb !important}
+.seg-tabs .l-tabn.smj-tn{background:#dcfce7 !important;color:#15803d !important;padding:1px 7px !important;font-weight:600 !important}
+.seg-tabs .l-tabn.smj-tn.live{background:#fee2e2 !important;color:#dc2626 !important}
+.seg-tabs button .lt-ic{opacity:.75}.seg-tabs button.on .lt-ic{opacity:1}
+/* majlis zalidagi filtr-chiplar ham shu uslubda */
+.smr-dflt{background:#fff;border:1px solid #e6e9ef;padding:3px;gap:2px}
+.smr-dfc{color:#1e293b}
+.smr-dfc:hover{background:#f4f6f9}
+.smr-dfc.on{background:#e8f0fe;color:#2563eb;box-shadow:none}
+.smr-dfn{background:transparent;color:#64748b;min-width:0;padding:0 1px;font-weight:500}
+.smr-dfc.on .smr-dfn{background:transparent;color:#2563eb}
