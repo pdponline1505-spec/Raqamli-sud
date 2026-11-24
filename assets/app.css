@@ -10499,3 +10499,45 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 /* profil ustidagi chiziq — Design System belgisi bilan profil avatari oralig'ining ko'rinadigan o'rtasida */
 .l-app:not(.railc) .l-rail .pf-rail::before{top:-13px !important}
 .l-app.railc .l-rail .pf-rail::before{top:-15px !important}
+/* ===== Sudya: Majlis joylari ===== */
+.l-table.mj-lt .l-row.l-head,.l-table.mj-lt .l-row{grid-template-columns:56px minmax(0,2.2fr) minmax(170px,1.1fr) minmax(130px,.9fr) 96px 104px 150px 88px !important}
+@media (max-width:1280px){.l-table.mj-lt .l-row.l-head,.l-table.mj-lt .l-row{grid-template-columns:48px minmax(0,2fr) minmax(150px,1fr) 84px 96px 80px !important}.mj-lt .l-row>.mj-xona,.mj-lt .l-row>.adm-upd,.mj-lt .l-head>span:nth-child(4),.mj-lt .l-head>span:nth-child(7){display:none}}
+.mj-lr{cursor:pointer}
+.mj-lr.off .adm-nmt b{color:#64748b}
+.mj-tc{display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-width:0}
+.mj-tc small{font-size:12px;color:#64748b;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mj-tt{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px 0 7px;border-radius:8px;font-size:12.5px;font-weight:600;white-space:nowrap;background:#eff6ff;color:#1d4ed8}
+.mj-tt svg{width:14px;height:14px}
+.mj-tt.t2{background:#ecfdf5;color:#047857}.mj-tt.t3{background:#fff7ed;color:#c2410c}.mj-tt.t4{background:#f5f3ff;color:#6d28d9}
+.mj-xona{font-size:13px;color:#334155;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.mj-used{font-size:13px;font-weight:600;color:#0f172a}.mj-used.z{color:#94a3b8;font-weight:400}
+/* qo'shish oynasi */
+.mj-dww{z-index:80 !important}
+.mj-tg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mj-tgb{display:flex;align-items:center;gap:10px;min-height:48px;padding:8px 12px;border:1px solid #e2e8f0;border-radius:12px;background:#fff;font:inherit;font-size:14px;font-weight:500;color:#0f172a;text-align:left;cursor:pointer;transition:border-color .15s,background .15s,box-shadow .15s}
+.mj-tgb:hover:not(.dis){border-color:#bfdbfe;background:#f8fbff}
+.mj-tgb.on{border-color:#3073f1;background:#eff6ff;box-shadow:0 0 0 3px rgba(48,115,241,.12)}
+.mj-tgb.err{border-color:#fca5a5}
+.mj-tgb.dis{opacity:.45;cursor:not-allowed}
+.mj-tgb:focus-visible{outline:2px solid #3073f1;outline-offset:2px}
+.mj-tgi{flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:#f1f5f9;color:#475569}
+.mj-tgb.on .mj-tgi{background:#3073f1;color:#fff}
+.mj-hint{font-size:12px;color:#64748b;margin-top:4px}
+.mj-prev,.mj-vinfo{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:12px;background:#f8fafc;border:1px dashed #cbd5e1}
+.mj-vic{flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:#eff6ff;color:#3073f1}
+.mj-vtx{display:flex;flex-direction:column;gap:2px;min-width:0}
+.mj-vtx b{font-size:13.5px;font-weight:600;color:#0f172a;line-height:1.4}
+.mj-vtx small{font-size:12px;color:#64748b}
+.mj-vtx em{font-style:normal;font-size:11.5px;color:#16a34a;margin-top:2px}
+.mj-vinfo{margin-top:8px;border-style:solid;border-color:#d1fae5;background:#f0fdf4}
+.mj-vinfo .mj-vic{background:#dcfce7;color:#16a34a}
+/* «Keyingi bosqichga o'tkazish» oynasidagi joy tanlash */
+.mj-vf{display:flex;flex-direction:column;gap:6px}
+.mj-vl{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:13px;font-weight:500;color:#334155}
+.mj-vlink{display:inline-flex;align-items:center;gap:4px;border:0;background:none;padding:2px 4px;border-radius:6px;font:inherit;font-size:12.5px;font-weight:600;color:#3073f1;cursor:pointer}
+.mj-vlink:hover{background:#eff6ff}
+.mj-vlink svg{width:14px;height:14px}
+.dx-sel.mj-auto .dx-selbtn{background:#f0fdf4 !important;border-color:#bbf7d0 !important;color:#166534}
+.mj-lt .l-row>.mj-tc{justify-self:stretch;text-align:left;align-items:flex-start !important;justify-content:center}
+.mj-vdd .dx-menu .dx-opt:last-child{border-top:1px solid #eef1f5;margin-top:4px}
+.mj-vdd .dx-menu .dx-opt:last-child .dx-olbl{color:#3073f1;font-weight:600}
