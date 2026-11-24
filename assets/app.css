@@ -10496,3 +10496,6 @@ html[data-theme="dark"] .btn.sme-ok{filter:invert(1) hue-rotate(180deg)}
 html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 /* Ko'rsatilgan yordam: ixcham oraliqlar */
 .oc-ytb{margin:-4px 0 -4px !important;padding:10px 12px !important}
+/* profil ustidagi chiziq — Design System belgisi bilan profil avatari oralig'ining ko'rinadigan o'rtasida */
+.l-app:not(.railc) .l-rail .pf-rail::before{top:-13px !important}
+.l-app.railc .l-rail .pf-rail::before{top:-15px !important}
