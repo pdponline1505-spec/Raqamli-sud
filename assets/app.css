@@ -10541,3 +10541,6 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .mj-lt .l-row>.mj-tc{justify-self:stretch;text-align:left;align-items:flex-start !important;justify-content:center}
 .mj-vdd .dx-menu .dx-opt:last-child{border-top:1px solid #eef1f5;margin-top:4px}
 .mj-vdd .dx-menu .dx-opt:last-child .dx-olbl{color:#3073f1;font-weight:600}
+/* sarlavha ustidagi yo'l (breadcrumb): «›» belgisi matn bilan bir chiziqda, aynan o'rtada */
+.kv>small.row{display:flex !important;align-items:center;line-height:16px}
+.kv>small.row>svg.i.s{flex:none;width:12px;height:12px;align-self:center;margin-top:0}
