@@ -10544,3 +10544,7 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 /* sarlavha ustidagi yo'l (breadcrumb): «›» belgisi matn bilan bir chiziqda, aynan o'rtada */
 .kv>small.row{display:flex !important;align-items:center;line-height:16px}
 .kv>small.row>svg.i.s{flex:none;width:12px;height:12px;align-self:center;margin-top:0}
+/* Sud majlisi / Natija qo'yish / Keyinga qoldirilgan: amallar paneli sig'masligi — kam ishlatiladiganlar doim «Boshqalar»da */
+.lb-bar .tbrow:has(.tb-nmore.q) .nb-sodda,.lb-bar .tbrow:has(.tb-nmore.q) .nb-sud,.lb-bar .tbrow:has(.tb-nmore.q) .nb-uzay,.lb-bar .tbrow:has(.tb-nmore.q) .nb-qayta,.lb-bar .tbrow:has(.tb-nmore.q) .nb-birl{display:none !important}
+.lb-bar .tbrow .tb-nmore.q{display:block !important}
+.lb-bar .tbrow .tb-nmore.q .nmix-sodda,.lb-bar .tbrow .tb-nmore.q .nmix-sud,.lb-bar .tbrow .tb-nmore.q .nmq-uzay,.lb-bar .tbrow .tb-nmore.q .nmq-qayta,.lb-bar .tbrow .tb-nmore.q .nmq-birl{display:flex !important}

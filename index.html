@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=a72ea52f7fcf">
+<link rel="stylesheet" href="assets/app.css?v=4ca21a645684">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -10735,9 +10735,9 @@ __out.nxShowUnd = false;
 __out.nxUnd = [["ha", "Ha · Ijro tuzishga"], ["yoq", "Yo'q · Yakunlanganga"]].map(function (u) { var on = uv === u[0]; return { label: u[1], sel: on ? "true" : "false", cls: "nx-segb" + (on ? " on" : ""), pick: function () { setN(function () { return { und: u[0] }; }); } }; }); })();
 // ---- Natija oynasi: yangi ko'rinish (v2) · "Oldingi ko'rinish" tugmasi bilan eskisiga qaytish mumkin ----
 (function () {
-var vw = s.ntView || (function () { try { return localStorage.getItem("adolat.ntView") || "v2"; } catch (e) { return "v2"; } })();
+var vw = "v2"; // «Oldingi ko'rinish» olib tashlandi — doim yangi ko'rinish
 var v2 = natF && vw !== "v1";
-__out.ntV2 = v2; __out.ntOld = natF && !v2; __out.ntViewShow = natF;
+__out.ntV2 = v2; __out.ntOld = natF && !v2; __out.ntViewShow = false;
 __out.ntViewLbl = vw !== "v1" ? "Oldingi ko'rinish" : "Yangi ko'rinish";
 __out.ntViewT = function () { var nv = vw !== "v1" ? "v1" : "v2"; try { localStorage.setItem("adolat.ntView", nv); } catch (e) {} self.setState({ ntView: nv, dxDd: "" }); };
 __out.ntBozOld = __out.ntOld && !bojOn; __out.ntVkaOff = !vkaOn;
