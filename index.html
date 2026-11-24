@@ -10479,7 +10479,8 @@ var saralOn = !!(v.cb || {}).saral; __out.nxSaralCls = "nx-swrow" + (saralOn ? "
 __out.nxModeQol = qol; __out.nxModeRes = !qol; __out.nxShowZal = !qol && !korib; __out.nxShowMan = (qol || korib) ? manReq : true; __out.nxYordReq = curKey === "korib";
 __out.nxShowSayM = sayOn; __out.nxManCls = sayOn ? "fld" : "fld nx-cg-res";
 __out.nxShowYord = !arx && !(curKey === "korib" && (kRes === "rad" || kRes === "qaytarish")); __out.nxShowDoc = !korib;
-__out.nxShowSayIsh = qol || (showJoy && korib); var sayReq = (qol || (showJoy && korib)) && v.joy === JOY[2]; __out.nxSayReq = sayReq; __out.nxSayLbl = "Sayyor sud ishtirokchilari soni";
+var sayKorib = showJoy && korib && (kRes === "tayinlash" || kRes === "qozgatish"); // faqat «Qabul qilish va tayinlash» / «… sudgacha majlis tayinlash»da
+__out.nxShowSayIsh = qol || sayKorib; var sayReq = (qol || sayKorib) && v.joy === JOY[2]; __out.nxSayReq = sayReq; __out.nxSayLbl = "Sayyor sud ishtirokchilari soni";
 __out.nxSayN = v.sayN || ""; __out.nxSayNSet = function (e) { var val = String(e.target.value || "").replace(/[^0-9]/g, "").slice(0, 3); setN(function () { return { sayN: val }; }); }; __out.nxSayBc = errOn && sayReq && !(parseInt(v.sayN, 10) > 0) ? RD : "";
 __out.nxShowRes = !maj && !arx && !nat; __out.ntWait = nat && !natF;
 var cIds = bulk ? (n.ids || []) : null, cRows = (s.lRows || []).filter(function (r) { return cIds ? cIds.indexOf(r.id) >= 0 : r.num === s.caseNum; });
@@ -10800,7 +10801,7 @@ if (!f.ajrim && !qol && !nat) miss.push(arx ? "arxivga yuborish sanasi" : "ajrim
 if (!f.sana && Rw[2] !== "yakun" && !qol && !nat && !arx) miss.push("ish ko'riladigan sana"); var wYak = nat || arx || (NXK === "korib" && (w.res === "rad" || w.res === "qaytarish"));
 if (NXK === "korib" && w.res === "rad" && !w.asos) miss.push("asos"); if (nat && NAT_ASOS[w.res] && !w.asos) miss.push("asos");
 if (natF) { var wcl = (w.nt || {}).cl || clFb(w.res), nMiss = clOrd.filter(function (k) { return !wcl[k]; }).length; if (nMiss) miss.push(nMiss + " ta talab natijasi"); } if (natF && vkaOn && vkaBad) miss.push("VKA taraflar soni"); if (natF && w.full && __out.ntM) { if ((w.nt || {}).sEd) miss.push("sud xarajati summasini tahrirlash yakunlanmagan (Tayyor bosing)"); var KL = { qarz: "asosiy qarz", poch: "pochta xarajatlari", vka: "VKA xarajatlari", boj: "davlat boji" }; ["qarz", "poch", "vka", "boj"].forEach(function (k) { var mm = __out.ntM[k]; if (mm && mm.alWarn) miss.push(KL[k] + " taqsimoti (" + (mm.alDiff > 0 ? "taqsimlanmagan " : "ortiqcha ") + fm(Math.abs(mm.alDiff)) + " so'm)"); }); } if (natF && !((w.nt || {}).tg || {}).boj && !(((w.nt || {}).boz) || ["9"]).length) miss.push("davlat boji undirilmaslik asosi");
-if (!wYak && w.joy === JOY[2] && !w.sayM) miss.push("sayyor sud manzili"); if (!qol && korib && !wYak && w.joy === JOY[2] && !(parseInt(w.sayN, 10) > 0)) miss.push("sayyor sud ishtirokchilari soni"); if (!wYak && manNeed(w.joy) && !(f.manzilTxt || "").trim()) miss.push("sud majlisi manzili");
+if (!wYak && w.joy === JOY[2] && !w.sayM) miss.push("sayyor sud manzili"); if (!qol && korib && (w.res === "tayinlash" || w.res === "qozgatish") && w.joy === JOY[2] && !(parseInt(w.sayN, 10) > 0)) miss.push("sayyor sud ishtirokchilari soni"); if (!wYak && manNeed(w.joy) && !(f.manzilTxt || "").trim()) miss.push("sud majlisi manzili");
 if (miss.length) { self.setState({ nx: Object.assign({}, w, { err: "To'ldirilmagan: " + miss.join(", ") }) }); return; }
 if (!qol && !nat && !arx && badDay(f.ajrim)) { self.setState({ nx: Object.assign({}, w, { err: "Ajrim sanasi: o'tgan sana yoki dam olish kunini tanlab bo'lmaydi" }) }); return; }
 if (yord) { var pend = { res: Rw[1], to: Rw[3], toKey: Rw[2], from: "Ergashev J. A." }, tIds = w.bulk ? (w.ids || []) : null;
@@ -10829,7 +10830,7 @@ var oneId = ((self.state.lRows || []).filter(function (r) { return r.num === sel
 self.flash("Ish «" + (arx ? Rw[3] : natDest ? tabLbl(natDest[0]) + " · " + subLbl(natDest[0], natDest[1]) : destLbl(w.res, Rw[2])) + "» bosqichiga o'tkazildi" + (w.cb && w.cb.topshiriq ? " · yordamchiga topshiriq yuborildi" : "") + (w.res === "tayinlash" && w.cb && (w.cb.sms || w.cb.email) ? " · taraflarga xabarnoma yuborildi" : ""), goAct(oneId ? [oneId] : []));
 };
 // ---- Tajriba: "Keyingi bosqichga o'tkazish" oynasi animatsiyalari (kirish, maydon ochilishi, dropdown, chiqish) ----
-var f0 = v.f || {}, jOk = !v.joy || ((v.joy !== JOY[2] || (!!v.sayM && (qol || !korib || parseInt(v.sayN, 10) > 0))) && (!manNeed(v.joy) || !!String(f0.manzilTxt || "").trim()));
+var f0 = v.f || {}, jOk = !v.joy || ((v.joy !== JOY[2] || (!!v.sayM && (qol || !korib || (v.res !== "tayinlash" && v.res !== "qozgatish") || parseInt(v.sayN, 10) > 0))) && (!manNeed(v.joy) || !!String(f0.manzilTxt || "").trim()));
 var nxReady;
 if (qol) nxReady = !!(v.sabab || []).length && !!f0.sana && !!v.yord && jOk;
 else if (nat) nxReady = !!v.res && !!v.yord && (!natF || clOrd.every(function (k) { return !!(nt.cl || {})[k]; })) && !(natF && v.full && __out.ntM && ((v.nt || {}).sEd || ["qarz", "poch", "vka", "boj"].some(function (k) { return __out.ntM[k] && __out.ntM[k].alWarn; })));
