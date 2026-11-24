@@ -10486,3 +10486,11 @@ html[data-theme="dark"] .btn.sme-ok{filter:invert(1) hue-rotate(180deg)}
 .oc-yfpi{display:flex;gap:8px;align-items:flex-start;padding:6px;border-radius:8px;font-size:13px;line-height:1.4;color:#0f172a;white-space:normal}
 .oc-yfpi:hover{background:#f8fafc}
 .oc-yfpi i{flex:none;width:20px;height:20px;border-radius:6px;display:grid;place-items:center;background:#ecfdf5;color:#047857;font-style:normal;font-size:11px;font-weight:700}
+/* majlis yakunlangan — faqat zalga kirish */
+.smj-go.over{border-color:#e2e8f0;background:linear-gradient(100deg,#f8fafc 0%,#fbfcfe 55%,#fff 100%)}
+.smj-go.over::after{background:radial-gradient(circle,rgba(100,116,139,.08),transparent 70%)}
+.smj-go.over .smj-goic{background:#64748b;box-shadow:0 6px 18px rgba(100,116,139,.28)}
+.smj-go.over .smj-goic svg{fill:none;stroke:currentColor;stroke-width:2.4;margin:0}
+.smj-go.over .smj-gob{background:#0f172a;box-shadow:0 8px 20px rgba(15,23,42,.22)}
+.smj-go.over .smj-gob:hover{background:#1e293b;box-shadow:0 12px 26px rgba(15,23,42,.3)}
+html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
