@@ -10369,3 +10369,20 @@ html[data-theme="dark"] .dub-yes{filter:invert(1) hue-rotate(180deg)}
 /* profil ustidagi ajratuvchi chiziq — ikki tomondan teng, markazda */
 .l-app:not(.railc) .l-rail .pf-rail{border-top:0 !important;overflow:visible;position:sticky !important}
 .l-app:not(.railc) .l-rail .pf-rail::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:calc(100% - 16px);height:1px;background:#eef1f5;pointer-events:none}
+/* operator: ko'rsatilgan yordam jurnali */
+.oc-ybar{display:flex;align-items:center;gap:12px;margin:0 0 12px}
+.oc-ysrch{flex:1;display:flex;align-items:center;gap:8px;height:42px;padding:0 6px 0 14px;border:1px solid #e4e4e7;border-radius:12px;background:#fff;color:#94a3b8}
+.oc-ysrch:focus-within{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+.oc-ysrch input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:14px;color:#0f172a}
+.oc-ysrch .ib{width:30px !important;height:30px !important}
+.oc-yn{font-size:13px;color:#64748b;white-space:nowrap}
+.oc-lr.oc-yr{grid-template-columns:48px 130px minmax(170px,1fr) 140px minmax(170px,1fr) minmax(240px,1.6fr) 140px 130px 56px}
+.oc-yr:not(.oc-lhd){cursor:default}
+.oc-yby{font-size:13px;color:#334155;line-height:1.35}
+.oc-yfx{display:flex;flex-wrap:wrap;gap:6px}
+.oc-yf{display:inline-flex;align-items:center;min-height:24px;padding:3px 9px;border-radius:8px;background:#ecfdf5;color:#047857;font-size:12px;font-weight:600;line-height:1.3}
+.oc-ydur{font-size:14px;font-weight:600;color:#0f172a}
+.oc-ydur.long{color:#c2410c}
+.oc-ydur.acc{color:#ea580c}
+.oc-yop{font-size:13px;color:#334155;white-space:nowrap}
+@media (max-width:1100px){.oc-ylt{overflow-x:auto}.oc-lr.oc-yr{min-width:1340px}}
