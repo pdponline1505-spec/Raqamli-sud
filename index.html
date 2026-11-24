@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=b8b76ad790c8">
+<link rel="stylesheet" href="assets/app.css?v=8e5123eca932">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -6788,7 +6788,7 @@ updDoc(id, patch) {
 this.setState({ docs: this.state.docs.map(function (d) { return d.id === id ? Object.assign({}, d, patch) : d; }) });
 }
 
-_secAnim() {
+_secAnim(anchorSel) {
 try {
 if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 var run = function () {
@@ -6796,6 +6796,11 @@ var run = function () {
   var SEL = ".smr-hd,.smr-card,.l-tabrow,.sec,.smj-subrow,.smj-pane>.l-toolbar,.smj-t,.smj-tw,.l-toolbar,.l-card,.d2-head,.d2-stats,.d2-card,.op-tabrow,.op-ban,.op-kpis,.op-acts,.op-c,.oc-lt,.ax-card,.adm-card,.uz-card,.sd-card,.card:not(.qv)";
   var all = Array.prototype.slice.call(root.querySelectorAll(SEL)).filter(function (el) { return !el.closest(".qv-wrap,.dd,.oc-stack,.oc-jfw,.lf-menu,.dx-menu,[role=dialog]:not(.smr)") && el.offsetParent !== null; });
   var top = all.filter(function (el) { return !all.some(function (o) { return o !== el && o.contains(el); }); });
+  if (anchorSel) { var ae = document.activeElement, anc = (ae && ae.closest && ae.closest("[role=tablist]")) || null;
+    if (!anc || !root.contains(anc)) { var cand = Array.prototype.slice.call(root.querySelectorAll(anchorSel)).filter(function (x) { return x.offsetParent !== null; }); anc = cand[0] || null; }
+    if (!anc) return;
+    top = top.filter(function (el) { return !el.contains(anc) && !anc.contains(el) && !!(anc.compareDocumentPosition(el) & 4); });
+    if (!top.length) { var host = anc.parentElement; while (host && host !== root && !host.nextElementSibling) host = host.parentElement; if (host && host.nextElementSibling) top = [host.nextElementSibling]; } }
   var vh = window.innerHeight || 900, i = 0;
   top.forEach(function (el) { var r = el.getBoundingClientRect(); if (r.bottom < 0 || r.top > vh + 120 || i >= 12) return;
     try { el.animate([{ opacity: 0, transform: "translateY(22px)" }, { opacity: 1, transform: "none" }], { duration: 640, delay: i * 80, easing: "cubic-bezier(.22,1,.36,1)", fill: "backwards" }); } catch (e) {} i++; });
@@ -14092,9 +14097,14 @@ __out.gcal[g.k] = o;
 var navKey = [s.page || "list", s.listSrc || "main", s.lInst || "", s.lTab || "", (s.caseOpen && s.openMode === "page") ? "case" : "", s.role || "yordamchi", s.dbDay2 || "hammasi"].join("|");
 if (this._navKey !== undefined && this._navKey !== navKey) this._navAnim(this._navKey, navKey);
 // bo'limlar: har bir tab / sahifa almashganda pastdan tepaga sekin paydo bo'ladi
-var secKey = [s.page || "", s.listSrc || "", s.lInst || "", s.lTab || "", s.caseOpen ? (s.openMode || "") + ":" + (s.caseNum || "") : "", s.role || "", s.caseOpen ? (s.smTab || "") + ":" + (s.smSub || "") : "", s.smRoom || "", (s.op || {}).pg || "", JSON.stringify((s.op || {}).tab || {}), s.axcTab || "", s.uzTab || "", s.sdTab || "", JSON.stringify(s.lSubs || {}), s.dbDay2 || ""].join("|");
-if (this._secKey !== undefined && this._secKey !== secKey) this._secAnim();
-this._secKey = secKey;
+// sahifa almashsa — barcha bo'limlar; faqat tab almashsa — shu tab qatoridan pastdagi qismlar
+var secPg = [s.page || "", s.listSrc || "", s.lInst || "", s.caseOpen ? (s.openMode || "") + ":" + (s.caseNum || "") : "", s.role || "", s.smRoom || "", (s.op || {}).pg || ""].join("|");
+var secTb = [s.lTab || "", s.caseOpen ? (s.smTab || "") : "", s.caseOpen ? (s.smSub || "") : "", JSON.stringify((s.op || {}).tab || {}), s.axcTab || "", s.uzTab || "", s.sdTab || "", JSON.stringify(s.lSubs || {}), s.dbDay2 || ""];
+if (this._secPg !== undefined) {
+  if (this._secPg !== secPg) this._secAnim(null);
+  else if (this._secTb && this._secTb.join("|") !== secTb.join("|")) { var pv = this._secTb, hint = pv[2] !== secTb[2] ? ".smj-subrow" : pv[1] !== secTb[1] ? ".smj-tabrow" : pv[0] !== secTb[0] ? ".l-tabrow" : pv[3] !== secTb[3] ? ".op-tabrow" : ""; this._secAnim(hint || "[role=tablist]"); }
+}
+this._secPg = secPg; this._secTb = secTb;
 this._navKey = navKey;
 try {
 var snap = JSON.stringify({ op: s.role === "operator" ? { pg: (s.op || {}).pg || "home" } : undefined, page: s.page, caseOpen: !!s.caseOpen, openMode: s.openMode, caseNum: s.caseNum, nav: s.nav, lTab: s.lTab, lInst: s.lInst, role: s.role, dbDay2: s.dbDay2, subCollapsed: !!s.subCollapsed });
