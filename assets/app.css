@@ -10494,3 +10494,5 @@ html[data-theme="dark"] .btn.sme-ok{filter:invert(1) hue-rotate(180deg)}
 .smj-go.over .smj-gob{background:#0f172a;box-shadow:0 8px 20px rgba(15,23,42,.22)}
 .smj-go.over .smj-gob:hover{background:#1e293b;box-shadow:0 12px 26px rgba(15,23,42,.3)}
 html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
+/* Ko'rsatilgan yordam: ixcham oraliqlar */
+.oc-ytb{margin:-4px 0 -4px !important;padding:10px 12px !important}
