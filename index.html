@@ -6621,7 +6621,7 @@ setTimeout(function () { el.classList.add("rv-done"); }, 900);
 var rvScan = function () {
 if (!rvIO) return;
 var secs = document.querySelectorAll(".casemodal:not(.quick) .sec:not(.rv)");
-for (var i = 0; i < secs.length; i++) { secs[i].classList.add("rv"); rvIO.observe(secs[i]); }
+for (var i = 0; i < secs.length; i++) { var sx = secs[i]; if (sx.dataset.rvd) { sx.classList.add("rv", "rv-in", "rv-done"); continue; } sx.dataset.rvd = "1"; sx.classList.add("rv"); rvIO.observe(sx); } // qayta chizilganda bo'lim yana yashirinib-sakramasin
 };
 var syncLogin = function () { var w = document.querySelector(".lg-wrap"); if (w) { w.classList.add("rb-on"); startSquares(); } else if (sq) sq.stop(); };
 var moT = 0; try { new MutationObserver(function () { syncLogin(); if (!moT) moT = requestAnimationFrame(function () { moT = 0; rvScan(); }); }).observe(document.body, { childList: true, subtree: true }); } catch (x) {}
@@ -6832,6 +6832,8 @@ var run = function () {
     if (!top.length) { var host = anc.parentElement; while (host && host !== root && !host.nextElementSibling) host = host.parentElement; if (host && host.nextElementSibling) top = [host.nextElementSibling]; } }
   var vh = window.innerHeight || 900, i = 0;
   top.forEach(function (el) { var r = el.getBoundingClientRect(); if (r.bottom < 0 || r.top > vh + 120 || i >= 12) return;
+    // bo'lim aylantirish animatsiyasi (.rv) bilan ikki marta harakatlanmasin — darhol ko'rinadigan holatga o'tkazamiz
+    if (el.classList.contains("sec")) { el.dataset.rvd = "1"; el.style.transition = "none"; el.classList.add("rv", "rv-in", "rv-done"); void el.offsetWidth; el.style.transition = ""; }
     try { el.animate([{ opacity: 0, transform: "translateY(22px)" }, { opacity: 1, transform: "none" }], { duration: 640, delay: i * 80, easing: "cubic-bezier(.22,1,.36,1)", fill: "backwards" }); } catch (e) {} i++; });
 };
 if (window.requestAnimationFrame) requestAnimationFrame(function () { requestAnimationFrame(run); }); else setTimeout(run, 16);
