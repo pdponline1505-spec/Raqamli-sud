@@ -10788,3 +10788,7 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .pt-pend-i b{font-size:13.5px}.pt-pend-i small{font-size:12px;color:#64748b}
 .pt-pend-b{padding:2px 9px;border-radius:999px;background:#e2e8f0;color:#475569;font-size:12px;font-weight:600}
 .pt-no{color:#b91c1c}
+/* ro'yxatda zal so'rovi holati */
+.l-tag.zst{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.l-tag.zst::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.l-tag.zst.w{background:#f1f5f9;color:#475569}.l-tag.zst.p{background:#fef3c7;color:#b45309}.l-tag.zst.ok{background:#dcfce7;color:#15803d}.l-tag.zst.bad{background:#fee2e2;color:#b91c1c}
