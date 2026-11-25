@@ -10548,3 +10548,38 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .lb-bar .tbrow:has(.tb-nmore.q) .nb-sodda,.lb-bar .tbrow:has(.tb-nmore.q) .nb-sud,.lb-bar .tbrow:has(.tb-nmore.q) .nb-uzay,.lb-bar .tbrow:has(.tb-nmore.q) .nb-qayta,.lb-bar .tbrow:has(.tb-nmore.q) .nb-birl{display:none !important}
 .lb-bar .tbrow .tb-nmore.q{display:block !important}
 .lb-bar .tbrow .tb-nmore.q .nmix-sodda,.lb-bar .tbrow .tb-nmore.q .nmix-sud,.lb-bar .tbrow .tb-nmore.q .nmq-uzay,.lb-bar .tbrow .tb-nmore.q .nmq-qayta,.lb-bar .tbrow .tb-nmore.q .nmq-birl{display:flex !important}
+/* NRS-362/365: sud majlisi joyi — joy turiga qarab maydonlar */
+.nxp-f{display:flex;flex-direction:column;gap:6px;min-width:0}
+.nxp-f>.mj-vl{min-height:20px}
+.nxp-opt{font-style:normal;font-weight:500;font-size:11.5px;color:#94a3b8;margin-left:2px}
+.nxp-h{font-size:12px;line-height:1.4;color:#64748b}
+.nxp-h.ok{color:#16a34a}
+.nxp-h.bad{color:#dc2626}
+.dx-opt.dis,.dx-opt:disabled{opacity:1;cursor:not-allowed;background:repeating-linear-gradient(135deg,#fff 0 6px,#fafafa 6px 12px)}
+.dx-opt.dis .dx-olbl{color:#94a3b8}
+.dx-opt.dis .dx-osub{color:#dc2626}
+.nxp-loc{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px dashed #cbd5e1;border-radius:12px;background:#f8fafc}
+.nxp-lic{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#e2e8f0;color:#64748b}
+.nxp-lic.on{background:#dbeafe;color:#3073f1}
+.nxp-lic svg{width:18px;height:18px}
+.nxp-ltx{display:flex;flex-direction:column;gap:1px;min-width:0;flex:1}
+.nxp-ltx b{font-size:13.5px;font-weight:600;color:#0f172a;font-variant-numeric:tabular-nums}
+.nxp-ltx small{font-size:12px;color:#64748b}
+.nxp-map{position:relative;height:190px;margin-top:8px;border:1px solid #dbe3ee;border-radius:12px;overflow:hidden;cursor:crosshair;background:#eef3e8;background-image:linear-gradient(rgba(148,163,184,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.18) 1px,transparent 1px);background-size:28px 28px}
+.nxp-map:focus-visible{outline:2px solid #3073f1;outline-offset:2px}
+.nxp-blk{position:absolute;border-radius:6px;background:#e3e8de}
+.nxp-blk.b1{left:8%;top:12%;width:22%;height:26%}.nxp-blk.b2{left:58%;top:52%;width:26%;height:30%}.nxp-blk.b3{left:36%;top:64%;width:14%;height:20%;background:#dfead3}
+.nxp-rd{position:absolute;background:#fff;box-shadow:0 0 0 1px #e2e8f0}
+.nxp-rd.r1{left:0;right:0;top:46%;height:9px}.nxp-rd.r2{top:0;bottom:0;left:44%;width:9px}.nxp-rd.r3{left:-10%;width:80%;top:22%;height:6px;transform:rotate(-14deg);transform-origin:left}
+.nxp-riv{position:absolute;right:-6%;top:-10%;width:30%;height:130%;border-radius:50%;border-left:14px solid #c7dcf3;transform:rotate(12deg)}
+.nxp-pin{position:absolute;transform:translate(-50%,-100%);color:#dc2626;pointer-events:none;filter:drop-shadow(0 2px 2px rgba(0,0,0,.25))}
+.nxp-pin svg{width:30px;height:30px;fill:#fff}
+.nxp-mh{position:absolute;left:10px;bottom:8px;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.92);font-size:11.5px;color:#475569;pointer-events:none}
+.nxp-note{grid-column:1/-1;display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:12px;background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af}
+.nxp-note>svg{flex:none;width:18px;height:18px;margin-top:1px}
+.nxp-note b{font-size:13px;font-weight:600}
+.nxp-note small{font-size:12px;line-height:1.45;color:#1e3a8a}
+.nxp-tdd .dx-menu{max-height:260px}
+.nxp-f>.mj-vl{min-height:0;font-weight:400;color:#475569}
+.nxp-pin svg.i.s{width:30px;height:30px;stroke-width:1.8}
+.nxp-f .mj-vlink{white-space:nowrap;flex:none}
