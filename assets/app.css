@@ -10792,3 +10792,26 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .l-tag.zst{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
 .l-tag.zst::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 .l-tag.zst.w{background:#f1f5f9;color:#475569}.l-tag.zst.p{background:#fef3c7;color:#b45309}.l-tag.zst.ok{background:#dcfce7;color:#15803d}.l-tag.zst.bad{background:#fee2e2;color:#b91c1c}
+/* boshqa sud zali tasdiqlanmagan — majlisni boshlash bloklangan */
+.smj-go.zsb{background:#fffbeb !important;border-color:#fde68a !important}
+.smj-go.zsb .smj-goic{background:#fef3c7 !important;color:#b45309 !important;box-shadow:none !important}
+.smj-go.zsb .smj-goic i{display:none}
+.smj-go.zsb.rad{background:#fef2f2 !important;border-color:#fecaca !important}
+.smj-go.zsb.rad .smj-goic{background:#fee2e2 !important;color:#b91c1c !important}
+.smj-go.zsb .smj-gob{opacity:.55;cursor:not-allowed;filter:grayscale(.6)}
+.zsb.smj-go b{color:#92400e}.zsb.rad.smj-go b{color:#991b1b}
+/* majlis boshqa kunga belgilangan — «Sud majlisi» tabi yopiq */
+.smt-dis{opacity:.45;cursor:not-allowed !important}
+.smj-live.smj-fut{background:#f1f5f9 !important;color:#475569 !important;border-color:#e2e8f0 !important;cursor:default}
+.smj-live.smj-fut i{background:#94a3b8 !important;animation:none !important;box-shadow:none !important}
+/* Zal so'rovlari — umumiy ro'yxat dizaynida */
+.l-table.zs-lt .l-row.l-head,.l-table.zs-lt .l-row{grid-template-columns:56px minmax(0,1.5fr) minmax(0,1.6fr) 120px 120px 160px 120px 64px !important}
+@media (max-width:1280px){.l-table.zs-lt .l-row.l-head,.l-table.zs-lt .l-row{grid-template-columns:48px minmax(0,1.4fr) minmax(0,1.4fr) 110px 150px 56px !important}.zs-lt .l-row>.mj-xona,.zs-lt .l-row>.adm-upd:nth-of-type(6),.zs-lt .l-head>span:nth-child(5),.zs-lt .l-head>span:nth-child(7){display:none !important}}
+.zs-lt .l-row>.zs-sud{justify-self:stretch;min-width:0;gap:1px}
+.zs-sud b{font-size:13.5px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.zs-sud .zs-pre{font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:#94a3b8}
+.zs-sud .zs-tag{margin-top:2px}
+.zs-lr.todo{background:#f8fbff}
+.zs-nd{display:inline-block;width:8px;height:8px;margin-left:6px;border-radius:50%;background:#dc2626;vertical-align:middle}
+.zs-wrap .zs-demo{margin:0}
+.zs-lt .l-row>.zs-sud{align-items:flex-start !important;text-align:left;justify-content:center}
