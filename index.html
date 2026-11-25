@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=4943774ee7a8">
+<link rel="stylesheet" href="assets/app.css?v=04afa8b791ab">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -10600,9 +10600,9 @@ self._plSum = plSum; self._plNote = function (w) { return w.joy === JOY[1] ? " �
   var busyHint = function (id) { var b = id && plBusy(id, dt, tm, du); return b ? "Bu zal " + dt + " " + b.from + "–" + b.to + " da band (" + b.num + ") — boshqa zal yoki vaqtni tanlang" : ""; };
   var D = function (k, opts, val, onCh, o) { return dd("nx-pl-" + k, opts, val || "", onCh, Object.assign({ noSplit: true, extra: "fxm" }, o || {})); };
   var mjPick = function (tur) { var MJL = mjOf(s).filter(function (r) { return r.active && r.tur === tur; }), cur = p.ven && MJL.filter(function (r) { return r.id === p.ven; })[0];
-    fld({ cls: "fld nx-cg-res", label: "Saqlangan joylardan tanlash", req: false, isDd: true, link: function () { mjOpenF(self, null, { tur: tur, ctx: "nx" }); }, linkLbl: "Yangi joy",
-      d: D("ven", [{ v: "", l: MJL.length ? "«Majlis joylari» ro'yxatidan tanlang" : "Ro'yxatda joy yo'q" }].concat(MJL.map(function (r) { return { v: r.id, l: r.nomi, sub: mjAddr(r) + (r.moljal ? " · " + r.moljal : "") }; })), cur ? cur.id : "",
-        function (e) { var id = e.target.value, r = MJL.filter(function (x) { return x.id === id; })[0]; if (!r) return; setN(function (w) { return { pl: plFromMj(r, id, w.pl) }; }); }, { ph: "«Majlis joylari» ro'yxatidan tanlang", extra: "fxm mj-vdd" }),
+    fld({ cls: "fld nx-cg-res", label: "Saqlangan joylardan tanlash", req: false, isDd: true,
+      d: D("ven", [{ v: "", l: MJL.length ? "«Majlis joylari» ro'yxatidan tanlang" : "Ro'yxatda joy yo'q" }].concat(MJL.map(function (r) { return { v: r.id, l: r.nomi, sub: mjAddr(r) + (r.moljal ? " · " + r.moljal : "") }; })).concat([{ v: "__add", l: "+ Yangi joy qo'shish", sub: "Ro'yxatda kerakli joy bo'lmasa — «Majlis joylari»ga qo'shiladi va shu yerda tanlanadi" }]), cur ? cur.id : "",
+        function (e) { var id = e.target.value; if (id === "__add") { mjOpenF(self, null, { tur: tur, ctx: "nx" }); return; } var r = MJL.filter(function (x) { return x.id === id; })[0]; if (!r) return; setN(function (w) { return { pl: plFromMj(r, id, w.pl) }; }); }, { ph: "«Majlis joylari» ro'yxatidan tanlang", extra: "fxm mj-vdd" }),
       hint: cur ? "Maydonlar «Majlis joylari» ro'yxatidan avtomatik to'ldirildi — kerak bo'lsa o'zgartiring" : "Tanlansa, quyidagi maydonlar avtomatik to'ladi", hCls: cur ? "nxp-h ok" : "nxp-h" }); };
   var locF = function () { var on = !!p.loc, mOn = !!p.mapOn;
     fld({ cls: "fld nx-cg-res", label: "Xaritadagi lokatsiya", isLoc: true, bc: bad(!on), locT: on ? p.loc : "Lokatsiya belgilanmagan", locS: on ? "Koordinatalar · xaritada belgilangan" : "Xaritadan majlis o'tadigan joyni belgilang", locIc: on ? "nxp-lic on" : "nxp-lic",

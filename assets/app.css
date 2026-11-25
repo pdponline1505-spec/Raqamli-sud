@@ -10583,3 +10583,4 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .nxp-f>.mj-vl{min-height:0;font-weight:400;color:#475569}
 .nxp-pin svg.i.s{width:30px;height:30px;stroke-width:1.8}
 .nxp-f .mj-vlink{white-space:nowrap;flex:none}
+.mj-vdd .dx-menu .dx-opt:last-child .dx-olbl{display:flex;flex-direction:column}
