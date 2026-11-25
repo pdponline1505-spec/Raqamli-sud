@@ -10771,3 +10771,5 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ym-b .fld>span{font-size:13px;color:#475569}
 .ym-mod .zs-mf{border-radius:0 0 18px 18px}
 .ums-row .ums-yed{height:30px}
+/* Sudya yordamchisi: Ish mazmuni va da'vo summasi — faqat ko'rish */
+.itk-ro .itk-tools,.itk-ro .itk-main,.itk-ro .itk-addsum,.itk-ro .dx-pill.nm,.itk-ro .bk2-empty .btn,.itk-ro .ib:not(.dx-actog):not(.dx-detb){display:none !important}
