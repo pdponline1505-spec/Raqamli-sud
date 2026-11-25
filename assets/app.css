@@ -10763,3 +10763,11 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .nxp-sig{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 10px;border-radius:999px;background:#dcfce7;color:#15803d;font-size:12.5px;font-weight:600;white-space:nowrap}
 .nxp-sig svg{width:14px;height:14px}
 @media (max-width:640px){.nxp-doc{flex-wrap:wrap}.nxp-doc>.kv{flex-basis:calc(100% - 46px) !important}}
+/* Sudya yordamchisini biriktirish — faqat bitta maydon */
+.ym-mod{width:min(480px,100%);overflow:visible}
+.ym-ic{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:#eff6ff;color:#3073f1}
+.ym-ic svg{width:18px;height:18px}
+.ym-b{display:flex;flex-direction:column;gap:8px;padding:18px}
+.ym-b .fld>span{font-size:13px;color:#475569}
+.ym-mod .zs-mf{border-radius:0 0 18px 18px}
+.ums-row .ums-yed{height:30px}
