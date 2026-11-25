@@ -10632,3 +10632,12 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .nxc-s{min-width:62px;height:32px;padding:0 10px;border:1px solid #d1fae5;border-radius:9px;background:#f0fdf4;font:inherit;font-size:13px;font-weight:500;color:#166534;cursor:pointer;font-variant-numeric:tabular-nums}
 .nxc-s:hover{border-color:#16a34a}
 .nxc-s.on{background:#3073f1;border-color:#3073f1;color:#fff}
+/* biriktirilgan zal: oddiy input balandligida, bir qatorda */
+.nxp-ro{box-sizing:border-box;height:44px;min-height:0;padding:0 10px 0 12px;gap:10px;border-color:#e2e8f0}
+.nxp-ro .nxp-lic{width:22px;height:22px;border-radius:0;background:none;color:#64748b}
+.nxp-ro .nxp-lic svg{width:18px;height:18px}
+.nxp-ro .nxp-ltx{flex-direction:row;align-items:baseline;gap:8px;white-space:nowrap;overflow:hidden}
+.nxp-ro .nxp-ltx b{font-size:14px;font-weight:500;flex:none}
+.nxp-ro .nxp-ltx small{overflow:hidden;text-overflow:ellipsis;min-width:0}
+.nxp-ro .nxp-rob{padding:2px 9px}
+.nxp-ro .nxp-ltx b{font-variant-numeric:normal;letter-spacing:0}

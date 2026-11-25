@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=a2461750503a">
+<link rel="stylesheet" href="assets/app.css?v=cca5797e6dc0">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -5018,6 +5018,7 @@ var plBusyList = function (id, date) { if (!id || !date) return []; var hs = fun
 var plBusy = function (id, date, time, dur) { if (!id || !date || !plTimeOk(time)) return null; var p = String(time).split(":"), a0 = +p[0] * 60 + +p[1], a1 = a0 + (parseInt(dur, 10) || 60);
   return plBusyList(id, date).filter(function (b) { return a0 < b.s1 && b.s0 < a1; })[0] || null; };
 var PL_MYZAL = ["z3", "3-zal", "2-qavat · 24 o'rin"]; // sudyaga biriktirilgan zal (o'z sudi binosida — doim shu zal)
+var PL_CAL_ON = false; // zal bandligi kalendari — hozircha o'chirilgan (kod saqlangan, kerak bo'lsa true qilinadi)
 var PL_OY = ["Yanvar", "Fevral", "Mart", "Aprel", "May", "Iyun", "Iyul", "Avgust", "Sentabr", "Oktabr", "Noyabr", "Dekabr"];
 // xaritadan nuqta tanlash (namuna xarita): bosilgan joydan foiz va koordinatalar
 var plMapPt = function (e) { var el = e && (e.currentTarget || e.target); if (el && el.closest) el = el.closest(".nxp-map") || el; if (!el || !el.getBoundingClientRect || e.clientX == null) return null; var r = el.getBoundingClientRect(), x = Math.max(2, Math.min(98, (e.clientX - r.left) / r.width * 100)), y = Math.max(4, Math.min(96, (e.clientY - r.top) / r.height * 100));
@@ -10645,7 +10646,7 @@ self._plSum = plSum; self._plNote = function (w) { return w.joy === JOY[1] ? " �
       CD.push({ n: String(dn), dis: wk || past, title: z2(dn) + "." + z2(d.getMonth() + 1) + " — " + st, cls: "nxc-d" + (wk || past ? " dis" : !fN ? " full" : bl.length ? " part" : " free") + (key === dt ? " sel" : "") + (d.getTime() === t0.getTime() ? " tdy" : ""),
         pick: function () { setN(function (w) { return { f: Object.assign({}, w.f, { sana: key }) }; }); } }); })(dd0);
     var selOk = !!dt && /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(dt), SL0 = selOk ? freeSl(dt) : [], BL0 = selOk ? plBusyList(MZ[0], dt) : [];
-    fld({ cls: "fld nx-cg-res", label: MZ[1] + " bandligi · bo'sh kun va vaqtni tanlang", req: false, noOpt: true, isCal: true, cMonth: PL_OY[m0.getMonth()] + " " + m0.getFullYear(), cPrevDis: off <= 0,
+    if (PL_CAL_ON) fld({ cls: "fld nx-cg-res", label: MZ[1] + " bandligi · bo'sh kun va vaqtni tanlang", req: false, noOpt: true, isCal: true, cMonth: PL_OY[m0.getMonth()] + " " + m0.getFullYear(), cPrevDis: off <= 0,
       cPrev: function () { setN(function (w) { return { pl: Object.assign({}, w.pl, { cm: Math.max(0, ((w.pl || {}).cm || 0) - 1) }) }; }); }, cNext: function () { setN(function (w) { return { pl: Object.assign({}, w.pl, { cm: ((w.pl || {}).cm || 0) + 1 }) }; }); },
       cDays: CD, cHasDay: selOk, cDayT: selOk ? dt.split("-").reverse().join(".") + " · " + (dN) + " daqiqalik majlis uchun bo'sh vaqtlar" : "", cHasBusy: BL0.length > 0, cBusy: BL0.map(function (b) { return { t: "Band " + b.from + "–" + b.to + " · " + b.num }; }),
       cSlots: SL0.filter(function (x) { return x.ok; }).map(function (x) { return { t: x.t, on: x.t === tm ? "true" : "false", cls: "nxc-s" + (x.t === tm ? " on" : ""), pick: function () { setN(function () { return { vaqt: x.t }; }); } }; }), cNoSlot: selOk && !SL0.some(function (x) { return x.ok; }), cNoDay: !selOk, cDurT: dN + " daqiqa" }); }
