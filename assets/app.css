@@ -10597,3 +10597,38 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .nxp-gi small{font-size:12px;color:#64748b;font-variant-numeric:tabular-nums}
 .nxp-msr~.nxp-h:empty{display:none}
 .nxp-msr>.btn{height:auto;min-height:44px;padding-inline:16px}
+/* O'z sudi binosi: biriktirilgan zal va bandlik kalendari */
+.nxp-ro{display:flex;align-items:center;gap:12px;min-height:44px;padding:8px 12px;border:1px solid #e2e8f0;border-radius:12px;background:#f8fafc}
+.nxp-rob{flex:none;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600}
+.nxp-rob.ok{background:#dcfce7;color:#15803d}
+.nxp-rob.bad{background:#fee2e2;color:#b91c1c}
+.nxc{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:16px;padding:14px;border:1px solid #e2e8f0;border-radius:14px;background:#fff}
+@media (max-width:640px){.nxc{grid-template-columns:minmax(0,1fr)}}
+.nxc-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.nxc-h b{font-size:14px;font-weight:600;color:#0f172a}
+.nxc-h .ib{width:30px;height:30px}
+.nxc-h .ib:disabled{opacity:.35;cursor:default}
+.nxc-wd,.nxc-g{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.nxc-wd span{text-align:center;font-size:11.5px;color:#94a3b8;padding:2px 0}
+.nxc-d{position:relative;height:34px;border:1px solid transparent;border-radius:9px;background:#f1f5f9;font:inherit;font-size:13px;font-weight:500;color:#0f172a;cursor:pointer;font-variant-numeric:tabular-nums}
+.nxc-d.free{background:#ecfdf5;color:#166534}
+.nxc-d.part{background:#fffbeb;color:#92400e}
+.nxc-d.full{background:#fef2f2;color:#b91c1c}
+.nxc-d.dis{background:none;color:#cbd5e1;cursor:not-allowed}
+.nxc-d.blank{visibility:hidden}
+.nxc-d.tdy{box-shadow:inset 0 0 0 1px #94a3b8}
+.nxc-d.sel{background:#3073f1;color:#fff;border-color:#3073f1}
+.nxc-d:not(.dis):not(.sel):hover{border-color:#3073f1}
+.nxc-lg{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:10px}
+.nxc-lg .lg{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:#64748b}
+.nxc-lg .lg::before{content:"";width:10px;height:10px;border-radius:3px;background:#f1f5f9}
+.nxc-lg .lg.free::before{background:#bbf7d0}.nxc-lg .lg.part::before{background:#fde68a}.nxc-lg .lg.full::before{background:#fecaca}.nxc-lg .lg.dis::before{background:#e2e8f0}
+.nxc-day{display:flex;flex-direction:column;gap:10px;min-width:0;padding-left:16px;border-left:1px solid #eef1f5}
+@media (max-width:640px){.nxc-day{padding-left:0;border-left:0;padding-top:12px;border-top:1px solid #eef1f5}}
+.nxc-day>b{font-size:13.5px;font-weight:600;color:#0f172a}
+.nxc-busy{display:flex;flex-wrap:wrap;gap:6px}
+.nxc-bz{padding:3px 8px;border-radius:8px;background:#fef2f2;color:#b91c1c;font-size:12px;font-variant-numeric:tabular-nums}
+.nxc-sl{display:flex;flex-wrap:wrap;gap:6px}
+.nxc-s{min-width:62px;height:32px;padding:0 10px;border:1px solid #d1fae5;border-radius:9px;background:#f0fdf4;font:inherit;font-size:13px;font-weight:500;color:#166534;cursor:pointer;font-variant-numeric:tabular-nums}
+.nxc-s:hover{border-color:#16a34a}
+.nxc-s.on{background:#3073f1;border-color:#3073f1;color:#fff}
