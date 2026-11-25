@@ -10879,3 +10879,14 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 @media (max-width:1280px){.l-table.zs-lt .l-row.l-head,.l-table.zs-lt .l-row{grid-template-columns:48px minmax(0,1.3fr) minmax(0,1.4fr) 110px 168px 52px !important}}
 .l-table.zs-lt .l-row.l-head,.l-table.zs-lt .l-row{grid-template-columns:52px minmax(0,1.3fr) minmax(0,1.4fr) 112px 76px 172px 180px 52px !important}
 @media (max-width:1280px){.l-table.zs-lt .l-row.l-head,.l-table.zs-lt .l-row{grid-template-columns:48px minmax(0,1.3fr) minmax(0,1.4fr) 110px 168px 52px !important}}
+/* ro'yxat: boshqa sud zali holati belgisi ustunga sig'sin */
+.l-tag.zst{max-width:100%;min-width:0;overflow:hidden;text-overflow:ellipsis;font-size:11.5px;line-height:16px;padding:2px 8px;border-radius:6px;font-weight:500}
+.l-tag.zst::before{flex:none}
+.l-tag.zst{white-space:normal;overflow:visible;text-overflow:clip;align-items:flex-start;text-align:left;overflow-wrap:anywhere}
+.l-tag.zst::before{margin-top:5px}
+.l-row .l-tag.zst{font-size:11.5px !important;line-height:15px !important;overflow-wrap:normal;word-break:normal;padding:2px 7px}
+/* Ish raqami ustuni: raqam va holat belgilari sig'sin */
+.l-row{grid-template-columns:56px minmax(190px,1.2fr) minmax(0,1.6fr) minmax(0,1.6fr) minmax(0,1.6fr) 140px 84px}
+.l-row .l-tag.zst{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;align-items:center}
+.l-row .l-tag.zst::before{margin-top:0}
+.l-row .l-numlink{white-space:nowrap}

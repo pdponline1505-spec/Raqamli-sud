@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=67e50226bd65">
+<link rel="stylesheet" href="assets/app.css?v=1c63e7662723">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -15318,10 +15318,10 @@ if (s.caseOpen && __out.sm && __out.sm.on && role !== "operator") { var rwF = (s
     __out.sm = Object.assign({}, __out.sm, { startHdr: false, ban: false, goOn: false, futOn: true, futT: "Majlis " + dtF(mdF) + " · " + (rwF.majVaqt || "10:00") + " · hali vaqti kelmadi", futTip: futM, start: flF, room: flF, goMaj: flF,
       tabs: (__out.sm.tabs || []).map(function (t) { return t.label === "Sud majlisi" ? Object.assign({}, t, { cls: (t.cls ? t.cls + " " : "") + "smt-dis", pick: flF }) : t; }) }); } }
 // ish ro'yxatida: boshqa sudga zal so'rovi holati (javob kutilmoqda / tasdiqlandi / rad etildi)
-if (Array.isArray(__out.lRows)) { var ZT = { imzo: ["Zal so'rovi: imzolanmagan", "l-tag zst w"], kutil: ["Boshqa sud: javob kutilmoqda", "l-tag zst p"], ok: ["Boshqa sud: zal tasdiqlandi", "l-tag zst ok"], rad: ["Boshqa sud: zal rad etildi", "l-tag zst bad"] };
+if (Array.isArray(__out.lRows)) { var ZT = { imzo: ["Zal imzolanmagan", "l-tag zst w"], kutil: ["Zal kutilmoqda", "l-tag zst p"], ok: ["Zal tasdiqlandi", "l-tag zst ok"], rad: ["Zal rad etildi", "l-tag zst bad"] };
   __out.lRows = __out.lRows.map(function (r) { var q = outL.filter(function (z) { return (z.nums || []).indexOf(r.num) >= 0; })[0]; if (!q) return Object.assign({}, r, { zsOn: false }); var t = ZT[q.st] || ZT.kutil;
     var bl = q.st !== "ok" ? function (e) { if (e && e.stopPropagation) e.stopPropagation(); self.flash(zsBlkMsg(q)); } : null;
-    return Object.assign({}, r, bl && r.smGo ? { smGo: bl, smGoCls: String(r.smGoCls || "") + " zsb", smGoTip: zsBlkMsg(q) } : {}, { zsOn: true, zsT: t[0], zsCls: t[1], zsTip: q.toSud + " · " + q.zal + " · " + dtF(q.sana) + " " + q.vaqt + (q.st === "rad" ? " · rad etildi: " + (q.sabab || "") + " — boshqa joy yoki vaqt tanlang" : q.st === "kutil" ? " · javob kelguncha zal band qilib turiladi" : "") }); }); }
+    return Object.assign({}, r, bl && r.smGo ? { smGo: bl, smGoCls: String(r.smGoCls || "") + " zsb", smGoTip: zsBlkMsg(q) } : {}, { zsOn: true, zsT: t[0], zsCls: t[1], zsTip: "Boshqa sud binosidagi zal so'rovi — " + q.toSud + " · " + q.zal + " · " + dtF(q.sana) + " " + q.vaqt + (q.st === "rad" ? " · rad etildi: " + (q.sabab || "") + " — boshqa joy yoki vaqt tanlang" : q.st === "kutil" ? " · javob kelguncha zal band qilib turiladi" : "") }); }); }
 // ---- rail / bildirishnomalar
 __out.zsRailOn = can && role !== "operator"; var onPage = can && s.page === "zsr" && !s.caseOpen;
 __out.zsRailCls = onPage ? "l-ri on" : "l-ri"; __out.zsRailCur = onPage ? "page" : "false"; __out.zsRailHas = cnt > 0; __out.zsRailN = String(cnt); __out.goZs = function () { goZs(); };
