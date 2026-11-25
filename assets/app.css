@@ -10773,3 +10773,18 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ums-row .ums-yed{height:30px}
 /* Sudya yordamchisi: Ish mazmuni va da'vo summasi — faqat ko'rish */
 .itk-ro .itk-tools,.itk-ro .itk-main,.itk-ro .itk-addsum,.itk-ro .dx-pill.nm,.itk-ro .bk2-empty .btn,.itk-ro .ib:not(.dx-actog):not(.dx-detb){display:none !important}
+/* Sudya yordamchisi: sud xarajatlari — faqat ko'rish */
+.xr-ro .sh .tools,.xr-ro .ib,.xr-ro .dx-danger{display:none !important}
+/* Yordamchi qo'shgan ishtirokchi — sudya tasdig'igacha och kulrang */
+.pc.pc-pend{position:relative;border-style:dashed !important;border-color:#cbd5e1 !important;background:#f8fafc !important}
+.pc.pc-pend>*{opacity:.5;filter:grayscale(1)}
+.pc.pc-pend::after{content:"Sudya tasdig'ini kutmoqda";position:absolute;right:10px;bottom:8px;padding:2px 8px;border-radius:999px;background:#e2e8f0;color:#475569;font-size:11px;font-weight:600}
+.pt-pend{display:flex;flex-direction:column;gap:10px;margin:0 0 14px;padding:12px 14px;border:1px solid #e2e8f0;border-radius:14px;background:#f8fafc}
+.pt-pend-h{display:flex;align-items:center;gap:10px;color:#475569}
+.pt-pend-h>svg{flex:none;width:18px;height:18px}
+.pt-pend-h b{font-size:13.5px;color:#0f172a}.pt-pend-h small{font-size:12px;color:#64748b}
+.pt-pend-l{display:flex;flex-direction:column;gap:6px}
+.pt-pend-i{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;background:#fff;border:1px dashed #cbd5e1}
+.pt-pend-i b{font-size:13.5px}.pt-pend-i small{font-size:12px;color:#64748b}
+.pt-pend-b{padding:2px 9px;border-radius:999px;background:#e2e8f0;color:#475569;font-size:12px;font-weight:600}
+.pt-no{color:#b91c1c}

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=3f93abc4d78a">
+<link rel="stylesheet" href="assets/app.css?v=90e6a5c0202f">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -2251,7 +2251,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </div>
 </section>
 
-<section class="sec" id="xarajat">
+<section class="{{xrRoCls}}" id="xarajat">
 <div class="sh"><div><h2>Sud xarajatlari</h2><p>Davlat boji, pochta va boshqa to'lovlar</p></div><div class="tools"><button class="btn" onClick="{{xrEditOpen}}"><svg class="ic-ed i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"></path></svg>O'zgartirish</button><button class="btn" onClick="{{xrAdd}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Qo'shish</button></div></div>
 <div class="xs-grid">
 <sc-for list="{{xr}}" as="x" hint-placeholder-count="2">
@@ -2278,7 +2278,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 
 
 <section class="sec" id="tomonlar">
-<div class="sh pt-sh"><div><h2>Ishtirokchilar</h2><p>{{ptSub}}</p></div></div>
+<div class="sh pt-sh"><div><h2>Ishtirokchilar</h2><p>{{ptSub}}</p></div></div><sc-if value="{{ptPend.on}}" hint-placeholder-val="{{ false }}"><div class="pt-pend" role="region" aria-label="Tasdiq kutayotgan ishtirokchilar"><div class="pt-pend-h"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg><div class="kv" style="gap: 2px; min-width: 0; flex: 1"><b>{{ptPend.t}}</b><small>{{ptPend.s}}</small></div><sc-if value="{{ptPend.canAll}}" hint-placeholder-val="{{ false }}"><button type="button" class="btn sm pri" onClick="{{ptPend.okAll}}">Barchasini tasdiqlash</button></sc-if></div><div class="pt-pend-l"><sc-for list="{{ptPend.items}}" as="x" hint-placeholder-count="2"><div class="pt-pend-i"><span class="kv" style="gap: 1px; min-width: 0; flex: 1"><b>{{x.name}}</b><small>{{x.rol}} · {{x.by}}</small></span><sc-if value="{{x.can}}" hint-placeholder-val="{{ false }}"><button type="button" class="btn sm pt-no" onClick="{{x.no}}">Rad etish</button><button type="button" class="btn sm pri" onClick="{{x.ok}}">Tasdiqlash</button></sc-if><sc-if value="{{x.wait}}" hint-placeholder-val="{{ true }}"><span class="pt-pend-b">Kutilmoqda</span></sc-if></div></sc-for></div></div></sc-if>
 <div class="pt-tabs" role="tablist" aria-label="Ishtirokchilar guruhlari"><sc-for list="{{ptTabs}}" as="t" hint-placeholder-count="3"><button type="button" role="tab" aria-selected="{{t.sel}}" class="{{t.cls}}" onClick="{{t.pick}}"><span class="{{t.icCls}}" aria-hidden="true"></span><span class="kv pt-tl"><b>{{t.l}}</b><small>{{t.sub}}</small></span><span class="pt-n">{{t.n}}</span></button></sc-for></div>
 <sc-if value="{{ptTm}}" hint-placeholder-val="{{ true }}"><div class="pt-pane pt-tm">
 <div class="g2" style="gap: 16px; align-items: start">
@@ -10625,7 +10625,7 @@ if (R && TPL[v.res] && !v.tpl) __out.nxS.tpl.label = TPL[v.res][0];
 // ---- NRS-362 / NRS-365: sud majlisi joyi — joy turiga qarab o'z maydonlari; vaqt va kotib ----
 var plMiss = function (w) { var p = w.pl || {}, j = JOY.indexOf(w.joy), m = [], f = w.f || {}, sn = function (x) { return parseInt(x, 10) > 0; }, tx = function (x) { return !!String(x || "").trim(); };
   if (j === 0) { if (plBusy(PL_MYZAL[0], f.sana, w.vaqt, w.dur)) m.push(PL_MYZAL[1] + " bu vaqtda band — vaqtni o'zgartiring"); }
-  if (j === 1) { var zk0 = zsKeyOf(w, self.state.caseNum); if (p.sud && p.szal && !(w.zsSig && w.zsSig.key === zk0) && w.zsAsk !== zk0) m.push(self.state.role === "sudya" ? "so'rov xati imzolanmagan" : "so'rov xati sudyaga imzolashga yuborilmagan"); if (!p.sud) m.push("sud"); if (!p.szal) m.push("boshqa sud zali"); else if (plBusy(p.szal, f.sana, w.vaqt, w.dur)) m.push("boshqa sud zali (tanlangan vaqtda band)"); }
+  if (j === 1) { var zk0 = zsKeyOf(w, self.state.caseNum); if (p.sud && p.szal && !(w.zsSig && w.zsSig.key === zk0) && w.zsAsk !== zk0) m.push("so'rov xati imzolanmagan"); if (!p.sud) m.push("sud"); if (!p.szal) m.push("boshqa sud zali"); else if (plBusy(p.szal, f.sana, w.vaqt, w.dur)) m.push("boshqa sud zali (tanlangan vaqtda band)"); }
   if (j === 2) { if (!p.toifa) m.push("manzil toifasi"); if (!tx(p.manzil)) m.push("manzil"); if (!sn(p.soni)) m.push("ishtirokchilar soni (0 dan katta)"); if (!p.loc) m.push("xaritadagi lokatsiya"); }
   if (j === 3) { if (!p.vil) m.push("viloyat"); if (!p.jiek) m.push("JIEK"); if (!p.jzal) m.push("JIEK zali"); }
   if (j === 4) { if (!tx(p.manzil)) m.push("manzil"); if (!tx(p.moljal)) m.push("mo'ljal"); if (!sn(p.soni)) m.push("ishtirokchilar soni (0 dan katta)"); if (!p.loc) m.push("xaritadagi lokatsiya"); }
@@ -10686,7 +10686,7 @@ self._plSum = plSum; self._plNote = function (w) { return w.joy === JOY[1] ? " �
         function (e) { var id = e.target.value, x = plSudOf(id); setN(function (w) { return { pl: Object.assign({}, w.pl, { sud: id, szal: "", sq: "", svil: x ? x.vil : (w.pl || {}).svil, stur: x ? x.tur : (w.pl || {}).stur }) }; }); }, { ph: "Sudni tanlang", bc: bad(!p.sud) }),
       hint: p.sud ? "" : !svl && !stu ? "Butun respublika bo'yicha " + PL_SUD.length + " ta sud — ro'yxatni qisqartirish uchun sud turi va viloyatni tanlang" : base.length + " ta sud · qidiruv orqali ham topish mumkin" });
     fld({ label: "Zal", isDd: true, d: D("szal", hallOpts(sd ? sd.zal : [], "Zalni tanlang"), p.szal, setP("szal"), { ph: !sd ? "Avval sudni tanlang" : tOk ? "Zalni tanlang" : "Avval sana va vaqtni kiriting", disabled: !sd || !tOk, bc: bad(!p.szal || !!plBusy(p.szal, dt, tm, du)) }), hint: busyHint(p.szal), hCls: "nxp-h bad" });
-    note = { t: "Zal so'rovi " + (sd ? "«" + sd.nomi + "» raisiga" : "tanlangan sud raisiga") + " yuboriladi", s: "Pastdagi so'rov xatini sudya ERI bilan imzolaydi — imzolanmasa saqlab bo'lmaydi. Saqlanganda xat rais (faol bo'lmasa — o'rinbosar) va operatorga bildirishnoma bilan yuboriladi" + (sd ? " (" + sd.rais + " / " + sd.orin + ")" : "") + ". Javob kelguncha zal siz uchun band qilib turiladi." }; }
+    note = { t: "Zal so'rovi " + (sd ? "«" + sd.nomi + "» raisiga" : "tanlangan sud raisiga") + " yuboriladi", s: "Pastdagi so'rov xatini imzolang — imzolanmasa saqlab bo'lmaydi. «Saqlash» bosilganda xat rais (faol bo'lmasa — o'rinbosar) va operatorga bildirishnoma bilan yuboriladi" + (sd ? " (" + sd.rais + " / " + sd.orin + ")" : "") + ". Javob kelguncha zal siz uchun band qilib turiladi." }; }
   if (j === 2) { mjPick("2");
     fld({ label: "Manzil toifasi", isDd: true, d: D("toifa", [{ v: "", l: "Toifani tanlang" }].concat(MJ_BINO.map(function (x) { return { v: x, l: x }; })), p.toifa, setP("toifa"), { ph: "Toifani tanlang", bc: bad(!p.toifa) }) });
     fld({ label: "Manzil", isTxt: true, val: p.manzil || "", set: setP("manzil"), ph: "Viloyat, tuman, ko'cha, uy", bc: bad(!String(p.manzil || "").trim()) });
@@ -10708,14 +10708,14 @@ self._plSum = plSum; self._plNote = function (w) { return w.joy === JOY[1] ? " �
     fld({ cls: "fld nx-cg-res", label: "Tavsif", req: false, isTxt: true, val: p.tavsif || "", set: setP("tavsif"), ph: "Qo'shimcha ma'lumot: qavat, xona, kirish joyi" });
     locF(); }
   __out.nxPl = { on: j >= 0 && !!v.joy, fields: F, noteOn: !!note, noteT: note ? note.t : "", noteS: note ? note.s : "", docOn: false };
-  if (j === 1) { var zk = zsKeyOf(v, s.caseNum), zSig = !!(v.zsSig && v.zsSig.key === zk), zAsk = !zSig && v.zsAsk === zk, zRdy = !!(p.sud && p.szal && dt && tm), isS = s.role === "sudya";
+  if (j === 1) { var zk = zsKeyOf(v, s.caseNum), zSig = !!(v.zsSig && v.zsSig.key === zk), zAsk = false, zRdy = !!(p.sud && p.szal && dt && tm), isS = s.role === "sudya";
     __out.nxPl.docOn = true; __out.nxPl.docDis = !zRdy; __out.nxPl.docName = "Zal ajratish to'g'risida so'rov xati.doc";
-    __out.nxPl.docSub = !zRdy ? "Sud, zal, sana va vaqt to'ldirilgach shakllanadi" : zSig ? "ERI bilan imzolangan · " + v.zsSig.at + " · saqlanganda yuboriladi" : zAsk ? "Sudyaga imzolash uchun yuborilgan" : isS ? "Imzolanmagan — imzolamasdan saqlab bo'lmaydi" : "Faqat sudya imzolaydi — sudyaga imzolashga yuboring";
+    __out.nxPl.docSub = !zRdy ? "Sud, zal, sana va vaqt to'ldirilgach shakllanadi" : zSig ? "Imzolangan · " + v.zsSig.at + " · «Saqlash» bosilganda yuboriladi" : zAsk ? "Sudyaga imzolash uchun yuborilgan" : "Imzolanmagan — imzolamasdan saqlab bo'lmaydi";
     __out.nxPl.docCls = "nxp-doc" + (zSig || zAsk ? " ok" : errOn && zRdy ? " bad" : "");
-    __out.nxPl.docCanSign = !zSig && !zAsk; __out.nxPl.docSignLbl = isS ? "ERI bilan imzolash" : "Sudyaga imzolashga yuborish"; __out.nxPl.docDone = zSig || zAsk; __out.nxPl.docDoneT = zSig ? "Imzolangan" : "Sudyaga yuborilgan";
+    __out.nxPl.docCanSign = !zSig && !zAsk; __out.nxPl.docSignLbl = "Imzolash"; __out.nxPl.docDone = zSig || zAsk; __out.nxPl.docDoneT = "Imzolandi";
     __out.nxPl.docView = function () { if (zRdy) self.setState({ zsX: { id: "__nx", k: "sorov" } }); };
     __out.nxPl.docSign = function () { if (!zRdy) return; var d = new Date(), z = function (x) { return (x < 10 ? "0" : "") + x; }, at = z(d.getDate()) + "." + z(d.getMonth() + 1) + "." + d.getFullYear() + " " + z(d.getHours()) + ":" + z(d.getMinutes());
-      if (isS) { setN(function () { return { zsSig: { key: zk, at: at } }; }); self.flash("So'rov xati ERI bilan imzolandi · endi saqlashingiz mumkin"); } else { setN(function () { return { zsAsk: zk }; }); self.flash("So'rov xati sudya Tojiyev Z. X. ga imzolash uchun yuborildi"); } }; }
+      setN(function () { return { zsSig: { key: zk, at: at, by: isS ? "Tojiyev Z. X." : "Ergashev J. A." } }; }); self.flash("So'rov xati imzolandi · saqlanganda yuboriladi"); }; }
   // vaqt va kotib
   var tReq = __out.nxSanaReq !== false;
   var vRaw = String(v.vaqt || ""), vOk = plTimeOk(vRaw), durN = parseInt(du, 10) || 0, durOk = durN >= 5 && durN <= 600;
@@ -15262,7 +15262,7 @@ if (rawNx) __out.nxSave = function (e) { var w = self.state.nx, pl = (w && w.pl)
     var rec = { id: id, dir: "out", nums: nums, tomon: tomon, fromSud: ZS_MYSUD, fromSudya: "Tojiyev Z. X.", toSud: sd.nomi, toSudId: sd.id, rais: sd.rais, orin: sd.orin, admin: sd.admin, zalId: zl[0], zal: zl[1], sana: (w.f || {}).sana || "", vaqt: w.vaqt || "", dur: String(w.dur == null ? 60 : w.dur), st: "imzo", xatNo: no, at: at,
       hist: [{ at: at, who: ME + " (" + ROLE_L + ")", what: "So'rov xati shakllantirildi (Word)" }] };
     var zk = zsKeyOf(w, cn), sig = w.zsSig && w.zsSig.key === zk;
-    if (sig) { rec.st = "kutil"; rec.signAt = w.zsSig.at; rec.hist = rec.hist.concat([{ at: w.zsSig.at, who: "Tojiyev Z. X. (sudya)", what: "Sudya ERI bilan imzoladi" }, { at: at, who: "Tizim", what: "«" + sd.nomi + "» raisi (" + sd.rais + "), o'rinbosari va operatoriga bildirishnoma bilan yuborildi" }]); }
+    if (sig) { rec.st = "kutil"; rec.signAt = w.zsSig.at; rec.hist = rec.hist.concat([{ at: w.zsSig.at, who: (w.zsSig.by || ME) + " (" + ROLE_L + ")", what: "So'rov xati ERI bilan imzolandi" }, { at: at, who: "Tizim", what: "«" + sd.nomi + "» raisi (" + sd.rais + "), o'rinbosari va operatoriga bildirishnoma bilan yuborildi" }]); }
     else { rec.askSign = true; rec.hist = rec.hist.concat([{ at: at, who: ME + " (" + ROLE_L + ")", what: "Sudyaga imzolash uchun yuborildi" }]); }
     save([rec].concat(zsOf(self.state))); }, 0); };
 // ---- hujjatlar: so'rov xati va javob xati (ko'rish va Word'da yuklab olish)
@@ -15296,11 +15296,11 @@ var zsDraft = function () { var w = self.state.nx; if (!w) return null; var pl =
   return { id: "__nx", dir: "out", nums: nums, tomon: r0 ? ((r0.ariz || [])[0] || "—") + " → " + ((r0.jav || [])[0] || "—") : "—", fromSud: ZS_MYSUD, fromSudya: "Tojiyev Z. X.", toSud: sd.nomi, toSudId: sd.id, rais: sd.rais, orin: sd.orin, zalId: zl[0], zal: zl[1], sana: (w.f || {}).sana || "", vaqt: w.vaqt || "", dur: "60", st: sig ? "kutil" : "imzo", signAt: sig ? w.zsSig.at : "", askSign: w.zsAsk === zk, xatNo: "ZS-1901-" + (116 + zsOf(self.state).filter(function (r) { return r.dir === "out"; }).length), at: nowS(), hist: [] }; };
 var X = s.zsX, xr = X ? (X.id === "__nx" ? zsDraft() : byId(X.id)) : null; __out.zsxOn = !!xr;
 if (xr) { var d = docOf(xr, X.k), xClose = function () { self.setState({ zsX: null }); }, xa = [];
-  if (xr.id === "__nx") { if (xr.st === "imzo" && !xr.askSign) xa.push({ l: role === "sudya" ? "ERI bilan imzolash" : "Sudyaga imzolashga yuborish", cls: "btn pri", go: function () { var n0 = self.state.nx; if (!n0) return; var zk = zsKeyOf(n0, self.state.caseNum); self.setState({ zsX: null, nx: Object.assign({}, n0, role === "sudya" ? { zsSig: { key: zk, at: nowS() } } : { zsAsk: zk }, { err: "" }) }); self.flash(role === "sudya" ? "So'rov xati ERI bilan imzolandi · endi saqlashingiz mumkin" : "So'rov xati sudyaga imzolash uchun yuborildi"); } }); }
+  if (xr.id === "__nx") { if (xr.st === "imzo") xa.push({ l: "Imzolash", cls: "btn pri", go: function () { var n0 = self.state.nx; if (!n0) return; var zk = zsKeyOf(n0, self.state.caseNum); self.setState({ zsX: null, nx: Object.assign({}, n0, { zsSig: { key: zk, at: nowS(), by: ME }, err: "" }) }); self.flash("So'rov xati imzolandi · saqlanganda yuboriladi"); } }); }
   else if (X.k === "sorov" && xr.st === "imzo") { if (role === "sudya") xa.push({ l: "ERI bilan imzolash va yuborish", cls: "btn pri", go: function () { sign(xr.id); } }); else if (role === "yordamchi") xa.push(xr.askSign ? { l: "Sudyaga yuborilgan · imzo kutilmoqda", cls: "btn", go: xClose } : { l: "Sudyaga imzolash uchun yuborish", cls: "btn pri", go: function () { askSign(xr.id); } }); }
   xa.unshift({ l: "Yopish", cls: "btn", go: xClose });
   __out.zsx = Object.assign({}, d, { rows: d.rows.map(function (x) { return { l: x[0], v: x[1] }; }), title: X.k === "javob" ? "Javob xati" : "So'rov xati", sub: d.file + (X.k === "sorov" && xr.st === "imzo" ? " · imzolanmagan" : " · ERI bilan imzolangan"), acts: xa, dl: function () { dlDoc(d); }, close: xClose, key: function (e) { if (e.key === "Escape") { e.stopPropagation(); xClose(); } },
-    hint: xr.id === "__nx" ? (xr.st === "imzo" ? (role === "sudya" ? "Imzolagach «Saqlash» faollashadi. Saqlanganda so'rov «" + xr.toSud + "» raisi va operatoriga yuboriladi." : "So'rov xatini faqat sudya imzolaydi.") : "Imzolangan · saqlanganda yuboriladi") : X.k === "sorov" && xr.st === "imzo" ? (role === "sudya" ? "Imzolagach so'rov «" + xr.toSud + "» raisi (faol bo'lmasa — o'rinbosari) va operatoriga bildirishnoma bilan yuboriladi. Javob kelguncha " + xr.zal + " band qilib turiladi." : "So'rov xatini faqat sudya imzolaydi. Imzodan so'ng u boshqa sudga yuboriladi.") : "", hasHint: xr.id === "__nx" || (X.k === "sorov" && xr.st === "imzo") }); }
+    hint: xr.id === "__nx" ? (xr.st === "imzo" ? "Imzolagach «Saqlash» faollashadi. Saqlanganda so'rov «" + xr.toSud + "» raisi va operatoriga yuboriladi." : "Imzolangan · «Saqlash» bosilganda yuboriladi") : X.k === "sorov" && xr.st === "imzo" ? (role === "sudya" ? "Imzolagach so'rov «" + xr.toSud + "» raisi (faol bo'lmasa — o'rinbosari) va operatoriga bildirishnoma bilan yuboriladi. Javob kelguncha " + xr.zal + " band qilib turiladi." : "So'rov xatini faqat sudya imzolaydi. Imzodan so'ng u boshqa sudga yuboriladi.") : "", hasHint: xr.id === "__nx" || (X.k === "sorov" && xr.st === "imzo") }); }
 // ---- rail / bildirishnomalar
 __out.zsRailOn = can && role !== "operator"; var onPage = can && s.page === "zsr" && !s.caseOpen;
 __out.zsRailCls = onPage ? "l-ri on" : "l-ri"; __out.zsRailCur = onPage ? "page" : "false"; __out.zsRailHas = cnt > 0; __out.zsRailN = String(cnt); __out.goZs = function () { goZs(); };
@@ -15363,6 +15363,19 @@ __out.zs = { hasTabs: TABS.length > 1, tabs: TABS.map(function (t) { var on = t 
 // ===== Sudya yordamchisi huquqlari (ish sahifasi): Umumiy va Ish mazmuni — faqat ko'rish; hujjat qo'shish, bayonnomani imzolash va AI — mumkin =====
 (function () { var yo = (s.role || "yordamchi") === "yordamchi"; __out.caseEdit = !yo; __out.itkRoCls = yo ? "sec itk-ro" : "sec";
   if (yo && Array.isArray(__out.docs)) __out.docs = __out.docs.map(function (d) { return Object.assign({}, d, { pubCan: false, canSend: false }); }); })();
+// ===== Sudya yordamchisi: sud xarajatlari — faqat ko'rish; ishtirokchi qo'shsa — sudya tasdig'igacha kutishda (och kulrang) =====
+(function () { var role = s.role || "yordamchi", yo = role === "yordamchi", KEYS = [["tmDv", "Da'vogar"], ["tmJv", "Javobgar"], ["qtJv", "Qo'shimcha javobgar"], ["qtAr", "Arizachi"], ["qsh", "Qo'shimcha shaxs"]];
+  __out.xrRoCls = yo ? "sec xr-ro" : "sec";
+  var markNew = function (fn) { return function (e) { var st0 = self.state, key = st0.tmModal, pre = (st0[key] || []).map(function (x) { return x.id; }); var r = fn(e);
+    setTimeout(function () { var st = self.state, arr = st[key]; if (!Array.isArray(arr)) return; var ch = false, nx = arr.map(function (x) { if (pre.indexOf(x.id) < 0 && !x.pend) { ch = true; return Object.assign({}, x, { pend: true, pBy: "Ergashev J. A." }); } return x; }); if (ch) { var o = {}; o[key] = nx; self.setState(o); self.flash("Ishtirokchi qo'shildi · sudya tasdiqlagach kuchga kiradi"); } }, 0); return r; }; };
+  if (yo && s.caseOpen) { if (__out.tmAddManual) __out.tmAddManual = markNew(__out.tmAddManual); if (__out.tmSave) __out.tmSave = markNew(__out.tmSave); if (Array.isArray(__out.tmRes)) __out.tmRes = __out.tmRes.map(function (r) { return Object.assign({}, r, { add: markNew(r.add) }); }); }
+  ["tmDv", "tmJv", "qtAll", "qsh", "qtJv", "qtAr"].forEach(function (k) { if (Array.isArray(__out[k])) __out[k] = __out[k].map(function (p) { return p && p.pend ? Object.assign({}, p, { pcCls: String(p.pcCls || "pc") + " pc-pend", canMain: false }) : p; }); });
+  var P = []; KEYS.forEach(function (k) { (s[k[0]] || []).forEach(function (x) { if (x.pend) P.push({ key: k[0], rol: x.rol || k[1], x: x }); }); });
+  var setPend = function (key, id, ok) { var o = {}; o[key] = (self.state[key] || []).filter(function (x) { return ok || x.id !== id; }).map(function (x) { return x.id === id ? Object.assign({}, x, { pend: false }) : x; }); self.setState(o); };
+  var isJ = role === "sudya";
+  __out.ptPend = { on: !!s.caseOpen && P.length > 0, t: P.length + " ta ishtirokchi sudya tasdig'ini kutmoqda", s: isJ ? "Sudya yordamchisi qo'shgan — tasdiqlasangiz ishtirokchilar ro'yxatiga kiradi, rad etsangiz olib tashlanadi" : "Siz qo'shgan ishtirokchilar sudya tasdiqlaguncha och kulrang ko'rinadi", canAll: isJ && P.length > 1,
+    okAll: function () { var o = {}; KEYS.forEach(function (k) { o[k[0]] = (self.state[k[0]] || []).map(function (x) { return x.pend ? Object.assign({}, x, { pend: false }) : x; }); }); self.setState(o); self.flash(P.length + " ta ishtirokchi tasdiqlandi"); },
+    items: P.map(function (q) { return { name: q.x.name, rol: q.rol, by: "qo'shgan: " + (q.x.pBy || "sudya yordamchisi"), can: isJ, wait: !isJ, ok: function () { setPend(q.key, q.x.id, true); self.flash(q.x.name + " — " + q.rol.toLowerCase() + " sifatida tasdiqlandi"); }, no: function () { setPend(q.key, q.x.id, false); self.flash(q.x.name + " qo'shilishi rad etildi"); } }; }) }; })();
 return __out;
 }
 }
