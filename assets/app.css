@@ -10746,3 +10746,9 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .zs-ptr>span:first-child{font-weight:700;border-right:1px solid #999}
 @media (max-width:640px){.zs-ptr>span:first-child{border-right:0}}
 @media (max-width:640px){.zs-ptr{grid-template-columns:minmax(0,1fr)}.zs-ptr>span:first-child{border-bottom:1px dashed #ccc}}
+/* sana va vaqt bitta maydonda */
+.nxp-dt{display:flex;gap:8px;min-width:0}
+.nxp-dt>.cal-dd{flex:1 1 auto;min-width:0}
+.nxp-dt>.nxp-tm{flex:0 0 112px}
+.nxp-dt>.nxp-tm .inp{width:100%;font-variant-numeric:tabular-nums}
+.nxp-dt>.nxp-tm{flex-basis:124px}.nxp-dt>.nxp-tm .inp{padding-right:10px !important;padding-left:38px !important}
