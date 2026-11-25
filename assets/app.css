@@ -10816,3 +10816,66 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .zs-wrap .zs-demo{margin:0}
 .zs-lt .l-row>.zs-sud{align-items:flex-start !important;text-align:left;justify-content:center}
 .nxp-ajro{display:flex}
+/* ---- Zal so'rovi oynasi v2 (rais uchun tushunarli ko'rinish) ---- */
+.zs-dw.zs2{width:min(600px,100vw)}
+.zs2-ttl{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.zs2-ttl b{font-size:19px;font-weight:600;color:#0f172a}
+.zs2 .dx-dw-h small{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12.5px;color:#64748b}
+.zs2-demo{padding:1px 8px;border-radius:999px;background:#f1f5f9;color:#64748b;font-size:11px;font-style:normal;font-weight:600;cursor:help}
+.zs2 .zs-dwb{gap:20px}
+.zs2-hero{display:flex;flex-direction:column;gap:14px;padding:16px;border:1px solid #e2e8f0;border-radius:14px;background:#fff;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.zs2-from{display:flex;align-items:center;gap:12px}
+.zs2-from b{font-size:15px;font-weight:600;color:#0f172a}.zs2-from small{font-size:12.5px;color:#64748b}
+.zs2-av{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:10px;background:#eff6ff;color:#3073f1}.zs2-av svg{width:20px;height:20px}
+.zs2-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.zs2-c{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:10px;background:#f8fafc;min-width:0}
+.zs2-c b{font-size:15px;font-weight:600;color:#0f172a;font-variant-numeric:tabular-nums;white-space:nowrap}.zs2-c small{font-size:12px;color:#64748b}
+.zs2-ci{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:8px;background:#fff;color:#64748b;border:1px solid #e2e8f0}.zs2-ci svg{width:16px;height:16px}
+.zs2-case{display:flex;align-items:baseline;gap:12px;padding-top:12px;border-top:1px dashed #e2e8f0}
+.zs2-case>small{flex:none;width:40px;font-size:12px;color:#94a3b8}
+.zs2-case b{font-size:13.5px;font-weight:600;color:#0f172a}.zs2-case .kv small{font-size:12.5px;color:#64748b}
+.zs2-ver{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:10px}
+.zs2-ver svg{flex:none;width:20px;height:20px;margin-top:1px}
+.zs2-ver b{font-size:14px;font-weight:600}.zs2-ver small{font-size:12.5px}
+.zs2-ver.ok{background:#f0fdf4;color:#15803d}.zs2-ver.ok small{color:#166534}
+.zs2-ver.bad{background:#fef2f2;color:#b91c1c}.zs2-ver.bad small{color:#991b1b}
+.zs2-agh{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.zs2-ags{font-size:12px;color:#94a3b8}
+.zs2-dn{display:flex;align-items:center;gap:4px;padding:3px;border:1px solid #e2e8f0;border-radius:10px}
+.zs2-dn .ib{width:30px;height:30px}
+.zs2-dn b{min-width:150px;text-align:center;font-size:13px;font-weight:600;color:#0f172a}
+.zs2-back{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:0;border:0;background:none;color:#3073f1;font-size:12.5px;font-weight:500;cursor:pointer}.zs2-back svg{width:15px;height:15px}
+.zs2-ag{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden}
+.zs2-ai{display:flex;align-items:center;gap:12px;padding:10px 14px;background:#fff}
+.zs2-ai+.zs2-ai{border-top:1px solid #f1f5f9}
+.zs2-at{flex:none;width:92px;font-size:13px;font-weight:600;color:#334155;font-variant-numeric:tabular-nums}
+.zs2-ab{flex:none;align-self:stretch;width:4px;border-radius:4px;background:#cbd5e1}
+.zs2-ai b{font-size:13.5px;font-weight:500;color:#0f172a;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.zs2-ai small{font-size:12px;color:#64748b}
+.zs2-ai.res .zs2-ab{background:repeating-linear-gradient(180deg,#cbd5e1 0 4px,#e2e8f0 4px 8px)}
+.zs2-ai.hit{background:#fef2f2}.zs2-ai.hit .zs2-ab{background:#ef4444}
+.zs2-ai.req{background:#eff6ff}.zs2-ai.req .zs2-ab{background:#3073f1}.zs2-ai.req b{font-weight:600;color:#1d4ed8}.zs2-ai.req .zs2-at{color:#1d4ed8}
+.zs2-ai.req.bad{background:#fef2f2}.zs2-ai.req.bad .zs2-ab{background:#ef4444}.zs2-ai.req.bad b,.zs2-ai.req.bad .zs2-at{color:#b91c1c}
+.zs2-tg{flex:none;padding:2px 9px;border-radius:999px;background:#f1f5f9;color:#475569;font-size:11.5px;font-weight:600}
+.zs2-tg.ok{background:#dcfce7;color:#15803d}.zs2-tg.bad{background:#fee2e2;color:#b91c1c}
+.zs2-age{padding:14px;border:1px dashed #e2e8f0;border-radius:12px;color:#64748b;font-size:13px;text-align:center}
+.zs2-doc{padding:8px 8px 8px 12px}.zs2-dl{width:34px;height:34px;flex:none}
+.zs2-rad{display:flex;flex-direction:column;gap:8px;padding:14px;border:1px solid #fecaca;border-radius:12px;background:#fffafa}
+.zs2-chips{display:flex;flex-wrap:wrap;gap:6px}
+.zs2-chip{padding:5px 10px;border:1px solid #e2e8f0;border-radius:999px;background:#fff;color:#334155;font-size:12px;cursor:pointer;text-align:left}.zs2-chip:hover{border-color:#3073f1;color:#1d4ed8}
+.zs2-hb{display:flex;align-items:center;gap:8px;padding:0;border:0;background:none;cursor:pointer;width:100%}
+.zs2-hn{padding:0 7px;border-radius:999px;background:#f1f5f9;color:#64748b;font-size:11.5px;font-weight:600}
+.zs2-hc{margin-left:auto;width:16px;height:16px;color:#94a3b8;transition:transform .15s}.zs2-hc.on{transform:rotate(180deg)}
+.zs2-f{display:flex;flex-direction:column;align-items:stretch;gap:8px}
+.zs2-cap{font-size:12px;color:#64748b;text-align:right}
+.zs2-fa{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+.zs2-fa .btn:disabled{opacity:.55;cursor:not-allowed}
+.zs2-fa .zs-no{border-color:#fecaca;color:#b91c1c;background:#fff}
+@media (max-width:560px){.zs2-grid{grid-template-columns:minmax(0,1fr)}.zs2-at{width:78px}}
+/* ---- Zal so'rovlari jadvali: ustunlar sig'ishi ---- */
+.l-table.zs-lt .l-row.l-head,.l-table.zs-lt .l-row{grid-template-columns:52px minmax(0,1.3fr) minmax(0,1.5fr) 112px 80px 172px 156px 52px !important}
+.zs-lt .l-row>span:nth-child(6){min-width:0;overflow:hidden}
+.zs-lt .adm-upd{min-width:0}.zs-lt .adm-upd b,.zs-lt .adm-upd small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+.zs-sud .zs-tag{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0;background:none;color:#b45309;font-size:11.5px;border-radius:0}
+.zs-sud .zs-tag::before{content:"";display:inline-block;width:6px;height:6px;margin-right:6px;border-radius:50%;background:#f59e0b;vertical-align:middle}
+@media (max-width:1280px){.l-table.zs-lt .l-row.l-head,.l-table.zs-lt .l-row{grid-template-columns:48px minmax(0,1.3fr) minmax(0,1.4fr) 110px 168px 52px !important}}
+.l-table.zs-lt .l-row.l-head,.l-table.zs-lt .l-row{grid-template-columns:52px minmax(0,1.3fr) minmax(0,1.4fr) 112px 76px 172px 180px 52px !important}
+@media (max-width:1280px){.l-table.zs-lt .l-row.l-head,.l-table.zs-lt .l-row{grid-template-columns:48px minmax(0,1.3fr) minmax(0,1.4fr) 110px 168px 52px !important}}
