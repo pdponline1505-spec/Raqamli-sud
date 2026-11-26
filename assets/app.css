@@ -11112,3 +11112,13 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ntim-hadd .i{width:14px;height:14px}
 .ntim-grp .dx-sums-h{justify-content:flex-start !important}
 .ntim-grp .dx-sums-h>.dx-sumtot+.ntim-hadd,.ntim-grp .dx-sums-h>.dx-sumtot+sc-if>.ntim-hadd{margin-left:-4px}
+/* ish mazmuni: rad etish / ko'rmasdan qoldirish / tugatish asosi — qator ichida */
+.ntim-as{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 16px 12px 62px;border-top:1px dashed #fecaca;background:#fffafa}
+.ntim-as-l{font-size:12.5px;font-weight:600;color:#991b1b;white-space:nowrap}
+.ntim-as-l .dx-req{color:#dc2626}
+.ntim-as>span:not(.ntim-as-l){flex:1;min-width:240px;max-width:520px}
+.ntim-as .dx-selbtn{height:38px;background:#fff}
+.ntim-as-e{font-size:12px;color:#dc2626;font-weight:500}
+.dx-entry.ntim-e2.shut .ntim-as{border-radius:0 0 12px 12px}
+@media (max-width:640px){.ntim-as{padding-left:16px}.ntim-as>span:not(.ntim-as-l){min-width:0;max-width:none;width:100%}}
+.ntim-as-e{display:none}
