@@ -11263,23 +11263,6 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .sdm-qv .sdm-paper{min-height:min(380px,46vh);box-sizing:border-box}
 /* patch51: natija oynasi — umumiy natija, taqsimot ko'rinishi, solidar, VKA joyi */
 .nxm-full .nxm-b>.nx-cases{order:9}
-.ntv-nres{--c:#475569;--bg:#f8fafc;--bd:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px 18px;border:1px solid var(--bd);border-radius:14px;background:var(--bg)}
-.ntv-nres.t-ok{--c:#047857;--bg:#ecfdf5;--bd:#a7f3d0}
-.ntv-nres.t-part{--c:#b45309;--bg:#fffbeb;--bd:#fde68a}
-.ntv-nres.t-no{--c:#b91c1c;--bg:#fef2f2;--bd:#fecaca}
-.ntv-nres.t-mute{--c:#475569;--bg:#f1f5f9;--bd:#cbd5e1}
-.ntv-nres.ph{--c:#64748b;--bg:#fff;--bd:#e2e8f0;border-style:dashed}
-.ntv-nres-l{display:flex;flex-direction:column;gap:3px;min-width:0}
-.ntv-nres-k{font-size:12px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:#64748b}
-.ntv-nres-v{font-size:22px;line-height:1.25;font-weight:700;color:var(--c)}
-.ntv-nres-s{font-size:12.5px;color:#64748b}
-.ntv-nres-r{display:flex;flex-wrap:wrap;gap:6px}
-.ntv-nres-c{--c:#475569;--bg:#f1f5f9;display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:999px;background:#fff;border:1px solid #e2e8f0;font-size:12.5px;color:#475569}
-.ntv-nres-c b{min-width:20px;height:20px;padding:0 6px;border-radius:999px;display:grid;place-items:center;font-size:12px;font-weight:700;background:var(--bg);color:var(--c)}
-.ntv-nres-c.t-ok{--c:#047857;--bg:#d1fae5}
-.ntv-nres-c.t-part{--c:#b45309;--bg:#fef3c7}
-.ntv-nres-c.t-no{--c:#b91c1c;--bg:#fee2e2}
-.ntv-nres-c.t-mute,.ntv-nres-c.ph{--c:#475569;--bg:#e2e8f0}
 .ntv-alp{display:flex;flex-direction:column;gap:6px;padding:0 16px 14px 56px}
 .ntv-alp-r{display:flex;align-items:center;gap:10px;min-width:0;padding:8px 12px;border:1px solid #e8edf5;border-radius:10px;background:#fff}
 .ntv-alp-p{display:inline-flex;align-items:center;gap:8px;min-width:0;flex:0 1 auto}
@@ -11303,3 +11286,32 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ntv-vkan2 .ntv-cnt-l b{white-space:normal;line-height:1.3}
 @media (max-width:720px){.ntv-vjoy{grid-template-columns:1fr}.ntv-alp{padding-left:16px}.ntv-alp-r{flex-wrap:wrap}.ntv-alp-amt{margin-left:0}}
 .ntv-alv-main .ntv-alv-p{display:inline-flex;font-size:14px;font-weight:600;color:#0f172a;gap:8px}.ntv-alv-main .ntv-alv-arr .i{width:14px;height:14px}
+/* patch53: umumiy natija kartasi + AI ko'rsatkichi */
+.ntv-nres{--c:#64748b;--s:#f1f5f9;display:flex;align-items:center;gap:14px;padding:14px 18px;border:1px solid #e6ebf3;border-radius:14px;background:#fff}
+.ntv-nres.t-ok{--c:#047857;--s:#ecfdf5}
+.ntv-nres.t-part{--c:#b45309;--s:#fff7ed}
+.ntv-nres.t-no{--c:#b91c1c;--s:#fef2f2}
+.ntv-nres.t-mute{--c:#475569;--s:#f1f5f9}
+.ntv-nres-ic{width:44px;height:44px;border-radius:12px;flex:none;display:grid;place-items:center;background:var(--s);color:var(--c)}
+.ntv-nres-ic .i{width:22px;height:22px}
+.ntv-nres-l{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.ntv-nres-k{font-size:12.5px;color:#64748b}
+.ntv-nres-v{font-size:19px;line-height:1.3;font-weight:700;color:var(--c)}
+.ntv-nres.ph .ntv-nres-v{color:#94a3b8;font-weight:600}
+.ntv-nres-r{flex:none;width:300px;max-width:45%;display:flex;flex-direction:column;gap:7px}
+.ntv-nres-s{font-size:12px;color:#64748b}
+.ntv-nres-bar{display:flex;gap:3px;height:6px}
+.ntv-nres-bar i{flex-basis:0;border-radius:3px;background:#e2e8f0}
+.ntv-nres-bar i.t-ok{background:#10b981}.ntv-nres-bar i.t-part{background:#f59e0b}.ntv-nres-bar i.t-no{background:#ef4444}.ntv-nres-bar i.t-mute{background:#94a3b8}
+.ntv-nres-lg{display:flex;flex-wrap:wrap;gap:4px 14px}
+.ntv-nres-c{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:#475569}
+.ntv-nres-c i{width:8px;height:8px;border-radius:50%;background:#cbd5e1}
+.ntv-nres-c.t-ok i{background:#10b981}.ntv-nres-c.t-part i{background:#f59e0b}.ntv-nres-c.t-no i{background:#ef4444}.ntv-nres-c.t-mute i{background:#94a3b8}
+.ntv-nres-c b{font-weight:600;color:#0f172a;font-variant-numeric:tabular-nums}
+@media (max-width:720px){.ntv-nres{flex-wrap:wrap}.ntv-nres-r{width:100%;max-width:none}}
+.nt-ai-sc{width:auto;min-width:150px;height:auto;padding:0;border:0;background:none;align-items:stretch;gap:6px}
+.nt-ai-sc-t{display:flex;align-items:baseline;gap:6px;white-space:nowrap}
+.nt-ai-sc b{font-size:20px}
+.nt-ai-sc small{font-size:12px;color:#64748b}
+.nt-ai-bar{display:block;height:6px;border-radius:3px;background:#ede9fe;overflow:hidden}
+.nt-ai-bar i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,#8b5cf6,#6d28d9)}
