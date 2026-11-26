@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=f00729454e05">
+<link rel="stylesheet" href="assets/app.css?v=6346a3c2d881">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -343,7 +343,7 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 <div class="l-main">
 <div class="l-top">
 <div class="kv" style="gap: 4px"><small class="row" style="gap: 6px">{{topCrumb}} <svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg> {{topTitle}}</small><div class="row" style="gap: 12px; min-width: 0"><b style="font-size: 24px">{{topTitle}}</b><sc-if value="{{isAdmin}}" hint-placeholder-val="{{ false }}"><span class="adm-badge" title="Administrator rejimi — o'zgarishlar butun sud bo'yicha amal qiladi"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>Admin</span></sc-if></div></div>
-<label class="l-search"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><input placeholder="Qidiruv" aria-label="Qidiruv"><kbd>CTRL</kbd><kbd>K</kbd></label>
+<label class="l-search"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><input placeholder="Ish raqami, taraf yoki zal so'rovi bo'yicha qidirish" aria-label="Umumiy qidiruv" role="combobox" aria-expanded="{{gqExp}}" aria-autocomplete="list" value="{{gq}}" onChange="{{gqSet}}" onKeyDown="{{gqKey}}" onFocus="{{gqFocus}}" onBlur="{{gqBlur}}"><kbd>CTRL</kbd><kbd>K</kbd><sc-if value="{{gqOn}}" hint-placeholder-val="{{ false }}"><div class="gs-pop" role="listbox" aria-label="Qidiruv natijalari"><sc-if value="{{gqShort}}" hint-placeholder-val="{{ false }}"><div class="gs-hint"><b>Nimani qidirish mumkin</b><span>Ish raqami — to'liq yoki bir qismi (masalan: 4235 yoki 2603/4235)</span><span>Da'vogar yoki javobgar nomi (masalan: Aralov, «Termiz Qurilish»)</span><span>Ish turkumi (masalan: oldi-sotdi, korporativ)</span><span>Zal so'rovi raqami yoki sud nomi (masalan: ZS-1901, Denov)</span><span>Imzolash uchun hujjat nomi (masalan: ajrim)</span></div></sc-if><sc-for list="{{gqRes}}" as="g" hint-placeholder-count="4"><sc-if value="{{g.hd}}" hint-placeholder-val="{{ false }}"><div class="gs-gh">{{g.g}}<em>{{g.gn}}</em></div></sc-if><button type="button" role="option" aria-selected="{{g.sel}}" class="{{g.cls}}" onClick="{{g.go}}"><span class="kv" style="gap: 1px; min-width: 0; flex: 1"><b>{{g.t}}</b><small>{{g.s}}</small></span><span class="gs-tag">{{g.tag}}</span></button></sc-for><sc-if value="{{gqNone}}" hint-placeholder-val="{{ false }}"><div class="gs-none">«{{gq}}» bo'yicha hech narsa topilmadi. Ish raqamini to'liq yoki oxirgi raqamlarini (masalan: 4235) yozib ko'ring.</div></sc-if><sc-if value="{{gqFoot}}" hint-placeholder-val="{{ false }}"><div class="gs-foot"><span><kbd>↑</kbd><kbd>↓</kbd> tanlash</span><span><kbd>Enter</kbd> ochish</span><span><kbd>Esc</kbd> yopish</span></div></sc-if></div></sc-if></label>
 <div class="row" style="gap: 18px"><span class="row" style="gap: 8px; font-weight: 500; color: #1e293b"><span style="color: #3073f1; display: inline-flex"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-6 10 6z"></path></svg></span>Termiz tumanlararo iqtisodiy sudi</span><div style="position: relative; z-index: 20"><button class="ib" style="width: 40px; height: 40px; position: relative; color: #334155; border: 1px solid {{lBellBorder}}; background: {{lBellBg}}" aria-label="Bildirishnomalar: {{unreadCount}} ta o'qilmagan" aria-expanded="{{lBellStr}}" onClick="{{lBellToggle}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"></path></svg><sc-if value="{{hasUnread}}" hint-placeholder-val="{{ true }}"><span style="position: absolute; top: -4px; right: -4px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 999px; background: #dc2626; color: #ffffff; font-size: 12px; font-weight: 600; display: grid; place-items: center; border: 2px solid #ffffff">{{unreadCount}}</span></sc-if></button>
 <sc-if value="{{lBellOpen}}" hint-placeholder-val="{{ false }}">
 <div class="dd rb-alist" style="left: auto; right: 0; top: 48px; width: 420px; padding: 0; gap: 0; z-index: 30">
@@ -12075,7 +12075,7 @@ var SEED_R = function () { var pick = rows.filter(function (r) { return ["korib"
 var zsJ = function () { if (!isRais || typeof zsOf !== "function") return []; return zsOf(s).filter(function (r) { return r.dir === "in" && (r.st === "ok" || r.st === "rad") && (r.ansBy === ZS_RAIS || r.ansBy === "Rahimov B. O."); }).map(function (r) { var a = String(r.ansAt || "").split(" ");
   return { id: "zj" + r.id, docId: "zsj:" + r.id, title: r.st === "ok" ? "Zal ajratilganligi to'g'risida javob xati" : "Zal ajratish rad etilganligi to'g'risida javob xati", num: (r.nums || [])[0] || "—", rowId: 0, from: (r.fromSudya || "—") + " (sudya)", d: a[0] || "", t: a[1] || "", st: "imzo", signAt: r.ansAt || "" }; }); };
 var KEY = isRais ? "sdocsR" : "sdocs", SEED_S = SEED; if (isRais) SEED = SEED_R;
-var SD = (s[KEY] || SEED()).concat(zsJ());
+var SD = (s[KEY] || SEED()).concat(zsJ()); self._sdList = inCab ? SD : null;
 var setSD = function (fn) { self.setState(function (prev) { var o = {}; o[KEY] = (prev[KEY] || SEED()).map(fn); return o; }); };
 self._sdAdd = function (doc, row) { var n = nowS(); self.setState(function (prev) { var L = prev.sdocs || SEED_S(); return { sdocs: [{ id: "sd" + Date.now(), title: doc.title, num: row ? row.num : (prev.caseNum || "—"), rowId: row ? row.id : 0, docId: doc.id, from: "Ergashev J. A.", d: n.d, t: n.t, st: "kutish" }].concat(L) }; }); };
 var pend = SD.filter(function (x) { return x.st === "kutish"; }).length;
@@ -15339,7 +15339,7 @@ var todo = function (r, tab) { if (tab === "in") return r.st === "kutil" && (rol
   if (role === "operator") return (r.st === "ok" && !r.ctrl) || (r.st === "rad" && !isRead(r)); return false; };
 var TABS = role === "rais" ? ["in"] : role === "operator" ? ["in", "out"] : ["out"];
 var cnt = 0; TABS.forEach(function (t) { (t === "in" ? inL : outL).forEach(function (r) { if (todo(r, t)) cnt++; }); });
-var goZs = function (id, tab) { var o = { page: "zsr", caseOpen: false, lSel: {}, dxDd: "", pf: false, lBell: false }; if (tab) o.zsTab = tab; if (id) { o.zsD = id; o.zsDay = 0; o.zsRad = null; o.zsRead = markRead(id); } self.setState(o); try { window.scrollTo(0, 0); } catch (e) {} };
+var goZs = self._goZs = function (id, tab) { var o = { page: "zsr", caseOpen: false, lSel: {}, dxDd: "", pf: false, lBell: false }; if (tab) o.zsTab = tab; if (id) { o.zsD = id; o.zsDay = 0; o.zsRad = null; o.zsRead = markRead(id); } self.setState(o); try { window.scrollTo(0, 0); } catch (e) {} };
 self._goZs = goZs;
 // ---- «Keyingi bosqichga o'tkazish»: «Boshqa sud binosida» saqlanganda so'rov xati shakllanadi
 var rawNx = __out.nxSave;
@@ -15519,6 +15519,37 @@ __out.zs = { tabs: CH.map(function (c) { var on = fS === c[0]; return { label: c
   __out.ptPend = { on: !!s.caseOpen && P.length > 0, t: P.length + " ta ishtirokchi sudya tasdig'ini kutmoqda", s: isJ ? "Sudya yordamchisi qo'shgan — tasdiqlasangiz ishtirokchilar ro'yxatiga kiradi, rad etsangiz olib tashlanadi" : "Siz qo'shgan ishtirokchilar sudya tasdiqlaguncha och kulrang ko'rinadi", canAll: isJ && P.length > 1,
     okAll: function () { var o = {}; KEYS.forEach(function (k) { o[k[0]] = (self.state[k[0]] || []).map(function (x) { return x.pend ? Object.assign({}, x, { pend: false }) : x; }); }); self.setState(o); self.flash(P.length + " ta ishtirokchi tasdiqlandi"); },
     items: P.map(function (q) { return { name: q.x.name, rol: q.rol, by: "qo'shgan: " + (q.x.pBy || "sudya yordamchisi"), can: isJ, wait: !isJ, ok: function () { setPend(q.key, q.x.id, true); self.flash(q.x.name + " — " + q.rol.toLowerCase() + " sifatida tasdiqlandi"); }, no: function () { setPend(q.key, q.x.id, false); self.flash(q.x.name + " qo'shilishi rad etildi"); } }; }) }; })();
+// ===== Umumiy qidiruv (tepadagi «Qidiruv», CTRL+K): ishlar, zal so'rovlari, imzolash uchun hujjatlar =====
+(function () {
+var raw = s.gq || "", q = String(raw).trim(), ql = q.toLowerCase().replace(/[«»"']/g, "").replace(/\s+/g, " "), qd = /^[rR]?[\d\s\-\/]+$/.test(q) ? q.replace(/\D/g, "") : "", role = s.role || "yordamchi";
+var close = { gq: "", gqOpen: false, gqI: 0 };
+__out.gq = raw; __out.gqSet = function (e) { self.setState({ gq: e.target.value, gqOpen: true, gqI: 0 }); };
+__out.gqFocus = function () { if (!self.state.gqOpen) self.setState({ gqOpen: true }); };
+__out.gqBlur = function () { setTimeout(function () { if (self.state.gqOpen) self.setState({ gqOpen: false }); }, 200); };
+var norm = function (x) { return String(x || "").toLowerCase().replace(/[«»"']/g, ""); }, dig = function (x) { return String(x || "").replace(/\D/g, ""); };
+var R = [];
+if (q.length >= 2) {
+  var rows = s.lRows || [], seen = {};
+  var hits = rows.filter(function (r) { if (seen[r.num]) return false; var hay = norm([r.num, (r.ariz || []).join(" "), (r.jav || []).join(" "), r.sud || ""].join(" ")), ok = hay.indexOf(ql) >= 0 || (qd.length >= 3 && dig(r.num).indexOf(qd) >= 0); if (ok) seen[r.num] = 1; return ok; });
+  hits.slice(0, 6).forEach(function (r) { R.push({ g: "Ishlar", n: hits.length, t: r.num, s: ((r.ariz || [])[0] || "—") + " — " + ((r.jav || [])[0] || "—") + (r.sud ? " · " + r.sud : ""), tag: typeof tabLbl === "function" && r.stage ? tabLbl(r.stage) : "Ish",
+    go: function () { self.setState(Object.assign(self._loadCase ? self._loadCase(r) : {}, close, { lMenu: 0, caseOpen: true, openMode: "page", subView: "", caseNum: r.num, nav: "umumiy", page: "list" })); } }); });
+  if (typeof zsOf === "function" && ["sudya", "yordamchi", "rais", "operator"].indexOf(role) >= 0) { var zh = zsOf(s).filter(function (z) { var hay = norm([z.xatNo, (z.nums || []).join(" "), z.fromSud, z.toSud, z.tomon, z.zal].join(" ")); return hay.indexOf(ql) >= 0 || (qd.length >= 3 && dig((z.nums || []).join(" ") + " " + z.xatNo).indexOf(qd) >= 0); });
+    var ZST = { imzo: "Imzolanmagan", kutil: "Javob kutilmoqda", ok: "Tasdiqlandi", rad: "Rad etildi" };
+    zh.slice(0, 4).forEach(function (z) { R.push({ g: "Zal so'rovlari", n: zh.length, t: z.xatNo + " · " + (z.nums || []).join(", "), s: (z.dir === "in" ? "Kelgan · " + z.fromSud : "Yuborilgan · " + z.toSud) + " · " + z.zal + " · " + String(z.sana || "").split("-").reverse().join(".") + " " + (z.vaqt || ""), tag: ZST[z.st] || "",
+      go: function () { self.setState(close); if (self._goZs) self._goZs(z.id, z.dir); } }); }); }
+  var SDL = self._sdList || (role === "rais" ? s.sdocsR : s.sdocs) || [];
+  var sh = SDL.filter(function (x) { return norm(x.title + " " + x.num).indexOf(ql) >= 0 || (qd.length >= 3 && dig(x.num).indexOf(qd) >= 0); });
+  var SDT = { kutish: "Imzolash kutilmoqda", imzo: "Imzolangan", rad: "Qaytarilgan" };
+  sh.slice(0, 4).forEach(function (x) { R.push({ g: "Sud hujjatlari", n: sh.length, t: x.title, s: (x.num || "—") + " · " + (x.from || ""), tag: SDT[x.st] || "", go: function () { self.setState(Object.assign({}, close, { page: "sdocs", sdTab: x.st, caseOpen: false, sdSel: {}, sdMenu: 0 })); } }); });
+}
+var I = Math.max(0, Math.min(R.length - 1, s.gqI || 0));
+__out.gqRes = R.map(function (x, i) { return { g: x.g, gn: x.n > 6 && x.g === "Ishlar" ? "6 / " + x.n : String(x.n), hd: i === 0 || R[i - 1].g !== x.g, t: x.t, s: x.s, tag: x.tag, sel: i === I ? "true" : "false", cls: "gs-it" + (i === I ? " on" : ""), go: x.go }; });
+__out.gqOn = !!s.gqOpen; __out.gqExp = s.gqOpen ? "true" : "false"; __out.gqShort = q.length < 2; __out.gqNone = q.length >= 2 && !R.length; __out.gqFoot = R.length > 0;
+__out.gqKey = function (e) { var k = e.key; if (k === "ArrowDown" || k === "ArrowUp") { e.preventDefault(); if (!R.length) return; self.setState({ gqOpen: true, gqI: (I + (k === "ArrowDown" ? 1 : -1) + R.length) % R.length }); }
+  else if (k === "Enter") { e.preventDefault(); if (R[I]) R[I].go(); } else if (k === "Escape") { self.setState(close); try { e.target.blur(); } catch (x) {} } };
+if (!window.__gqK) { window.__gqK = 1; window.addEventListener("keydown", function (e) { if ((e.ctrlKey || e.metaKey) && String(e.key).toLowerCase() === "k") { var el = document.querySelector(".l-search input"); if (el) { e.preventDefault(); el.focus(); el.select(); } } }); }
+})();
+
 /* O'chirishni tasdiqlash: .cfd tugmalari bosilganda oyna chiqadi */
 (function () { if (window.__cfdOn) return; window.__cfdOn = 1;
   var box = null, pend = null, back = null;
