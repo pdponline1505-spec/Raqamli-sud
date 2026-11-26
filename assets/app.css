@@ -11317,3 +11317,10 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .nt-ai-bar i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,#8b5cf6,#6d28d9)}
 .ntv-alp-amt:empty{display:none}.ntim-card .ntv-alp{padding-left:56px}
 .ai-load[role="status"]{background:none !important;animation:none;border-radius:0;box-shadow:none;color:inherit}
+.ntv-vjoy-in{position:relative;display:block}
+.ntv-vjoy-in input{padding-right:12px}
+.ntv-vjoy-in:has(.ntv-vjoy-rst) input{padding-right:112px}
+.ntv-vjoy-rst{position:absolute;right:6px;top:50%;transform:translateY(-50%);display:inline-flex;align-items:center;gap:5px;height:28px;padding:0 10px;border:1px solid #e2e8f0;border-radius:8px;background:#fff;font:inherit;font-size:12.5px;font-weight:500;color:#4338ca;cursor:pointer}
+.ntv-vjoy-rst:hover{background:#eef2ff;border-color:#c7d2fe}
+.ntv-vjoy-rst:focus-visible{outline:2px solid #6366f1;outline-offset:1px}
+.ntv-vjoy-tag.ed{background:#fff7ed;color:#c2410c}
