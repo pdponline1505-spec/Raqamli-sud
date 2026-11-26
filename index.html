@@ -11042,10 +11042,10 @@ __out.ntBojSeg = [[true, "To'lanadi"], [false, "To'lanmaydi"]].map(function (m) 
 (__out.ntQn || []).forEach(function (q) { var rm0 = q.rm; q.rm = function () { if ((nt.qn || [{}]).length <= 1) { setNt(function (o) { o.qn = [{}]; var t = Object.assign({}, o.tg || {}); t.qn = false; o.tg = t; }); } else rm0(); }; });
 (function () { var M2 = __out.ntM, SUBS = { qarz: "Qanoatlantirilgan asosiy qarz summasi", poch: "Xabarnoma va hujjatlarni jo'natish xarajatlari", vka: "Videokonferensaloqa rejimi", boj: "Da'vo summasidan hisoblanadi" };
 var nAl = function (k) { return ((nt.al || {})[k] || []).length; };
-var PVF = function (L) { return (L || []).filter(function (a) { return a.view; }).map(function (a) { return { fI: a.dFromI, fN: a.fromTxt, tI: a.dToI, tN: a.toTxt, amt: a.sumTxt, sol: !!a.solTag }; }); };
+var PVF = function (L) { return (L || []).filter(function (a) { return a.view; }).map(function (a) { return { fI: a.dFromI, fN: a.fromTxt, tI: a.dToI, tN: a.toTxt, amt: a.sumTxt, sol: !!a.solTag }; }); }; var PVT = function (L) { return L.map(function (p) { return p.fN + " → " + p.tN + (p.amt ? " · " + p.amt : ""); }).join("; "); };
 __out.ntCard = {}; ["qarz", "poch", "vka", "boj"].forEach(function (k) { var op = nt.open === k, n = nAl(k);
 var sum = "Undiriladi: " + M2[k].und + " so'm" + (k === "vka" ? " · " + (Number((nt.vkaN || {}).jami != null ? nt.vkaN.jami : PARTY.length) || 0) + " ta qatnashchi" : ""), kPv = PVF(M2[k].al);
-__out.ntCard[k] = { open: op, exp: op ? "true" : "false", cls: "ntv-cost ntv-acc" + (op ? " open" : ""), chev: "ntv-chev" + (op ? " on" : ""), sub: sum, subCls: "", pv: kPv, pvOn: !op && kPv.length > 0,
+__out.ntCard[k] = { open: op, exp: op ? "true" : "false", cls: "ntv-cost ntv-acc" + (op ? " open" : ""), chev: "ntv-chev" + (op ? " on" : ""), sub: kPv.length ? PVT(kPv) : sum, subCls: "", pv: kPv, pvOn: false,
 tog: function () { setNt(function (o) { o.open = o.open === k ? "" : k; o.alEd = ""; }); } }; });
 var qnRaw = nt.qn || [{}];
 (function () { var op = nt.open === "qn", n = qnRaw.length, inc = qnRaw.filter(function (r) { return !(r.turi && r.from && r.to); }).length;
@@ -11102,7 +11102,7 @@ var lab = function (x) { var r = String(x || ""), i = r.indexOf(":"), k = r.slic
 var short = function (x) { return String(x || "").replace(/^(Da'vogar|Javobgar|Uchinchi shaxs[^·]*) · /, ""); };
 var ini = function (n) { var w = String(n || "").replace(/[«»"']/g, "").trim().split(/\s+/).filter(Boolean); return w.length ? (w[0][0] + (w[1] ? w[1][0] : "")).toUpperCase() : "—"; };
 var role0 = function (v) { var m = String(v || "").match(/^(Da'vogar|Javobgar) · /); return m ? m[1] : ""; };
-var PVF = function (L) { return (L || []).filter(function (a) { return a.view; }).map(function (a) { return { fI: a.dFromI, fN: a.fromTxt, tI: a.dToI, tN: a.toTxt, amt: a.sumTxt, sol: !!a.solTag }; }); };
+var PVF = function (L) { return (L || []).filter(function (a) { return a.view; }).map(function (a) { return { fI: a.dFromI, fN: a.fromTxt, tI: a.dToI, tN: a.toTxt, amt: a.sumTxt, sol: !!a.solTag }; }); }; var PVT = function (L) { return L.map(function (p) { return p.fN + " → " + p.tN + (p.amt ? " · " + p.amt : ""); }).join("; "); };
 var dv0 = ntCtx.dv[0] ? "Da'vogar · " + ntCtx.dv[0] : "";
 var IT = ntCtx.itk, top = R2CL[v.res] || "";
 var resT = function (im, t) { var x = (im[t.id] || {}).res; return x || top; };
@@ -11166,7 +11166,7 @@ __out.ntIm = IT.map(function (t, i) { var r = resT(im0, t), x = im0[t.id] || {},
       card.sub = "Da'vo summasi: " + G(q.amt) + " " + sym; card.subCls = "";
       var iF = short(q.from) || "—", iT = short(q.to) || "—", edM = !!(nt.imDr && nt.imDr.key === "m:" + q.id);
       if (edM) { card.sub = "Tahrirlanmoqda"; card.cls += " open ntim-eding"; card.chev = "ntv-chev"; }
-      var mm = und ? money(k) : {}, mPv = PVF(mm.al); if (!mPv.length) mPv = [{ fI: ini(iF), fN: iF, tI: ini(iT), tN: iT, amt: G(q.amt) + " " + sym, sol: false }]; return { kind: "Mulkiy", kCls: "ntim-k m", pv: mPv, pvOn: !op && !edM && mPv.length > 0, t: q.t, isM: true, isN: false, card: card, bodyOn: op && und && !edM, infoOn: op && !und && !edM, edOn: edM, actOn: !edM, ef: edM ? efOf(nt.imDr) : {},
+      var mm = und ? money(k) : {}, mPv = PVF(mm.al); if (!mPv.length) mPv = [{ fI: ini(iF), fN: iF, tI: ini(iT), tN: iT, amt: G(q.amt) + " " + sym, sol: false }]; if (!edM) card.sub = PVT(mPv); return { kind: "Mulkiy", kCls: "ntim-k m", pv: mPv, pvOn: false, t: q.t, isM: true, isN: false, card: card, bodyOn: op && und && !edM, infoOn: op && !und && !edM, edOn: edM, actOn: !edM, ef: edM ? efOf(nt.imDr) : {},
         ed: function () { setNt(function (o) { o.imDr = { key: "m:" + q.id, k: "m", id: q.id, tid: t.id, tp: q.tp, amt: String(q.amt), cur: q.cur, from: q.from, to: q.to }; o.open = ""; o.alEd = ""; o.alDet = ""; }); },
         rm: function () { upd(function (im, o) { delQ(o, t.id, q); var al = Object.assign({}, o.al || {}); delete al[q.key]; o.al = al; o.imDr = null; }); },
         iAmt: G(q.amt) + " " + sym, iCur: q.cur, iFrN: iF, iToN: iT, iFrI: ini(iF), iToI: ini(iT), iFrR: role0(q.from), iToR: role0(q.to),
@@ -11189,9 +11189,9 @@ __out.ntIm = IT.map(function (t, i) { var r = resT(im0, t), x = im0[t.id] || {},
       pillOn: !part, pTxt: !r ? "Natija tanlanmagan" : ok ? "Qanoatlantirildi" : "Qanoatlantirilmadi", pCls: "ntim-pill" + (!r ? " ph" : ok ? " ok" : " no") };
     qo.fl = FT.map(function (p, j) { var ck2 = "imn_" + q.id + ":" + j, op2 = nt.open === ck2, edN = !!(nt.imDr && nt.imDr.key === "n:" + q.id + ":" + j), fN = short(p.from) || "—", tN = short(p.to) || "—";
       return { t: q.t, segOn: qo.segOn, aria: qo.aria, sg: qo.sg, pillOn: qo.pillOn, pTxt: qo.pTxt, pCls: qo.pCls,
-        card: { cls: "ntv-cost ntv-acc ntim-card" + (op2 || edN ? " open" : "") + (edN ? " ntim-eding" : "") + (!und && r ? " off" : ""), chev: "ntv-chev" + (op2 && !edN ? " on" : ""), exp: op2 ? "true" : "false", subCls: "", sub: edN ? "Tahrirlanmoqda" : "Nomulkiy tusdagi talab",
+        card: { cls: "ntv-cost ntv-acc ntim-card" + (op2 || edN ? " open" : "") + (edN ? " ntim-eding" : "") + (!und && r ? " off" : ""), chev: "ntv-chev" + (op2 && !edN ? " on" : ""), exp: op2 ? "true" : "false", subCls: "", sub: edN ? "Tahrirlanmoqda" : fN + " → " + tN,
           tog: function () { setNt(function (o) { o.open = o.open === ck2 ? "" : ck2; o.imDr = null; }); } },
-        pv: [{ fI: ini(fN), fN: fN, tI: ini(tN), tN: tN, amt: "", sol: false }], pvOn: !op2 && !edN, detOn: op2 && !edN, edOn: edN, actOn: !edN, ef: edN ? efOf(nt.imDr) : {},
+        pv: [{ fI: ini(fN), fN: fN, tI: ini(tN), tN: tN, amt: "", sol: false }], pvOn: false, detOn: op2 && !edN, edOn: edN, actOn: !edN, ef: edN ? efOf(nt.imDr) : {},
         iFrN: fN, iToN: tN, iFrI: ini(fN), iToI: ini(tN), iFrR: role0(p.from), iToR: role0(p.to),
         iSt: !r ? "Natija tanlanmagan" : ok ? "Qanoatlantirildi" : "Qanoatlantirilmadi", iStCls: "ntim-ist" + (!r ? " ph" : ok ? " ok" : " no"),
         ed: function () { setNt(function (o) { o.imDr = { key: "n:" + q.id + ":" + j, k: "n", id: q.id, tid: t.id, j: j, tp: q.tp, from: p.from || "", to: p.to || "", fr0: q.fr0, to0: q.to0 }; o.open = ""; }); },
