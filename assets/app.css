@@ -10890,3 +10890,11 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .l-row .l-tag.zst{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;align-items:center}
 .l-row .l-tag.zst::before{margin-top:0}
 .l-row .l-numlink{white-space:nowrap}
+/* O'chirishni tasdiqlash oynasi */
+.cfd-wrap{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:24px}
+.cfd-bg{position:absolute;inset:0;border:0;background:rgba(15,23,42,.45);cursor:default}
+.cfd-card{position:relative;width:440px;max-width:100%;padding:22px;display:flex;flex-direction:column;gap:14px;box-shadow:0 24px 64px rgba(15,23,42,.25);border-radius:16px;background:#fff}
+.cfd-ic{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#fef2f2;color:#dc2626}.cfd-ic svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cfd-card b{font-size:16px;font-weight:600;color:#0f172a}.cfd-card #cfd-d{font-size:14px;color:#475569;line-height:1.45}
+.cfd-f{display:flex;justify-content:flex-end;gap:8px}
+.cfd-yes{background:#dc2626 !important;border-color:#dc2626 !important;color:#fff !important}.cfd-yes:hover{background:#b91c1c !important}
