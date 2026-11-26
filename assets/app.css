@@ -11262,7 +11262,6 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .sdm-qv .sdm-pv{flex:none}
 .sdm-qv .sdm-paper{min-height:min(380px,46vh);box-sizing:border-box}
 /* patch51: natija oynasi — umumiy natija, taqsimot ko'rinishi, solidar, VKA joyi */
-.nxm-full .nxm-b>.nx-cases{order:9}
 .ntv-alp{display:flex;flex-direction:column;gap:6px;padding:0 16px 14px 56px}
 .ntv-alp-r{display:flex;align-items:center;gap:10px;min-width:0;padding:8px 12px;border:1px solid #e8edf5;border-radius:10px;background:#fff}
 .ntv-alp-p{display:inline-flex;align-items:center;gap:8px;min-width:0;flex:0 1 auto}
@@ -11327,7 +11326,6 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .nx-ht{display:flex;align-items:center;gap:10px;flex-wrap:wrap;min-width:0}
 .nx-hnum{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border:1px solid #dbe3ef;border-radius:8px;background:#f8fafc;font-size:13px;font-weight:600;color:#0f172a;font-variant-numeric:tabular-nums;white-space:nowrap}
 .nx-hnum .i{width:14px;height:14px;color:#64748b}
-.nxm-full .nxm-b>.nx-cases{display:none}
 .ntv-main>.nt-ai{margin-bottom:0}
 /* qismlar tablari — yirikroq */
 .ntp2{align-items:stretch !important}
@@ -11341,3 +11339,4 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ntp-tot2 .ntp-totdd .dx-selbtn{width:100%;height:36px;font-size:14px;font-weight:600}
 .ntp-tot2 .ntp-sug{padding:0}
 .ntp-tot2 .ntp-totdd>span{display:block;width:100%}
+.ntv-main>.ntp2{margin-bottom:0}
