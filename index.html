@@ -10787,7 +10787,8 @@ if (cur === key && (key !== "main" || st.caseNum === row.num)) src = st;
 else if (key !== "main" && self._cases && self._cases[key]) src = self._cases[key];
 else if (reg && typeof regStoredCtx === "function") src = regStoredCtx(row.num);
 else if (row.demo && typeof DEMO_CASES !== "undefined" && DEMO_CASES[row.demo]) src = DEMO_CASES[row.demo];
-if (!src) return null;
+if (!src || !(src.itk || []).length) { var aZ = row.ariz || [], jZ = row.jav || []; if (!aZ.length && !jZ.length) return null; /* oddiy ish: bitta ish mazmuni (ish turkumi) */
+  return { itk: [{ id: "row" + (row.id != null ? row.id : row.num), turkum: row.sud || "Ish mazmuni", sums: [], nm: [], javs: jZ.slice() }], xr: (src && src.xr) || [], dv: aZ.slice(), jv: jZ.slice() }; }
 return { itk: src.itk || [], xr: src.xr || [], dv: (src.tmDv || []).map(function (p) { return p.name; }), jv: (src.tmJv || []).map(function (p) { return p.name; }) };
 })();
 var ntAuto = (function () {
@@ -11117,7 +11118,7 @@ __out.ntIm = IT.map(function (t, i) { var r = resT(im0, t), x = im0[t.id] || {},
     addN: function () { setNt(function (o) { o.imDr = { key: "new:n:" + t.id, k: "n", isNew: true, tid: t.id, tp: "", from: jv0 ? "Javobgar · " + jv0 : "", to: dv0 }; o.imOpen = t.id; o.open = ""; }); }, mCnt: nM + " ta", nCnt: nN + " ta", dvT: dvT || "—", undOn: und && nM > 0, noRes: !r, sub: [String(t.qturkum || "").replace(/^[\d.]+\s*[–-]\s*/, ""), (nM ? nM + " ta mulkiy" : "") + (nM && nN ? " · " : "") + (nN ? nN + " ta nomulkiy" : "") + (nM || nN ? " talab" : "")].filter(Boolean).join(" · "),
     cls: "dx-entry itk2 ntim-e2" + (op ? " open" : " shut") + (errOn && !r ? " err" : ""), resL: r || (errOn ? "Natijani tanlang" : "Natija tanlanmagan"), resCls: "ntim-r" + (r ? " t-" + TN[r] : errOn ? " bad" : " ph"), aria: (i + 1) + "-ish mazmuni natijasi",
     ch: CLRES.map(function (z) { var on = r === z; return { label: z, sel: on ? "true" : "false", cls: "ntv-chip t-" + TN[z] + (on ? " on" : ""), pick: function () { upd(setX(t.id, function (y) { y.res = z; })); } }; }),
-    tl: tl, empty: !tl.length, totL: part ? "Qanoatlantirilgan (undiriladi)" : "Undiriladi", totTxt: nM ? G(tot) + " so'm" + (ext.length ? " + " + ext.join(" + ") : "") : "Mulkiy talab yo'q" }; });
+    tl: tl, empty: false, totL: part ? "Qanoatlantirilgan (undiriladi)" : "Undiriladi", totTxt: nM ? G(tot) + " so'm" + (ext.length ? " + " + ext.join(" + ") : "") : "Mulkiy talab yo'q" }; });
 __out.ntImTotOn = IT.length > 0; __out.ntImTot = G(totAll) + " so'm"; __out.ntImDavo = Object.keys(dvAll).sort(function (a, b) { return a === "UZS" ? -1 : b === "UZS" ? 1 : 0; }).map(function (c) { return G(dvAll[c]) + " " + c; }).join(" + ") || "—";
 if (__out.ntSum && __out.ntSum.rows) __out.ntSum.rows = __out.ntSum.rows.map(function (rw) { return rw.l === "Asosiy qarz" ? Object.assign({}, rw, { l: "Mulkiy talablar" }) : rw; });
 })();
