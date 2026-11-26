@@ -11340,3 +11340,10 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ntp-tot2 .ntp-sug{padding:0}
 .ntp-tot2 .ntp-totdd>span{display:block;width:100%}
 .ntv-main>.ntp2{margin-bottom:0}
+/* qismlar tablari — har biri alohida karta */
+.ntp2>.ntp-seg:first-child{background:transparent !important;border:0 !important;box-shadow:none !important;padding:0 !important;gap:10px !important}
+.ntp2>.ntp-seg:first-child button{border:1px solid #e2e8f0 !important;background:#fff !important;box-shadow:none !important;border-radius:12px !important;transition:border-color 150ms,background 150ms,box-shadow 150ms}
+.ntp2>.ntp-seg:first-child button:hover{border-color:#c7d2fe !important;background:#fafbff !important}
+.ntp2>.ntp-seg:first-child button.on{border-color:#6366f1 !important;background:#eef2ff !important;box-shadow:0 0 0 1px #6366f1 inset !important;color:#4338ca}
+.ntp2>.ntp-seg:first-child button:focus-visible{outline:2px solid #6366f1;outline-offset:2px}
+.ntp-tot2{border-radius:12px !important}
