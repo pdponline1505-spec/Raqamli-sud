@@ -11021,3 +11021,10 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ntim-grand2{grid-column:1/-1;display:flex;justify-content:space-between;gap:12px;padding-top:8px;border-top:1px solid rgba(48,115,241,.18);color:#047857;font-weight:500}
 .ntim-grand2 b{color:#065f46;font-size:16px;font-weight:700;font-variant-numeric:tabular-nums}
 @media (max-width:760px){.ntim-e2 > .dx-ch{flex-wrap:wrap}.ntim-ra{width:100%;padding-left:42px}.ntim-ra .dx-sel{width:100%}}
+/* natija: natija tanlanmagan / undirilmaydigan mulkiy talab — ma'lumot ko'rinishi */
+.ntim-info{display:flex;flex-direction:column;gap:12px}
+.ntim-aldet{margin:0}
+.ntim-ist{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:999px;font-size:12px;font-weight:600}
+.ntim-ist.ph{background:#f1f5f9;color:#64748b}.ntim-ist.no{background:#fef2f2;color:#b91c1c}
+/* natija oynasi: bo'lim raqamlari (1, 2 …) ko'rsatilmaydi */
+[aria-labelledby="nx-title"] .ntv-sh > .ntv-n{display:none}
