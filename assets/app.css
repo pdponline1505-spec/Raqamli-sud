@@ -11196,3 +11196,33 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .sdm-ed.sdm-pt{text-align:center;font-weight:700;text-transform:uppercase;font-size:15px;letter-spacing:.02em;margin:6px 0 14px}
 .sdm-ed.sdm-p{text-align:justify;text-indent:28px}
 .sdm-save.dirty{background:#eef4ff;border-color:#c7d7fe;color:#1d4ed8}
+/* NRS-370 B: AI orqali hujjat yaratish, AI tahlil natija oynasida */
+.hc-mode{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.hc-mode-l{grid-column:1/-1;font-size:13px;font-weight:500;color:#334155}
+.hc-mo{display:flex;align-items:flex-start;gap:10px;padding:12px;border:1px solid #e2e8f0;border-radius:12px;background:#fff;font:inherit;text-align:left;cursor:pointer;transition:border-color 150ms,background 150ms,box-shadow 150ms}
+.hc-mo:hover{border-color:#cbd5e1}
+.hc-mo.on{border-color:#3073f1;background:#f5f8ff;box-shadow:0 0 0 3px rgba(48,115,241,.12)}
+.hc-mo.ai.on{border-color:#7c3aed;background:#faf5ff;box-shadow:0 0 0 3px rgba(124,58,237,.12)}
+.hc-mo b{font-size:13.5px;font-weight:600;color:#0f172a}
+.hc-mo small{font-size:12px;color:#64748b;line-height:1.35}
+.hc-mi{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;flex:none;background:#eef4ff;color:#2563eb}
+.hc-mi.ai{background:#f3e8ff;color:#7c3aed}
+.hc-mi .i{width:16px;height:16px}
+@media (max-width:640px){.hc-mode{grid-template-columns:1fr}}
+.b-ai{background:#f3e8ff !important;color:#7c3aed !important}
+.b-dr{background:#f1f5f9 !important;color:#475569 !important;border:1px dashed #cbd5e1}
+.uzq-st.dr{background:#f3e8ff;color:#7c3aed}
+.uzq-st.dr::before{background:#7c3aed}
+.nt-ai{display:flex;align-items:center;gap:14px;padding:14px 16px;margin-bottom:16px;border:1px solid #e9d5ff;border-radius:14px;background:linear-gradient(135deg,#faf5ff,#f5f8ff)}
+.nt-ai-ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none;background:#ede9fe;color:#6d28d9}
+.nt-ai-ic .i{width:20px;height:20px}
+.nt-ai-t{flex:1;min-width:0}
+.nt-ai-t b{font-size:14px;font-weight:600;color:#0f172a}
+.nt-ai-t small{font-size:12px;color:#64748b}
+.nt-ai-sum{font-size:12.5px;color:#334155;margin-top:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.nt-ai-sc{display:flex;flex-direction:column;align-items:center;justify-content:center;width:76px;height:56px;border-radius:12px;background:#fff;border:1px solid #e9d5ff;flex:none}
+.nt-ai-sc b{font-size:18px;font-weight:700;color:#5b21b6;line-height:1.1}
+.nt-ai-sc small{font-size:10.5px;color:#64748b}
+.nt-ai-go{flex:none;height:36px}
+@media (max-width:640px){.nt-ai{flex-wrap:wrap}.nt-ai-go{width:100%}}
+.qv-wrap:has(> .qv.aim){z-index:60}
