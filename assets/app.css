@@ -10994,3 +10994,30 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ntv-simple:has(> .ntv-yop){grid-template-columns:auto minmax(200px,1fr) minmax(220px,1fr)}
 .ntv-simple:has(> .ntv-yop) .ntv-segs{flex-wrap:nowrap;white-space:nowrap}
 @media (max-width:900px){.ntv-simple:has(> .ntv-yop){grid-template-columns:minmax(0,1fr)}}
+/* natija: ish mazmuni — "Ish mazmuni va da'vo summasi" ko'rinishida */
+.ntim-list{display:flex;flex-direction:column;gap:12px}
+.dx-entry.ntim-e2{overflow:visible}
+.ntim-e2 > .dx-ch{border-radius:12px 12px 0 0;align-items:center}
+.ntim-e2.shut > .dx-ch{border-radius:12px}
+.ntim-e2.err{border-color:#fca5a5;box-shadow:0 0 0 3px rgba(239,68,68,.08)}
+.ntim-ra{display:flex;flex-direction:column;align-items:stretch;gap:4px;flex:none}
+.ntim-rl{font-size:11.5px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.05em}
+.ntim-ra .dx-sel{width:250px}
+.ntim-ra .dx-selbtn{gap:8px;background:#fff}
+.ntim-dot{width:8px;height:8px;border-radius:50%;background:#cbd5e1;flex:none}
+.ntim-dd.t-ok .ntim-dot{background:#16a34a}.ntim-dd.t-ok .dx-selv{color:#047857;font-weight:600}
+.ntim-dd.t-part .ntim-dot{background:#f59e0b}.ntim-dd.t-part .dx-selv{color:#b45309;font-weight:600}
+.ntim-dd.t-no .ntim-dot{background:#ef4444}.ntim-dd.t-no .dx-selv{color:#b91c1c;font-weight:600}
+.ntim-dd.t-mute .ntim-dot{background:#64748b}.ntim-dd.t-mute .dx-selv{color:#334155;font-weight:600}
+.ntim-ra .dx-menu{min-width:250px;right:0;left:auto}
+.dx-actag.und{background:#ecfdf5;color:#047857}
+.ntim-body{gap:18px}
+.ntim-grp{display:flex;flex-direction:column;gap:10px}
+.ntim-grp .ntim-tl2{margin:0}
+.ntim-grp .ntim-k{display:none}
+.ntim-hint{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;background:#f8fafc;border:1px dashed #cbd5e1;color:#475569;font-size:13px}
+.ntim-body .ntim-f{margin:0;border-radius:10px}
+.ntim-grand{margin-top:12px;display:grid;grid-template-columns:1fr auto;row-gap:8px}
+.ntim-grand2{grid-column:1/-1;display:flex;justify-content:space-between;gap:12px;padding-top:8px;border-top:1px solid rgba(48,115,241,.18);color:#047857;font-weight:500}
+.ntim-grand2 b{color:#065f46;font-size:16px;font-weight:700;font-variant-numeric:tabular-nums}
+@media (max-width:760px){.ntim-e2 > .dx-ch{flex-wrap:wrap}.ntim-ra{width:100%;padding-left:42px}.ntim-ra .dx-sel{width:100%}}
