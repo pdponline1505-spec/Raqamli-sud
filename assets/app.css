@@ -10924,3 +10924,24 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ntim-tot{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding:12px 16px;border-radius:12px;background:#eff6ff;color:#1e3a8a;font-size:13.5px}.ntim-tot b{font-size:16px}
 .ntim-mnote{display:inline-flex;align-items:center;height:34px;padding:0 12px;border-radius:10px;background:#f1f5f9;color:#475569;font-size:13px;font-weight:500;cursor:help}
 @media (max-width:640px){.ntim-q{flex-wrap:wrap}.ntim-v{min-width:0;align-items:flex-start}}
+/* ---- Imzolash oynasi: Word hujjat ko'rinishi ---- */
+.sdm-qv.sdm-wide{width:min(860px,calc(100vw - 32px)) !important;max-width:none !important}
+.sdm-docb{width:100%;border:1px solid #e2e8f0;background:#fff;cursor:pointer;text-align:left;font:inherit}
+.sdm-docb:hover{border-color:#93c5fd}.sdm-docb.on{border-color:#3073f1;background:#eff6ff;box-shadow:0 0 0 3px rgba(48,115,241,.12)}
+.sdm-seen{margin-left:auto;flex:none;padding:1px 8px;border-radius:999px;background:#dcfce7;color:#15803d;font-size:11px;font-style:normal;font-weight:600}
+.sdm-pv{display:flex;flex-direction:column;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;background:#f1f5f9}
+.sdm-pvh{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#fff;border-bottom:1px solid #e2e8f0}
+.sdm-pvh b{font-size:13.5px;font-weight:600;color:#0f172a;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.sdm-pvh small{font-size:12px;color:#64748b}
+.sdm-paper{margin:16px auto;width:calc(100% - 32px);max-width:640px;max-height:52vh;overflow:auto;padding:36px 44px;background:#fff;box-shadow:0 1px 3px rgba(15,23,42,.12),0 8px 24px rgba(15,23,42,.06);font-family:"Times New Roman",Georgia,serif;font-size:14.5px;line-height:1.55;color:#111827}
+.sdm-paper:focus-visible{outline:2px solid #3073f1;outline-offset:2px}
+.sdm-ph{display:flex;flex-direction:column;align-items:center;gap:2px;padding-bottom:10px;border-bottom:2px solid #111827;text-align:center}.sdm-ph b{font-size:14px;letter-spacing:.04em}.sdm-ph span{font-size:12.5px}
+.sdm-pto{margin:14px 0 0 auto;width:fit-content;max-width:60%;text-align:right;font-style:italic}
+.sdm-pno{margin-top:12px;font-size:13px;color:#374151}
+.sdm-pt{margin:16px 0 12px;text-align:center;font-size:15px;font-weight:700;letter-spacing:.02em}
+.sdm-paper p{margin:0 0 10px;text-align:justify;text-indent:28px}
+.sdm-ptb{width:100%;border-collapse:collapse;margin:6px 0 12px;font-size:13.5px}.sdm-ptb td{border:1px solid #9ca3af;padding:4px 8px;vertical-align:top}.sdm-ptb td:first-child{width:38%;font-weight:600}
+.sdm-psig{display:flex;align-items:flex-end;gap:12px;margin-top:22px}.sdm-pline{flex:1;border-bottom:1px solid #111827;height:1px;margin-bottom:5px}
+.sdm-pstamp{margin-top:10px;padding:6px 10px;border:1px dashed #cbd5e1;border-radius:6px;font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#94a3b8;text-align:center}
+.sdm-go:disabled{opacity:.55;cursor:not-allowed}
+@media (max-width:640px){.sdm-paper{padding:20px 18px;width:calc(100% - 16px)}}
+.sdm-docb{display:flex;align-items:center;gap:8px}.sdm-docb>span{margin-left:auto}.sdm-docb .sdm-seen{margin-left:4px}
