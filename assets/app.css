@@ -11169,3 +11169,5 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ntp-sug{font-size:11.5px;color:#64748b;white-space:nowrap;padding-right:6px}
 .ntp-tot2 .ntp-totdd{margin-left:6px}
 @media (min-width:761px){.ntp2{flex-wrap:nowrap}.ntp2>.ntp-seg:first-child{flex:0 1 auto;min-width:0}.ntp-tot2{flex:none;flex-wrap:nowrap !important}}
+/* jadval: belgilash katagi to'liq bosiladigan */
+.l-row>:first-child:has([role=checkbox]),[role=row]>:first-child:has([role=checkbox]){cursor:pointer}
