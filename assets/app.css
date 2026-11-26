@@ -11324,3 +11324,20 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ntv-vjoy-rst:hover{background:#eef2ff;border-color:#c7d2fe}
 .ntv-vjoy-rst:focus-visible{outline:2px solid #6366f1;outline-offset:1px}
 .ntv-vjoy-tag.ed{background:#fff7ed;color:#c2410c}
+.nx-ht{display:flex;align-items:center;gap:10px;flex-wrap:wrap;min-width:0}
+.nx-hnum{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border:1px solid #dbe3ef;border-radius:8px;background:#f8fafc;font-size:13px;font-weight:600;color:#0f172a;font-variant-numeric:tabular-nums;white-space:nowrap}
+.nx-hnum .i{width:14px;height:14px;color:#64748b}
+.nxm-full .nxm-b>.nx-cases{display:none}
+.ntv-main>.nt-ai{margin-bottom:0}
+/* qismlar tablari — yirikroq */
+.ntp2{align-items:stretch !important}
+.ntp2>.ntp-seg:first-child{flex:1 1 auto !important;display:flex !important;gap:6px;padding:5px !important;height:auto !important}
+.ntp2>.ntp-seg:first-child button{flex:1 1 0;min-width:0;height:auto !important;min-height:62px;flex-direction:column !important;align-items:flex-start !important;justify-content:center;gap:6px !important;padding:8px 14px !important;font-size:15px !important;font-weight:600 !important;border-radius:10px !important;text-align:left}
+.ntp2>.ntp-seg:first-child .ntp-st{height:24px !important;font-size:12.5px !important;padding:0 10px !important}
+.ntp2>.ntp-seg:first-child .ntp-st::before{width:7px;height:7px}
+.ntp-tot2{height:auto !important;flex-direction:column;align-items:flex-start !important;justify-content:center;gap:6px !important;padding:8px 12px !important;min-width:230px}
+.ntp-tl{font-size:12.5px;font-weight:500;color:#64748b}
+.ntp-tot2 .ntp-totdd{margin-left:0 !important;width:100%}
+.ntp-tot2 .ntp-totdd .dx-selbtn{width:100%;height:36px;font-size:14px;font-weight:600}
+.ntp-tot2 .ntp-sug{padding:0}
+.ntp-tot2 .ntp-totdd>span{display:block;width:100%}
