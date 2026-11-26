@@ -10979,3 +10979,18 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ntim-warn{padding:8px 10px;border-radius:8px;background:#fffbeb;color:#b45309;font-size:12.5px}
 .ntim-r.bad{background:#fee2e2;color:#b91c1c}
 @media (max-width:760px){.ntim-g4{grid-template-columns:repeat(2,minmax(0,1fr))}.ntim-al,.ntim-al.ntim-ft{grid-template-columns:24px minmax(0,1fr) 32px}.ntim-arw{display:none}.ntim-det{padding-left:12px}}
+/* natija oynasi: ko'rinish tugmasi sarlavhada */
+.ntv-hseg{margin-left:auto;margin-right:10px;align-self:center}
+.ntv-mseg.ntv-hseg{height:38px;box-sizing:border-box;align-items:center}
+.ntim-mnote.ntv-hseg{height:34px}
+/* ish mazmuni: talablar avvalgi kartalar ko'rinishida */
+.ntim-tl.ntim-tl2{border:0;background:none;border-radius:0;overflow:visible;gap:8px}
+.ntim-li{list-style:none}.ntim-li .ntv-cost{margin:0}
+.ntim-rt{flex:none;display:flex;align-items:center;gap:8px;margin-left:auto}
+.ntim-card .ntv-ch{gap:10px}
+.ntim-pill.amt{background:#eff6ff;color:#1d4ed8;font-variant-numeric:tabular-nums}
+.ntim-card.off .ntv-chbtn b{color:#64748b}
+.ntim-rt .ntim-k{width:auto;padding:2px 8px}
+.ntv-simple:has(> .ntv-yop){grid-template-columns:auto minmax(200px,1fr) minmax(220px,1fr)}
+.ntv-simple:has(> .ntv-yop) .ntv-segs{flex-wrap:nowrap;white-space:nowrap}
+@media (max-width:900px){.ntv-simple:has(> .ntv-yop){grid-template-columns:minmax(0,1fr)}}
