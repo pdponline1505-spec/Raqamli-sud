@@ -11154,3 +11154,17 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ntv-ch>.ntv-x2{width:32px !important;height:32px !important;flex:none;margin-right:2px}
 .ntv-alh-l .dx-cnt{text-transform:none;letter-spacing:0}
 .ntp-num{font-family:inherit !important;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+/* ish qismlari — ro'yxat tablari dizaynida */
+.ntp2{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.ntp-seg{margin:0 !important}
+.ntp-seg button{display:inline-flex !important;align-items:center;gap:8px}
+.ntp-seg .ntp-st{margin-top:0;height:20px;font-size:11.5px;padding:0 8px}
+.ntp-seg button.on .ntp-st{box-shadow:0 0 0 1px rgba(255,255,255,.5)}
+.ntp-tot2{margin-left:auto !important;display:flex;align-items:center;gap:8px;padding:4px 6px 4px 14px !important;height:48px;box-sizing:border-box}
+.ntp-tl{font-size:13px;font-weight:600;color:#475569}
+.ntp-tot2 .ntp-tot{margin-top:0;height:28px;font-size:12.5px;padding:0 12px}
+@media (max-width:760px){.ntp-tot2{margin-left:0 !important}}
+.ntp-totdd{display:inline-flex;align-items:center}
+.ntp-tot2{height:auto !important;min-height:48px;flex-wrap:wrap;row-gap:2px}
+.ntp-sug{font-size:11.5px;color:#64748b;white-space:nowrap;padding-right:6px}
+.ntp-tot2 .ntp-totdd{margin-left:6px}
