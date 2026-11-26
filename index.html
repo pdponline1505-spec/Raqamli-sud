@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=1c7c3166adb0">
+<link rel="stylesheet" href="assets/app.css?v=6ee9ce084f98">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -10899,7 +10899,7 @@ if (ntPartOn) { var PRL = { t_full: "To'liq qanoatlantirilgan", t_part: "Qisman 
       pick: function () { if (k === ntCtx.part) return; self.setState(function (prev) { var w = prev.nx; if (!w) return null; var cur = w.part || "asosiy", ps = Object.assign({}, w.parts || {}); ps[cur] = { nt: w.nt, res: w.res || "", asos: w.asos || "", und: w.und || "" }; var nx = ps[k] || { nt: undefined, res: "", asos: "", und: "" };
         return { dxDd: "", nx: Object.assign({}, w, { part: k, parts: ps, nt: nx.nt, res: nx.res, asos: nx.asos, und: nx.und, err: "" }) }; }); } }; });
   var pAll = ntPK.map(function (k) { return ntPRes(n, k); }), pC = ntComb(pAll), pDone = pAll.filter(Boolean).length;
-  __out.ntPartTot = pC ? PSH[pC] : "Natija yo'q"; var pT = n.partTot || pC; __out.ntPartSug = pC ? PSH[pC] : "barcha qismlarga natija qo'yilgach"; __out.ntPartSugOn = !pC || (!!n.partTot && n.partTot !== pC);
+  __out.ntPartTot = pC ? PSH[pC] : "Natija yo'q"; var pT = n.partTot || pC; __out.ntPartSug = pC ? PSH[pC] : "barcha qismlarga natija qo'yilgach"; __out.ntPartSugOn = !!pC && !!n.partTot && n.partTot !== pC;
   __out.ntPartDd = dd("nx-ptot", Object.keys(PSH).map(function (k) { return { v: k, l: PRL[k] + (k === pC ? " · taklif" : "") }; }), pT || "", function (e) { var z = e.target.value; setN(function () { return { partTot: z === pC ? "" : z }; }); }, { ph: "Natija yo'q", noSplit: true, extra: "ntim-dd" + (pT ? " t-" + PTO[pT] : "") }); __out.ntPartTotCls = "ntp-tot " + (pC ? "t-" + PTO[pC] : "ph");
   __out.ntPartDest = pC ? "Yakunlangan · " + PSUB[pC] : "Har bir qismga natija qo'ying"; }
 if (ntCtx) { ntCtx.dv.forEach(function (a) { var l = "Da'vogar · " + a; if (PARTY.indexOf(l) < 0) PARTY.push(l); }); ntCtx.jv.forEach(function (a) { var l = "Javobgar · " + a; if (PARTY.indexOf(l) < 0) PARTY.push(l); }); }
