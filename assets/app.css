@@ -11261,3 +11261,45 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 @media (max-width:640px){.sdm-po-g{grid-template-columns:1fr}}
 .sdm-qv .sdm-pv{flex:none}
 .sdm-qv .sdm-paper{min-height:min(380px,46vh);box-sizing:border-box}
+/* patch51: natija oynasi — umumiy natija, taqsimot ko'rinishi, solidar, VKA joyi */
+.nxm-full .nxm-b>.nx-cases{order:9}
+.ntv-nres{--c:#475569;--bg:#f8fafc;--bd:#e2e8f0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px 18px;border:1px solid var(--bd);border-radius:14px;background:var(--bg)}
+.ntv-nres.t-ok{--c:#047857;--bg:#ecfdf5;--bd:#a7f3d0}
+.ntv-nres.t-part{--c:#b45309;--bg:#fffbeb;--bd:#fde68a}
+.ntv-nres.t-no{--c:#b91c1c;--bg:#fef2f2;--bd:#fecaca}
+.ntv-nres.t-mute{--c:#475569;--bg:#f1f5f9;--bd:#cbd5e1}
+.ntv-nres.ph{--c:#64748b;--bg:#fff;--bd:#e2e8f0;border-style:dashed}
+.ntv-nres-l{display:flex;flex-direction:column;gap:3px;min-width:0}
+.ntv-nres-k{font-size:12px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:#64748b}
+.ntv-nres-v{font-size:22px;line-height:1.25;font-weight:700;color:var(--c)}
+.ntv-nres-s{font-size:12.5px;color:#64748b}
+.ntv-nres-r{display:flex;flex-wrap:wrap;gap:6px}
+.ntv-nres-c{--c:#475569;--bg:#f1f5f9;display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:999px;background:#fff;border:1px solid #e2e8f0;font-size:12.5px;color:#475569}
+.ntv-nres-c b{min-width:20px;height:20px;padding:0 6px;border-radius:999px;display:grid;place-items:center;font-size:12px;font-weight:700;background:var(--bg);color:var(--c)}
+.ntv-nres-c.t-ok{--c:#047857;--bg:#d1fae5}
+.ntv-nres-c.t-part{--c:#b45309;--bg:#fef3c7}
+.ntv-nres-c.t-no{--c:#b91c1c;--bg:#fee2e2}
+.ntv-nres-c.t-mute,.ntv-nres-c.ph{--c:#475569;--bg:#e2e8f0}
+.ntv-alp{display:flex;flex-direction:column;gap:6px;padding:0 16px 14px 56px}
+.ntv-alp-r{display:flex;align-items:center;gap:10px;min-width:0;padding:8px 12px;border:1px solid #e8edf5;border-radius:10px;background:#fff}
+.ntv-alp-p{display:inline-flex;align-items:center;gap:8px;min-width:0;flex:0 1 auto}
+.ntv-alp-p .ntv-ad-av{width:28px;height:28px;font-size:11px}
+.ntv-alp-r>.ntv-alp-p:first-child .ntv-ad-av{background:#fee2e2;color:#b91c1c}
+.ntv-alp-arr+.ntv-alp-p .ntv-ad-av{background:#dcfce7;color:#15803d}
+.ntv-alp-n{font-size:14px;font-weight:600;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ntv-alp-arr{flex:none;display:inline-flex;color:#94a3b8}
+.ntv-alp-amt{margin-left:auto;flex:none;font-size:14.5px;font-weight:700;color:#0f172a;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ntim-card .ntv-alp{padding-left:52px}
+.ntv-ad-l.ntv-flbl{display:flex;width:100%}
+.nt-sol.ntv-solcb{margin-left:auto;height:26px;padding:0 10px 0 6px;font-size:12px;font-weight:500;text-transform:none;letter-spacing:0;color:#334155}
+.nt-sol.ntv-solcb.on{border-color:#93c5fd;background:#eff6ff;color:#1d4ed8}
+.ntv-vjoy{display:grid;grid-template-columns:minmax(200px,260px) minmax(0,1fr);gap:12px;align-items:start}
+.ntv-vjoy .fld{margin:0}
+.ntv-vjoy-a>span{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ntv-vjoy-tag{font-style:normal;font-size:11px;font-weight:600;padding:1px 8px;border-radius:999px;background:#eef2ff;color:#4338ca}
+.ntv-vjoy-a input{width:100%;height:40px;padding:0 12px;border:1px solid #e2e8f0;border-radius:10px;font:inherit;font-size:13.5px;color:#0f172a;background:#fff}
+.ntv-vjoy-a input:focus{outline:none;border-color:#6366f1;box-shadow:0 0 0 3px rgba(99,102,241,.15)}
+.ntv-vjoy-err{font-size:12px;color:#b45309}
+.ntv-vkan2 .ntv-cnt-l b{white-space:normal;line-height:1.3}
+@media (max-width:720px){.ntv-vjoy{grid-template-columns:1fr}.ntv-alp{padding-left:16px}.ntv-alp-r{flex-wrap:wrap}.ntv-alp-amt{margin-left:0}}
+.ntv-alv-main .ntv-alv-p{display:inline-flex;font-size:14px;font-weight:600;color:#0f172a;gap:8px}.ntv-alv-main .ntv-alv-arr .i{width:14px;height:14px}
