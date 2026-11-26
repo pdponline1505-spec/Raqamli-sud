@@ -11315,3 +11315,5 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .nt-ai-sc small{font-size:12px;color:#64748b}
 .nt-ai-bar{display:block;height:6px;border-radius:3px;background:#ede9fe;overflow:hidden}
 .nt-ai-bar i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,#8b5cf6,#6d28d9)}
+.ntv-alp-amt:empty{display:none}.ntim-card .ntv-alp{padding-left:56px}
+.ai-load[role="status"]{background:none !important;animation:none;border-radius:0;box-shadow:none;color:inherit}
