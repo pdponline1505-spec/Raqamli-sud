@@ -11036,3 +11036,21 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ntim-ra{gap:6px}
 .ntim-rl{font-size:12px;font-weight:400;color:#475569;text-transform:none;letter-spacing:0;line-height:normal}
 .ntim-ra .dx-selbtn{height:44px;box-sizing:border-box}
+/* natija: har bir ish mazmuni — holat-chip dropdown */
+.ntim-rl{display:none}
+.ntim-ra{flex-direction:row;align-items:center;align-self:center}
+.ntim-ra .dx-sel{width:auto}
+.ntim-ra .dx-selbtn{height:32px;width:auto;border-radius:999px;padding:0 10px 0 12px;gap:7px;background:#f1f5f9;border:1px solid #e2e8f0;font-size:13px;box-shadow:none}
+.ntim-ra .dx-selbtn:hover{filter:brightness(.97)}
+.ntim-ra .dx-selv{white-space:nowrap;font-weight:500;color:#64748b}
+.ntim-ra .dx-chev{width:14px;height:14px}
+.ntim-ra .dx-menu{min-width:240px;right:0;left:auto;top:calc(100% + 6px)}
+.ntim-dd.t-ok .dx-selbtn{background:#ecfdf5;border-color:#a7f3d0}.ntim-dd.t-ok .dx-chev{color:#047857}
+.ntim-dd.t-part .dx-selbtn{background:#fffbeb;border-color:#fde68a}.ntim-dd.t-part .dx-chev{color:#b45309}
+.ntim-dd.t-no .dx-selbtn{background:#fef2f2;border-color:#fecaca}.ntim-dd.t-no .dx-chev{color:#b91c1c}
+.ntim-dd.t-mute .dx-selbtn{background:#f1f5f9;border-color:#cbd5e1}
+.ntim-e2.err .ntim-ra .dx-selbtn{background:#fef2f2;border-color:#fca5a5}.ntim-e2.err .ntim-ra .dx-selv{color:#b91c1c}.ntim-e2.err .ntim-dot{background:#ef4444}
+@media (max-width:760px){.ntim-ra{width:auto;padding-left:42px}.ntim-ra .dx-sel{width:auto}}
+.ntim-ra .dx-menu{width:max-content;min-width:240px;max-width:320px;left:auto;right:0}
+.ntim-ra .dx-opt .dx-olbl{white-space:nowrap}
+.ntim-ra .dx-menu{min-width:264px}
