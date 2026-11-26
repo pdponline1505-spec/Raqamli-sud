@@ -11028,3 +11028,11 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ntim-ist.ph{background:#f1f5f9;color:#64748b}.ntim-ist.no{background:#fef2f2;color:#b91c1c}
 /* natija oynasi: bo'lim raqamlari (1, 2 …) ko'rsatilmaydi */
 [aria-labelledby="nx-title"] .ntv-sh > .ntv-n{display:none}
+/* natija: hal qiluv qarori — dropdown; yopiq majlis checkbox */
+.ntv-simple:has(> .ntv-yop){grid-template-columns:repeat(3,minmax(0,1fr))}
+.ntv-yop .ntv-cbk{height:44px;box-sizing:border-box}
+@media (max-width:900px){.ntv-simple:has(> .ntv-yop){grid-template-columns:minmax(0,1fr)}}
+/* natija: har bir ish mazmuni oldidagi «Natija» yorlig'i — boshqa maydon yorliqlari bilan bir xil */
+.ntim-ra{gap:6px}
+.ntim-rl{font-size:12px;font-weight:400;color:#475569;text-transform:none;letter-spacing:0;line-height:normal}
+.ntim-ra .dx-selbtn{height:44px;box-sizing:border-box}
