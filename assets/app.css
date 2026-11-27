@@ -11542,3 +11542,6 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ntn-ph .ntp-st{height:20px !important;font-size:10.5px !important;padding:0 7px !important;flex:none}
 .ntn-pbody{display:flex;flex-direction:column;gap:2px;padding:2px 4px 0 10px;margin-left:8px;border-left:2px solid #dbe3ef}
 .ntn-pbody .ntn-gl{padding-left:6px}
+.ntn-part.on .ntn-ph{cursor:pointer}
+.ntn-part.on:not(.opn){background:none;padding-bottom:0}
+.ntn-part.on:not(.opn) .ntn-phc{transform:none}

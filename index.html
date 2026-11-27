@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=1bf39dbe">
+<link rel="stylesheet" href="assets/app.css?v=8b9ffaf2">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -11262,10 +11262,10 @@ if (__out.ntNew) (function () { var pg = String(v.pg || "um"), ids = IT.map(func
     nextOn: ix >= 0 && ix < seq.length - 1, next: ix < seq.length - 1 ? go(seq[ix + 1]) : function () {}, nextL: ix < seq.length - 1 ? "Keyingi: " + lbl(seq[ix + 1]) : "",
     flat: !ntPartOn, tree: !!ntPartOn,
     parts: !ntPartOn ? [] : (__out.ntParts || []).map(function (p, pi) { var k = ntPK[pi], on = k === ntCtx.part, PQ = k === "asosiy" ? ntCtx.base : (ntCtx.parts || {})[k] || {}, L = PQ.itk || [], pn = ((v.parts || {})[k] || {}), im2 = ((pn.nt || {}).im) || {}, top2 = R2CL[pn.res] || "", d2 = L.filter(function (t) { return (im2[t.id] || {}).res || top2; }).length, xn = (PQ.xr || []).length;
-      return { l: p.l, st: p.st, stCls: p.stCls, cls: "ntn-part" + (on ? " on" : "") + (/(^| )err( |$)/.test(p.cls) ? " err" : ""), open: on, exp: on ? "true" : "false",
+      var opn = on && !v.partShut; return { l: p.l, st: p.st, stCls: p.stCls, cls: "ntn-part" + (on ? " on" : "") + (opn ? " opn" : "") + (/(^| )err( |$)/.test(p.cls) ? " err" : ""), open: opn, exp: opn ? "true" : "false",
         sub: on ? (L.length + " ta ish mazmuni · " + nDone + "/" + IT.length + " natija") : (L.length + " ta ish mazmuni · " + d2 + "/" + L.length + " natija" + (xn ? " · " + xn + " ta xarajat" : "")),
         prog: nDone + "/" + IT.length, items: [], xCnt: "", xitems: [],
-        go: on ? function () {} : function () { p.pick(); var f0 = (L[0] || {}).id; if (f0) setTimeout(function () { setN(function () { return { pg: "im:" + f0 }; }); }, 0); } }; }),
+        go: on ? function () { setN(function (w) { return { partShut: !w.partShut }; }); } : function () { p.pick(); var f0 = (L[0] || {}).id; setTimeout(function () { setN(function () { return f0 ? { pg: "im:" + f0, partShut: false } : { partShut: false }; }); }, 0); } }; }),
     stats: [{ l: "Ish mazmunlari", v: nDone + " / " + IT.length, chip: R0 ? (SH[R0] || R0) : "Natija yo'q", chipOn: true, chipCls: "ntn-chip " + (tn ? "t-" + tn : "ph"), f: "natija qo'yilgan", goOn: IT.length > 0, go: go(firstOpen) },
       { l: "Da'vo summasi", v: __out.ntImDavo || "—", chipOn: false, f: "ish mazmunlari bo'yicha jami", goOn: IT.length > 0, go: go(ids[0] || "um") },
       { l: "Undiriladi", v: __out.ntImTot || "0 so'm", chipOn: false, f: "qanoatlantirilgan summa", goOn: false, go: function () {} },
