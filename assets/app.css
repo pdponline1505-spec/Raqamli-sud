@@ -11837,3 +11837,7 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ntn-nav .ntn-part.on .ntn-phc{color:#2563eb}
 .ntn-nav .ntn-part.err .ntn-phl b,.ntn-nav .ntn-part.err .ntn-phc{color:#dc2626}
 .ntn-nav .ntn-pbody{margin-left:17px;padding:2px 0 4px 8px;border-left:2px solid #e5eaf1}
+/* Umumiy ma'lumot: 4 ta ko'rsatkich olib tashlandi — sahifa AI tahlil, umumiy natija va qaror maydonlaridan iborat */
+.nxm-new .ntv-main>.ntn-stats.ntn-stats{display:none !important}
+.nxm-new.pg-um .ntv-main>.ntn-gauges.ntn-gauges{grid-row:1 !important}
+.nxm-new.pg-um .ntv-main>.ntv-mode.ntv-mode{grid-row:2 !important}
