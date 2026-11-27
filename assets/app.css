@@ -11545,3 +11545,69 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ntn-part.on .ntn-ph{cursor:pointer}
 .ntn-part.on:not(.opn){background:none;padding-bottom:0}
 .ntn-part.on:not(.opn) .ntn-phc{transform:none}
+/* ===== yangi ko'rinish: qulayliklar ===== */
+/* tezkor natija */
+.ntn-bulk{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:14px 16px;border:1px solid #dbeafe;border-radius:14px;background:linear-gradient(100deg,#f5f9ff 0%,#fff 60%)}
+.ntn-bulk-h{display:flex;align-items:center;gap:12px;min-width:0}
+.ntn-bulk-h b{font-size:14px;color:#0f172a}
+.ntn-bulk-h small{font-size:12px;color:#64748b}
+.ntn-bulk-ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:#dbeafe;color:#1d4ed8;flex:none}
+.ntn-bulk-b{display:flex;flex-wrap:wrap;gap:6px}
+.ntn-bk{--c:#475569;--bg:#f1f5f9;display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px;border:1px solid #e2e8f0;border-radius:9px;background:#fff;font:inherit;font-size:13px;font-weight:500;color:#334155;cursor:pointer}
+.ntn-bk i{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.ntn-bk.k0{--c:#059669;--bg:#ecfdf5}.ntn-bk.k1{--c:#d97706;--bg:#fffbeb}.ntn-bk.k2{--c:#dc2626;--bg:#fef2f2}
+.ntn-bk:hover{border-color:var(--c);background:var(--bg)}
+.ntn-bk.on{border-color:var(--c);background:var(--bg);color:var(--c);font-weight:600;box-shadow:0 0 0 1px var(--c) inset}
+.ntn-bk:focus-visible{outline:2px solid #3b82f6;outline-offset:2px}
+/* qaror loyihasi */
+.ntn-pvw{display:flex;flex-direction:column;gap:12px;padding:16px;border:1px solid #edf0f4;border-radius:14px;background:#fff}
+.ntn-pvw-h{display:flex;align-items:center;gap:12px}
+.ntn-pvw-h b{font-size:14px;color:#0f172a}
+.ntn-pvw-h small{font-size:12px;color:#64748b}
+.ntn-pvw-ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:#f1f5f9;color:#334155;flex:none}
+.ntn-pvw-doc{padding:16px 20px;border-radius:10px;background:#fbfaf7;border:1px solid #efe9dc;font-family:"Times New Roman",Times,serif;font-size:15px;line-height:1.55;color:#1f2937}
+.ntn-pvw-q{margin:0 0 6px;text-align:center;font-weight:700;letter-spacing:.08em}
+.ntn-pvw-doc ol{margin:0;padding-left:22px}
+.ntn-pvw-doc li{margin:2px 0}
+/* ish mazmuni pastidagi summa satri */
+.ntn-sumbar{position:sticky;bottom:-20px;z-index:3;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:12px;padding:12px 16px;border:1px solid #e2e8f0;border-radius:12px;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);box-shadow:0 -4px 14px rgba(15,23,42,.06);font-size:13px;color:#64748b}
+.ntn-sumbar b{margin-left:6px;font-size:14.5px;color:#0f172a;font-variant-numeric:tabular-nums}
+.ntn-sst{margin-left:auto;display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:600;background:#f1f5f9;color:#64748b}
+.ntn-sst.t-ok{background:#ecfdf5;color:#047857}.ntn-sst.t-part{background:#fff7ed;color:#b45309}.ntn-sst.t-no{background:#fef2f2;color:#b91c1c}
+.nxm-new:not(.pg-im) .ntn-sumbar{display:none}
+.nxm-new.pg-im .ntim-e2.pgsel .ntim-f{display:none}
+/* rad etilgan / undirilmaydi — ixcham */
+.nxm-new .ntim-e2.nund .ntim-tl,.nxm-new .ntim-e2.nund .ntim-hadd,.nxm-new .ntim-e2.nund .ntim-e,.nxm-new .ntim-e2.nund .ntim-new{display:none !important}
+.nxm-new .ntim-e2.nund .ntim-grp:has(.ntim-e){display:none !important}
+.nxm-new .ntim-e2.nund .dx-sums-h{padding:12px 14px;border-radius:10px;background:#f8fafc;border:1px dashed #e2e8f0}
+.nxm-new .ntim-e2.nund .dx-sumtot::after{content:"· undirilmaydi";margin-left:8px;padding:2px 8px;border-radius:999px;background:#fef2f2;color:#b91c1c;font-size:11.5px;font-weight:600}
+/* asos teglari */
+.ntn-asch{display:flex;flex-wrap:wrap;gap:6px;flex-basis:100%;margin-top:8px}
+.ntn-ac{display:inline-flex;align-items:center;gap:4px;max-width:100%;padding:5px 4px 5px 10px;border-radius:8px;background:#fff;border:1px solid #fecaca;color:#7f1d1d;font-size:12.5px;line-height:1.35}
+.ntn-ac button{display:grid;place-items:center;width:22px;height:22px;border:0;border-radius:6px;background:transparent;color:#b91c1c;cursor:pointer;flex:none}
+.ntn-ac button:hover{background:#fee2e2}
+.ntn-ac button .i{width:13px;height:13px}
+.nxm-new .ntim-as{flex-wrap:wrap}
+/* footer: kamchiliklar, bajarildi */
+.ntn-iss{position:relative}
+.ntn-issb{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border:1px solid #fde68a;border-radius:10px;background:#fffbeb;color:#92400e;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.ntn-issb .i{width:15px;height:15px}
+.ntn-issb:hover{background:#fef3c7}
+.ntn-issp{position:absolute;left:0;bottom:calc(100% + 8px);z-index:20;width:340px;max-height:320px;overflow:auto;padding:8px;border:1px solid #e2e8f0;border-radius:12px;background:#fff;box-shadow:0 12px 32px rgba(15,23,42,.16)}
+.ntn-issp-h{padding:4px 8px 8px;font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#94a3b8}
+.ntn-issi{display:flex;flex-direction:column;align-items:flex-start;gap:1px;width:100%;padding:8px 10px;border:0;border-radius:8px;background:transparent;font:inherit;text-align:left;cursor:pointer}
+.ntn-issi:hover{background:#f8fafc}
+.ntn-issi b{font-size:13px;font-weight:600;color:#0f172a}
+.ntn-issi span{font-size:12px;color:#b45309}
+.ntn-done{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:#047857;margin-right:2px}
+.ntn-done .i{width:14px;height:14px}
+.ntn-pb.nx.hi{background:#2563eb;border-color:#2563eb;color:#fff;box-shadow:0 4px 12px rgba(37,99,235,.28)}
+.ntn-pb.nx.hi:hover{background:#1d4ed8}
+.nxm-new .qv-f{gap:8px}
+/* klaviatura yordami */
+.ntn-kbd{display:flex;flex-wrap:wrap;gap:4px 10px;padding:2px 6px;font-size:10.5px;color:#94a3b8}
+.ntn-kbd kbd{display:inline-block;min-width:16px;padding:0 4px;border:1px solid #dbe1ea;border-bottom-width:2px;border-radius:4px;background:#fff;font:600 10px/15px inherit;font-family:inherit;color:#475569;text-align:center}
+/* yon panel: xarajat qo'shish */
+.ntn-xi.add .ntn-tx b{color:#2563eb;font-weight:500}
+.ntn-xi.add .ntn-ic{color:#2563eb}
+.nxm-new.pg-xk-add .ntv-sec[aria-labelledby="ntv-s3"] .ntv-cost{display:none !important}
