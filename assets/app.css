@@ -11745,3 +11745,41 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .nxm-new.pg-um .nt-ai .nt-ai-sc small{font-size:10.5px;letter-spacing:-.01em;white-space:nowrap;color:#94a3b8}
 .nxm-new.pg-um .nt-ai .nt-ai-sum{font-size:12.5px;line-height:1.45;color:#94a3b8;-webkit-line-clamp:2 !important;text-align:center}
 .nxm-new.pg-um .nt-ai .nt-ai-sum,.nxm-new.pg-um .nt-ai .nt-ai-sum *{color:#7b879a !important;font-size:12.5px !important;font-weight:400 !important;line-height:1.45}
+/* AI tahlil <-> Umumiy natija almashdi: natija — o'ng katta karta, AI — yon panel pastida ixcham */
+.nxm-new .ntv-main>.nt-ai{display:none !important}
+.nxm-new:not(.pg-um) .ntv-main>.ntn-rescard{display:none !important}
+.ntn-rescard{--rc:#3073f1}
+.ntn-rescard.t-ok{--rc:#10b981}
+.ntn-rescard.t-part{--rc:#f59e0b}
+.ntn-rescard.t-no{--rc:#ef4444}
+.ntn-rescard.t-mute{--rc:#64748b}
+.nxm-new.pg-um .ntv-main>.ntn-rescard.ntn-rescard{grid-column:2 !important;grid-row:1 !important;align-self:stretch;display:flex;flex-direction:column;align-items:stretch;gap:12px;padding:18px;border:0;border-radius:20px;background:linear-gradient(180deg,color-mix(in srgb,var(--rc) 6%,#fff) 0%,#fff 70%);box-shadow:0 0 0 1px color-mix(in srgb,var(--rc) 16%,#fff),0 4px 14px rgba(15,23,42,.05);animation:ntnIn 460ms cubic-bezier(.22,1,.36,1) 120ms backwards;min-width:0}
+.ntn-rescard .ntn-rk{font-size:14px;font-weight:700;letter-spacing:0;text-transform:none;color:#0f172a}
+.ntn-rescard .ntn-rring{align-self:center;position:relative;flex:none;width:132px;height:132px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--rc) calc(var(--p,0) * 1%),color-mix(in srgb,var(--rc) 14%,#fff) 0);box-shadow:0 10px 30px color-mix(in srgb,var(--rc) 14%,transparent);transition:background 300ms}
+.ntn-rescard .ntn-rring::before{content:"";position:absolute;inset:11px;border-radius:50%;background:#fff;box-shadow:inset 0 2px 6px rgba(15,23,42,.05)}
+.ntn-rescard .ntn-rring-t{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;max-width:104px;text-align:center}
+.ntn-rescard .ntn-rring-t b{font-size:26px;line-height:1;font-weight:700;color:var(--rc);font-variant-numeric:tabular-nums}
+.ntn-rescard .ntn-rring-t small{display:block;font-size:10.5px;line-height:1.25;color:#94a3b8}
+.ntn-rescard .ntn-resdd{margin-top:auto}
+.ntn-rescard .ntn-resdd .dx-selbtn{height:40px;border-radius:10px;background:#fff}
+.ntn-rescard .ntp-sug{display:block;text-align:center;font-size:12px;color:#7b879a}
+.ntn-rescard>b{margin-top:auto;text-align:center;font-size:15px;padding:10px;border-radius:10px;background:#fff;box-shadow:0 0 0 1px #e8ebf0}
+.ntn-rescard .ntn-bar{display:none}
+.ntn-aimini{margin-top:auto;display:flex;flex-direction:column;gap:10px;padding:12px;border-radius:12px;background:linear-gradient(180deg,#faf8ff,#fff);border:1px solid #ece8fb;box-shadow:0 1px 2px rgba(15,23,42,.04);flex:none}
+.ntn-aimini .ntn-rk{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#6d28d9}
+.ntn-aimini-r{display:flex;align-items:center;gap:12px;min-width:0}
+.ntn-aimini-ring{position:relative;flex:none;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#7c3aed calc(var(--p,0) * 1%),#ede9fe 0)}
+.ntn-aimini-ring::before{content:"";position:absolute;inset:5px;border-radius:50%;background:#fff}
+.ntn-aimini-ring b{position:relative;font-size:13px;font-weight:700;color:#6d28d9;font-variant-numeric:tabular-nums}
+.ntn-aimini-t{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ntn-aimini-t>b{font-size:13.5px;font-weight:700;color:#0f172a}
+.ntn-aimini-t small{font-size:11.5px;line-height:1.35;color:#7b879a;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ntn-aimini-go{height:32px;border:0;border-radius:8px;background:#f3efff;color:#5b21b6;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.ntn-aimini-go:hover{background:#ebe4ff}
+.ntn-aimini-go:focus-visible{outline:2px solid #7c3aed;outline-offset:2px}
+.ntn-aimini-go .i{width:14px;height:14px}
+.nxm-new.pg-um .ntv-main>.nt-ai.nt-ai,.nxm-new .ntv-main>.nt-ai.nt-ai{display:none !important}
+.ntn-rescard .ntn-rring ~ .ntn-rk{display:none}
+.nxm-new .ntk-r .ntk-v{font-size:21px;letter-spacing:-.03em}
+.nxm-new .ntk-r{gap:6px 8px}.nxm-new .ntk-r .ntk-v{font-size:20px}
+.nxm-new .ntk-r .ntk-v{font-size:22px;letter-spacing:-.02em}
