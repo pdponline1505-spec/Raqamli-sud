@@ -11699,3 +11699,41 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .nxm-new .qv-h .qv-title,.nxm-new .qv-h .qv-sub{transition:opacity .2s}
 @media (prefers-reduced-motion:reduce){.ntn-ind{transition:none}.nxm-new *{animation:none !important}}
 .ntn-pbody{position:relative;z-index:2}
+/* Umumiy ma'lumot: dashboard uslubidagi KPI kartalar va bir xil balandlik */
+.nxm-new{--d2e:cubic-bezier(.22,1,.36,1)}
+.nxm-new .ntn-stats .ntk{position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:stretch;gap:8px;min-height:140px;width:100%;padding:18px 18px 16px 20px;border:0;border-radius:20px;background:#fff;box-shadow:0 0 0 1px #eef1f6,0 4px 14px rgba(15,23,42,.05);font:inherit;color:#0f172a;text-align:left}
+.nxm-new .ntn-stats .ntk .d2-kt b{font-size:14px}
+.nxm-new .ntn-stats .ntk .d2-ka{width:32px;height:32px}
+.nxm-new .ntk-v{margin-top:auto;font-size:26px;font-weight:700;line-height:1.1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:relative;z-index:1;transition:color 260ms var(--d2e)}
+.nxm-new .ntk-f{display:flex;align-items:center;gap:8px;min-width:0;position:relative;z-index:1}
+.nxm-new .ntk-f .d2-kf{min-width:0;font-size:12.5px;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nxm-new .ntk .d2-ksp{width:46%;height:46%}
+.nxm-new .ntk:not(.nogo){cursor:pointer}
+.nxm-new .ntk:not(.nogo):hover .ntk-v,.nxm-new .ntk:not(.nogo):focus-visible .ntk-v{color:#2563eb}
+.nxm-new .ntk.nogo:hover{transform:none;box-shadow:0 0 0 1px #eef1f6,0 4px 14px rgba(15,23,42,.05)}
+.nxm-new .ntk.nogo::before{display:none}
+.nxm-new .ntk.nogo:hover .d2-ksl{stroke:inherit}
+.d2-kc.info{background:#eef4ff;color:#2563eb}
+.d2-kc.ph{background:#f1f5f9;color:#64748b}
+.d2-k:hover .d2-kc.info{background:#dbeafe;color:#1d4ed8}
+.nxm-new.pg-um .ntv-main{align-items:stretch}
+.nxm-new.pg-um .ntv-main>*:not(.ntn-stats):not(.nt-ai){grid-column:1 / -1 !important;align-self:start}
+.nxm-new.pg-um .ntv-main>.ntn-stats{grid-column:1 !important;grid-row:1 !important;align-self:stretch;grid-auto-rows:1fr;height:100%}
+.nxm-new.pg-um .ntv-main>.nt-ai{grid-column:2 !important;grid-row:1 !important;align-self:stretch;gap:12px;padding:18px;border-radius:20px;border:0;box-shadow:0 0 0 1px #ece8fb,0 4px 14px rgba(15,23,42,.05)}
+.nxm-new.pg-um .nt-ai .nt-ai-sc{width:132px;height:132px}
+.nxm-new.pg-um .nt-ai .nt-ai-sc::before{inset:13px}
+.nxm-new.pg-um .nt-ai .nt-ai-sc b{font-size:28px}
+.nxm-new.pg-um .nt-ai .nt-ai-sum{display:-webkit-box !important;-webkit-box-orient:vertical;-webkit-line-clamp:3 !important;overflow:hidden !important;font-size:13px;line-height:1.45}
+.nxm-new.pg-um .nt-ai .nt-ai-go{margin-top:auto}
+.ntn-nav .ntn-it,.ntn-nav .ntn-ph{position:relative;z-index:2}
+.nxm-new .ntn-stats .ntk>.d2-ksp{z-index:0;width:44%;height:30%}
+.nxm-new .ntn-stats .ntk>.d2-kt,.nxm-new .ntn-stats .ntk>.ntk-v,.nxm-new .ntn-stats .ntk>.ntk-f{position:relative;z-index:1}
+.nxm-new .ntn-stats .ntk{gap:10px}
+.nxm-new .ntk-r{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;margin-top:auto;position:relative;z-index:1;min-width:0}
+.nxm-new .ntk-r .ntk-v{margin-top:0;font-size:24px;max-width:100%}
+.nxm-new .ntk-ft{position:relative;z-index:1;max-width:58%;font-size:12.5px;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nxm-new .ntn-stats .ntk>.d2-ksp{width:44%;height:40%}
+.nxm-new .ntk-r{flex-wrap:nowrap}
+.nxm-new .ntk-r .ntk-v{font-size:22px;min-width:0}
+.nxm-new .ntk-r .d2-kc{flex:none}
+.nxm-new .ntn-stats .ntk>.d2-ksp{width:40%;height:27%}
