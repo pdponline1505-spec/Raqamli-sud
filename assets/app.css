@@ -11347,3 +11347,9 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ntp2>.ntp-seg:first-child button.on{border-color:#6366f1 !important;background:#eef2ff !important;box-shadow:0 0 0 1px #6366f1 inset !important;color:#4338ca}
 .ntp2>.ntp-seg:first-child button:focus-visible{outline:2px solid #6366f1;outline-offset:2px}
 .ntp-tot2{border-radius:12px !important}
+/* patch59: pastki panel xatosi, qism tabi xatosi */
+.qv-f .nx-ferr{display:inline-flex;align-items:center;gap:8px;margin-right:auto;min-width:0;max-width:62%;padding:8px 12px;border:1px solid #fecaca;border-radius:10px;background:#fef2f2;color:#b91c1c;font-size:13px;font-weight:500;line-height:1.35}
+.qv-f .nx-ferr .i{flex:none;width:16px;height:16px}
+.ntp2>.ntp-seg:first-child button.err{border-color:#f87171 !important;background:#fef2f2 !important;box-shadow:0 0 0 1px #f87171 inset !important}
+.ntp2>.ntp-seg:first-child button.err .ntp-st{background:#fee2e2;color:#b91c1c}
+.ntv-nres-r{width:auto}
