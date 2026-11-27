@@ -11815,3 +11815,15 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 @media (max-width:1100px){.nxm-new.pg-um .ntv-main>.ntn-stats.ntn-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .nxm-new.pg-um .ntn-stats .ntk>.d2-ksp{display:none}
 .nxm-new.pg-um .ntn-stats .ntk-ft{max-width:100%}
+/* gauge: yumaloq uchlar, rangga mos fon chizig'i, 0% — neytral */
+.ntn-gauges .smd-ga0,.ntn-gauges .smd-ga1{stroke-linecap:round;stroke-width:20}
+.ntn-gauges .smd-gauge.ai .smd-ga0{stroke:#ece6fe}
+.ntn-gauges .smd-gauge.ok .smd-ga0{stroke:#dfeafe}
+.ntn-gauges .smd-gauge.mid .smd-ga0{stroke:#fcebc7}
+.ntn-gauges .smd-gauge.low .smd-ga0{stroke:#fde2e2}
+.smd-gauge.zero{background:linear-gradient(120deg,#fff 0%,#fafbfc 60%,#f4f6f9 100%)}
+.smd-gauge.zero::after{background:radial-gradient(circle,rgba(148,163,184,.14),transparent 65%)}
+.ntn-gauges .smd-gauge.zero .smd-ga1{display:none}
+.ntn-gauges .smd-gauge.zero .smd-ga0{stroke:#e9edf2}
+.smd-gic.zero{background:#f1f5f9;color:#64748b}
+.ntn-gauges .smd-gauge.zero .smd-gw b{color:#94a3b8}
