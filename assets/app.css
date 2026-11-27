@@ -11513,3 +11513,5 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ntn-gl{padding-top:6px}
 .ntn-parts{display:flex;flex-direction:column;gap:3px}.ntn-pt{flex-direction:row;align-items:center;justify-content:space-between;padding:4px 6px 4px 10px;min-height:32px;font-size:12.5px}.ntn-pt .ntp-st{max-width:none}
 .ntn-res small{display:none}.ntn-res{gap:5px;padding:10px 12px}.ntn-brand{padding-bottom:0}.ntn-case{padding:8px 12px}
+/* natija tanlovi — sarlavhada (eski holatdagidek) */.nxm-new.pg-im .ntn-rrow{display:none !important}.nxm-new.pg-im .ntim-e2 .ntim-ra{display:flex !important}
+.nxm-new.pg-im .ntim-e2>.dx-ch .dx-chm>.row{display:none}
