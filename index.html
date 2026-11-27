@@ -30,26 +30,26 @@ a{color:#3073f1;text-decoration:none}a:hover{color:#1e40af}
 </sc-if>
 <sc-if value="{{smOpenM}}" hint-placeholder-val="{{ false }}">
 <div class="qv-wrap" style="z-index: 81">
-<button class="qv-bg" aria-label="Oynani yopish" onClick="{{sm.close}}"></button>
-<div class="qv smd" role="dialog" aria-modal="true" aria-labelledby="sm-t" onKeyDown="{{sm.kd}}">
+<button class="qv-bg" aria-label="Oynani yopish" onClick="{{smv.close}}"></button>
+<div class="qv smd" role="dialog" aria-modal="true" aria-labelledby="sm-t" onKeyDown="{{smv.kd}}">
 <aside class="smd-side">
 <div class="smd-brand"><span class="smd-logo"><span class="smd-ni ic-id" aria-hidden="true"></span></span><b>SMART varaqa</b></div>
-<nav class="smd-nav" role="tablist" aria-label="SMART varaqa bo'limlari"><sc-for list="{{sm.secs}}" as="t" hint-placeholder-count="8"><button type="button" role="tab" class="{{t.cls}}" aria-selected="{{t.sel}}" onClick="{{t.pick}}"><span class="{{t.icCls}}" aria-hidden="true"></span><span class="smd-nt">{{t.t}}</span><span class="{{t.cntCls}}">{{t.cnt}}</span></button><sc-if value="{{t.sep}}" hint-placeholder-val="{{ false }}"><hr class="smd-sep"></sc-if></sc-for></nav>
-<div class="smd-me"><img src="{{sm.photo}}" alt=""><span class="kv" style="gap: 1px; min-width: 0"><b>{{sm.name}}</b><small>JSHSHIR {{sm.jsh}}</small></span></div>
+<nav class="smd-nav" role="tablist" aria-label="SMART varaqa bo'limlari"><sc-for list="{{smv.secs}}" as="t" hint-placeholder-count="8"><button type="button" role="tab" class="{{t.cls}}" aria-selected="{{t.sel}}" onClick="{{t.pick}}"><span class="{{t.icCls}}" aria-hidden="true"></span><span class="smd-nt">{{t.t}}</span><span class="{{t.cntCls}}">{{t.cnt}}</span></button><sc-if value="{{t.sep}}" hint-placeholder-val="{{ false }}"><hr class="smd-sep"></sc-if></sc-for></nav>
+<div class="smd-me"><img src="{{smv.photo}}" alt=""><span class="kv" style="gap: 1px; min-width: 0"><b>{{smv.name}}</b><small>JSHSHIR {{smv.jsh}}</small></span></div>
 </aside>
 <div class="smd-main">
-<div class="smd-top"><div class="kv" style="gap: 2px; min-width: 0"><b id="sm-t" class="smd-h">{{sm.title}}</b><small class="smd-sub">{{sm.sub}}</small></div><span style="flex: 1"></span><button class="btn sm" onClick="{{sm.print}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6"></path><rect x="3" y="9" width="18" height="8" rx="2"></rect><path d="M7 14h10v7H7z"></path></svg>Chop etish</button><button class="ib" aria-label="Yopish" onClick="{{sm.close}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+<div class="smd-top"><div class="kv" style="gap: 2px; min-width: 0"><b id="sm-t" class="smd-h">{{smv.title}}</b><small class="smd-sub">{{smv.sub}}</small></div><span style="flex: 1"></span><button class="btn sm" onClick="{{smv.print}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6"></path><rect x="3" y="9" width="18" height="8" rx="2"></rect><path d="M7 14h10v7H7z"></path></svg>Chop etish</button><button class="ib" aria-label="Yopish" onClick="{{smv.close}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
 <div class="smd-scroll">
-<sc-if value="{{sm.isOv}}" hint-placeholder-val="{{ true }}"><div class="smd-ov">
+<sc-if value="{{smv.isOv}}" hint-placeholder-val="{{ true }}"><div class="smd-ov">
 <div class="smd-col">
-<div class="smd-stats smd-k4"><sc-for list="{{sm.stats}}" as="k" hint-placeholder-count="4"><button type="button" class="d2-k" onClick="{{k.go}}" aria-label="{{k.l}}: {{k.v}}"><span class="d2-kt"><b>{{k.l}}</b><span class="d2-ka" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></span><span class="d2-kv"><b class="d2-kn">{{k.v}}</b><span class="{{k.chipCls}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="{{k.chipIc}}"></path></svg>{{k.chip}}</span></span><span class="d2-kf">{{k.foot}}</span></button></sc-for></div>
-<div class="smd-gauges"><sc-for list="{{sm.gauges}}" as="g" hint-placeholder-count="2"><div class="{{g.wcls}}"><div class="smd-gtx"><span class="smd-ct"><span class="{{g.icCls}}" aria-hidden="true"></span>{{g.t}}</span><small>{{g.d}}</small><span class="{{g.tagCls}}">{{g.lbl}}</span></div><div class="smd-gw"><svg viewBox="0 0 200 112" aria-hidden="true"><defs><linearGradient id="{{g.gid}}" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{{g.c1}}"></stop><stop offset="1" stop-color="{{g.c2}}"></stop></linearGradient></defs><path d="M20 100 A80 80 0 0 1 180 100" class="smd-ga0"></path><path d="M20 100 A80 80 0 0 1 180 100" class="smd-ga1" stroke="{{g.url}}" style="stroke-dashoffset: {{g.off}}"></path></svg><b>{{g.pct}}</b></div></div></sc-for></div>
-<div class="smd-card"><span class="smd-ct"><span class="smd-ni ic-user" aria-hidden="true"></span>Sud uchun fuqarolik varaqasi</span><div class="smd-idb"><img class="smd-ph" src="{{sm.photo}}" alt="{{sm.name}}"><dl class="smd-idg"><sc-for list="{{sm.idRows}}" as="r" hint-placeholder-count="9"><div class="{{r.wcls}}"><dt>{{r.k}}</dt><dd class="{{r.cls}}">{{r.v}}</dd></div></sc-for></dl></div></div>
+<div class="smd-stats smd-k4"><sc-for list="{{smv.stats}}" as="k" hint-placeholder-count="4"><button type="button" class="d2-k" onClick="{{k.go}}" aria-label="{{k.l}}: {{k.v}}"><span class="d2-kt"><b>{{k.l}}</b><span class="d2-ka" aria-hidden="true"><svg class="i s" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"></path></svg></span></span><span class="d2-kv"><b class="d2-kn">{{k.v}}</b><span class="{{k.chipCls}}"><svg class="i s" viewBox="0 0 24 24" aria-hidden="true"><path d="{{k.chipIc}}"></path></svg>{{k.chip}}</span></span><span class="d2-kf">{{k.foot}}</span></button></sc-for></div>
+<div class="smd-gauges"><sc-for list="{{smv.gauges}}" as="g" hint-placeholder-count="2"><div class="{{g.wcls}}"><div class="smd-gtx"><span class="smd-ct"><span class="{{g.icCls}}" aria-hidden="true"></span>{{g.t}}</span><small>{{g.d}}</small><span class="{{g.tagCls}}">{{g.lbl}}</span></div><div class="smd-gw"><svg viewBox="0 0 200 112" aria-hidden="true"><defs><linearGradient id="{{g.gid}}" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{{g.c1}}"></stop><stop offset="1" stop-color="{{g.c2}}"></stop></linearGradient></defs><path d="M20 100 A80 80 0 0 1 180 100" class="smd-ga0"></path><path d="M20 100 A80 80 0 0 1 180 100" class="smd-ga1" stroke="{{g.url}}" style="stroke-dashoffset: {{g.off}}"></path></svg><b>{{g.pct}}</b></div></div></sc-for></div>
+<div class="smd-card"><span class="smd-ct"><span class="smd-ni ic-user" aria-hidden="true"></span>Sud uchun fuqarolik varaqasi</span><div class="smd-idb"><img class="smd-ph" src="{{smv.photo}}" alt="{{smv.name}}"><dl class="smd-idg"><sc-for list="{{smv.idRows}}" as="r" hint-placeholder-count="9"><div class="{{r.wcls}}"><dt>{{r.k}}</dt><dd class="{{r.cls}}">{{r.v}}</dd></div></sc-for></dl></div></div>
 </div>
 </div></sc-if>
-<sc-if value="{{sm.isSec}}" hint-placeholder-val="{{ false }}"><div class="smd-sec">
-<sc-for list="{{sm.cur.groups}}" as="g" hint-placeholder-count="1"><div class="smd-card"><sc-if value="{{g.hasTitle}}" hint-placeholder-val="{{ false }}"><span class="smd-ct">{{g.title}}</span></sc-if><dl class="smd-f"><sc-for list="{{g.rows}}" as="r" hint-placeholder-count="4"><div class="{{r.cls}}"><dt>{{r.k}}</dt><dd>{{r.v}}</dd></div></sc-for></dl></div></sc-for>
-<sc-if value="{{sm.cur.empty}}" hint-placeholder-val="{{ false }}"><div class="smd-card smd-empty"><span class="smd-ni ic-search" aria-hidden="true"></span><b>Ma'lumot topilmadi</b><small>Integratsiya orqali bu bo'lim bo'yicha yozuv qaytmadi</small></div></sc-if>
+<sc-if value="{{smv.isSec}}" hint-placeholder-val="{{ false }}"><div class="smd-sec">
+<sc-for list="{{smv.cur.groups}}" as="g" hint-placeholder-count="1"><div class="smd-card"><sc-if value="{{g.hasTitle}}" hint-placeholder-val="{{ false }}"><span class="smd-ct">{{g.title}}</span></sc-if><dl class="smd-f"><sc-for list="{{g.rows}}" as="r" hint-placeholder-count="4"><div class="{{r.cls}}"><dt>{{r.k}}</dt><dd>{{r.v}}</dd></div></sc-for></dl></div></sc-for>
+<sc-if value="{{smv.cur.empty}}" hint-placeholder-val="{{ false }}"><div class="smd-card smd-empty"><span class="smd-ni ic-search" aria-hidden="true"></span><b>Ma'lumot topilmadi</b><small>Integratsiya orqali bu bo'lim bo'yicha yozuv qaytmadi</small></div></sc-if>
 </div></sc-if>
 </div>
 </div>
@@ -12541,7 +12541,7 @@ __out.tmEdTumHint = reg ? (tum && reg.t.indexOf(tum) < 0 ? "Bu qiymat tanlangan 
 (function () {
 var sp = s.smart, lst = sp && s[sp.key] ? tmMap(sp.key) : [], x = sp ? lst.filter(function (q) { return q.id === sp.id; })[0] : null;
 __out.smOpenM = !!x;
-if (!x) { __out.sm = { secs: [], stats: [], gauges: [], idRows: [], flts: [], checks: [], cur: { groups: [] } }; return; }
+if (!x) { __out.smv = { secs: [], stats: [], gauges: [], idRows: [], flts: [], checks: [], cur: { groups: [] } }; return; }
 var n = Number(String(x.id).replace(/\D/g, "")) || 7, pad = function (v, k) { v = String(v); while (v.length < k) v = "0" + v; return v; };
 var close = function () { self.setState({ smart: null, smPrint: false }); };
 var fem = x.gender === "Ayol", vil = x.viloyat || "Surxondaryo viloyati";
@@ -12589,7 +12589,7 @@ var CH = [
 ];
 var flt = s.smFlt || "all", FL = [["all", "Barchasi"], ["ok", "Ijobiy"], ["warn", "Diqqat"], ["info", "Ma'lumot"]];
 var shown = CH.filter(function (c) { return flt === "all" || c.f === flt; });
-__out.sm = {
+__out.smv = {
 name: x.name, photo: x.photo || portrait(x.name, x.gender), jsh: x.jshshir || "—",
 title: isOv ? "Umumiy ko'rinish" : cur[1], sub: isOv ? x.name + " · idoralararo integratsiya ma'lumotlari" : "Manba: " + cur[3],
 isOv: isOv, isSec: !isOv,
@@ -12620,7 +12620,7 @@ var vcode = (pad(n * 48271 % 10000, 4) + "-" + pad(n * 16807 % 10000, 4) + "-" +
 var row2 = function (rows) { var h = "", i = 0; while (i < rows.length) { var a = rows[i]; if (a[2] || i === rows.length - 1) { h += "<tr><th>" + E(a[0]) + "<\/th><td colspan=\"3\">" + E(a[1] || "—") + "<\/td><\/tr>"; i++; } else { var b = rows[i + 1]; if (b[2]) { h += "<tr><th>" + E(a[0]) + "<\/th><td colspan=\"3\">" + E(a[1] || "—") + "<\/td><\/tr>"; i++; } else { h += "<tr><th>" + E(a[0]) + "<\/th><td>" + E(a[1] || "—") + "<\/td><th>" + E(b[0]) + "<\/th><td>" + E(b[1] || "—") + "<\/td><\/tr>"; i += 2; } } } return "<table class=\"kv\"><colgroup><col style=\"width:22%\"><col style=\"width:28%\"><col style=\"width:22%\"><col style=\"width:28%\"><\/colgroup>" + h + "<\/table>"; };
 var build = function (isW) {
 var idr = [["F.I.Sh.", x.name, 1], ["Jinsi", x.gender || "—"], ["Tug'ilgan sanasi", isoToUz(x.birth) + " (" + ageOf(x.birth) + " yosh)"], ["JSHSHIR", x.jshshir || "—"], ["Pasport / ID-karta", "AD " + pad(n * 104729 % 10000000, 7)], ["Fuqaroligi", "O'zbekiston Respublikasi"], ["Tug'ilgan joyi", vil.replace(" viloyati", "") + " shahri"], ["Sudlanganligi", "Yo'q"], ["Doimiy manzili", x.manzil || vil, 1]];
-var photo = isW ? "<div class=\"ph ph0\">Foto<br>3×4<\/div>" : "<img class=\"ph\" src=\"" + E(__out.sm.photo) + "\" alt=\"\">";
+var photo = isW ? "<div class=\"ph ph0\">Foto<br>3×4<\/div>" : "<img class=\"ph\" src=\"" + E(__out.smv.photo) + "\" alt=\"\">";
 var secN = 3, body = "";
 SEC.forEach(function (q) {
 body += "<h2><span>" + (secN++) + ".<\/span> " + E(q[1]) + " <em>Manba: " + E(q[3]) + "<\/em><\/h2>";
