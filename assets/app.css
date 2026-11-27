@@ -11653,3 +11653,29 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .nxm-new .ntv-mode .ntv-simple{border:0 !important;background:none !important;box-shadow:none !important;padding:4px 0 0 !important}
 .nxm-new .qv-f .nx-ferr{max-width:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:7px 12px;font-size:12.5px}
 .nxm-new .qv-f .nx-ferr>span{overflow:hidden;text-overflow:ellipsis}
+/* ===== Umumiy sahifa: AI tahlil — o'ng yon ustunda ===== */
+.nxm-new.pg-um .ntv-main{display:grid !important;grid-template-columns:minmax(0,1fr) 300px;gap:14px 16px;align-items:start}
+.nxm-new.pg-um .ntv-main>*{grid-column:1}
+.nxm-new.pg-um .ntv-main>.ntn-stats{grid-row:1}
+.nxm-new.pg-um .ntv-main>.ntv-mode{grid-row:2}
+.nxm-new.pg-um .ntv-main>.nt-ai{grid-column:2;grid-row:1 / span 3}
+.nxm-new.pg-um .ntn-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+.nxm-new.pg-um .ntv-simple{grid-template-columns:repeat(auto-fit,minmax(170px,1fr)) !important}
+.nxm-new.pg-um .ntv-main>.nt-ai{display:flex !important;flex-direction:column;align-items:stretch;gap:16px;padding:18px;border:1px solid #ece8fb;border-radius:16px;background:linear-gradient(180deg,#faf8ff 0%,#fff 70%)}
+.nxm-new.pg-um .nt-ai .nt-ai-ic{position:absolute;opacity:0;pointer-events:none}
+.nxm-new.pg-um .nt-ai{position:relative}
+.nxm-new.pg-um .nt-ai .nt-ai-t{order:1;gap:8px}
+.nxm-new.pg-um .nt-ai .nt-ai-t b{font-size:15px;font-weight:700;letter-spacing:0;color:#0f172a}
+.nxm-new.pg-um .nt-ai .nt-ai-sum{font-size:13.5px;line-height:1.5;color:#475569}
+.nxm-new.pg-um .nt-ai .nt-ai-sc{order:0;align-self:center;position:relative;width:176px;height:176px;padding:0 !important;border:0 !important;border-radius:50% !important;display:grid !important;place-items:center;background:conic-gradient(#7c3aed calc(var(--p,0) * 1%),#ede9fe 0) !important;box-shadow:0 10px 30px rgba(124,58,237,.12)}
+.nxm-new.pg-um .nt-ai .nt-ai-sc::before{content:"";position:absolute;inset:16px;border-radius:50%;background:#fff;box-shadow:inset 0 2px 6px rgba(15,23,42,.05)}
+.nxm-new.pg-um .nt-ai .nt-ai-sc-t{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px}
+.nxm-new.pg-um .nt-ai .nt-ai-sc b{font-size:34px;line-height:1;font-weight:700;color:#6d28d9}
+.nxm-new.pg-um .nt-ai .nt-ai-sc small{font-size:12px;color:#64748b}
+.nxm-new.pg-um .nt-ai .nt-ai-go{order:2;width:100%;height:38px;justify-content:center}
+.nxm-new.pg-um .nt-ai::before{content:"AI tahlil";order:-1;font-size:13px;font-weight:600;color:#6d28d9;letter-spacing:.02em}
+@media (max-width:980px){.nxm-new.pg-um .ntv-main{grid-template-columns:1fr}.nxm-new.pg-um .ntv-main>.nt-ai{grid-column:1;grid-row:auto}}
+.nxm-new.pg-um .ntv-simple{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+.nxm-new.pg-um .ntv-simple>label:nth-child(3),.nxm-new.pg-um .ntv-simple>:last-child:nth-child(3){grid-column:1 / -1}
+.nxm-new.pg-um .nt-ai .nt-ai-sum{display:block !important;-webkit-line-clamp:unset !important;overflow:visible !important;white-space:normal !important}
+.nxm-new.pg-um .nt-ai::before{content:"AI tahlil · Hal qiluv qarori";font-size:14px;font-weight:700;color:#0f172a;letter-spacing:0}.nxm-new.pg-um .nt-ai .nt-ai-t>b{display:none}
