@@ -11783,3 +11783,35 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .nxm-new .ntk-r .ntk-v{font-size:21px;letter-spacing:-.03em}
 .nxm-new .ntk-r{gap:6px 8px}.nxm-new .ntk-r .ntk-v{font-size:20px}
 .nxm-new .ntk-r .ntk-v{font-size:22px;letter-spacing:-.02em}
+.ic-spark::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%203l1.8%204.7L18.5%209.5l-4.7%201.8L12%2016l-1.8-4.7L5.5%209.5l4.7-1.8z%22/%3E%3Cpath%20d%3D%22M19%2015l.8%202.2%202.2.8-2.2.8L19%2021l-.8-2.2L16%2018l2.2-.8z%22/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%203l1.8%204.7L18.5%209.5l-4.7%201.8L12%2016l-1.8-4.7L5.5%209.5l4.7-1.8z%22/%3E%3Cpath%20d%3D%22M19%2015l.8%202.2%202.2.8-2.2.8L19%2021l-.8-2.2L16%2018l2.2-.8z%22/%3E%3C/svg%3E")}
+.ic-scale::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%204v16%22/%3E%3Cpath%20d%3D%22M7%2020h10%22/%3E%3Cpath%20d%3D%22M5%208h14%22/%3E%3Cpath%20d%3D%22M5%208l-3%206a3%203%200%200%200%206%200z%22/%3E%3Cpath%20d%3D%22M19%208l-3%206a3%203%200%200%200%206%200z%22/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%204v16%22/%3E%3Cpath%20d%3D%22M7%2020h10%22/%3E%3Cpath%20d%3D%22M5%208h14%22/%3E%3Cpath%20d%3D%22M5%208l-3%206a3%203%200%200%200%206%200z%22/%3E%3Cpath%20d%3D%22M19%208l-3%206a3%203%200%200%200%206%200z%22/%3E%3C/svg%3E")}
+/* Umumiy ma'lumot: SMART varaqa uslubi — tepada 4 ta ko'rsatkich, pastda AI tahlil va Umumiy natija */
+.nxm-new.pg-um .ntv-main{grid-template-columns:minmax(0,1fr) !important}
+.nxm-new.pg-um .ntv-main>.ntn-stats.ntn-stats{grid-column:1 / -1 !important;grid-row:1 !important;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:auto;height:auto}
+.nxm-new.pg-um .ntv-main>.ntn-gauges.ntn-gauges{grid-column:1 / -1 !important;grid-row:2 !important}
+.nxm-new.pg-um .ntv-main>.ntv-mode.ntv-mode{grid-row:3 !important}
+.nxm-new:not(.pg-um) .ntv-main>.ntn-gauges{display:none !important}
+.nxm-new .ntn-stats .ntk{min-height:128px}
+.nxm-new .ntk-r{flex-wrap:wrap}
+.nxm-new .ntn-gauges .smd-card{border:0;border-radius:20px;padding:18px 20px;box-shadow:0 0 0 1px #eef1f6,0 4px 14px rgba(15,23,42,.05);animation:ntnIn 460ms cubic-bezier(.22,1,.36,1) 120ms backwards}
+.nxm-new .ntn-gauges .smd-card+.smd-card{animation-delay:180ms}
+.nxm-new .ntn-gauges .smd-gw{width:150px}
+.nxm-new .ntn-gauges .smd-gw b{font-size:22px}
+.smd-gauge.ai{background:linear-gradient(120deg,#fff 0%,#f8f5ff 55%,#f1ebff 100%)}
+.smd-gauge.ai::after{background:radial-gradient(circle,rgba(167,139,250,.24),transparent 65%)}
+.smd-gic.ai{background:#efe9ff;color:#7c3aed}
+.smd-tag.ai{background:#efe9ff;color:#6d28d9}
+.ntn-gft{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.ntn-glink{border:0;background:none;padding:0;font:inherit;font-size:12.5px;font-weight:600;color:#6d28d9;display:inline-flex;align-items:center;gap:4px;cursor:pointer}
+.ntn-glink:hover{text-decoration:underline}
+.ntn-glink:focus-visible{outline:2px solid #7c3aed;outline-offset:2px;border-radius:4px}
+.ntn-glink .i{width:14px;height:14px}
+.ntn-gres .ntn-resdd{display:block;width:100%;max-width:300px}
+.ntn-gres .ntn-resdd .dx-selbtn{height:38px;border-radius:10px;background:#fff;font-size:13.5px;font-weight:600}
+.ntn-gres .ntp-sug{font-size:12px;color:#7b879a}
+.ntn-gres .smd-gtx>b{display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:999px;background:#fff;box-shadow:0 0 0 1px #e8ebf0;font-size:12.5px;font-weight:600;color:#334155}
+.ntn-gres .ntn-bar{display:none}
+.ntn-gauges .smd-gtx small{font-size:12.5px;color:#7b879a}
+@media (max-width:1100px){.nxm-new.pg-um .ntv-main>.ntn-stats.ntn-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.nxm-new.pg-um .ntn-stats .ntk>.d2-ksp{display:none}
+.nxm-new.pg-um .ntn-stats .ntk-ft{max-width:100%}
