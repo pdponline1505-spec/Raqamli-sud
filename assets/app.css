@@ -11679,3 +11679,23 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .nxm-new.pg-um .ntv-simple>label:nth-child(3),.nxm-new.pg-um .ntv-simple>:last-child:nth-child(3){grid-column:1 / -1}
 .nxm-new.pg-um .nt-ai .nt-ai-sum{display:block !important;-webkit-line-clamp:unset !important;overflow:visible !important;white-space:normal !important}
 .nxm-new.pg-um .nt-ai::before{content:"AI tahlil · Hal qiluv qarori";font-size:14px;font-weight:700;color:#0f172a;letter-spacing:0}.nxm-new.pg-um .nt-ai .nt-ai-t>b{display:none}
+/* ===== yangi ko'rinish: animatsiyalar ===== */
+.ntn-nav{position:relative}
+.ntn-ind{position:absolute;left:0;top:0;width:0;height:0;border-radius:10px;background:#fff;box-shadow:0 1px 2px rgba(15,23,42,.06),0 0 0 1px #e8ebf0;pointer-events:none;z-index:0;opacity:0;transition:transform 380ms cubic-bezier(.22,1,.36,1),width 380ms cubic-bezier(.22,1,.36,1),height 380ms cubic-bezier(.22,1,.36,1),opacity 180ms ease-out}
+.ntn-ind[data-on="1"]{opacity:1}
+.ntn-nav>*:not(.ntn-ind){position:relative;z-index:auto}.ntn-ind{z-index:1}.ntn-it{position:relative;z-index:2}.ntn-ph{position:relative;z-index:2}
+.ntn-nav:has(>.ntn-ind[data-on="1"]) .ntn-it.on{background:transparent !important;box-shadow:none !important}
+.ntn-it .ntn-tx b,.ntn-it .ntn-ic,.ntn-it .ntn-no{transition:color .25s,background-color .25s,font-weight .25s}
+@keyframes ntnIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes ntnDown{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.nxm-new .ntv-main>.ntn-stats .ntn-st,.nxm-new .ntv-main>.ntv-mode,.nxm-new .ntv-main>.nt-ai,.nxm-new .ntim-e2.pgsel,.nxm-new .ntn-sumbar,.nxm-new.pg-xar .ntv-cost,.nxm-new.pg-xar .ntv-addrow{animation:ntnIn 460ms cubic-bezier(.22,1,.36,1) both}
+.nxm-new .ntn-stats .ntn-st:nth-child(2){animation-delay:50ms}
+.nxm-new .ntn-stats .ntn-st:nth-child(3){animation-delay:100ms}
+.nxm-new .ntn-stats .ntn-st:nth-child(4){animation-delay:150ms}
+.nxm-new .ntv-main>.ntv-mode{animation-delay:180ms}
+.nxm-new .ntv-main>.nt-ai{animation-delay:120ms}
+.nxm-new .ntn-sumbar{animation-delay:120ms}
+.ntn-pbody{animation:ntnDown 320ms cubic-bezier(.22,1,.36,1) both}
+.nxm-new .qv-h .qv-title,.nxm-new .qv-h .qv-sub{transition:opacity .2s}
+@media (prefers-reduced-motion:reduce){.ntn-ind{transition:none}.nxm-new *{animation:none !important}}
+.ntn-pbody{position:relative;z-index:2}
