@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=a92feafd">
+<link rel="stylesheet" href="assets/app.css?v=3cbb006a">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -11286,9 +11286,9 @@ if (__out.ntNew) (function () { var pg = String(v.pg || "um"), ids = IT.map(func
     if (xOn("vka") && typeof vjBad !== "undefined" && vjBad) iss.push({ w: XT.vka, t: "aniq manzil kiritilmagan", k: "xar:vka" });
     if (ntPartOn) (__out.ntn.parts || []).forEach(function (pp, pi) { var k = ntPK[pi]; if (k !== ntCtx.part && !ntPRes(v, k)) iss.push({ w: pp.l, t: "natija qo'yilmagan", part: pi }); });
     N0.iss = iss.map(function (q) { return { w: q.w, t: q.t, go: function () { if (q.part != null) { N0.parts[q.part].go(); setN(function () { return { issOpen: false }; }); return; } setN(function () { return { pg: q.k, issOpen: false }; }); } }; });
-    N0.issN = String(iss.length); N0.issOn = iss.length > 0; N0.issOpen = !!v.issOpen && iss.length > 0; N0.issExp = N0.issOpen ? "true" : "false"; N0.issT = function () { setN(function (w) { return { issOpen: !w.issOpen }; }); };
+    N0.issN = String(iss.length); N0.issOn = false; /* kamchiliklar tugmasi o'chirildi */ N0.issOpen = !!v.issOpen && iss.length > 0; N0.issExp = N0.issOpen ? "true" : "false"; N0.issT = function () { setN(function (w) { return { issOpen: !w.issOpen }; }); };
     var curDone = curIdx >= 0 && !!rs[curIdx] && !asNeed(curIdx);
-    N0.doneOn = curDone; N0.nextCls = "btn ntn-pb nx" + (curDone ? " hi" : "");
+    N0.doneOn = false; N0.nextCls = "btn ntn-pb nx" + (curDone ? " hi" : "");
     var mC = curIdx >= 0 ? (__out.ntIm || [])[curIdx] || {} : {}; N0.sumOn = curIdx >= 0; N0.sDv = mC.sDv || "—"; N0.sUnd = mC.sUnd || "0 so'm"; N0.sSt = curIdx >= 0 ? (rs[curIdx] || "Natija tanlanmagan") : ""; N0.sStCls = "ntn-sst " + (curIdx >= 0 && rs[curIdx] ? "t-" + TN[rs[curIdx]] : "ph");
     /* qaror loyihasi */
     var PH = { "To'liq qanoatlantirilgan": "Da'vo talabi to'liq qanoatlantirilsin.", "Qisman qanoatlantirilgan": "Da'vo talabi qisman qanoatlantirilsin.", "Rad etilgan": "Da'vo talabi rad etilsin.", "Ko'rmasdan qoldirilgan": "Da'vo arizasi ko'rmasdan qoldirilsin.", "Ish tugatilgan": "Ish bo'yicha ish yuritish tugatilsin." };
@@ -11319,8 +11319,8 @@ if (__out.ntSum && __out.ntSum.rows) __out.ntSum.rows = __out.ntSum.rows.map(fun
 __out.nxSave = function () {
 var w = self.state.nx; if (!w) return;
 if (ntPartOn) { var pRs = ntPK.map(function (k) { return ntPRes(w, k); }), pTL = function (k) { return ({ asosiy: "Asosiy", qarshi: "Qarshi da'vo", dublikat: "Dublikat" })[k] || ntPLbl(k); }, pMiss = ntPK.filter(function (k, i) { return !pRs[i]; }).map(pTL), pBadA = ntPK.filter(function (k, i) { return NAT_ASOS[pRs[i]] && !ntPAsos(w, k); }).map(pTL);
-  if (pMiss.length) { self.setState({ nx: Object.assign({}, w, { err: "Natija qo'yish yakuniga yetmagan: " + pMiss.map(function (x) { return "«" + x + "»"; }).join(", ") + " bo'yicha natija qo'yilmagan", errParts: ntPK.filter(function (k, i) { return !pRs[i]; }) }) }); return; }
-  if (pBadA.length) { self.setState({ nx: Object.assign({}, w, { err: "Natija qo'yish yakuniga yetmagan: " + pBadA.map(function (x) { return "«" + x + "»"; }).join(", ") + " bo'yicha asos tanlanmagan", errParts: ntPK.filter(function (k, i) { return NAT_ASOS[pRs[i]] && !ntPAsos(w, k); }) }) }); return; }
+  if (pMiss.length) { self.setState({ nx: Object.assign({}, w, { err: "Natija qo'yilmagan: " + pMiss.join(", "), errParts: ntPK.filter(function (k, i) { return !pRs[i]; }) }) }); return; }
+  if (pBadA.length) { self.setState({ nx: Object.assign({}, w, { err: "Asos tanlanmagan: " + pBadA.join(", "), errParts: ntPK.filter(function (k, i) { return NAT_ASOS[pRs[i]] && !ntPAsos(w, k); }) }) }); return; }
   var pAs = []; ntPK.forEach(function (k) { String(ntPAsos(w, k) || "").split("; ").forEach(function (a) { if (a && pAs.indexOf(a) < 0) pAs.push(a); }); }); w = Object.assign({}, w, { res: w.partTot || ntComb(pRs), asos: pAs.join("; ") }); }
 if (qol) w = Object.assign({}, w, { res: "qoldirish" }); if (maj) w = Object.assign({}, w, { res: "tayinlash" }); if (arx) w = Object.assign({}, w, { res: "arxiv_y" });
 var Rw = RES.filter(function (r) { return r[0] === w.res; })[0], f = w.f || {}, miss = [];
