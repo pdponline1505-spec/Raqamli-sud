@@ -11688,14 +11688,14 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ntn-it .ntn-tx b,.ntn-it .ntn-ic,.ntn-it .ntn-no{transition:color .25s,background-color .25s,font-weight .25s}
 @keyframes ntnIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @keyframes ntnDown{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-.nxm-new .ntv-main>.ntn-stats .ntn-st,.nxm-new .ntv-main>.ntv-mode,.nxm-new .ntv-main>.nt-ai,.nxm-new .ntim-e2.pgsel,.nxm-new .ntn-sumbar,.nxm-new.pg-xar .ntv-cost,.nxm-new.pg-xar .ntv-addrow{animation:ntnIn 460ms cubic-bezier(.22,1,.36,1) both}
+.nxm-new .ntv-main>.ntn-stats .ntn-st,.nxm-new .ntv-main>.ntv-mode,.nxm-new .ntv-main>.nt-ai,.nxm-new .ntim-e2.pgsel,.nxm-new .ntn-sumbar,.nxm-new.pg-xar .ntv-cost,.nxm-new.pg-xar .ntv-addrow{animation:ntnIn 460ms cubic-bezier(.22,1,.36,1) backwards}
 .nxm-new .ntn-stats .ntn-st:nth-child(2){animation-delay:50ms}
 .nxm-new .ntn-stats .ntn-st:nth-child(3){animation-delay:100ms}
 .nxm-new .ntn-stats .ntn-st:nth-child(4){animation-delay:150ms}
 .nxm-new .ntv-main>.ntv-mode{animation-delay:180ms}
 .nxm-new .ntv-main>.nt-ai{animation-delay:120ms}
 .nxm-new .ntn-sumbar{animation-delay:120ms}
-.ntn-pbody{animation:ntnDown 320ms cubic-bezier(.22,1,.36,1) both}
+.ntn-pbody{animation:ntnDown 320ms cubic-bezier(.22,1,.36,1) backwards}
 .nxm-new .qv-h .qv-title,.nxm-new .qv-h .qv-sub{transition:opacity .2s}
 @media (prefers-reduced-motion:reduce){.ntn-ind{transition:none}.nxm-new *{animation:none !important}}
 .ntn-pbody{position:relative;z-index:2}
