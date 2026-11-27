@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=c6fa83d6">
+<link rel="stylesheet" href="assets/app.css?v=ebefbf3c">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -11099,7 +11099,7 @@ checks: [[clOk, "Ishni ko'rish natijasi tanlangan", true], [!!nt.hqq, "Hal qiluv
 (function () {
 var imOn = v2 && fullM && !!ntCtx && (ntCtx.itk || []).length > 0; __out.ntImOn = imOn; __out.ntImOff = !imOn; __out.ntXN = imOn ? "2" : "4"; __out.ntImN = "1"; __out.ntTopHq = imOn; __out.ntS1On = !imOn;
 if (!imOn) return;
-__out.ntAiOn = true; var AIq = (typeof AI_DATA !== "undefined" && AI_DATA["Hal qiluv qarori"]) || { score: 0, sum: "" }; __out.ntAiScore = String(AIq.score); __out.ntAiSum = AIq.sum;
+__out.ntAiOn = true; var AIq = (typeof AI_DATA !== "undefined" && AI_DATA["Hal qiluv qarori"]) || { score: 0, sum: "" }; __out.ntAiScore = String(AIq.score); __out.ntAiSum = AIq.sum; if (__out.ntNew) __out.ntAiSum = AIq.short || "Tavsiya: xarajatlar taqsimotini summalar bilan ko'rsating.";
 __out.ntAiSub = ntPartOn ? "Barcha qismlar (asosiy, qarshi da'vo, dublikat) bo'yicha umumiy tahlil · tavsiya xarakterida" : "Ish materiallari asosida · tavsiya xarakterida";
 __out.ntAiOpen = function () { self.setState({ aiDoc: "Hal qiluv qarori", aiLoading: true }); setTimeout(function () { self.setState({ aiLoading: false }); }, 900); };
 __out.ntResShow = false; __out.ntAsosS = false; __out.ntAsosV2 = false; /* asos har bir ish mazmuni ichida */

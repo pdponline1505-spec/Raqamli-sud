@@ -11737,3 +11737,11 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .nxm-new .ntk-r .ntk-v{font-size:22px;min-width:0}
 .nxm-new .ntk-r .d2-kc{flex:none}
 .nxm-new .ntn-stats .ntk>.d2-ksp{width:40%;height:27%}
+/* AI kartasi: donut ichidagi matn sig'adi, izoh qisqa va och */
+.nxm-new.pg-um .nt-ai .nt-ai-sc{width:144px;height:144px}
+.nxm-new.pg-um .nt-ai .nt-ai-sc::before{inset:11px}
+.nxm-new.pg-um .nt-ai .nt-ai-sc-t{max-width:116px;text-align:center}
+.nxm-new.pg-um .nt-ai .nt-ai-sc b{font-size:28px}
+.nxm-new.pg-um .nt-ai .nt-ai-sc small{font-size:10.5px;letter-spacing:-.01em;white-space:nowrap;color:#94a3b8}
+.nxm-new.pg-um .nt-ai .nt-ai-sum{font-size:12.5px;line-height:1.45;color:#94a3b8;-webkit-line-clamp:2 !important;text-align:center}
+.nxm-new.pg-um .nt-ai .nt-ai-sum,.nxm-new.pg-um .nt-ai .nt-ai-sum *{color:#7b879a !important;font-size:12.5px !important;font-weight:400 !important;line-height:1.45}
