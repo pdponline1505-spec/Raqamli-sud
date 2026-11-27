@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=fa3dc50b">
+<link rel="stylesheet" href="assets/app.css?v=50ede477">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -11264,10 +11264,10 @@ if (__out.ntNew) (function () { var pg = String(v.pg || "um"), ids = IT.map(func
     nextOn: ix >= 0 && ix < seq.length - 1, next: ix < seq.length - 1 ? go(seq[ix + 1]) : function () {}, nextL: ix < seq.length - 1 ? "Keyingi: " + lbl(seq[ix + 1]) : "",
     flat: !ntPartOn, tree: !!ntPartOn,
     parts: !ntPartOn ? [] : (__out.ntParts || []).map(function (p, pi) { var k = ntPK[pi], on = k === ntCtx.part, PQ = k === "asosiy" ? ntCtx.base : (ntCtx.parts || {})[k] || {}, L = PQ.itk || [], pn = ((v.parts || {})[k] || {}), im2 = ((pn.nt || {}).im) || {}, top2 = R2CL[pn.res] || "", d2 = L.filter(function (t) { return (im2[t.id] || {}).res || top2; }).length, xn = (PQ.xr || []).length;
-      var opn = on && !v.partShut; return { l: p.l, st: p.st, stCls: p.stCls, cls: "ntn-part" + (on ? " on" : "") + (opn ? " opn" : "") + (/(^| )err( |$)/.test(p.cls) ? " err" : ""), open: opn, exp: opn ? "true" : "false",
+      var inP = on && pg !== "um", opn = inP && !v.partShut; return { l: p.l, st: p.st, stCls: p.stCls, cls: "ntn-part" + (inP ? " on" : "") + (opn ? " opn" : "") + (/(^| )err( |$)/.test(p.cls) ? " err" : ""), open: opn, exp: opn ? "true" : "false",
         sub: on ? ("Natija " + nDone + "/" + IT.length + " · " + XA.filter(xOn).length + " xarajat") : ("Natija " + d2 + "/" + L.length + (xn ? " · " + xn + " xarajat" : "")),
         prog: nDone + "/" + IT.length, items: [], xCnt: "", xitems: [],
-        go: on ? function () { setN(function (w) { return { partShut: !w.partShut }; }); } : function () { p.pick(); var f0 = (L[0] || {}).id; setTimeout(function () { setN(function () { return f0 ? { pg: "im:" + f0, partShut: false } : { partShut: false }; }); }, 0); } }; }),
+        go: inP ? function () { setN(function (w) { return { partShut: !w.partShut }; }); } : on ? function () { var f0 = (L[0] || {}).id; setN(function () { return f0 ? { pg: "im:" + f0, partShut: false } : { partShut: false }; }); } : function () { p.pick(); var f0 = (L[0] || {}).id; setTimeout(function () { setN(function () { return f0 ? { pg: "im:" + f0, partShut: false } : { partShut: false }; }); }, 0); } }; }),
     stats: [{ l: "Ish mazmunlari", v: nDone + " / " + IT.length, chip: R0 ? (SH[R0] || R0) : "Natija yo'q", chipOn: true, chipCls: "ntn-chip " + (tn ? "t-" + tn : "ph"), f: "natija qo'yilgan", goOn: IT.length > 0, go: go(firstOpen) },
       { l: "Da'vo summasi", v: __out.ntImDavo || "—", chipOn: false, f: "ish mazmunlari bo'yicha jami", goOn: IT.length > 0, go: go(ids[0] || "um") },
       { l: "Undiriladi", v: __out.ntImTot || "0 so'm", chipOn: false, f: "qanoatlantirilgan summa", goOn: false, go: function () {} },
@@ -11277,7 +11277,7 @@ if (__out.ntNew) (function () { var pg = String(v.pg || "um"), ids = IT.map(func
   (function () { var N0 = __out.ntn, curIdx = ids.indexOf(pg), SHS = { "To'liq qanoatlantirilgan": "To'liq", "Qisman qanoatlantirilgan": "Qisman", "Rad etilgan": "Rad etilgan", "Ko'rmasdan qoldirilgan": "Ko'rmasdan qoldirilgan", "Ish tugatilgan": "Ish tugatilgan" };
     var asNeed = function (i) { var r = rs[i]; return !!r && !!NAT_ASOS[CL2R[r]] && !((im0[IT[i].id] || {}).asos); };
     var same = rs.length && rs.every(function (x) { return x && x === rs[0]; }) ? rs[0] : "";
-    N0.bulkOn = IT.length > 0; N0.bulkSub = "Barcha " + IT.length + " ta ish mazmuniga bir xil natija" + (PL ? " · " + PL : "") + " — keyin alohida o'zgartirish mumkin";
+    N0.bulkOn = false; /* tezkor natija o'chirildi */ N0.bulkSub = "Barcha " + IT.length + " ta ish mazmuniga bir xil natija" + (PL ? " · " + PL : "") + " — keyin alohida o'zgartirish mumkin";
     N0.bulk = CLRES.map(function (z, zi) { var on = same === z; return { l: SHS[z] || z, sel: on ? "true" : "false", cls: "ntn-bk k" + zi + (on ? " on" : ""), pick: function () { upd(function (im, o) { IT.forEach(function (t) { setX(t.id, function (y) { if (y.res !== z) y.asos = ""; y.res = z; })(im); }); o.alEd = ""; o.imFtEd = ""; }); } }; });
     var iss = [];
     IT.forEach(function (t, i) { var w = (i + 1) + "-ish mazmuni"; if (!rs[i]) iss.push({ w: w, t: "natija tanlanmagan", k: ids[i] }); else if (asNeed(i)) iss.push({ w: w, t: "asos tanlanmagan", k: ids[i] });
@@ -11296,7 +11296,7 @@ if (__out.ntNew) (function () { var pg = String(v.pg || "um"), ids = IT.map(func
     IT.forEach(function (t, i) { var mI = (__out.ntIm || [])[i] || {}; if (rs[i] && rs[i] !== R0) pv.push({ t: "«" + ttl(t) + "» bo'yicha: " + (PH[rs[i]] || rs[i]).replace("Da'vo talabi ", "talab ") });
       (mI.tlM || []).forEach(function (q) { ((q.m || {}).al || []).forEach(function (a) { if (a.view && a.sumTxt) pv.push({ t: a.fromTxt + " hisobidan " + a.toTxt + " foydasiga " + a.sumTxt + " " + String(q.t || "").toLowerCase() + " undirilsin." }); }); }); });
     XA.filter(xOn).forEach(function (k) { ((__out.ntM[k] || {}).al || []).forEach(function (a) { if (a.view && a.sumTxt) pv.push({ t: a.fromTxt + " hisobidan " + a.toTxt + " foydasiga " + a.sumTxt + " " + ({ poch: "pochta xarajatlari", vka: "VKA xarajatlari", boj: "davlat boji" })[k] + " undirilsin." }); }); });
-    N0.pvw = pv; N0.pvwOn = true;
+    N0.pvw = pv; N0.pvwOn = false; /* qaror loyihasi o'chirildi */
     /* klaviatura */
     if (!window.__ntnKL) { window.__ntnKL = 1; document.addEventListener("keydown", function (e) { var me = window.__railSelf; if (!window.__ntnKey || !me || !me.state || !me.state.nx) return; var dg = document.querySelector('[aria-labelledby="nx-title"]'); if (!dg) return; var ad = document.activeElement; if (ad && ad !== document.body && !dg.contains(ad)) return; if (document.querySelector(".uc-wrap") || document.querySelector('[aria-labelledby="ai-title2"]')) return; window.__ntnKey(e); }); }
     window.__ntnKey = function (e) { var tg = e.target, typing = !!(tg && tg.closest && (tg.closest("input, textarea, select, [contenteditable=true]") || tg.closest(".dx-menu")));

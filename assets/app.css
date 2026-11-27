@@ -11635,3 +11635,7 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .nxm-new .ntn-ac{background:#fff;border-color:#e2e8f0;color:#1e293b;border-radius:999px;padding:4px 4px 4px 12px}
 .nxm-new .ntn-ac button{border-radius:50%;color:#64748b}
 .nxm-new .ntn-ac button:hover{background:#fee2e2;color:#b91c1c}
+/* umumiy natija — statistikadan keyin, eng yuqorida */
+.nxm-new .ntv-main{display:flex !important;flex-direction:column}
+.nxm-new .ntv-main>.ntn-stats{order:-3}
+.nxm-new .ntv-main>.ntp2,.nxm-new .ntv-main>.ntv-nres{order:-2}
