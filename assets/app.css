@@ -11486,3 +11486,30 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .nxm-new .ntp2 .ntp-tot2{flex:1 1 auto;flex-direction:row !important;align-items:center !important;justify-content:space-between;min-width:0;padding:12px 16px !important}
 .nxm-new .ntp2 .ntp-tot2 .ntp-tl{font-size:13.5px;font-weight:600;color:#0f172a}
 .nxm-new .ntp2 .ntp-tot2 .ntp-totdd{width:320px;max-width:60%}
+/* yangi ko'rinish: har bir sud xarajati alohida sahifa */
+.nxm-new.pg-xk-poch .ntv-sec[aria-labelledby="ntv-s3"] .ntv-cost:not(.xk-poch),
+.nxm-new.pg-xk-vka .ntv-sec[aria-labelledby="ntv-s3"] .ntv-cost:not(.xk-vka),
+.nxm-new.pg-xk-boj .ntv-sec[aria-labelledby="ntv-s3"] .ntv-cost:not(.xk-boj){display:none !important}
+.nxm-new.pg-xk-poch .ntv-addrow .dx-addchip:not(.xc-poch),
+.nxm-new.pg-xk-vka .ntv-addrow .dx-addchip:not(.xc-vka),
+.nxm-new.pg-xk-boj .ntv-addrow .dx-addchip:not(.xc-boj){display:none !important}
+.nxm-new.pg-xk-poch .ntv-addrow:not(:has(.xc-poch)),
+.nxm-new.pg-xk-vka .ntv-addrow:not(:has(.xc-vka)),
+.nxm-new.pg-xk-boj .ntv-addrow:not(:has(.xc-boj)){display:none !important}
+.nxm-new.pg-xar .ntv-addrow{padding:28px;border:1px dashed #cbd5e1;border-radius:14px;justify-content:center;background:#f8fafc}
+.nxm-new.pg-xar .ntv-cost>.ntv-ch .ntv-chbtn{pointer-events:none}
+.nxm-new.pg-xar .ntv-cost>.ntv-ch .ntv-chbtn .ntv-chev{display:none}
+.ntn-xi.off .ntn-tx b{color:#94a3b8;font-weight:500}
+.ntn-xi.off .ntn-ic{color:#cbd5e1}
+.ntn-nav>*,.ntn-side>*{flex-shrink:0}.ntn-side>.ntn-nav{flex-shrink:1}.ntn-gl em{text-transform:none}
+/* yon panel ixchamroq */
+.ntn-side{gap:8px}
+.ntn-parts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+.ntn-pt{flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;padding:6px 8px;font-size:12px;min-width:0}
+.ntn-pt .ntn-ptl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.ntn-pt .ntp-st{height:18px !important;font-size:10.5px !important;padding:0 6px !important;max-width:100%;overflow:hidden;white-space:nowrap}
+.ntn-im{padding-top:6px;padding-bottom:6px}
+.ntn-it{min-height:36px}
+.ntn-gl{padding-top:6px}
+.ntn-parts{display:flex;flex-direction:column;gap:3px}.ntn-pt{flex-direction:row;align-items:center;justify-content:space-between;padding:4px 6px 4px 10px;min-height:32px;font-size:12.5px}.ntn-pt .ntp-st{max-width:none}
+.ntn-res small{display:none}.ntn-res{gap:5px;padding:10px 12px}.ntn-brand{padding-bottom:0}.ntn-case{padding:8px 12px}
