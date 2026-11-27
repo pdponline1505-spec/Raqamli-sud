@@ -11841,3 +11841,20 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .nxm-new .ntv-main>.ntn-stats.ntn-stats{display:none !important}
 .nxm-new.pg-um .ntv-main>.ntn-gauges.ntn-gauges{grid-row:1 !important}
 .nxm-new.pg-um .ntv-main>.ntv-mode.ntv-mode{grid-row:2 !important}
+/* Bir nechta ish — yangi ko'rinish */
+.ntn-mh{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:4px 4px 0;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#64748b}
+.ntn-mh em{font-style:normal;height:20px;padding:0 8px;border-radius:999px;background:#e0e7ff;color:#3730a3;display:inline-flex;align-items:center;letter-spacing:0;text-transform:none}
+.ntn-mlist{display:flex;flex-direction:column;gap:6px;overflow:auto;flex:1;min-height:0}
+.ntn-mrow{display:flex;align-items:center;gap:10px;padding:10px;border-radius:12px;background:#fff;box-shadow:0 0 0 1px #e8ebf0,0 1px 2px rgba(15,23,42,.04);min-width:0;animation:ntnIn 420ms cubic-bezier(.22,1,.36,1) backwards}
+.ntn-mrow:nth-child(2){animation-delay:50ms}.ntn-mrow:nth-child(3){animation-delay:100ms}.ntn-mrow:nth-child(n+4){animation-delay:150ms}
+.ntn-mrow .ntn-no{flex:none;width:24px;height:24px;border-radius:7px;display:grid;place-items:center;background:#eef2ff;color:#3730a3;font-size:12px;font-weight:600}
+.ntn-mtx{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ntn-mtx b{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;font-weight:600;color:#0f172a;letter-spacing:.01em}
+.ntn-mtx small{font-size:11.5px;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ntn-mfrom{padding:0 4px;font-size:11.5px;color:#94a3b8}
+.ntn-mfrom:empty{display:none}
+.nxm-mul.pg-um .ntv-main>.ntv-mode.ntv-mode{grid-row:auto !important}
+.nxm-mul .ntv-main>.ntv-mode{padding:20px;border-radius:20px;background:#fff;box-shadow:0 0 0 1px #eef1f6,0 4px 14px rgba(15,23,42,.05)}
+.nxm-new.nxm-mul{width:min(980px,100%) !important;height:auto;min-height:min(440px,calc(100vh - 32px));max-height:calc(100vh - 32px);grid-template-columns:280px minmax(0,1fr)}
+.nxm-mul .ntn-mlist{max-height:calc(100vh - 260px)}
+@media (max-width:760px){.nxm-new.nxm-mul{height:auto}}
