@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raqamli sud — Sudya kabineti</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="assets/app.css?v=931e8218">
+<link rel="stylesheet" href="assets/app.css?v=e4512984">
 <link rel="stylesheet" href="comments.css">
 </head>
 <body>
@@ -11425,7 +11425,7 @@ __out.sa = sa;
 // Natija oynasi (yangi ko'rinish): yon paneldagi faol band foni silliq siljiydi
 if (!window.__ntnInd) { window.__ntnInd = 1; (function () {
 var scan = function () { var A = document.querySelectorAll(".ntn-nav"); for (var i = 0; i < A.length; i++) { var a = A[i], ind = a.querySelector(":scope > .ntn-ind"); if (!ind) continue;
-var on = a.querySelector(".ntn-it.on"); if (!on || !on.getClientRects().length) { ind.dataset.on = ""; a.__k = ""; continue; }
+var on = a.querySelector(".ntn-it.on"); if (!on || !on.getClientRects().length) on = a.querySelector(".ntn-part.on > .ntn-ph"); if (!on || !on.getClientRects().length) { ind.dataset.on = ""; a.__k = ""; continue; }
 var ar = a.getBoundingClientRect(), r = on.getBoundingClientRect(), x = Math.round(r.left - ar.left + a.scrollLeft), y = Math.round(r.top - ar.top + a.scrollTop), k = x + "|" + y + "|" + Math.round(r.width) + "|" + Math.round(r.height);
 if (a.__k === k) continue; var anim = !!a.__k;
 if (!anim) ind.style.transition = "none";

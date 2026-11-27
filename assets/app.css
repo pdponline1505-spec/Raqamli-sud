@@ -11827,3 +11827,13 @@ html[data-theme="dark"] .smj-go.over .smj-gob{filter:none}
 .ntn-gauges .smd-gauge.zero .smd-ga0{stroke:#e9edf2}
 .smd-gic.zero{background:#f1f5f9;color:#64748b}
 .ntn-gauges .smd-gauge.zero .smd-gw b{color:#94a3b8}
+/* Yon panel: barcha bo'limlar bir xil — fon faqat turgan bo'limda; qism sarlavhasi faqat ochiluvchi belgisi bilan farqlanadi */
+.ntn-part,.ntn-part.on,.ntn-part.on.opn{background:none !important;padding-bottom:0 !important;margin-top:2px}
+.ntn-nav .ntn-ph{min-height:38px;padding:7px 10px;gap:10px;border:0 !important;border-radius:10px;background:transparent;box-shadow:none !important;color:#334155;transition:background .15s}
+.ntn-nav .ntn-ph:hover{background:#eef1f5}
+.ntn-nav:has(>.ntn-ind[data-on="1"]) .ntn-part.on>.ntn-ph:hover{background:transparent}
+.ntn-nav .ntn-phl b{font-size:13.5px;font-weight:500;color:#334155;transition:color .25s}
+.ntn-nav .ntn-part.on .ntn-phl b{font-weight:600;color:#0f172a}
+.ntn-nav .ntn-part.on .ntn-phc{color:#2563eb}
+.ntn-nav .ntn-part.err .ntn-phl b,.ntn-nav .ntn-part.err .ntn-phc{color:#dc2626}
+.ntn-nav .ntn-pbody{margin-left:17px;padding:2px 0 4px 8px;border-left:2px solid #e5eaf1}
